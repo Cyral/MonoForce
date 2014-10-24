@@ -18,30 +18,26 @@
 //                                                            //
 ////////////////////////////////////////////////////////////////
 
-#region //// Using /////////////
+#region Using
 
-////////////////////////////////////////////////////////////////////////////
 using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
-////////////////////////////////////////////////////////////////////////////
 
 #endregion
 
 namespace MonoForce.Controls
 {
 
-    #region //// Classes ///////////
+    #region Classes
 
-    ////////////////////////////////////////////////////////////////////////////
     ///  <include file='Documents/ListBox.xml' path='ListBox/Class[@name="ListBox"]/*' />          
     public class ListBox : Control
     {
 
-        #region //// Fields ////////////
+        #region Fields
 
-        ////////////////////////////////////////////////////////////////////////////                     
         private List<object> items = new List<object>();
         private ScrollBar sbVert = null;
         private ClipBox pane = null;
@@ -49,21 +45,17 @@ namespace MonoForce.Controls
         private bool hotTrack = false;
         private int itemsCount = 0;
         private bool hideSelection = true;
-        ////////////////////////////////////////////////////////////////////////////
 
         #endregion
 
-        #region //// Properties ////////
+        #region Properties
 
-        ////////////////////////////////////////////////////////////////////////////
         public virtual List<object> Items
         {
             get { return items; }
             internal set { items = value; }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         public virtual bool HotTrack
         {
             get { return hotTrack; }
@@ -76,9 +68,7 @@ namespace MonoForce.Controls
                 }
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         public virtual int ItemIndex
         {
             get { return itemIndex; }
@@ -100,9 +90,7 @@ namespace MonoForce.Controls
                 }
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         public virtual bool HideSelection
         {
             get { return hideSelection; }
@@ -116,23 +104,19 @@ namespace MonoForce.Controls
                 }
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
         #endregion
 
-        #region //// Events ////////////
+        #region Events
 
-        ////////////////////////////////////////////////////////////////////////////                 
         public event EventHandler HotTrackChanged;
         public event EventHandler ItemIndexChanged;
         public event EventHandler HideSelectionChanged;
-        ////////////////////////////////////////////////////////////////////////////
 
         #endregion
 
-        #region //// Construstors //////
+        #region Construstors
 
-        ////////////////////////////////////////////////////////////////////////////       
         public ListBox(Manager manager)
             : base(manager)
         {
@@ -167,20 +151,16 @@ namespace MonoForce.Controls
             CanFocus = true;
             Passive = false;
         }
-        ////////////////////////////////////////////////////////////////////////////
 
         #endregion
 
-        #region //// Methods ///////////
+        #region Methods
 
-        ////////////////////////////////////////////////////////////////////////////
         public override void Init()
         {
             base.Init();
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         public virtual void AutoHeight(int maxItems)
         {
             if (items != null && items.Count < maxItems) maxItems = items.Count;
@@ -207,7 +187,6 @@ namespace MonoForce.Controls
                 Height = 32;
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
         public override int MinimumHeight
         {
@@ -219,7 +198,6 @@ namespace MonoForce.Controls
             }
         }
 
-        ////////////////////////////////////////////////////////////////////////////
         protected override void DrawControl(Renderer renderer, Rectangle rect, GameTime gameTime)
         {
             sbVert.Invalidate();
@@ -228,9 +206,7 @@ namespace MonoForce.Controls
 
             base.DrawControl(renderer, rect, gameTime);
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         private void DrawPane(object sender, DrawEventArgs e)
         {
             if (items != null && items.Count > 0)
@@ -262,9 +238,7 @@ namespace MonoForce.Controls
                 }
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         protected override void OnMouseDown(MouseEventArgs e)
         {
             base.OnMouseDown(e);
@@ -274,9 +248,7 @@ namespace MonoForce.Controls
                 TrackItem(e.Position.X, e.Position.Y);
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         private void TrackItem(int x, int y)
         {
             if (items != null && items.Count > 0 && (pane.ControlRect.Contains(new Point(x, y))))
@@ -289,9 +261,7 @@ namespace MonoForce.Controls
                 Focused = true;
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         protected override void OnMouseMove(MouseEventArgs e)
         {
             base.OnMouseMove(e);
@@ -301,9 +271,7 @@ namespace MonoForce.Controls
                 TrackItem(e.Position.X, e.Position.Y);
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         protected override void OnKeyPress(KeyEventArgs e)
         {
             if (e.Key == Keys.Down)
@@ -344,7 +312,6 @@ namespace MonoForce.Controls
 
             base.OnKeyPress(e);
         }
-        ////////////////////////////////////////////////////////////////////////////
 
         /// <summary>
         /// Handles mouse scroll events for the list box.
@@ -353,7 +320,7 @@ namespace MonoForce.Controls
         protected override void OnMouseScroll(MouseEventArgs e)
         {
             Focused = true;
- 
+
             if (e.ScrollDirection == MouseScrollDirection.Down)
             {
                 e.Handled = true;
@@ -364,17 +331,16 @@ namespace MonoForce.Controls
                 e.Handled = true;
                 itemIndex -= sbVert.StepSize / 10;
             }
- 
+
             // Wrap index in collection range.
             if (itemIndex < 0) itemIndex = 0;
             else if (itemIndex >= Items.Count) itemIndex = Items.Count - 1;
- 
+
             ItemIndex = itemIndex;
- 
+
             base.OnMouseScroll(e);
         }
 
-        ////////////////////////////////////////////////////////////////////////////
         protected override void OnGamePadPress(GamePadEventArgs e)
         {
             if (e.Button == GamePadActions.Down)
@@ -394,9 +360,7 @@ namespace MonoForce.Controls
             ItemIndex = itemIndex;
             base.OnGamePadPress(e);
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         private void ItemsChanged()
         {
             if (items != null && items.Count > 0)
@@ -416,17 +380,13 @@ namespace MonoForce.Controls
                 Invalidate();
             }
         }
-        ////////////////////////////////////////////////////////////////////////////    
 
-        ////////////////////////////////////////////////////////////////////////////
         protected override void OnResize(ResizeEventArgs e)
         {
             base.OnResize(e);
             ItemsChanged();
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         public virtual void ScrollTo(int index)
         {
             ItemsChanged();
@@ -439,9 +399,7 @@ namespace MonoForce.Controls
                 sbVert.Value = ((index + 1) * 10) - sbVert.PageSize;
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         protected internal override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
@@ -452,33 +410,25 @@ namespace MonoForce.Controls
                 ItemsChanged();
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////     
         protected virtual void OnItemIndexChanged(EventArgs e)
         {
             if (ItemIndexChanged != null) ItemIndexChanged.Invoke(this, e);
         }
-        ////////////////////////////////////////////////////////////////////////////     
 
-        ////////////////////////////////////////////////////////////////////////////     
         protected virtual void OnHotTrackChanged(EventArgs e)
         {
             if (HotTrackChanged != null) HotTrackChanged.Invoke(this, e);
         }
-        ////////////////////////////////////////////////////////////////////////////  
 
-        ////////////////////////////////////////////////////////////////////////////     
         protected virtual void OnHideSelectionChanged(EventArgs e)
         {
             if (HideSelectionChanged != null) HideSelectionChanged.Invoke(this, e);
         }
-        ////////////////////////////////////////////////////////////////////////////       
 
         #endregion
 
     }
-    ////////////////////////////////////////////////////////////////////////////
 
     #endregion
 

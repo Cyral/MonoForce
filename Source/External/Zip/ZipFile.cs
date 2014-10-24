@@ -12,8 +12,6 @@ namespace MonoForce.External.Zip
             get { return _name; }
         }
 
-
-
       // when this is set, we trim the volume (eg C:) off any fully-qualified pathname, 
       // before writing the ZipEntry into the ZipFile. 
       // We default this to true.  This allows Windows Explorer to read the zip archives properly. 
@@ -50,7 +48,6 @@ namespace MonoForce.External.Zip
 
         private ZipFile() { }
 
-
         #region For Writing Zip Files
 
         public ZipFile(string NewZipFileName)
@@ -61,7 +58,6 @@ namespace MonoForce.External.Zip
                 throw new System.Exception(String.Format("That file ({0}) already exists.", NewZipFileName));
             _entries = new System.Collections.Generic.List<ZipEntry>();
         }
-
 
         public void AddItem(string FileOrDirectoryName)
         {
@@ -108,14 +104,12 @@ namespace MonoForce.External.Zip
             }
         }
 
-
         public void Save()
         {
             WriteCentralDirectoryStructure();
             WriteStream.Close();
             _writestream = null;
         }
-
 
         private void WriteCentralDirectoryStructure()
         {
@@ -130,7 +124,6 @@ namespace MonoForce.External.Zip
             // now, the footer
             WriteCentralDirectoryFooter(Start, Finish);
         }
-
 
         private void WriteCentralDirectoryFooter(long StartOfCentralDirectory, long EndOfCentralDirectory)
         {
@@ -227,12 +220,10 @@ namespace MonoForce.External.Zip
             return GetEnumerator();
         }
 
-
         public void ExtractAll(string path)
         {
             ExtractAll(path, false);
         }
-
 
         public void ExtractAll(string path, bool WantVerbose)
         {
@@ -257,18 +248,15 @@ namespace MonoForce.External.Zip
             }
         }
 
-
         public void Extract(string filename)
         {
             this[filename].Extract();
         }
 
-
         public void Extract(string filename, System.IO.Stream s)
         {
             this[filename].Extract(s);
         }
-
 
         public ZipEntry this[String filename]
         {
@@ -303,7 +291,6 @@ namespace MonoForce.External.Zip
             GC.SuppressFinalize(this);
         }
 
-
         protected virtual void Dispose(bool disposeManagedResources)
         {
             if (!this._disposed)
@@ -325,7 +312,6 @@ namespace MonoForce.External.Zip
                 this._disposed = true;
             }
         }
-
 
         private System.IO.Stream _readstream;
         private System.IO.FileStream _writestream;

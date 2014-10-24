@@ -18,38 +18,33 @@
 //                                                            //
 ////////////////////////////////////////////////////////////////
 
-#region //// Using /////////////
+#region Using
 
-////////////////////////////////////////////////////////////////////////////
 using System;
 using System.IO;
-////////////////////////////////////////////////////////////////////////////
 
 #endregion
 
 namespace MonoForce.Examples.ApplicationDemo
-{  
-  static class Entry  
-  {
-
-    #region //// Methods ///////////
-
-    ////////////////////////////////////////////////////////////////////////////
-    #if (!XBOX && !XBOX_FAKE)
-      [STAThread]
-    #endif
-    
-    static void Main(string[] args)
+{
+    static class Entry
     {
-      using (ApplicationDemo central = new ApplicationDemo())
-      {
-        central.Run();       
-      }  
-    }
-    ////////////////////////////////////////////////////////////////////////////
 
-    #endregion    
-    
-  }
-  
+        #region Methods
+
+#if (!XBOX && !XBOX_FAKE)
+        [STAThread]
+#endif
+
+        static void Main(string[] args)
+        {
+            using (ApplicationDemo central = new ApplicationDemo())
+            {
+                central.Run();
+            }
+        }
+
+        #endregion
+
+    }
 }

@@ -18,9 +18,8 @@
 //                                                            //
 ////////////////////////////////////////////////////////////////
 
-#region //// Using /////////////
+#region Using
 
-////////////////////////////////////////////////////////////////////////////
 using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
@@ -32,17 +31,14 @@ using System.Media;
 using System.Collections;
 using System.ComponentModel;
 #endif
-////////////////////////////////////////////////////////////////////////////
 
 #endregion
 
 namespace MonoForce.Controls
 {
 
-    #region //// Classes ///////////
+    #region Classes
 
-
-    ////////////////////////////////////////////////////////////////////////////  
     /// <summary>
     /// Defines the gamepad actions mapping.
     /// </summary>
@@ -58,9 +54,7 @@ namespace MonoForce.Controls
         public GamePadButton PrevControl = GamePadButton.LeftShoulder;
         public GamePadButton ContextMenu = GamePadButton.X;
     }
-    ////////////////////////////////////////////////////////////////////////////  
 
-    ////////////////////////////////////////////////////////////////////////////  
     /// <summary>
     /// Defines type used as a controls collection.
     /// </summary>
@@ -70,9 +64,7 @@ namespace MonoForce.Controls
         public ControlsList(int capacity) : base(capacity) { }
         public ControlsList(IEnumerable<Control> collection) : base(collection) { }
     }
-    ////////////////////////////////////////////////////////////////////////////  
 
-    ////////////////////////////////////////////////////////////////////////////  
     /// <summary>
     /// Defines the base class for all controls.
     /// </summary>    
@@ -81,25 +73,20 @@ namespace MonoForce.Controls
 
         #region //// Consts/////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         public static readonly Color UndefinedColor = new Color(255, 255, 255, 0);
-        ////////////////////////////////////////////////////////////////////////////
 
         #endregion
 
-        #region //// Fields ////////////
+        #region Fields
 
-        ////////////////////////////////////////////////////////////////////////////    
         internal static ControlsList Stack = new ControlsList();
-        ////////////////////////////////////////////////////////////////////////////    
 
 #if (!XBOX && !XBOX_FAKE)
-        ////////////////////////////////////////////////////////////////////////////    
+
         private Cursor cursor = null;
-        ////////////////////////////////////////////////////////////////////////////    
+
 #endif
 
-        ////////////////////////////////////////////////////////////////////////////    
         private Color color = UndefinedColor;
         private Color textColor = UndefinedColor;
         private Color backColor = Color.Transparent;
@@ -132,9 +119,7 @@ namespace MonoForce.Controls
         private bool designMode = false;
         private bool partialOutline = true;
         private Rectangle drawingRect = Rectangle.Empty;
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////    
         private ControlsList controls = new ControlsList();
         private Rectangle movableArea = Rectangle.Empty;
         private bool passive = false;
@@ -154,9 +139,7 @@ namespace MonoForce.Controls
         private int virtualWidth = 64;
         private bool stayOnBack = false;
         private bool stayOnTop = false;
-        ////////////////////////////////////////////////////////////////////////////  
 
-        ////////////////////////////////////////////////////////////////////////////    
         private RenderTarget2D target;
         private Point pressSpot = Point.Zero;
         private int[] pressDiff = new int[4];
@@ -174,14 +157,13 @@ namespace MonoForce.Controls
         /// Tracks the position of the mouse scroll wheel
         /// </summary>
         private int scrollWheel = 0;
-        ////////////////////////////////////////////////////////////////////////////                     
 
         #endregion
 
-        #region //// Properties ////////
+        #region Properties
 
 #if (!XBOX && !XBOX_FAKE)
-        ////////////////////////////////////////////////////////////////////////////
+
         /// <summary>
         /// Gets or sets the cursor displaying over the control.
         /// </summary>
@@ -190,10 +172,9 @@ namespace MonoForce.Controls
             get { return cursor; }
             set { cursor = value; }
         }
-        ////////////////////////////////////////////////////////////////////////////
+
 #endif
 
-        ////////////////////////////////////////////////////////////////////////////       
         /// <summary>
         /// Gets a list of all child controls.
         /// </summary>
@@ -283,9 +264,7 @@ namespace MonoForce.Controls
         /// Gets or sets the value indicating wheter control is in design mode.
         /// </summary>
         public virtual bool DesignMode { get { return designMode; } set { designMode = value; } }
-        ////////////////////////////////////////////////////////////////////////////    
 
-        ////////////////////////////////////////////////////////////////////////////    
         /// <summary>
         /// Gets or sets gamepad actions for the control.
         /// </summary>
@@ -294,9 +273,7 @@ namespace MonoForce.Controls
             get { return gamePadActions; }
             set { gamePadActions = value; }
         }
-        ////////////////////////////////////////////////////////////////////////////    
 
-        ////////////////////////////////////////////////////////////////////////////    
         /// <summary>
         /// Gets or sets the value indicating whether the control outline is displayed only for certain edges. 
         /// </summary>   
@@ -305,9 +282,7 @@ namespace MonoForce.Controls
             get { return partialOutline; }
             set { partialOutline = value; }
         }
-        ////////////////////////////////////////////////////////////////////////////    
 
-        ////////////////////////////////////////////////////////////////////////////    
         /// <summary>
         /// Gets or sets the value indicating whether the control is allowed to be brought in the front.
         /// </summary>
@@ -320,9 +295,7 @@ namespace MonoForce.Controls
                 stayOnBack = value;
             }
         }
-        ////////////////////////////////////////////////////////////////////////////    
 
-        ////////////////////////////////////////////////////////////////////////////    
         /// <summary>
         /// Gets or sets the value indicating that the control should stay on top of other controls.
         /// </summary>
@@ -335,9 +308,7 @@ namespace MonoForce.Controls
                 stayOnTop = value;
             }
         }
-        ////////////////////////////////////////////////////////////////////////////    
 
-        ////////////////////////////////////////////////////////////////////////////    
         /// <summary>
         /// Gets or sets a name of the control.
         /// </summary>
@@ -346,9 +317,7 @@ namespace MonoForce.Controls
             get { return name; }
             set { name = value; }
         }
-        ////////////////////////////////////////////////////////////////////////////    
 
-        ////////////////////////////////////////////////////////////////////////////    
         /// <summary>
         /// Gets or sets a value indicating whether this control has input focus.
         /// </summary>
@@ -379,9 +348,7 @@ namespace MonoForce.Controls
                 }
             }
         }
-        ////////////////////////////////////////////////////////////////////////////    
 
-        ////////////////////////////////////////////////////////////////////////////
         /// <summary>
         /// Gets a value indicating current state of the control.
         /// </summary>
@@ -402,9 +369,7 @@ namespace MonoForce.Controls
                 }
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         public virtual Type ToolTipType
         {
             get { return toolTipType; }
@@ -418,9 +383,7 @@ namespace MonoForce.Controls
                 }
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         public virtual ToolTip ToolTip
         {
             get
@@ -441,9 +404,7 @@ namespace MonoForce.Controls
                 toolTip = value;
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         internal protected virtual bool IsPressed
         {
             get
@@ -455,37 +416,31 @@ namespace MonoForce.Controls
                 return false;
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         internal virtual int TopModifier
         {
             get { return topModifier; }
             set { topModifier = value; }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         internal virtual int LeftModifier
         {
             get { return leftModifier; }
             set { leftModifier = value; }
         }
-        ////////////////////////////////////////////////////////////////////////////
+
         internal virtual int VirtualHeight
         {
             get { return GetVirtualHeight(); }
             //set { virtualHeight = value; }
         }
-        ////////////////////////////////////////////////////////////////////////////  
+
         internal virtual int VirtualWidth
         {
             get { return GetVirtualWidth(); }
             //set { virtualWidth = value; }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         /// <summary>
         /// Gets an area where is the control supposed to be drawn.
         /// </summary>
@@ -494,9 +449,7 @@ namespace MonoForce.Controls
             get { return drawingRect; }
             private set { drawingRect = value; }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         /// <summary>
         /// Gets or sets a value indicating whether this control should receive any events.
         /// </summary>
@@ -505,30 +458,22 @@ namespace MonoForce.Controls
             get { return suspended; }
             set { suspended = value; }
         }
-        ////////////////////////////////////////////////////////////////////////////    
 
-        ////////////////////////////////////////////////////////////////////////////
         internal protected virtual bool Hovered
         {
             get { return hovered; }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         internal protected virtual bool Inside
         {
             get { return inside; }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         internal protected virtual bool[] Pressed
         {
             get { return pressed; }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         /// <summary>
         /// Gets or sets a value indicating whether this controls is currently being moved.
         /// </summary>
@@ -543,9 +488,7 @@ namespace MonoForce.Controls
                 isMoving = value;
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         /// <summary>
         /// Gets or sets a value indicating whether this controls is currently being resized.
         /// </summary>
@@ -560,9 +503,7 @@ namespace MonoForce.Controls
                 isResizing = value;
             }
         }
-        ////////////////////////////////////////////////////////////////////////////    
 
-        ////////////////////////////////////////////////////////////////////////////        
         /// <summary>
         /// Gets or sets the edges of the container to which a control is bound and determines how a control is resized with its parent.
         /// </summary>
@@ -579,9 +520,7 @@ namespace MonoForce.Controls
                 if (!Suspended) OnAnchorChanged(new EventArgs());
             }
         }
-        ////////////////////////////////////////////////////////////////////////////    
 
-        ////////////////////////////////////////////////////////////////////////////        
         /// <summary>
         /// Gets or sets the edges of the contol which are allowed for resizing.
         /// </summary>
@@ -596,9 +535,7 @@ namespace MonoForce.Controls
                 resizeEdge = value;
             }
         }
-        ////////////////////////////////////////////////////////////////////////////    
 
-        ////////////////////////////////////////////////////////////////////////////    
         /// <summary>
         /// Gets or sets the skin used for rendering the control.
         /// </summary>
@@ -614,9 +551,7 @@ namespace MonoForce.Controls
                 ClientMargins = skin.ClientMargins;
             }
         }
-        ////////////////////////////////////////////////////////////////////////////    
 
-        ////////////////////////////////////////////////////////////////////////////    
         /// <summary>
         /// Gets or sets the text associated with this control.
         /// </summary>
@@ -630,9 +565,7 @@ namespace MonoForce.Controls
                 if (!Suspended) OnTextChanged(new EventArgs());
             }
         }
-        ////////////////////////////////////////////////////////////////////////////                      
 
-        ////////////////////////////////////////////////////////////////////////////
         /// <summary>
         /// Gets or sets the alpha value for this control.
         /// </summary>
@@ -648,9 +581,7 @@ namespace MonoForce.Controls
                 if (!Suspended) OnAlphaChanged(new EventArgs());
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         /// <summary>
         /// Gets or sets the background color for the control.
         /// </summary>
@@ -667,9 +598,7 @@ namespace MonoForce.Controls
                 if (!Suspended) OnBackColorChanged(new EventArgs());
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////    
         /// <summary>
         /// Gets or sets the color for the control.
         /// </summary>
@@ -689,9 +618,7 @@ namespace MonoForce.Controls
                 }
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////    
         /// <summary>
         /// Gets or sets the text color for the control.
         /// </summary>
@@ -711,9 +638,7 @@ namespace MonoForce.Controls
                 }
             }
         }
-        ////////////////////////////////////////////////////////////////////////////  
 
-        ////////////////////////////////////////////////////////////////////////////
         /// <summary>
         /// Gets or sets a value indicating whether the control can respond to user interaction.
         /// </summary>
@@ -738,9 +663,7 @@ namespace MonoForce.Controls
                 if (!Suspended) OnEnabledChanged(new EventArgs());
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         /// <summary>
         /// Gets or sets a value that indicates whether the control is rendered.
         /// </summary>
@@ -758,9 +681,7 @@ namespace MonoForce.Controls
                 if (!Suspended) OnVisibleChanged(new EventArgs());
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         /// <summary>
         /// Gets or sets the parent for the control.
         /// </summary>
@@ -779,9 +700,7 @@ namespace MonoForce.Controls
                 }
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         /// <summary>
         /// Gets or sets the root for the control.
         /// </summary>
@@ -806,9 +725,7 @@ namespace MonoForce.Controls
                 }
             }
         }
-        ////////////////////////////////////////////////////////////////////////////          
 
-        ////////////////////////////////////////////////////////////////////////////
         /// <summary>
         /// Gets or sets the distance, in pixels, between the left edge of the control and the left edge of its parent.
         /// </summary>
@@ -831,9 +748,7 @@ namespace MonoForce.Controls
                 }
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////        
         /// <summary>
         /// Gets or sets the distance, in pixels, between the top edge of the control and the top edge of its parent.
         /// </summary>
@@ -856,9 +771,7 @@ namespace MonoForce.Controls
                 }
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         /// <summary>
         /// Gets or sets the width of the control.
         /// </summary>
@@ -891,9 +804,7 @@ namespace MonoForce.Controls
                 }
             }
         }
-        ////////////////////////////////////////////////////////////////////////////   
 
-        ////////////////////////////////////////////////////////////////////////////   
         /// <summary>
         /// Gets or sets the height of the control.
         /// </summary>
@@ -930,9 +841,7 @@ namespace MonoForce.Controls
             }
 
         }
-        ////////////////////////////////////////////////////////////////////////////       
 
-        ////////////////////////////////////////////////////////////////////////////            
         /// <summary>
         /// Gets or sets the minimum width in pixels the control can be sized to.
         /// </summary>
@@ -950,9 +859,7 @@ namespace MonoForce.Controls
                 if (width < MinimumWidth) Width = MinimumWidth;
             }
         }
-        ////////////////////////////////////////////////////////////////////////////            
 
-        ////////////////////////////////////////////////////////////////////////////            
         /// <summary>
         /// /// Gets or sets the minimum height in pixels the control can be sized to.
         /// </summary>
@@ -970,9 +877,7 @@ namespace MonoForce.Controls
                 if (height < MinimumHeight) Height = MinimumHeight;
             }
         }
-        ////////////////////////////////////////////////////////////////////////////            
 
-        ////////////////////////////////////////////////////////////////////////////                
         /// <summary>
         /// /// Gets or sets the maximum width in pixels the control can be sized to.
         /// </summary>
@@ -991,9 +896,7 @@ namespace MonoForce.Controls
                 if (width > MaximumWidth) Width = MaximumWidth;
             }
         }
-        ////////////////////////////////////////////////////////////////////////////            
 
-        ////////////////////////////////////////////////////////////////////////////            
         /// <summary>
         /// Gets or sets the maximum height in pixels the control can be sized to.
         /// </summary>
@@ -1012,9 +915,7 @@ namespace MonoForce.Controls
                 if (height > MaximumHeight) Height = MaximumHeight;
             }
         }
-        ////////////////////////////////////////////////////////////////////////////                
 
-        ////////////////////////////////////////////////////////////////////////////
         public virtual int AbsoluteLeft
         {
             get
@@ -1024,7 +925,7 @@ namespace MonoForce.Controls
                 else return parent.AbsoluteLeft + left - parent.Skin.OriginMargins.Left + LeftModifier;
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
+
         public virtual int AbsoluteTop
         {
             get
@@ -1034,9 +935,7 @@ namespace MonoForce.Controls
                 else return parent.AbsoluteTop + top - parent.Skin.OriginMargins.Top + TopModifier;
             }
         }
-        ////////////////////////////////////////////////////////////////////////////  
 
-        ////////////////////////////////////////////////////////////////////////////
         public virtual int OriginLeft
         {
             get
@@ -1045,9 +944,7 @@ namespace MonoForce.Controls
                 return AbsoluteLeft - skin.OriginMargins.Left;
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         public virtual int OriginTop
         {
             get
@@ -1056,9 +953,7 @@ namespace MonoForce.Controls
                 return AbsoluteTop - skin.OriginMargins.Top;
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////    
         public virtual int OriginWidth
         {
             get
@@ -1067,9 +962,7 @@ namespace MonoForce.Controls
                 return width + skin.OriginMargins.Left + skin.OriginMargins.Right;
             }
         }
-        ////////////////////////////////////////////////////////////////////////////        
 
-        ////////////////////////////////////////////////////////////////////////////    
         public virtual int OriginHeight
         {
             get
@@ -1078,9 +971,7 @@ namespace MonoForce.Controls
                 return height + skin.OriginMargins.Top + skin.OriginMargins.Bottom;
             }
         }
-        ////////////////////////////////////////////////////////////////////////////  
 
-        ////////////////////////////////////////////////////////////////////////////
         public virtual Margins ClientMargins
         {
             get { return clientMargins; }
@@ -1089,9 +980,7 @@ namespace MonoForce.Controls
                 clientMargins = value;
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         public virtual int ClientLeft
         {
             get
@@ -1100,9 +989,7 @@ namespace MonoForce.Controls
                 return ClientMargins.Left;
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         public virtual int ClientTop
         {
             get
@@ -1111,9 +998,7 @@ namespace MonoForce.Controls
                 return ClientMargins.Top;
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////    
         public virtual int ClientWidth
         {
             get
@@ -1126,9 +1011,7 @@ namespace MonoForce.Controls
                 Width = value + ClientMargins.Horizontal - skin.OriginMargins.Horizontal;
             }
         }
-        ////////////////////////////////////////////////////////////////////////////    
 
-        ////////////////////////////////////////////////////////////////////////////    
         public virtual int ClientHeight
         {
             get
@@ -1141,9 +1024,7 @@ namespace MonoForce.Controls
                 Height = value + ClientMargins.Vertical - skin.OriginMargins.Vertical;
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         public virtual Rectangle AbsoluteRect
         {
             get
@@ -1151,9 +1032,7 @@ namespace MonoForce.Controls
                 return new Rectangle(AbsoluteLeft, AbsoluteTop, OriginWidth, OriginHeight);
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         public virtual Rectangle OriginRect
         {
             get
@@ -1161,9 +1040,7 @@ namespace MonoForce.Controls
                 return new Rectangle(OriginLeft, OriginTop, OriginWidth, OriginHeight);
             }
         }
-        ////////////////////////////////////////////////////////////////////////////              
 
-        ////////////////////////////////////////////////////////////////////////////              
         public virtual Rectangle ClientRect
         {
             get
@@ -1171,9 +1048,7 @@ namespace MonoForce.Controls
                 return new Rectangle(ClientLeft, ClientTop, ClientWidth, ClientHeight);
             }
         }
-        ////////////////////////////////////////////////////////////////////////////              
 
-        ////////////////////////////////////////////////////////////////////////////              
         public virtual Rectangle ControlRect
         {
             get
@@ -1188,9 +1063,7 @@ namespace MonoForce.Controls
                 Height = value.Height;
             }
         }
-        ////////////////////////////////////////////////////////////////////////////              
 
-        ////////////////////////////////////////////////////////////////////////////              
         private Rectangle OutlineRect
         {
             get { return outlineRect; }
@@ -1206,15 +1079,13 @@ namespace MonoForce.Controls
                 }
             }
         }
-        ////////////////////////////////////////////////////////////////////////////              
 
         public virtual SpriteFont Font { get; set; }
 
         #endregion
 
-        #region //// Events ////////////
+        #region Events
 
-        ////////////////////////////////////////////////////////////////////////////        
         public event EventHandler Click;
         public event EventHandler DoubleClick;
         public event MouseEventHandler MouseDown;
@@ -1257,13 +1128,11 @@ namespace MonoForce.Controls
         public event EventHandler FocusLost;
         public event EventHandler FocusGained;
         public event DrawEventHandler DrawTexture;
-        ////////////////////////////////////////////////////////////////////////////
 
         #endregion
 
-        #region //// Constructors //////
+        #region Constructors
 
-        ////////////////////////////////////////////////////////////////////////////
         public Control(Manager manager)
             : base(manager)
         {
@@ -1292,13 +1161,11 @@ namespace MonoForce.Controls
 
             Stack.Add(this);
         }
-        ////////////////////////////////////////////////////////////////////////////       
 
         #endregion
 
-        #region //// Destructors ///////
+        #region Destructors
 
-        ////////////////////////////////////////////////////////////////////////////
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -1347,15 +1214,13 @@ namespace MonoForce.Controls
             }
             base.Dispose(disposing);
         }
-        ////////////////////////////////////////////////////////////////////////////
 
         #endregion
 
-        #region //// Methods ///////////
+        #region Methods
 
         #region //// Private ///////////
 
-        ////////////////////////////////////////////////////////////////////////////   
         private int GetVirtualHeight()
         {
             if (this.Parent is Container && (this.Parent as Container).AutoScroll)
@@ -1378,9 +1243,7 @@ namespace MonoForce.Controls
                 return Height;
             }
         }
-        ////////////////////////////////////////////////////////////////////////////   
 
-        ////////////////////////////////////////////////////////////////////////////   
         private int GetVirtualWidth()
         {
             if (this.Parent is Container && (this.Parent as Container).AutoScroll)
@@ -1403,9 +1266,7 @@ namespace MonoForce.Controls
                 return Width;
             }
         }
-        ////////////////////////////////////////////////////////////////////////////    
 
-        ////////////////////////////////////////////////////////////////////////////
         private Rectangle GetClippingRect(Control c)
         {
             Rectangle r = Rectangle.Empty;
@@ -1452,9 +1313,7 @@ namespace MonoForce.Controls
 
             return ret;
         }
-        ////////////////////////////////////////////////////////////////////////////       
 
-        ////////////////////////////////////////////////////////////////////////////
         private RenderTarget2D CreateRenderTarget(int width, int height)
         {
             if (width > 0 && height > 0)
@@ -1472,9 +1331,7 @@ namespace MonoForce.Controls
 
             return null;
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         internal virtual void PrepareTexture(Renderer renderer, GameTime gameTime)
         {
             if (visible)
@@ -1514,9 +1371,7 @@ namespace MonoForce.Controls
                 }
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         private bool CheckDetached(Control c)
         {
             Control parent = c.Parent;
@@ -1531,9 +1386,7 @@ namespace MonoForce.Controls
 
             return c.Detached;
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         private void DrawChildControls(Renderer renderer, GameTime gameTime, bool firstDetachedLevel)
         {
             if (controls != null)
@@ -1570,9 +1423,7 @@ namespace MonoForce.Controls
                 }
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////      
         private void DrawControls(Renderer renderer, Rectangle rect, GameTime gameTime, bool firstDetach)
         {
             renderer.Begin(BlendingMode.Default);
@@ -1590,9 +1441,7 @@ namespace MonoForce.Controls
 
             DrawChildControls(renderer, gameTime, firstDetach);
         }
-        ////////////////////////////////////////////////////////////////////////////      
 
-        ////////////////////////////////////////////////////////////////////////////      
         private void DrawDetached(Control control, Renderer renderer, GameTime gameTime)
         {
             if (control.Controls != null)
@@ -1606,9 +1455,7 @@ namespace MonoForce.Controls
                 }
             }
         }
-        ////////////////////////////////////////////////////////////////////////////              
 
-        ////////////////////////////////////////////////////////////////////////////   
         internal virtual void Render(Renderer renderer, GameTime gameTime)
         {
             if (visible && target != null)
@@ -1627,9 +1474,7 @@ namespace MonoForce.Controls
                 }
             }
         }
-        ////////////////////////////////////////////////////////////////////////////   
 
-        ////////////////////////////////////////////////////////////////////////////       
         private void DrawOutline(Renderer renderer, bool child)
         {
             if (!OutlineRect.IsEmpty)
@@ -1683,25 +1528,19 @@ namespace MonoForce.Controls
                 renderer.End();
             }
         }
-        ////////////////////////////////////////////////////////////////////////////   
 
-        ////////////////////////////////////////////////////////////////////////////
         public virtual void SetPosition(int left, int top)
         {
             this.left = left;
             this.top = top;
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         public virtual void SetSize(int width, int height)
         {
             this.width = width;
             this.height = height;
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         internal void SetAnchorMargins()
         {
             if (Parent != null)
@@ -1716,9 +1555,7 @@ namespace MonoForce.Controls
                 anchorMargins = new Margins();
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         private void ProcessAnchor(ResizeEventArgs e)
         {
             if (((Anchor & Anchors.Right) == Anchors.Right) && ((Anchor & Anchors.Left) != Anchors.Left))
@@ -1756,13 +1593,11 @@ namespace MonoForce.Controls
                 Top += (diff / 2);
             }
         }
-        //////////////////////////////////////////////////////////////////////////// 
 
         #endregion
 
         #region //// Protected /////////
 
-        ////////////////////////////////////////////////////////////////////////////
         public override void Init()
         {
             base.Init();
@@ -1770,9 +1605,7 @@ namespace MonoForce.Controls
             OnMove(new MoveEventArgs());
             OnResize(new ResizeEventArgs());
         }
-        //////////////////////////////////////////////////////////////////////////// 
 
-        ////////////////////////////////////////////////////////////////////////////
         protected internal virtual void InitSkin()
         {
             if (Manager != null && Manager.Skin != null && Manager.Skin.Controls != null)
@@ -1786,9 +1619,7 @@ namespace MonoForce.Controls
                 throw new Exception("Control skin cannot be initialized. No skin loaded.");
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         protected virtual void SetDefaultSize(int width, int height)
         {
             if (skin.DefaultSize.Width > 0) Width = skin.DefaultSize.Width;
@@ -1796,9 +1627,7 @@ namespace MonoForce.Controls
             if (skin.DefaultSize.Height > 0) Height = skin.DefaultSize.Height;
             else Height = height;
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         protected virtual void SetMinimumSize(int minimumWidth, int minimumHeight)
         {
             if (skin.MinimumSize.Width > 0) MinimumWidth = skin.MinimumSize.Width;
@@ -1806,9 +1635,7 @@ namespace MonoForce.Controls
             if (skin.MinimumSize.Height > 0) MinimumHeight = skin.MinimumSize.Height;
             else MinimumHeight = minimumHeight;
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         protected internal void OnDeviceSettingsChanged(DeviceEventArgs e)
         {
             if (!e.Handled)
@@ -1816,9 +1643,7 @@ namespace MonoForce.Controls
                 Invalidate();
             }
         }
-        //////////////////////////////////////////////////////////////////////////// 
 
-        ////////////////////////////////////////////////////////////////////////////
         protected virtual void DrawControl(Renderer renderer, Rectangle rect, GameTime gameTime)
         {
             if (backColor != UndefinedColor && backColor != Color.Transparent)
@@ -1827,9 +1652,7 @@ namespace MonoForce.Controls
             }
             renderer.DrawLayer(this, skin.Layers[0], rect);
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         protected internal override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
@@ -1846,9 +1669,7 @@ namespace MonoForce.Controls
                 }
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         protected internal virtual void CheckLayer(SkinControl skin, string layer)
         {
             if (!(skin != null && skin.Layers != null && skin.Layers.Count > 0 && skin.Layers[layer] != null))
@@ -1856,9 +1677,7 @@ namespace MonoForce.Controls
                 throw new Exception("Unable to read skin layer \"" + layer + "\" for control \"" + Utilities.DeriveControlName(this) + "\".");
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         protected internal virtual void CheckLayer(SkinControl skin, int layer)
         {
             if (!(skin != null && skin.Layers != null && skin.Layers.Count > 0 && skin.Layers[layer] != null))
@@ -1866,13 +1685,11 @@ namespace MonoForce.Controls
                 throw new Exception("Unable to read skin layer with index \"" + layer.ToString() + "\" for control \"" + Utilities.DeriveControlName(this) + "\".");
             }
         }
-        ////////////////////////////////////////////////////////////////////////////            
 
         #endregion
 
         #region //// Public ////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         public virtual Control GetControl(string name)
         {
             Control ret = null;
@@ -1891,9 +1708,7 @@ namespace MonoForce.Controls
             }
             return ret;
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         public virtual void Add(Control control)
         {
             if (control != null)
@@ -1923,9 +1738,7 @@ namespace MonoForce.Controls
                 }
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         public virtual void Remove(Control control)
         {
             if (control != null)
@@ -1946,9 +1759,7 @@ namespace MonoForce.Controls
                 if (!Suspended) OnParentChanged(new EventArgs());
             }
         }
-        ////////////////////////////////////////////////////////////////////////////     
 
-        ////////////////////////////////////////////////////////////////////////////     
         public virtual bool Contains(Control control, bool recursively)
         {
             if (Controls != null)
@@ -1961,9 +1772,7 @@ namespace MonoForce.Controls
             }
             return false;
         }
-        ////////////////////////////////////////////////////////////////////////////     
 
-        ////////////////////////////////////////////////////////////////////////////
         public virtual void Invalidate()
         {
             invalidated = true;
@@ -1973,52 +1782,38 @@ namespace MonoForce.Controls
                 parent.Invalidate();
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         public virtual void BringToFront()
         {
             if (Manager != null) Manager.BringToFront(this);
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         public virtual void SendToBack()
         {
             if (Manager != null) Manager.SendToBack(this);
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         public virtual void Show()
         {
             Visible = true;
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////     
         public virtual void Hide()
         {
             Visible = false;
         }
-        ////////////////////////////////////////////////////////////////////////////     
 
-        ////////////////////////////////////////////////////////////////////////////
         public virtual void Refresh()
         {
             OnMove(new MoveEventArgs(left, top, left, top));
             OnResize(new ResizeEventArgs(width, height, width, height));
         }
-        ////////////////////////////////////////////////////////////////////////////   
 
-        ////////////////////////////////////////////////////////////////////////////   
         public virtual void SendMessage(Message message, EventArgs e)
         {
             MessageProcess(message, e);
         }
-        ////////////////////////////////////////////////////////////////////////////   
 
-        ////////////////////////////////////////////////////////////////////////////   
         protected virtual void MessageProcess(Message message, EventArgs e)
         {
             switch (message)
@@ -2095,21 +1890,17 @@ namespace MonoForce.Controls
                     }
             }
         }
-        ////////////////////////////////////////////////////////////////////////////   
 
         #endregion
 
         #region //// GamePad ///////////
 
-        ////////////////////////////////////////////////////////////////////////////    
         private void GamePadPressProcess(GamePadEventArgs e)
         {
             Invalidate();
             if (!Suspended) OnGamePadPress(e);
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         private void GamePadUpProcess(GamePadEventArgs e)
         {
             Invalidate();
@@ -2129,9 +1920,7 @@ namespace MonoForce.Controls
                 }
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         private void GamePadDownProcess(GamePadEventArgs e)
         {
             Invalidate();
@@ -2145,22 +1934,17 @@ namespace MonoForce.Controls
 
             if (!Suspended) OnGamePadDown(e);
         }
-        ////////////////////////////////////////////////////////////////////////////   
 
         #endregion
 
         #region //// Keyboard //////////
 
-        ////////////////////////////////////////////////////////////////////////////    
         private void KeyPressProcess(KeyEventArgs e)
         {
             Invalidate();
             if (!Suspended) OnKeyPress(e);
         }
-        ////////////////////////////////////////////////////////////////////////////        
 
-
-        ////////////////////////////////////////////////////////////////////////////
         private void KeyDownProcess(KeyEventArgs e)
         {
             Invalidate();
@@ -2174,9 +1958,7 @@ namespace MonoForce.Controls
 
             if (!Suspended) OnKeyDown(e);
         }
-        ////////////////////////////////////////////////////////////////////////////   
 
-        ////////////////////////////////////////////////////////////////////////////
         private void KeyUpProcess(KeyEventArgs e)
         {
             Invalidate();
@@ -2196,13 +1978,11 @@ namespace MonoForce.Controls
                 }
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
         #endregion
 
         #region //// Mouse /////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         private void MouseDownProcess(MouseEventArgs e)
         {
             Invalidate();
@@ -2235,9 +2015,7 @@ namespace MonoForce.Controls
 
             if (!Suspended) OnMouseDown(TransformPosition(e));
         }
-        ////////////////////////////////////////////////////////////////////////////      
 
-        ////////////////////////////////////////////////////////////////////////////
         private void MouseUpProcess(MouseEventArgs e)
         {
             Invalidate();
@@ -2275,9 +2053,7 @@ namespace MonoForce.Controls
                 if (!Suspended) OnMouseUp(TransformPosition(e));
             }
         }
-        ////////////////////////////////////////////////////////////////////////////  
 
-        ////////////////////////////////////////////////////////////////////////////
         void MousePressProcess(MouseEventArgs e)
         {
             if (pressed[(int)e.Button] && !IsMoving && !IsResizing)
@@ -2285,7 +2061,6 @@ namespace MonoForce.Controls
                 if (!Suspended) OnMousePress(TransformPosition(e));
             }
         }
-        ////////////////////////////////////////////////////////////////////////////   
 
         void MouseScrollProcess(MouseEventArgs e)
         {
@@ -2295,7 +2070,6 @@ namespace MonoForce.Controls
             }
         }
 
-        ////////////////////////////////////////////////////////////////////////////
         private void MouseOverProcess(MouseEventArgs e)
         {
             Invalidate();
@@ -2308,9 +2082,7 @@ namespace MonoForce.Controls
 
             if (!Suspended) OnMouseOver(e);
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         private void MouseOutProcess(MouseEventArgs e)
         {
             Invalidate();
@@ -2323,9 +2095,7 @@ namespace MonoForce.Controls
 
             if (!Suspended) OnMouseOut(e);
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         private void MouseMoveProcess(MouseEventArgs e)
         {
             if (CheckPosition(e.Position) && !inside)
@@ -2375,9 +2145,7 @@ namespace MonoForce.Controls
                 OnMouseMove(TransformPosition(e));
             }
         }
-        ////////////////////////////////////////////////////////////////////////////      
 
-        ////////////////////////////////////////////////////////////////////////////
         private void ClickProcess(EventArgs e)
         {
             long timer = (long)TimeSpan.FromTicks(DateTime.Now.Ticks).TotalMilliseconds;
@@ -2392,7 +2160,6 @@ namespace MonoForce.Controls
                 doubleClickButton = ex.Button;
 
                 if (!Suspended) OnClick(e);
-
 
             }
             else if (timer - doubleClickTimer <= Manager.DoubleClickTime && (ex.Button == doubleClickButton && ex.Button != MouseButton.None))
@@ -2410,9 +2177,7 @@ namespace MonoForce.Controls
                 contextMenu.Show(this, ex.Position.X, ex.Position.Y);
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         private void ToolTipUpdate()
         {
             if (Manager.ToolTipsEnabled && toolTip != null && tooltipTimer > 0 && (TimeSpan.FromTicks(DateTime.Now.Ticks).TotalMilliseconds - tooltipTimer) >= Manager.ToolTipDelay)
@@ -2422,9 +2187,7 @@ namespace MonoForce.Controls
                 Manager.Add(toolTip);
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         private void ToolTipOver()
         {
             if (Manager.ToolTipsEnabled && toolTip != null && tooltipTimer == 0)
@@ -2433,9 +2196,7 @@ namespace MonoForce.Controls
                 tooltipTimer = (long)ts.TotalMilliseconds;
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         private void ToolTipOut()
         {
             if (Manager.ToolTipsEnabled && toolTip != null)
@@ -2445,9 +2206,7 @@ namespace MonoForce.Controls
                 Manager.Remove(toolTip);
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         private bool CheckPosition(Point pos)
         {
             if ((pos.X >= AbsoluteLeft) && (pos.X < AbsoluteLeft + Width))
@@ -2459,9 +2218,7 @@ namespace MonoForce.Controls
             }
             return false;
         }
-        ////////////////////////////////////////////////////////////////////////////                           
 
-        ////////////////////////////////////////////////////////////////////////////
         private bool CheckMovableArea(Point pos)
         {
             if (movable)
@@ -2486,9 +2243,7 @@ namespace MonoForce.Controls
             }
             return false;
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         private bool CheckResizableArea(Point pos)
         {
             if (resizable)
@@ -2506,9 +2261,7 @@ namespace MonoForce.Controls
             }
             return false;
         }
-        ////////////////////////////////////////////////////////////////////////////                
 
-        ////////////////////////////////////////////////////////////////////////////
         protected MouseEventArgs TransformPosition(MouseEventArgs e)
         {
             MouseEventArgs ee = new MouseEventArgs(e.State, e.Button, e.Position);
@@ -2518,9 +2271,7 @@ namespace MonoForce.Controls
             ee.Position.Y = ee.State.Y - AbsoluteTop;
             return ee;
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         private int CheckWidth(ref int w)
         {
             int diff = 0;
@@ -2538,9 +2289,7 @@ namespace MonoForce.Controls
 
             return diff;
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         private int CheckHeight(ref int h)
         {
             int diff = 0;
@@ -2558,9 +2307,7 @@ namespace MonoForce.Controls
 
             return diff;
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////   
         private void PerformResize(MouseEventArgs e)
         {
             if (resizable && !IsMoving)
@@ -2671,9 +2418,7 @@ namespace MonoForce.Controls
                 }
             }
         }
-        ////////////////////////////////////////////////////////////////////////////   
 
-        ////////////////////////////////////////////////////////////////////////////
 #if (!XBOX && !XBOX_FAKE)
         private Cursor GetResizeCursor()
         {
@@ -2716,9 +2461,7 @@ namespace MonoForce.Controls
             return Manager.Skin.Cursors["Default"].Resource;
         }
 #endif
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         private void GetResizePosition(MouseEventArgs e)
         {
             int x = e.Position.X - AbsoluteLeft;
@@ -2748,288 +2491,207 @@ namespace MonoForce.Controls
                 resizeArea = Alignment.None;
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
         #endregion
 
         #region //// Handlers //////////
 
-        ////////////////////////////////////////////////////////////////////////////
         protected virtual void OnMouseUp(MouseEventArgs e)
         {
             if (MouseUp != null) MouseUp.Invoke(this, e);
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         protected virtual void OnMouseDown(MouseEventArgs e)
         {
             if (MouseDown != null) MouseDown.Invoke(this, e);
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         protected virtual void OnMouseMove(MouseEventArgs e)
         {
             if (MouseMove != null) MouseMove.Invoke(this, e);
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         protected virtual void OnMouseOver(MouseEventArgs e)
         {
             if (MouseOver != null) MouseOver.Invoke(this, e);
         }
-        ////////////////////////////////////////////////////////////////////////////       
 
-        ////////////////////////////////////////////////////////////////////////////
         protected virtual void OnMouseOut(MouseEventArgs e)
         {
             if (MouseOut != null) MouseOut.Invoke(this, e);
         }
-        ////////////////////////////////////////////////////////////////////////////           
 
-        ////////////////////////////////////////////////////////////////////////////
         protected virtual void OnClick(EventArgs e)
         {
             if (Click != null) Click.Invoke(this, e);
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         protected virtual void OnDoubleClick(EventArgs e)
         {
             if (DoubleClick != null) DoubleClick.Invoke(this, e);
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         protected virtual void OnMove(MoveEventArgs e)
         {
             if (parent != null) parent.Invalidate();
             if (Move != null) Move.Invoke(this, e);
         }
-        ////////////////////////////////////////////////////////////////////////////                               
 
-        ////////////////////////////////////////////////////////////////////////////
         protected virtual void OnResize(ResizeEventArgs e)
         {
             Invalidate();
             if (Resize != null) Resize.Invoke(this, e);
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         protected virtual void OnValidateResize(ResizeEventArgs e)
         {
             if (ValidateResize != null) ValidateResize.Invoke(this, e);
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         protected virtual void OnValidateMove(MoveEventArgs e)
         {
             if (ValidateMove != null) ValidateMove.Invoke(this, e);
         }
-        ////////////////////////////////////////////////////////////////////////////          
 
-
-        ////////////////////////////////////////////////////////////////////////////
         protected virtual void OnMoveBegin(EventArgs e)
         {
             if (MoveBegin != null) MoveBegin.Invoke(this, e);
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         protected virtual void OnMoveEnd(EventArgs e)
         {
             if (MoveEnd != null) MoveEnd.Invoke(this, e);
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         protected virtual void OnResizeBegin(EventArgs e)
         {
             if (ResizeBegin != null) ResizeBegin.Invoke(this, e);
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         protected virtual void OnResizeEnd(EventArgs e)
         {
             if (ResizeEnd != null) ResizeEnd.Invoke(this, e);
         }
-        ////////////////////////////////////////////////////////////////////////////   
 
-        ////////////////////////////////////////////////////////////////////////////
         protected virtual void OnParentResize(object sender, ResizeEventArgs e)
         {
             ProcessAnchor(e);
         }
-        ////////////////////////////////////////////////////////////////////////////      
 
-        ////////////////////////////////////////////////////////////////////////////
         protected virtual void OnKeyUp(KeyEventArgs e)
         {
             if (KeyUp != null) KeyUp.Invoke(this, e);
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         protected virtual void OnKeyDown(KeyEventArgs e)
         {
             if (KeyDown != null) KeyDown.Invoke(this, e);
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         protected virtual void OnKeyPress(KeyEventArgs e)
         {
             if (KeyPress != null) KeyPress.Invoke(this, e);
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         protected virtual void OnGamePadUp(GamePadEventArgs e)
         {
             if (GamePadUp != null) GamePadUp.Invoke(this, e);
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         protected virtual void OnGamePadDown(GamePadEventArgs e)
         {
             if (GamePadDown != null) GamePadDown.Invoke(this, e);
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         protected virtual void OnGamePadPress(GamePadEventArgs e)
         {
             if (GamePadPress != null) GamePadPress.Invoke(this, e);
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         protected internal void OnDraw(DrawEventArgs e)
         {
             if (Draw != null) Draw.Invoke(this, e);
         }
-        ////////////////////////////////////////////////////////////////////////////   
 
-        ////////////////////////////////////////////////////////////////////////////
         protected void OnDrawTexture(DrawEventArgs e)
         {
             if (DrawTexture != null) DrawTexture.Invoke(this, e);
         }
-        ////////////////////////////////////////////////////////////////////////////   
 
-
-        ////////////////////////////////////////////////////////////////////////////
         protected virtual void OnColorChanged(EventArgs e)
         {
             if (ColorChanged != null) ColorChanged.Invoke(this, e);
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         protected virtual void OnTextColorChanged(EventArgs e)
         {
             if (TextColorChanged != null) TextColorChanged.Invoke(this, e);
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         protected virtual void OnBackColorChanged(EventArgs e)
         {
             if (BackColorChanged != null) BackColorChanged.Invoke(this, e);
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         protected virtual void OnTextChanged(EventArgs e)
         {
             if (TextChanged != null) TextChanged.Invoke(this, e);
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         protected virtual void OnAnchorChanged(EventArgs e)
         {
             if (AnchorChanged != null) AnchorChanged.Invoke(this, e);
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         protected internal virtual void OnSkinChanged(EventArgs e)
         {
             if (SkinChanged != null) SkinChanged.Invoke(this, e);
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         protected internal virtual void OnSkinChanging(EventArgs e)
         {
             if (SkinChanging != null) SkinChanging.Invoke(this, e);
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         protected virtual void OnParentChanged(EventArgs e)
         {
             if (ParentChanged != null) ParentChanged.Invoke(this, e);
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         protected virtual void OnRootChanged(EventArgs e)
         {
             if (RootChanged != null) RootChanged.Invoke(this, e);
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         protected virtual void OnVisibleChanged(EventArgs e)
         {
             if (VisibleChanged != null) VisibleChanged.Invoke(this, e);
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         protected virtual void OnEnabledChanged(EventArgs e)
         {
             if (EnabledChanged != null) EnabledChanged.Invoke(this, e);
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         protected virtual void OnAlphaChanged(EventArgs e)
         {
             if (AlphaChanged != null) AlphaChanged.Invoke(this, e);
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         protected virtual void OnFocusLost(EventArgs e)
         {
             if (FocusLost != null) FocusLost.Invoke(this, e);
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         protected virtual void OnFocusGained(EventArgs e)
         {
             if (FocusGained != null) FocusGained.Invoke(this, e);
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         protected virtual void OnMousePress(MouseEventArgs e)
         {
             if (MousePress != null) MousePress.Invoke(this, e);
         }
-        ////////////////////////////////////////////////////////////////////////////
 
         protected virtual void OnMouseScroll(MouseEventArgs e)
         {
@@ -3041,7 +2703,6 @@ namespace MonoForce.Controls
         #endregion
 
     }
-    ////////////////////////////////////////////////////////////////////////////
 
     #endregion
 

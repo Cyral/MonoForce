@@ -18,88 +18,74 @@
 //                                                            //
 ////////////////////////////////////////////////////////////////
 
-#region //// Using /////////////
+#region Using
 
-////////////////////////////////////////////////////////////////////////////
 using System;
 using Microsoft.Xna.Framework;
-////////////////////////////////////////////////////////////////////////////
 
 #endregion
 
 namespace MonoForce.Controls
 {
 
-  public class Component: Disposable
-  {
-
-    #region //// Fields ////////////
-
-    ////////////////////////////////////////////////////////////////////////////
-    private Manager manager = null;
-    private bool initialized = false;      
-    ////////////////////////////////////////////////////////////////////////////
-
-    #endregion
-
-    #region //// Properties ////////
-
-    ////////////////////////////////////////////////////////////////////////////
-    public virtual Manager Manager { get { return manager; } set { manager = value; } }
-    public virtual bool Initialized { get { return initialized; } }    
-    ////////////////////////////////////////////////////////////////////////////
-
-    #endregion
-
-    #region //// Constructors //////
-
-    ////////////////////////////////////////////////////////////////////////////
-    public Component(Manager manager)
-    {      
-      if (manager != null)
-      {
-       this.manager = manager;                 
-      }
-      else
-      {
-        throw new Exception("Component cannot be created. Manager instance is needed.");
-      }                 
-    }
-    ////////////////////////////////////////////////////////////////////////////
-
-    #endregion
-
-    #region //// Destructors ///////
-
-    ////////////////////////////////////////////////////////////////////////////
-    protected override void Dispose(bool disposing)
-    {      
-      if (disposing)
-      {      
-      }
-      base.Dispose(disposing);
-    }
-    ////////////////////////////////////////////////////////////////////////////
-
-    #endregion
-
-    #region //// Methods ///////////
-
-    ////////////////////////////////////////////////////////////////////////////         
-    public virtual void Init()
+    public class Component : Disposable
     {
-      initialized = true;
+
+        #region Fields
+
+        private Manager manager = null;
+        private bool initialized = false;
+
+        #endregion
+
+        #region Properties
+
+        public virtual Manager Manager { get { return manager; } set { manager = value; } }
+        public virtual bool Initialized { get { return initialized; } }
+
+        #endregion
+
+        #region Constructors
+
+        public Component(Manager manager)
+        {
+            if (manager != null)
+            {
+                this.manager = manager;
+            }
+            else
+            {
+                throw new Exception("Component cannot be created. Manager instance is needed.");
+            }
+        }
+
+        #endregion
+
+        #region Destructors
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+            }
+            base.Dispose(disposing);
+        }
+
+        #endregion
+
+        #region Methods
+
+        public virtual void Init()
+        {
+            initialized = true;
+        }
+
+        protected internal virtual void Update(GameTime gameTime)
+        {
+        }
+
+        #endregion
+
     }
-    ////////////////////////////////////////////////////////////////////////////          
-
-    ////////////////////////////////////////////////////////////////////////////   
-    protected internal virtual void Update(GameTime gameTime)
-    {       
-    }
-    ////////////////////////////////////////////////////////////////////////////   
-
-    #endregion
-
-  }
 
 }

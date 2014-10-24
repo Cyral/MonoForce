@@ -18,16 +18,14 @@
 //                                                            //
 ////////////////////////////////////////////////////////////////
 
-#region //// Using /////////////
+#region Using
 
-////////////////////////////////////////////////////////////////////////////
 using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.GamerServices;
-////////////////////////////////////////////////////////////////////////////
 
 #endregion
 
@@ -55,7 +53,6 @@ namespace MonoForce.Controls
 
         #region //// Indexers //////////
 
-        ////////////////////////////////////////////////////////////////////////////
         public ConsoleChannel this[string name]
         {
             get
@@ -83,9 +80,7 @@ namespace MonoForce.Controls
                 }
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         public ConsoleChannel this[byte index]
         {
             get
@@ -113,7 +108,6 @@ namespace MonoForce.Controls
                 }
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
         #endregion
 
@@ -164,9 +158,8 @@ namespace MonoForce.Controls
     public class Console : Container
     {
 
-        #region //// Fields ////////////
+        #region Fields
 
-        ////////////////////////////////////////////////////////////////////////////                 
         private TextBox txtMain = null;
         private ComboBox cmbMain;
         private EventedList<ConsoleMessage> buffer = new EventedList<ConsoleMessage>();
@@ -176,11 +169,10 @@ namespace MonoForce.Controls
         private bool channelsVisible = true;
         private bool textBoxVisible = true;
         private string sender;
-        ////////////////////////////////////////////////////////////////////////////
 
         #endregion
 
-        #region //// Properties ////////
+        #region Properties
 
         public string Sender
         {
@@ -188,7 +180,6 @@ namespace MonoForce.Controls
             set { sender = value; }
         }
 
-        ////////////////////////////////////////////////////////////////////////////
         public virtual EventedList<ConsoleMessage> MessageBuffer
         {
             get { return buffer; }
@@ -199,9 +190,7 @@ namespace MonoForce.Controls
                 buffer.ItemAdded += new EventHandler(buffer_ItemAdded);
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         public virtual ChannelList Channels
         {
             get { return channels; }
@@ -213,33 +202,25 @@ namespace MonoForce.Controls
                 channels_ItemAdded(null, null);
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         public virtual List<byte> ChannelFilter
         {
             get { return filter; }
             set { filter = value; }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         public virtual byte SelectedChannel
         {
             set { cmbMain.Text = channels[value].Name; }
             get { return channels[cmbMain.Text].Index; }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         public virtual ConsoleMessageFormats MessageFormat
         {
             get { return messageFormat; }
             set { messageFormat = value; }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////       
         public virtual bool ChannelsVisible
         {
             get { return channelsVisible; }
@@ -250,9 +231,7 @@ namespace MonoForce.Controls
                 PositionControls();
             }
         }
-        ////////////////////////////////////////////////////////////////////////////       
 
-        ////////////////////////////////////////////////////////////////////////////       
         public virtual bool TextBoxVisible
         {
             get { return textBoxVisible; }
@@ -264,21 +243,17 @@ namespace MonoForce.Controls
                 PositionControls();
             }
         }
-        ////////////////////////////////////////////////////////////////////////////       
 
         #endregion
 
-        #region //// Events ////////////
+        #region Events
 
-        ////////////////////////////////////////////////////////////////////////////
         public event ConsoleMessageEventHandler MessageSent;
-        ////////////////////////////////////////////////////////////////////////////
 
         #endregion
 
-        #region //// Construstors //////
+        #region Construstors
 
-        ////////////////////////////////////////////////////////////////////////////       
         public Console(Manager manager)
             : base(manager)
         {
@@ -328,13 +303,11 @@ namespace MonoForce.Controls
 
             PositionControls();
         }
-        ////////////////////////////////////////////////////////////////////////////       
 
         #endregion
 
-        #region //// Methods ///////////
+        #region Methods
 
-        ////////////////////////////////////////////////////////////////////////////
         private void PositionControls()
         {
             if (txtMain != null)
@@ -355,16 +328,12 @@ namespace MonoForce.Controls
                 Invalidate();
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         public override void Init()
         {
             base.Init();
         }
-        ////////////////////////////////////////////////////////////////////////////                          
 
-        ////////////////////////////////////////////////////////////////////////////                          
         protected internal override void InitSkin()
         {
             base.InitSkin();
@@ -372,16 +341,12 @@ namespace MonoForce.Controls
 
             PositionControls();
         }
-        ////////////////////////////////////////////////////////////////////////////                          
 
-        ////////////////////////////////////////////////////////////////////////////
         protected internal override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         void ClientArea_Draw(object sender, DrawEventArgs e)
         {
             SpriteFont font = Skin.Layers[0].Text.Font.Resource;
@@ -432,40 +397,30 @@ namespace MonoForce.Controls
                 }
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         protected override void DrawControl(Renderer renderer, Rectangle rect, GameTime gameTime)
         {
             int h = txtMain.Visible ? (txtMain.Height + 1) : 0;
             Rectangle r = new Rectangle(rect.Left, rect.Top, rect.Width, rect.Height - h);
             base.DrawControl(renderer, r, gameTime);
         }
-        ////////////////////////////////////////////////////////////////////////////              
 
-        ////////////////////////////////////////////////////////////////////////////     
         void txtMain_FocusGained(object sender, EventArgs e)
         {
             ConsoleChannel ch = channels[cmbMain.Text];
             if (ch != null) txtMain.TextColor = ch.Color;
         }
-        ////////////////////////////////////////////////////////////////////////////     
 
-        ////////////////////////////////////////////////////////////////////////////     
         void txtMain_KeyDown(object sender, KeyEventArgs e)
         {
             SendMessage(e);
         }
-        ////////////////////////////////////////////////////////////////////////////    
 
-        ////////////////////////////////////////////////////////////////////////////        
         void txtMain_GamePadDown(object sender, GamePadEventArgs e)
         {
             SendMessage(e);
         }
-        ////////////////////////////////////////////////////////////////////////////        
 
-        ////////////////////////////////////////////////////////////////////////////        
         private void SendMessage(EventArgs x)
         {
             if (Manager.UseGuide && Guide.IsVisible) return;
@@ -498,16 +453,12 @@ namespace MonoForce.Controls
                 }
             }
         }
-        ////////////////////////////////////////////////////////////////////////////    
 
-        ////////////////////////////////////////////////////////////////////////////        
         protected virtual void OnMessageSent(ConsoleMessageEventArgs e)
         {
             if (MessageSent != null) MessageSent.Invoke(this, e);
         }
-        ////////////////////////////////////////////////////////////////////////////    
 
-        ////////////////////////////////////////////////////////////////////////////
         void channels_ItemAdded(object sender, EventArgs e)
         {
             cmbMain.Items.Clear();
@@ -516,9 +467,7 @@ namespace MonoForce.Controls
                 cmbMain.Items.Add((channels[i] as ConsoleChannel).Name);
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         void channels_ItemRemoved(object sender, EventArgs e)
         {
             cmbMain.Items.Clear();
@@ -527,17 +476,13 @@ namespace MonoForce.Controls
                 cmbMain.Items.Add((channels[i] as ConsoleChannel).Name);
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         void buffer_ItemAdded(object sender, EventArgs e)
         {
             CalcScrolling();
             ClientArea.Invalidate();
         }
-        //////////////////////////////////////////////////////////////////////////// 
 
-        ////////////////////////////////////////////////////////////////////////////     
         private void CalcScrolling()
         {
             if (VerticalScrollBar != null)
@@ -551,24 +496,18 @@ namespace MonoForce.Controls
                 VerticalScrollBar.Value = VerticalScrollBar.Range;
             }
         }
-        //////////////////////////////////////////////////////////////////////////// 
 
-        //////////////////////////////////////////////////////////////////////////// 
         void VerticalScrollBar_ValueChanged(object sender, EventArgs e)
         {
             ClientArea.Invalidate();
         }
-        //////////////////////////////////////////////////////////////////////////// 
 
-        //////////////////////////////////////////////////////////////////////////// 
         protected override void OnResize(ResizeEventArgs e)
         {
             CalcScrolling();
             base.OnResize(e);
         }
-        //////////////////////////////////////////////////////////////////////////// 
 
-        //////////////////////////////////////////////////////////////////////////// 
         private EventedList<ConsoleMessage> GetFilteredBuffer(List<byte> filter)
         {
             EventedList<ConsoleMessage> ret = new EventedList<ConsoleMessage>();
@@ -586,7 +525,6 @@ namespace MonoForce.Controls
             }
             else return buffer;
         }
-        //////////////////////////////////////////////////////////////////////////// 
 
         #endregion
 

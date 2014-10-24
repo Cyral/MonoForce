@@ -48,7 +48,6 @@ namespace MonoForce.External.Zip
          }
       }
 
-
       public CRC32()
       {
          unchecked

@@ -18,68 +18,55 @@
 //                                                            //
 ////////////////////////////////////////////////////////////////
 
+#region Using
 
-#region //// Using /////////////
-
-////////////////////////////////////////////////////////////////////////////
 using System;
 using System.Collections.Generic;
 using System.IO;
 using Microsoft.Xna.Framework.Content;
 using MonoForce.External.Zip;
 using System.Globalization;
-////////////////////////////////////////////////////////////////////////////
 
 #endregion
 
 namespace MonoForce.Controls
 {
 
-  #region //// Classes ///////////
-  
-  ////////////////////////////////////////////////////////////////////////////  
+  #region Classes
+
   /// <include file='Documents/ArchiveManager.xml' path='ArchiveManager/Class[@name="ArchiveManager"]/*' />          
   public class ArchiveManager : ContentManager
   {
 
-    #region //// Fields ////////////
+    #region Fields
 
-    ////////////////////////////////////////////////////////////////////////////
     private string archivePath = null;
     private ZipFile archive = null;
     private bool useArchive = false;   
-    ////////////////////////////////////////////////////////////////////////////
 
     #endregion
 
-    #region //// Properties ////////
+    #region Properties
 
-    ////////////////////////////////////////////////////////////////////////////
     /// <include file='Documents/ArchiveManager.xml' path='ArchiveManager/Member[@name="ArchivePath"]/*' />          
     public virtual string ArchivePath
     {
       get { return archivePath; }
     }
-    ////////////////////////////////////////////////////////////////////////////
-    
-    ////////////////////////////////////////////////////////////////////////////
+
     public bool UseArchive
     {
       get { return useArchive; }
       set { useArchive = value; }
     }
-    ////////////////////////////////////////////////////////////////////////////
-    
+
     #endregion
 
-    #region //// Constructors //////
+    #region Constructors
 
-    ////////////////////////////////////////////////////////////////////////////
     /// <include file='Documents/ArchiveManager.xml' path='ArchiveManager/Member[@name="ArchiveManager"]/*' />              
     public ArchiveManager(IServiceProvider serviceProvider) : this(serviceProvider, null) { }
-    ////////////////////////////////////////////////////////////////////////////
 
-    ////////////////////////////////////////////////////////////////////////////
     /// <include file='Documents/ArchiveManager.xml' path='ArchiveManager/Member[@name="ArchiveManager1"]/*' />                  
     public ArchiveManager(IServiceProvider serviceProvider, string archive): base(serviceProvider)
     {
@@ -90,13 +77,11 @@ namespace MonoForce.Controls
         useArchive = true;
       }
     }
-    ////////////////////////////////////////////////////////////////////////////
 
     #endregion
 
-    #region //// Methods ///////////
-    
-    ////////////////////////////////////////////////////////////////////////////        
+    #region Methods
+
     /// <include file='Documents/ArchiveManager.xml' path='ArchiveManager/Member[@name="OpenStream"]/*' />
     protected override Stream OpenStream(string assetName)
     {
@@ -125,9 +110,7 @@ namespace MonoForce.Controls
         return base.OpenStream(assetName);
       }
     }
-    ////////////////////////////////////////////////////////////////////////////
-    
-    ////////////////////////////////////////////////////////////////////////////    
+
     /// <include file='Documents/ArchiveManager.xml' path='ArchiveManager/Member[@name="GetAssetNames"]/*' />
     public string[] GetAssetNames()
     {
@@ -151,9 +134,7 @@ namespace MonoForce.Controls
         return null;
       }
     }
-    ////////////////////////////////////////////////////////////////////////////
-    
-    ////////////////////////////////////////////////////////////////////////////    
+
     /// <include file='Documents/ArchiveManager.xml' path='ArchiveManager/Member[@name="GetAssetNames1"]/*' />        
     public string[] GetAssetNames(string path)
     {
@@ -199,9 +180,7 @@ namespace MonoForce.Controls
         return null;
       }
     }
-    ////////////////////////////////////////////////////////////////////////////
-    
-    ////////////////////////////////////////////////////////////////////////////    
+
     /// <include file='Documents/ArchiveManager.xml' path='ArchiveManager/Member[@name="GetFileStream"]/*' />
     public Stream GetFileStream(string filename)
     {
@@ -225,9 +204,7 @@ namespace MonoForce.Controls
         return null;
       }
     }
-    ////////////////////////////////////////////////////////////////////////////
 
-    ////////////////////////////////////////////////////////////////////////////
     public string[] GetDirectories(string path)
     {
       if (useArchive && archive != null)
@@ -274,12 +251,10 @@ namespace MonoForce.Controls
       }
       else return null;
     }
-    ////////////////////////////////////////////////////////////////////////////
 
     #endregion
 
   }
-  ////////////////////////////////////////////////////////////////////////////
 
   #endregion  
   

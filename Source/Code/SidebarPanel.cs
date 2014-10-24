@@ -18,60 +18,48 @@
 //                                                            //
 ////////////////////////////////////////////////////////////////
 
-#region //// Using /////////////
+#region Using
 
 using Microsoft.Xna.Framework;
-////////////////////////////////////////////////////////////////////////////
+
 using Microsoft.Xna.Framework.Graphics;
-////////////////////////////////////////////////////////////////////////////
 
 #endregion
 
 namespace MonoForce.Controls
 {
-
-  public class SideBarPanel: Container
-  {
-
-    #region //// Fields ////////////
-
-    ////////////////////////////////////////////////////////////////////////////           
-    ////////////////////////////////////////////////////////////////////////////
-
-    #endregion
-
-    #region //// Properties ////////
-
-    ////////////////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////    
-
-    #endregion
-
-    #region //// Construstors //////
-
-    ////////////////////////////////////////////////////////////////////////////       
-    public SideBarPanel(Manager manager): base(manager)
-    {     
-      CanFocus = false;
-      Passive = true;
-      Width = 64;
-      Height = 64;
-    }
-    ////////////////////////////////////////////////////////////////////////////
-    
-    #endregion
-
-    #region //// Methods ///////////
-
-    ////////////////////////////////////////////////////////////////////////////   
-    public override void Init()
+    public class SideBarPanel : Container
     {
-      base.Init();      
+
+        #region Fields
+
+        #endregion
+
+        #region Properties
+
+        #endregion
+
+        #region Construstors
+
+        public SideBarPanel(Manager manager)
+            : base(manager)
+        {
+            CanFocus = false;
+            Passive = true;
+            Width = 64;
+            Height = 64;
+        }
+
+        #endregion
+
+        #region Methods
+
+        public override void Init()
+        {
+            base.Init();
+        }
+
+        #endregion
+
     }
-    ////////////////////////////////////////////////////////////////////////////     
-
-    #endregion
-
-  }
-
 }

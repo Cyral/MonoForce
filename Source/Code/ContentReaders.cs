@@ -18,9 +18,9 @@
 //                                                            //
 ////////////////////////////////////////////////////////////////
 
-#region //// Using /////////////
+#region Using
 
-//////////////////////////////////////////////////////////////////////////////
+//
 using System;
 using System.IO;
 using System.Xml;
@@ -30,25 +30,21 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 #endif
-//////////////////////////////////////////////////////////////////////////////
+//
 
 #endregion
 
 namespace MonoForce.Controls
 {
 
-    ////////////////////////////////////////////////////////////////////////////
     public class LayoutXmlDocument : XmlDocument { }
     public class SkinXmlDocument : XmlDocument { }
-    ////////////////////////////////////////////////////////////////////////////
-
 
     public class SkinReader : ContentTypeReader<SkinXmlDocument>
     {
 
-        #region //// Methods ///////////
+        #region Methods
 
-        ////////////////////////////////////////////////////////////////////////////
         protected override SkinXmlDocument Read(ContentReader input, SkinXmlDocument existingInstance)
         {
             if (existingInstance == null)
@@ -64,7 +60,6 @@ namespace MonoForce.Controls
 
             return existingInstance;
         }
-        ////////////////////////////////////////////////////////////////////////////
 
         #endregion
 
@@ -73,9 +68,8 @@ namespace MonoForce.Controls
     public class LayoutReader : ContentTypeReader<LayoutXmlDocument>
     {
 
-        #region //// Methods ///////////
+        #region Methods
 
-        ////////////////////////////////////////////////////////////////////////////
         protected override LayoutXmlDocument Read(ContentReader input, LayoutXmlDocument existingInstance)
         {
             if (existingInstance == null)
@@ -91,7 +85,6 @@ namespace MonoForce.Controls
 
             return existingInstance;
         }
-        ////////////////////////////////////////////////////////////////////////////
 
         #endregion
 
@@ -102,9 +95,8 @@ namespace MonoForce.Controls
     public class CursorReader : ContentTypeReader<Cursor>
     {
 
-        #region //// Methods ///////////
+        #region Methods
 
-        ////////////////////////////////////////////////////////////////////////////
         protected override Cursor Read(ContentReader input, Cursor existingInstance)
         {
             if (existingInstance == null)
@@ -115,7 +107,7 @@ namespace MonoForce.Controls
                 string path = Path.GetTempFileName();
                 File.WriteAllBytes(path, data);
                 string tPath = Path.GetTempFileName();
-                using(System.Drawing.Icon i = System.Drawing.Icon.ExtractAssociatedIcon(path))
+                using (System.Drawing.Icon i = System.Drawing.Icon.ExtractAssociatedIcon(path))
                 {
                     using (System.Drawing.Bitmap b = i.ToBitmap())
                     {
@@ -123,7 +115,7 @@ namespace MonoForce.Controls
                         b.Save(tPath, System.Drawing.Imaging.ImageFormat.Png);
                         b.Dispose();
                     }
-                    
+
                     i.Dispose();
                 }
                 //TODO: Replace with xml based solution for getting hotspot and size instead
@@ -143,7 +135,6 @@ namespace MonoForce.Controls
 
             return existingInstance;
         }
-        ////////////////////////////////////////////////////////////////////////////
 
         #endregion
 

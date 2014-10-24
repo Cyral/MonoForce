@@ -18,14 +18,12 @@
 //                                                            //
 ////////////////////////////////////////////////////////////////
 
-#region //// Using /////////////
+#region Using
 
-////////////////////////////////////////////////////////////////////////////
 using System;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework;
-////////////////////////////////////////////////////////////////////////////
 
 #endregion
 
@@ -34,9 +32,8 @@ namespace MonoForce.Controls
     static class Utilities
     {
 
-        #region //// Methods ///////////
+        #region Methods
 
-        ////////////////////////////////////////////////////////////////////////////
         public static string DeriveControlName(Control control)
         {
             if (control != null)
@@ -54,9 +51,7 @@ namespace MonoForce.Controls
             }
             return control.ToString();
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         public static Color ParseColor(string str)
         {
 
@@ -70,14 +65,11 @@ namespace MonoForce.Controls
 
             return Color.FromNonPremultiplied(r, g, b, a);
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         public static BevelStyle ParseBevelStyle(string str)
         {
             return (BevelStyle)Enum.Parse(typeof(BevelStyle), str, true);
         }
-        ////////////////////////////////////////////////////////////////////////////    
 
         #endregion
 

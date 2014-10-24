@@ -18,12 +18,11 @@
 //                                                            //
 ////////////////////////////////////////////////////////////////
 
-#region //// Using /////////////
+#region Using
 
 using Microsoft.Xna.Framework;
-////////////////////////////////////////////////////////////////////////////
+
 using Microsoft.Xna.Framework.Graphics;
-////////////////////////////////////////////////////////////////////////////
 
 #endregion
 
@@ -39,29 +38,24 @@ namespace MonoForce.Controls
     public class GroupBox : Container
     {
 
-        #region //// Fields ////////////
+        #region Fields
 
-        ////////////////////////////////////////////////////////////////////////////       
         private GroupBoxType type = GroupBoxType.Normal;
-        ////////////////////////////////////////////////////////////////////////////
 
         #endregion
 
-        #region //// Properties ////////
+        #region Properties
 
-        ////////////////////////////////////////////////////////////////////////////
         public virtual GroupBoxType Type
         {
             get { return type; }
             set { type = value; Invalidate(); }
         }
-        ////////////////////////////////////////////////////////////////////////////    
 
         #endregion
 
-        #region //// Construstors //////
+        #region Construstors
 
-        ////////////////////////////////////////////////////////////////////////////       
         public GroupBox(Manager manager)
             : base(manager)
         {
@@ -74,19 +68,15 @@ namespace MonoForce.Controls
             Height = 64;
             BackColor = Color.Transparent;
         }
-        ////////////////////////////////////////////////////////////////////////////
 
         #endregion
 
-        #region //// Methods ///////////
+        #region Methods
 
-        ////////////////////////////////////////////////////////////////////////////   
         public override void Init()
         {
             base.Init();
         }
-        ////////////////////////////////////////////////////////////////////////////
-
 
         private void AdjustClientMargins()
         {
@@ -110,7 +100,6 @@ namespace MonoForce.Controls
             AdjustClientMargins();
         }
 
-        ////////////////////////////////////////////////////////////////////////////   
         protected override void DrawControl(Renderer renderer, Rectangle rect, GameTime gameTime)
         {
             SkinLayer layer = type == GroupBoxType.Normal ? Skin.Layers["Control"] : Skin.Layers["Flat"];
@@ -130,7 +119,6 @@ namespace MonoForce.Controls
                 renderer.DrawString(this, layer, Text, new Rectangle(r.Left, r.Top - (int)(size.Y / 2), (int)(size.X), (int)size.Y), true, 0, 0, false);
             }
         }
-        ////////////////////////////////////////////////////////////////////////////     
 
         #endregion
 

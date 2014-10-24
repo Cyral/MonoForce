@@ -114,7 +114,6 @@ namespace MonoForce.External.Zip
 
         private int _RelativeOffsetOfHeader;
 
-
         private static bool ReadHeader(System.IO.Stream s, ZipEntry ze)
         {
             int signature = MonoForce.External.Zip.Shared.ReadSignature(s);
@@ -193,18 +192,15 @@ namespace MonoForce.External.Zip
             return true;
         }
 
-
         private static bool SignatureIsNotValid(int signature)
         {
             return (signature != ZipEntrySignature);
         }
 
-
         public static ZipEntry Read(System.IO.Stream s)
         {
             return Read(s, false);
         }
-
 
         internal static ZipEntry Read(System.IO.Stream s, bool TurnOnDebug)
         {
@@ -225,8 +221,6 @@ namespace MonoForce.External.Zip
             }
             return entry;
         }
-
-
 
         internal static ZipEntry Create(String filename)
         {
@@ -249,8 +243,6 @@ namespace MonoForce.External.Zip
             return entry;
         }
 
-
-
         public void Extract()
         {
             Extract(".");
@@ -265,7 +257,6 @@ namespace MonoForce.External.Zip
         {
             Extract(basedir, null);
         }
-
 
 		internal System.IO.Stream GetStream()
 		{
@@ -303,7 +294,6 @@ namespace MonoForce.External.Zip
             }
             else throw new Exception("Invalid input.");
 
-
             using (System.IO.MemoryStream memstream = new System.IO.MemoryStream(_FileData))
             {
 
@@ -322,7 +312,6 @@ namespace MonoForce.External.Zip
                         input = new System.IO.Compression.DeflateStream(memstream, System.IO.Compression.CompressionMode.Decompress);
                     }
 
-
                     if (TargetFile != null)
                     {
                         // ensure the target path exists
@@ -332,7 +321,6 @@ namespace MonoForce.External.Zip
                         }
                     }
 
-
                     System.IO.Stream output = null;
                     try
                     {
@@ -340,7 +328,6 @@ namespace MonoForce.External.Zip
                             output = new System.IO.FileStream(TargetFile, System.IO.FileMode.CreateNew);
                         else
                             output = s;
-
 
                         byte[] bytes = new byte[4096];
                         int n;
@@ -461,7 +448,6 @@ namespace MonoForce.External.Zip
             }
         }
 
-
         internal void WriteCentralDirectoryEntry(System.IO.Stream s)
         {
             byte[] bytes = new byte[4096];
@@ -521,7 +507,6 @@ namespace MonoForce.External.Zip
 
             s.Write(bytes, 0, i);
         }
-
 
         private void WriteHeader(System.IO.Stream s, byte[] bytes)
         {
@@ -633,7 +618,6 @@ namespace MonoForce.External.Zip
             // remember the file offset of this header
             _RelativeOffsetOfHeader = (int)s.Length;
 
-
             if (_Debug)
             {
                 System.Console.WriteLine("\nAll header data:");
@@ -651,7 +635,6 @@ namespace MonoForce.External.Zip
                 _header[j] = bytes[j];
 
         }
-
 
         internal void Write(System.IO.Stream s)
         {

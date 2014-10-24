@@ -3,7 +3,6 @@ using System;
 namespace MonoForce.External.Zip
 {
 
-
     internal class ZipDirEntry
     {
 
@@ -77,12 +76,10 @@ namespace MonoForce.External.Zip
 
         internal ZipDirEntry(ZipEntry ze) { }
 
-
         internal static ZipDirEntry Read(System.IO.Stream s)
         {
             return Read(s, false);
         }
-
 
         internal static ZipDirEntry Read(System.IO.Stream s, bool TurnOnDebug)
         {
@@ -143,7 +140,5 @@ namespace MonoForce.External.Zip
         }
 
     }
-
-
 
 }

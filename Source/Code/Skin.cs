@@ -18,25 +18,21 @@
 //                                                            //
 ////////////////////////////////////////////////////////////////
 
-#region //// Using /////////////
+#region Using
 
-////////////////////////////////////////////////////////////////////////////
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Xml;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
-////////////////////////////////////////////////////////////////////////////
 
 #endregion
 
 namespace MonoForce.Controls
 {
+    #region Structs
 
-    #region //// Structs ///////////
-
-    ////////////////////////////////////////////////////////////////////////////
     public struct SkinStates<T>
     {
         public T Enabled;
@@ -54,26 +50,20 @@ namespace MonoForce.Controls
             Disabled = disabled;
         }
     }
-    ////////////////////////////////////////////////////////////////////////////   
 
-    ////////////////////////////////////////////////////////////////////////////
     public struct LayerStates
     {
         public int Index;
         public Color Color;
         public bool Overlay;
     }
-    ////////////////////////////////////////////////////////////////////////////
 
-    ////////////////////////////////////////////////////////////////////////////
     public struct LayerOverlays
     {
         public int Index;
         public Color Color;
     }
-    ////////////////////////////////////////////////////////////////////////////
 
-    ////////////////////////////////////////////////////////////////////////////
     public struct SkinInfo
     {
         public string Name;
@@ -81,18 +71,15 @@ namespace MonoForce.Controls
         public string Author;
         public string Version;
     }
-    ////////////////////////////////////////////////////////////////////////////
 
     #endregion
 
-    #region //// Classes ///////////
+    #region Classes
 
-    ////////////////////////////////////////////////////////////////////////////  
     public class SkinList<T> : List<T>
     {
         #region //// Indexers //////////
 
-        ////////////////////////////////////////////////////////////////////////////
         public T this[string index]
         {
             get
@@ -120,21 +107,16 @@ namespace MonoForce.Controls
                 }
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
         #endregion
 
-        #region //// Constructors //////
+        #region Constructors
 
-
-        ////////////////////////////////////////////////////////////////////////////
         public SkinList()
             : base()
         {
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         public SkinList(SkinList<T> source)
             : base()
         {
@@ -149,35 +131,27 @@ namespace MonoForce.Controls
                 this.Add((T)t[0].GetConstructor(t).Invoke(p));
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
         #endregion
     }
-    ////////////////////////////////////////////////////////////////////////////    
 
-    //////////////////////////////////////////////////////////////////////////// 
     public class SkinBase
     {
-        #region //// Fields ////////////
+        #region Fields
 
-        ////////////////////////////////////////////////////////////////////////////
         public string Name;
         public bool Archive;
-        ////////////////////////////////////////////////////////////////////////////
 
         #endregion
 
-        #region //// Constructors //////
+        #region Constructors
 
-        ////////////////////////////////////////////////////////////////////////////
         public SkinBase()
             : base()
         {
             Archive = false;
         }
-        ////////////////////////////////////////////////////////////////////////////    
 
-        ////////////////////////////////////////////////////////////////////////////
         public SkinBase(SkinBase source)
             : base()
         {
@@ -187,18 +161,14 @@ namespace MonoForce.Controls
                 this.Archive = source.Archive;
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
         #endregion
     }
-    //////////////////////////////////////////////////////////////////////////// 
 
-    ////////////////////////////////////////////////////////////////////////////
     public class SkinLayer : SkinBase
     {
-        #region //// Fields ////////////
+        #region Fields
 
-        ////////////////////////////////////////////////////////////////////////////
         public SkinImage Image = new SkinImage();
         public int Width;
         public int Height;
@@ -211,13 +181,11 @@ namespace MonoForce.Controls
         public SkinStates<LayerOverlays> Overlays;
         public SkinText Text = new SkinText();
         public SkinList<SkinAttribute> Attributes = new SkinList<SkinAttribute>();
-        ////////////////////////////////////////////////////////////////////////////
 
         #endregion
 
-        #region //// Constructors //////
+        #region Constructors
 
-        ////////////////////////////////////////////////////////////////////////////
         public SkinLayer()
             : base()
         {
@@ -233,9 +201,7 @@ namespace MonoForce.Controls
             Overlays.Hovered.Color = Color.White;
             Overlays.Disabled.Color = Color.White;
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         public SkinLayer(SkinLayer source)
             : base(source)
         {
@@ -259,30 +225,24 @@ namespace MonoForce.Controls
                 throw new Exception("Parameter for SkinLayer copy constructor cannot be null.");
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
         #endregion
     }
-    //////////////////////////////////////////////////////////////////////////// 
 
-    ////////////////////////////////////////////////////////////////////////////
     public class SkinText : SkinBase
     {
-        #region //// Fields ////////////
+        #region Fields
 
-        ////////////////////////////////////////////////////////////////////////////
         public SkinFont Font;
         public int OffsetX;
         public int OffsetY;
         public Alignment Alignment;
         public SkinStates<Color> Colors;
-        ////////////////////////////////////////////////////////////////////////////
 
         #endregion
 
-        #region //// Constructors //////
+        #region Constructors
 
-        ////////////////////////////////////////////////////////////////////////////
         public SkinText()
             : base()
         {
@@ -292,9 +252,7 @@ namespace MonoForce.Controls
             Colors.Hovered = Color.White;
             Colors.Disabled = Color.White;
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         public SkinText(SkinText source)
             : base(source)
         {
@@ -307,28 +265,22 @@ namespace MonoForce.Controls
                 this.Colors = source.Colors;
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
         #endregion
     }
-    ////////////////////////////////////////////////////////////////////////////  
 
-    ////////////////////////////////////////////////////////////////////////////
     public class SkinFont : SkinBase
     {
-        #region //// Fields ////////////
+        #region Fields
 
-        ////////////////////////////////////////////////////////////////////////////
         public SpriteFont Resource = null;
         public string Asset = null;
         public string Addon = null;
-        ////////////////////////////////////////////////////////////////////////////
 
         #endregion
 
-        #region //// Properties ////////
+        #region Properties
 
-        ////////////////////////////////////////////////////////////////////////////
         public int Height
         {
             get
@@ -340,20 +292,16 @@ namespace MonoForce.Controls
                 return 0;
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
         #endregion
 
-        #region //// Constructors //////
+        #region Constructors
 
-        ////////////////////////////////////////////////////////////////////////////
         public SkinFont()
             : base()
         {
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         public SkinFont(SkinFont source)
             : base(source)
         {
@@ -363,71 +311,55 @@ namespace MonoForce.Controls
                 this.Asset = source.Asset;
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
         #endregion
     }
-    ////////////////////////////////////////////////////////////////////////////  
 
-    ////////////////////////////////////////////////////////////////////////////
     public class SkinImage : SkinBase
     {
-        #region //// Fields ////////////
+        #region Fields
 
-        ////////////////////////////////////////////////////////////////////////////
         public Texture2D Resource = null;
         public string Asset = null;
         public string Addon = null;
-        ////////////////////////////////////////////////////////////////////////////
 
         #endregion
 
-        #region //// Constructors //////
+        #region Constructors
 
-        ////////////////////////////////////////////////////////////////////////////
         public SkinImage()
             : base()
         {
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         public SkinImage(SkinImage source)
             : base(source)
         {
             this.Resource = source.Resource;
             this.Asset = source.Asset;
         }
-        ////////////////////////////////////////////////////////////////////////////
 
         #endregion
     }
-    ////////////////////////////////////////////////////////////////////////////
 
-    ////////////////////////////////////////////////////////////////////////////
     public class SkinCursor : SkinBase
     {
-        #region //// Fields ////////////
-
+        #region Fields
 
         public Cursor Resource = null;
 
         public string Asset = null;
         public string Addon = null;
-        ////////////////////////////////////////////////////////////////////////////
 
         #endregion
 
-        #region //// Constructors //////
+        #region Constructors
 
-        ////////////////////////////////////////////////////////////////////////////
         public SkinCursor()
             : base()
         {
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         public SkinCursor(SkinCursor source)
             : base(source)
         {
@@ -435,18 +367,14 @@ namespace MonoForce.Controls
 
             this.Asset = source.Asset;
         }
-        ////////////////////////////////////////////////////////////////////////////
 
         #endregion
     }
-    ////////////////////////////////////////////////////////////////////////////
 
-    ////////////////////////////////////////////////////////////////////////////
     public class SkinControl : SkinBase
     {
-        #region //// Fields ////////////
+        #region Fields
 
-        ////////////////////////////////////////////////////////////////////////////
         public string Inherits = null;
         public Size DefaultSize;
         public int ResizerSize;
@@ -455,20 +383,16 @@ namespace MonoForce.Controls
         public Margins ClientMargins;
         public SkinList<SkinLayer> Layers = new SkinList<SkinLayer>();
         public SkinList<SkinAttribute> Attributes = new SkinList<SkinAttribute>();
-        ////////////////////////////////////////////////////////////////////////////
 
         #endregion
 
-        #region //// Constructors //////
+        #region Constructors
 
-        ////////////////////////////////////////////////////////////////////////////
         public SkinControl()
             : base()
         {
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         public SkinControl(SkinControl source)
             : base(source)
         {
@@ -481,50 +405,38 @@ namespace MonoForce.Controls
             this.Layers = new SkinList<SkinLayer>(source.Layers);
             this.Attributes = new SkinList<SkinAttribute>(source.Attributes);
         }
-        ////////////////////////////////////////////////////////////////////////////
 
         #endregion
     }
-    ////////////////////////////////////////////////////////////////////////////
 
-    ////////////////////////////////////////////////////////////////////////////
     public class SkinAttribute : SkinBase
     {
-        #region //// Fields ////////////
+        #region Fields
 
-        ////////////////////////////////////////////////////////////////////////////
         public string Value;
-        ////////////////////////////////////////////////////////////////////////////
 
         #endregion
 
-        #region //// Constructors //////
+        #region Constructors
 
-        ////////////////////////////////////////////////////////////////////////////
         public SkinAttribute()
             : base()
         {
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         public SkinAttribute(SkinAttribute source)
             : base(source)
         {
             this.Value = source.Value;
         }
-        ////////////////////////////////////////////////////////////////////////////
 
         #endregion
     }
-    //////////////////////////////////////////////////////////////////////////// 
 
-    //////////////////////////////////////////////////////////////////////////// 
     public class Skin : Component
     {
-        #region //// Fields ////////////
+        #region Fields
 
-        ////////////////////////////////////////////////////////////////////////////           
         SkinXmlDocument doc = null;
         private string name = null;
         private Version version = null;
@@ -535,13 +447,11 @@ namespace MonoForce.Controls
         private SkinList<SkinImage> images = null;
         private SkinList<SkinAttribute> attributes = null;
         private ArchiveManager content = null;
-        ////////////////////////////////////////////////////////////////////////////
 
         #endregion
 
-        #region //// Properties ////////
+        #region Properties
 
-        ////////////////////////////////////////////////////////////////////////////
         public virtual string Name { get { return name; } }
         public virtual Version Version { get { return version; } }
         public virtual SkinInfo Info { get { return info; } }
@@ -550,13 +460,11 @@ namespace MonoForce.Controls
         public virtual SkinList<SkinCursor> Cursors { get { return cursors; } }
         public virtual SkinList<SkinImage> Images { get { return images; } }
         public virtual SkinList<SkinAttribute> Attributes { get { return attributes; } }
-        ////////////////////////////////////////////////////////////////////////////        
 
         #endregion
 
-        #region //// Construstors //////
+        #region Construstors
 
-        ////////////////////////////////////////////////////////////////////////////       
         public Skin(Manager manager, string name)
             : base(manager)
         {
@@ -597,13 +505,11 @@ namespace MonoForce.Controls
                 }
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
         #endregion
 
-        #region //// Destructors ///////
+        #region Destructors
 
-        ////////////////////////////////////////////////////////////////////////////
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -618,13 +524,11 @@ namespace MonoForce.Controls
 
             base.Dispose(disposing);
         }
-        ////////////////////////////////////////////////////////////////////////////
 
         #endregion
 
-        #region //// Methods ///////////
+        #region Methods
 
-        ////////////////////////////////////////////////////////////////////////////     
         private string GetArchiveLocation(string name)
         {
             string path = Path.GetFullPath(Manager.SkinDirectory) + Path.GetFileNameWithoutExtension(name) + "\\";
@@ -636,9 +540,7 @@ namespace MonoForce.Controls
 
             return null;
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////     
         private string GetFolder()
         {
             string path = Path.GetFullPath(Manager.SkinDirectory) + name + "\\";
@@ -649,9 +551,7 @@ namespace MonoForce.Controls
 
             return path;
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////     
         private string GetAddonsFolder()
         {
             string path = Path.GetFullPath(Manager.SkinDirectory) + name + "\\Addons\\";
@@ -666,16 +566,12 @@ namespace MonoForce.Controls
 
             return path;
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////     
         private string GetFolder(string type)
         {
             return GetFolder() + type + "\\";
         }
-        ////////////////////////////////////////////////////////////////////////////     
 
-        ////////////////////////////////////////////////////////////////////////////     
         private string GetAsset(string type, string asset, string addon)
         {
             string ret = GetFolder(type) + asset;
@@ -685,9 +581,7 @@ namespace MonoForce.Controls
             }
             return ret;
         }
-        ////////////////////////////////////////////////////////////////////////////     
 
-        ////////////////////////////////////////////////////////////////////////////
         public override void Init()
         {
             base.Init();
@@ -742,9 +636,7 @@ namespace MonoForce.Controls
                 }
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////         
         private string ReadAttribute(XmlElement element, string attrib, string defval, bool needed)
         {
             if (element != null && element.HasAttribute(attrib))
@@ -757,9 +649,7 @@ namespace MonoForce.Controls
             }
             return defval;
         }
-        ////////////////////////////////////////////////////////////////////////////     
 
-        ////////////////////////////////////////////////////////////////////////////         
         private void ReadAttribute(ref string retval, bool inherited, XmlElement element, string attrib, string defval, bool needed)
         {
             if (element != null && element.HasAttribute(attrib))
@@ -778,74 +668,55 @@ namespace MonoForce.Controls
                 retval = defval;
             }
         }
-        ////////////////////////////////////////////////////////////////////////////     
 
-        ////////////////////////////////////////////////////////////////////////////     
         private int ReadAttributeInt(XmlElement element, string attrib, int defval, bool needed)
         {
             return int.Parse(ReadAttribute(element, attrib, defval.ToString(), needed));
         }
-        ////////////////////////////////////////////////////////////////////////////     
 
-        ////////////////////////////////////////////////////////////////////////////     
         private void ReadAttributeInt(ref int retval, bool inherited, XmlElement element, string attrib, int defval, bool needed)
         {
             string tmp = retval.ToString();
             ReadAttribute(ref tmp, inherited, element, attrib, defval.ToString(), needed);
             retval = int.Parse(tmp);
         }
-        ////////////////////////////////////////////////////////////////////////////     
 
-        ////////////////////////////////////////////////////////////////////////////     
         private bool ReadAttributeBool(XmlElement element, string attrib, bool defval, bool needed)
         {
             return bool.Parse(ReadAttribute(element, attrib, defval.ToString(), needed));
         }
-        ////////////////////////////////////////////////////////////////////////////     
 
-        ////////////////////////////////////////////////////////////////////////////     
         private void ReadAttributeBool(ref bool retval, bool inherited, XmlElement element, string attrib, bool defval, bool needed)
         {
             string tmp = retval.ToString();
             ReadAttribute(ref tmp, inherited, element, attrib, defval.ToString(), needed);
             retval = bool.Parse(tmp);
         }
-        ////////////////////////////////////////////////////////////////////////////     
 
-        ////////////////////////////////////////////////////////////////////////////     
         private byte ReadAttributeByte(XmlElement element, string attrib, byte defval, bool needed)
         {
             return byte.Parse(ReadAttribute(element, attrib, defval.ToString(), needed));
         }
-        ////////////////////////////////////////////////////////////////////////////     
 
-        ////////////////////////////////////////////////////////////////////////////     
         private void ReadAttributeByte(ref byte retval, bool inherited, XmlElement element, string attrib, byte defval, bool needed)
         {
             string tmp = retval.ToString();
             ReadAttribute(ref tmp, inherited, element, attrib, defval.ToString(), needed);
             retval = byte.Parse(tmp);
         }
-        ////////////////////////////////////////////////////////////////////////////     
 
-        ////////////////////////////////////////////////////////////////////////////     
         private string ColorToString(Color c)
         {
             return string.Format("{0};{1};{2};{3}", c.R, c.G, c.B, c.A);
         }
-        ////////////////////////////////////////////////////////////////////////////     
 
-        ////////////////////////////////////////////////////////////////////////////     
         private void ReadAttributeColor(ref Color retval, bool inherited, XmlElement element, string attrib, Color defval, bool needed)
         {
             string tmp = ColorToString(retval);
             ReadAttribute(ref tmp, inherited, element, attrib, ColorToString(defval), needed);
             retval = Utilities.ParseColor(tmp);
         }
-        //////////////////////////////////////////////////////////////////////////// 
 
-
-        ////////////////////////////////////////////////////////////////////////////     
         private void LoadSkin(string addon, bool archive)
         {
             try
@@ -927,9 +798,7 @@ namespace MonoForce.Controls
                 throw new Exception("Unable to load skin file. " + x.Message);
             }
         }
-        ////////////////////////////////////////////////////////////////////////////        
 
-        ////////////////////////////////////////////////////////////////////////////        
         private void LoadSkinAttributes()
         {
             if (doc["Skin"]["Attributes"] == null) return;
@@ -947,13 +816,10 @@ namespace MonoForce.Controls
                 }
             }
         }
-        ////////////////////////////////////////////////////////////////////////////        
 
-        ////////////////////////////////////////////////////////////////////////////        
         private void LoadControls()
         {
             if (doc["Skin"]["Controls"] == null) return;
-
 
             XmlNodeList l = doc["Skin"]["Controls"].GetElementsByTagName("Control");
 
@@ -1016,9 +882,7 @@ namespace MonoForce.Controls
                 }
             }
         }
-        ////////////////////////////////////////////////////////////////////////////   
 
-        ////////////////////////////////////////////////////////////////////////////        
         private void LoadFonts(string addon, bool archive)
         {
             if (doc["Skin"]["Fonts"] == null) return;
@@ -1037,9 +901,7 @@ namespace MonoForce.Controls
                 }
             }
         }
-        ////////////////////////////////////////////////////////////////////////////        
 
-        ////////////////////////////////////////////////////////////////////////////        
         private void LoadCursors(string addon, bool archive)
         {
             if (doc["Skin"]["Cursors"] == null) return;
@@ -1058,9 +920,7 @@ namespace MonoForce.Controls
                 }
             }
         }
-        ////////////////////////////////////////////////////////////////////////////          
 
-        ////////////////////////////////////////////////////////////////////////////
         private void LoadImages(string addon, bool archive)
         {
             if (doc["Skin"]["Images"] == null) return;
@@ -1078,9 +938,7 @@ namespace MonoForce.Controls
                 }
             }
         }
-        ////////////////////////////////////////////////////////////////////////////         
 
-        ////////////////////////////////////////////////////////////////////////////        
         private void LoadLayers(SkinControl sc, XmlNodeList l)
         {
             foreach (XmlElement e in l)
@@ -1188,9 +1046,7 @@ namespace MonoForce.Controls
                 if (!inh) sc.Layers.Add(sl);
             }
         }
-        ////////////////////////////////////////////////////////////////////////////                            
 
-        ////////////////////////////////////////////////////////////////////////////        
         private void LoadColors(bool inherited, XmlElement e, ref SkinStates<Color> colors)
         {
             if (e != null)
@@ -1202,9 +1058,7 @@ namespace MonoForce.Controls
                 ReadAttributeColor(ref colors.Disabled, inherited, e["Colors"]["Disabled"], "Color", colors.Enabled, false);
             }
         }
-        ////////////////////////////////////////////////////////////////////////////            
 
-        ////////////////////////////////////////////////////////////////////////////        
         private void LoadControlAttributes(SkinControl sc, XmlNodeList l)
         {
             foreach (XmlElement e in l)
@@ -1225,9 +1079,7 @@ namespace MonoForce.Controls
                 if (!inh) sc.Attributes.Add(sa);
             }
         }
-        ////////////////////////////////////////////////////////////////////////////   
 
-        ////////////////////////////////////////////////////////////////////////////        
         private void LoadLayerAttributes(SkinLayer sl, XmlNodeList l)
         {
             foreach (XmlElement e in l)
@@ -1248,12 +1100,9 @@ namespace MonoForce.Controls
                 if (!inh) sl.Attributes.Add(sa);
             }
         }
-        ////////////////////////////////////////////////////////////////////////////  
 
         #endregion
     }
-    //////////////////////////////////////////////////////////////////////////// 
 
     #endregion
-
 }

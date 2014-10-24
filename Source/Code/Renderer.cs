@@ -18,13 +18,11 @@
 //                                                            //
 ////////////////////////////////////////////////////////////////
 
-#region //// Using /////////////
+#region Using
 
-////////////////////////////////////////////////////////////////////////////
 using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-////////////////////////////////////////////////////////////////////////////
 
 #endregion
 
@@ -36,9 +34,8 @@ namespace MonoForce.Controls
         None,
     }
 
-    #region //// Classes ///////////
+    #region Classes
 
-    ////////////////////////////////////////////////////////////////////////////
     public class DeviceStates
     {
         public readonly BlendState BlendState;
@@ -85,26 +82,22 @@ namespace MonoForce.Controls
             DepthStencilState = DepthStencilState.None;
         }
     }
-    ////////////////////////////////////////////////////////////////////////////
 
     #endregion
 
     public class Renderer : Component
     {
 
-        #region //// Fields ////////////
+        #region Fields
 
-        ////////////////////////////////////////////////////////////////////////////
         private SpriteBatch sb = null;
         private DeviceStates states = new DeviceStates();
         private BlendingMode bmode = BlendingMode.Default;
-        ////////////////////////////////////////////////////////////////////////////
 
         #endregion
 
-        #region //// Properties ////////
+        #region Properties
 
-        ////////////////////////////////////////////////////////////////////////////
         public virtual SpriteBatch SpriteBatch
         {
             get
@@ -112,25 +105,21 @@ namespace MonoForce.Controls
                 return sb;
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
         #endregion
 
-        #region //// Constructors //////
+        #region Constructors
 
-        ////////////////////////////////////////////////////////////////////////////
         public Renderer(Manager manager)
             : base(manager)
         {
             sb = new SpriteBatch(Manager.GraphicsDevice);
         }
-        ////////////////////////////////////////////////////////////////////////////
 
         #endregion
 
-        #region //// Destructors ///////
+        #region Destructors
 
-        ////////////////////////////////////////////////////////////////////////////
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -143,20 +132,16 @@ namespace MonoForce.Controls
             }
             base.Dispose(disposing);
         }
-        ////////////////////////////////////////////////////////////////////////////
 
         #endregion
 
-        #region //// Methods ///////////
+        #region Methods
 
-        ////////////////////////////////////////////////////////////////////////////
         public override void Init()
         {
             base.Init();
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         public virtual void Begin(BlendingMode mode)
         {
             bmode = mode;
@@ -169,16 +154,12 @@ namespace MonoForce.Controls
                 sb.Begin(SpriteSortMode.Immediate, BlendState.Opaque, states.SamplerState, states.DepthStencilState, states.RasterizerState);
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         public virtual void End()
         {
             sb.End();
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         public virtual void Draw(Texture2D texture, Rectangle destination, Color color)
         {
             if (destination.Width > 0 && destination.Height > 0)
@@ -186,7 +167,6 @@ namespace MonoForce.Controls
                 sb.Draw(texture, destination, null, color, 0.0f, Vector2.Zero, SpriteEffects.None, Manager.GlobalDepth);
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
         public virtual void DrawTileTexture(Texture2D texture, Rectangle destination, Color color)
         {
@@ -203,7 +183,6 @@ namespace MonoForce.Controls
             }
         }
 
-        ////////////////////////////////////////////////////////////////////////////
         public virtual void Draw(Texture2D texture, Rectangle destination, Rectangle source, Color color)
         {
             if (source.Width > 0 && source.Height > 0 && destination.Width > 0 && destination.Height > 0)
@@ -211,16 +190,12 @@ namespace MonoForce.Controls
                 sb.Draw(texture, destination, source, color, 0.0f, Vector2.Zero, SpriteEffects.None, Manager.GlobalDepth);
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         public virtual void Draw(Texture2D texture, int left, int top, Color color)
         {
             sb.Draw(texture, new Vector2(left, top), null, color, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, Manager.GlobalDepth);
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         public virtual void Draw(Texture2D texture, int left, int top, Rectangle source, Color color)
         {
             if (source.Width > 0 && source.Height > 0)
@@ -228,79 +203,57 @@ namespace MonoForce.Controls
                 sb.Draw(texture, new Vector2(left, top), source, color, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, Manager.GlobalDepth);
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         public virtual void DrawString(SpriteFont font, string text, int left, int top, Color color)
         {
             sb.DrawString(font, text, new Vector2(left, top), color, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, Manager.GlobalDepth);
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         public virtual void DrawString(SpriteFont font, string text, Rectangle rect, Color color, Alignment alignment)
         {
             DrawString(font, text, rect, color, alignment, 0, 0, true);
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         public virtual void DrawString(SpriteFont font, string text, Rectangle rect, Color color, Alignment alignment, bool ellipsis)
         {
             DrawString(font, text, rect, color, alignment, 0, 0, ellipsis);
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         public virtual void DrawString(Control control, SkinLayer layer, string text, Rectangle rect)
         {
             DrawString(control, layer, text, rect, true, 0, 0, true);
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         public virtual void DrawString(Control control, SkinLayer layer, string text, Rectangle rect, ControlState state)
         {
             DrawString(control, layer, text, rect, state, true, 0, 0, true);
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         public virtual void DrawString(Control control, SkinLayer layer, string text, Rectangle rect, bool margins)
         {
             DrawString(control, layer, text, rect, margins, 0, 0, true);
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         public virtual void DrawString(Control control, SkinLayer layer, string text, Rectangle rect, ControlState state, bool margins)
         {
             DrawString(control, layer, text, rect, state, margins, 0, 0, true);
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         public virtual void DrawString(Control control, SkinLayer layer, string text, Rectangle rect, bool margins, int ox, int oy)
         {
             DrawString(control, layer, text, rect, margins, ox, oy, true);
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         public virtual void DrawString(Control control, SkinLayer layer, string text, Rectangle rect, ControlState state, bool margins, int ox, int oy)
         {
             DrawString(control, layer, text, rect, state, margins, ox, oy, true);
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         public virtual void DrawString(Control control, SkinLayer layer, string text, Rectangle rect, bool margins, int ox, int oy, bool ellipsis)
         {
             DrawString(control, layer, text, rect, control.ControlState, margins, ox, oy, ellipsis);
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         public virtual void DrawString(Control control, SkinLayer layer, string text, Rectangle rect, ControlState state, bool margins, int ox, int oy, bool ellipsis)
         {
             Color col = Color.White;
@@ -345,9 +298,7 @@ namespace MonoForce.Controls
                 }
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         public virtual void DrawString(SpriteFont font, string text, Rectangle rect, Color color, Alignment alignment, int offsetX, int offsetY, bool ellipsis)
         {
 
@@ -425,16 +376,12 @@ namespace MonoForce.Controls
                 DrawString(font, text, (int)pos.X + offsetX, (int)pos.Y + offsetY, color);
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         private static int GetTextCenter(float size1, float size2)
         {
             return (int)Math.Ceiling((size1 / 2) - (size2 / 2));
         }
-        ////////////////////////////////////////////////////////////////////////////              
 
-        ////////////////////////////////////////////////////////////////////////////
         public virtual void DrawLayer(SkinLayer layer, Rectangle rect, Color color, int index)
         {
             Size imageSize = new Size(layer.Image.Resource.Width, layer.Image.Resource.Height);
@@ -450,9 +397,7 @@ namespace MonoForce.Controls
             Draw(layer.Image.Resource, GetDestinationArea(rect, layer.SizingMargins, Alignment.BottomCenter), GetSourceArea(imageSize, partSize, layer.SizingMargins, Alignment.BottomCenter, index), color);
             Draw(layer.Image.Resource, GetDestinationArea(rect, layer.SizingMargins, Alignment.BottomRight), GetSourceArea(imageSize, partSize, layer.SizingMargins, Alignment.BottomRight, index), color);
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         private static Rectangle GetSourceArea(Size imageSize, Size partSize, Margins margins, Alignment alignment, int index)
         {
             Rectangle rect = new Rectangle();
@@ -547,9 +492,7 @@ namespace MonoForce.Controls
 
             return rect;
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         public static Rectangle GetDestinationArea(Rectangle area, Margins margins, Alignment alignment)
         {
             Rectangle rect = new Rectangle();
@@ -643,9 +586,7 @@ namespace MonoForce.Controls
 
             return rect;
         }
-        ////////////////////////////////////////////////////////////////////////////    
 
-        ////////////////////////////////////////////////////////////////////////////
         public void DrawGlyph(Glyph glyph, Rectangle rect)
         {
             Size imageSize = new Size(glyph.Image.Width, glyph.Image.Height);
@@ -680,16 +621,12 @@ namespace MonoForce.Controls
                 Draw(glyph.Image, rect, glyph.SourceRect, glyph.Color);
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         public virtual void DrawLayer(Control control, SkinLayer layer, Rectangle rect)
         {
             DrawLayer(control, layer, rect, control.ControlState);
         }
-        ////////////////////////////////////////////////////////////////////////////   
 
-        ////////////////////////////////////////////////////////////////////////////    
         public virtual void DrawLayer(Control control, SkinLayer layer, Rectangle rect, ControlState state)
         {
             Color c = Color.White;
@@ -762,7 +699,6 @@ namespace MonoForce.Controls
                 DrawLayer(l, rect, oc, oi);
             }
         }
-        ////////////////////////////////////////////////////////////////////////////   
 
         #endregion
 

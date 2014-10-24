@@ -19,10 +19,8 @@
 //                                                            //
 ////////////////////////////////////////////////////////////////
 
+#region Using
 
-#region //// Using /////////////
-
-////////////////////////////////////////////////////////////////////////////
 using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
@@ -36,7 +34,6 @@ using System.Text;
 using System.Media;
 using System.Windows.Forms;
 #endif
-////////////////////////////////////////////////////////////////////////////
 
 #endregion
 
@@ -45,9 +42,8 @@ using System.Windows.Forms;
 namespace MonoForce.Controls
 {
 
-    #region //// Classes ///////////
+    #region Classes
 
-    ////////////////////////////////////////////////////////////////////////////  
     /// <summary>
     /// Manages rendering of all controls.
     /// </summary>  
@@ -61,9 +57,8 @@ namespace MonoForce.Controls
             public Control Over;
         }
 
-        #region //// Consts ////////////
+        #region Consts
 
-        ////////////////////////////////////////////////////////////////////////////        
         internal Version _SkinVersion = new Version(0, 7);
         internal Version _LayoutVersion = new Version(0, 7);
         internal const string _SkinDirectory = ".\\Content\\Skins\\";
@@ -75,15 +70,11 @@ namespace MonoForce.Controls
         internal const int _DoubleClickTime = 500;
         internal const int _TextureResizeIncrement = 32;
         internal const RenderTargetUsage _RenderTargetUsage = RenderTargetUsage.DiscardContents;
-        ////////////////////////////////////////////////////////////////////////////    
 
         #endregion
 
-        #region //// Fields ////////////
+        #region Fields
 
-        ////////////////////////////////////////////////////////////////////////////            
-
-        ////////////////////////////////////////////////////////////////////////////  
 #if (!XBOX && !XBOX_FAKE)
         private Form window = null;
 #endif
@@ -125,18 +116,16 @@ namespace MonoForce.Controls
         private Cursor cursor = null;
         private bool softwareCursor = false;
 
-        ////////////////////////////////////////////////////////////////////////////          
-
         #endregion
 
-        #region //// Properties ////////
+        #region Properties
 #if (!XBOX && !XBOX_FAKE)
         /// <summary>
         /// Returns the <see cref="Form"/> the game runs in.
         /// </summary>
         public virtual Form Window { get { return window; } }
 #endif
-        ////////////////////////////////////////////////////////////////////////////  
+
         /// <summary>
         /// Gets a value indicating whether Manager is in the process of disposing.
         /// </summary>
@@ -144,7 +133,6 @@ namespace MonoForce.Controls
         {
             get { return disposing; }
         }
-        ////////////////////////////////////////////////////////////////////////////  
 
         /// <summary>
         /// Gets or sets an application cursor.
@@ -163,9 +151,7 @@ namespace MonoForce.Controls
             get { return softwareCursor; }
             set { softwareCursor = value; }
         }
-        ////////////////////////////////////////////////////////////////////////////            
 
-        ////////////////////////////////////////////////////////////////////////////            
         /// <summary>
         /// Returns associated <see cref="Game"/> component.
         /// </summary>
@@ -256,7 +242,6 @@ namespace MonoForce.Controls
         /// </summary>    
         public virtual int TargetFrames { get { return targetFrames; } set { targetFrames = value; } }
 
-        //////////////////////////////////////////////////////////////////////////// 
         /// <summary>
         /// Gets or sets collection of active keyboard layouts.     
         /// </summary>
@@ -265,9 +250,7 @@ namespace MonoForce.Controls
             get { return keyboardLayouts; }
             set { keyboardLayouts = value; }
         }
-        //////////////////////////////////////////////////////////////////////////// 
 
-        //////////////////////////////////////////////////////////////////////////// 
         /// <summary>
         /// Gets or sets a value indicating if Guide component can be used
         /// </summary>
@@ -276,33 +259,27 @@ namespace MonoForce.Controls
             get { return useGuide; }
             set { useGuide = value; }
         }
-        //////////////////////////////////////////////////////////////////////////// 
 
-        //////////////////////////////////////////////////////////////////////////// 
         /// <summary>
         /// Gets or sets a value indicating if a control should unfocus if you click outside on the screen.
         /// </summary>
-        //////////////////////////////////////////////////////////////////////////// 
+
         public virtual bool AutoUnfocus
         {
             get { return autoUnfocus; }
             set { autoUnfocus = value; }
         }
-        //////////////////////////////////////////////////////////////////////////// 
 
-        //////////////////////////////////////////////////////////////////////////// 
         /// <summary>
         /// Gets or sets a value indicating wheter Manager should create render target automatically.
         /// </summary>    
-        //////////////////////////////////////////////////////////////////////////// 
+
         public virtual bool AutoCreateRenderTarget
         {
             get { return autoCreateRenderTarget; }
             set { autoCreateRenderTarget = value; }
         }
-        ////////////////////////////////////////////////////////////////////////////     
 
-        //////////////////////////////////////////////////////////////////////////// 
         /// <summary>
         /// Gets or sets current keyboard layout for text input.    
         /// </summary>
@@ -321,9 +298,7 @@ namespace MonoForce.Controls
                 keyboardLayout = value;
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         /// <summary>
         /// Gets or sets the initial directory for looking for the skins in.
         /// </summary>
@@ -346,9 +321,7 @@ namespace MonoForce.Controls
                 }
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         /// <summary>
         /// Gets or sets the initial directory for looking for the layout files in.
         /// </summary>
@@ -371,9 +344,7 @@ namespace MonoForce.Controls
                 }
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         /// <summary>
         /// Gets or sets file extension for archived skin files.
         /// </summary>
@@ -396,9 +367,7 @@ namespace MonoForce.Controls
                 }
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         /// <summary>
         /// Gets width of the selected render target in pixels.
         /// </summary>
@@ -413,9 +382,7 @@ namespace MonoForce.Controls
                 else return ScreenWidth;
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         /// <summary>
         /// Gets height of the selected render target in pixels.
         /// </summary>
@@ -430,10 +397,7 @@ namespace MonoForce.Controls
                 else return ScreenHeight;
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-
-        ////////////////////////////////////////////////////////////////////////////
         /// <summary>
         /// Gets current width of the screen in pixels.
         /// </summary>
@@ -449,9 +413,7 @@ namespace MonoForce.Controls
             }
 
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         /// <summary>
         /// Gets current height of the screen in pixels.
         /// </summary>
@@ -466,9 +428,7 @@ namespace MonoForce.Controls
                 else return 0;
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         /// <summary>
         /// Gets or sets new skin used by all controls.
         /// </summary>
@@ -483,9 +443,7 @@ namespace MonoForce.Controls
                 SetSkin(value);
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         /// <summary>
         /// Returns currently active modal window.
         /// </summary>
@@ -508,9 +466,7 @@ namespace MonoForce.Controls
                 }
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         /// <summary>
         /// Returns currently focused control.
         /// </summary>
@@ -558,17 +514,13 @@ namespace MonoForce.Controls
                 }
             }
         }
-        ////////////////////////////////////////////////////////////////////////////  
 
-        ////////////////////////////////////////////////////////////////////////////
         internal virtual ControlsList OrderList { get { return orderList; } }
-        ////////////////////////////////////////////////////////////////////////////
 
         #endregion
 
-        #region //// Events ////////////
+        #region Events
 
-        ////////////////////////////////////////////////////////////////////////////                 
         /// <summary>
         /// Occurs when the GraphicsDevice settings are changed.
         /// </summary>
@@ -588,13 +540,11 @@ namespace MonoForce.Controls
         /// Occurs when game window is about to close.
         /// </summary>
         public event WindowClosingEventHandler WindowClosing;
-        ////////////////////////////////////////////////////////////////////////////
 
         #endregion
 
-        #region //// Constructors //////
+        #region Constructors
 
-        ////////////////////////////////////////////////////////////////////////////
         /// <summary>
         /// Initializes a new instance of the Manager class.
         /// </summary>
@@ -655,9 +605,7 @@ namespace MonoForce.Controls
             keyboardLayouts.Add(new CzechKeyboardLayout());
             keyboardLayouts.Add(new GermanKeyboardLayout());
         }
-        ////////////////////////////////////////////////////////////////////////////                   
 
-        ////////////////////////////////////////////////////////////////////////////
         /// <summary>
         /// Initializes a new instance of the Manager class.
         /// </summary>
@@ -671,9 +619,7 @@ namespace MonoForce.Controls
             : this(game, game.Services.GetService(typeof(IGraphicsDeviceManager)) as GraphicsDeviceManager, skin)
         {
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         /// <summary>
         /// Initializes a new instance of the Manager class, loads the default skin and registers manager in the game class automatically.
         /// </summary>
@@ -687,9 +633,7 @@ namespace MonoForce.Controls
             : this(game, graphics, _DefaultSkin)
         {
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         /// <summary>
         /// Initializes a new instance of the Manager class, loads the default skin and registers manager in the game class automatically.
         /// </summary>
@@ -700,13 +644,11 @@ namespace MonoForce.Controls
             : this(game, game.Services.GetService(typeof(IGraphicsDeviceManager)) as GraphicsDeviceManager, _DefaultSkin)
         {
         }
-        ////////////////////////////////////////////////////////////////////////////
 
         #endregion
 
-        #region //// Destructors ///////
+        #region Destructors
 
-        ////////////////////////////////////////////////////////////////////////////
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -755,12 +697,10 @@ namespace MonoForce.Controls
                 GraphicsDevice.DeviceReset -= new System.EventHandler<System.EventArgs>(GraphicsDevice_DeviceReset);
             base.Dispose(disposing);
         }
-        ////////////////////////////////////////////////////////////////////////////
 
         #endregion
 
-        #region //// Methods ///////////
-
+        #region Methods
 
         public void SetCursor(Cursor cursor)
         {
@@ -771,9 +711,7 @@ namespace MonoForce.Controls
                     this.cursor.cursorPath, FileMode.Open, FileAccess.ReadWrite, FileShare.None));
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         private void InitSkins()
         {
             // Initializing skins for every control created, even not visible or 
@@ -783,9 +721,7 @@ namespace MonoForce.Controls
                 c.InitSkin();
             }
         }
-        ////////////////////////////////////////////////////////////////////////////          
 
-        ////////////////////////////////////////////////////////////////////////////
         private void InitControls()
         {
             // Initializing all controls created, even not visible or 
@@ -795,9 +731,7 @@ namespace MonoForce.Controls
                 c.Init();
             }
         }
-        ////////////////////////////////////////////////////////////////////////////       
 
-        ////////////////////////////////////////////////////////////////////////////     
         private void SortLevel(ControlsList cs)
         {
             if (cs != null)
@@ -812,9 +746,7 @@ namespace MonoForce.Controls
                 }
             }
         }
-        ////////////////////////////////////////////////////////////////////////////  
 
-        ////////////////////////////////////////////////////////////////////////////
         /// <summary>
         /// Method used as an event handler for the GraphicsDeviceManager.PreparingDeviceSettings event.
         /// </summary>
@@ -829,12 +761,9 @@ namespace MonoForce.Controls
                 SetMaxSize(c, w, h);
             }
 
-
             if (DeviceSettingsChanged != null) DeviceSettingsChanged.Invoke(new DeviceEventArgs(e));
         }
-        ////////////////////////////////////////////////////////////////////////////      
 
-        ////////////////////////////////////////////////////////////////////////////      
         private void SetMaxSize(Control c, int w, int h)
         {
             if (c.Width > w)
@@ -853,13 +782,11 @@ namespace MonoForce.Controls
                 SetMaxSize(cx, w, h);
             }
         }
-        ////////////////////////////////////////////////////////////////////////////      
 
-        ////////////////////////////////////////////////////////////////////////////
         /// <summary>
         /// Initializes the controls manager.
         /// </summary>    
-        ////////////////////////////////////////////////////////////////////////////
+
         public override void Initialize()
         {
             base.Initialize();
@@ -879,21 +806,17 @@ namespace MonoForce.Controls
             renderer = new Renderer(this);
             SetSkin(skinName);
         }
-        ////////////////////////////////////////////////////////////////////////////
 
         private void InvalidateRenderTarget()
         {
             renderTargetValid = false;
         }
 
-        ////////////////////////////////////////////////////////////////////////////
         public virtual RenderTarget2D CreateRenderTarget()
         {
             return CreateRenderTarget(ScreenWidth, ScreenHeight);
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         public virtual RenderTarget2D CreateRenderTarget(int width, int height)
         {
             if (width > 0 && height > 0)
@@ -907,9 +830,7 @@ namespace MonoForce.Controls
                 return new RenderTarget2D(GraphicsDevice, 5, 5, false, SurfaceFormat.Color, DepthFormat.None, GraphicsDevice.PresentationParameters.MultiSampleCount, _RenderTargetUsage);
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         /// <summary>
         /// Sets and loads the new skin.
         /// </summary>
@@ -921,9 +842,7 @@ namespace MonoForce.Controls
             Skin skin = new Skin(this, name);
             SetSkin(skin);
         }
-        ////////////////////////////////////////////////////////////////////////////        
 
-        ////////////////////////////////////////////////////////////////////////////        
         /// <summary>
         /// Sets the new skin.
         /// </summary>
@@ -958,9 +877,7 @@ namespace MonoForce.Controls
 
             InitControls();
         }
-        ////////////////////////////////////////////////////////////////////////////        
 
-        ////////////////////////////////////////////////////////////////////////////    
         /// <summary>
         /// Brings the control to the front of the z-order.
         /// </summary>
@@ -995,9 +912,7 @@ namespace MonoForce.Controls
                 }
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         /// <summary>
         /// Sends the control to the back of the z-order.
         /// </summary>
@@ -1032,9 +947,7 @@ namespace MonoForce.Controls
                 }
             }
         }
-        ////////////////////////////////////////////////////////////////////////////       
 
-        ////////////////////////////////////////////////////////////////////////////
         /// <summary>
         /// Called when the manager needs to be updated.
         /// </summary>
@@ -1079,9 +992,7 @@ namespace MonoForce.Controls
                 SortLevel(controls);
             }
         }
-        ////////////////////////////////////////////////////////////////////////////   
 
-        ////////////////////////////////////////////////////////////////////////////
         /// <summary>
         /// Adds a component or a control to the manager.
         /// </summary>
@@ -1114,9 +1025,7 @@ namespace MonoForce.Controls
                 }
             }
         }
-        ////////////////////////////////////////////////////////////////////////////    
 
-        ////////////////////////////////////////////////////////////////////////////
         /// <summary>
         /// Removes a component or a control from the manager.
         /// </summary>
@@ -1143,16 +1052,12 @@ namespace MonoForce.Controls
                 }
             }
         }
-        ////////////////////////////////////////////////////////////////////////////   
 
-        ////////////////////////////////////////////////////////////////////////////   
         public virtual void Prepare(GameTime gameTime)
         {
 
         }
-        ////////////////////////////////////////////////////////////////////////////   
 
-        ////////////////////////////////////////////////////////////////////////////
         /// <summary>
         /// Renders all controls added to the manager.
         /// </summary>
@@ -1169,9 +1074,7 @@ namespace MonoForce.Controls
             }
             Draw(gameTime);
         }
-        //////////////////////////////////////////////////////////////////////////// 
 
-        ////////////////////////////////////////////////////////////////////////////   
         public override void Draw(GameTime gameTime)
         {
             if (renderTarget != null)
@@ -1229,24 +1132,20 @@ namespace MonoForce.Controls
                 throw new Exception("Manager.RenderTarget has to be specified. Assign a render target or set Manager.AutoCreateRenderTarget property to true.");
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         /// <summary>
         /// Draws texture resolved from RenderTarget used for rendering.
         /// </summary>
-        ////////////////////////////////////////////////////////////////////////////
+
         public virtual void EndDraw()
         {
             EndDraw(new Rectangle(0, 0, ScreenWidth, ScreenHeight));
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         /// <summary>
         /// Draws texture resolved from RenderTarget to specified rectangle.
         /// </summary>
-        ////////////////////////////////////////////////////////////////////////////
+
         public virtual void EndDraw(Rectangle rect)
         {
             if (renderTarget != null && !deviceReset)
@@ -1260,9 +1159,7 @@ namespace MonoForce.Controls
                 deviceReset = false;
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         public virtual Control GetControl(string name)
         {
             foreach (Control c in Controls)
@@ -1274,9 +1171,7 @@ namespace MonoForce.Controls
             }
             return null;
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////     
         private void HandleUnhadledExceptions(object sender, UnhandledExceptionEventArgs e)
         {
             if (LogUnhandledExceptions)
@@ -1284,9 +1179,7 @@ namespace MonoForce.Controls
                 LogException(e.ExceptionObject as Exception);
             }
         }
-        ////////////////////////////////////////////////////////////////////////////     
 
-        ////////////////////////////////////////////////////////////////////////////     
         private void GraphicsDevice_DeviceReset(object sender, System.EventArgs e)
         {
             deviceReset = true;
@@ -1298,9 +1191,7 @@ namespace MonoForce.Controls
             }
             }*/
         }
-        ////////////////////////////////////////////////////////////////////////////     
 
-        ////////////////////////////////////////////////////////////////////////////     
         public virtual void LogException(Exception e)
         {
 #if (!XBOX && !XBOX_FAKE)
@@ -1319,13 +1210,11 @@ namespace MonoForce.Controls
                                    "////////////////////////////////////////////////////////////////\n\n", Encoding.Default);
 #endif
         }
-        ////////////////////////////////////////////////////////////////////////////     
 
         #endregion
 
         #region //// Input /////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         private bool CheckParent(Control control, Point pos)
         {
             if (control.Parent != null && !CheckDetached(control))
@@ -1344,24 +1233,19 @@ namespace MonoForce.Controls
                                              root.OriginWidth - margins.Horizontal,
                                              root.OriginHeight - margins.Vertical);
 
-
                 return (rr.Contains(pos) && pr.Contains(pos));
             }
 
             return true;
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         private bool CheckState(Control control)
         {
             bool modal = (ModalWindow == null) ? true : (ModalWindow == control.Root);
 
             return (control != null && !control.Passive && control.Visible && control.Enabled && modal);
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         private bool CheckOrder(Control control, Point pos)
         {
             if (!CheckPosition(control, pos)) return false;
@@ -1378,9 +1262,7 @@ namespace MonoForce.Controls
 
             return true;
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         private bool CheckDetached(Control control)
         {
             bool ret = control.Detached;
@@ -1390,9 +1272,7 @@ namespace MonoForce.Controls
             }
             return ret;
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         private bool CheckPosition(Control control, Point pos)
         {
             return (control.AbsoluteLeft <= pos.X &&
@@ -1401,9 +1281,7 @@ namespace MonoForce.Controls
                     control.AbsoluteTop + control.Height >= pos.Y &&
                     CheckParent(control, pos));
         }
-        ////////////////////////////////////////////////////////////////////////////   
 
-        ////////////////////////////////////////////////////////////////////////////
         private bool CheckButtons(int index)
         {
             for (int i = 0; i < states.Buttons.Length; i++)
@@ -1414,9 +1292,7 @@ namespace MonoForce.Controls
 
             return true;
         }
-        ////////////////////////////////////////////////////////////////////////////    
 
-        ////////////////////////////////////////////////////////////////////////////
         private void TabNextControl(Control control)
         {
             int start = OrderList.IndexOf(control);
@@ -1431,9 +1307,7 @@ namespace MonoForce.Controls
 
             OrderList[i].Focused = true;
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////    
         private void TabPrevControl(Control control)
         {
             int start = OrderList.IndexOf(control);
@@ -1447,9 +1321,7 @@ namespace MonoForce.Controls
             while ((OrderList[i].Root != control.Root || !OrderList[i].CanFocus || OrderList[i].IsRoot || !OrderList[i].Enabled) && i != start);
             OrderList[i].Focused = true;
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////    
         private void ProcessArrows(Control control, KeyEventArgs kbe, GamePadEventArgs gpe)
         {
             Control c = control;
@@ -1550,9 +1422,7 @@ namespace MonoForce.Controls
                 }
             }
         }
-        ////////////////////////////////////////////////////////////////////////////               
 
-        ////////////////////////////////////////////////////////////////////////////            
         private void MouseDownProcess(object sender, MouseEventArgs e)
         {
             ControlsList c = new ControlsList();
@@ -1612,9 +1482,7 @@ namespace MonoForce.Controls
 #endif
             }
         }
-        ////////////////////////////////////////////////////////////////////////////   
 
-        ////////////////////////////////////////////////////////////////////////////            
         private void MouseUpProcess(object sender, MouseEventArgs e)
         {
             Control c = states.Buttons[(int)e.Button];
@@ -1630,9 +1498,7 @@ namespace MonoForce.Controls
                 MouseMoveProcess(sender, e);
             }
         }
-        //////////////////////////////////////////////////////////////////////////// 
 
-        ////////////////////////////////////////////////////////////////////////////            
         private void MousePressProcess(object sender, MouseEventArgs e)
         {
             Control c = states.Buttons[(int)e.Button];
@@ -1644,9 +1510,7 @@ namespace MonoForce.Controls
                 }
             }
         }
-        ////////////////////////////////////////////////////////////////////////////              
 
-        ////////////////////////////////////////////////////////////////////////////            
         private void MouseMoveProcess(object sender, MouseEventArgs e)
         {
             ControlsList c = new ControlsList();
@@ -1695,7 +1559,6 @@ namespace MonoForce.Controls
                 else if (states.Over == c[i]) break;
             }
         }
-        ////////////////////////////////////////////////////////////////////////////      
 
         /// <summary>
         /// Processes mouse scroll events for the manager.
@@ -1720,7 +1583,6 @@ namespace MonoForce.Controls
             }
         }
 
-        ////////////////////////////////////////////////////////////////////////////
         void GamePadDownProcess(object sender, GamePadEventArgs e)
         {
             Control c = FocusedControl;
@@ -1740,9 +1602,7 @@ namespace MonoForce.Controls
                 }
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         void GamePadUpProcess(object sender, GamePadEventArgs e)
         {
             Control c = states.Buttons[(int)e.Button];
@@ -1758,9 +1618,7 @@ namespace MonoForce.Controls
                 c.SendMessage(Message.GamePadUp, e);
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         void GamePadPressProcess(object sender, GamePadEventArgs e)
         {
             Control c = states.Buttons[(int)e.Button];
@@ -1788,9 +1646,7 @@ namespace MonoForce.Controls
                 }
             }
         }
-        ////////////////////////////////////////////////////////////////////////////   
 
-        ////////////////////////////////////////////////////////////////////////////
         void KeyDownProcess(object sender, KeyEventArgs e)
         {
             Control c = FocusedControl;
@@ -1810,9 +1666,7 @@ namespace MonoForce.Controls
                 }
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         void KeyUpProcess(object sender, KeyEventArgs e)
         {
             Control c = states.Buttons[(int)MouseButton.None];
@@ -1828,9 +1682,7 @@ namespace MonoForce.Controls
                 c.SendMessage(Message.KeyUp, e);
             }
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         void KeyPressProcess(object sender, KeyEventArgs e)
         {
             Control c = states.Buttons[(int)MouseButton.None];
@@ -1858,12 +1710,10 @@ namespace MonoForce.Controls
                 }
             }
         }
-        ////////////////////////////////////////////////////////////////////////////   
 
         #endregion
 
     }
-    ////////////////////////////////////////////////////////////////////////////
 
     #endregion
 

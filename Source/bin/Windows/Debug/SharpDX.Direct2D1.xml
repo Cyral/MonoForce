@@ -12,166 +12,6 @@
             <unmanaged>Direct2D1 / DirectWrite</unmanaged>	
             <unmanaged-short>Direct2D1 / DirectWrite</unmanaged-short>	
         </member>
-        <member name="T:SharpDX.DirectWrite.LocalFontFileLoader">
-            <summary>	
-            <p>A built-in implementation of the <strong><see cref="T:SharpDX.DirectWrite.FontFileLoader"/></strong> interface, that operates on local font files	
-            and exposes local font file information from the font file reference key. Font file references created using <strong>CreateFontFileReference</strong> use this font file loader.</p>	
-            </summary>	
-            <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='IDWriteLocalFontFileLoader']/*"/>	
-            <msdn-id>dd371238</msdn-id>	
-            <unmanaged>IDWriteLocalFontFileLoader</unmanaged>	
-            <unmanaged-short>IDWriteLocalFontFileLoader</unmanaged-short>	
-        </member>
-        <member name="T:SharpDX.DirectWrite.FontFileLoaderNative">
-            <summary>	
-            <p> Handles loading font file resources of a particular type from a font file reference key into a font file stream object. </p>	
-            </summary>	
-            <remarks>	
-            <p>The font file loader interface is recommended to be implemented by a singleton object. Note that font file loader implementations must not register themselves with DirectWrite factory inside their constructors and must not unregister themselves in their destructors, because registration and unregistraton operations increment and decrement the object reference count respectively. Instead, registration and unregistration of font file loaders with DirectWrite factory should be performed outside of the font file loader implementation as a separate step.</p>	
-            </remarks>	
-            <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='IDWriteFontFileLoader']/*"/>	
-            <msdn-id>dd371075</msdn-id>	
-            <unmanaged>IDWriteFontFileLoader</unmanaged>	
-            <unmanaged-short>IDWriteFontFileLoader</unmanaged-short>	
-        </member>
-        <member name="T:SharpDX.DirectWrite.FontFileLoader">
-            <summary>	
-            <p> Handles loading font file resources of a particular type from a font file reference key into a font file stream object. </p>	
-            </summary>	
-            <remarks>	
-            <p>The font file loader interface is recommended to be implemented by a singleton object. Note that font file loader implementations must not register themselves with DirectWrite factory inside their constructors and must not unregister themselves in their destructors, because registration and unregistraton operations increment and decrement the object reference count respectively. Instead, registration and unregistration of font file loaders with DirectWrite factory should be performed outside of the font file loader implementation as a separate step.</p>	
-            </remarks>	
-            <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='IDWriteFontFileLoader']/*"/>	
-            <msdn-id>dd371075</msdn-id>	
-            <unmanaged>IDWriteFontFileLoader</unmanaged>	
-            <unmanaged-short>IDWriteFontFileLoader</unmanaged-short>	
-        </member>
-        <member name="M:SharpDX.DirectWrite.FontFileLoader.CreateStreamFromKey(SharpDX.DataPointer)">
-            <summary>	
-            Creates a font file stream object that encapsulates an open file resource. 	
-            </summary>	
-            <remarks>	
-            The resource is closed when the last reference to fontFileStream is released.  	
-            </remarks>	
-            <param name="fontFileReferenceKey">A reference to a font file reference key that uniquely identifies the font file resource within the scope of the font loader being used. The buffer allocated for this key must at least be the size, in bytes, specified by  fontFileReferenceKeySize. </param>
-            <returns>a reference to the newly created <see cref="T:SharpDX.DirectWrite.FontFileStream"/> object. </returns>
-            <unmanaged>HRESULT IDWriteFontFileLoader::CreateStreamFromKey([In, Buffer] const void* fontFileReferenceKey,[None] int fontFileReferenceKeySize,[Out] IDWriteFontFileStream** fontFileStream)</unmanaged>
-        </member>
-        <member name="M:SharpDX.DirectWrite.FontFileLoaderNative.CreateStreamFromKey(SharpDX.DataPointer)">
-            <summary>	
-            Creates a font file stream object that encapsulates an open file resource. 	
-            </summary>	
-            <remarks>	
-            The resource is closed when the last reference to fontFileStream is released.  	
-            </remarks>	
-            <param name="fontFileReferenceKey">A reference to a font file reference key that uniquely identifies the font file resource within the scope of the font loader being used. The buffer allocated for this key must at least be the size, in bytes, specified by  fontFileReferenceKeySize. </param>
-            <returns>a reference to the newly created <see cref="T:SharpDX.DirectWrite.FontFileStream"/> object. </returns>
-            <unmanaged>HRESULT IDWriteFontFileLoader::CreateStreamFromKey([In, Buffer] const void* fontFileReferenceKey,[None] int fontFileReferenceKeySize,[Out] IDWriteFontFileStream** fontFileStream)</unmanaged>
-        </member>
-        <member name="M:SharpDX.DirectWrite.FontFileLoaderNative.#ctor(System.IntPtr)">
-            <summary>
-            Initializes a new instance of the <see cref="T:SharpDX.DirectWrite.FontFileLoaderNative"/> class.
-            </summary>
-            <param name="nativePtr">The native pointer.</param>	
-        </member>
-        <member name="M:SharpDX.DirectWrite.FontFileLoaderNative.op_Explicit(System.IntPtr)~SharpDX.DirectWrite.FontFileLoaderNative">
-            <summary>
-            Performs an explicit conversion from <see cref="T:System.IntPtr"/> to <see cref="T:SharpDX.DirectWrite.FontFileLoaderNative"/>. (This method is a shortcut to <see cref="P:SharpDX.CppObject.NativePointer"/>) 
-            </summary>
-            <param name="nativePointer">The native pointer.</param>
-            <returns>
-            The result of the conversion.
-            </returns>
-        </member>
-        <member name="M:SharpDX.DirectWrite.FontFileLoaderNative.CreateStreamFromKey_(System.IntPtr,System.Int32,SharpDX.DirectWrite.FontFileStream@)">
-            <summary>	
-            <p> Creates a font file stream object that encapsulates an open file resource. </p>	
-            </summary>	
-            <param name="fontFileReferenceKey"><dd> <p>A reference to a font file reference key that uniquely identifies the font file resource within the scope of the font loader being used. The buffer allocated for this key must at least be the size, in bytes, specified by <em> fontFileReferenceKeySize</em>.</p> </dd></param>	
-            <param name="fontFileReferenceKeySize"><dd> <p>The size of font file reference key, in bytes.</p> </dd></param>	
-            <param name="fontFileStream"><dd> <p>When this method returns, contains the address of a reference to the newly created <strong><see cref="T:SharpDX.DirectWrite.FontFileStream"/></strong> object.</p> </dd></param>	
-            <returns><p>If this method succeeds, it returns <strong><see cref="F:SharpDX.Result.Ok"/></strong>. Otherwise, it returns an <strong><see cref="T:SharpDX.Result"/></strong> error code.</p></returns>	
-            <remarks>	
-            <p>The resource is closed when the last reference to <em>fontFileStream</em> is released. </p>	
-            </remarks>	
-            <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='IDWriteFontFileLoader::CreateStreamFromKey']/*"/>	
-            <msdn-id>dd371077</msdn-id>	
-            <unmanaged>HRESULT IDWriteFontFileLoader::CreateStreamFromKey([In, Buffer] const void* fontFileReferenceKey,[In] unsigned int fontFileReferenceKeySize,[Out] IDWriteFontFileStream** fontFileStream)</unmanaged>	
-            <unmanaged-short>IDWriteFontFileLoader::CreateStreamFromKey</unmanaged-short>	
-        </member>
-        <member name="M:SharpDX.DirectWrite.LocalFontFileLoader.GetFilePath(SharpDX.DataPointer)">
-            <summary>	
-            <p>Obtains the absolute font file path from the font file reference key.</p>	
-            </summary>	
-            <param name="referenceKey"><dd> <p>The font file reference key that uniquely identifies the local font file within the scope of the font loader being used.</p> </dd></param>	
-            <returns><p>If this method succeeds, the absolute font file path from the font file reference key.</p></returns>	
-            <msdn-id>dd371241</msdn-id>	
-            <unmanaged>HRESULT IDWriteLocalFontFileLoader::GetFilePathFromKey([In, Buffer] const void* fontFileReferenceKey,[In] unsigned int fontFileReferenceKeySize,[Out, Buffer] wchar_t* filePath,[In] unsigned int filePathSize)</unmanaged>	
-            <unmanaged-short>IDWriteLocalFontFileLoader::GetFilePathFromKey</unmanaged-short>	
-        </member>
-        <member name="M:SharpDX.DirectWrite.LocalFontFileLoader.GetLastWriteTime(SharpDX.DataPointer)">
-            <summary>	
-            <p>Obtains the last write time of the file from the font file reference key.</p>	
-            </summary>	
-            <param name="referenceKey"><dd> <p>The font file reference key that uniquely identifies the local font file within the scope of the font loader being used.</p> </dd></param>	
-            <returns><dd> <p>The time of the last font file modification.</p> </dd></returns>	
-            <msdn-id>dd371247</msdn-id>	
-            <unmanaged>HRESULT IDWriteLocalFontFileLoader::GetLastWriteTimeFromKey([In, Buffer] const void* fontFileReferenceKey,[In] unsigned int fontFileReferenceKeySize,[Out] FILETIME* lastWriteTime)</unmanaged>	
-            <unmanaged-short>IDWriteLocalFontFileLoader::GetLastWriteTimeFromKey</unmanaged-short>	
-        </member>
-        <member name="M:SharpDX.DirectWrite.LocalFontFileLoader.#ctor(System.IntPtr)">
-            <summary>
-            Initializes a new instance of the <see cref="T:SharpDX.DirectWrite.LocalFontFileLoader"/> class.
-            </summary>
-            <param name="nativePtr">The native pointer.</param>	
-        </member>
-        <member name="M:SharpDX.DirectWrite.LocalFontFileLoader.op_Explicit(System.IntPtr)~SharpDX.DirectWrite.LocalFontFileLoader">
-            <summary>
-            Performs an explicit conversion from <see cref="T:System.IntPtr"/> to <see cref="T:SharpDX.DirectWrite.LocalFontFileLoader"/>. (This method is a shortcut to <see cref="P:SharpDX.CppObject.NativePointer"/>) 
-            </summary>
-            <param name="nativePointer">The native pointer.</param>
-            <returns>
-            The result of the conversion.
-            </returns>
-        </member>
-        <member name="M:SharpDX.DirectWrite.LocalFontFileLoader.GetFilePathLengthFromKey(System.IntPtr,System.Int32)">
-            <summary>	
-            <p>Obtains the length of the absolute file path from the font file reference key.</p>	
-            </summary>	
-            <param name="fontFileReferenceKey"><dd> <p>Font file reference key that uniquely identifies the local font file within the scope of the font loader being used.</p> </dd></param>	
-            <param name="fontFileReferenceKeySize"><dd> <p>Size of font file reference key in bytes.</p> </dd></param>	
-            <returns><dd> <p>Length of the file path string, not including the terminated <strong><c>null</c></strong> character.</p> </dd></returns>	
-            <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='IDWriteLocalFontFileLoader::GetFilePathLengthFromKey']/*"/>	
-            <msdn-id>dd371244</msdn-id>	
-            <unmanaged>HRESULT IDWriteLocalFontFileLoader::GetFilePathLengthFromKey([In, Buffer] const void* fontFileReferenceKey,[In] unsigned int fontFileReferenceKeySize,[Out] unsigned int* filePathLength)</unmanaged>	
-            <unmanaged-short>IDWriteLocalFontFileLoader::GetFilePathLengthFromKey</unmanaged-short>	
-        </member>
-        <member name="M:SharpDX.DirectWrite.LocalFontFileLoader.GetFilePathFromKey(System.IntPtr,System.Int32,System.IntPtr,System.Int32)">
-            <summary>	
-            <p>Obtains the absolute font file path from the font file reference key.</p>	
-            </summary>	
-            <param name="fontFileReferenceKey"><dd> <p>The font file reference key that uniquely identifies the local font file within the scope of the font loader being used.</p> </dd></param>	
-            <param name="fontFileReferenceKeySize"><dd> <p>The size of font file reference key in bytes.</p> </dd></param>	
-            <param name="filePath"><dd> <p>The character array that receives the local file path.</p> </dd></param>	
-            <param name="filePathSize"><dd> <p>The length of the file path character array.</p> </dd></param>	
-            <returns><p>If this method succeeds, it returns <strong><see cref="F:SharpDX.Result.Ok"/></strong>. Otherwise, it returns an <strong><see cref="T:SharpDX.Result"/></strong> error code.</p></returns>	
-            <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='IDWriteLocalFontFileLoader::GetFilePathFromKey']/*"/>	
-            <msdn-id>dd371241</msdn-id>	
-            <unmanaged>HRESULT IDWriteLocalFontFileLoader::GetFilePathFromKey([In, Buffer] const void* fontFileReferenceKey,[In] unsigned int fontFileReferenceKeySize,[Out, Buffer] wchar_t* filePath,[In] unsigned int filePathSize)</unmanaged>	
-            <unmanaged-short>IDWriteLocalFontFileLoader::GetFilePathFromKey</unmanaged-short>	
-        </member>
-        <member name="M:SharpDX.DirectWrite.LocalFontFileLoader.GetLastWriteTimeFromKey(System.IntPtr,System.Int32)">
-            <summary>	
-            <p>Obtains the last write time of the file from the font file reference key.</p>	
-            </summary>	
-            <param name="fontFileReferenceKey"><dd> <p>The font file reference key that uniquely identifies the local font file within the scope of the font loader being used.</p> </dd></param>	
-            <param name="fontFileReferenceKeySize"><dd> <p>The size of font file reference key in bytes.</p> </dd></param>	
-            <returns><dd> <p>The time of the last font file modification.</p> </dd></returns>	
-            <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='IDWriteLocalFontFileLoader::GetLastWriteTimeFromKey']/*"/>	
-            <msdn-id>dd371247</msdn-id>	
-            <unmanaged>HRESULT IDWriteLocalFontFileLoader::GetLastWriteTimeFromKey([In, Buffer] const void* fontFileReferenceKey,[In] unsigned int fontFileReferenceKeySize,[Out] FILETIME* lastWriteTime)</unmanaged>	
-            <unmanaged-short>IDWriteLocalFontFileLoader::GetLastWriteTimeFromKey</unmanaged-short>	
-        </member>
         <member name="T:SharpDX.DirectWrite.NamespaceDoc">
             <summary>
             The <see cref="N:SharpDX.DirectWrite"/> namespace provides a managed DirectWrite API.
@@ -744,7 +584,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='WICBitmapLockRead']/*"/>	
-            <msdn-id>ee719811</msdn-id>	
             <unmanaged>WICBitmapLockRead</unmanaged>	
             <unmanaged-short>WICBitmapLockRead</unmanaged-short>	
         </member>
@@ -753,7 +592,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='WICBitmapLockWrite']/*"/>	
-            <msdn-id>ee719811</msdn-id>	
             <unmanaged>WICBitmapLockWrite</unmanaged>	
             <unmanaged-short>WICBitmapLockWrite</unmanaged-short>	
         </member>
@@ -2268,7 +2106,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='WICRawRenderModeDraft']/*"/>	
-            <msdn-id>ee719859</msdn-id>	
             <unmanaged>WICRawRenderModeDraft</unmanaged>	
             <unmanaged-short>WICRawRenderModeDraft</unmanaged-short>	
         </member>
@@ -2277,7 +2114,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='WICRawRenderModeNormal']/*"/>	
-            <msdn-id>ee719859</msdn-id>	
             <unmanaged>WICRawRenderModeNormal</unmanaged>	
             <unmanaged-short>WICRawRenderModeNormal</unmanaged-short>	
         </member>
@@ -2286,7 +2122,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='WICRawRenderModeBestQuality']/*"/>	
-            <msdn-id>ee719859</msdn-id>	
             <unmanaged>WICRawRenderModeBestQuality</unmanaged>	
             <unmanaged-short>WICRawRenderModeBestQuality</unmanaged-short>	
         </member>
@@ -2892,6 +2727,10 @@
             <summary>Constant InvalidParameter.</summary>
             <unmanaged>WINCODEC_ERR_INVALIDPARAMETER</unmanaged>
         </member>
+        <member name="F:SharpDX.WIC.ResultCode.Valueoutofrange">
+            <summary>Constant Valueoutofrange.</summary>
+            <unmanaged>WINCODEC_ERR_VALUEOUTOFRANGE</unmanaged>
+        </member>
         <member name="F:SharpDX.WIC.ResultCode.Codectoomanyscanlines">
             <summary>Constant Codectoomanyscanlines.</summary>
             <unmanaged>WINCODEC_ERR_CODECTOOMANYSCANLINES</unmanaged>
@@ -2967,10 +2806,6 @@
         <member name="F:SharpDX.WIC.ResultCode.Badmetadataheader">
             <summary>Constant Badmetadataheader.</summary>
             <unmanaged>WINCODEC_ERR_BADMETADATAHEADER</unmanaged>
-        </member>
-        <member name="F:SharpDX.WIC.ResultCode.Valueoutofrange">
-            <summary>Constant Valueoutofrange.</summary>
-            <unmanaged>WINCODEC_ERR_VALUEOUTOFRANGE</unmanaged>
         </member>
         <member name="F:SharpDX.WIC.ResultCode.NotImplemented">
             <summary>Constant NotImplemented.</summary>
@@ -3225,26 +3060,11 @@
             <unmanaged-short>IWICBitmapSource::CopyPixels</unmanaged-short>	
         </member>
         <member name="M:SharpDX.WIC.BitmapSource.CopyPixels``1(SharpDX.Rectangle,``0[])">
-            <summary>
-            <p>Instructs the object to produce pixels.</p>
-            </summary>
-            <typeparam name="T">Type of a pixel. This parameter must exactly match a pixel like using <see cref="T:SharpDX.Color"/> for a 32bit RGBA color or <see cref="T:SharpDX.Vector4"/> for a 64bits for a RGBA 4 floats color.</typeparam>
-            <param name="rectangle"><dd>  <p>The rectangle to copy. A <strong><c>null</c></strong> value specifies the entire bitmap.</p> </dd></param>
-            <param name="output">The destination array. The size of the array must be sizeof(pixel) * rectangle.Width * rectangle.Height</param>
-            <returns><p>If this method succeeds, it returns <strong><see cref="F:SharpDX.Result.Ok"/></strong>. Otherwise, it returns an <strong><see cref="T:SharpDX.Result"/></strong> error code.</p></returns>
-            <exception cref="T:System.ArgumentException">output.Length must be equal to Width * Height</exception>
-            <msdn-id>ee690179</msdn-id>
-              <unmanaged>HRESULT IWICBitmapSource::CopyPixels([In, Optional] const WICRect* prc,[In] unsigned int cbStride,[In] unsigned int cbBufferSize,[In] void* pbBuffer)</unmanaged>
-              <unmanaged-short>IWICBitmapSource::CopyPixels</unmanaged-short>
-            <remarks><p><strong>CopyPixels</strong> is one of the two main image processing routines (the other being <strong>Lock</strong>) triggering the actual processing.  It instructs the object to produce pixels according to its algorithm - this may involve decoding a portion of a JPEG stored on disk, copying a block of memory, or even analytically computing a complex gradient.  The algorithm is completely dependent on the object implementing the interface. </p><p> The caller can restrict the operation to a rectangle of interest (ROI) using the prc parameter.  The ROI sub-rectangle must be fully contained in the bounds of the bitmap.  Specifying a <strong><c>null</c></strong> ROI implies that the whole bitmap should be returned.
-              </p><p> The caller controls the memory management and must provide an output buffer (<em>pbBuffer</em>) for the results of the copy along with the buffer's bounds (<em>cbBufferSize</em>).  The cbStride parameter defines the count of bytes between two vertically adjacent pixels in the output buffer.  The caller must ensure that there is sufficient buffer to complete the call based on the width, height and pixel format of the bitmap and the sub-rectangle provided to the copy method. </p><p> If the caller needs to perform numerous copies of an expensive <strong><see cref="T:SharpDX.WIC.BitmapSource"/></strong> such as a JPEG, it is recommended to create an in-memory <strong><see cref="T:SharpDX.WIC.Bitmap"/></strong> first. </p>Codec Developer Remarks<p> The callee must only write to the first (prc-&gt;Width*bitsperpixel+7)/8 bytes of each line of the output buffer (in this case, a line is a consecutive string of <em>cbStride</em> bytes). </p></remarks>
-        </member>
-        <member name="M:SharpDX.WIC.BitmapSource.CopyPixels``1(``0[])">
             <summary>	
             <p>Instructs the object to produce pixels.</p>	
             </summary>	
-            <typeparam name="T">Type of a pixel. This parameter must exactly match a pixel like using <see cref="T:SharpDX.Color"/> for a 32bit RGBA color or <see cref="T:SharpDX.Vector4"/> for a 64bits for a RGBA 4 floats color.</typeparam>
-            <param name="output">The destination array. The size of the array must be sizeof(pixel) * Width * Height</param>	
+            <param name="rectangle"><dd>  <p>The rectangle to copy. A <strong><c>null</c></strong> value specifies the entire bitmap.</p> </dd></param>	
+            <param name="output">The destination array. The size of the array must be sizeof(pixel) * rectangle.Width * rectangle.Height</param>	
             <returns><p>If this method succeeds, it returns <strong><see cref="F:SharpDX.Result.Ok"/></strong>. Otherwise, it returns an <strong><see cref="T:SharpDX.Result"/></strong> error code.</p></returns>	
             <remarks>	
             <p><strong>CopyPixels</strong> is one of the two main image processing routines (the other being <strong>Lock</strong>) triggering the actual processing.  It instructs the object to produce pixels according to its algorithm - this may involve decoding a portion of a JPEG stored on disk, copying a block of memory, or even analytically computing a complex gradient.  The algorithm is completely dependent on the object implementing the interface. </p><p> The caller can restrict the operation to a rectangle of interest (ROI) using the prc parameter.  The ROI sub-rectangle must be fully contained in the bounds of the bitmap.  Specifying a <strong><c>null</c></strong> ROI implies that the whole bitmap should be returned. 	
@@ -3254,33 +3074,19 @@
             <unmanaged>HRESULT IWICBitmapSource::CopyPixels([In, Optional] const WICRect* prc,[In] unsigned int cbStride,[In] unsigned int cbBufferSize,[In] void* pbBuffer)</unmanaged>	
             <unmanaged-short>IWICBitmapSource::CopyPixels</unmanaged-short>	
         </member>
-        <member name="M:SharpDX.WIC.BitmapSource.CopyPixels(SharpDX.Rectangle,System.Byte[],System.Int32)">
-            <summary>
-            <p>Instructs the object to produce pixels.</p>
-            </summary>
-            <param name="output">The destination array. The size of the array must be sizeof(pixel) * Width * Height</param>
-            <param name="stride">The stride (number of bytes per row).</param>
-            <returns><p>If this method succeeds, it returns <strong><see cref="F:SharpDX.Result.Ok"/></strong>. Otherwise, it returns an <strong><see cref="T:SharpDX.Result"/></strong> error code.</p></returns>
-            <exception cref="T:System.ArgumentException">output.Length must be equal to Width * Height</exception>
-            <msdn-id>ee690179</msdn-id>
-              <unmanaged>HRESULT IWICBitmapSource::CopyPixels([In, Optional] const WICRect* prc,[In] unsigned int cbStride,[In] unsigned int cbBufferSize,[In] void* pbBuffer)</unmanaged>
-              <unmanaged-short>IWICBitmapSource::CopyPixels</unmanaged-short>
-            <remarks><p><strong>CopyPixels</strong> is one of the two main image processing routines (the other being <strong>Lock</strong>) triggering the actual processing.  It instructs the object to produce pixels according to its algorithm - this may involve decoding a portion of a JPEG stored on disk, copying a block of memory, or even analytically computing a complex gradient.  The algorithm is completely dependent on the object implementing the interface. </p><p> The caller can restrict the operation to a rectangle of interest (ROI) using the prc parameter.  The ROI sub-rectangle must be fully contained in the bounds of the bitmap.  Specifying a <strong><c>null</c></strong> ROI implies that the whole bitmap should be returned.
-              </p><p> The caller controls the memory management and must provide an output buffer (<em>pbBuffer</em>) for the results of the copy along with the buffer's bounds (<em>cbBufferSize</em>).  The cbStride parameter defines the count of bytes between two vertically adjacent pixels in the output buffer.  The caller must ensure that there is sufficient buffer to complete the call based on the width, height and pixel format of the bitmap and the sub-rectangle provided to the copy method. </p><p> If the caller needs to perform numerous copies of an expensive <strong><see cref="T:SharpDX.WIC.BitmapSource"/></strong> such as a JPEG, it is recommended to create an in-memory <strong><see cref="T:SharpDX.WIC.Bitmap"/></strong> first. </p>Codec Developer Remarks<p> The callee must only write to the first (prc-&gt;Width*bitsperpixel+7)/8 bytes of each line of the output buffer (in this case, a line is a consecutive string of <em>cbStride</em> bytes). </p></remarks>
-        </member>
-        <member name="M:SharpDX.WIC.BitmapSource.CopyPixels(System.Byte[],System.Int32)">
-            <summary>
-            <p>Instructs the object to produce pixels.</p>
-            </summary>
-            <param name="output">The destination array. The size of the array must be sizeof(pixel) * Width * Height</param>
-            <param name="stride">The stride (number of bytes per row).</param>
-            <returns><p>If this method succeeds, it returns <strong><see cref="F:SharpDX.Result.Ok"/></strong>. Otherwise, it returns an <strong><see cref="T:SharpDX.Result"/></strong> error code.</p></returns>
-            <exception cref="T:System.ArgumentException">output.Length must be equal to Width * Height</exception>
-            <msdn-id>ee690179</msdn-id>
-              <unmanaged>HRESULT IWICBitmapSource::CopyPixels([In, Optional] const WICRect* prc,[In] unsigned int cbStride,[In] unsigned int cbBufferSize,[In] void* pbBuffer)</unmanaged>
-              <unmanaged-short>IWICBitmapSource::CopyPixels</unmanaged-short>
-            <remarks><p><strong>CopyPixels</strong> is one of the two main image processing routines (the other being <strong>Lock</strong>) triggering the actual processing.  It instructs the object to produce pixels according to its algorithm - this may involve decoding a portion of a JPEG stored on disk, copying a block of memory, or even analytically computing a complex gradient.  The algorithm is completely dependent on the object implementing the interface. </p><p> The caller can restrict the operation to a rectangle of interest (ROI) using the prc parameter.  The ROI sub-rectangle must be fully contained in the bounds of the bitmap.  Specifying a <strong><c>null</c></strong> ROI implies that the whole bitmap should be returned.
-              </p><p> The caller controls the memory management and must provide an output buffer (<em>pbBuffer</em>) for the results of the copy along with the buffer's bounds (<em>cbBufferSize</em>).  The cbStride parameter defines the count of bytes between two vertically adjacent pixels in the output buffer.  The caller must ensure that there is sufficient buffer to complete the call based on the width, height and pixel format of the bitmap and the sub-rectangle provided to the copy method. </p><p> If the caller needs to perform numerous copies of an expensive <strong><see cref="T:SharpDX.WIC.BitmapSource"/></strong> such as a JPEG, it is recommended to create an in-memory <strong><see cref="T:SharpDX.WIC.Bitmap"/></strong> first. </p>Codec Developer Remarks<p> The callee must only write to the first (prc-&gt;Width*bitsperpixel+7)/8 bytes of each line of the output buffer (in this case, a line is a consecutive string of <em>cbStride</em> bytes). </p></remarks>
+        <member name="M:SharpDX.WIC.BitmapSource.CopyPixels``1(``0[])">
+            <summary>	
+            <p>Instructs the object to produce pixels.</p>	
+            </summary>	
+            <param name="output">The destination array. The size of the array must be sizeof(pixel) * Width * Height</param>	
+            <returns><p>If this method succeeds, it returns <strong><see cref="F:SharpDX.Result.Ok"/></strong>. Otherwise, it returns an <strong><see cref="T:SharpDX.Result"/></strong> error code.</p></returns>	
+            <remarks>	
+            <p><strong>CopyPixels</strong> is one of the two main image processing routines (the other being <strong>Lock</strong>) triggering the actual processing.  It instructs the object to produce pixels according to its algorithm - this may involve decoding a portion of a JPEG stored on disk, copying a block of memory, or even analytically computing a complex gradient.  The algorithm is completely dependent on the object implementing the interface. </p><p> The caller can restrict the operation to a rectangle of interest (ROI) using the prc parameter.  The ROI sub-rectangle must be fully contained in the bounds of the bitmap.  Specifying a <strong><c>null</c></strong> ROI implies that the whole bitmap should be returned. 	
+            </p><p> The caller controls the memory management and must provide an output buffer (<em>pbBuffer</em>) for the results of the copy along with the buffer's bounds (<em>cbBufferSize</em>).  The cbStride parameter defines the count of bytes between two vertically adjacent pixels in the output buffer.  The caller must ensure that there is sufficient buffer to complete the call based on the width, height and pixel format of the bitmap and the sub-rectangle provided to the copy method. </p><p> If the caller needs to perform numerous copies of an expensive <strong><see cref="T:SharpDX.WIC.BitmapSource"/></strong> such as a JPEG, it is recommended to create an in-memory <strong><see cref="T:SharpDX.WIC.Bitmap"/></strong> first. </p>Codec Developer Remarks<p> The callee must only write to the first (prc-&gt;Width*bitsperpixel+7)/8 bytes of each line of the output buffer (in this case, a line is a consecutive string of <em>cbStride</em> bytes). </p>	
+            </remarks>	
+            <msdn-id>ee690179</msdn-id>	
+            <unmanaged>HRESULT IWICBitmapSource::CopyPixels([In, Optional] const WICRect* prc,[In] unsigned int cbStride,[In] unsigned int cbBufferSize,[In] void* pbBuffer)</unmanaged>	
+            <unmanaged-short>IWICBitmapSource::CopyPixels</unmanaged-short>	
         </member>
         <member name="P:SharpDX.WIC.BitmapSource.PixelFormat">
             <summary>	
@@ -10920,6 +10726,29 @@
             <returns>a reference to the newly created <see cref="T:SharpDX.DirectWrite.FontFile"/> object.</returns>
             <unmanaged>HRESULT IDWriteFontFileEnumerator::GetCurrentFontFile([Out] IDWriteFontFile** fontFile)</unmanaged>
         </member>
+        <member name="T:SharpDX.DirectWrite.FontFileLoader">
+            <summary>	
+            <p> Handles loading font file resources of a particular type from a font file reference key into a font file stream object. </p>	
+            </summary>	
+            <remarks>	
+            <p>The font file loader interface is recommended to be implemented by a singleton object. Note that font file loader implementations must not register themselves with DirectWrite factory inside their constructors and must not unregister themselves in their destructors, because registration and unregistraton operations increment and decrement the object reference count respectively. Instead, registration and unregistration of font file loaders with DirectWrite factory should be performed outside of the font file loader implementation as a separate step.</p>	
+            </remarks>	
+            <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='IDWriteFontFileLoader']/*"/>	
+            <msdn-id>dd371075</msdn-id>	
+            <unmanaged>IDWriteFontFileLoader</unmanaged>	
+            <unmanaged-short>IDWriteFontFileLoader</unmanaged-short>	
+        </member>
+        <member name="M:SharpDX.DirectWrite.FontFileLoader.CreateStreamFromKey(SharpDX.DataPointer)">
+            <summary>	
+            Creates a font file stream object that encapsulates an open file resource. 	
+            </summary>	
+            <remarks>	
+            The resource is closed when the last reference to fontFileStream is released.  	
+            </remarks>	
+            <param name="fontFileReferenceKey">A reference to a font file reference key that uniquely identifies the font file resource within the scope of the font loader being used. The buffer allocated for this key must at least be the size, in bytes, specified by  fontFileReferenceKeySize. </param>
+            <returns>a reference to the newly created <see cref="T:SharpDX.DirectWrite.FontFileStream"/> object. </returns>
+            <unmanaged>HRESULT IDWriteFontFileLoader::CreateStreamFromKey([In, Buffer] const void* fontFileReferenceKey,[None] int fontFileReferenceKeySize,[Out] IDWriteFontFileStream** fontFileStream)</unmanaged>
+        </member>
         <member name="T:SharpDX.DirectWrite.FontFileLoaderShadow">
             <summary>
             Internal FontFileLoader Callback
@@ -10934,6 +10763,60 @@
         </member>
         <member name="T:SharpDX.DirectWrite.FontFileLoaderShadow.FontFileLoaderVtbl.CreateStreamFromKeyDelegate">
             <unmanaged>HRESULT IDWriteFontFileLoader::CreateStreamFromKey([In, Buffer] const void* fontFileReferenceKey,[None] int fontFileReferenceKeySize,[Out] IDWriteFontFileStream** fontFileStream)</unmanaged>
+        </member>
+        <member name="T:SharpDX.DirectWrite.FontFileLoaderNative">
+            <summary>	
+            <p> Handles loading font file resources of a particular type from a font file reference key into a font file stream object. </p>	
+            </summary>	
+            <remarks>	
+            <p>The font file loader interface is recommended to be implemented by a singleton object. Note that font file loader implementations must not register themselves with DirectWrite factory inside their constructors and must not unregister themselves in their destructors, because registration and unregistraton operations increment and decrement the object reference count respectively. Instead, registration and unregistration of font file loaders with DirectWrite factory should be performed outside of the font file loader implementation as a separate step.</p>	
+            </remarks>	
+            <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='IDWriteFontFileLoader']/*"/>	
+            <msdn-id>dd371075</msdn-id>	
+            <unmanaged>IDWriteFontFileLoader</unmanaged>	
+            <unmanaged-short>IDWriteFontFileLoader</unmanaged-short>	
+        </member>
+        <member name="M:SharpDX.DirectWrite.FontFileLoaderNative.CreateStreamFromKey(SharpDX.DataPointer)">
+            <summary>	
+            Creates a font file stream object that encapsulates an open file resource. 	
+            </summary>	
+            <remarks>	
+            The resource is closed when the last reference to fontFileStream is released.  	
+            </remarks>	
+            <param name="fontFileReferenceKey">A reference to a font file reference key that uniquely identifies the font file resource within the scope of the font loader being used. The buffer allocated for this key must at least be the size, in bytes, specified by  fontFileReferenceKeySize. </param>
+            <returns>a reference to the newly created <see cref="T:SharpDX.DirectWrite.FontFileStream"/> object. </returns>
+            <unmanaged>HRESULT IDWriteFontFileLoader::CreateStreamFromKey([In, Buffer] const void* fontFileReferenceKey,[None] int fontFileReferenceKeySize,[Out] IDWriteFontFileStream** fontFileStream)</unmanaged>
+        </member>
+        <member name="M:SharpDX.DirectWrite.FontFileLoaderNative.#ctor(System.IntPtr)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SharpDX.DirectWrite.FontFileLoaderNative"/> class.
+            </summary>
+            <param name="nativePtr">The native pointer.</param>	
+        </member>
+        <member name="M:SharpDX.DirectWrite.FontFileLoaderNative.op_Explicit(System.IntPtr)~SharpDX.DirectWrite.FontFileLoaderNative">
+            <summary>
+            Performs an explicit conversion from <see cref="T:System.IntPtr"/> to <see cref="T:SharpDX.DirectWrite.FontFileLoaderNative"/>. (This method is a shortcut to <see cref="P:SharpDX.CppObject.NativePointer"/>) 
+            </summary>
+            <param name="nativePointer">The native pointer.</param>
+            <returns>
+            The result of the conversion.
+            </returns>
+        </member>
+        <member name="M:SharpDX.DirectWrite.FontFileLoaderNative.CreateStreamFromKey_(System.IntPtr,System.Int32,SharpDX.DirectWrite.FontFileStream@)">
+            <summary>	
+            <p> Creates a font file stream object that encapsulates an open file resource. </p>	
+            </summary>	
+            <param name="fontFileReferenceKey"><dd> <p>A reference to a font file reference key that uniquely identifies the font file resource within the scope of the font loader being used. The buffer allocated for this key must at least be the size, in bytes, specified by <em> fontFileReferenceKeySize</em>.</p> </dd></param>	
+            <param name="fontFileReferenceKeySize"><dd> <p>The size of font file reference key, in bytes.</p> </dd></param>	
+            <param name="fontFileStream"><dd> <p>When this method returns, contains the address of a reference to the newly created <strong><see cref="T:SharpDX.DirectWrite.FontFileStream"/></strong> object.</p> </dd></param>	
+            <returns><p>If this method succeeds, it returns <strong><see cref="F:SharpDX.Result.Ok"/></strong>. Otherwise, it returns an <strong><see cref="T:SharpDX.Result"/></strong> error code.</p></returns>	
+            <remarks>	
+            <p>The resource is closed when the last reference to <em>fontFileStream</em> is released. </p>	
+            </remarks>	
+            <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='IDWriteFontFileLoader::CreateStreamFromKey']/*"/>	
+            <msdn-id>dd371077</msdn-id>	
+            <unmanaged>HRESULT IDWriteFontFileLoader::CreateStreamFromKey([In, Buffer] const void* fontFileReferenceKey,[In] unsigned int fontFileReferenceKeySize,[Out] IDWriteFontFileStream** fontFileStream)</unmanaged>	
+            <unmanaged-short>IDWriteFontFileLoader::CreateStreamFromKey</unmanaged-short>	
         </member>
         <member name="T:SharpDX.DirectWrite.FontFileStream">
             <summary>	
@@ -14077,7 +13960,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_TEXT_RANGE::startPosition']/*"/>	
-            <msdn-id>dd368137</msdn-id>	
             <unmanaged>unsigned int startPosition</unmanaged>	
             <unmanaged-short>unsigned int startPosition</unmanaged-short>	
         </member>
@@ -14086,7 +13968,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_TEXT_RANGE::length']/*"/>	
-            <msdn-id>dd368137</msdn-id>	
             <unmanaged>unsigned int length</unmanaged>	
             <unmanaged-short>unsigned int length</unmanaged-short>	
         </member>
@@ -14255,27 +14136,6 @@
             </summary>	
             <param name="renderTarget">an instance of <see cref="T:SharpDX.Direct2D1.RenderTarget"/></param>
             <param name="surface">An <see cref="T:SharpDX.DXGI.Surface"/> that contains the data to share with the new ID2D1Bitmap. For more information, see the Remarks section.</param>
-            <param name="bitmapProperties">The pixel format  and DPI of the bitmap to create . The <see cref="T:SharpDX.DXGI.Format"/> portion of the pixel format  must match the <see cref="T:SharpDX.DXGI.Format"/> of data or the method will fail, but the alpha modes don't have to match. To prevent a  mismatch, you can pass NULL or the value obtained from the {{D2D1::PixelFormat}} helper function. The DPI settings do not have to match those of data. If both dpiX and dpiY are  0.0f, the default DPI, 96, is used.</param>
-            <msdn-id>dd371865</msdn-id>	
-            <unmanaged>HRESULT ID2D1RenderTarget::CreateSharedBitmap([In] const GUID&amp; riid,[In] void* data,[In, Optional] const D2D1_BITMAP_PROPERTIES* bitmapProperties,[Out, Fast] ID2D1Bitmap** bitmap)</unmanaged>	
-            <unmanaged-short>ID2D1RenderTarget::CreateSharedBitmap</unmanaged-short>	
-        </member>
-        <member name="M:SharpDX.Direct2D1.Bitmap.#ctor(SharpDX.Direct2D1.RenderTarget,SharpDX.WIC.BitmapLock)">
-            <summary>
-            Creates an <see cref="T:SharpDX.Direct2D1.Bitmap"/> that points to the bitmap data already stored in the <see cref="T:SharpDX.WIC.BitmapLock"/>. 
-            </summary>
-            <param name="renderTarget">An instance of <see cref="T:SharpDX.Direct2D1.RenderTarget"/>.</param>
-            <param name="bitmapLock">An <see cref="T:SharpDX.Direct2D1.RenderTarget"/> that contains the data to share with the new <see cref="T:SharpDX.Direct2D1.Bitmap"/>.</param>
-            <msdn-id>dd371865</msdn-id>	
-            <unmanaged>HRESULT ID2D1RenderTarget::CreateSharedBitmap([In] const GUID&amp; riid,[In] void* data,[In, Optional] const D2D1_BITMAP_PROPERTIES* bitmapProperties,[Out, Fast] ID2D1Bitmap** bitmap)</unmanaged>	
-            <unmanaged-short>ID2D1RenderTarget::CreateSharedBitmap</unmanaged-short>	
-        </member>
-        <member name="M:SharpDX.Direct2D1.Bitmap.#ctor(SharpDX.Direct2D1.RenderTarget,SharpDX.WIC.BitmapLock,System.Nullable{SharpDX.Direct2D1.BitmapProperties})">
-            <summary>
-            Creates an <see cref="T:SharpDX.Direct2D1.Bitmap"/> that points to the bitmap data already stored in the <see cref="T:SharpDX.WIC.BitmapLock"/>. 
-            </summary>
-            <param name="renderTarget">An instance of <see cref="T:SharpDX.Direct2D1.RenderTarget"/>.</param>
-            <param name="bitmapLock">An <see cref="T:SharpDX.Direct2D1.RenderTarget"/> that contains the data to share with the new <see cref="T:SharpDX.Direct2D1.Bitmap"/>.</param>
             <param name="bitmapProperties">The pixel format  and DPI of the bitmap to create . The <see cref="T:SharpDX.DXGI.Format"/> portion of the pixel format  must match the <see cref="T:SharpDX.DXGI.Format"/> of data or the method will fail, but the alpha modes don't have to match. To prevent a  mismatch, you can pass NULL or the value obtained from the {{D2D1::PixelFormat}} helper function. The DPI settings do not have to match those of data. If both dpiX and dpiY are  0.0f, the default DPI, 96, is used.</param>
             <msdn-id>dd371865</msdn-id>	
             <unmanaged>HRESULT ID2D1RenderTarget::CreateSharedBitmap([In] const GUID&amp; riid,[In] void* data,[In, Optional] const D2D1_BITMAP_PROPERTIES* bitmapProperties,[Out, Fast] ID2D1Bitmap** bitmap)</unmanaged>	
@@ -15708,7 +15568,8 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.DiscretionaryLigatures">
             <summary>	
-            <dd> <p> Replaces a sequence of glyphs with a single glyph which is preferred for typographic purposes. This feature covers those ligatures which may be used for special effect, at the user's preference.</p> <p><strong>Equivalent OpenType tag:</strong> 'dlig'</p> </dd>	
+            <dd> <p> Replaces standard forms in Japanese fonts with corresponding forms preferred by typographers.  For example, a user would invoke this feature to replace kanji character U+5516 with U+555E.	
+            </p> <p><strong>Equivalent OpenType tag:</strong> 'expt'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_DISCRETIONARY_LIGATURES']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -15717,8 +15578,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.ExpertForms">
             <summary>	
-            <dd> <p> Replaces standard forms in Japanese fonts with corresponding forms preferred by typographers.  For example, a user would invoke this feature to replace kanji character U+5516 with U+555E.	
-            </p> <p><strong>Equivalent OpenType tag:</strong> 'expt'</p> </dd>	
+            <dd> <p> Replaces figures separated by a slash with 'common' (diagonal) fractions.</p> <p><strong>Equivalent OpenType tag:</strong> 'frac'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_EXPERT_FORMS']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -15727,7 +15587,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.Fractions">
             <summary>	
-            <dd> <p> Replaces figures separated by a slash with 'common' (diagonal) fractions.</p> <p><strong>Equivalent OpenType tag:</strong> 'frac'</p> </dd>	
+            <dd> <p> Replaces glyphs set on other widths with glyphs set on full (usually em) widths. In a CJKV font, this may include "lower ASCII" Latin characters and various symbols. In a European font, this feature replaces proportionally-spaced glyphs with monospaced glyphs, which are generally set on widths of 0.6 em. For example, a user may invoke this feature in a Japanese font to get full monospaced Latin glyphs instead of the corresponding proportionally-spaced versions.</p> <p><strong>Equivalent OpenType tag:</strong> 'fwid'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_FRACTIONS']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -15736,7 +15596,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.FullWidth">
             <summary>	
-            <dd> <p> Replaces glyphs set on other widths with glyphs set on full (usually em) widths. In a CJKV font, this may include "lower ASCII" Latin characters and various symbols. In a European font, this feature replaces proportionally-spaced glyphs with monospaced glyphs, which are generally set on widths of 0.6 em. For example, a user may invoke this feature in a Japanese font to get full monospaced Latin glyphs instead of the corresponding proportionally-spaced versions.</p> <p><strong>Equivalent OpenType tag:</strong> 'fwid'</p> </dd>	
+            <dd> <p> Produces the half forms of consonants in Indic scripts. For example, in Hindi (Devanagari script), the conjunct KKa, obtained by doubling the Ka, is denoted with a half form of Ka followed by the full form. </p> <p><strong>Equivalent OpenType tag:</strong> 'half'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_FULL_WIDTH']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -15745,7 +15605,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.HalfForms">
             <summary>	
-            <dd> <p> Produces the half forms of consonants in Indic scripts. For example, in Hindi (Devanagari script), the conjunct KKa, obtained by doubling the Ka, is denoted with a half form of Ka followed by the full form. </p> <p><strong>Equivalent OpenType tag:</strong> 'half'</p> </dd>	
+            <dd> <p> Produces the halant forms of consonants in Indic scripts. For example, in Sanskrit (Devanagari script), syllable final consonants are frequently required in their halant form.</p> <p><strong>Equivalent OpenType tag:</strong> 'haln'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_HALF_FORMS']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -15754,7 +15614,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.HalantForms">
             <summary>	
-            <dd> <p> Produces the halant forms of consonants in Indic scripts. For example, in Sanskrit (Devanagari script), syllable final consonants are frequently required in their halant form.</p> <p><strong>Equivalent OpenType tag:</strong> 'haln'</p> </dd>	
+            <dd> <p> Respaces glyphs designed to be set on full-em widths, fitting them onto half-em widths. This differs from hwid in that it does not substitute new glyphs.</p> <p><strong>Equivalent OpenType tag:</strong> 'halt'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_HALANT_FORMS']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -15763,7 +15623,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.AlternateHalfWidth">
             <summary>	
-            <dd> <p> Respaces glyphs designed to be set on full-em widths, fitting them onto half-em widths. This differs from hwid in that it does not substitute new glyphs.</p> <p><strong>Equivalent OpenType tag:</strong> 'halt'</p> </dd>	
+            <dd> <p> Replaces the default (current) forms with the historical alternates. While some ligatures are also used for historical effect, this feature deals only with single characters. Some fonts include the historical forms as alternates, so they can be used for a 'period' effect.  </p> <p><strong>Equivalent OpenType tag:</strong> 'hist'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_ALTERNATE_HALF_WIDTH']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -15772,7 +15632,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.HistoricalForms">
             <summary>	
-            <dd> <p> Replaces the default (current) forms with the historical alternates. While some ligatures are also used for historical effect, this feature deals only with single characters. Some fonts include the historical forms as alternates, so they can be used for a 'period' effect.  </p> <p><strong>Equivalent OpenType tag:</strong> 'hist'</p> </dd>	
+            <dd> <p> Replaces standard kana with forms that have been specially designed for only horizontal writing. This is a typographic optimization for improved fit and more even color.</p> <p><strong>Equivalent OpenType tag:</strong> 'hkna'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_HISTORICAL_FORMS']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -15781,7 +15641,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.HorizontalKanaAlternates">
             <summary>	
-            <dd> <p> Replaces standard kana with forms that have been specially designed for only horizontal writing. This is a typographic optimization for improved fit and more even color.</p> <p><strong>Equivalent OpenType tag:</strong> 'hkna'</p> </dd>	
+            <dd> <p> Replaces the default (current) forms with the historical alternates. Some ligatures were in common use in the past, but appear anachronistic today. Some fonts include the historical forms as alternates, so they can be used for a 'period' effect.</p> <p><strong>Equivalent OpenType tag:</strong> 'hlig'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_HORIZONTAL_KANA_ALTERNATES']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -15790,7 +15650,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.HistoricalLigatures">
             <summary>	
-            <dd> <p> Replaces the default (current) forms with the historical alternates. Some ligatures were in common use in the past, but appear anachronistic today. Some fonts include the historical forms as alternates, so they can be used for a 'period' effect.</p> <p><strong>Equivalent OpenType tag:</strong> 'hlig'</p> </dd>	
+            <dd> <p> Replaces glyphs on proportional widths, or fixed widths other than half an em, with glyphs on half-em (en) widths. Many CJKV fonts have glyphs which are set on multiple widths; this feature selects the half-em version. There are various contexts in which this is the preferred behavior, including compatibility with older desktop documents.</p> <p><strong>Equivalent OpenType tag:</strong> 'hwid'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_HISTORICAL_LIGATURES']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -15799,7 +15659,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.HalfWidth">
             <summary>	
-            <dd> <p> Replaces glyphs on proportional widths, or fixed widths other than half an em, with glyphs on half-em (en) widths. Many CJKV fonts have glyphs which are set on multiple widths; this feature selects the half-em version. There are various contexts in which this is the preferred behavior, including compatibility with older desktop documents.</p> <p><strong>Equivalent OpenType tag:</strong> 'hwid'</p> </dd>	
+            <dd> <p> Used to access the JIS X 0212-1990 glyphs for the cases when the JIS X 0213:2004 form is encoded. The JIS X 0212-1990 (aka, "Hojo Kanji") and JIS X 0213:2004 character sets overlap significantly. In some cases their prototypical glyphs differ. When building fonts that support both JIS X 0212-1990 and JIS X 0213:2004 (such as those supporting the Adobe-Japan 1-6 character collection), it is recommended that JIS X 0213:2004 forms be the preferred encoded form.</p> <p><strong>Equivalent OpenType tag:</strong> 'hojo'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_HALF_WIDTH']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -15808,7 +15668,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.HojoKanjiForms">
             <summary>	
-            <dd> <p> Used to access the JIS X 0212-1990 glyphs for the cases when the JIS X 0213:2004 form is encoded. The JIS X 0212-1990 (aka, "Hojo Kanji") and JIS X 0213:2004 character sets overlap significantly. In some cases their prototypical glyphs differ. When building fonts that support both JIS X 0212-1990 and JIS X 0213:2004 (such as those supporting the Adobe-Japan 1-6 character collection), it is recommended that JIS X 0213:2004 forms be the preferred encoded form.</p> <p><strong>Equivalent OpenType tag:</strong> 'hojo'</p> </dd>	
+            <dd> <p> The National Language Council (NLC) of Japan has defined new glyph shapes for a number of JIS characters, which were incorporated into JIS X 0213:2004 as new prototypical forms. The 'jp04' feature is A subset of the 'nlck' feature, and is used to access these prototypical glyphs in a manner that maintains the integrity of JIS X 0213:2004.</p> <p><strong>Equivalent OpenType tag:</strong> 'jp04'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_HOJO_KANJI_FORMS']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -15817,7 +15677,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.Jis04Forms">
             <summary>	
-            <dd> <p> The National Language Council (NLC) of Japan has defined new glyph shapes for a number of JIS characters, which were incorporated into JIS X 0213:2004 as new prototypical forms. The 'jp04' feature is A subset of the 'nlck' feature, and is used to access these prototypical glyphs in a manner that maintains the integrity of JIS X 0213:2004.</p> <p><strong>Equivalent OpenType tag:</strong> 'jp04'</p> </dd>	
+            <dd> <p>Replaces default (JIS90) Japanese glyphs with the corresponding forms from the JIS C 6226-1978 (JIS78) specification.</p> <p><strong>Equivalent OpenType tag:</strong> 'jp78'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_JIS04_FORMS']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -15826,7 +15686,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.Jis78Forms">
             <summary>	
-            <dd> <p>Replaces default (JIS90) Japanese glyphs with the corresponding forms from the JIS C 6226-1978 (JIS78) specification.</p> <p><strong>Equivalent OpenType tag:</strong> 'jp78'</p> </dd>	
+            <dd> <p>Replaces default (JIS90) Japanese glyphs with the corresponding forms from the JIS X 0208-1983 (JIS83) specification.</p> <p><strong>Equivalent OpenType tag:</strong> 'jp83'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_JIS78_FORMS']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -15835,7 +15695,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.Jis83Forms">
             <summary>	
-            <dd> <p>Replaces default (JIS90) Japanese glyphs with the corresponding forms from the JIS X 0208-1983 (JIS83) specification.</p> <p><strong>Equivalent OpenType tag:</strong> 'jp83'</p> </dd>	
+            <dd> <p> Replaces Japanese glyphs from the JIS78 or JIS83 specifications with the corresponding forms from the JIS X 0208-1990 (JIS90) specification.</p> <p><strong>Equivalent OpenType tag:</strong> 'jp90'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_JIS83_FORMS']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -15844,7 +15704,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.Jis90Forms">
             <summary>	
-            <dd> <p> Replaces Japanese glyphs from the JIS78 or JIS83 specifications with the corresponding forms from the JIS X 0208-1990 (JIS90) specification.</p> <p><strong>Equivalent OpenType tag:</strong> 'jp90'</p> </dd>	
+            <dd> <p> Adjusts amount of space between glyphs, generally to provide optically consistent spacing between glyphs. Although a well-designed typeface has consistent inter-glyph spacing overall, some glyph combinations require adjustment for improved legibility. Besides standard adjustment in the horizontal direction, this feature can supply size-dependent kerning data via device tables, "cross-stream" kerning in the Y text direction, and adjustment of glyph placement independent of the advance adjustment. Note that this feature may apply to runs of more than two glyphs, and would not be used in monospaced fonts. Also note that this feature does not apply to text set vertically.</p> <p><strong>Equivalent OpenType tag:</strong> 'kern'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_JIS90_FORMS']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -15853,7 +15713,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.Kerning">
             <summary>	
-            <dd> <p> Adjusts amount of space between glyphs, generally to provide optically consistent spacing between glyphs. Although a well-designed typeface has consistent inter-glyph spacing overall, some glyph combinations require adjustment for improved legibility. Besides standard adjustment in the horizontal direction, this feature can supply size-dependent kerning data via device tables, "cross-stream" kerning in the Y text direction, and adjustment of glyph placement independent of the advance adjustment. Note that this feature may apply to runs of more than two glyphs, and would not be used in monospaced fonts. Also note that this feature does not apply to text set vertically.</p> <p><strong>Equivalent OpenType tag:</strong> 'kern'</p> </dd>	
+            <dd> <p> Replaces a sequence of glyphs with a single glyph which is preferred for typographic purposes. This feature covers the ligatures which the designer/manufacturer judges should be used in normal conditions.</p> <p><strong>Equivalent OpenType tag:</strong> 'liga'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_KERNING']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -15862,7 +15722,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.StandardLigatures">
             <summary>	
-            <dd> <p> Replaces a sequence of glyphs with a single glyph which is preferred for typographic purposes. This feature covers the ligatures which the designer/manufacturer judges should be used in normal conditions.</p> <p><strong>Equivalent OpenType tag:</strong> 'liga'</p> </dd>	
+            <dd> <p>Changes selected figures from oldstyle to the default lining form. For example, a user may invoke this feature in order to get lining figures, which fit better with all-capital text. This feature overrides results of the Oldstyle Figures feature (onum).</p> <p><strong>Equivalent OpenType tag:</strong> 'lnum'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_STANDARD_LIGATURES']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -15871,7 +15731,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.LiningFigures">
             <summary>	
-            <dd> <p>Changes selected figures from oldstyle to the default lining form. For example, a user may invoke this feature in order to get lining figures, which fit better with all-capital text. This feature overrides results of the Oldstyle Figures feature (onum).</p> <p><strong>Equivalent OpenType tag:</strong> 'lnum'</p> </dd>	
+            <dd> <p> Enables localized forms of glyphs to be substituted for default forms. Many scripts used to write multiple languages over wide geographical areas have developed localized variant forms of specific letters, which are used by individual literary communities. For example, a number of letters in the Bulgarian and Serbian alphabets have forms distinct from their Russian counterparts and from each other. In some cases the localized form differs only subtly from the script 'norm', in others the forms are radically distinct. </p> <p><strong>Equivalent OpenType tag:</strong> 'locl'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_LINING_FIGURES']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -15880,7 +15740,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.LocalizedForms">
             <summary>	
-            <dd> <p> Enables localized forms of glyphs to be substituted for default forms. Many scripts used to write multiple languages over wide geographical areas have developed localized variant forms of specific letters, which are used by individual literary communities. For example, a number of letters in the Bulgarian and Serbian alphabets have forms distinct from their Russian counterparts and from each other. In some cases the localized form differs only subtly from the script 'norm', in others the forms are radically distinct. </p> <p><strong>Equivalent OpenType tag:</strong> 'locl'</p> </dd>	
+            <dd> <p> Positions mark glyphs with respect to base glyphs. For example, in Arabic script positioning the Hamza above the Yeh.</p> <p><strong>Equivalent OpenType tag: </strong> 'mark'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_LOCALIZED_FORMS']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -15889,7 +15749,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.MarkPositioning">
             <summary>	
-            <dd> <p> Positions mark glyphs with respect to base glyphs. For example, in Arabic script positioning the Hamza above the Yeh.</p> <p><strong>Equivalent OpenType tag: </strong> 'mark'</p> </dd>	
+            <dd> <p> Replaces standard typographic forms of Greek glyphs with corresponding forms commonly used in mathematical notation (which are a subset of the Greek alphabet).</p> <p><strong>Equivalent OpenType tag:</strong> 'mgrk'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_MARK_POSITIONING']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -15898,7 +15758,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.MathematicalGreek">
             <summary>	
-            <dd> <p> Replaces standard typographic forms of Greek glyphs with corresponding forms commonly used in mathematical notation (which are a subset of the Greek alphabet).</p> <p><strong>Equivalent OpenType tag:</strong> 'mgrk'</p> </dd>	
+            <dd> <p> Positions marks with respect to other marks. Required in various non-Latin scripts like Arabic. For example, in Arabic, the ligaturised mark Ha with Hamza above it can also be obtained by positioning these marks relative to one another.</p> <p><strong>Equivalent OpenType tag:</strong> 'mkmk'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_MATHEMATICAL_GREEK']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -15907,7 +15767,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.MarkToMarkPositioning">
             <summary>	
-            <dd> <p> Positions marks with respect to other marks. Required in various non-Latin scripts like Arabic. For example, in Arabic, the ligaturised mark Ha with Hamza above it can also be obtained by positioning these marks relative to one another.</p> <p><strong>Equivalent OpenType tag:</strong> 'mkmk'</p> </dd>	
+            <dd> <p> Replaces default glyphs with various notational forms (such as glyphs placed in open or solid circles, squares, parentheses, diamonds or rounded boxes). In some cases an annotation form may already be present, but the user may want a different one.</p> <p><strong>Equivalent OpenType tag:</strong> 'nalt'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_MARK_TO_MARK_POSITIONING']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -15916,7 +15776,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.AlternateAnnotationForms">
             <summary>	
-            <dd> <p> Replaces default glyphs with various notational forms (such as glyphs placed in open or solid circles, squares, parentheses, diamonds or rounded boxes). In some cases an annotation form may already be present, but the user may want a different one.</p> <p><strong>Equivalent OpenType tag:</strong> 'nalt'</p> </dd>	
+            <dd> <p> Used to access  glyphs made from glyph shapes defined by the National Language Council (NLC) of Japan for a number of JIS characters in 2000. </p> <p><strong>Equivalent OpenType tag:</strong> 'nlck'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_ALTERNATE_ANNOTATION_FORMS']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -15925,7 +15785,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.NlcKanjiForms">
             <summary>	
-            <dd> <p> Used to access  glyphs made from glyph shapes defined by the National Language Council (NLC) of Japan for a number of JIS characters in 2000. </p> <p><strong>Equivalent OpenType tag:</strong> 'nlck'</p> </dd>	
+            <dd> <p> Changes selected figures from the default lining style to oldstyle form. For example, a user may invoke this feature to get oldstyle figures, which fit better into the flow of normal upper- and lowercase text. This feature overrides results of the Lining Figures feature (lnum).</p> <p><strong>Equivalent OpenType tag:</strong> 'onum'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_NLC_KANJI_FORMS']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -15934,7 +15794,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.OldStyleFigures">
             <summary>	
-            <dd> <p> Changes selected figures from the default lining style to oldstyle form. For example, a user may invoke this feature to get oldstyle figures, which fit better into the flow of normal upper- and lowercase text. This feature overrides results of the Lining Figures feature (lnum).</p> <p><strong>Equivalent OpenType tag:</strong> 'onum'</p> </dd>	
+            <dd> <p> Replaces default alphabetic glyphs with the corresponding ordinal forms for use after figures. One exception to the follows-a-figure rule is the numero character (U+2116), which is actually a ligature substitution, but is best accessed through this feature.</p> <p><strong>Equivalent OpenType tag:</strong> 'ordn'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_OLD_STYLE_FIGURES']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -15943,7 +15803,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.Ordinals">
             <summary>	
-            <dd> <p> Replaces default alphabetic glyphs with the corresponding ordinal forms for use after figures. One exception to the follows-a-figure rule is the numero character (U+2116), which is actually a ligature substitution, but is best accessed through this feature.</p> <p><strong>Equivalent OpenType tag:</strong> 'ordn'</p> </dd>	
+            <dd> <p> Respaces glyphs designed to be set on full-em widths, fitting them onto individual (more or less proportional) horizontal widths. This differs from pwid in that it does not substitute new glyphs (GPOS, not GSUB feature). The user may prefer the monospaced form, or may simply want to ensure that the glyph is well-fit and not rotated in vertical setting (Latin forms designed for proportional spacing would be rotated).</p> <p><strong>Equivalent OpenType tag:</strong> 'palt'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_ORDINALS']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -15952,7 +15812,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.ProportionalAlternateWidth">
             <summary>	
-            <dd> <p> Respaces glyphs designed to be set on full-em widths, fitting them onto individual (more or less proportional) horizontal widths. This differs from pwid in that it does not substitute new glyphs (GPOS, not GSUB feature). The user may prefer the monospaced form, or may simply want to ensure that the glyph is well-fit and not rotated in vertical setting (Latin forms designed for proportional spacing would be rotated).</p> <p><strong>Equivalent OpenType tag:</strong> 'palt'</p> </dd>	
+            <dd> <p>Turns lowercase characters into petite capitals. Forms related to petite capitals, such as specially designed figures, may be included. Some fonts contain an additional size of capital letters, shorter than the regular smallcaps and it is referred to as petite caps. Such forms are most likely to be found in designs with a small lowercase x-height, where they better harmonise with lowercase text than the taller smallcaps (for examples of petite caps, see the Emigre type families Mrs Eaves and Filosofia). </p> <p><strong>Equivalent OpenType tag:</strong> 'pcap'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_PROPORTIONAL_ALTERNATE_WIDTH']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -15961,7 +15821,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.PetiteCapitals">
             <summary>	
-            <dd> <p>Turns lowercase characters into petite capitals. Forms related to petite capitals, such as specially designed figures, may be included. Some fonts contain an additional size of capital letters, shorter than the regular smallcaps and it is referred to as petite caps. Such forms are most likely to be found in designs with a small lowercase x-height, where they better harmonise with lowercase text than the taller smallcaps (for examples of petite caps, see the Emigre type families Mrs Eaves and Filosofia). </p> <p><strong>Equivalent OpenType tag:</strong> 'pcap'</p> </dd>	
+            <dd> <p> Replaces figure glyphs set on uniform (tabular) widths with corresponding glyphs set on glyph-specific (proportional) widths. Tabular widths will generally be the default, but this cannot be safely assumed. Of course this feature would not be present in monospaced designs.</p> <p><strong>Equivalent OpenType tag:</strong> 'pnum'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_PETITE_CAPITALS']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -15970,7 +15830,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.ProportionalFigures">
             <summary>	
-            <dd> <p> Replaces figure glyphs set on uniform (tabular) widths with corresponding glyphs set on glyph-specific (proportional) widths. Tabular widths will generally be the default, but this cannot be safely assumed. Of course this feature would not be present in monospaced designs.</p> <p><strong>Equivalent OpenType tag:</strong> 'pnum'</p> </dd>	
+            <dd> <p> Replaces glyphs set on uniform widths (typically full or half-em) with proportionally spaced glyphs. The proportional variants are often used for the Latin characters in CJKV fonts, but may also be used for Kana in Japanese fonts.</p> <p><strong>Equivalent OpenType tag:</strong> 'pwid'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_PROPORTIONAL_FIGURES']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -15979,7 +15839,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.ProportionalWidths">
             <summary>	
-            <dd> <p> Replaces glyphs set on uniform widths (typically full or half-em) with proportionally spaced glyphs. The proportional variants are often used for the Latin characters in CJKV fonts, but may also be used for Kana in Japanese fonts.</p> <p><strong>Equivalent OpenType tag:</strong> 'pwid'</p> </dd>	
+            <dd> <p> Replaces glyphs on other widths with glyphs set on widths of one quarter of an em (half an en). The characters involved are normally figures and some forms of punctuation.</p> <p><strong>Equivalent OpenType tag:</strong> 'qwid'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_PROPORTIONAL_WIDTHS']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -15988,7 +15848,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.QuarterWidths">
             <summary>	
-            <dd> <p> Replaces glyphs on other widths with glyphs set on widths of one quarter of an em (half an en). The characters involved are normally figures and some forms of punctuation.</p> <p><strong>Equivalent OpenType tag:</strong> 'qwid'</p> </dd>	
+            <dd> <p> Replaces a sequence of glyphs with a single glyph which is preferred for typographic purposes. This feature covers those ligatures, which the script determines as required to be used in normal conditions. This feature is important for some scripts to ensure correct glyph formation. </p> <p><strong>Equivalent OpenType tag:</strong> 'rlig'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_QUARTER_WIDTHS']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -15997,7 +15857,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.RequiredLigatures">
             <summary>	
-            <dd> <p> Replaces a sequence of glyphs with a single glyph which is preferred for typographic purposes. This feature covers those ligatures, which the script determines as required to be used in normal conditions. This feature is important for some scripts to ensure correct glyph formation. </p> <p><strong>Equivalent OpenType tag:</strong> 'rlig'</p> </dd>	
+            <dd> <p> Identifies glyphs in the font which have been designed for "ruby", from the old typesetting term for four-point-sized type. Japanese typesetting often uses smaller kana glyphs, generally in superscripted form, to clarify the meaning of kanji which may be unfamiliar to the reader. </p> <p><strong>Equivalent OpenType tag:</strong> 'ruby'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_REQUIRED_LIGATURES']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -16006,7 +15866,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.RubyNotationForms">
             <summary>	
-            <dd> <p> Identifies glyphs in the font which have been designed for "ruby", from the old typesetting term for four-point-sized type. Japanese typesetting often uses smaller kana glyphs, generally in superscripted form, to clarify the meaning of kanji which may be unfamiliar to the reader. </p> <p><strong>Equivalent OpenType tag:</strong> 'ruby'</p> </dd>	
+            <dd> <p> Replaces the default forms with the stylistic alternates. Many fonts contain alternate glyph designs for a purely esthetic effect; these don't always fit into a clear category like swash or historical. As in the case of swash glyphs, there may be more than one alternate form.  </p> <p><strong>Equivalent OpenType tag:</strong> 'salt'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_RUBY_NOTATION_FORMS']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -16015,7 +15875,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.StylisticAlternates">
             <summary>	
-            <dd> <p> Replaces the default forms with the stylistic alternates. Many fonts contain alternate glyph designs for a purely esthetic effect; these don't always fit into a clear category like swash or historical. As in the case of swash glyphs, there may be more than one alternate form.  </p> <p><strong>Equivalent OpenType tag:</strong> 'salt'</p> </dd>	
+            <dd> <p> Replaces lining or oldstyle figures with inferior figures (smaller glyphs which sit lower than the standard baseline, primarily for chemical or mathematical notation). May also replace lowercase characters with alphabetic inferiors.</p> <p><strong>Equivalent OpenType tag:</strong> 'sinf'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_STYLISTIC_ALTERNATES']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -16024,7 +15884,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.ScientificInferiors">
             <summary>	
-            <dd> <p> Replaces lining or oldstyle figures with inferior figures (smaller glyphs which sit lower than the standard baseline, primarily for chemical or mathematical notation). May also replace lowercase characters with alphabetic inferiors.</p> <p><strong>Equivalent OpenType tag:</strong> 'sinf'</p> </dd>	
+            <dd> <p> Turns lowercase characters into small capitals. This corresponds to the common SC font layout. It is generally used for display lines set in Large &amp; small caps, such as titles. Forms related to small capitals, such as oldstyle figures, may be included.</p> <p><strong>Equivalent OpenType tag:</strong> 'smcp'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_SCIENTIFIC_INFERIORS']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -16033,7 +15893,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.SmallCapitals">
             <summary>	
-            <dd> <p> Turns lowercase characters into small capitals. This corresponds to the common SC font layout. It is generally used for display lines set in Large &amp; small caps, such as titles. Forms related to small capitals, such as oldstyle figures, may be included.</p> <p><strong>Equivalent OpenType tag:</strong> 'smcp'</p> </dd>	
+            <dd> <p> Replaces 'traditional' Chinese or Japanese forms with the corresponding 'simplified' forms.</p> <p><strong>Equivalent OpenType tag:</strong> 'smpl'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_SMALL_CAPITALS']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -16042,7 +15902,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.SimplifiedForms">
             <summary>	
-            <dd> <p> Replaces 'traditional' Chinese or Japanese forms with the corresponding 'simplified' forms.</p> <p><strong>Equivalent OpenType tag:</strong> 'smpl'</p> </dd>	
+            <dd> <p> In addition to, or instead of, stylistic alternatives of individual glyphs (see 'salt' feature), some fonts may contain sets of stylistic variant glyphs corresponding to portions of the character set, such as multiple variants for lowercase letters in a Latin font. Glyphs in stylistic sets may be designed to harmonise visually, interract in particular ways, or otherwise work together. Examples of fonts including stylistic sets are Zapfino Linotype and Adobe's Poetica. Individual features numbered sequentially with the tag name convention 'ss01' 'ss02' 'ss03' . 'ss20' provide a mechanism for glyphs in these sets to be associated via GSUB lookup indexes to default forms and to each other, and for users to select from available stylistic sets</p> <p><strong>Equivalent OpenType tag:</strong> 'ss01'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_SIMPLIFIED_FORMS']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -16051,7 +15911,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.StylisticSet1">
             <summary>	
-            <dd> <p> In addition to, or instead of, stylistic alternatives of individual glyphs (see 'salt' feature), some fonts may contain sets of stylistic variant glyphs corresponding to portions of the character set, such as multiple variants for lowercase letters in a Latin font. Glyphs in stylistic sets may be designed to harmonise visually, interract in particular ways, or otherwise work together. Examples of fonts including stylistic sets are Zapfino Linotype and Adobe's Poetica. Individual features numbered sequentially with the tag name convention 'ss01' 'ss02' 'ss03' . 'ss20' provide a mechanism for glyphs in these sets to be associated via GSUB lookup indexes to default forms and to each other, and for users to select from available stylistic sets</p> <p><strong>Equivalent OpenType tag:</strong> 'ss01'</p> </dd>	
+            <dd> <p>See the description for <see cref="F:SharpDX.DirectWrite.FontFeatureTag.StylisticSet1"/>.</p> <p><strong>Equivalent OpenType tag:</strong> 'ss02'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_STYLISTIC_SET_1']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -16060,7 +15920,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.StylisticSet2">
             <summary>	
-            <dd> <p>See the description for <see cref="F:SharpDX.DirectWrite.FontFeatureTag.StylisticSet1"/>.</p> <p><strong>Equivalent OpenType tag:</strong> 'ss02'</p> </dd>	
+            <dd> <p>See the description for <see cref="F:SharpDX.DirectWrite.FontFeatureTag.StylisticSet1"/>.</p> <p><strong>Equivalent OpenType tag:</strong> 'ss03'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_STYLISTIC_SET_2']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -16069,7 +15929,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.StylisticSet3">
             <summary>	
-            <dd> <p>See the description for <see cref="F:SharpDX.DirectWrite.FontFeatureTag.StylisticSet1"/>.</p> <p><strong>Equivalent OpenType tag:</strong> 'ss03'</p> </dd>	
+            <dd> <p>See the description for <see cref="F:SharpDX.DirectWrite.FontFeatureTag.StylisticSet1"/>.</p> <p><strong>Equivalent OpenType tag:</strong> 'ss04'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_STYLISTIC_SET_3']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -16078,7 +15938,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.StylisticSet4">
             <summary>	
-            <dd> <p>See the description for <see cref="F:SharpDX.DirectWrite.FontFeatureTag.StylisticSet1"/>.</p> <p><strong>Equivalent OpenType tag:</strong> 'ss04'</p> </dd>	
+            <dd> <p>See the description for <see cref="F:SharpDX.DirectWrite.FontFeatureTag.StylisticSet1"/>.</p> <p><strong>Equivalent OpenType tag:</strong> 'ss05'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_STYLISTIC_SET_4']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -16087,7 +15947,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.StylisticSet5">
             <summary>	
-            <dd> <p>See the description for <see cref="F:SharpDX.DirectWrite.FontFeatureTag.StylisticSet1"/>.</p> <p><strong>Equivalent OpenType tag:</strong> 'ss05'</p> </dd>	
+            <dd> <p>See the description for <see cref="F:SharpDX.DirectWrite.FontFeatureTag.StylisticSet1"/>.</p> <p><strong>Equivalent OpenType tag:</strong> 'ss06'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_STYLISTIC_SET_5']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -16096,7 +15956,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.StylisticSet6">
             <summary>	
-            <dd> <p>See the description for <see cref="F:SharpDX.DirectWrite.FontFeatureTag.StylisticSet1"/>.</p> <p><strong>Equivalent OpenType tag:</strong> 'ss06'</p> </dd>	
+            <dd> <p>See the description for <see cref="F:SharpDX.DirectWrite.FontFeatureTag.StylisticSet1"/>.</p> <p><strong>Equivalent OpenType tag:</strong> 'ss07'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_STYLISTIC_SET_6']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -16105,7 +15965,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.StylisticSet7">
             <summary>	
-            <dd> <p>See the description for <see cref="F:SharpDX.DirectWrite.FontFeatureTag.StylisticSet1"/>.</p> <p><strong>Equivalent OpenType tag:</strong> 'ss07'</p> </dd>	
+            <dd> <p>See the description for <see cref="F:SharpDX.DirectWrite.FontFeatureTag.StylisticSet1"/>.</p> <p><strong>Equivalent OpenType tag:</strong> 'ss08'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_STYLISTIC_SET_7']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -16114,7 +15974,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.StylisticSet8">
             <summary>	
-            <dd> <p>See the description for <see cref="F:SharpDX.DirectWrite.FontFeatureTag.StylisticSet1"/>.</p> <p><strong>Equivalent OpenType tag:</strong> 'ss08'</p> </dd>	
+            <dd> <p>See the description for <see cref="F:SharpDX.DirectWrite.FontFeatureTag.StylisticSet1"/>.</p> <p><strong>Equivalent OpenType tag:</strong> 'ss09'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_STYLISTIC_SET_8']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -16123,7 +15983,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.StylisticSet9">
             <summary>	
-            <dd> <p>See the description for <see cref="F:SharpDX.DirectWrite.FontFeatureTag.StylisticSet1"/>.</p> <p><strong>Equivalent OpenType tag:</strong> 'ss09'</p> </dd>	
+            <dd> <p>See the description for <see cref="F:SharpDX.DirectWrite.FontFeatureTag.StylisticSet1"/>.</p> <p><strong>Equivalent OpenType tag:</strong> 'ss10'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_STYLISTIC_SET_9']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -16132,7 +15992,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.StylisticSet10">
             <summary>	
-            <dd> <p>See the description for <see cref="F:SharpDX.DirectWrite.FontFeatureTag.StylisticSet1"/>.</p> <p><strong>Equivalent OpenType tag:</strong> 'ss10'</p> </dd>	
+            <dd> <p>See the description for <see cref="F:SharpDX.DirectWrite.FontFeatureTag.StylisticSet1"/>.</p> <p><strong>Equivalent OpenType tag:</strong> 'ss11'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_STYLISTIC_SET_10']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -16141,7 +16001,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.StylisticSet11">
             <summary>	
-            <dd> <p>See the description for <see cref="F:SharpDX.DirectWrite.FontFeatureTag.StylisticSet1"/>.</p> <p><strong>Equivalent OpenType tag:</strong> 'ss11'</p> </dd>	
+            <dd> <p>See the description for <see cref="F:SharpDX.DirectWrite.FontFeatureTag.StylisticSet1"/>.</p> <p><strong>Equivalent OpenType tag:</strong> 'ss12'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_STYLISTIC_SET_11']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -16150,7 +16010,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.StylisticSet12">
             <summary>	
-            <dd> <p>See the description for <see cref="F:SharpDX.DirectWrite.FontFeatureTag.StylisticSet1"/>.</p> <p><strong>Equivalent OpenType tag:</strong> 'ss12'</p> </dd>	
+            <dd> <p>See the description for <see cref="F:SharpDX.DirectWrite.FontFeatureTag.StylisticSet1"/>.</p> <p><strong>Equivalent OpenType tag:</strong> 'ss13'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_STYLISTIC_SET_12']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -16159,7 +16019,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.StylisticSet13">
             <summary>	
-            <dd> <p>See the description for <see cref="F:SharpDX.DirectWrite.FontFeatureTag.StylisticSet1"/>.</p> <p><strong>Equivalent OpenType tag:</strong> 'ss13'</p> </dd>	
+            <dd> <p>See the description for <see cref="F:SharpDX.DirectWrite.FontFeatureTag.StylisticSet1"/>.</p> <p><strong>Equivalent OpenType tag:</strong> 'ss14'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_STYLISTIC_SET_13']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -16168,7 +16028,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.StylisticSet14">
             <summary>	
-            <dd> <p>See the description for <see cref="F:SharpDX.DirectWrite.FontFeatureTag.StylisticSet1"/>.</p> <p><strong>Equivalent OpenType tag:</strong> 'ss14'</p> </dd>	
+            <dd> <p>See the description for <see cref="F:SharpDX.DirectWrite.FontFeatureTag.StylisticSet1"/>.</p> <p><strong>Equivalent OpenType tag:</strong> 'ss15'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_STYLISTIC_SET_14']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -16177,7 +16037,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.StylisticSet15">
             <summary>	
-            <dd> <p>See the description for <see cref="F:SharpDX.DirectWrite.FontFeatureTag.StylisticSet1"/>.</p> <p><strong>Equivalent OpenType tag:</strong> 'ss15'</p> </dd>	
+            <dd> <p>See the description for <see cref="F:SharpDX.DirectWrite.FontFeatureTag.StylisticSet1"/>.</p> <p><strong>Equivalent OpenType tag:</strong> 'ss16'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_STYLISTIC_SET_15']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -16186,7 +16046,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.StylisticSet16">
             <summary>	
-            <dd> <p>See the description for <see cref="F:SharpDX.DirectWrite.FontFeatureTag.StylisticSet1"/>.</p> <p><strong>Equivalent OpenType tag:</strong> 'ss16'</p> </dd>	
+            <dd> <p>See the description for <see cref="F:SharpDX.DirectWrite.FontFeatureTag.StylisticSet1"/>.</p> <p><strong>Equivalent OpenType tag:</strong> 'ss17'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_STYLISTIC_SET_16']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -16195,7 +16055,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.StylisticSet17">
             <summary>	
-            <dd> <p>See the description for <see cref="F:SharpDX.DirectWrite.FontFeatureTag.StylisticSet1"/>.</p> <p><strong>Equivalent OpenType tag:</strong> 'ss17'</p> </dd>	
+            <dd> <p>See the description for <see cref="F:SharpDX.DirectWrite.FontFeatureTag.StylisticSet1"/>.</p> <p><strong>Equivalent OpenType tag:</strong> 'ss18'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_STYLISTIC_SET_17']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -16204,7 +16064,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.StylisticSet18">
             <summary>	
-            <dd> <p>See the description for <see cref="F:SharpDX.DirectWrite.FontFeatureTag.StylisticSet1"/>.</p> <p><strong>Equivalent OpenType tag:</strong> 'ss18'</p> </dd>	
+            <dd> <p>See the description for <see cref="F:SharpDX.DirectWrite.FontFeatureTag.StylisticSet1"/>.</p> <p><strong>Equivalent OpenType tag:</strong> 'ss19'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_STYLISTIC_SET_18']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -16213,7 +16073,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.StylisticSet19">
             <summary>	
-            <dd> <p>See the description for <see cref="F:SharpDX.DirectWrite.FontFeatureTag.StylisticSet1"/>.</p> <p><strong>Equivalent OpenType tag:</strong> 'ss19'</p> </dd>	
+            <dd> <p>See the description for <see cref="F:SharpDX.DirectWrite.FontFeatureTag.StylisticSet1"/>.</p> <p><strong>Equivalent OpenType tag:</strong> 'ss20'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_STYLISTIC_SET_19']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -16222,7 +16082,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.StylisticSet20">
             <summary>	
-            <dd> <p>See the description for <see cref="F:SharpDX.DirectWrite.FontFeatureTag.StylisticSet1"/>.</p> <p><strong>Equivalent OpenType tag:</strong> 'ss20'</p> </dd>	
+            <dd> <p> May replace a default glyph with a subscript glyph, or it may combine a glyph substitution with positioning adjustments for proper placement.</p> <p><strong>Equivalent OpenType tag:</strong> 'subs'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_STYLISTIC_SET_20']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -16231,7 +16091,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.Subscript">
             <summary>	
-            <dd> <p> May replace a default glyph with a subscript glyph, or it may combine a glyph substitution with positioning adjustments for proper placement.</p> <p><strong>Equivalent OpenType tag:</strong> 'subs'</p> </dd>	
+            <dd> <p> Replaces lining or oldstyle figures with superior figures (primarily for footnote indication), and replaces lowercase letters with superior letters (primarily for abbreviated French titles).</p> <p><strong>Equivalent OpenType tag:</strong> 'sups'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_SUBSCRIPT']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -16240,7 +16100,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.Superscript">
             <summary>	
-            <dd> <p> Replaces lining or oldstyle figures with superior figures (primarily for footnote indication), and replaces lowercase letters with superior letters (primarily for abbreviated French titles).</p> <p><strong>Equivalent OpenType tag:</strong> 'sups'</p> </dd>	
+            <dd> <p> Replaces default character glyphs with corresponding swash glyphs. Note that there may be more than one swash alternate for a given character.</p> <p><strong>Equivalent OpenType tag:</strong> 'swsh'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_SUPERSCRIPT']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -16249,7 +16109,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.Swash">
             <summary>	
-            <dd> <p> Replaces default character glyphs with corresponding swash glyphs. Note that there may be more than one swash alternate for a given character.</p> <p><strong>Equivalent OpenType tag:</strong> 'swsh'</p> </dd>	
+            <dd> <p> Replaces the default glyphs with corresponding forms designed specifically for titling. These may be all-capital and/or larger on the body, and adjusted for viewing at larger sizes.</p> <p><strong>Equivalent OpenType tag:</strong> 'titl'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_SWASH']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -16258,7 +16118,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.Titling">
             <summary>	
-            <dd> <p> Replaces the default glyphs with corresponding forms designed specifically for titling. These may be all-capital and/or larger on the body, and adjusted for viewing at larger sizes.</p> <p><strong>Equivalent OpenType tag:</strong> 'titl'</p> </dd>	
+            <dd> <p> Replaces 'simplified' Japanese kanji forms with the corresponding 'traditional' forms. This is equivalent to the Traditional Forms feature, but explicitly limited to the traditional forms considered proper for use in personal names (as many as 205 glyphs in some fonts).</p> <p><strong>Equivalent OpenType tag:</strong> 'tnam'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_TITLING']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -16267,7 +16127,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.TraditionalNameForms">
             <summary>	
-            <dd> <p> Replaces 'simplified' Japanese kanji forms with the corresponding 'traditional' forms. This is equivalent to the Traditional Forms feature, but explicitly limited to the traditional forms considered proper for use in personal names (as many as 205 glyphs in some fonts).</p> <p><strong>Equivalent OpenType tag:</strong> 'tnam'</p> </dd>	
+            <dd> <p> Replaces figure glyphs set on proportional widths with corresponding glyphs set on uniform (tabular) widths. Tabular widths will generally be the default, but this cannot be safely assumed. Of course this feature would not be present in monospaced designs.</p> <p><strong>Equivalent OpenType tag:</strong> 'tnum'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_TRADITIONAL_NAME_FORMS']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -16276,7 +16136,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.TabularFigures">
             <summary>	
-            <dd> <p> Replaces figure glyphs set on proportional widths with corresponding glyphs set on uniform (tabular) widths. Tabular widths will generally be the default, but this cannot be safely assumed. Of course this feature would not be present in monospaced designs.</p> <p><strong>Equivalent OpenType tag:</strong> 'tnum'</p> </dd>	
+            <dd> <p> Replaces 'simplified' Chinese hanzi or Japanese kanji forms with the corresponding 'traditional' forms.</p> <p><strong>Equivalent OpenType tag:</strong> 'trad'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_TABULAR_FIGURES']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -16285,7 +16145,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.TraditionalForms">
             <summary>	
-            <dd> <p> Replaces 'simplified' Chinese hanzi or Japanese kanji forms with the corresponding 'traditional' forms.</p> <p><strong>Equivalent OpenType tag:</strong> 'trad'</p> </dd>	
+            <dd> <p> Replaces glyphs on other widths with glyphs set on widths of one third of an em. The characters involved are normally figures and some forms of punctuation.</p> <p><strong>Equivalent OpenType tag:</strong> 'twid'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_TRADITIONAL_FORMS']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -16294,7 +16154,8 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.ThirdWidths">
             <summary>	
-            <dd> <p> Replaces glyphs on other widths with glyphs set on widths of one third of an em. The characters involved are normally figures and some forms of punctuation.</p> <p><strong>Equivalent OpenType tag:</strong> 'twid'</p> </dd>	
+            <dd> <p> Maps upper- and lowercase letters to a mixed set of lowercase and small capital forms, resulting in a single case alphabet (for an example of unicase, see the Emigre type family Filosofia). The letters substituted may vary from font to font, as appropriate to the design. If aligning to the x-height, smallcap glyphs may be substituted, or specially designed unicase forms might be used. Substitutions might also include specially designed figures.	
+            </p> <p><strong>Equivalent OpenType tag:</strong> 'unic'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_THIRD_WIDTHS']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -16303,8 +16164,7 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.Unicase">
             <summary>	
-            <dd> <p> Maps upper- and lowercase letters to a mixed set of lowercase and small capital forms, resulting in a single case alphabet (for an example of unicase, see the Emigre type family Filosofia). The letters substituted may vary from font to font, as appropriate to the design. If aligning to the x-height, smallcap glyphs may be substituted, or specially designed unicase forms might be used. Substitutions might also include specially designed figures.	
-            </p> <p><strong>Equivalent OpenType tag:</strong> 'unic'</p> </dd>	
+            <dd> <p>Allows the user to change from the default 0 to a slashed form. Some fonts contain both a default form of zero, and an alternative form which uses a diagonal slash through the counter. Especially in condensed designs, it can be difficult to distinguish between 0 and O (zero and capital O) in any situation where capitals and lining figures may be arbitrarily mixed. </p> <p><strong>Equivalent OpenType tag:</strong> 'zero'</p> </dd>	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_UNICASE']/*"/>	
             <msdn-id>dd368069</msdn-id>	
@@ -16313,10 +16173,9 @@
         </member>
         <member name="F:SharpDX.DirectWrite.FontFeatureTag.SlashedZero">
             <summary>	
-            <dd> <p>Allows the user to change from the default 0 to a slashed form. Some fonts contain both a default form of zero, and an alternative form which uses a diagonal slash through the counter. Especially in condensed designs, it can be difficult to distinguish between 0 and O (zero and capital O) in any situation where capitals and lining figures may be arbitrarily mixed. </p> <p><strong>Equivalent OpenType tag:</strong> 'zero'</p> </dd>	
+            No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_FONT_FEATURE_TAG_SLASHED_ZERO']/*"/>	
-            <msdn-id>dd368069</msdn-id>	
             <unmanaged>DWRITE_FONT_FEATURE_TAG_SLASHED_ZERO</unmanaged>	
             <unmanaged-short>DWRITE_FONT_FEATURE_TAG_SLASHED_ZERO</unmanaged-short>	
         </member>
@@ -17763,6 +17622,69 @@
             <unmanaged-short>GetFamilyNames</unmanaged-short>	
             <unmanaged>HRESULT IDWriteFontFamily::GetFamilyNames([Out] IDWriteLocalizedStrings** names)</unmanaged>
         </member>
+        <member name="T:SharpDX.DirectWrite.LocalFontFileLoader">
+            <summary>	
+            <p>A built-in implementation of the <strong><see cref="T:SharpDX.DirectWrite.FontFileLoader"/></strong> interface, that operates on local font files	
+            and exposes local font file information from the font file reference key. Font file references created using <strong>CreateFontFileReference</strong> use this font file loader.</p>	
+            </summary>	
+            <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='IDWriteLocalFontFileLoader']/*"/>	
+            <msdn-id>dd371238</msdn-id>	
+            <unmanaged>IDWriteLocalFontFileLoader</unmanaged>	
+            <unmanaged-short>IDWriteLocalFontFileLoader</unmanaged-short>	
+        </member>
+        <member name="M:SharpDX.DirectWrite.LocalFontFileLoader.#ctor(System.IntPtr)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SharpDX.DirectWrite.LocalFontFileLoader"/> class.
+            </summary>
+            <param name="nativePtr">The native pointer.</param>	
+        </member>
+        <member name="M:SharpDX.DirectWrite.LocalFontFileLoader.op_Explicit(System.IntPtr)~SharpDX.DirectWrite.LocalFontFileLoader">
+            <summary>
+            Performs an explicit conversion from <see cref="T:System.IntPtr"/> to <see cref="T:SharpDX.DirectWrite.LocalFontFileLoader"/>. (This method is a shortcut to <see cref="P:SharpDX.CppObject.NativePointer"/>) 
+            </summary>
+            <param name="nativePointer">The native pointer.</param>
+            <returns>
+            The result of the conversion.
+            </returns>
+        </member>
+        <member name="M:SharpDX.DirectWrite.LocalFontFileLoader.GetFilePathLengthFromKey(System.IntPtr,System.Int32)">
+            <summary>	
+            <p>Obtains the length of the absolute file path from the font file reference key.</p>	
+            </summary>	
+            <param name="fontFileReferenceKey"><dd> <p>Font file reference key that uniquely identifies the local font file within the scope of the font loader being used.</p> </dd></param>	
+            <param name="fontFileReferenceKeySize"><dd> <p>Size of font file reference key in bytes.</p> </dd></param>	
+            <returns><dd> <p>Length of the file path string, not including the terminated <strong><c>null</c></strong> character.</p> </dd></returns>	
+            <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='IDWriteLocalFontFileLoader::GetFilePathLengthFromKey']/*"/>	
+            <msdn-id>dd371244</msdn-id>	
+            <unmanaged>HRESULT IDWriteLocalFontFileLoader::GetFilePathLengthFromKey([In, Buffer] const void* fontFileReferenceKey,[In] unsigned int fontFileReferenceKeySize,[Out] unsigned int* filePathLength)</unmanaged>	
+            <unmanaged-short>IDWriteLocalFontFileLoader::GetFilePathLengthFromKey</unmanaged-short>	
+        </member>
+        <member name="M:SharpDX.DirectWrite.LocalFontFileLoader.GetFilePathFromKey(System.IntPtr,System.Int32,System.IntPtr,System.Int32)">
+            <summary>	
+            <p>Obtains the absolute font file path from the font file reference key.</p>	
+            </summary>	
+            <param name="fontFileReferenceKey"><dd> <p>The font file reference key that uniquely identifies the local font file within the scope of the font loader being used.</p> </dd></param>	
+            <param name="fontFileReferenceKeySize"><dd> <p>The size of font file reference key in bytes.</p> </dd></param>	
+            <param name="filePath"><dd> <p>The character array that receives the local file path.</p> </dd></param>	
+            <param name="filePathSize"><dd> <p>The length of the file path character array.</p> </dd></param>	
+            <returns><p>If this method succeeds, it returns <strong><see cref="F:SharpDX.Result.Ok"/></strong>. Otherwise, it returns an <strong><see cref="T:SharpDX.Result"/></strong> error code.</p></returns>	
+            <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='IDWriteLocalFontFileLoader::GetFilePathFromKey']/*"/>	
+            <msdn-id>dd371241</msdn-id>	
+            <unmanaged>HRESULT IDWriteLocalFontFileLoader::GetFilePathFromKey([In, Buffer] const void* fontFileReferenceKey,[In] unsigned int fontFileReferenceKeySize,[Out, Buffer] wchar_t* filePath,[In] unsigned int filePathSize)</unmanaged>	
+            <unmanaged-short>IDWriteLocalFontFileLoader::GetFilePathFromKey</unmanaged-short>	
+        </member>
+        <member name="M:SharpDX.DirectWrite.LocalFontFileLoader.GetLastWriteTimeFromKey(System.IntPtr,System.Int32)">
+            <summary>	
+            <p>Obtains the last write time of the file from the font file reference key.</p>	
+            </summary>	
+            <param name="fontFileReferenceKey"><dd> <p>The font file reference key that uniquely identifies the local font file within the scope of the font loader being used.</p> </dd></param>	
+            <param name="fontFileReferenceKeySize"><dd> <p>The size of font file reference key in bytes.</p> </dd></param>	
+            <returns><dd> <p>The time of the last font file modification.</p> </dd></returns>	
+            <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='IDWriteLocalFontFileLoader::GetLastWriteTimeFromKey']/*"/>	
+            <msdn-id>dd371247</msdn-id>	
+            <unmanaged>HRESULT IDWriteLocalFontFileLoader::GetLastWriteTimeFromKey([In, Buffer] const void* fontFileReferenceKey,[In] unsigned int fontFileReferenceKeySize,[Out] FILETIME* lastWriteTime)</unmanaged>	
+            <unmanaged-short>IDWriteLocalFontFileLoader::GetLastWriteTimeFromKey</unmanaged-short>	
+        </member>
         <member name="T:SharpDX.DirectWrite.ClusterMetrics">
             <summary>	
             <p>Contains information about a glyph cluster.</p>	
@@ -18131,7 +18053,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_HIT_TEST_METRICS::isTrimmed']/*"/>	
-            <msdn-id>dd368092</msdn-id>	
             <unmanaged>BOOL isTrimmed</unmanaged>	
             <unmanaged-short>BOOL isTrimmed</unmanaged-short>	
         </member>
@@ -18501,7 +18422,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file="..\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DWRITE_TEXT_METRICS::lineCount']/*"/>	
-            <msdn-id>dd368135</msdn-id>	
             <unmanaged>unsigned int lineCount</unmanaged>	
             <unmanaged-short>unsigned int lineCount</unmanaged-short>	
         </member>
@@ -18994,7 +18914,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D2D1_DEBUG_LEVEL_NONE']/*"/>	
-            <msdn-id>dd368090</msdn-id>	
             <unmanaged>D2D1_DEBUG_LEVEL_NONE</unmanaged>	
             <unmanaged-short>D2D1_DEBUG_LEVEL_NONE</unmanaged-short>	
         </member>
@@ -19003,7 +18922,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D2D1_DEBUG_LEVEL_ERROR']/*"/>	
-            <msdn-id>dd368090</msdn-id>	
             <unmanaged>D2D1_DEBUG_LEVEL_ERROR</unmanaged>	
             <unmanaged-short>D2D1_DEBUG_LEVEL_ERROR</unmanaged-short>	
         </member>
@@ -19012,7 +18930,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D2D1_DEBUG_LEVEL_WARNING']/*"/>	
-            <msdn-id>dd368090</msdn-id>	
             <unmanaged>D2D1_DEBUG_LEVEL_WARNING</unmanaged>	
             <unmanaged-short>D2D1_DEBUG_LEVEL_WARNING</unmanaged-short>	
         </member>
@@ -19021,7 +18938,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D2D1_DEBUG_LEVEL_INFORMATION']/*"/>	
-            <msdn-id>dd368090</msdn-id>	
             <unmanaged>D2D1_DEBUG_LEVEL_INFORMATION</unmanaged>	
             <unmanaged-short>D2D1_DEBUG_LEVEL_INFORMATION</unmanaged-short>	
         </member>
@@ -19147,7 +19063,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D2D1_FACTORY_TYPE_SINGLE_THREADED']/*"/>	
-            <msdn-id>dd368104</msdn-id>	
             <unmanaged>D2D1_FACTORY_TYPE_SINGLE_THREADED</unmanaged>	
             <unmanaged-short>D2D1_FACTORY_TYPE_SINGLE_THREADED</unmanaged-short>	
         </member>
@@ -19156,7 +19071,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D2D1_FACTORY_TYPE_MULTI_THREADED']/*"/>	
-            <msdn-id>dd368104</msdn-id>	
             <unmanaged>D2D1_FACTORY_TYPE_MULTI_THREADED</unmanaged>	
             <unmanaged-short>D2D1_FACTORY_TYPE_MULTI_THREADED</unmanaged-short>	
         </member>
@@ -19210,7 +19124,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D2D1_FIGURE_BEGIN_FILLED']/*"/>	
-            <msdn-id>dd368106</msdn-id>	
             <unmanaged>D2D1_FIGURE_BEGIN_FILLED</unmanaged>	
             <unmanaged-short>D2D1_FIGURE_BEGIN_FILLED</unmanaged-short>	
         </member>
@@ -19219,7 +19132,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D2D1_FIGURE_BEGIN_HOLLOW']/*"/>	
-            <msdn-id>dd368106</msdn-id>	
             <unmanaged>D2D1_FIGURE_BEGIN_HOLLOW</unmanaged>	
             <unmanaged-short>D2D1_FIGURE_BEGIN_HOLLOW</unmanaged-short>	
         </member>
@@ -19237,7 +19149,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D2D1_FIGURE_END_OPEN']/*"/>	
-            <msdn-id>dd368108</msdn-id>	
             <unmanaged>D2D1_FIGURE_END_OPEN</unmanaged>	
             <unmanaged-short>D2D1_FIGURE_END_OPEN</unmanaged-short>	
         </member>
@@ -19246,7 +19157,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D2D1_FIGURE_END_CLOSED']/*"/>	
-            <msdn-id>dd368108</msdn-id>	
             <unmanaged>D2D1_FIGURE_END_CLOSED</unmanaged>	
             <unmanaged-short>D2D1_FIGURE_END_CLOSED</unmanaged-short>	
         </member>
@@ -19378,7 +19288,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D2D1_GEOMETRY_SIMPLIFICATION_OPTION_CUBICS_AND_LINES']/*"/>	
-            <msdn-id>dd368117</msdn-id>	
             <unmanaged>D2D1_GEOMETRY_SIMPLIFICATION_OPTION_CUBICS_AND_LINES</unmanaged>	
             <unmanaged-short>D2D1_GEOMETRY_SIMPLIFICATION_OPTION_CUBICS_AND_LINES</unmanaged-short>	
         </member>
@@ -19387,7 +19296,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D2D1_GEOMETRY_SIMPLIFICATION_OPTION_LINES']/*"/>	
-            <msdn-id>dd368117</msdn-id>	
             <unmanaged>D2D1_GEOMETRY_SIMPLIFICATION_OPTION_LINES</unmanaged>	
             <unmanaged-short>D2D1_GEOMETRY_SIMPLIFICATION_OPTION_LINES</unmanaged-short>	
         </member>
@@ -20222,7 +20130,7 @@
             <param name="strokeStyle"><dd>  <p>The style of the stroke that widens the geometry.</p> </dd></param>	
             <param name="worldTransform"><dd>  <p>A transform to apply to the geometry after the geometry is transformed and after the geometry has been stroked.</p> </dd></param>	
             <param name="flatteningTolerance"><dd>  <p>When this method returns, contains the bounds of the widened geometry. You must allocate storage for this parameter.</p> </dd></param>	
-            <returns><dd>  <p>When this method returns, contains the bounds of the widened geometry. You must allocate storage for this parameter.</p> </dd></returns>	
+            <returns>No documentation.</returns>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='ID2D1Geometry::GetWidenedBounds']/*"/>	
             <msdn-id>dd316714</msdn-id>	
             <unmanaged>HRESULT ID2D1Geometry::GetWidenedBounds([In] float strokeWidth,[In, Optional] ID2D1StrokeStyle* strokeStyle,[In, Optional] const D2D_MATRIX_3X2_F* worldTransform,[In] float flatteningTolerance,[Out] D2D_RECT_F* bounds)</unmanaged>	
@@ -20237,7 +20145,7 @@
             <param name="strokeStyle"><dd>  <p>The style of stroke to apply.</p> </dd></param>	
             <param name="worldTransform"><dd>  <p>The transform to apply to the stroked geometry. </p> </dd></param>	
             <param name="flatteningTolerance"><dd>  <p>When this method returns, contains a boolean value set to true if the geometry's stroke contains the specified point; otherwise, false. You must allocate storage for this parameter.</p> </dd></param>	
-            <returns><dd>  <p>When this method returns, contains a boolean value set to true if the geometry's stroke contains the specified point; otherwise, false. You must allocate storage for this parameter.</p> </dd></returns>	
+            <returns>No documentation.</returns>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='ID2D1Geometry::StrokeContainsPoint']/*"/>	
             <msdn-id>dd316742</msdn-id>	
             <unmanaged>HRESULT ID2D1Geometry::StrokeContainsPoint([In] D2D_POINT_2F point,[In] float strokeWidth,[In, Optional] ID2D1StrokeStyle* strokeStyle,[In, Optional] const D2D_MATRIX_3X2_F* worldTransform,[In] float flatteningTolerance,[Out] BOOL* contains)</unmanaged>	
@@ -20603,7 +20511,7 @@
             <returns>If the method succeeds, it returns S_OK. Otherwise, it returns an HRESULT error code.</returns>
             <unmanaged>HRESULT Outline([In, Optional] const D2D1_MATRIX_3X2_F* worldTransform,[None] FLOAT flatteningTolerance,[In] ID2D1SimplifiedGeometrySink* geometrySink)</unmanaged>
         </member>
-        <member name="M:SharpDX.Direct2D1.Geometry.Simplify(SharpDX.Direct2D1.GeometrySimplificationOption,SharpDX.Direct2D1.SimplifiedGeometrySink)">
+        <member name="M:SharpDX.Direct2D1.Geometry.Simplify(SharpDX.Direct2D1.GeometrySimplificationOption,SharpDX.Direct2D1.GeometrySink)">
             <summary>	
             Creates a simplified version of the geometry that contains only lines and (optionally) cubic Bezier curves and writes the result to an <see cref="T:SharpDX.Direct2D1.SimplifiedGeometrySink"/>.	
             </summary>	
@@ -20612,7 +20520,7 @@
             <returns>If the method succeeds, it returns S_OK. Otherwise, it returns an HRESULT error code.</returns>
             <unmanaged>HRESULT Simplify([None] D2D1_GEOMETRY_SIMPLIFICATION_OPTION simplificationOption,[In, Optional] const D2D1_MATRIX_3X2_F* worldTransform,[None] FLOAT flatteningTolerance,[In] ID2D1SimplifiedGeometrySink* geometrySink)</unmanaged>
         </member>
-        <member name="M:SharpDX.Direct2D1.Geometry.Simplify(SharpDX.Direct2D1.GeometrySimplificationOption,System.Single,SharpDX.Direct2D1.SimplifiedGeometrySink)">
+        <member name="M:SharpDX.Direct2D1.Geometry.Simplify(SharpDX.Direct2D1.GeometrySimplificationOption,System.Single,SharpDX.Direct2D1.GeometrySink)">
             <summary>	
             Creates a simplified version of the geometry that contains only lines and (optionally) cubic Bezier curves and writes the result to an <see cref="T:SharpDX.Direct2D1.SimplifiedGeometrySink"/>.	
             </summary>	
@@ -20622,7 +20530,7 @@
             <returns>If the method succeeds, it returns S_OK. Otherwise, it returns an HRESULT error code.</returns>
             <unmanaged>HRESULT Simplify([None] D2D1_GEOMETRY_SIMPLIFICATION_OPTION simplificationOption,[In, Optional] const D2D1_MATRIX_3X2_F* worldTransform,[None] FLOAT flatteningTolerance,[In] ID2D1SimplifiedGeometrySink* geometrySink)</unmanaged>
         </member>
-        <member name="M:SharpDX.Direct2D1.Geometry.Simplify(SharpDX.Direct2D1.GeometrySimplificationOption,System.Nullable{SharpDX.Matrix3x2},System.Single,SharpDX.Direct2D1.SimplifiedGeometrySink)">
+        <member name="M:SharpDX.Direct2D1.Geometry.Simplify(SharpDX.Direct2D1.GeometrySimplificationOption,System.Nullable{SharpDX.Matrix3x2},System.Single,SharpDX.Direct2D1.GeometrySink)">
             <summary>	
             Creates a simplified version of the geometry that contains only lines and (optionally) cubic Bezier curves and writes the result to an <see cref="T:SharpDX.Direct2D1.SimplifiedGeometrySink"/>.	
             </summary>	
@@ -21344,12 +21252,6 @@
             <msdn-id>dd316919</msdn-id>	
             <unmanaged>ID2D1SimplifiedGeometrySink</unmanaged>	
             <unmanaged-short>ID2D1SimplifiedGeometrySink</unmanaged-short>	
-            <summary>
-            Describes a geometric path that does not contain quadratic Bezier curves or arcs.
-            </summary>
-            <remarks>
-            A geometry sink consists of one or more figures. Each figure is made up of one or more line or Bezier curve segments. To create a figure, call the <strong>BeginFigure</strong> method and specify the figure's start point, then use <strong>AddLines</strong> and <strong>AddBeziers</strong> to add line and Bezier segments. When you are finished adding segments, call the <strong>EndFigure</strong> method. You can repeat this sequence to create additional figures. When you are finished creating figures, call the <strong>Close</strong> method. To create geometry paths that can contain arcs and quadratic Bezier curves, use an <strong><see cref="T:SharpDX.Direct2D1.GeometrySink"/></strong>.
-            </remarks>
         </member>
         <member name="M:SharpDX.Direct2D1.SimplifiedGeometrySinkNative.#ctor(System.IntPtr)">
             <summary>
@@ -21453,64 +21355,6 @@
             <msdn-id>dd316932</msdn-id>	
             <unmanaged>HRESULT ID2D1SimplifiedGeometrySink::Close()</unmanaged>	
             <unmanaged-short>ID2D1SimplifiedGeometrySink::Close</unmanaged-short>	
-        </member>
-        <member name="M:SharpDX.Direct2D1.SimplifiedGeometrySinkNative.AddBeziers(SharpDX.Direct2D1.BezierSegment[])">
-            <summary>
-            Creates a sequence of cubic Bezier curves and adds them to the geometry sink.
-            </summary>
-            <param name="beziers">An array of Bezier segments that describes the Bezier curves to create. A curve is drawn from the geometry sink's current point (the end point of the last segment drawn or the location specified by <strong>BeginFigure</strong>) to the end point of the first Bezier segment in the array. If the array contains additional Bezier segments, each subsequent Bezier segment uses the end point of the preceding Bezier segment as its start point.</param>
-        </member>
-        <member name="M:SharpDX.Direct2D1.SimplifiedGeometrySinkNative.AddLines(SharpDX.Vector2[])">
-            <summary>
-            Creates a sequence of lines using the specified points and adds them to the geometry sink.
-            </summary>
-            <param name="points">An array of one or more points that describe the lines to draw. A line is drawn from the geometry sink's current point (the end point of the last segment drawn or the location specified by <strong>BeginFigure</strong>) to the first point in the array. If the array contains additional points, a line is drawn from the first point to the second point in the array, from the second point to the third point, and so on.</param>
-        </member>
-        <member name="M:SharpDX.Direct2D1.SimplifiedGeometrySinkNative.BeginFigure(SharpDX.Vector2,SharpDX.Direct2D1.FigureBegin)">
-            <summary>
-            Starts a new figure at the specified point.
-            </summary>
-            <param name="startPoint">The point at which to begin the new figure.</param>
-            <param name="figureBegin">Whether the new figure should be hollow or filled.</param>
-            <remarks>
-            If this method is called while a figure is currently in progress, the interface is invalidated and all future methods will fail.
-            </remarks>
-        </member>
-        <member name="M:SharpDX.Direct2D1.SimplifiedGeometrySinkNative.Close">
-            <summary>
-            Closes the geometry sink, indicates whether it is in an error state, and resets the sink's error state.
-            </summary>
-            <returns>If this method succeeds, it returns <strong><see cref="F:SharpDX.Result.Ok"/></strong>. Otherwise, it returns an <strong><see cref="T:SharpDX.Result"/></strong> error code.</returns>
-            <remarks>
-            Do not close the geometry sink while a figure is still in progress; doing so puts the geometry sink in an error state. For the close operation to be successful, there must be one <strong>EndFigure</strong> call for each call to <strong>BeginFigure</strong>.After calling this method, the geometry sink might not be usable. Direct2D implementations of this interface do not allow the geometry sink to be modified after it is closed, but other implementations might not impose this restriction.
-            </remarks>
-        </member>
-        <member name="M:SharpDX.Direct2D1.SimplifiedGeometrySinkNative.EndFigure(SharpDX.Direct2D1.FigureEnd)">
-            <summary>
-             Ends the current figure; optionally, closes it.
-            </summary>
-            <param name="figureEnd">A value that indicates whether the current figure is closed. If the figure is closed, a line is drawn between the current point and the start point specified by <strong>BeginFigure</strong>.</param>
-            <remarks>
-            Calling this method without a matching call to <strong>BeginFigure</strong> places the geometry sink in an error state; subsequent calls are ignored, and the overall failure will be returned when the <strong>Close</strong> method is called.
-            </remarks>
-        </member>
-        <member name="M:SharpDX.Direct2D1.SimplifiedGeometrySinkNative.SetFillMode(SharpDX.Direct2D1.FillMode)">
-            <summary>
-            Specifies the method used to determine which points are inside the geometry described by this geometry sink  and which points are outside.
-            </summary>
-            <param name="fillMode">The method used to determine whether a given point is part of the geometry.</param>
-            <remarks>
-            The fill mode defaults to <see cref="F:SharpDX.Direct2D1.FillMode.Alternate"/>. To set the fill mode, call <strong>SetFillMode</strong> before the first call to <strong>BeginFigure</strong>. Not doing will put the geometry sink in an error state.
-            </remarks>
-        </member>
-        <member name="M:SharpDX.Direct2D1.SimplifiedGeometrySinkNative.SetSegmentFlags(SharpDX.Direct2D1.PathSegment)">
-            <summary>
-            Specifies stroke and join options to be applied to new segments added to the geometry sink.
-            </summary>
-            <param name="vertexFlags">Stroke and join options to be applied to new segments added to the geometry sink.</param>
-            <remarks>
-            After this method is called, the specified segment flags are applied to each segment subsequently added to the sink. The segment flags are applied to every additional segment until this method is called again and a different set of segment flags is specified.
-            </remarks>
         </member>
         <member name="M:SharpDX.Direct2D1.GeometrySinkNative.#ctor(System.IntPtr)">
             <summary>
@@ -23053,7 +22897,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D2D1_BITMAP_BRUSH_PROPERTIES::extendModeX']/*"/>	
-            <msdn-id>dd368071</msdn-id>	
             <unmanaged>D2D1_EXTEND_MODE extendModeX</unmanaged>	
             <unmanaged-short>D2D1_EXTEND_MODE extendModeX</unmanaged-short>	
         </member>
@@ -23062,7 +22905,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D2D1_BITMAP_BRUSH_PROPERTIES::extendModeY']/*"/>	
-            <msdn-id>dd368071</msdn-id>	
             <unmanaged>D2D1_EXTEND_MODE extendModeY</unmanaged>	
             <unmanaged-short>D2D1_EXTEND_MODE extendModeY</unmanaged-short>	
         </member>
@@ -23071,7 +22913,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D2D1_BITMAP_BRUSH_PROPERTIES::interpolationMode']/*"/>	
-            <msdn-id>dd368071</msdn-id>	
             <unmanaged>D2D1_BITMAP_INTERPOLATION_MODE interpolationMode</unmanaged>	
             <unmanaged-short>D2D1_BITMAP_INTERPOLATION_MODE interpolationMode</unmanaged-short>	
         </member>
@@ -23176,7 +23017,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D2D1_FACTORY_OPTIONS::debugLevel']/*"/>	
-            <msdn-id>dd368102</msdn-id>	
             <unmanaged>D2D1_DEBUG_LEVEL debugLevel</unmanaged>	
             <unmanaged-short>D2D1_DEBUG_LEVEL debugLevel</unmanaged-short>	
         </member>
@@ -23227,7 +23067,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D2D1_HWND_RENDER_TARGET_PROPERTIES::hwnd']/*"/>	
-            <msdn-id>dd368122</msdn-id>	
             <unmanaged>HWND hwnd</unmanaged>	
             <unmanaged-short>HWND hwnd</unmanaged-short>	
         </member>
@@ -23236,7 +23075,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D2D1_HWND_RENDER_TARGET_PROPERTIES::pixelSize']/*"/>	
-            <msdn-id>dd368122</msdn-id>	
             <unmanaged>D2D_SIZE_U pixelSize</unmanaged>	
             <unmanaged-short>D2D_SIZE_U pixelSize</unmanaged-short>	
         </member>
@@ -23245,7 +23083,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D2D1_HWND_RENDER_TARGET_PROPERTIES::presentOptions']/*"/>	
-            <msdn-id>dd368122</msdn-id>	
             <unmanaged>D2D1_PRESENT_OPTIONS presentOptions</unmanaged>	
             <unmanaged-short>D2D1_PRESENT_OPTIONS presentOptions</unmanaged-short>	
         </member>
@@ -23266,7 +23103,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D2D1_LINEAR_GRADIENT_BRUSH_PROPERTIES::startPoint']/*"/>	
-            <msdn-id>dd368128</msdn-id>	
             <unmanaged>D2D_POINT_2F startPoint</unmanaged>	
             <unmanaged-short>D2D_POINT_2F startPoint</unmanaged-short>	
         </member>
@@ -23275,7 +23111,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D2D1_LINEAR_GRADIENT_BRUSH_PROPERTIES::endPoint']/*"/>	
-            <msdn-id>dd368128</msdn-id>	
             <unmanaged>D2D_POINT_2F endPoint</unmanaged>	
             <unmanaged-short>D2D_POINT_2F endPoint</unmanaged-short>	
         </member>
@@ -23360,7 +23195,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D2D1_RADIAL_GRADIENT_BRUSH_PROPERTIES::center']/*"/>	
-            <msdn-id>dd368149</msdn-id>	
             <unmanaged>D2D_POINT_2F center</unmanaged>	
             <unmanaged-short>D2D_POINT_2F center</unmanaged-short>	
         </member>
@@ -23369,7 +23203,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D2D1_RADIAL_GRADIENT_BRUSH_PROPERTIES::gradientOriginOffset']/*"/>	
-            <msdn-id>dd368149</msdn-id>	
             <unmanaged>D2D_POINT_2F gradientOriginOffset</unmanaged>	
             <unmanaged-short>D2D_POINT_2F gradientOriginOffset</unmanaged-short>	
         </member>
@@ -23378,7 +23211,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D2D1_RADIAL_GRADIENT_BRUSH_PROPERTIES::radiusX']/*"/>	
-            <msdn-id>dd368149</msdn-id>	
             <unmanaged>float radiusX</unmanaged>	
             <unmanaged-short>float radiusX</unmanaged-short>	
         </member>
@@ -23387,7 +23219,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D2D1_RADIAL_GRADIENT_BRUSH_PROPERTIES::radiusY']/*"/>	
-            <msdn-id>dd368149</msdn-id>	
             <unmanaged>float radiusY</unmanaged>	
             <unmanaged-short>float radiusY</unmanaged-short>	
         </member>

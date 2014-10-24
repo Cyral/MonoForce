@@ -17,7 +17,7 @@ namespace MonoForce.Controls
 
         public Texture2D CursorTexture
         {
-            get { return cursorTexture;}
+            get { return cursorTexture; }
             set { cursorTexture = value; }
         }
 

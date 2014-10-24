@@ -80,7 +80,6 @@ namespace MonoForce.External.Zip
             int month = (packedDate & 0x01E0) >> 5;
             int day = packedDate & 0x001F;
 
-
             int hour = (packedTime & 0xF800) >> 11;
             int minute = (packedTime & 0x07E0) >> 5;
             int second = packedTime & 0x001F;
@@ -98,7 +97,6 @@ namespace MonoForce.External.Zip
             return d;
         }
 
-
         protected internal static Int32 DateTimeToPacked(DateTime time)
         {
             UInt16 packedDate = (UInt16)((time.Day & 0x0000001F) | ((time.Month << 5) & 0x000001E0) | (((time.Year - 1980) << 9) & 0x0000FE00));
@@ -106,7 +104,5 @@ namespace MonoForce.External.Zip
             return (Int32)(((UInt32)(packedDate << 16)) | packedTime);
         }
     }
-
-
 
 }

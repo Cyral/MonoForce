@@ -217,7 +217,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_BLEND_DESC::AlphaToCoverageEnable']/*"/>	
-            <msdn-id>ff476087</msdn-id>	
             <unmanaged>BOOL AlphaToCoverageEnable</unmanaged>	
             <unmanaged-short>BOOL AlphaToCoverageEnable</unmanaged-short>	
         </member>
@@ -226,7 +225,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_BLEND_DESC::IndependentBlendEnable']/*"/>	
-            <msdn-id>ff476087</msdn-id>	
             <unmanaged>BOOL IndependentBlendEnable</unmanaged>	
             <unmanaged-short>BOOL IndependentBlendEnable</unmanaged-short>	
         </member>
@@ -235,7 +233,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_BLEND_DESC::RenderTarget']/*"/>	
-            <msdn-id>ff476087</msdn-id>	
             <unmanaged>D3D11_RENDER_TARGET_BLEND_DESC RenderTarget[8]</unmanaged>	
             <unmanaged-short>D3D11_RENDER_TARGET_BLEND_DESC RenderTarget</unmanaged-short>	
         </member>
@@ -3606,7 +3603,6 @@
             Determines whether asynchronous query data is available.
             </summary>
             <param name="data">The data.</param>
-            <param name="flags">Optional flags</param>
             <returns>
               <c>true</c> if asynchronous query data is available; otherwise, <c>false</c>.
             </returns>
@@ -3806,24 +3802,6 @@
             <returns>The locked <see cref="T:SharpDX.DataBox"/></returns>
             <unmanaged>HRESULT ID3D11DeviceContext::Map([In] ID3D11Resource* pResource,[In] unsigned int Subresource,[In] D3D11_MAP MapType,[In] D3D11_MAP_FLAG MapFlags,[Out] D3D11_MAPPED_SUBRESOURCE* pMappedResource)</unmanaged>
         </member>
-        <member name="M:SharpDX.Direct3D11.DeviceContext.MapSubresource(SharpDX.Direct3D11.Resource,System.Int32,SharpDX.Direct3D11.MapMode,SharpDX.Direct3D11.MapFlags)">
-            <summary>	
-            <p>Gets a reference to the data contained in a subresource, and denies the GPU access to that subresource.</p>	
-            </summary>	
-            <param name="resourceRef"><dd>  <p>A reference to a <strong><see cref="T:SharpDX.Direct3D11.Resource"/></strong> interface.</p> </dd></param>	
-            <param name="subresource"><dd>  <p>Index number of the subresource.</p> </dd></param>	
-            <param name="mapType"><dd>  <p>Specifies the CPU's read and write permissions for a resource. For possible values, see <strong><see cref="T:SharpDX.Direct3D11.MapMode"/></strong>.</p> </dd></param>	
-            <param name="mapFlags"><dd>  <p> <strong>Flag</strong> that specifies what the CPU should do when the GPU is busy. This flag is optional.</p> </dd></param>	
-            <param name="mappedResourceRef"><dd>  <p>A reference to the mapped subresource (see <strong><see cref="T:SharpDX.DataBox"/></strong>).</p> </dd></param>	
-            <returns>The mapped subresource (see <strong><see cref="T:SharpDX.DataBox"/></strong>). If <see cref="F:SharpDX.Direct3D11.MapFlags.DoNotWait"/> is used and the resource is still being used by the GPU, this method return an empty DataBox whose property <see cref="P:SharpDX.DataBox.IsEmpty"/> returns <c>true</c>.<p>This method also throws an exception with the code <strong><see cref="F:SharpDX.DXGI.ResultCode.DeviceRemoved"/></strong> if <em>MapType</em> allows any CPU read access and the video card has been removed.</p><p>For more information about these error codes, see DXGI_ERROR.</p></returns>	
-            <remarks>	
-            <p>If you call <strong>Map</strong> on a deferred context, you can only pass <strong><see cref="F:SharpDX.Direct3D11.MapMode.WriteDiscard"/></strong>, <strong><see cref="F:SharpDX.Direct3D11.MapMode.WriteNoOverwrite"/></strong>, or both to the <em>MapType</em> parameter. Other <strong><see cref="T:SharpDX.Direct3D11.MapMode"/></strong>-typed values are not supported for a deferred context.</p><p>The Direct3D 11.1 runtime, which is available starting with Windows Developer Preview, can  map shader resource views (SRVs) of dynamic buffers with <strong><see cref="F:SharpDX.Direct3D11.MapMode.WriteNoOverwrite"/></strong>.  The Direct3D 11 and earlier runtimes limited mapping to vertex or index buffers.</p>	
-            If <see cref="F:SharpDX.Direct3D11.MapFlags.DoNotWait"/> is used and the resource is still being used by the GPU, this method return an empty DataBox whose property <see cref="P:SharpDX.DataBox.IsEmpty"/> returns <c>true</c>.
-            </remarks>	
-            <msdn-id>ff476457</msdn-id>	
-            <unmanaged>HRESULT ID3D11DeviceContext::Map([In] ID3D11Resource* pResource,[In] unsigned int Subresource,[In] D3D11_MAP MapType,[In] D3D11_MAP_FLAG MapFlags,[Out] D3D11_MAPPED_SUBRESOURCE* pMappedResource)</unmanaged>	
-            <unmanaged-short>ID3D11DeviceContext::Map</unmanaged-short>	
-        </member>
         <member name="M:SharpDX.Direct3D11.DeviceContext.UpdateSubresource``1(``0@,SharpDX.Direct3D11.Resource,System.Int32,System.Int32,System.Int32,System.Nullable{SharpDX.Direct3D11.ResourceRegion})">
             <summary>
             Copies data from the CPU to to a non-mappable subresource region.
@@ -3834,7 +3812,6 @@
             <param name="subresource">The destination subresource.</param>
             <param name="rowPitch">The row pitch.</param>
             <param name="depthPitch">The depth pitch.</param>
-            <param name="region">The region</param>
             <remarks>
             This method is implementing the <a href="http://blogs.msdn.com/b/chuckw/archive/2010/07/28/known-issue-direct3d-11-updatesubresource-and-deferred-contexts.aspx">workaround for deferred context</a>.
             </remarks>
@@ -4010,7 +3987,7 @@
             <unmanaged>void ID3D11DeviceContext::Draw([In] unsigned int VertexCount,[In] unsigned int StartVertexLocation)</unmanaged>	
             <unmanaged-short>ID3D11DeviceContext::Draw</unmanaged-short>	
         </member>
-        <member name="M:SharpDX.Direct3D11.DeviceContext.MapSubresource(SharpDX.Direct3D11.Resource,System.Int32,SharpDX.Direct3D11.MapMode,SharpDX.Direct3D11.MapFlags,SharpDX.DataBox@)">
+        <member name="M:SharpDX.Direct3D11.DeviceContext.MapSubresource(SharpDX.Direct3D11.Resource,System.Int32,SharpDX.Direct3D11.MapMode,SharpDX.Direct3D11.MapFlags)">
             <summary>	
             <p>Gets a reference to the data contained in a subresource, and denies the GPU access to that subresource.</p>	
             </summary>	
@@ -4018,8 +3995,7 @@
             <param name="subresource"><dd>  <p>Index number of the subresource.</p> </dd></param>	
             <param name="mapType"><dd>  <p>Specifies the CPU's read and write permissions for a resource. For possible values, see <strong><see cref="T:SharpDX.Direct3D11.MapMode"/></strong>.</p> </dd></param>	
             <param name="mapFlags"><dd>  <p> <strong>Flag</strong> that specifies what the CPU should do when the GPU is busy. This flag is optional.</p> </dd></param>	
-            <param name="mappedResourceRef"><dd>  <p>A reference to the mapped subresource (see <strong><see cref="T:SharpDX.DataBox"/></strong>).</p> </dd></param>	
-            <returns><p>This method returns one of the Direct3D 11 Return Codes.</p><p>This method also returns <strong><see cref="F:SharpDX.DXGI.ResultCode.WasStillDrawing"/></strong> if <em>MapFlags</em> specifies <strong><see cref="!:SharpDX.Direct3D10.MapFlags.DoNotWait"/></strong> and the GPU is not yet finished with the resource.</p><p>This method also returns <strong><see cref="F:SharpDX.DXGI.ResultCode.DeviceRemoved"/></strong> if <em>MapType</em> allows any CPU read access and the video card has been removed.</p><p>For more information about these error codes, see DXGI_ERROR.</p></returns>	
+            <returns><dd>  <p>A reference to the mapped subresource (see <strong><see cref="T:SharpDX.DataBox"/></strong>).</p> </dd></returns>	
             <remarks>	
             <p>If you call <strong>Map</strong> on a deferred context, you can only pass <strong><see cref="F:SharpDX.Direct3D11.MapMode.WriteDiscard"/></strong>, <strong><see cref="F:SharpDX.Direct3D11.MapMode.WriteNoOverwrite"/></strong>, or both to the <em>MapType</em> parameter. Other <strong><see cref="T:SharpDX.Direct3D11.MapMode"/></strong>-typed values are not supported for a deferred context.</p><p>The Direct3D 11.1 runtime, which is available starting with Windows Developer Preview, can  map shader resource views (SRVs) of dynamic buffers with <strong><see cref="F:SharpDX.Direct3D11.MapMode.WriteNoOverwrite"/></strong>.  The Direct3D 11 and earlier runtimes limited mapping to vertex or index buffers.</p>	
             </remarks>	
@@ -4934,18 +4910,6 @@
             <msdn-id>ff476464</msdn-id>	
             <unmanaged>void ID3D11DeviceContext::OMSetRenderTargets([In] unsigned int NumViews,[In] const void** ppRenderTargetViews,[In, Optional] ID3D11DepthStencilView* pDepthStencilView)</unmanaged>	
             <unmanaged-short>ID3D11DeviceContext::OMSetRenderTargets</unmanaged-short>	
-        </member>
-        <member name="M:SharpDX.Direct3D11.OutputMergerStage.SetTargets(SharpDX.Direct3D11.DepthStencilView,System.Int32,SharpDX.Direct3D11.RenderTargetView[])">
-            <summary>
-            Binds a depth-stencil buffer and a set of render targets to the output-merger stage.
-            </summary>
-            <param name="depthStencilView">A view of the depth-stencil buffer to bind.</param>
-            <param name="renderTargetCount">The render target count.</param>
-            <param name="renderTargetViews">A set of render target views to bind.</param>
-            <msdn-id>ff476464</msdn-id>
-              <unmanaged>void ID3D11DeviceContext::OMSetRenderTargets([In] unsigned int NumViews,[In] const void** ppRenderTargetViews,[In, Optional] ID3D11DepthStencilView* pDepthStencilView)</unmanaged>
-              <unmanaged-short>ID3D11DeviceContext::OMSetRenderTargets</unmanaged-short>
-            <remarks><p>The maximum number of active render targets a device can have active at any given time is set by a #define in D3D11.h called  D3D11_SIMULTANEOUS_RENDER_TARGET_COUNT. It is invalid to try to set the same subresource to multiple render target slots.  Any render targets not defined by this call are set to <strong><c>null</c></strong>.</p><p>If any subresources are also currently bound for reading in a different stage or writing (perhaps in a different part of the pipeline),  those bind points will be set to <strong><c>null</c></strong>, in order to prevent the same subresource from being read and written simultaneously in a single rendering operation.</p><p> The method will hold a reference to the interfaces passed in. This differs from the device state behavior in Direct3D 10. </p><p>If the render-target views were created from an array resource type, then all of the render-target views must have the same array size.   This restriction also applies to the depth-stencil view, its array size must match that of the render-target views being bound.</p><p>The pixel shader must be able to simultaneously render to at least eight separate render targets. All of these render targets must access the same type of resource: Buffer, Texture1D, Texture1DArray, Texture2D, Texture2DArray, Texture3D, or TextureCube. All render targets must have the same size in all dimensions (width and height, and depth for 3D or array size for *Array types). If render targets use multisample anti-aliasing, all bound render targets and depth buffer must be the same form of multisample resource (that is, the sample counts must be the same). Each render target can have a different data format. These render target formats are not required to have identical bit-per-element counts.</p><p>Any combination of the eight slots for render targets can have a render target set or not set.</p><p>The same resource view cannot be bound to multiple render target slots simultaneously. However, you can set multiple non-overlapping resource views of a single resource as simultaneous multiple render targets.</p></remarks>
         </member>
         <member name="M:SharpDX.Direct3D11.OutputMergerStage.SetTargets(SharpDX.Direct3D11.DepthStencilView,SharpDX.Direct3D11.RenderTargetView)">
             <summary>
@@ -6008,7 +5972,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_ASYNC_GETDATA_DONOTFLUSH']/*"/>	
-            <msdn-id>ff476084</msdn-id>	
             <unmanaged>D3D11_ASYNC_GETDATA_DONOTFLUSH</unmanaged>	
             <unmanaged-short>D3D11_ASYNC_GETDATA_DONOTFLUSH</unmanaged-short>	
         </member>
@@ -6552,7 +6515,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_FORMAT_SUPPORT2_UAV_ATOMIC_ADD']/*"/>	
-            <msdn-id>ff476135</msdn-id>	
             <unmanaged>D3D11_FORMAT_SUPPORT2_UAV_ATOMIC_ADD</unmanaged>	
             <unmanaged-short>D3D11_FORMAT_SUPPORT2_UAV_ATOMIC_ADD</unmanaged-short>	
         </member>
@@ -6561,7 +6523,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_FORMAT_SUPPORT2_UAV_ATOMIC_BITWISE_OPS']/*"/>	
-            <msdn-id>ff476135</msdn-id>	
             <unmanaged>D3D11_FORMAT_SUPPORT2_UAV_ATOMIC_BITWISE_OPS</unmanaged>	
             <unmanaged-short>D3D11_FORMAT_SUPPORT2_UAV_ATOMIC_BITWISE_OPS</unmanaged-short>	
         </member>
@@ -6570,7 +6531,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_FORMAT_SUPPORT2_UAV_ATOMIC_COMPARE_STORE_OR_COMPARE_EXCHANGE']/*"/>	
-            <msdn-id>ff476135</msdn-id>	
             <unmanaged>D3D11_FORMAT_SUPPORT2_UAV_ATOMIC_COMPARE_STORE_OR_COMPARE_EXCHANGE</unmanaged>	
             <unmanaged-short>D3D11_FORMAT_SUPPORT2_UAV_ATOMIC_COMPARE_STORE_OR_COMPARE_EXCHANGE</unmanaged-short>	
         </member>
@@ -6579,7 +6539,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_FORMAT_SUPPORT2_UAV_ATOMIC_EXCHANGE']/*"/>	
-            <msdn-id>ff476135</msdn-id>	
             <unmanaged>D3D11_FORMAT_SUPPORT2_UAV_ATOMIC_EXCHANGE</unmanaged>	
             <unmanaged-short>D3D11_FORMAT_SUPPORT2_UAV_ATOMIC_EXCHANGE</unmanaged-short>	
         </member>
@@ -6588,7 +6547,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_FORMAT_SUPPORT2_UAV_ATOMIC_SIGNED_MIN_OR_MAX']/*"/>	
-            <msdn-id>ff476135</msdn-id>	
             <unmanaged>D3D11_FORMAT_SUPPORT2_UAV_ATOMIC_SIGNED_MIN_OR_MAX</unmanaged>	
             <unmanaged-short>D3D11_FORMAT_SUPPORT2_UAV_ATOMIC_SIGNED_MIN_OR_MAX</unmanaged-short>	
         </member>
@@ -6597,7 +6555,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_FORMAT_SUPPORT2_UAV_ATOMIC_UNSIGNED_MIN_OR_MAX']/*"/>	
-            <msdn-id>ff476135</msdn-id>	
             <unmanaged>D3D11_FORMAT_SUPPORT2_UAV_ATOMIC_UNSIGNED_MIN_OR_MAX</unmanaged>	
             <unmanaged-short>D3D11_FORMAT_SUPPORT2_UAV_ATOMIC_UNSIGNED_MIN_OR_MAX</unmanaged-short>	
         </member>
@@ -6606,7 +6563,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_FORMAT_SUPPORT2_UAV_TYPED_LOAD']/*"/>	
-            <msdn-id>ff476135</msdn-id>	
             <unmanaged>D3D11_FORMAT_SUPPORT2_UAV_TYPED_LOAD</unmanaged>	
             <unmanaged-short>D3D11_FORMAT_SUPPORT2_UAV_TYPED_LOAD</unmanaged-short>	
         </member>
@@ -6615,7 +6571,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_FORMAT_SUPPORT2_UAV_TYPED_STORE']/*"/>	
-            <msdn-id>ff476135</msdn-id>	
             <unmanaged>D3D11_FORMAT_SUPPORT2_UAV_TYPED_STORE</unmanaged>	
             <unmanaged-short>D3D11_FORMAT_SUPPORT2_UAV_TYPED_STORE</unmanaged-short>	
         </member>
@@ -7278,7 +7233,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_FILTER_MIN_POINT_MAG_LINEAR_MIP_POINT']/*"/>	
-            <msdn-id>ff476133</msdn-id>	
             <unmanaged>D3D11_FILTER_MIN_POINT_MAG_LINEAR_MIP_POINT</unmanaged>	
             <unmanaged-short>D3D11_FILTER_MIN_POINT_MAG_LINEAR_MIP_POINT</unmanaged-short>	
         </member>
@@ -7287,7 +7241,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_FILTER_MIN_POINT_MAG_MIP_LINEAR']/*"/>	
-            <msdn-id>ff476133</msdn-id>	
             <unmanaged>D3D11_FILTER_MIN_POINT_MAG_MIP_LINEAR</unmanaged>	
             <unmanaged-short>D3D11_FILTER_MIN_POINT_MAG_MIP_LINEAR</unmanaged-short>	
         </member>
@@ -7296,7 +7249,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_FILTER_MIN_LINEAR_MAG_MIP_POINT']/*"/>	
-            <msdn-id>ff476133</msdn-id>	
             <unmanaged>D3D11_FILTER_MIN_LINEAR_MAG_MIP_POINT</unmanaged>	
             <unmanaged-short>D3D11_FILTER_MIN_LINEAR_MAG_MIP_POINT</unmanaged-short>	
         </member>
@@ -7305,7 +7257,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_FILTER_MIN_LINEAR_MAG_POINT_MIP_LINEAR']/*"/>	
-            <msdn-id>ff476133</msdn-id>	
             <unmanaged>D3D11_FILTER_MIN_LINEAR_MAG_POINT_MIP_LINEAR</unmanaged>	
             <unmanaged-short>D3D11_FILTER_MIN_LINEAR_MAG_POINT_MIP_LINEAR</unmanaged-short>	
         </member>
@@ -7314,7 +7265,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_FILTER_MIN_MAG_LINEAR_MIP_POINT']/*"/>	
-            <msdn-id>ff476133</msdn-id>	
             <unmanaged>D3D11_FILTER_MIN_MAG_LINEAR_MIP_POINT</unmanaged>	
             <unmanaged-short>D3D11_FILTER_MIN_MAG_LINEAR_MIP_POINT</unmanaged-short>	
         </member>
@@ -7323,7 +7273,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_FILTER_MIN_MAG_MIP_LINEAR']/*"/>	
-            <msdn-id>ff476133</msdn-id>	
             <unmanaged>D3D11_FILTER_MIN_MAG_MIP_LINEAR</unmanaged>	
             <unmanaged-short>D3D11_FILTER_MIN_MAG_MIP_LINEAR</unmanaged-short>	
         </member>
@@ -7332,7 +7281,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_FILTER_ANISOTROPIC']/*"/>	
-            <msdn-id>ff476133</msdn-id>	
             <unmanaged>D3D11_FILTER_ANISOTROPIC</unmanaged>	
             <unmanaged-short>D3D11_FILTER_ANISOTROPIC</unmanaged-short>	
         </member>
@@ -7341,7 +7289,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_FILTER_COMPARISON_MIN_MAG_MIP_POINT']/*"/>	
-            <msdn-id>ff476133</msdn-id>	
             <unmanaged>D3D11_FILTER_COMPARISON_MIN_MAG_MIP_POINT</unmanaged>	
             <unmanaged-short>D3D11_FILTER_COMPARISON_MIN_MAG_MIP_POINT</unmanaged-short>	
         </member>
@@ -7350,7 +7297,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_FILTER_COMPARISON_MIN_MAG_POINT_MIP_LINEAR']/*"/>	
-            <msdn-id>ff476133</msdn-id>	
             <unmanaged>D3D11_FILTER_COMPARISON_MIN_MAG_POINT_MIP_LINEAR</unmanaged>	
             <unmanaged-short>D3D11_FILTER_COMPARISON_MIN_MAG_POINT_MIP_LINEAR</unmanaged-short>	
         </member>
@@ -7359,7 +7305,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_FILTER_COMPARISON_MIN_POINT_MAG_LINEAR_MIP_POINT']/*"/>	
-            <msdn-id>ff476133</msdn-id>	
             <unmanaged>D3D11_FILTER_COMPARISON_MIN_POINT_MAG_LINEAR_MIP_POINT</unmanaged>	
             <unmanaged-short>D3D11_FILTER_COMPARISON_MIN_POINT_MAG_LINEAR_MIP_POINT</unmanaged-short>	
         </member>
@@ -7368,7 +7313,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_FILTER_COMPARISON_MIN_POINT_MAG_MIP_LINEAR']/*"/>	
-            <msdn-id>ff476133</msdn-id>	
             <unmanaged>D3D11_FILTER_COMPARISON_MIN_POINT_MAG_MIP_LINEAR</unmanaged>	
             <unmanaged-short>D3D11_FILTER_COMPARISON_MIN_POINT_MAG_MIP_LINEAR</unmanaged-short>	
         </member>
@@ -7377,7 +7321,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_FILTER_COMPARISON_MIN_LINEAR_MAG_MIP_POINT']/*"/>	
-            <msdn-id>ff476133</msdn-id>	
             <unmanaged>D3D11_FILTER_COMPARISON_MIN_LINEAR_MAG_MIP_POINT</unmanaged>	
             <unmanaged-short>D3D11_FILTER_COMPARISON_MIN_LINEAR_MAG_MIP_POINT</unmanaged-short>	
         </member>
@@ -7386,7 +7329,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_FILTER_COMPARISON_MIN_LINEAR_MAG_POINT_MIP_LINEAR']/*"/>	
-            <msdn-id>ff476133</msdn-id>	
             <unmanaged>D3D11_FILTER_COMPARISON_MIN_LINEAR_MAG_POINT_MIP_LINEAR</unmanaged>	
             <unmanaged-short>D3D11_FILTER_COMPARISON_MIN_LINEAR_MAG_POINT_MIP_LINEAR</unmanaged-short>	
         </member>
@@ -7395,7 +7337,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_FILTER_COMPARISON_MIN_MAG_LINEAR_MIP_POINT']/*"/>	
-            <msdn-id>ff476133</msdn-id>	
             <unmanaged>D3D11_FILTER_COMPARISON_MIN_MAG_LINEAR_MIP_POINT</unmanaged>	
             <unmanaged-short>D3D11_FILTER_COMPARISON_MIN_MAG_LINEAR_MIP_POINT</unmanaged-short>	
         </member>
@@ -7404,7 +7345,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_FILTER_COMPARISON_MIN_MAG_MIP_LINEAR']/*"/>	
-            <msdn-id>ff476133</msdn-id>	
             <unmanaged>D3D11_FILTER_COMPARISON_MIN_MAG_MIP_LINEAR</unmanaged>	
             <unmanaged-short>D3D11_FILTER_COMPARISON_MIN_MAG_MIP_LINEAR</unmanaged-short>	
         </member>
@@ -7413,7 +7353,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_FILTER_COMPARISON_ANISOTROPIC']/*"/>	
-            <msdn-id>ff476133</msdn-id>	
             <unmanaged>D3D11_FILTER_COMPARISON_ANISOTROPIC</unmanaged>	
             <unmanaged-short>D3D11_FILTER_COMPARISON_ANISOTROPIC</unmanaged-short>	
         </member>
@@ -7596,7 +7535,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_FORMAT_SUPPORT_BUFFER']/*"/>	
-            <msdn-id>ff476134</msdn-id>	
             <unmanaged>D3D11_FORMAT_SUPPORT_BUFFER</unmanaged>	
             <unmanaged-short>D3D11_FORMAT_SUPPORT_BUFFER</unmanaged-short>	
         </member>
@@ -7605,7 +7543,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_FORMAT_SUPPORT_IA_VERTEX_BUFFER']/*"/>	
-            <msdn-id>ff476134</msdn-id>	
             <unmanaged>D3D11_FORMAT_SUPPORT_IA_VERTEX_BUFFER</unmanaged>	
             <unmanaged-short>D3D11_FORMAT_SUPPORT_IA_VERTEX_BUFFER</unmanaged-short>	
         </member>
@@ -7614,7 +7551,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_FORMAT_SUPPORT_IA_INDEX_BUFFER']/*"/>	
-            <msdn-id>ff476134</msdn-id>	
             <unmanaged>D3D11_FORMAT_SUPPORT_IA_INDEX_BUFFER</unmanaged>	
             <unmanaged-short>D3D11_FORMAT_SUPPORT_IA_INDEX_BUFFER</unmanaged-short>	
         </member>
@@ -7623,7 +7559,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_FORMAT_SUPPORT_SO_BUFFER']/*"/>	
-            <msdn-id>ff476134</msdn-id>	
             <unmanaged>D3D11_FORMAT_SUPPORT_SO_BUFFER</unmanaged>	
             <unmanaged-short>D3D11_FORMAT_SUPPORT_SO_BUFFER</unmanaged-short>	
         </member>
@@ -7632,7 +7567,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_FORMAT_SUPPORT_TEXTURE1D']/*"/>	
-            <msdn-id>ff476134</msdn-id>	
             <unmanaged>D3D11_FORMAT_SUPPORT_TEXTURE1D</unmanaged>	
             <unmanaged-short>D3D11_FORMAT_SUPPORT_TEXTURE1D</unmanaged-short>	
         </member>
@@ -7641,7 +7575,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_FORMAT_SUPPORT_TEXTURE2D']/*"/>	
-            <msdn-id>ff476134</msdn-id>	
             <unmanaged>D3D11_FORMAT_SUPPORT_TEXTURE2D</unmanaged>	
             <unmanaged-short>D3D11_FORMAT_SUPPORT_TEXTURE2D</unmanaged-short>	
         </member>
@@ -7650,7 +7583,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_FORMAT_SUPPORT_TEXTURE3D']/*"/>	
-            <msdn-id>ff476134</msdn-id>	
             <unmanaged>D3D11_FORMAT_SUPPORT_TEXTURE3D</unmanaged>	
             <unmanaged-short>D3D11_FORMAT_SUPPORT_TEXTURE3D</unmanaged-short>	
         </member>
@@ -7659,7 +7591,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_FORMAT_SUPPORT_TEXTURECUBE']/*"/>	
-            <msdn-id>ff476134</msdn-id>	
             <unmanaged>D3D11_FORMAT_SUPPORT_TEXTURECUBE</unmanaged>	
             <unmanaged-short>D3D11_FORMAT_SUPPORT_TEXTURECUBE</unmanaged-short>	
         </member>
@@ -7668,7 +7599,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_FORMAT_SUPPORT_SHADER_LOAD']/*"/>	
-            <msdn-id>ff476134</msdn-id>	
             <unmanaged>D3D11_FORMAT_SUPPORT_SHADER_LOAD</unmanaged>	
             <unmanaged-short>D3D11_FORMAT_SUPPORT_SHADER_LOAD</unmanaged-short>	
         </member>
@@ -7677,7 +7607,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_FORMAT_SUPPORT_SHADER_SAMPLE']/*"/>	
-            <msdn-id>ff476134</msdn-id>	
             <unmanaged>D3D11_FORMAT_SUPPORT_SHADER_SAMPLE</unmanaged>	
             <unmanaged-short>D3D11_FORMAT_SUPPORT_SHADER_SAMPLE</unmanaged-short>	
         </member>
@@ -7686,7 +7615,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_FORMAT_SUPPORT_SHADER_SAMPLE_COMPARISON']/*"/>	
-            <msdn-id>ff476134</msdn-id>	
             <unmanaged>D3D11_FORMAT_SUPPORT_SHADER_SAMPLE_COMPARISON</unmanaged>	
             <unmanaged-short>D3D11_FORMAT_SUPPORT_SHADER_SAMPLE_COMPARISON</unmanaged-short>	
         </member>
@@ -7695,7 +7623,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_FORMAT_SUPPORT_SHADER_SAMPLE_MONO_TEXT']/*"/>	
-            <msdn-id>ff476134</msdn-id>	
             <unmanaged>D3D11_FORMAT_SUPPORT_SHADER_SAMPLE_MONO_TEXT</unmanaged>	
             <unmanaged-short>D3D11_FORMAT_SUPPORT_SHADER_SAMPLE_MONO_TEXT</unmanaged-short>	
         </member>
@@ -7704,7 +7631,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_FORMAT_SUPPORT_MIP']/*"/>	
-            <msdn-id>ff476134</msdn-id>	
             <unmanaged>D3D11_FORMAT_SUPPORT_MIP</unmanaged>	
             <unmanaged-short>D3D11_FORMAT_SUPPORT_MIP</unmanaged-short>	
         </member>
@@ -7713,7 +7639,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_FORMAT_SUPPORT_MIP_AUTOGEN']/*"/>	
-            <msdn-id>ff476134</msdn-id>	
             <unmanaged>D3D11_FORMAT_SUPPORT_MIP_AUTOGEN</unmanaged>	
             <unmanaged-short>D3D11_FORMAT_SUPPORT_MIP_AUTOGEN</unmanaged-short>	
         </member>
@@ -7722,7 +7647,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_FORMAT_SUPPORT_RENDER_TARGET']/*"/>	
-            <msdn-id>ff476134</msdn-id>	
             <unmanaged>D3D11_FORMAT_SUPPORT_RENDER_TARGET</unmanaged>	
             <unmanaged-short>D3D11_FORMAT_SUPPORT_RENDER_TARGET</unmanaged-short>	
         </member>
@@ -7731,7 +7655,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_FORMAT_SUPPORT_BLENDABLE']/*"/>	
-            <msdn-id>ff476134</msdn-id>	
             <unmanaged>D3D11_FORMAT_SUPPORT_BLENDABLE</unmanaged>	
             <unmanaged-short>D3D11_FORMAT_SUPPORT_BLENDABLE</unmanaged-short>	
         </member>
@@ -7740,7 +7663,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_FORMAT_SUPPORT_DEPTH_STENCIL']/*"/>	
-            <msdn-id>ff476134</msdn-id>	
             <unmanaged>D3D11_FORMAT_SUPPORT_DEPTH_STENCIL</unmanaged>	
             <unmanaged-short>D3D11_FORMAT_SUPPORT_DEPTH_STENCIL</unmanaged-short>	
         </member>
@@ -7749,7 +7671,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_FORMAT_SUPPORT_CPU_LOCKABLE']/*"/>	
-            <msdn-id>ff476134</msdn-id>	
             <unmanaged>D3D11_FORMAT_SUPPORT_CPU_LOCKABLE</unmanaged>	
             <unmanaged-short>D3D11_FORMAT_SUPPORT_CPU_LOCKABLE</unmanaged-short>	
         </member>
@@ -7758,7 +7679,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_FORMAT_SUPPORT_MULTISAMPLE_RESOLVE']/*"/>	
-            <msdn-id>ff476134</msdn-id>	
             <unmanaged>D3D11_FORMAT_SUPPORT_MULTISAMPLE_RESOLVE</unmanaged>	
             <unmanaged-short>D3D11_FORMAT_SUPPORT_MULTISAMPLE_RESOLVE</unmanaged-short>	
         </member>
@@ -7767,7 +7687,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_FORMAT_SUPPORT_DISPLAY']/*"/>	
-            <msdn-id>ff476134</msdn-id>	
             <unmanaged>D3D11_FORMAT_SUPPORT_DISPLAY</unmanaged>	
             <unmanaged-short>D3D11_FORMAT_SUPPORT_DISPLAY</unmanaged-short>	
         </member>
@@ -7776,7 +7695,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_FORMAT_SUPPORT_CAST_WITHIN_BIT_LAYOUT']/*"/>	
-            <msdn-id>ff476134</msdn-id>	
             <unmanaged>D3D11_FORMAT_SUPPORT_CAST_WITHIN_BIT_LAYOUT</unmanaged>	
             <unmanaged-short>D3D11_FORMAT_SUPPORT_CAST_WITHIN_BIT_LAYOUT</unmanaged-short>	
         </member>
@@ -7785,7 +7703,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_FORMAT_SUPPORT_MULTISAMPLE_RENDERTARGET']/*"/>	
-            <msdn-id>ff476134</msdn-id>	
             <unmanaged>D3D11_FORMAT_SUPPORT_MULTISAMPLE_RENDERTARGET</unmanaged>	
             <unmanaged-short>D3D11_FORMAT_SUPPORT_MULTISAMPLE_RENDERTARGET</unmanaged-short>	
         </member>
@@ -7794,7 +7711,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_FORMAT_SUPPORT_MULTISAMPLE_LOAD']/*"/>	
-            <msdn-id>ff476134</msdn-id>	
             <unmanaged>D3D11_FORMAT_SUPPORT_MULTISAMPLE_LOAD</unmanaged>	
             <unmanaged-short>D3D11_FORMAT_SUPPORT_MULTISAMPLE_LOAD</unmanaged-short>	
         </member>
@@ -7803,7 +7719,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_FORMAT_SUPPORT_SHADER_GATHER']/*"/>	
-            <msdn-id>ff476134</msdn-id>	
             <unmanaged>D3D11_FORMAT_SUPPORT_SHADER_GATHER</unmanaged>	
             <unmanaged-short>D3D11_FORMAT_SUPPORT_SHADER_GATHER</unmanaged-short>	
         </member>
@@ -7812,7 +7727,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_FORMAT_SUPPORT_BACK_BUFFER_CAST']/*"/>	
-            <msdn-id>ff476134</msdn-id>	
             <unmanaged>D3D11_FORMAT_SUPPORT_BACK_BUFFER_CAST</unmanaged>	
             <unmanaged-short>D3D11_FORMAT_SUPPORT_BACK_BUFFER_CAST</unmanaged-short>	
         </member>
@@ -7821,7 +7735,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_FORMAT_SUPPORT_TYPED_UNORDERED_ACCESS_VIEW']/*"/>	
-            <msdn-id>ff476134</msdn-id>	
             <unmanaged>D3D11_FORMAT_SUPPORT_TYPED_UNORDERED_ACCESS_VIEW</unmanaged>	
             <unmanaged-short>D3D11_FORMAT_SUPPORT_TYPED_UNORDERED_ACCESS_VIEW</unmanaged-short>	
         </member>
@@ -7830,7 +7743,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_FORMAT_SUPPORT_SHADER_GATHER_COMPARISON']/*"/>	
-            <msdn-id>ff476134</msdn-id>	
             <unmanaged>D3D11_FORMAT_SUPPORT_SHADER_GATHER_COMPARISON</unmanaged>	
             <unmanaged-short>D3D11_FORMAT_SUPPORT_SHADER_GATHER_COMPARISON</unmanaged-short>	
         </member>
@@ -7964,7 +7876,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_MAP_FLAG_DO_NOT_WAIT']/*"/>	
-            <msdn-id>ff476183</msdn-id>	
             <unmanaged>D3D11_MAP_FLAG_DO_NOT_WAIT</unmanaged>	
             <unmanaged-short>D3D11_MAP_FLAG_DO_NOT_WAIT</unmanaged-short>	
         </member>
@@ -8050,7 +7961,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_MESSAGE_CATEGORY_APPLICATION_DEFINED']/*"/>	
-            <msdn-id>ff476185</msdn-id>	
             <unmanaged>D3D11_MESSAGE_CATEGORY_APPLICATION_DEFINED</unmanaged>	
             <unmanaged-short>D3D11_MESSAGE_CATEGORY_APPLICATION_DEFINED</unmanaged-short>	
         </member>
@@ -8059,7 +7969,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_MESSAGE_CATEGORY_MISCELLANEOUS']/*"/>	
-            <msdn-id>ff476185</msdn-id>	
             <unmanaged>D3D11_MESSAGE_CATEGORY_MISCELLANEOUS</unmanaged>	
             <unmanaged-short>D3D11_MESSAGE_CATEGORY_MISCELLANEOUS</unmanaged-short>	
         </member>
@@ -8068,7 +7977,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_MESSAGE_CATEGORY_INITIALIZATION']/*"/>	
-            <msdn-id>ff476185</msdn-id>	
             <unmanaged>D3D11_MESSAGE_CATEGORY_INITIALIZATION</unmanaged>	
             <unmanaged-short>D3D11_MESSAGE_CATEGORY_INITIALIZATION</unmanaged-short>	
         </member>
@@ -8077,7 +7985,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_MESSAGE_CATEGORY_CLEANUP']/*"/>	
-            <msdn-id>ff476185</msdn-id>	
             <unmanaged>D3D11_MESSAGE_CATEGORY_CLEANUP</unmanaged>	
             <unmanaged-short>D3D11_MESSAGE_CATEGORY_CLEANUP</unmanaged-short>	
         </member>
@@ -8086,7 +7993,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_MESSAGE_CATEGORY_COMPILATION']/*"/>	
-            <msdn-id>ff476185</msdn-id>	
             <unmanaged>D3D11_MESSAGE_CATEGORY_COMPILATION</unmanaged>	
             <unmanaged-short>D3D11_MESSAGE_CATEGORY_COMPILATION</unmanaged-short>	
         </member>
@@ -8095,7 +8001,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_MESSAGE_CATEGORY_STATE_CREATION']/*"/>	
-            <msdn-id>ff476185</msdn-id>	
             <unmanaged>D3D11_MESSAGE_CATEGORY_STATE_CREATION</unmanaged>	
             <unmanaged-short>D3D11_MESSAGE_CATEGORY_STATE_CREATION</unmanaged-short>	
         </member>
@@ -8104,7 +8009,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_MESSAGE_CATEGORY_STATE_SETTING']/*"/>	
-            <msdn-id>ff476185</msdn-id>	
             <unmanaged>D3D11_MESSAGE_CATEGORY_STATE_SETTING</unmanaged>	
             <unmanaged-short>D3D11_MESSAGE_CATEGORY_STATE_SETTING</unmanaged-short>	
         </member>
@@ -8113,7 +8017,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_MESSAGE_CATEGORY_STATE_GETTING']/*"/>	
-            <msdn-id>ff476185</msdn-id>	
             <unmanaged>D3D11_MESSAGE_CATEGORY_STATE_GETTING</unmanaged>	
             <unmanaged-short>D3D11_MESSAGE_CATEGORY_STATE_GETTING</unmanaged-short>	
         </member>
@@ -8122,7 +8025,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_MESSAGE_CATEGORY_RESOURCE_MANIPULATION']/*"/>	
-            <msdn-id>ff476185</msdn-id>	
             <unmanaged>D3D11_MESSAGE_CATEGORY_RESOURCE_MANIPULATION</unmanaged>	
             <unmanaged-short>D3D11_MESSAGE_CATEGORY_RESOURCE_MANIPULATION</unmanaged-short>	
         </member>
@@ -8131,7 +8033,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_MESSAGE_CATEGORY_EXECUTION']/*"/>	
-            <msdn-id>ff476185</msdn-id>	
             <unmanaged>D3D11_MESSAGE_CATEGORY_EXECUTION</unmanaged>	
             <unmanaged-short>D3D11_MESSAGE_CATEGORY_EXECUTION</unmanaged-short>	
         </member>
@@ -15729,10 +15630,6 @@
             <summary>Constant CannotAttrSort.</summary>
             <unmanaged>D3DX11_ERR_CANNOT_ATTR_SORT</unmanaged>
         </member>
-        <member name="F:SharpDX.Direct3D11.ResultCode.SkinningNotSupported">
-            <summary>Constant SkinningNotSupported.</summary>
-            <unmanaged>D3DX11_ERR_SKINNING_NOT_SUPPORTED</unmanaged>
-        </member>
         <member name="F:SharpDX.Direct3D11.ResultCode.LoadedMeshHasNoData">
             <summary>Constant LoadedMeshHasNoData.</summary>
             <unmanaged>D3DX11_ERR_LOADED_MESH_HAS_NO_DATA</unmanaged>
@@ -15752,6 +15649,10 @@
         <member name="F:SharpDX.Direct3D11.ResultCode.InvalidData">
             <summary>Constant InvalidData.</summary>
             <unmanaged>D3DX11_ERR_INVALID_DATA</unmanaged>
+        </member>
+        <member name="F:SharpDX.Direct3D11.ResultCode.SkinningNotSupported">
+            <summary>Constant SkinningNotSupported.</summary>
+            <unmanaged>D3DX11_ERR_SKINNING_NOT_SUPPORTED</unmanaged>
         </member>
         <member name="F:SharpDX.Direct3D11.ResultCode.TooManyInfluences">
             <summary>Constant TooManyInfluences.</summary>
@@ -19733,7 +19634,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_QUERY_DATA_PIPELINE_STATISTICS::IAVertices']/*"/>	
-            <msdn-id>ff476192</msdn-id>	
             <unmanaged>unsigned longlong IAVertices</unmanaged>	
             <unmanaged-short>unsigned longlong IAVertices</unmanaged-short>	
         </member>
@@ -19742,7 +19642,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_QUERY_DATA_PIPELINE_STATISTICS::IAPrimitives']/*"/>	
-            <msdn-id>ff476192</msdn-id>	
             <unmanaged>unsigned longlong IAPrimitives</unmanaged>	
             <unmanaged-short>unsigned longlong IAPrimitives</unmanaged-short>	
         </member>
@@ -19751,7 +19650,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_QUERY_DATA_PIPELINE_STATISTICS::VSInvocations']/*"/>	
-            <msdn-id>ff476192</msdn-id>	
             <unmanaged>unsigned longlong VSInvocations</unmanaged>	
             <unmanaged-short>unsigned longlong VSInvocations</unmanaged-short>	
         </member>
@@ -19760,7 +19658,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_QUERY_DATA_PIPELINE_STATISTICS::GSInvocations']/*"/>	
-            <msdn-id>ff476192</msdn-id>	
             <unmanaged>unsigned longlong GSInvocations</unmanaged>	
             <unmanaged-short>unsigned longlong GSInvocations</unmanaged-short>	
         </member>
@@ -19769,7 +19666,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_QUERY_DATA_PIPELINE_STATISTICS::GSPrimitives']/*"/>	
-            <msdn-id>ff476192</msdn-id>	
             <unmanaged>unsigned longlong GSPrimitives</unmanaged>	
             <unmanaged-short>unsigned longlong GSPrimitives</unmanaged-short>	
         </member>
@@ -19778,7 +19674,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_QUERY_DATA_PIPELINE_STATISTICS::CInvocations']/*"/>	
-            <msdn-id>ff476192</msdn-id>	
             <unmanaged>unsigned longlong CInvocations</unmanaged>	
             <unmanaged-short>unsigned longlong CInvocations</unmanaged-short>	
         </member>
@@ -19787,7 +19682,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_QUERY_DATA_PIPELINE_STATISTICS::CPrimitives']/*"/>	
-            <msdn-id>ff476192</msdn-id>	
             <unmanaged>unsigned longlong CPrimitives</unmanaged>	
             <unmanaged-short>unsigned longlong CPrimitives</unmanaged-short>	
         </member>
@@ -19796,7 +19690,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_QUERY_DATA_PIPELINE_STATISTICS::PSInvocations']/*"/>	
-            <msdn-id>ff476192</msdn-id>	
             <unmanaged>unsigned longlong PSInvocations</unmanaged>	
             <unmanaged-short>unsigned longlong PSInvocations</unmanaged-short>	
         </member>
@@ -19805,7 +19698,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_QUERY_DATA_PIPELINE_STATISTICS::HSInvocations']/*"/>	
-            <msdn-id>ff476192</msdn-id>	
             <unmanaged>unsigned longlong HSInvocations</unmanaged>	
             <unmanaged-short>unsigned longlong HSInvocations</unmanaged-short>	
         </member>
@@ -19814,7 +19706,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_QUERY_DATA_PIPELINE_STATISTICS::DSInvocations']/*"/>	
-            <msdn-id>ff476192</msdn-id>	
             <unmanaged>unsigned longlong DSInvocations</unmanaged>	
             <unmanaged-short>unsigned longlong DSInvocations</unmanaged-short>	
         </member>
@@ -19823,7 +19714,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_QUERY_DATA_PIPELINE_STATISTICS::CSInvocations']/*"/>	
-            <msdn-id>ff476192</msdn-id>	
             <unmanaged>unsigned longlong CSInvocations</unmanaged>	
             <unmanaged-short>unsigned longlong CSInvocations</unmanaged-short>	
         </member>
@@ -21154,7 +21044,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_QUERY_DATA_SO_STATISTICS::NumPrimitivesWritten']/*"/>	
-            <msdn-id>ff476193</msdn-id>	
             <unmanaged>unsigned longlong NumPrimitivesWritten</unmanaged>	
             <unmanaged-short>unsigned longlong NumPrimitivesWritten</unmanaged-short>	
         </member>
@@ -21163,7 +21052,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='D3D11_QUERY_DATA_SO_STATISTICS::PrimitivesStorageNeeded']/*"/>	
-            <msdn-id>ff476193</msdn-id>	
             <unmanaged>unsigned longlong PrimitivesStorageNeeded</unmanaged>	
             <unmanaged-short>unsigned longlong PrimitivesStorageNeeded</unmanaged-short>	
         </member>

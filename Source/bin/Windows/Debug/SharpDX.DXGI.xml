@@ -1029,7 +1029,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DXGI_STATUS_OCCLUDED']/*"/>	
-            <msdn-id>cc308061</msdn-id>	
             <unmanaged>DXGI_STATUS_OCCLUDED</unmanaged>	
             <unmanaged-short>DXGI_STATUS_OCCLUDED</unmanaged-short>	
         </member>
@@ -1038,7 +1037,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DXGI_STATUS_CLIPPED']/*"/>	
-            <msdn-id>cc308061</msdn-id>	
             <unmanaged>DXGI_STATUS_CLIPPED</unmanaged>	
             <unmanaged-short>DXGI_STATUS_CLIPPED</unmanaged-short>	
         </member>
@@ -1047,7 +1045,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DXGI_STATUS_NO_REDIRECTION']/*"/>	
-            <msdn-id>cc308061</msdn-id>	
             <unmanaged>DXGI_STATUS_NO_REDIRECTION</unmanaged>	
             <unmanaged-short>DXGI_STATUS_NO_REDIRECTION</unmanaged-short>	
         </member>
@@ -1056,7 +1053,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DXGI_STATUS_NO_DESKTOP_ACCESS']/*"/>	
-            <msdn-id>cc308061</msdn-id>	
             <unmanaged>DXGI_STATUS_NO_DESKTOP_ACCESS</unmanaged>	
             <unmanaged-short>DXGI_STATUS_NO_DESKTOP_ACCESS</unmanaged-short>	
         </member>
@@ -1065,7 +1061,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DXGI_STATUS_GRAPHICS_VIDPN_SOURCE_IN_USE']/*"/>	
-            <msdn-id>cc308061</msdn-id>	
             <unmanaged>DXGI_STATUS_GRAPHICS_VIDPN_SOURCE_IN_USE</unmanaged>	
             <unmanaged-short>DXGI_STATUS_GRAPHICS_VIDPN_SOURCE_IN_USE</unmanaged-short>	
         </member>
@@ -1074,7 +1069,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DXGI_STATUS_MODE_CHANGED']/*"/>	
-            <msdn-id>cc308061</msdn-id>	
             <unmanaged>DXGI_STATUS_MODE_CHANGED</unmanaged>	
             <unmanaged-short>DXGI_STATUS_MODE_CHANGED</unmanaged-short>	
         </member>
@@ -1083,7 +1077,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DXGI_STATUS_MODE_CHANGE_IN_PROGRESS']/*"/>	
-            <msdn-id>cc308061</msdn-id>	
             <unmanaged>DXGI_STATUS_MODE_CHANGE_IN_PROGRESS</unmanaged>	
             <unmanaged-short>DXGI_STATUS_MODE_CHANGE_IN_PROGRESS</unmanaged-short>	
         </member>
@@ -2238,7 +2231,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DXGI_SWAP_EFFECT_DISCARD']/*"/>	
-            <msdn-id>bb173077</msdn-id>	
             <unmanaged>DXGI_SWAP_EFFECT_DISCARD</unmanaged>	
             <unmanaged-short>DXGI_SWAP_EFFECT_DISCARD</unmanaged-short>	
         </member>
@@ -2247,7 +2239,6 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='DXGI_SWAP_EFFECT_SEQUENTIAL']/*"/>	
-            <msdn-id>bb173077</msdn-id>	
             <unmanaged>DXGI_SWAP_EFFECT_SEQUENTIAL</unmanaged>	
             <unmanaged-short>DXGI_SWAP_EFFECT_SEQUENTIAL</unmanaged-short>	
         </member>
@@ -3115,7 +3106,6 @@
             Acquires access to the surface data.
             </summary>
             <param name="flags">Flags specifying CPU access permissions.</param>
-            <param name="dataStream">Stream to contain the surface data.</param>
             <returns>A <see cref="T:SharpDX.DataRectangle" /> for accessing the mapped data, or <c>null</c> on failure.</returns>.
         </member>
         <member name="M:SharpDX.DXGI.Surface.FromSwapChain(SharpDX.DXGI.SwapChain,System.Int32)">

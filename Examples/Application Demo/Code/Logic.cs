@@ -18,9 +18,8 @@
 //                                                            //
 ////////////////////////////////////////////////////////////////
 
-#region //// Using /////////////
+#region Using
 
-////////////////////////////////////////////////////////////////////////////
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -29,7 +28,6 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using System.Threading;
 using Controls = MonoForce.Controls;
-////////////////////////////////////////////////////////////////////////////
 
 #endregion
 
@@ -38,25 +36,19 @@ namespace MonoForce.Examples.ApplicationDemo
     public partial class MainWindow
     {
 
-        #region //// Consts ////////////
+        #region Consts
 
-        ////////////////////////////////////////////////////////////////////////////   
         private const int TasksCount = 5;
         private string[] Tasks = new string[TasksCount] { "Dialog Template", "Controls Test", "Auto Scrolling", "Layout Window", "Events Test" };
-        ////////////////////////////////////////////////////////////////////////////
 
         #endregion
 
-        #region //// Fields ////////////
-
-        ////////////////////////////////////////////////////////////////////////////
-        ////////////////////////////////////////////////////////////////////////////
+        #region Fields
 
         #endregion
 
-        #region //// Methods ///////////
+        #region Methods
 
-        ////////////////////////////////////////////////////////////////////////////
         void btnClose_Click(object sender, Controls.EventArgs e)
         {
             ControlsList list = new ControlsList();
@@ -74,9 +66,7 @@ namespace MonoForce.Examples.ApplicationDemo
             }
             list.Clear();
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         void btnRandom_Click(object sender, Controls.EventArgs e)
         {
             Window win = new Window(Manager);
@@ -139,23 +129,17 @@ namespace MonoForce.Examples.ApplicationDemo
             win.Show();
             Manager.Add(win);
         }
-        ////////////////////////////////////////////////////////////////////////////    
 
-        ////////////////////////////////////////////////////////////////////////////    
         void win_Closed(object sender, WindowClosedEventArgs e)
         {
             e.Dispose = true;
         }
-        ////////////////////////////////////////////////////////////////////////////    
 
-        ////////////////////////////////////////////////////////////////////////////    
         void btnExit_Click(object sender, Controls.EventArgs e)
         {
             Close();
         }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
         void btnApply_Click(object sender, Controls.EventArgs e)
         {
             Manager.Graphics.IsFullScreen = chkResFull.Checked;
@@ -184,25 +168,19 @@ namespace MonoForce.Examples.ApplicationDemo
 
             Manager.Graphics.ApplyChanges();
         }
-        ////////////////////////////////////////////////////////////////////////////   
 
-        ////////////////////////////////////////////////////////////////////////////   
         void rdbGreen_Click(object sender, Controls.EventArgs e)
         {
             (Manager.Game as Application).BackgroundImage = greenbg;
             Manager.SetSkin("Green");
         }
-        ////////////////////////////////////////////////////////////////////////////   
 
-        ////////////////////////////////////////////////////////////////////////////   
         void rdbDefault_Click(object sender, Controls.EventArgs e)
         {
             (Manager.Game as Application).BackgroundImage = defaultbg;
             Manager.SetSkin("Default");
         }
-        ////////////////////////////////////////////////////////////////////////////   
 
-        ////////////////////////////////////////////////////////////////////////////   
         void btnTask_Click(object sender, Controls.EventArgs e)
         {
             if (sender == btnTasks[0])
@@ -278,16 +256,12 @@ namespace MonoForce.Examples.ApplicationDemo
         {
             ((sender as Button).Root as Window).Close();
         }
-        ////////////////////////////////////////////////////////////////////////////      
 
-        ////////////////////////////////////////////////////////////////////////////      
         void WindowClosing(object sender, WindowClosingEventArgs e)
         {
             //e.Cancel = true; 
         }
-        ////////////////////////////////////////////////////////////////////////////      
 
-        ////////////////////////////////////////////////////////////////////////////      
         void WindowClosed(object sender, WindowClosedEventArgs e)
         {
             if (sender is TaskDialog)
@@ -317,7 +291,6 @@ namespace MonoForce.Examples.ApplicationDemo
             }
             e.Dispose = true;
         }
-        ////////////////////////////////////////////////////////////////////////////
 
         #endregion
 

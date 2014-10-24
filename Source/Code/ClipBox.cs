@@ -18,14 +18,10 @@
 //                                                            //
 ////////////////////////////////////////////////////////////////
 
+#region Using
 
-
-#region //// Using /////////////
-
-////////////////////////////////////////////////////////////////////////////
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-////////////////////////////////////////////////////////////////////////////
 
 #endregion
 
@@ -35,9 +31,8 @@ namespace MonoForce.Controls
   public class ClipBox: Control
   {    
   
-    #region //// Constructors //////
+    #region Constructors
 
-    ////////////////////////////////////////////////////////////////////////////
     public ClipBox(Manager manager): base(manager)
     {            
       Color =  Color.Transparent;
@@ -45,19 +40,16 @@ namespace MonoForce.Controls
       CanFocus = false;
       Passive = true;      
     } 
-    ////////////////////////////////////////////////////////////////////////////
 
     #endregion
 
-		#region //// Methods ///////////
-			
-		////////////////////////////////////////////////////////////////////////////
+		#region Methods
+
 		protected override void DrawControl(Renderer renderer, Rectangle rect, GameTime gameTime)
     {            
       base.DrawControl(renderer, rect, gameTime);
     }
-		////////////////////////////////////////////////////////////////////////////   		
-    
+
 		#endregion  
 		
   }

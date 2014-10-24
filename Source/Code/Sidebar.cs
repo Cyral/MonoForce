@@ -18,72 +18,54 @@
 //                                                            //
 ////////////////////////////////////////////////////////////////
 
-#region //// Using /////////////
+#region Using
 
-////////////////////////////////////////////////////////////////////////////
 using Microsoft.Xna.Framework;
-////////////////////////////////////////////////////////////////////////////
 
 #endregion
 
 namespace MonoForce.Controls
-{ 
-
-
-  public class SideBar: Panel
-  {
-
-    #region //// Fields ////////////
-
-    ////////////////////////////////////////////////////////////////////////////                 
-    ////////////////////////////////////////////////////////////////////////////
-
-    #endregion
-
-    #region //// Properties ////////
-
-    ////////////////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////
-
-    #endregion
-
-    #region //// Construstors //////
-
-    ////////////////////////////////////////////////////////////////////////////       
-    public SideBar(Manager manager): base(manager)
-    {      
-     // CanFocus = true;
-    }    
-    ////////////////////////////////////////////////////////////////////////////
-
-    #endregion
-    
-    #region //// Methods ///////////
-    
-    ////////////////////////////////////////////////////////////////////////////
-    public override void Init()
-    {      
-      base.Init();  
-    }
-    ////////////////////////////////////////////////////////////////////////////                          
-    
-    ////////////////////////////////////////////////////////////////////////////                          
-    protected internal override void InitSkin()
+{
+    public class SideBar : Panel
     {
-      base.InitSkin();
-      Skin = new SkinControl(Manager.Skin.Controls["SideBar"]);
+
+        #region Fields
+
+        #endregion
+
+        #region Properties
+
+        #endregion
+
+        #region Construstors
+
+        public SideBar(Manager manager)
+            : base(manager)
+        {
+            // CanFocus = true;
+        }
+
+        #endregion
+
+        #region Methods
+
+        public override void Init()
+        {
+            base.Init();
+        }
+
+        protected internal override void InitSkin()
+        {
+            base.InitSkin();
+            Skin = new SkinControl(Manager.Skin.Controls["SideBar"]);
+        }
+
+        protected override void DrawControl(Renderer renderer, Rectangle rect, GameTime gameTime)
+        {
+            base.DrawControl(renderer, rect, gameTime);
+        }
+
+        #endregion
+
     }
-    ////////////////////////////////////////////////////////////////////////////                          
-    
-    ////////////////////////////////////////////////////////////////////////////
-    protected override void DrawControl(Renderer renderer, Rectangle rect, GameTime gameTime)
-    {          
-      base.DrawControl(renderer, rect, gameTime);       
-    }
-    ////////////////////////////////////////////////////////////////////////////     
-
-    #endregion  
-
-  }
-
 }

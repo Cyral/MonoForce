@@ -18,100 +18,80 @@
 //                                                            //
 ////////////////////////////////////////////////////////////////
 
-#region //// Using /////////////
-
-////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////
+#region Using
 
 #endregion
 
 namespace MonoForce.Controls
 {
 
-  #region //// Classes ///////////
+    #region Classes
 
-  ////////////////////////////////////////////////////////////////////////////
-  ///  <include file='Documents/ButtonBase.xml' path='ButtonBase/Class[@name="ButtonBase"]/*' />          
-  public abstract class ButtonBase: Control
-  {
-
-    #region //// Fields ////////////
-
-    ////////////////////////////////////////////////////////////////////////////                  
-    ////////////////////////////////////////////////////////////////////////////
-
-    #endregion
-
-    #region //// Properties ////////
-
-    ////////////////////////////////////////////////////////////////////////////    
-    public override ControlState ControlState
+    ///  <include file='Documents/ButtonBase.xml' path='ButtonBase/Class[@name="ButtonBase"]/*' />          
+    public abstract class ButtonBase : Control
     {
-      get
-      {
-        if (DesignMode) return ControlState.Enabled;
-        else if (Suspended) return ControlState.Disabled;
-        else
+
+        #region Fields
+
+        #endregion
+
+        #region Properties
+
+        public override ControlState ControlState
         {
-          if (!Enabled) return ControlState.Disabled;
+            get
+            {
+                if (DesignMode) return ControlState.Enabled;
+                else if (Suspended) return ControlState.Disabled;
+                else
+                {
+                    if (!Enabled) return ControlState.Disabled;
 
-          if ((Pressed[(int)MouseButton.Left] && Inside) || (Focused && (Pressed[(int)GamePadActions.Press] || Pressed[(int)MouseButton.None]))) return ControlState.Pressed;
-          else if (Hovered && Inside) return ControlState.Hovered;
-          else if ((Focused && !Inside) || (Hovered && !Inside) || (Focused && !Hovered && Inside)) return ControlState.Focused;
-          else return ControlState.Enabled;
+                    if ((Pressed[(int)MouseButton.Left] && Inside) || (Focused && (Pressed[(int)GamePadActions.Press] || Pressed[(int)MouseButton.None]))) return ControlState.Pressed;
+                    else if (Hovered && Inside) return ControlState.Hovered;
+                    else if ((Focused && !Inside) || (Hovered && !Inside) || (Focused && !Hovered && Inside)) return ControlState.Focused;
+                    else return ControlState.Enabled;
+                }
+            }
         }
-      }
-    }    
-    ////////////////////////////////////////////////////////////////////////////
 
-    #endregion
+        #endregion
 
-    #region //// Events ////////////
+        #region Events
 
-    ////////////////////////////////////////////////////////////////////////////   
-    ////////////////////////////////////////////////////////////////////////////
+        #endregion
 
-    #endregion
+        #region Construstors
 
-    #region //// Construstors //////
+        protected ButtonBase(Manager manager)
+            : base(manager)
+        {
+            SetDefaultSize(72, 24);
+            DoubleClicks = false;
+        }
 
-    ////////////////////////////////////////////////////////////////////////////       
-    protected ButtonBase(Manager manager)
-      : base(manager)
-    {
-      SetDefaultSize(72, 24);
-      DoubleClicks = false;
+        #endregion
+
+        #region Methods
+
+        public override void Init()
+        {
+            base.Init();
+        }
+
+        protected override void OnClick(EventArgs e)
+        {
+            MouseEventArgs ex = (e is MouseEventArgs) ? (MouseEventArgs)e : new MouseEventArgs();
+            if (ex.Button == MouseButton.Left || ex.Button == MouseButton.None)
+            {
+                base.OnClick(e);
+            }
+        }
+
+        #endregion
+
     }
-    ////////////////////////////////////////////////////////////////////////////
 
     #endregion
 
-    #region //// Methods ///////////
-
-    ////////////////////////////////////////////////////////////////////////////
-    public override void Init()
-    {
-      base.Init();
-    }
-    ////////////////////////////////////////////////////////////////////////////                                 
-
-    ////////////////////////////////////////////////////////////////////////////
-    protected override void OnClick(EventArgs e)
-    {
-      MouseEventArgs ex = (e is MouseEventArgs) ? (MouseEventArgs)e : new MouseEventArgs();      
-      if (ex.Button == MouseButton.Left || ex.Button == MouseButton.None)
-      {
-        base.OnClick(e);
-      }
-    }
-    ////////////////////////////////////////////////////////////////////////////
-
-    #endregion
-
-  }
-
-  ////////////////////////////////////////////////////////////////////////////
-
-  #endregion
-  
 }
