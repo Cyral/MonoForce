@@ -9,9 +9,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skins", "Skins\Skins.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skins Content", "Skins\Content\Skins Content.contentproj", "{ACB15DB5-8FC1-410D-8A07-9C2EE20A42ED}"
 EndProject
-Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "Application Demo Content", "Examples\Application Demo\Content\Application Demo Content.contentproj", "{67B98289-5447-4ADA-9858-473A1C91DBC8}"
+Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "Application Demo Content", "Application Demo Content2\Application_Demo_Content2Content\Application Demo Content.contentproj", "{67B98289-5447-4ADA-9858-473A1C91DBC8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application Demo", "Examples\Application Demo\Application Demo.csproj", "{4CDF382E-9313-4D55-9C4C-5C6159FA77CF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application Demo", "GameName2\GameName2\Application Demo.csproj", "{4CDF382E-9313-4D55-9C4C-5C6159FA77CF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Source", "Source\Source.csproj", "{C2FEE818-F112-4344-BF32-D62A16F0F290}"
 EndProject
