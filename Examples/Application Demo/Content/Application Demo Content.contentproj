@@ -89,7 +89,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Importers\Importers.csproj">
+    <ProjectReference Include="..\..\..\Importers\Importers.csproj">
       <Project>{8ed9b288-c739-4a73-a0a3-0382587b771d}</Project>
       <Name>Importers</Name>
     </ProjectReference>
