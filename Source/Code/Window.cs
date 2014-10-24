@@ -169,7 +169,10 @@ namespace MonoForce.Controls
         public Window(Manager manager)
             : base(manager)
         {
-            //Ensure that all the required layers are defined for the window's skin.
+
+			DragAlpha = 200;
+			
+			//Ensure that all the required layers are defined for the window's skin.
             CheckLayer(Skin, lrWindow);
             CheckLayer(Skin, lrCaption);
             CheckLayer(Skin, lrFrameTop);
