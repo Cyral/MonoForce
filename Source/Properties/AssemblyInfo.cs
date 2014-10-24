@@ -1,15 +1,16 @@
-using System.Reflection;
+﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("MonoForce Controls")]
-[assembly: AssemblyProduct("MonoForce")]
-[assembly: AssemblyDescription("MonoForce Source")]
-[assembly: AssemblyCompany("Tom Shane")]
-[assembly: AssemblyCopyright("Copyright (c) by Tom Shane")]
+[assembly: AssemblyTitle("GameName3")]
+[assembly: AssemblyProduct("GameName3")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -19,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("b105c831-6cb5-4d9e-a027-83e2fb6491ee")]
+[assembly: Guid("45cab6c9-c19f-460d-ba37-2c2dad25ac12")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -28,10 +29,8 @@ using System.Runtime.InteropServices;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion("0.7.2407.1915")]
-
-
-
-
-
-
+// You can specify all the values or you can default the Build and Revision Numbers 
+// by using the '*' as shown below:
+// [assembly: AssemblyVersion("1.0.*")]
+[assembly: AssemblyVersion("1.0.0.0")]
+[assembly: AssemblyFileVersion("1.0.0.0")]
