@@ -184,3 +184,16 @@ UpgradeLog*.htm
 
 # Microsoft Fakes
 FakesAssemblies/
+
+Assets/Logo-Test.xcf
+Assets/Logo-Test.xcf
+Examples/Application Demo/Content/Skins/Default.skin
+MonoForce.v12.suo
+Skins/Content/Skins Content.mgcb
+Skins/Default.skin
+*.xnb
+*.skin
+*.dll
+*.pdb
+Source/bin/Windows/Debug/MonoForce.Controls.dll
+Source/bin/Windows/Debug/SharpDX.Direct3D11.dll

@@ -39,6 +39,14 @@
             <returns></returns>
             <unmanaged>unsigned int XInputGetCapabilities([In] XUSER_INDEX dwUserIndex,[In] XINPUT_DEVQUERYTYPE dwFlags,[Out] XINPUT_CAPABILITIES* pCapabilities)</unmanaged>	
         </member>
+        <member name="M:SharpDX.XInput.Controller.GetCapabilities(SharpDX.XInput.DeviceQueryType,SharpDX.XInput.Capabilities@)">
+            <summary>
+            Gets the capabilities.
+            </summary>
+            <param name="deviceQueryType">Type of the device query.</param>
+            <param name="capabilities">The capabilities of this controller.</param>
+            <returns><c>true</c> if the controller is connected, <c>false</c> otherwise.</returns>
+        </member>
         <member name="M:SharpDX.XInput.Controller.GetKeystroke(SharpDX.XInput.DeviceQueryType,SharpDX.XInput.Keystroke@)">
             <summary>
             Gets the keystroke.
@@ -237,6 +245,7 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='BATTERY_LEVEL_EMPTY']/*"/>	
+            <msdn-id>ff561360</msdn-id>	
             <unmanaged>BATTERY_LEVEL_EMPTY</unmanaged>	
             <unmanaged-short>BATTERY_LEVEL_EMPTY</unmanaged-short>	
         </member>
@@ -245,6 +254,7 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='BATTERY_LEVEL_LOW']/*"/>	
+            <msdn-id>ff561360</msdn-id>	
             <unmanaged>BATTERY_LEVEL_LOW</unmanaged>	
             <unmanaged-short>BATTERY_LEVEL_LOW</unmanaged-short>	
         </member>
@@ -253,6 +263,7 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='BATTERY_LEVEL_MEDIUM']/*"/>	
+            <msdn-id>ff561360</msdn-id>	
             <unmanaged>BATTERY_LEVEL_MEDIUM</unmanaged>	
             <unmanaged-short>BATTERY_LEVEL_MEDIUM</unmanaged-short>	
         </member>
@@ -261,6 +272,7 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='BATTERY_LEVEL_FULL']/*"/>	
+            <msdn-id>ff561360</msdn-id>	
             <unmanaged>BATTERY_LEVEL_FULL</unmanaged>	
             <unmanaged-short>BATTERY_LEVEL_FULL</unmanaged-short>	
         </member>
@@ -1076,6 +1088,7 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='XINPUT_CAPABILITIES::Type']/*"/>	
+            <msdn-id>microsoft.directx_sdk.reference.xinput_capabilities</msdn-id>	
             <unmanaged>XINPUT_DEVTYPE Type</unmanaged>	
             <unmanaged-short>XINPUT_DEVTYPE Type</unmanaged-short>	
         </member>
@@ -1084,6 +1097,7 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='XINPUT_CAPABILITIES::SubType']/*"/>	
+            <msdn-id>microsoft.directx_sdk.reference.xinput_capabilities</msdn-id>	
             <unmanaged>XINPUT_DEVSUBTYPE SubType</unmanaged>	
             <unmanaged-short>XINPUT_DEVSUBTYPE SubType</unmanaged-short>	
         </member>
@@ -1092,6 +1106,7 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='XINPUT_CAPABILITIES::Flags']/*"/>	
+            <msdn-id>microsoft.directx_sdk.reference.xinput_capabilities</msdn-id>	
             <unmanaged>XINPUT_CAPS_FLAGS Flags</unmanaged>	
             <unmanaged-short>XINPUT_CAPS_FLAGS Flags</unmanaged-short>	
         </member>
@@ -1100,6 +1115,7 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='XINPUT_CAPABILITIES::Gamepad']/*"/>	
+            <msdn-id>microsoft.directx_sdk.reference.xinput_capabilities</msdn-id>	
             <unmanaged>XINPUT_GAMEPAD Gamepad</unmanaged>	
             <unmanaged-short>XINPUT_GAMEPAD Gamepad</unmanaged-short>	
         </member>
@@ -1108,6 +1124,7 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='XINPUT_CAPABILITIES::Vibration']/*"/>	
+            <msdn-id>microsoft.directx_sdk.reference.xinput_capabilities</msdn-id>	
             <unmanaged>XINPUT_VIBRATION Vibration</unmanaged>	
             <unmanaged-short>XINPUT_VIBRATION Vibration</unmanaged-short>	
         </member>
@@ -1128,6 +1145,7 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='XINPUT_KEYSTROKE::VirtualKey']/*"/>	
+            <msdn-id>microsoft.directx_sdk.reference.xinput_keystroke</msdn-id>	
             <unmanaged>XINPUT_GAMEPAD_KEY_CODE VirtualKey</unmanaged>	
             <unmanaged-short>XINPUT_GAMEPAD_KEY_CODE VirtualKey</unmanaged-short>	
         </member>
@@ -1136,6 +1154,7 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='XINPUT_KEYSTROKE::Unicode']/*"/>	
+            <msdn-id>microsoft.directx_sdk.reference.xinput_keystroke</msdn-id>	
             <unmanaged>wchar_t Unicode</unmanaged>	
             <unmanaged-short>wchar_t Unicode</unmanaged-short>	
         </member>
@@ -1144,6 +1163,7 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='XINPUT_KEYSTROKE::Flags']/*"/>	
+            <msdn-id>microsoft.directx_sdk.reference.xinput_keystroke</msdn-id>	
             <unmanaged>XINPUT_KEYSTROKE_FLAGS Flags</unmanaged>	
             <unmanaged-short>XINPUT_KEYSTROKE_FLAGS Flags</unmanaged-short>	
         </member>
@@ -1152,6 +1172,7 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='XINPUT_KEYSTROKE::UserIndex']/*"/>	
+            <msdn-id>microsoft.directx_sdk.reference.xinput_keystroke</msdn-id>	
             <unmanaged>XUSER_INDEX UserIndex</unmanaged>	
             <unmanaged-short>XUSER_INDEX UserIndex</unmanaged-short>	
         </member>
@@ -1160,6 +1181,7 @@
             No documentation.	
             </summary>	
             <!-- No matching elements were found for the following include tag --><include file=".\..\Documentation\CodeComments.xml" path="/comments/comment[@id='XINPUT_KEYSTROKE::HidCode']/*"/>	
+            <msdn-id>microsoft.directx_sdk.reference.xinput_keystroke</msdn-id>	
             <unmanaged>unsigned char HidCode</unmanaged>	
             <unmanaged-short>unsigned char HidCode</unmanaged-short>	
         </member>
