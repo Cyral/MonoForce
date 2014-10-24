@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{8966C2BC-E046-4B48-B781-A58B092B7C92}</ProjectGuid>
+    <ProjectGuid>{4CDF382E-9313-4D55-9C4C-5C6159FA77CF}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Application_Demo2</RootNamespace>
@@ -54,12 +54,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Source\Source.csproj">
-      <Project>{9c8328b3-97fc-4f39-a1bc-6dc4a1730c26}</Project>
-      <Name>Source</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Content\Images\Caption.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -81,15 +75,21 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Skins\Default.skin">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Neoforce.ico" />
     <None Include="Resources\Logo.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Skins\Green.skin">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Source\Source.csproj">
+      <Project>{c2fee818-f112-4344-bf32-d62a16f0f290}</Project>
+      <Name>Source</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
