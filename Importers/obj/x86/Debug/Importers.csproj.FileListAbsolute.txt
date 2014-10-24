@@ -1,0 +1,5 @@
+D:\Documents\GitHub\MonoForce\Importers\bin\x86\Debug\MonoForce.Importers.dll
+D:\Documents\GitHub\MonoForce\Importers\bin\x86\Debug\MonoForce.Importers.pdb
+D:\Documents\GitHub\MonoForce\Importers\obj\x86\Debug\Importers.csprojResolveAssemblyReference.cache
+D:\Documents\GitHub\MonoForce\Importers\obj\x86\Debug\MonoForce.Importers.dll
+D:\Documents\GitHub\MonoForce\Importers\obj\x86\Debug\MonoForce.Importers.pdb

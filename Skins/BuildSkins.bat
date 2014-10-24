@@ -17,6 +17,7 @@ del %SKIN_DIR%\*.skin
 SET SKINS=Default,Green,Blue,Magenta,Purple
 
 FOR %%A in (%SKINS%) do "%Z_DIR%\7za.exe" a -tzip -mx9 -r -x!Addons "%SKIN_DIR%\%%A.skin" "%CONTENT_DIR%\%%A\*.*"
+pause
 
 
 
