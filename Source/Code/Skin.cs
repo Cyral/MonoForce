@@ -730,7 +730,11 @@ namespace MonoForce.Controls
                 file += "Skin";
 
                 file = archive ? file : Path.GetFullPath(file);
-                doc = content.Load<SkinXmlDocument>(file);
+                //doc = content.Load<SkinXmlDocument>(file);
+				using(var stream = content.GetFileStream("Skin.xml"))
+				{
+					doc.Load(stream);
+				}
 
                 XmlElement e = doc["Skin"];
                 if (e != null)
