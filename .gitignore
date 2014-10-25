@@ -8,8 +8,7 @@
 *.sln.docstates
 
 # MonoForce Specific
-Assets/Logo-Test.xcf
-Assets/Logo-Test.xcf
+*.skin
 Examples/Application Demo/Content/Skins/Default.skin
 MonoForce.v12.suo
 Skins/Content/Skins Content.mgcb
@@ -19,7 +18,6 @@ Skins/Default.skin
 *.dll
 *.pdb
 *.dll
-*.skin
 Source/bin/Windows/Debug/MonoForce.Controls.dll
 Source/bin/Windows/Debug/SharpDX.Direct3D11.dll
 

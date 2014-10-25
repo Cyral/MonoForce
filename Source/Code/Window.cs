@@ -91,10 +91,30 @@ namespace MonoForce.Controls
         #endregion
 
         #region Fields
+        /// <summary>
+        /// Indicates if the close button is drawn.
+        /// </summary>
         private bool closeButtonVisible = true;
+
+        /// <summary>
+        /// Indicates if the window caption is drawn.
+        /// </summary>
         private bool captionVisible = true;
+
+        /// <summary>
+        /// Indicates if the window border is drawn.
+        /// </summary>
         private bool borderVisible = true;
+
+        /// <summary>
+        /// Alpha value of the window.
+        /// </summary>
         private byte oldAlpha = 255;
+
+        /// <summary>
+        /// Alpha value used when dragging the window.
+        /// </summary>
+        private byte dragAlpha = 200;
         #endregion
 
         #region Events
@@ -205,7 +225,7 @@ namespace MonoForce.Controls
 
             Add(CloseButton, false);
 
-            oldAlpha = Alpha;
+            oldAlpha = (byte)Alpha;
         }
 
         #endregion
@@ -226,6 +246,7 @@ namespace MonoForce.Controls
             CloseButton.Top = Skin.OriginMargins.Top + closeButton.OffsetY;
             CloseButton.Anchor = Anchors.Top | Anchors.Right;
         }
+
         /// <summary>
         /// Centres the window on the screen.
         /// </summary>
@@ -234,6 +255,7 @@ namespace MonoForce.Controls
             Left = (Manager.ScreenWidth / 2) - (Width / 2);
             Top = (Manager.ScreenHeight - Height) / 2;
         }
+
         /// <summary>
         /// Draws the window.
         /// </summary>
@@ -247,7 +269,7 @@ namespace MonoForce.Controls
                 SkinControl skin = Manager.Skin.Controls[skShadow];
                 SkinLayer layer = skin.Layers[lrShadow];
 
-                Color c = Color.FromNonPremultiplied(layer.States.Enabled.Color.R, layer.States.Enabled.Color.G, layer.States.Enabled.Color.B, Alpha);
+                Color c = Color.FromNonPremultiplied(layer.States.Enabled.Color.R, layer.States.Enabled.Color.G, layer.States.Enabled.Color.B, (byte)Alpha);
 
                 renderer.Begin(BlendingMode.Default);
                 renderer.DrawLayer(layer, new Rectangle(Left - skin.OriginMargins.Left, Top - skin.OriginMargins.Top, Width + skin.OriginMargins.Horizontal, Height + skin.OriginMargins.Vertical), c, 0);
@@ -255,6 +277,7 @@ namespace MonoForce.Controls
             }
             base.Render(renderer, gameTime);
         }
+
         /// <summary>
         /// Cleans up the window's resources.
         /// </summary>
@@ -381,15 +404,9 @@ namespace MonoForce.Controls
         protected override void OnMoveBegin(EventArgs e)
         {
             base.OnMoveBegin(e);
-            //Swap the alpha values.
-            try
-            {
-                oldAlpha = Alpha;
-                Alpha = DragAlpha;
-            }
-            catch
-            {
-            }
+
+            oldAlpha = (byte)Alpha;
+            Alpha = dragAlpha;
         }
         /// <summary>
         /// Handles window motion ending.

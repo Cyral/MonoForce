@@ -115,7 +115,7 @@ namespace MonoForce.Controls
             Add(control, true);
         }
 
-        public override void Remove(Control control)
+        public override void Remove(Control control, bool dispose = true)
         {
             base.Remove(control);
             clientArea.Remove(control);

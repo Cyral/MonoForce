@@ -27,13 +27,11 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Reflection;
 using Microsoft.Xna.Framework.Input;
-
-#if (!XBOX && !XBOX_FAKE)
 using System.IO;
 using System.Text;
 using System.Media;
+using MonoForce.Controls;
 using System.Windows.Forms;
-#endif
 
 #endregion
 
@@ -75,9 +73,7 @@ namespace MonoForce.Controls
 
         #region Fields
 
-#if (!XBOX && !XBOX_FAKE)
         private Form window = null;
-#endif
         private bool deviceReset = false;
         private bool renderTargetValid = false;
         private RenderTarget2D renderTarget = null;
@@ -1213,9 +1209,9 @@ namespace MonoForce.Controls
 
         #endregion
 
-        #region //// Input /////////////
+        #region Input
 
-        private bool CheckParent(Control control, Point pos)
+        public bool CheckParent(Control control, Point pos)
         {
             if (control.Parent != null && !CheckDetached(control))
             {
@@ -1716,5 +1712,4 @@ namespace MonoForce.Controls
     }
 
     #endregion
-
 }
