@@ -2976,7 +2976,7 @@ namespace MonoForce.Controls
             ToolTipOut();
 
 #if (!XBOX && !XBOX_FAKE)
-            Manager.Cursor = Manager.Skin.Cursors["Default"].Resource;
+            //Manager.Cursor = Manager.Skin.Cursors["Default"].Resource;
 #endif
 
             if (!Suspended) OnMouseOut(e);
