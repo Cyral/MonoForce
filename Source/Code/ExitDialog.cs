@@ -1,56 +1,45 @@
-////////////////////////////////////////////////////////////////
-//                                                            //
-//  Neoforce Central                                          //
-//                                                            //
-////////////////////////////////////////////////////////////////
-//                                                            //
-//         File: ExitDialog.cs                                //
-//                                                            //
-//      Version: 0.7                                          //
-//                                                            //
-//         Date: 11/09/2010                                   //
-//                                                            //
-//       Author: Tom Shane                                    //
-//                                                            //
-////////////////////////////////////////////////////////////////
-//                                                            //
-//  Copyright (c) by Tom Shane                                //
-//                                                            //
-////////////////////////////////////////////////////////////////
-
-#region Using
-
-#endregion
-
 namespace MonoForce.Controls
 {
-
+    /// <summary>
+    /// Dialog window asking users to confirm or cancel an exit operation.
+    /// </summary>
     public class ExitDialog : Dialog
     {
 
         #region Fields
 
-        public Button btnYes;
-        public Button btnNo;
+        /// <summary>
+        /// Yes button.
+        /// </summary>
+        private Button btnYes;
+        /// <summary>
+        /// No button.
+        /// </summary>
+        private Button btnNo;
+        /// <summary>
+        /// Do you want to exit message.
+        /// </summary>
         private Label lblMessage;
+        /// <summary>
+        /// Dialog window icon image.
+        /// </summary>
         private ImageBox imgIcon;
-
-        #endregion
-
-        #region Properties
-
-        #endregion
-
-        #region Events
 
         #endregion
 
         #region Construstors
 
-        public ExitDialog(Manager manager)
+        /// <summary>
+        /// Creates a new instance of the exit dialog window.
+        /// </summary>
+        /// <param name="manager">GUI manager for the dialog window.</param>
+        public ExitDialog(Manager manager, string customMessage = "")
             : base(manager)
         {
-            string msg = "Do you really want to exit " + Manager.Game.Window.Title + "?";
+            string msg = customMessage;
+            if (customMessage == string.Empty)
+                msg = "Do you really want to exit " + Manager.Game.Window.Title + "?";
+
             ClientWidth = (int)Manager.Skin.Controls["Label"].Layers[0].Text.Font.Resource.MeasureString(msg).X + 48 + 16 + 16 + 16;
             ClientHeight = 120;
             TopPanel.Visible = false;
@@ -104,6 +93,9 @@ namespace MonoForce.Controls
 
         #region Methods
 
+        /// <summary>
+        /// Initializes the exit dialog window.
+        /// </summary>
         public override void Init()
         {
             base.Init();
@@ -112,5 +104,4 @@ namespace MonoForce.Controls
         #endregion
 
     }
-
 }

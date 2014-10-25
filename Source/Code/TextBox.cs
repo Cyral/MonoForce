@@ -439,9 +439,7 @@ namespace MonoForce.Controls
             base.InitSkin();
             Skin = new SkinControl(Manager.Skin.Controls[skTextBox]);
 
-#if (!XBOX && !XBOX_FAKE)
             Cursor = Manager.Skin.Cursors[crText].Resource;
-#endif
 
             font = (Skin.Layers[lrTextBox].Text != null) ? Skin.Layers[lrTextBox].Text.Font.Resource : null;
         }
