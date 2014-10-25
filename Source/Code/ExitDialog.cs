@@ -40,7 +40,7 @@ namespace MonoForce.Controls
             if (customMessage == string.Empty)
                 msg = "Do you really want to exit " + Manager.Game.Window.Title + "?";
 
-            ClientWidth = (int)Manager.Skin.Controls["Label"].Layers[0].Text.Font.Resource.MeasureRichString(msg, Manager).X + 48 + 16 + 16 + 16;
+            ClientWidth = (int)Manager.Skin.Controls["Label"].Layers[0].Text.Font.Resource.MeasureString(msg).X + 48 + 16 + 16 + 16;
             ClientHeight = 120;
             TopPanel.Visible = false;
             IconVisible = true;
