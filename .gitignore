@@ -4,6 +4,7 @@
 # Other
 *.dll
 *.sln
+*.csproj
 
 # User-specific files
 *.suo
