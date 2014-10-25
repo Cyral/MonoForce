@@ -59,7 +59,7 @@ namespace MonoForce.Controls
 
         #region Consts
 
-        internal Version _SkinVersion = new Version(0, 7);
+        internal Version _SkinVersion = new Version(0, 8);
         internal Version _LayoutVersion = new Version(0, 7);
         internal const string _SkinDirectory = ".\\Content\\Skins\\";
         internal const string _LayoutDirectory = ".\\Content\\Layout\\";

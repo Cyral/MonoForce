@@ -26,6 +26,7 @@ using System.IO;
 using System.Xml;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using MonoForce.External.Zip;
 
 #endregion
 
@@ -586,6 +587,15 @@ namespace MonoForce.Controls
 		{
 			base.Init();
 
+			string extracted = Path.GetTempPath() + "MonoForceSkins";
+			Directory.CreateDirectory(extracted);
+
+			try
+			{
+				content.Archive.ExtractAll(extracted);
+			}
+			catch(Exception e){}
+
 			for (int i = 0; i < fonts.Count; i++)
 			{
 				content.UseArchive = fonts[i].Archive;
@@ -595,21 +605,25 @@ namespace MonoForce.Controls
 			}
 
 #if (!XBOX && !XBOX_FAKE)
-			for (int i = 0; i < cursors.Count; i++)
+			/*for (int i = 0; i < cursors.Count; i++)
 			{
 				content.UseArchive = cursors[i].Archive;
 				string asset = GetAsset("Cursors", cursors[i].Asset, cursors[i].Addon);
 				asset = content.UseArchive ? asset : Path.GetFullPath(asset);
 				cursors[i].Resource = content.Load<Cursor>(asset);
-			}
+			}*/
 #endif
-
+			
 			for (int i = 0; i < images.Count; i++)
 			{
 				content.UseArchive = images[i].Archive;
 				string asset = GetAsset("Images", images[i].Asset, images[i].Addon);
-				asset = content.UseArchive ? asset : Path.GetFullPath(asset);
-				images[i].Resource = content.Load<Texture2D>(asset);
+
+				using(var stream = File.OpenRead(extracted + "/" + asset + ".png"))
+				{
+					images[i].Resource = Texture2D.FromStream(Manager.GraphicsDevice, stream);
+				}
+
 			}
 
 			for (int i = 0; i < controls.Count; i++)
@@ -635,6 +649,8 @@ namespace MonoForce.Controls
 					}
 				}
 			}
+
+			Directory.Delete(extracted, true);
 		}
 
 		private string ReadAttribute(XmlElement element, string attrib, string defval, bool needed)

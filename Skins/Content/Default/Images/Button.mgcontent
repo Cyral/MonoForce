@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SourceFile>D:/Documents/MonoForce/Skins/bin/Debug/../../Content/Default/Images/Button.png</SourceFile>
+  <DestFile>D:/Documents/MonoForce/Skins/bin/Debug/temp/../../Content/Default/Images/Button.xnb</DestFile>
+  <DestTime>2014-10-25T17:51:28.2126058+01:00</DestTime>
+  <Importer>TextureImporter</Importer>
+  <Processor>TextureProcessor</Processor>
+  <Dependencies />
+  <BuildAsset />
+</PipelineBuildEvent>

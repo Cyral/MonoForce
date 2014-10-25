@@ -41,12 +41,13 @@ namespace MonoForce.Controls
     #region Fields
 
     private string archivePath = null;
-    private ZipFile archive = null;
     private bool useArchive = false;   
 
     #endregion
 
     #region Properties
+
+	internal ZipFile Archive { get; set; } 
 
     /// <include file='Documents/ArchiveManager.xml' path='ArchiveManager/Member[@name="ArchivePath"]/*' />          
     public virtual string ArchivePath
@@ -72,7 +73,7 @@ namespace MonoForce.Controls
     {
       if (archive != null)
       {
-        this.archive = ZipFile.Read(archive);
+        this.Archive = ZipFile.Read(archive);
         archivePath = archive;
         useArchive = true;
       }
@@ -85,14 +86,14 @@ namespace MonoForce.Controls
     /// <include file='Documents/ArchiveManager.xml' path='ArchiveManager/Member[@name="OpenStream"]/*' />
     protected override Stream OpenStream(string assetName)
     {
-      if (useArchive && archive != null)
+      if (useArchive && Archive != null)
       {
         assetName = assetName.Replace("\\", "/");
         if (assetName.StartsWith("/")) assetName = assetName.Remove(0, 1);
 
         string fullAssetName = (assetName + ".xnb").ToLower();
 
-        foreach (ZipEntry entry in archive)
+        foreach (ZipEntry entry in Archive)
         {
           ZipDirEntry ze = new ZipDirEntry(entry);
           
@@ -114,11 +115,11 @@ namespace MonoForce.Controls
     /// <include file='Documents/ArchiveManager.xml' path='ArchiveManager/Member[@name="GetAssetNames"]/*' />
     public string[] GetAssetNames()
     {
-      if (useArchive && archive != null)
+      if (useArchive && Archive != null)
       {
         List<string> filenames = new List<string>();
 
-        foreach (ZipEntry entry in archive)
+        foreach (ZipEntry entry in Archive)
         {
           string name = entry.FileName;
           if (name.EndsWith(".xnb"))
@@ -138,13 +139,13 @@ namespace MonoForce.Controls
     /// <include file='Documents/ArchiveManager.xml' path='ArchiveManager/Member[@name="GetAssetNames1"]/*' />        
     public string[] GetAssetNames(string path)
     {
-      if (useArchive && archive != null)
+      if (useArchive && Archive != null)
       {
         if (path != null && path != "" && path != "\\" && path != "/")
         {
           List<string> filenames = new List<string>();
 
-          foreach (ZipEntry entry in archive)
+          foreach (ZipEntry entry in Archive)
           {            
             string name = entry.FileName;
             if (name.EndsWith(".xnb"))
@@ -184,12 +185,12 @@ namespace MonoForce.Controls
     /// <include file='Documents/ArchiveManager.xml' path='ArchiveManager/Member[@name="GetFileStream"]/*' />
     public Stream GetFileStream(string filename)
     {
-      if (useArchive && archive != null)
+      if (useArchive && Archive != null)
       {
         filename = filename.Replace("\\", "/").ToLower();
         if (filename.StartsWith("/")) filename = filename.Remove(0, 1);
 
-        foreach (ZipEntry entry in archive)
+        foreach (ZipEntry entry in Archive)
         {
           string entryName = entry.FileName.ToLower();
 
@@ -207,7 +208,7 @@ namespace MonoForce.Controls
 
     public string[] GetDirectories(string path)
     {
-      if (useArchive && archive != null)
+      if (useArchive && Archive != null)
       {
         if (path != null && path != "" && path != "\\" && path != "/")
         {
@@ -217,7 +218,7 @@ namespace MonoForce.Controls
           if (path.StartsWith("/")) path = path.Remove(0, 1);
           if (!path.EndsWith("/")) path += '/';
 
-          foreach (ZipEntry entry in archive)
+          foreach (ZipEntry entry in Archive)
           {
             string name = entry.FileName;                     
             if (name.ToLower().StartsWith(path.ToLower()))
