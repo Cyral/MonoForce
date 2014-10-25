@@ -30,13 +30,7 @@ namespace MonoForce.Examples.ApplicationDemo
         public ApplicationDemo()
             : base("Default", true)
         {
-            SystemBorder = false;
-            FullScreenBorder = false;
-            ClearBackground = false;
-            ExitConfirmation = false;
-            Manager.TargetFrames = 60;
-            IsFixedTimeStep = true;
-
+           
             TotalFrames = 0;
 
             //Components.Add(new GamerServicesComponent(this));         
