@@ -1423,7 +1423,20 @@ namespace MonoForce.Controls
             }
         }
 
-        public virtual SpriteFont Font { get; set; }
+
+
+		public virtual SpriteFont Font
+		{
+			set
+			{
+				if(value != null)
+					skin.Layers[0].Text.Font.Resource = value;
+			}
+			get
+			{
+				return skin.Layers[0].Text.Font.Resource;
+			}
+		}
         #endregion
 
         #region Events
