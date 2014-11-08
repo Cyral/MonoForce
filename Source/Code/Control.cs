@@ -3314,7 +3314,8 @@ namespace MonoForce.Controls
                 {
 #if (!XBOX && !XBOX_FAKE)
                     GetResizePosition(e);
-                    Manager.Cursor = Cursor = GetResizeCursor();
+					//TODO: Sort this. Cursors really need doing.
+                    //Manager.Cursor = Cursor = GetResizeCursor();
 #endif
                 }
 
