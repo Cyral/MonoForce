@@ -86,15 +86,19 @@
     <Content Include="Skins\Default.skin">
       <Name>Default</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Importer>SkinImporter</Importer>
+      <Processor>PassThroughProcessor</Processor>
     </Content>
     <Content Include="Skins\Green.skin">
       <Name>Green</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Importer>SkinImporter</Importer>
+      <Processor>PassThroughProcessor</Processor>
     </Content>
   </ItemGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties StartDate="20100815" AssemblyFileVersion="0" AssemblyVersion="0" Reset="0" />
+      <UserProperties Reset="0" AssemblyVersion="0" AssemblyFileVersion="0" StartDate="20100815" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

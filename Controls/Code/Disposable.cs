@@ -26,7 +26,7 @@ using System;
 
 #endregion
 
-namespace TomShane.Neoforce.Controls
+namespace MonoForce.Controls
 {
 
   public abstract class Disposable: Unknown, IDisposable

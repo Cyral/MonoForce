@@ -31,7 +31,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 #endregion
 
-namespace TomShane.Neoforce.Controls
+namespace MonoForce.Controls
 { 
 
 
@@ -96,7 +96,7 @@ namespace TomShane.Neoforce.Controls
           
           if (type == null)
           {
-            cls = "TomShane.Neoforce.Controls." + cls;
+            cls = "MonoForce.Controls." + cls;
             type = Type.GetType(cls);
           }
                     
@@ -138,7 +138,7 @@ namespace TomShane.Neoforce.Controls
           
           if (t == null)
           {
-            cls = "TomShane.Neoforce.Controls." + cls;
+            cls = "MonoForce.Controls." + cls;
             t = Type.GetType(cls);
           }
           LoadControl(manager, e, t, c);

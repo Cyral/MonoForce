@@ -24,17 +24,17 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using TomShane.Neoforce.Controls;
+using MonoForce.Controls;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using System.Threading;
-using Controls = TomShane.Neoforce.Controls;
+using Controls = MonoForce.Controls;
 using System.IO;
 ////////////////////////////////////////////////////////////////////////////
 
 #endregion
 
-namespace TomShane.Neoforce.Central
+namespace MonoForce.Central
 {
   public class TaskControls: Dialog
   {
@@ -135,7 +135,7 @@ namespace TomShane.Neoforce.Central
       rdbNormal.Checked = true;
       rdbNormal.Text = "Normal mode";
       rdbNormal.ToolTip.Text = "Enables normal mode for TextBox control.";
-      rdbNormal.CheckedChanged += new TomShane.Neoforce.Controls.EventHandler(ModeChanged);
+      rdbNormal.CheckedChanged += new MonoForce.Controls.EventHandler(ModeChanged);
 
       rdbPassword = new RadioButton(manager);
       rdbPassword.Init();
@@ -147,7 +147,7 @@ namespace TomShane.Neoforce.Central
       rdbPassword.Checked = false;
       rdbPassword.Text = "Password mode";
       rdbPassword.ToolTip.Text = "Enables password mode for TextBox control.";
-      rdbPassword.CheckedChanged += new TomShane.Neoforce.Controls.EventHandler(ModeChanged);    
+      rdbPassword.CheckedChanged += new MonoForce.Controls.EventHandler(ModeChanged);    
 
       chkBorders = new CheckBox(manager);
       chkBorders.Init();
@@ -159,7 +159,7 @@ namespace TomShane.Neoforce.Central
       chkBorders.Checked = false;
       chkBorders.Text = "Borderless mode";      
       chkBorders.ToolTip.Text = "Enables or disables borderless mode for TextBox control.";      
-      chkBorders.CheckedChanged += new TomShane.Neoforce.Controls.EventHandler(chkBorders_CheckedChanged);                  
+      chkBorders.CheckedChanged += new MonoForce.Controls.EventHandler(chkBorders_CheckedChanged);                  
 
       chkReadOnly = new CheckBox(manager);
       chkReadOnly.Init();
@@ -171,7 +171,7 @@ namespace TomShane.Neoforce.Central
       chkReadOnly.Checked = false;
       chkReadOnly.Text = "Read only mode";
       chkReadOnly.ToolTip.Text = "Enables or disables read only mode for TextBox control.\nThis mode is necessary to enable explicitly.";
-      chkReadOnly.CheckedChanged += new TomShane.Neoforce.Controls.EventHandler(chkReadOnly_CheckedChanged);
+      chkReadOnly.CheckedChanged += new MonoForce.Controls.EventHandler(chkReadOnly_CheckedChanged);
    
       string[] colors = new string[] {"Red", "Green", "Blue", "Yellow", "Orange", "Purple", "White", "Black", "Magenta", "Cyan",
                                       "Brown", "Aqua", "Beige", "Coral", "Crimson", "Gray", "Azure", "Ivory", "Indigo", "Khaki",
@@ -215,7 +215,7 @@ namespace TomShane.Neoforce.Central
       trkMain.Anchor = Anchors.Left | Anchors.Top | Anchors.Right;
       trkMain.Range = 64;
       trkMain.Value = 16;
-      trkMain.ValueChanged += new TomShane.Neoforce.Controls.EventHandler(trkMain_ValueChanged);
+      trkMain.ValueChanged += new MonoForce.Controls.EventHandler(trkMain_ValueChanged);
       
       lblTrack = new Label(manager);
       lblTrack.Init();
@@ -345,7 +345,7 @@ namespace TomShane.Neoforce.Central
 
       BottomPanel.BringToFront();
 
-      SkinChanged += new TomShane.Neoforce.Controls.EventHandler(TaskControls_SkinChanged);                         
+      SkinChanged += new MonoForce.Controls.EventHandler(TaskControls_SkinChanged);                         
       TaskControls_SkinChanged(null, null);            
     }   
     ////////////////////////////////////////////////////////////////////////////    
@@ -362,7 +362,7 @@ namespace TomShane.Neoforce.Central
     ////////////////////////////////////////////////////////////////////////////   
 
     ////////////////////////////////////////////////////////////////////////////    
-    void TaskControls_SkinChanged(object sender, TomShane.Neoforce.Controls.EventArgs e)
+    void TaskControls_SkinChanged(object sender, MonoForce.Controls.EventArgs e)
     {
       #if (!XBOX && !XBOX_FAKE)
         prgMain.Cursor = Manager.Skin.Cursors["Busy"].Resource;
@@ -371,7 +371,7 @@ namespace TomShane.Neoforce.Central
     ////////////////////////////////////////////////////////////////////////////    
 
     ////////////////////////////////////////////////////////////////////////////
-    void ModeChanged(object sender, TomShane.Neoforce.Controls.EventArgs e)
+    void ModeChanged(object sender, MonoForce.Controls.EventArgs e)
     {     
       if (sender == rdbNormal)
       {
@@ -385,21 +385,21 @@ namespace TomShane.Neoforce.Central
     ////////////////////////////////////////////////////////////////////////////  
 
     ////////////////////////////////////////////////////////////////////////////
-    void chkReadOnly_CheckedChanged(object sender, TomShane.Neoforce.Controls.EventArgs e)
+    void chkReadOnly_CheckedChanged(object sender, MonoForce.Controls.EventArgs e)
     {
       txtEdit.ReadOnly = chkReadOnly.Checked;
     }
     ////////////////////////////////////////////////////////////////////////////  
 
     ////////////////////////////////////////////////////////////////////////////
-    void chkBorders_CheckedChanged(object sender, TomShane.Neoforce.Controls.EventArgs e)
+    void chkBorders_CheckedChanged(object sender, MonoForce.Controls.EventArgs e)
     {
       txtEdit.DrawBorders = !chkBorders.Checked;
     }
     ////////////////////////////////////////////////////////////////////////////  
     
     ////////////////////////////////////////////////////////////////////////////  
-    void btnDisable_Click(object sender, TomShane.Neoforce.Controls.EventArgs e)
+    void btnDisable_Click(object sender, MonoForce.Controls.EventArgs e)
     {                 
       if (txtEdit.Enabled)
       {       
@@ -420,7 +420,7 @@ namespace TomShane.Neoforce.Central
     ////////////////////////////////////////////////////////////////////////////  
     
     ////////////////////////////////////////////////////////////////////////////  
-    void btnProgress_Click(object sender, TomShane.Neoforce.Controls.EventArgs e)
+    void btnProgress_Click(object sender, MonoForce.Controls.EventArgs e)
     {  
       if (prgMain.Mode == ProgressBarMode.Default) prgMain.Mode = ProgressBarMode.Infinite;
       else prgMain.Mode = ProgressBarMode.Default;
@@ -432,7 +432,7 @@ namespace TomShane.Neoforce.Central
     ////////////////////////////////////////////////////////////////////////////  
     
     ////////////////////////////////////////////////////////////////////////////  
-    void trkMain_ValueChanged(object sender, TomShane.Neoforce.Controls.EventArgs e)
+    void trkMain_ValueChanged(object sender, MonoForce.Controls.EventArgs e)
     {
       if (lblTrack != null)
       {

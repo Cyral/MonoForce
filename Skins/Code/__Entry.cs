@@ -27,7 +27,7 @@ using System.IO;
 
 #endregion
 
-namespace TomShane.Neoforce.Skins
+namespace MonoForce.Skins
 {
   
   static class Entry  

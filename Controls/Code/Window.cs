@@ -28,7 +28,7 @@ using Microsoft.Xna.Framework.Input;
 
 #endregion
 
-namespace TomShane.Neoforce.Controls
+namespace MonoForce.Controls
 {
 
   #region //// Classes ///////////

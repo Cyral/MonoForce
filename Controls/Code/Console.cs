@@ -31,7 +31,7 @@ using Microsoft.Xna.Framework.GamerServices;
 
 #endregion
 
-namespace TomShane.Neoforce.Controls
+namespace MonoForce.Controls
 {
 
     public struct ConsoleMessage

@@ -30,7 +30,7 @@ using Microsoft.Xna.Framework.Input;
 
 #endregion
 
-namespace TomShane.Neoforce.Controls
+namespace MonoForce.Controls
 { 
   
   public class ContextMenu: MenuBase

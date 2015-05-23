@@ -41,7 +41,7 @@ using Microsoft.Xna.Framework.Input;
 
 [assembly: CLSCompliant(false)]
 
-namespace TomShane.Neoforce.Controls
+namespace MonoForce.Controls
 {    
 
   #region //// Classes ///////////

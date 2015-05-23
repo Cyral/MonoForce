@@ -27,7 +27,7 @@ using System.IO;
 
 #endregion
 
-namespace TomShane.Neoforce.Central
+namespace MonoForce.Central
 {  
   static class Entry  
   {

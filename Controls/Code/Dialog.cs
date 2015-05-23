@@ -25,7 +25,7 @@
 
 #endregion
 
-namespace TomShane.Neoforce.Controls
+namespace MonoForce.Controls
 { 
 
   public class Dialog: Window

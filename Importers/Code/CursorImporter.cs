@@ -34,7 +34,7 @@ using System;
 #endregion
 
 
-namespace TomShane.Neoforce.Importers
+namespace MonoForce.Importers
 {
   
 
@@ -93,7 +93,7 @@ namespace TomShane.Neoforce.Importers
     ////////////////////////////////////////////////////////////////////////////    
     public override string GetRuntimeReader(TargetPlatform targetPlatform)
     {
-      return "TomShane.Neoforce.Controls.CursorReader, TomShane.Neoforce.Controls";
+      return "MonoForce.Controls.CursorReader, MonoForce.Controls";
     }      
     ////////////////////////////////////////////////////////////////////////////
 

@@ -27,7 +27,7 @@ using System.Collections.Generic;
 
 #endregion
 
-namespace TomShane.Neoforce.Controls
+namespace MonoForce.Controls
 {
 
   #region //// Enums /////////////

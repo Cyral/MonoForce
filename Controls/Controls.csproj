@@ -7,11 +7,11 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TomShane.Neoforce.Controls</RootNamespace>
-    <AssemblyName>TomShane.Neoforce.Controls</AssemblyName>
+    <RootNamespace>MonoForce.Controls</RootNamespace>
+    <AssemblyName>MonoForce.Controls</AssemblyName>
     <XnaFrameworkVersion>v4.0</XnaFrameworkVersion>
     <XnaPlatform>Windows</XnaPlatform>
-    <ApplicationIcon>Resources\Neoforce.ico</ApplicationIcon>
+    <ApplicationIcon>Icon.ico</ApplicationIcon>
     <Thumbnail>Resources\Logo.png</Thumbnail>
     <XnaCrossPlatformGroupID>{92021ed2-859a-477f-9741-470035e41fe7}</XnaCrossPlatformGroupID>
     <SccProjectName>
@@ -217,6 +217,7 @@
     <Content Include="Documents\ButtonBase.xml" />
     <Content Include="Documents\ListBox.xml" />
     <Content Include="Documents\Window.xml" />
+    <Content Include="Icon.ico" />
     <Content Include="Resources\Logo.png" />
     <Content Include="Resources\Neoforce.ico">
       <Name>Neoforce</Name>
@@ -295,7 +296,7 @@
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties Reset="0" AssemblyVersion="1" AssemblyFileVersion="0" StartDate="20080911" />
+      <UserProperties StartDate="20080911" AssemblyFileVersion="0" AssemblyVersion="1" Reset="0" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

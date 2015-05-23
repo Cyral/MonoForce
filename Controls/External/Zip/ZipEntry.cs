@@ -1,6 +1,6 @@
 using System;
 
-namespace TomShane.Neoforce.External.Zip
+namespace MonoForce.External.Zip
 {
 	internal class ZipEntry
     {
@@ -117,7 +117,7 @@ namespace TomShane.Neoforce.External.Zip
 
         private static bool ReadHeader(System.IO.Stream s, ZipEntry ze)
         {
-            int signature = TomShane.Neoforce.External.Zip.Shared.ReadSignature(s);
+            int signature = MonoForce.External.Zip.Shared.ReadSignature(s);
 
             // return null if this is not a local file header signature
             if (SignatureIsNotValid(signature))
@@ -159,19 +159,19 @@ namespace TomShane.Neoforce.External.Zip
 
             block = new byte[filenameLength];
             n = s.Read(block, 0, block.Length);
-            ze._FileName = TomShane.Neoforce.External.Zip.Shared.StringFromBuffer(block, 0, block.Length);
+            ze._FileName = MonoForce.External.Zip.Shared.StringFromBuffer(block, 0, block.Length);
 
             ze._Extra = new byte[extraFieldLength];
             n = s.Read(ze._Extra, 0, ze._Extra.Length);
 
             // transform the time data into something usable
-            ze._LastModified = TomShane.Neoforce.External.Zip.Shared.PackedToDateTime(ze._LastModDateTime);
+            ze._LastModified = MonoForce.External.Zip.Shared.PackedToDateTime(ze._LastModDateTime);
 
             // actually get the compressed size and CRC if necessary
             if ((ze._BitField & 0x0008) == 0x0008)
             {
                 long posn = s.Position;
-                long SizeOfDataRead = TomShane.Neoforce.External.Zip.Shared.FindSignature(s, ZipEntryDataDescriptorSignature);
+                long SizeOfDataRead = MonoForce.External.Zip.Shared.FindSignature(s, ZipEntryDataDescriptorSignature);
                 if (SizeOfDataRead == -1) return false; 
 
                 // read 3x 4-byte fields (CRC, Compressed Size, Uncompressed Size)
@@ -239,10 +239,10 @@ namespace TomShane.Neoforce.External.Zip
             if (entry._LastModified.IsDaylightSavingTime())
             {
                 System.DateTime AdjustedTime = entry._LastModified - new System.TimeSpan(1, 0, 0);
-                entry._LastModDateTime = TomShane.Neoforce.External.Zip.Shared.DateTimeToPacked(AdjustedTime);
+                entry._LastModDateTime = MonoForce.External.Zip.Shared.DateTimeToPacked(AdjustedTime);
             }
             else
-                entry._LastModDateTime = TomShane.Neoforce.External.Zip.Shared.DateTimeToPacked(entry._LastModified);
+                entry._LastModDateTime = MonoForce.External.Zip.Shared.DateTimeToPacked(entry._LastModified);
 
             // we don't actually slurp in the file until the caller invokes Write on this entry.
 

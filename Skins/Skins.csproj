@@ -7,16 +7,17 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TomShane.Neoforce.Skins</RootNamespace>
-    <AssemblyName>TomShane.Neoforce.Skins</AssemblyName>
+    <RootNamespace>MonoForce.Skins</RootNamespace>
+    <AssemblyName>MonoForce.Skins</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <XnaFrameworkVersion>v4.0</XnaFrameworkVersion>
     <XnaPlatform>Windows</XnaPlatform>
     <XnaCrossPlatformGroupID>dd36ece5-b792-4191-8b13-4c803f510781</XnaCrossPlatformGroupID>
-    <ApplicationIcon>Resources\Neoforce.ico</ApplicationIcon>
-    <Thumbnail>Resources\Logo.png</Thumbnail>
+    <ApplicationIcon>Icon.ico</ApplicationIcon>
+    <Thumbnail>
+    </Thumbnail>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <StartupObject>TomShane.Neoforce.Skins.Entry</StartupObject>
+    <StartupObject>MonoForce.Skins.Entry</StartupObject>
     <XnaUpgrade>
     </XnaUpgrade>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
@@ -138,8 +139,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\Logo.png" />
-    <Content Include="Resources\Neoforce.ico" />
+    <Content Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Content\SkinsContent.contentproj">
@@ -159,7 +159,7 @@
   -->
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties StartDate="20080911" AssemblyFileVersion="0" AssemblyVersion="1" Reset="0" />
+      <UserProperties Reset="0" AssemblyVersion="1" AssemblyFileVersion="0" StartDate="20080911" />
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>

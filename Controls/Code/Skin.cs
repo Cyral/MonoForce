@@ -35,7 +35,7 @@ using Microsoft.Xna.Framework;
 
 #endregion
 
-namespace TomShane.Neoforce.Controls
+namespace MonoForce.Controls
 {
 
   #region //// Structs ///////////

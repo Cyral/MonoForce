@@ -27,7 +27,7 @@ using System.Runtime.InteropServices;
 
 #endregion
 
-namespace TomShane.Neoforce.Controls
+namespace MonoForce.Controls
 {
 
   internal static class NativeMethods

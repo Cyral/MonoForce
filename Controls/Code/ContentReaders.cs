@@ -33,7 +33,7 @@ using Microsoft.Xna.Framework.Content;
 
 #endregion
 
-namespace TomShane.Neoforce.Controls
+namespace MonoForce.Controls
 {
 
   ////////////////////////////////////////////////////////////////////////////

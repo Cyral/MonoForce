@@ -23,7 +23,7 @@
 ////////////////////////////////////////////////////////////////////////////
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using TomShane.Neoforce.Controls;
+using MonoForce.Controls;
 using System;
 
 #if (!XBOX && !XBOX_FAKE)
@@ -33,7 +33,7 @@ using System.Windows.Forms;
 
 #endregion
 
-namespace TomShane.Neoforce.Controls
+namespace MonoForce.Controls
 {
     public class Application : Game
     {

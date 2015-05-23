@@ -37,7 +37,7 @@ using System.ComponentModel;
 
 #endregion
 
-namespace TomShane.Neoforce.Controls
+namespace MonoForce.Controls
 {           
 
   #region //// Classes ///////////

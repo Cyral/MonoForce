@@ -28,7 +28,7 @@ using System;
 
 #endregion
 
-namespace TomShane.Neoforce.Controls
+namespace MonoForce.Controls
 {
 
   public class TrackBar: Control

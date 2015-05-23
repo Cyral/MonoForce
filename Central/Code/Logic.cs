@@ -24,16 +24,16 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using TomShane.Neoforce.Controls;
+using MonoForce.Controls;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using System.Threading;
-using Controls = TomShane.Neoforce.Controls;
+using Controls = MonoForce.Controls;
 ////////////////////////////////////////////////////////////////////////////
 
 #endregion
 
-namespace TomShane.Neoforce.Central
+namespace MonoForce.Central
 {
   public partial class MainWindow
   {
@@ -274,7 +274,7 @@ namespace TomShane.Neoforce.Central
       }
     }
 
-    void Central_Click(object sender, TomShane.Neoforce.Controls.EventArgs e)
+    void Central_Click(object sender, MonoForce.Controls.EventArgs e)
     {
       ((sender as Button).Root as Window).Close();
     }

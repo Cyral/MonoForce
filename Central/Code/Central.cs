@@ -28,14 +28,14 @@ using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using TomShane.Neoforce.Controls;
+using MonoForce.Controls;
 using System.Runtime.InteropServices;
 using Microsoft.Xna.Framework.GamerServices;
 ////////////////////////////////////////////////////////////////////////////
 
 #endregion
 
-namespace TomShane.Neoforce.Central
+namespace MonoForce.Central
 {
     
   public class Central: Application

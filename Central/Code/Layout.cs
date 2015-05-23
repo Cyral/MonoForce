@@ -21,14 +21,14 @@
 #region //// Using /////////////
 
 ////////////////////////////////////////////////////////////////////////////
-using TomShane.Neoforce.Controls;
+using MonoForce.Controls;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 ////////////////////////////////////////////////////////////////////////////
 
 #endregion
 
-namespace TomShane.Neoforce.Central
+namespace MonoForce.Central
 {
   public partial class MainWindow: Window
   {
@@ -198,7 +198,7 @@ namespace TomShane.Neoforce.Central
         btnTasks[i].Left = 8;
         btnTasks[i].Top = 8 + i * (btnTasks[i].Height + 1);
         btnTasks[i].Width = -8 + btnApply.Width * 2;
-        btnTasks[i].Click += new TomShane.Neoforce.Controls.EventHandler(btnTask_Click);
+        btnTasks[i].Click += new MonoForce.Controls.EventHandler(btnTask_Click);
         btnTasks[i].Text = "Task [" + i.ToString() + "]";
         if (Tasks.Length >= i - 1 && Tasks[i] != "") btnTasks[i].Text = Tasks[i];
       }

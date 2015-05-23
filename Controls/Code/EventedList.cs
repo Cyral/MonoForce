@@ -30,7 +30,7 @@ using System.Collections.Generic;
 
 #endregion
 
-namespace TomShane.Neoforce.Controls
+namespace MonoForce.Controls
 { 
    
   public class EventedList<T>: List<T>

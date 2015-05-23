@@ -34,7 +34,7 @@ using System.IO;
 #endregion
 
 
-namespace TomShane.Neoforce.Importers
+namespace MonoForce.Importers
 {
 
   #region //// Importer //////////
@@ -93,11 +93,11 @@ namespace TomShane.Neoforce.Importers
     {      
       if (targetPlatform == TargetPlatform.Xbox360)
       {
-        return "TomShane.Neoforce.Controls.LayoutReader, TomShane.Neoforce.Controls.360";
+        return "MonoForce.Controls.LayoutReader, MonoForce.Controls.360";
       } 
       else
       {
-        return "TomShane.Neoforce.Controls.LayoutReader, TomShane.Neoforce.Controls";
+        return "MonoForce.Controls.LayoutReader, MonoForce.Controls";
       } 
     }      
     ////////////////////////////////////////////////////////////////////////////

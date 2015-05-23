@@ -24,7 +24,7 @@
 //using System;
 using System.Collections.Generic;
 using System.Text;
-using TomShane.Neoforce.Controls;
+using MonoForce.Controls;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using System.Threading;
@@ -32,7 +32,7 @@ using System.Threading;
 
 #endregion
 
-namespace TomShane.Neoforce.Central
+namespace MonoForce.Central
 {
   public class TaskEvents: Window
   {

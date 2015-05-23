@@ -7,13 +7,13 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TomShane.Neoforce.Central</RootNamespace>
-    <AssemblyName>TomShane.Neoforce.Central</AssemblyName>
+    <RootNamespace>MonoForce.Central</RootNamespace>
+    <AssemblyName>MonoForce.Central</AssemblyName>
     <XnaFrameworkVersion>v4.0</XnaFrameworkVersion>
     <XnaPlatform>Windows</XnaPlatform>
-    <StartupObject>TomShane.Neoforce.Central.Entry</StartupObject>
-    <ApplicationIcon>Resources\Neoforce.ico</ApplicationIcon>
-    <Thumbnail>Resources\Logo.png</Thumbnail>
+    <StartupObject>MonoForce.Central.Entry</StartupObject>
+    <ApplicationIcon>Icon.ico</ApplicationIcon>
+    <Thumbnail>Icon.png</Thumbnail>
     <XnaCrossPlatformGroupID>{a2c94e45-329f-41de-a386-8ec9a9c2e443}</XnaCrossPlatformGroupID>
     <SccProjectName>
     </SccProjectName>
@@ -116,10 +116,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Logo.png" />
-    <Content Include="Resources\Neoforce.ico">
-      <Name>Neoforce</Name>
-    </Content>
+    <Content Include="Icon.ico" />
+    <Content Include="Icon.png" />
   </ItemGroup>
   <ItemGroup>
     <NestedContentProject Include="Content\Content.contentproj">
@@ -200,7 +198,7 @@
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties StartDate="20080911" AssemblyFileVersion="0" AssemblyVersion="1" Reset="0" />
+      <UserProperties Reset="0" AssemblyVersion="1" AssemblyFileVersion="0" StartDate="20080911" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

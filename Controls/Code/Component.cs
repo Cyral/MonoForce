@@ -27,7 +27,7 @@ using Microsoft.Xna.Framework;
 
 #endregion
 
-namespace TomShane.Neoforce.Controls
+namespace MonoForce.Controls
 {
 
   public class Component: Disposable
