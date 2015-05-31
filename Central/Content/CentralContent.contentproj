@@ -98,7 +98,7 @@
   </ItemGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties Reset="0" AssemblyVersion="0" AssemblyFileVersion="0" StartDate="20100815" />
+      <UserProperties StartDate="20100815" AssemblyFileVersion="0" AssemblyVersion="0" Reset="0" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

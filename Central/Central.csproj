@@ -169,7 +169,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Controls\Controls.csproj">
-      <Project>{9C8328B3-97FC-4F39-A1BC-6DC4A1730C26}</Project>
+      <Project>{9c8328b3-97fc-4f39-a1bc-6dc4a1730c26}</Project>
       <Name>Controls</Name>
     </ProjectReference>
     <ProjectReference Include="Content\CentralContent.contentproj">
@@ -198,7 +198,7 @@
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties Reset="0" AssemblyVersion="1" AssemblyFileVersion="0" StartDate="20080911" />
+      <UserProperties StartDate="20080911" AssemblyFileVersion="0" AssemblyVersion="1" Reset="0" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>
