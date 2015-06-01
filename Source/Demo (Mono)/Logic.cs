@@ -100,7 +100,7 @@ namespace MonoForce.Demo
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            Close();
+             Environment.Exit(0);
         }
 
         private void btnApply_Click(object sender, EventArgs e)
@@ -133,18 +133,6 @@ namespace MonoForce.Demo
 
             Width = w;
             Height = h;
-        }
-
-        private void rdbGreen_Click(object sender, EventArgs e)
-        {
-            //(Manager.Game as Application).BackgroundImage = greenbg;  
-            Manager.SetSkin("Green");
-        }
-
-        private void rdbDefault_Click(object sender, EventArgs e)
-        {
-            // (Manager.Game as Application).BackgroundImage = defaultbg;
-            Manager.SetSkin("Default");
         }
 
         private void btnTask_Click(object sender, EventArgs e)

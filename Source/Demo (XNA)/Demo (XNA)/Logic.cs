@@ -132,16 +132,6 @@ namespace MonoForce.Demo
             Manager.Graphics.ApplyChanges();
         }
 
-        private void rdbGreen_Click(object sender, EventArgs e)
-        {
-            Manager.SetSkin("Green");
-        }
-
-        private void rdbDefault_Click(object sender, EventArgs e)
-        {
-            Manager.SetSkin("Default");
-        }
-
         private void btnTask_Click(object sender, EventArgs e)
         {
             if (sender == btnTasks[0])

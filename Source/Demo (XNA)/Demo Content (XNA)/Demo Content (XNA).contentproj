@@ -42,32 +42,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Skins\Blue.skin">
-      <Name>Blue</Name>
-      <Importer>SkinImporter</Importer>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <Processor>PassThroughProcessor</Processor>
-    </Content>
     <Content Include="Skins\Default.skin">
       <Name>Default</Name>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <Importer>SkinImporter</Importer>
-      <Processor>PassThroughProcessor</Processor>
-    </Content>
-    <Content Include="Skins\Green.skin">
-      <Name>Green</Name>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <Importer>SkinImporter</Importer>
-      <Processor>PassThroughProcessor</Processor>
-    </Content>
-    <Content Include="Skins\Magenta.skin">
-      <Name>Magenta</Name>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <Importer>SkinImporter</Importer>
-      <Processor>PassThroughProcessor</Processor>
-    </Content>
-    <Content Include="Skins\Purple.skin">
-      <Name>Purple</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Importer>SkinImporter</Importer>
       <Processor>PassThroughProcessor</Processor>

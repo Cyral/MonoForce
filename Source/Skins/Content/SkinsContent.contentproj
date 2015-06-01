@@ -401,371 +401,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Skins\Green\Cursors\Default.cur">
-      <Name>Default</Name>
-      <Importer>CursorImporter</Importer>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Green\Cursors\DiagonalLeft.cur">
-      <Name>DiagonalLeft</Name>
-      <Importer>CursorImporter</Importer>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Green\Cursors\DiagonalRight.cur">
-      <Name>DiagonalRight</Name>
-      <Importer>CursorImporter</Importer>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Green\Cursors\Horizontal.cur">
-      <Name>Horizontal</Name>
-      <Importer>CursorImporter</Importer>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Green\Cursors\Text.cur">
-      <Name>Text</Name>
-      <Importer>CursorImporter</Importer>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Green\Cursors\Vertical.cur">
-      <Name>Vertical</Name>
-      <Importer>CursorImporter</Importer>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Green\Fonts\Default.spritefont">
-      <Name>Default</Name>
-      <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Green\Images\Button.png">
-      <Name>Button</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Green\Images\ComboBox.ListBox.png">
-      <Name>ComboBox.ListBox</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Green\Images\Control.png">
-      <Name>Control</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Green\Images\GroupBox.png">
-      <Name>GroupBox</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Green\Images\GroupPanel.png">
-      <Name>GroupPanel</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Green\Images\CheckBox.Checked.png">
-      <Name>CheckBox.Checked</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Green\Images\CheckBox.png">
-      <Name>CheckBox</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Green\Images\Icon.Error.png">
-      <Name>Icon.Error</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Green\Images\Icon.Information.png">
-      <Name>Icon.Information</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Green\Images\Icon.Question.png">
-      <Name>Icon.Question</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Green\Images\Icon.Warning.png">
-      <Name>Icon.Warning</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Green\Images\ListBox.png">
-      <Name>ListBox</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Green\Images\ListBox.Selection.png">
-      <Name>ListBox.Selection</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Green\Images\ContextMenu.png">
-      <Name>ContextMenu</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Green\Images\ContextMenu.Selection.png">
-      <Name>ContextMenu.Selection</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Green\Images\ProgressBar.png">
-      <Name>ProgressBar</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Green\Images\ProgressBar.Scale.png">
-      <Name>ProgressBar.Scale</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Green\Images\RadioButton.Checked.png">
-      <Name>RadioButton.Checked</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Green\Images\RadioButton.png">
-      <Name>RadioButton</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Green\Images\ScrollBar.ButtonHorz.png">
-      <Name>ScrollBar.ButtonHorz</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Green\Images\ScrollBar.ButtonVert.png">
-      <Name>ScrollBar.ButtonVert</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Green\Images\ScrollBar.GlyphHorz.png">
-      <Name>ScrollBar.GlyphHorz</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Green\Images\ScrollBar.GlyphVert.png">
-      <Name>ScrollBar.GlyphVert</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Green\Images\ScrollBar.RailHorz.png">
-      <Name>ScrollBar.RailHorz</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Green\Images\ScrollBar.RailVert.png">
-      <Name>ScrollBar.RailVert</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Green\Images\Shared.ArrowDown.png">
-      <Name>Shared.ArrowDown</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Green\Images\Shared.ArrowLeft.png">
-      <Name>Shared.ArrowLeft</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Green\Images\Shared.ArrowRight.png">
-      <Name>Shared.ArrowRight</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Green\Images\Shared.ArrowUp.png">
-      <Name>Shared.ArrowUp</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Green\Images\SideBar.png">
-      <Name>SideBar</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Green\Images\SpinBox.Button.png">
-      <Name>SpinBox.Button</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Green\Images\SpinBox.png">
-      <Name>SpinBox</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Green\Images\TabControl.Header.png">
-      <Name>TabControl.Header</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Green\Images\TabControl.png">
-      <Name>TabControl</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Green\Images\TextBox.Cursor.png">
-      <Name>TextBox.Cursor</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Green\Images\TextBox.png">
-      <Name>TextBox</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Green\Images\ToolTip.png">
-      <Name>ToolTip</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Green\Images\Window.png">
-      <Name>Window</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Green\Images\Window.CloseButton.png">
-      <Name>Window.CloseButton</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Green\Images\Window.FrameBottom.png">
-      <Name>Window.FrameBottom</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Green\Images\Window.FrameLeft.png">
-      <Name>Window.FrameLeft</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Green\Images\Window.FrameRight.png">
-      <Name>Window.FrameRight</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Green\Images\Window.FrameTop.png">
-      <Name>Window.FrameTop</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Green\Images\Window.Icon.png">
-      <Name>Window.Icon</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Green\Images\Window.Shadow.png">
-      <Name>Window.Shadow</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Green\Skin.xml">
-      <Name>Skin</Name>
-      <Importer>SkinImporter</Importer>
-      <Processor>PassThroughProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Skins\Default\Images\Shared.End.png">
       <Name>Shared.End</Name>
       <Importer>TextureImporter</Importer>
@@ -782,34 +417,6 @@
       <Processor>TextureProcessor</Processor>
     </Compile>
     <Compile Include="Skins\Default\Images\Shared.PageUp.png">
-      <Name>Shared.PageUp</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Green\Images\Shared.End.png">
-      <Name>Shared.End</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Green\Images\Shared.Home.png">
-      <Name>Shared.Home</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Green\Images\Shared.PageDown.png">
-      <Name>Shared.PageDown</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Green\Images\Shared.PageUp.png">
       <Name>Shared.PageUp</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
@@ -837,23 +444,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Skins\Green\Images\Control.Outline.png">
-      <Name>Control.Outline</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Skins\Green\Images\MainMenu.png">
-      <Name>MainMenu</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Skins\Green\Images\MainMenu.Selection.png">
-      <Name>MainMenu.Selection</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Skins\Default\Images\Window.Caption.png">
       <Name>Window.Caption</Name>
       <Importer>TextureImporter</Importer>
@@ -868,28 +458,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Skins\Green\Images\Window.Caption.png">
-      <Name>Window.Caption</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Green\Images\ComboBox.Button.png">
-      <Name>ComboBox.Button</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Skins\Default\Images\ComboBox.png">
-      <Name>ComboBox</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Green\Images\ComboBox.png">
       <Name>ComboBox</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
@@ -910,20 +479,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Skins\Green\Cursors\Busy.cur">
-      <Name>Busy</Name>
-      <Importer>CursorImporter</Importer>
-    </Compile>
-    <Compile Include="Skins\Green\Cursors\Cross.cur">
-      <Name>Cross</Name>
-      <Importer>CursorImporter</Importer>
-    </Compile>
-    <Compile Include="Skins\Green\Cursors\Move.cur">
-      <Name>Move</Name>
-      <Importer>CursorImporter</Importer>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Reference Include="Microsoft.Xna.Framework.Content.Pipeline.TextureImporter, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
   </ItemGroup>
   <ItemGroup>
@@ -934,21 +489,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Skins\Green\Images\GroupBox.Flat.png">
-      <Name>GroupBox.Flat</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Skins\Default\Images\SideBarPanel.png">
-      <Name>SideBarPanel</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Green\Images\SideBarPanel.png">
       <Name>SideBarPanel</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
@@ -969,23 +510,6 @@
   <ItemGroup>
     <Compile Include="Skins\Default\Images\Shared.Glyph.png">
       <Name>Shared.Glyph</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Green\Images\Shared.Glyph.png">
-      <Name>Shared.Glyph</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Skins\Green\Images\TrackBar.Button.png">
-      <Name>TrackBar.Button</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Skins\Green\Images\TrackBar.png">
-      <Name>TrackBar</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -1019,30 +543,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Skins\Green\Images\ToolBar.png">
-      <Name>ToolBar</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Skins\Green\Images\ToolBarButton.png">
-      <Name>ToolBarButton</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Skins\Green\Images\ToolBarPanel.png">
-      <Name>ToolBarPanel</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Green\Images\StatusBar.png">
-      <Name>StatusBar</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
@@ -1065,1558 +565,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Skins\Blue\Cursors\Busy.cur">
-      <Name>Busy</Name>
-      <Importer>CursorImporter</Importer>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Cursors\Cross.cur">
-      <Name>Cross</Name>
-      <Importer>CursorImporter</Importer>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Cursors\Default.cur">
-      <Name>Default</Name>
-      <Importer>CursorImporter</Importer>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Cursors\DiagonalLeft.cur">
-      <Name>DiagonalLeft</Name>
-      <Importer>CursorImporter</Importer>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Cursors\DiagonalRight.cur">
-      <Name>DiagonalRight</Name>
-      <Importer>CursorImporter</Importer>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Cursors\Horizontal.cur">
-      <Name>Horizontal</Name>
-      <Importer>CursorImporter</Importer>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Cursors\Move.cur">
-      <Name>Move</Name>
-      <Importer>CursorImporter</Importer>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Cursors\Text.cur">
-      <Name>Text</Name>
-      <Importer>CursorImporter</Importer>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Cursors\Vertical.cur">
-      <Name>Vertical</Name>
-      <Importer>CursorImporter</Importer>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Fonts\Default.spritefont">
-      <SubType>Designer</SubType>
-      <Name>Default</Name>
-      <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Images\Button.png">
-      <Name>Button</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Images\CheckBox.Checked.png">
-      <Name>CheckBox.Checked</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Images\CheckBox.png">
-      <Name>CheckBox</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Images\ComboBox.Button.png">
-      <Name>ComboBox.Button</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Images\ComboBox.ListBox.png">
-      <Name>ComboBox.ListBox</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Images\ComboBox.png">
-      <Name>ComboBox</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Images\ContextMenu.png">
-      <Name>ContextMenu</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Images\ContextMenu.Selection.png">
-      <Name>ContextMenu.Selection</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Images\Control.Outline.png">
-      <Name>Control.Outline</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Images\Control.png">
-      <Name>Control</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Images\GroupBox.Flat.png">
-      <Name>GroupBox.Flat</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Images\GroupBox.png">
-      <Name>GroupBox</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Images\GroupPanel.png">
-      <Name>GroupPanel</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Images\Icon.Error.png">
-      <Name>Icon.Error</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Images\Icon.Information.png">
-      <Name>Icon.Information</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Images\Icon.Question.png">
-      <Name>Icon.Question</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Images\Icon.Warning.png">
-      <Name>Icon.Warning</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Images\ListBox.png">
-      <Name>ListBox</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Images\ListBox.Selection.png">
-      <Name>ListBox.Selection</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Images\MainMenu.png">
-      <Name>MainMenu</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Images\MainMenu.Selection.png">
-      <Name>MainMenu.Selection</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Images\ProgressBar.png">
-      <Name>ProgressBar</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Images\ProgressBar.Scale.png">
-      <Name>ProgressBar.Scale</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Images\RadioButton.Checked.png">
-      <Name>RadioButton.Checked</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Images\RadioButton.png">
-      <Name>RadioButton</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Images\ScrollBar.ButtonHorz.png">
-      <Name>ScrollBar.ButtonHorz</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Images\ScrollBar.ButtonVert.png">
-      <Name>ScrollBar.ButtonVert</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Images\ScrollBar.GlyphHorz.png">
-      <Name>ScrollBar.GlyphHorz</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Images\ScrollBar.GlyphVert.png">
-      <Name>ScrollBar.GlyphVert</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Images\ScrollBar.RailHorz.png">
-      <Name>ScrollBar.RailHorz</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Images\ScrollBar.RailVert.png">
-      <Name>ScrollBar.RailVert</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Images\Shared.ArrowDown.png">
-      <Name>Shared.ArrowDown</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Images\Shared.ArrowLeft.png">
-      <Name>Shared.ArrowLeft</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Images\Shared.ArrowRight.png">
-      <Name>Shared.ArrowRight</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Images\Shared.ArrowUp.png">
-      <Name>Shared.ArrowUp</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Images\Shared.End.png">
-      <Name>Shared.End</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Images\Shared.Glyph.png">
-      <Name>Shared.Glyph</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Images\Shared.Home.png">
-      <Name>Shared.Home</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Images\Shared.PageDown.png">
-      <Name>Shared.PageDown</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Images\Shared.PageUp.png">
-      <Name>Shared.PageUp</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Images\Sidebar.png">
-      <Name>Sidebar</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Images\SidebarPanel.png">
-      <Name>SidebarPanel</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Images\SpinBox.Button.png">
-      <Name>SpinBox.Button</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Images\SpinBox.png">
-      <Name>SpinBox</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Images\StatusBar.png">
-      <Name>StatusBar</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Images\TabControl.Header.png">
-      <Name>TabControl.Header</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Images\TabControl.png">
-      <Name>TabControl</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Images\TextBox.Cursor.png">
-      <Name>TextBox.Cursor</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Images\TextBox.png">
-      <Name>TextBox</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Images\ToolBar.png">
-      <Name>ToolBar</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Images\ToolBarButton.png">
-      <Name>ToolBarButton</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Images\ToolBarPanel.png">
-      <Name>ToolBarPanel</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Images\ToolTip.png">
-      <Name>ToolTip</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Images\TrackBar.Button.png">
-      <Name>TrackBar.Button</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Images\TrackBar.png">
-      <Name>TrackBar</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Images\Window.Caption.png">
-      <Name>Window.Caption</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Images\Window.CloseButton.png">
-      <Name>Window.CloseButton</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Images\Window.FrameBottom.png">
-      <Name>Window.FrameBottom</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Images\Window.FrameLeft.png">
-      <Name>Window.FrameLeft</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Images\Window.FrameRight.png">
-      <Name>Window.FrameRight</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Images\Window.FrameTop.png">
-      <Name>Window.FrameTop</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Images\Window.Icon.png">
-      <Name>Window.Icon</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Images\Window.png">
-      <Name>Window</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Images\Window.Shadow.png">
-      <Name>Window.Shadow</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Blue\Skin.xml">
-      <Name>Skin</Name>
-      <Importer>SkinImporter</Importer>
-      <Processor>PassThroughProcessor</Processor>
-      <SubType>Designer</SubType>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Cursors\Busy.cur">
-      <Name>Busy</Name>
-      <Importer>CursorImporter</Importer>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Cursors\Cross.cur">
-      <Name>Cross</Name>
-      <Importer>CursorImporter</Importer>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Cursors\Default.cur">
-      <Name>Default</Name>
-      <Importer>CursorImporter</Importer>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Cursors\DiagonalLeft.cur">
-      <Name>DiagonalLeft</Name>
-      <Importer>CursorImporter</Importer>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Cursors\DiagonalRight.cur">
-      <Name>DiagonalRight</Name>
-      <Importer>CursorImporter</Importer>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Cursors\Horizontal.cur">
-      <Name>Horizontal</Name>
-      <Importer>CursorImporter</Importer>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Cursors\Move.cur">
-      <Name>Move</Name>
-      <Importer>CursorImporter</Importer>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Cursors\Text.cur">
-      <Name>Text</Name>
-      <Importer>CursorImporter</Importer>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Cursors\Vertical.cur">
-      <Name>Vertical</Name>
-      <Importer>CursorImporter</Importer>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Fonts\Default.spritefont">
-      <SubType>Designer</SubType>
-      <Name>Default</Name>
-      <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Images\Button.png">
-      <Name>Button</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Images\CheckBox.Checked.png">
-      <Name>CheckBox.Checked</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Images\CheckBox.png">
-      <Name>CheckBox</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Images\ComboBox.Button.png">
-      <Name>ComboBox.Button</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Images\ComboBox.ListBox.png">
-      <Name>ComboBox.ListBox</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Images\ComboBox.png">
-      <Name>ComboBox</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Images\ContextMenu.png">
-      <Name>ContextMenu</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Images\ContextMenu.Selection.png">
-      <Name>ContextMenu.Selection</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Images\Control.Outline.png">
-      <Name>Control.Outline</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Images\Control.png">
-      <Name>Control</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Images\GroupBox.Flat.png">
-      <Name>GroupBox.Flat</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Images\GroupBox.png">
-      <Name>GroupBox</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Images\GroupPanel.png">
-      <Name>GroupPanel</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Images\Icon.Error.png">
-      <Name>Icon.Error</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Images\Icon.Information.png">
-      <Name>Icon.Information</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Images\Icon.Question.png">
-      <Name>Icon.Question</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Images\Icon.Warning.png">
-      <Name>Icon.Warning</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Images\ListBox.png">
-      <Name>ListBox</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Images\ListBox.Selection.png">
-      <Name>ListBox.Selection</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Images\MainMenu.png">
-      <Name>MainMenu</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Images\MainMenu.Selection.png">
-      <Name>MainMenu.Selection</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Images\ProgressBar.png">
-      <Name>ProgressBar</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Images\ProgressBar.Scale.png">
-      <Name>ProgressBar.Scale</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Images\RadioButton.Checked.png">
-      <Name>RadioButton.Checked</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Images\RadioButton.png">
-      <Name>RadioButton</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Images\ScrollBar.ButtonHorz.png">
-      <Name>ScrollBar.ButtonHorz</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Images\ScrollBar.ButtonVert.png">
-      <Name>ScrollBar.ButtonVert</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Images\ScrollBar.GlyphHorz.png">
-      <Name>ScrollBar.GlyphHorz</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Images\ScrollBar.GlyphVert.png">
-      <Name>ScrollBar.GlyphVert</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Images\ScrollBar.RailHorz.png">
-      <Name>ScrollBar.RailHorz</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Images\ScrollBar.RailVert.png">
-      <Name>ScrollBar.RailVert</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Images\Shared.ArrowDown.png">
-      <Name>Shared.ArrowDown</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Images\Shared.ArrowLeft.png">
-      <Name>Shared.ArrowLeft</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Images\Shared.ArrowRight.png">
-      <Name>Shared.ArrowRight</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Images\Shared.ArrowUp.png">
-      <Name>Shared.ArrowUp</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Images\Shared.End.png">
-      <Name>Shared.End</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Images\Shared.Glyph.png">
-      <Name>Shared.Glyph</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Images\Shared.Home.png">
-      <Name>Shared.Home</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Images\Shared.PageDown.png">
-      <Name>Shared.PageDown</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Images\Shared.PageUp.png">
-      <Name>Shared.PageUp</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Images\Sidebar.png">
-      <Name>Sidebar</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Images\SidebarPanel.png">
-      <Name>SidebarPanel</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Images\SpinBox.Button.png">
-      <Name>SpinBox.Button</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Images\SpinBox.png">
-      <Name>SpinBox</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Images\StatusBar.png">
-      <Name>StatusBar</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Images\TabControl.Header.png">
-      <Name>TabControl.Header</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Images\TabControl.png">
-      <Name>TabControl</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Images\TextBox.Cursor.png">
-      <Name>TextBox.Cursor</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Images\TextBox.png">
-      <Name>TextBox</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Images\ToolBar.png">
-      <Name>ToolBar</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Images\ToolBarButton.png">
-      <Name>ToolBarButton</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Images\ToolBarPanel.png">
-      <Name>ToolBarPanel</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Images\ToolTip.png">
-      <Name>ToolTip</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Images\TrackBar.Button.png">
-      <Name>TrackBar.Button</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Images\TrackBar.png">
-      <Name>TrackBar</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Images\Window.Caption.png">
-      <Name>Window.Caption</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Images\Window.CloseButton.png">
-      <Name>Window.CloseButton</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Images\Window.FrameBottom.png">
-      <Name>Window.FrameBottom</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Images\Window.FrameLeft.png">
-      <Name>Window.FrameLeft</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Images\Window.FrameRight.png">
-      <Name>Window.FrameRight</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Images\Window.FrameTop.png">
-      <Name>Window.FrameTop</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Images\Window.Icon.png">
-      <Name>Window.Icon</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Images\Window.png">
-      <Name>Window</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Images\Window.Shadow.png">
-      <Name>Window.Shadow</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Magenta\Skin.xml">
-      <Name>Skin</Name>
-      <Importer>SkinImporter</Importer>
-      <Processor>PassThroughProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Cursors\Busy.cur">
-      <Name>Busy</Name>
-      <Importer>CursorImporter</Importer>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Cursors\Cross.cur">
-      <Name>Cross</Name>
-      <Importer>CursorImporter</Importer>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Cursors\Default.cur">
-      <Name>Default</Name>
-      <Importer>CursorImporter</Importer>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Cursors\DiagonalLeft.cur">
-      <Name>DiagonalLeft</Name>
-      <Importer>CursorImporter</Importer>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Cursors\DiagonalRight.cur">
-      <Name>DiagonalRight</Name>
-      <Importer>CursorImporter</Importer>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Cursors\Horizontal.cur">
-      <Name>Horizontal</Name>
-      <Importer>CursorImporter</Importer>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Cursors\Move.cur">
-      <Name>Move</Name>
-      <Importer>CursorImporter</Importer>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Cursors\Text.cur">
-      <Name>Text</Name>
-      <Importer>CursorImporter</Importer>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Cursors\Vertical.cur">
-      <Name>Vertical</Name>
-      <Importer>CursorImporter</Importer>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Fonts\Default.spritefont">
-      <SubType>Designer</SubType>
-      <Name>Default</Name>
-      <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Images\Button.png">
-      <Name>Button</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Images\CheckBox.Checked.png">
-      <Name>CheckBox.Checked</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Images\CheckBox.png">
-      <Name>CheckBox</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Images\ComboBox.Button.png">
-      <Name>ComboBox.Button</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Images\ComboBox.ListBox.png">
-      <Name>ComboBox.ListBox</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Images\ComboBox.png">
-      <Name>ComboBox</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Images\ContextMenu.png">
-      <Name>ContextMenu</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Images\ContextMenu.Selection.png">
-      <Name>ContextMenu.Selection</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Images\Control.Outline.png">
-      <Name>Control.Outline</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Images\Control.png">
-      <Name>Control</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Images\GroupBox.Flat.png">
-      <Name>GroupBox.Flat</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Images\GroupBox.png">
-      <Name>GroupBox</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Images\GroupPanel.png">
-      <Name>GroupPanel</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Images\Icon.Error.png">
-      <Name>Icon.Error</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Images\Icon.Information.png">
-      <Name>Icon.Information</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Images\Icon.Question.png">
-      <Name>Icon.Question</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Images\Icon.Warning.png">
-      <Name>Icon.Warning</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Images\ListBox.png">
-      <Name>ListBox</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Images\ListBox.Selection.png">
-      <Name>ListBox.Selection</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Images\MainMenu.png">
-      <Name>MainMenu</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Images\MainMenu.Selection.png">
-      <Name>MainMenu.Selection</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Images\ProgressBar.png">
-      <Name>ProgressBar</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Images\ProgressBar.Scale.png">
-      <Name>ProgressBar.Scale</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Images\RadioButton.Checked.png">
-      <Name>RadioButton.Checked</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Images\RadioButton.png">
-      <Name>RadioButton</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Images\ScrollBar.ButtonHorz.png">
-      <Name>ScrollBar.ButtonHorz</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Images\ScrollBar.ButtonVert.png">
-      <Name>ScrollBar.ButtonVert</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Images\ScrollBar.GlyphHorz.png">
-      <Name>ScrollBar.GlyphHorz</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Images\ScrollBar.GlyphVert.png">
-      <Name>ScrollBar.GlyphVert</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Images\ScrollBar.RailHorz.png">
-      <Name>ScrollBar.RailHorz</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Images\ScrollBar.RailVert.png">
-      <Name>ScrollBar.RailVert</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Images\Shared.ArrowDown.png">
-      <Name>Shared.ArrowDown</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Images\Shared.ArrowLeft.png">
-      <Name>Shared.ArrowLeft</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Images\Shared.ArrowRight.png">
-      <Name>Shared.ArrowRight</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Images\Shared.ArrowUp.png">
-      <Name>Shared.ArrowUp</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Images\Shared.End.png">
-      <Name>Shared.End</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Images\Shared.Glyph.png">
-      <Name>Shared.Glyph</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Images\Shared.Home.png">
-      <Name>Shared.Home</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Images\Shared.PageDown.png">
-      <Name>Shared.PageDown</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Images\Shared.PageUp.png">
-      <Name>Shared.PageUp</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Images\Sidebar.png">
-      <Name>Sidebar</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Images\SidebarPanel.png">
-      <Name>SidebarPanel</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Images\SpinBox.Button.png">
-      <Name>SpinBox.Button</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Images\SpinBox.png">
-      <Name>SpinBox</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Images\StatusBar.png">
-      <Name>StatusBar</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Images\TabControl.Header.png">
-      <Name>TabControl.Header</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Images\TabControl.png">
-      <Name>TabControl</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Images\TextBox.Cursor.png">
-      <Name>TextBox.Cursor</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Images\TextBox.png">
-      <Name>TextBox</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Images\ToolBar.png">
-      <Name>ToolBar</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Images\ToolBarButton.png">
-      <Name>ToolBarButton</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Images\ToolBarPanel.png">
-      <Name>ToolBarPanel</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Images\ToolTip.png">
-      <Name>ToolTip</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Images\TrackBar.Button.png">
-      <Name>TrackBar.Button</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Images\TrackBar.png">
-      <Name>TrackBar</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Images\Window.Caption.png">
-      <Name>Window.Caption</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Images\Window.CloseButton.png">
-      <Name>Window.CloseButton</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Images\Window.FrameBottom.png">
-      <Name>Window.FrameBottom</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Images\Window.FrameLeft.png">
-      <Name>Window.FrameLeft</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Images\Window.FrameRight.png">
-      <Name>Window.FrameRight</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Images\Window.FrameTop.png">
-      <Name>Window.FrameTop</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Images\Window.Icon.png">
-      <Name>Window.Icon</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Images\Window.png">
-      <Name>Window</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Images\Window.Shadow.png">
-      <Name>Window.Shadow</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Skins\Purple\Skin.xml">
-      <Name>Skin</Name>
-      <Importer>SkinImporter</Importer>
-      <Processor>PassThroughProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\..\Controls %28XNA%29\Controls %28XNA%29.csproj">
       <Project>{1d2a914e-fc91-4dec-ae47-47d50a0423e4}</Project>
       <Name>Controls %28XNA%29</Name>
@@ -2625,6 +573,246 @@
       <Project>{8ED9B288-C739-4A73-A0A3-0382587B771D}</Project>
       <Name>Importers</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Fonts\Bold10.spritefont">
+      <Name>Bold10</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Fonts\Bold11.spritefont">
+      <Name>Bold11</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Fonts\Bold13.spritefont">
+      <Name>Bold13</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+    <Compile Include="Skins\Default\Fonts\Bold14.spritefont">
+      <Name>Bold14</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+    <Compile Include="Skins\Default\Fonts\Bold20.spritefont">
+      <Name>Bold20</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+    <Compile Include="Skins\Default\Fonts\Bold32.spritefont">
+      <Name>Bold32</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+    <Compile Include="Skins\Default\Fonts\Bold6.spritefont">
+      <Name>Bold6</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+    <Compile Include="Skins\Default\Fonts\Bold8.spritefont">
+      <Name>Bold8</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+    <Compile Include="Skins\Default\Fonts\Bold9.spritefont">
+      <Name>Bold9</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Fonts\Bold12.spritefont">
+      <Name>Bold12</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+    <Compile Include="Skins\Default\Fonts\Default10.spritefont">
+      <Name>Default10</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+    <Compile Include="Skins\Default\Fonts\Default11.spritefont">
+      <Name>Default11</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+    <Compile Include="Skins\Default\Fonts\Default12.spritefont">
+      <Name>Default12</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+    <Compile Include="Skins\Default\Fonts\Default13.spritefont">
+      <Name>Default13</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+    <Compile Include="Skins\Default\Fonts\Default14.spritefont">
+      <Name>Default14</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+    <Compile Include="Skins\Default\Fonts\Default20.spritefont">
+      <Name>Default20</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+    <Compile Include="Skins\Default\Fonts\Default32.spritefont">
+      <Name>Default32</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+    <Compile Include="Skins\Default\Fonts\Default6.spritefont">
+      <Name>Default6</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+    <Compile Include="Skins\Default\Fonts\Default8.spritefont">
+      <Name>Default8</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+    <Compile Include="Skins\Default\Fonts\Default9.spritefont">
+      <Name>Default9</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\Banner.png">
+      <Name>Banner</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Skins\Default\Images\ColorPicker.Button.png">
+      <Name>ColorPicker.Button</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Skins\Default\Images\ColorPicker.png">
+      <Name>ColorPicker</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Skins\Default\Images\Icon.Announcement.png">
+      <Name>Icon.Announcement</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Skins\Default\Images\Icon.Arrow.png">
+      <Name>Icon.Arrow</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Skins\Default\Images\Icon.Check.png">
+      <Name>Icon.Check</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Skins\Default\Images\Icon.Feed.png">
+      <Name>Icon.Feed</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Skins\Default\Images\Icon.Flag.png">
+      <Name>Icon.Flag</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Skins\Default\Images\Icon.Folder.png">
+      <Name>Icon.Folder</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Skins\Default\Images\Icon.Heart.png">
+      <Name>Icon.Heart</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Skins\Default\Images\Icon.Home.png">
+      <Name>Icon.Home</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Skins\Default\Images\Icon.Human.png">
+      <Name>Icon.Human</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Skins\Default\Images\Icon.HumanGroup.png">
+      <Name>Icon.HumanGroup</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Skins\Default\Images\Icon.Mail.png">
+      <Name>Icon.Mail</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Skins\Default\Images\Icon.Minus.png">
+      <Name>Icon.Minus</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Skins\Default\Images\Icon.Music.png">
+      <Name>Icon.Music</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Skins\Default\Images\Icon.NewMail.png">
+      <Name>Icon.NewMail</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Skins\Default\Images\Icon.Note.png">
+      <Name>Icon.Note</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Skins\Default\Images\Icon.Plus.png">
+      <Name>Icon.Plus</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Skins\Default\Images\Icon.Safe.png">
+      <Name>Icon.Safe</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Skins\Default\Images\Icon.Save.png">
+      <Name>Icon.Save</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Skins\Default\Images\Icon.Search.png">
+      <Name>Icon.Search</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Skins\Default\Images\Icon.Time.png">
+      <Name>Icon.Time</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Skins\Default\Images\Icon.UnCheck.png">
+      <Name>Icon.UnCheck</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Skins\Default\Images\Icon.Unsafe.png">
+      <Name>Icon.Unsafe</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Skins\Default\Images\Window.MinimizeButton.png">
+      <Name>Window.MinimizeButton</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <ProjectExtensions>

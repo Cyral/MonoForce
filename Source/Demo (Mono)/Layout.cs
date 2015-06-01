@@ -16,11 +16,8 @@ namespace MonoForce.Demo
         private Button[] btnTasks;
         private CheckBox chkResFull;
         private SideBarPanel pnlRes;
-        private SideBarPanel pnlSkin;
         private SideBarPanel pnlStats;
         private SideBarPanel pnlTasks;
-        private RadioButton rdbDefault;
-        private RadioButton rdbGreen;
         private RadioButton rdbRes1024;
         private RadioButton rdbRes1280;
         private RadioButton rdbRes1680;
@@ -46,7 +43,6 @@ namespace MonoForce.Demo
             InitRes();
             InitTasks();
             InitStats();
-            InitSkins();
             InitConsole();
         }
 
@@ -159,46 +155,9 @@ namespace MonoForce.Demo
             btnClose.Parent = sidebar;
             btnClose.Left = btnRandom.Left + btnRandom.Width + 8;
             btnClose.Top = pnlTasks.Top + pnlTasks.Height + 8;
-            ;
+
             btnClose.Text = "Close";
             btnClose.Click += btnClose_Click;
-        }
-
-        private void InitSkins()
-        {
-            pnlSkin = new SideBarPanel(Manager);
-            pnlSkin.Init();
-            pnlSkin.Passive = true;
-            pnlSkin.Parent = sidebar;
-            pnlSkin.Left = 16;
-            pnlSkin.Width = sidebar.Width - pnlRes.Left;
-            pnlSkin.Height = 44;
-            pnlSkin.Top = ClientHeight - 16 - pnlStats.Height - pnlSkin.Height - 16;
-            pnlSkin.Anchor = Anchors.Left | Anchors.Bottom;
-            pnlSkin.CanFocus = false;
-
-            rdbDefault = new RadioButton(Manager);
-            rdbDefault.Init();
-            rdbDefault.Parent = pnlSkin;
-            rdbDefault.Left = 8;
-            rdbDefault.Width = pnlSkin.Width - rdbDefault.Left * 2;
-            rdbDefault.Height = 16;
-            rdbDefault.Text = "Default Skin";
-            rdbDefault.Top = 8;
-            rdbDefault.Checked = Manager.Skin.Name == "Default";
-            rdbDefault.Click += rdbDefault_Click;
-
-            rdbGreen = new RadioButton(Manager);
-            rdbGreen.Init();
-            rdbGreen.Parent = pnlSkin;
-            rdbGreen.Left = 8;
-            rdbGreen.Width = pnlSkin.Width - rdbGreen.Left * 2;
-            rdbGreen.Height = 16;
-            rdbGreen.Text = "Green Skin";
-            rdbGreen.Top = 24;
-            rdbGreen.Checked = Manager.Skin.Name == "Green";
-            rdbGreen.Click += rdbGreen_Click;
-            rdbGreen.Enabled = true;
         }
 
         private void InitStats()

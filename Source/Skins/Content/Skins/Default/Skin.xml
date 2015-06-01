@@ -1,17 +1,16 @@
 ﻿<Skin Name="Default" Version="0.7">
   <Info>
-    <Name>Neoforce Default</Name>
-    <Description>Default skin for Neoforce Controls.></Description>
-    <Author>Tom Shane</Author>
-    <Version>0.7></Version>
-  </Info>  
-
-  <Controls>    
-
-    //// Control ///////////////////////////////////////////////////////////////
+    <Name>Default</Name>
+    <Description>Default red skin for MonoForce controls.></Description>
+    <Author>By Cyral, based on original skin by Tom Shane</Author>
+    <Version>0.7</Version>
+  </Info>
+  <!-- This "smooth" skin was originally created a few years ago for my game, Zarknorth -->
+  
+  <Controls>
     <Control Name="Control">
       <OriginMargins Left="0" Top="0" Right="0" Bottom="0"/>
-      <ClientMargins Left="0" Top="0" Right="0" Bottom="0"/>      
+      <ClientMargins Left="0" Top="0" Right="0" Bottom="0"/>
       <DefaultSize Width="64" Height="64"/>
       <MinimumSize Width="0" Height="0"/>
       <ResizerSize Value="4"/>
@@ -33,7 +32,7 @@
             <Focused Index="0" Color="255;255;255;255"/>
             <Disabled Index="0" Color="255;255;255;255"/>
           </Overlays>
-          <Text Font="Default" Alignment="MiddleLeft" OffsetX="0" OffsetY="0">
+          <Text Font="Default8" Alignment="MiddleLeft" OffsetX="0" OffsetY="0">
             <Colors>
               <Enabled Color="0;0;0;255"/>
               <Focused Color="0;0;0;255"/>
@@ -42,7 +41,7 @@
               <Disabled Color="0;0;0;255"/>
             </Colors>
           </Text>
-        </Layer>       
+        </Layer>
       </Layers>
     </Control>
     ////////////////////////////////////////////////////////////////////////////
@@ -53,7 +52,7 @@
         <Layer Name="Control" Image="Control.Outline" Width="1" Height="1">
           <States>
             <Enabled Index="0" Color="96;96;96;200"/>
-          </States>  
+          </States>
         </Layer>
       </Layers>
     </Control>
@@ -61,7 +60,7 @@
 
     //// Button ////////////////////////////////////////////////////////////////
     <Control Name="Button" Inherits="Control">
-      <DefaultSize Width="72" Height="24"/>      
+      <DefaultSize Width="72" Height="24"/>
       <Layers>
         <Layer Name="Control" Image="Button" Width="64" Height="24">
           <SizingMargins Left="2" Top="2" Right="2" Bottom="2"/>
@@ -78,13 +77,46 @@
             <Pressed Index="3" Color="255;255;255;255"/>
             <Focused Index="5" Color="255;255;255;255"/>
           </Overlays>
-          <Text Font="Default" Alignment="MiddleCenter" OffsetX="0" OffsetY="0">
+          <Text Font="Default8" Alignment="MiddleCenter" OffsetX="0" OffsetY="0">
             <Colors>
               <Enabled Color="255;255;255;192"/>
               <Focused Color="255;255;255;192"/>
               <Pressed Color="255;255;255;192"/>
               <Hovered Color="255;255;255;240"/>
               <Disabled Color="128;128;128;192"/>
+            </Colors>
+          </Text>
+        </Layer>
+      </Layers>
+    </Control>
+    ////////////////////////////////////////////////////////////////////////////
+
+    //// Banner ////////////////////////////////////////////////////////////////
+    <Control Name="Banner" Inherits="Button">
+      <DefaultSize Width="256" Height="36"/>
+      <Layers>
+        <Layer Name="Control" Image="Banner" Width="64" Height="24">
+          <SizingMargins Left="6" Top="6" Right="6" Bottom="6"/>
+          <ContentMargins Left="4" Top="4" Right="4" Bottom="4"/>
+          <States>
+            <Enabled Index="0" Color="255;255;255;255" Overlay="false"/>
+            <Hovered Index="0" Color="255;255;255;255" Overlay="true"/>
+            <Pressed Index="2" Color="255;255;255;255" Overlay="true"/>
+            <Focused Index="0" Color="255;255;255;255" Overlay="true"/>
+            <Disabled Index="4" Color="255;255;255;255" Overlay="false"/>
+          </States>
+          <Overlays>
+            <Hovered Index="1" Color="255;255;255;255"/>
+            <Pressed Index="3" Color="255;255;255;255"/>
+            <Focused Index="5" Color="255;255;255;255"/>
+          </Overlays>
+          <Text Font="Default8" Alignment="TopCenter" OffsetX="0" OffsetY="0">
+            <Colors>
+              <Enabled Color= "15;15;15;210"/>
+              <Focused Color= "0;0;0;210"/>
+              <Pressed Color= "0;0;0;180"/>
+              <Hovered Color= "7;7;7;210"/>
+              <Disabled Color="50;50;50;192"/>
             </Colors>
           </Text>
         </Layer>
@@ -105,7 +137,7 @@
             <Focused Index="3" Overlay="false"/>
             <Disabled Index="4" Overlay="false"/>
           </States>
-          <Text Font="Default" Alignment="MiddleLeft" OffsetX="0" OffsetY="0">
+          <Text Font="Default8" Alignment="MiddleLeft" OffsetX="0" OffsetY="0">
             <Colors>
               <Enabled Color="255;255;255;192"/>
               <Focused Color="255;255;255;192"/>
@@ -125,7 +157,7 @@
             <Focused Index="3"></Focused>
             <Disabled Index="4"></Disabled>
           </States>
-          <Text Font="Default" Alignment="MiddleLeft" OffsetX="0" OffsetY="0">
+          <Text Font="Default8" Alignment="MiddleLeft" OffsetX="0" OffsetY="0">
             <Colors>
               <Enabled Color="255;255;255;192"/>
               <Focused Color="255;255;255;192"/>
@@ -154,7 +186,7 @@
     <Control Name="Window" Inherits="Control">
       <DefaultSize Width="480" Height="360"/>
       <MinimumSize Width="100" Height="75"/>
-      <ResizerSize Value="7"/>      
+      <ResizerSize Value="7"/>
       <ClientMargins Left="7" Top="7" Right="7" Bottom="7"/>
       <Layers>
         <Layer Name="Control" Override="true" Image="Window" Width="16" Height="16">
@@ -170,7 +202,7 @@
             <Focused Index="0" />
             <Disabled Index="1" />
           </States>
-          <Text Font="Default" Alignment="MiddleLeft" OffsetX="0" OffsetY="0">
+          <Text Font="Default8" Alignment="MiddleLeft" OffsetX="0" OffsetY="0">
             <Colors>
               <Enabled Color="255;255;255;192" />
               <Focused Color="255;255;255;240" />
@@ -186,7 +218,7 @@
             <Focused Index="0"/>
             <Disabled Index="1"/>
           </States>
-          <Text Font="Default" Alignment="MiddleLeft" OffsetX="0" OffsetY="0">
+          <Text Font="Default8" Alignment="MiddleLeft" OffsetX="0" OffsetY="0">
             <Colors>
               <Enabled Color="255;255;255;192"/>
               <Focused Color="255;255;255;240"/>
@@ -217,12 +249,12 @@
             <Focused Index="0"/>
             <Disabled Index="1"/>
           </States>
-        </Layer>       
+        </Layer>
         <Layer Name="Icon" Image="Window.Icon" Width="16" Height="16" OffsetX="0" OffsetY="0">
         </Layer>
       </Layers>
     </Control>
-    ////////////////////////////////////////////////////////////////////////////    
+    ////////////////////////////////////////////////////////////////////////////
 
     //// Window.Shadow /////////////////////////////////////////////////////////
     <Control Name="Window.Shadow">
@@ -237,10 +269,26 @@
 
     //// Window.CloseButton ////////////////////////////////////////////////////
     <Control Name="Window.CloseButton" Inherits="Button">
-      <DefaultSize Width="42" Height="19"/>            
+      <DefaultSize Width="42" Height="19"/>
       <OriginMargins Left="20" Top="20" Right="20" Bottom="25"/>
       <Layers>
         <Layer Name="Control" Image="Window.CloseButton" Width="82" Height="64" OffsetX="-5" OffsetY="0">
+          <States>
+            <Enabled Index="0" Overlay="false"/>
+            <Hovered Index="1" Overlay="false"/>
+            <Pressed Index="2" Overlay="false"/>
+            <Focused Index="3" Overlay="false"/>
+            <Disabled Index="4" Overlay="false"/>
+          </States>
+        </Layer>
+      </Layers>
+    </Control>
+    //// Window.MinimizeButton ////////////////////////////////////////////////////
+    <Control Name="Window.MinimizeButton" Inherits="Button">
+      <DefaultSize Width="28" Height="19"/>
+      <OriginMargins Left="20" Top="20" Right="20" Bottom="25"/>
+      <Layers>
+        <Layer Name="Control" Image="Window.MinimizeButton" Width="66" Height="64" OffsetX="-48" OffsetY="0">
           <States>
             <Enabled Index="0" Overlay="false"/>
             <Hovered Index="1" Overlay="false"/>
@@ -259,7 +307,7 @@
       <ClientMargins Left="4" Top="4" Right="4" Bottom="4"/>
       <Layers>
         <Layer Name="Control" Image="TextBox" Width="8" Height="8">
-          <SizingMargins Left="1" Top="1" Right="1" Bottom="1"/>          
+          <SizingMargins Left="1" Top="1" Right="1" Bottom="1"/>
           <States>
             <Enabled Index="0"/>
             <Hovered Index="1"/>
@@ -267,7 +315,7 @@
             <Focused Index="3"/>
             <Disabled Index="4"/>
           </States>
-          <Text Font="Default" Alignment="TopLeft" OffsetX="0" OffsetY="0">
+          <Text Font="Default8" Alignment="TopLeft" OffsetX="0" OffsetY="0">
             <Colors>
               <Enabled Color="32;32;32;255"/>
               <Focused Color="32;32;32;255"/>
@@ -277,11 +325,12 @@
             </Colors>
           </Text>
         </Layer>
-        <Layer Name="Cursor" Image="TextBox.Cursor" Width="1" Height="1">        
+        <Layer Name="Cursor" Image="TextBox.Cursor" Width="1" Height="1">
         </Layer>
       </Layers>
     </Control>
-    ////////////////////////////////////////////////////////////////////////////   
+
+    ////////////////////////////////////////////////////////////////////////////
 
     //// ListBox ///////////////////////////////////////////////////////////////
     <Control Name="ListBox" Inherits="Control">
@@ -296,7 +345,7 @@
             <Focused Index="3"/>
             <Disabled Index="4"/>
           </States>
-          <Text Font="Default" Alignment="MiddleLeft" OffsetX="2" OffsetY="0">
+          <Text Font="Default8" Alignment="MiddleLeft" OffsetX="2" OffsetY="0">
             <Colors>
               <Enabled Color="32;32;32;255"/>
               <Hovered Color="32;32;32;255"/>
@@ -314,7 +363,7 @@
             <Focused Index="0" Color="255;255;255;255"/>
             <Disabled Index="0" Color="255;255;255;128"/>
           </States>
-          <Text Font="Default" Alignment="MiddleLeft" OffsetX="2" OffsetY="0">
+          <Text Font="Default8" Alignment="MiddleLeft" OffsetX="2" OffsetY="0">
             <Colors>
               <Enabled Color="255;255;255;128"/>
               <Hovered Color="255;255;255;192"/>
@@ -362,7 +411,7 @@
       <Layers>
         <ContentMargins Left="2" Top="2" Right="2" Bottom="2"/>
         <Layer Name="Control" Image="ComboBox.ListBox" Width="32" Height="32">
-          <SizingMargins Left="1" Top="1" Right="9" Bottom="9"/>         
+          <SizingMargins Left="1" Top="1" Right="9" Bottom="9"/>
         </Layer>
       </Layers>
     </Control>
@@ -386,7 +435,7 @@
 
     //// ContextMenu ///////////////////////////////////////////////////////////
     <Control Name="ContextMenu" Inherits="Control">
-      <OriginMargins Left="0" Top="0" Right="10" Bottom="10"></OriginMargins>     
+      <OriginMargins Left="0" Top="0" Right="10" Bottom="10"></OriginMargins>
       <Layers>
         <Layer Name="Control" Image="ContextMenu" Width="64" Height="64">
           <SizingMargins Left="22" Top="2" Right="10" Bottom="10"></SizingMargins>
@@ -397,8 +446,8 @@
             <Pressed Index="0"></Pressed>
             <Focused Index="0"></Focused>
             <Disabled Index="0"></Disabled>
-          </States>     
-          <Text Font="Default" Alignment="MiddleLeft" OffsetX="4" OffsetY="0">
+          </States>
+          <Text Font="Default8" Alignment="MiddleLeft" OffsetX="4" OffsetY="0">
             <Colors>
               <Enabled Color="32;32;32;255"></Enabled>
               <Hovered Color="32;32;32;255"></Hovered>
@@ -416,7 +465,7 @@
             <Focused Index="0" Color="255;255;255;255"></Focused>
             <Disabled Index="0" Color="255;255;255;128"></Disabled>
           </States>
-          <Text Font="Default" Alignment="MiddleLeft" OffsetX="4" OffsetY="0">
+          <Text Font="Default8" Alignment="MiddleLeft" OffsetX="4" OffsetY="0">
             <Colors>
               <Enabled Color="255;255;255;128"></Enabled>
               <Hovered Color="255;255;255;128"></Hovered>
@@ -431,7 +480,7 @@
     ////////////////////////////////////////////////////////////////////////////
 
     //// MainMenu //////////////////////////////////////////////////////////////
-    <Control Name="MainMenu" Inherits="Control">      
+    <Control Name="MainMenu" Inherits="Control">
       <Layers>
         <Layer Name="Control" Image="MainMenu" Width="32" Height="16">
           <SizingMargins Left="0" Top="0" Right="0" Bottom="1"></SizingMargins>
@@ -443,7 +492,7 @@
             <Focused Index="0"></Focused>
             <Disabled Index="0"></Disabled>
           </States>
-          <Text Font="Default" Alignment="MiddleCenter" OffsetX="0" OffsetY="0">
+          <Text Font="Default8" Alignment="MiddleCenter" OffsetX="0" OffsetY="0">
             <Colors>
               <Enabled Color="32;32;32;255"></Enabled>
               <Disabled Color="32;32;32;128"></Disabled>
@@ -459,7 +508,7 @@
             <Focused Index="0" Color="255;255;255;255"></Focused>
             <Disabled Index="0" Color="255;255;255;128"></Disabled>
           </States>
-          <Text Font="Default" Alignment="MiddleCenter" OffsetX="0" OffsetY="0">
+          <Text Font="Default8" Alignment="MiddleCenter" OffsetX="0" OffsetY="0">
             <Colors>
               <Enabled Color="255;255;255;128"></Enabled>
               <Hovered Color="255;255;255;128"></Hovered>
@@ -477,8 +526,8 @@
     <Control Name="ToolBar" Inherits="Control">
       <Layers>
         <Layer Name="Control" Image="ToolBar" Width="24" Height="24">
-          <SizingMargins Left="8" Top="2" Right="4" Bottom="2"></SizingMargins>
-          <ContentMargins Left="12" Top="2" Right="4" Bottom="2"></ContentMargins>
+          <SizingMargins Left="2" Top="2" Right="4" Bottom="2"></SizingMargins>
+          <ContentMargins Left="2" Top="2" Right="2" Bottom="2"></ContentMargins>
           <States>
             <Enabled Index="0"></Enabled>
             <Hovered Index="0"></Hovered>
@@ -486,7 +535,7 @@
             <Focused Index="0"></Focused>
             <Disabled Index="0"></Disabled>
           </States>
-          <Text Font="Default" Alignment="MiddleCenter" OffsetX="0" OffsetY="0">
+          <Text Font="Default8" Alignment="MiddleCenter" OffsetX="0" OffsetY="0">
             <Colors>
               <Enabled Color="32;32;32;255"></Enabled>
               <Disabled Color="32;32;32;128"></Disabled>
@@ -509,7 +558,7 @@
             <Pressed Index="0"/>
             <Focused Index="0"/>
             <Disabled Index="0"/>
-          </States>         
+          </States>
         </Layer>
       </Layers>
     </Control>
@@ -529,7 +578,7 @@
             <Focused Index="1" Color="255;255;255;255"/>
             <Disabled Index="0" Color="255;255;255;255"/>
           </States>
-          <Text Font="Default" Alignment="MiddleCenter" OffsetX="0" OffsetY="0">
+          <Text Font="Default8" Alignment="MiddleCenter" OffsetX="0" OffsetY="0">
             <Colors>
               <Enabled Color="255;255;255;192"/>
               <Focused Color="255;255;255;192"/>
@@ -556,7 +605,7 @@
             <Focused Index="0"></Focused>
             <Disabled Index="0"></Disabled>
           </States>
-          <Text Font="Default" Alignment="MiddleCenter" OffsetX="0" OffsetY="0">
+          <Text Font="Default8" Alignment="MiddleCenter" OffsetX="0" OffsetY="0">
             <Colors>
               <Enabled Color="32;32;32;255"></Enabled>
               <Disabled Color="32;32;32;128"></Disabled>
@@ -571,12 +620,12 @@
     <Control Name="ToolTip" Inherits="Control">
       <Layers>
         <Layer Name="Control" Image="ToolTip" Width="32" Height="32">
-          <SizingMargins Left="5" Top="1" Right="9" Bottom="9"/>
-          <ContentMargins Left="9" Top="3" Right="13" Bottom="10"/>
+          <SizingMargins Left="4" Top="1" Right="9" Bottom="9"/>
+          <ContentMargins Left="6" Top="3" Right="13" Bottom="10"/>
           <States>
             <Enabled Index="0" Color="255;255;255;255"/>
           </States>
-          <Text Font="Default" Alignment="MiddleLeft">
+          <Text Font="Default8" Alignment="MiddleLeft">
             <Colors>
               <Enabled Color="0;0;0;255"/>
             </Colors>
@@ -598,7 +647,7 @@
         </Layer>
       </Layers>
     </Control>
-    ////////////////////////////////////////////////////////////////////////////      
+    ////////////////////////////////////////////////////////////////////////////
 
     //// Dialog ////////////////////////////////////////////////////////////////
     <Control Name="Dialog">
@@ -609,9 +658,9 @@
             <Attribute Name="BevelStyle" Value="Flat"></Attribute>
             <Attribute Name="BevelMargin" Value="1"></Attribute>
             <Attribute Name="CaptFontColor" Value="200;200;200"></Attribute>
-            <Attribute Name="CaptFont" Value="Default"></Attribute>
+            <Attribute Name="CaptFont" Value="Default8"></Attribute>
             <Attribute Name="DescFontColor" Value="200;200;200"></Attribute>
-            <Attribute Name="DescFont" Value="Default"></Attribute>
+            <Attribute Name="DescFont" Value="Default8"></Attribute>
           </Attributes>
         </Layer>
         <Layer Name="BottomPanel">
@@ -639,7 +688,7 @@
             <Focused Index="0"></Focused>
             <Disabled Index="0"></Disabled>
           </States>
-          <Text Font="Default" OffsetX="8" OffsetY="1" Alignment="MiddleLeft">
+          <Text Font="Default8" OffsetX="8" OffsetY="1" Alignment="MiddleLeft">
             <Colors>
               <Enabled Color="32;32;32;255"></Enabled>
               <Hovered Color="32;32;32;255"></Hovered>
@@ -659,7 +708,7 @@
             <Focused Index="0"></Focused>
             <Disabled Index="0"></Disabled>
           </States>
-          <Text Font="Default" OffsetX="8" OffsetY="1" Alignment="MiddleLeft">
+          <Text Font="Default8" OffsetX="8" OffsetY="1" Alignment="MiddleLeft">
             <Colors>
               <Enabled Color="32;32;32;255"></Enabled>
               <Hovered Color="32;32;32;255"></Hovered>
@@ -677,7 +726,7 @@
     <Control Name="Label" Inherits="Control">
       <Layers>
         <Layer Name="Control">
-          <Text Font="Default">
+          <Text Font="Default8">
             <Colors>
               <Enabled Color="255;255;255;192"></Enabled>
               <Focused Color="255;255;255;192"></Focused>
@@ -689,8 +738,19 @@
         </Layer>
       </Layers>
     </Control>
-    ////////////////////////////////////////////////////////////////////////////
 
+    ////////////////////////////////////////////////////////////////////////////
+    // Line /////////////////////////////////////////////////////////////////
+    <Control Name="Line" Inherits="Control">
+      <Layers>
+        <Layer Name="Control">
+         
+          
+        </Layer>
+      </Layers>
+    </Control>
+z
+    ////////////////////////////////////////////////////////////////////////////
     //// ProgressBar ///////////////////////////////////////////////////////////
     <Control Name="ProgressBar" Inherits="Control">
       <Layers>
@@ -713,7 +773,7 @@
     ////////////////////////////////////////////////////////////////////////////
 
     //// SpinBox ///////////////////////////////////////////////////////////////
-    <Control Name="SpinBox" Inherits="TextBox">      
+    <Control Name="SpinBox" Inherits="TextBox">
       <Layers>
         <Layer Name="Control" Image="SpinBox" Width="8" Height="8">
           <SizingMargins Left="1" Top="1" Right="1" Bottom="1"></SizingMargins>
@@ -725,7 +785,7 @@
             <Focused Index="3"></Focused>
             <Disabled Index="4"></Disabled>
           </States>
-          <Text Font="Default" Alignment="TopLeft" OffsetX="0" OffsetY="0">
+          <Text Font="Default8" Alignment="TopLeft" OffsetX="0" OffsetY="0">
             <Colors>
               <Enabled Color="32;32;32;255"></Enabled>
               <Focused Color="32;32;32;255"></Focused>
@@ -827,13 +887,13 @@
         <Layer Name="ScrollBar.ArrowDown" Image="Shared.ArrowDown" Width="4" Height="7"></Layer>
       </Layers>
     </Control>
-    ////////////////////////////////////////////////////////////////////////////    
+    ////////////////////////////////////////////////////////////////////////////
 
     //// SideBar ///////////////////////////////////////////////////////////////
     <Control Name="SideBar" Inherits="Control">
       <Layers>
         <Layer Name="Control" Image="SideBar" Width="8" Height="8">
-          <SizingMargins Left="0" Top="0" Right="2" Bottom="0"></SizingMargins>
+          <SizingMargins Left="2" Top="2" Right="2" Bottom="2"></SizingMargins>
           <States>
             <Enabled Index="0"></Enabled>
           </States>
@@ -851,11 +911,11 @@
           <States>
             <Enabled Index="0"></Enabled>
           </States>
-          <Text Font="Default" Alignment="MiddleLeft" OffsetX="4" OffsetY="0">
+          <Text Font="Default8" Alignment="MiddleLeft" OffsetX="4" OffsetY="0">
             <Colors>
               <Enabled Color="128;128;128;200"/>
               <Disabled Color="64;64;64;200"/>
-            </Colors>  
+            </Colors>
           </Text>
         </Layer>
       </Layers>
@@ -896,7 +956,7 @@
             <Pressed Index="3"></Pressed>
             <Disabled Index="4"></Disabled>
           </States>
-          <Text Font="Default" Alignment="MiddleCenter" OffsetX ="0" OffsetY="-1">
+          <Text Font="Default8" Alignment="MiddleCenter" OffsetX ="0" OffsetY="-1">
             <Colors>
               <Enabled Color="160;160;160;200"></Enabled>
               <Hovered Color="160;160;160;200"></Hovered>
@@ -922,7 +982,7 @@
             <Focused Index="3"/>
             <Disabled Index="4"/>
           </States>
-          <Text Font="Default" Alignment="TopLeft" OffsetX="0" OffsetY="0">
+          <Text Font="Default8" Alignment="TopLeft" OffsetX="0" OffsetY="0">
             <Colors>
               <Enabled Color="32;32;32;255"/>
               <Focused Color="32;32;32;255"/>
@@ -936,6 +996,45 @@
     </Control>
     ////////////////////////////////////////////////////////////////////////////
 
+    //// ColorPicker //////////////////////////////////////////////////////////////
+    <Control Name="ColorPicker" Inherits="Control">
+      <Layers>
+        <Layer Name="Control" Image="ColorPicker" Width="128" Height="16">
+          <SizingMargins Left="3" Top="3" Right="3" Bottom="3"></SizingMargins>
+          <ContentMargins Left="2" Top="2" Right="2" Bottom="2"></ContentMargins>
+          <States>
+            <Enabled Index="0"></Enabled>
+          </States>
+        </Layer>
+        <Layer Name="Scale" Image="ColorPicker" Width="128" Height="16">
+          <SizingMargins Left="2" Top="2" Right="2" Bottom="2"></SizingMargins>
+          <States>
+            <Enabled Index="1" />
+            <Disabled Index="1" Color="128;128;128;128"></Disabled>
+          </States>
+        </Layer>
+      </Layers>
+    </Control>
+    ////////////////////////////////////////////////////////////////////////////
+
+    //// ColorPicker.Button////////////////////////////////////////////////////////
+    <Control Name="ColorPicker.Button" Inherits="Button">
+      <OriginMargins Left="4" Top="4" Right="4" Bottom="4"/>
+      <Layers>
+        <Layer Name="Control" Image="ColorPicker.Button" Width="24" Height="24">
+          <SizingMargins Left="6" Top="6" Right="6" Bottom="6"></SizingMargins>
+          <ContentMargins Left="6" Top="6" Right="6" Bottom="6"></ContentMargins>
+          <States>
+            <Enabled Index="0" Overlay="false"></Enabled>
+            <Hovered Index="1" Overlay="false"></Hovered>
+            <Pressed Index="3" Overlay="false"></Pressed>
+            <Focused Index="3" Overlay="false"></Focused>
+            <Disabled Index="4" Overlay="false"></Disabled>
+          </States>
+        </Layer>
+      </Layers>
+    </Control>
+    ////////////////////////////////////////////////////////////////////////////
     //// TrackBar //////////////////////////////////////////////////////////////
     <Control Name="TrackBar" Inherits="Control">
       <Layers>
@@ -981,7 +1080,26 @@
 
   //// Fonts /////////////////////////////////////////////////////////////////
   <Fonts>
-    <Font Name="Default" Asset="Default"></Font>    
+    <Font Name="Default6" Asset="Default6"></Font>
+    <Font Name="Default8" Asset="Default8"></Font>
+    <Font Name="Default9" Asset="Default9"></Font>
+    <Font Name="Default10" Asset="Default10"></Font>
+    <Font Name="Default11" Asset="Default11"></Font>
+    <Font Name="Default12" Asset="Default12"></Font>
+    <Font Name="Default13" Asset="Default13"></Font>
+    <Font Name="Default14" Asset="Default14"></Font>
+    <Font Name="Default20" Asset="Default20"></Font>
+    <Font Name="Default32" Asset="Default32"></Font>
+    <Font Name="Bold6" Asset="Bold6"></Font>
+    <Font Name="Bold8" Asset="Bold8"></Font>
+    <Font Name="Bold9" Asset="Bold9"></Font>
+    <Font Name="Bold10" Asset="Bold10"></Font>
+    <Font Name="Bold11" Asset="Bold11"></Font>
+    <Font Name="Bold12" Asset="Bold12"></Font>
+    <Font Name="Bold13" Asset="Bold13"></Font>
+    <Font Name="Bold14" Asset="Bold14"></Font>
+    <Font Name="Bold20" Asset="Bold20"></Font>
+    <Font Name="Bold32" Asset="Bold32"></Font>
   </Fonts>
   ////////////////////////////////////////////////////////////////////////////
 
@@ -1004,6 +1122,7 @@
     <Image Name="Control" Asset="Control"></Image>
     <Image Name="Control.Outline" Asset="Control.Outline"></Image>
     <Image Name="Button" Asset="Button"></Image>
+    <Image Name="Banner" Asset="Banner"></Image>
     <Image Name="Window" Asset="Window"></Image>
     <Image Name="Window.Caption" Asset="Window.Caption"></Image>
     <Image Name="Window.FrameTop" Asset="Window.FrameTop"></Image>
@@ -1012,21 +1131,22 @@
     <Image Name="Window.FrameBottom" Asset="Window.FrameBottom"></Image>
     <Image Name="Window.Icon" Asset="Window.Icon"></Image>
     <Image Name="Window.CloseButton" Asset="Window.CloseButton"></Image>
+    <Image Name="Window.MinimizeButton" Asset="Window.MinimizeButton"></Image>
     <Image Name="Window.Shadow" Asset="Window.Shadow"></Image>
     <Image Name="TextBox" Asset="TextBox"></Image>
     <Image Name="TextBox.Cursor" Asset="TextBox.Cursor"></Image>
     <Image Name="CheckBox" Asset="CheckBox"></Image>
     <Image Name="CheckBox.Checked" Asset="CheckBox.Checked"></Image>
     <Image Name="RadioButton" Asset="RadioButton"></Image>
-    <Image Name="RadioButton.Checked" Asset="RadioButton.Checked"></Image>  
+    <Image Name="RadioButton.Checked" Asset="RadioButton.Checked"></Image>
     <Image Name="ListBox" Asset="ListBox"></Image>
     <Image Name="ListBox.Selection" Asset="ListBox.Selection"></Image>
     <Image Name="ComboBox" Asset="ComboBox"></Image>
     <Image Name="ComboBox.ListBox" Asset="ComboBox.ListBox"></Image>
-    <Image Name="ComboBox.Button" Asset="ComboBox.Button"></Image>    
-    <Image Name="ToolTip" Asset="ToolTip"></Image>            
-    <Image Name="GroupBox" Asset="GroupBox"></Image>                  
-    <Image Name="GroupBox.Flat" Asset="GroupBox.Flat"></Image>                  
+    <Image Name="ComboBox.Button" Asset="ComboBox.Button"></Image>
+    <Image Name="ToolTip" Asset="ToolTip"></Image>
+    <Image Name="GroupBox" Asset="GroupBox"></Image>
+    <Image Name="GroupBox.Flat" Asset="GroupBox.Flat"></Image>
     <Image Name="ScrollBar.ButtonHorz" Asset="ScrollBar.ButtonHorz"></Image>
     <Image Name="ScrollBar.RailHorz" Asset="ScrollBar.RailHorz"></Image>
     <Image Name="ScrollBar.GlyphHorz" Asset="ScrollBar.GlyphHorz"></Image>
@@ -1036,16 +1156,18 @@
     <Image Name="MainMenu" Asset="MainMenu"></Image>
     <Image Name="MainMenu.Selection" Asset="MainMenu.Selection"></Image>
     <Image Name="ContextMenu" Asset="ContextMenu"></Image>
-    <Image Name="ContextMenu.Selection" Asset="ContextMenu.Selection"></Image>    
+    <Image Name="ContextMenu.Selection" Asset="ContextMenu.Selection"></Image>
     <Image Name="SpinBox" Asset="SpinBox"></Image>
-    <Image Name="SpinBox.Button" Asset="SpinBox.Button"></Image>            
+    <Image Name="SpinBox.Button" Asset="SpinBox.Button"></Image>
     <Image Name="ProgressBar" Asset="ProgressBar"></Image>
-    <Image Name="ProgressBar.Scale" Asset="ProgressBar.Scale"></Image>    
+    <Image Name="ProgressBar.Scale" Asset="ProgressBar.Scale"></Image>
     <Image Name="TabControl" Asset="TabControl"></Image>
-    <Image Name="TabControl.Header" Asset="TabControl.Header"></Image>        
-    <Image Name="GroupPanel" Asset="GroupPanel"></Image>    
+    <Image Name="TabControl.Header" Asset="TabControl.Header"></Image>
+    <Image Name="GroupPanel" Asset="GroupPanel"></Image>
     <Image Name="SideBar" Asset="SideBar"></Image>
     <Image Name="SideBarPanel" Asset="SideBarPanel"></Image>
+    <Image Name="ColorPicker" Asset="ColorPicker"></Image>
+    <Image Name="ColorPicker.Button" Asset="ColorPicker.Button"></Image>
     <Image Name="TrackBar" Asset="TrackBar"></Image>
     <Image Name="TrackBar.Button" Asset="TrackBar.Button"></Image>
     <Image Name="ToolBar" Asset="ToolBar"></Image>
@@ -1056,8 +1178,34 @@
     <Image Name="Icon.Error" Asset="Icon.Error"></Image>
     <Image Name="Icon.Warning" Asset="Icon.Warning"></Image>
     <Image Name="Icon.Information" Asset="Icon.Information"></Image>
-    <Image Name="Icon.Question" Asset="Icon.Question"></Image>   
-    
+    <Image Name="Icon.Question" Asset="Icon.Question"></Image>
+    <Image Name="Icon.Announcement" Asset="Icon.Announcement"></Image>
+    <Image Name="Icon.Arrow" Asset="Icon.Arrow"></Image>
+    <Image Name="Icon.Check" Asset="Icon.Check"></Image>
+    <Image Name="Icon.Feed" Asset="Icon.Feed"></Image>
+    <Image Name="Icon.Flag" Asset="Icon.Flag"></Image>
+    <Image Name="Icon.Folder" Asset="Icon.Folder"></Image>
+    <Image Name="Icon.Heart" Asset="Icon.Heart"></Image>
+    <Image Name="Icon.Home" Asset="Icon.Home"></Image>
+    <Image Name="Icon.Human" Asset="Icon.Human"></Image>
+    <Image Name="Icon.HumanGroup" Asset="Icon.HumanGroup"></Image>
+    <Image Name="Icon.Mail" Asset="Icon.Mail"></Image>
+    <Image Name="Icon.Minus" Asset="Icon.Minus"></Image>
+    <Image Name="Icon.Music" Asset="Icon.Music"></Image>
+    <Image Name="Icon.NewMail" Asset="Icon.NewMail"></Image>
+    <Image Name="Icon.Note" Asset="Icon.Note"></Image>
+    <Image Name="Icon.Plus" Asset="Icon.Plus"></Image>
+    <Image Name="Icon.Mail" Asset="Icon.Mail"></Image>
+    <Image Name="Icon.Minus" Asset="Icon.Minus"></Image>
+    <Image Name="Icon.Safe" Asset="Icon.Safe"></Image>
+    <Image Name="Icon.Save" Asset="Icon.Save"></Image>
+    <Image Name="Icon.Search" Asset="Icon.Search"></Image>
+    <Image Name="Icon.Time" Asset="Icon.Time"></Image>
+    <Image Name="Icon.UnCheck" Asset="Icon.UnCheck"></Image>
+    <Image Name="Icon.Unsafe" Asset="Icon.Unsafe"></Image>
+
+
+
     <Image Name="Shared.ArrowLeft" Asset="Shared.ArrowLeft"></Image>
     <Image Name="Shared.ArrowRight" Asset="Shared.ArrowRight"></Image>
     <Image Name="Shared.ArrowUp" Asset="Shared.ArrowUp"></Image>
@@ -1070,5 +1218,5 @@
 
   </Images>
   ////////////////////////////////////////////////////////////////////////////
-  
+
 </Skin>

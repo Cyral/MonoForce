@@ -12,6 +12,6 @@ ECHO +SKIN: %SKIN_BASE%
 ECHO +PLAT: %SKIN_DIR%
 ECHO +CONT: %CONTENT_DIR%
 
-SET SKINS=Default,Green,Blue,Magenta,Purple
+SET SKINS=Default
 
 FOR %%A in (%SKINS%) do "%Z_DIR%\7za.exe" a -tzip -mx9 -r -x!Addons "%SKIN_DIR%\%%A.skin" "%CONTENT_DIR%\%%A\*.*"
