@@ -42,18 +42,12 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>MonoForce.Demo.Entry</StartupObject>
+    <StartupObject>MonoForce.Demo.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Central.cs" />
-    <Compile Include="Entry.cs" />
-    <Compile Include="Layout.cs" />
-    <Compile Include="Logic.cs" />
+    <Compile Include="Game.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TaskAutoScroll.cs" />
-    <Compile Include="TaskControls.cs" />
-    <Compile Include="TaskDialog.cs" />
-    <Compile Include="TaskEvents.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
