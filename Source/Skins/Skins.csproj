@@ -171,6 +171,13 @@
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>
-    <PreBuildEvent>"$(SolutionDir)\Skins\BuildSkins.bat" "$(SolutionDir)"</PreBuildEvent>
+    <PreBuildEvent>"$(SolutionDir)Skins\BuildSkins.bat" $(SolutionDir)</PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>xcopy /y /f /i /z /v "$(ProjectDir)*.skin" "$(SolutionDir)Demo (Mono)\bin\Windows\$(ConfigurationName)\Content\Skins\"
+
+xcopy /y /f /i /z /v "$(ProjectDir)*.skin" "$(SolutionDir)Demo (XNA)\bin\x86\$(ConfigurationName)\Content\Skins\"
+
+xcopy /y /f /i /z /v "$(ProjectDir)*.skin" "$(SolutionDir)Demo (XNA)\Demo Content (XNA)\Skins"</PostBuildEvent>
   </PropertyGroup>
 </Project>
