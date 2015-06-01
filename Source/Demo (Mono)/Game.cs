@@ -1,21 +1,54 @@
-#region Using Statements
+////////////////////////////////////////////////////////////////
+//                                                            //
+//  Neoforce Central                                          //
+//                                                            //
+////////////////////////////////////////////////////////////////
+//                                                            //
+//         File: Central.cs                                   //
+//                                                            //
+//      Version: 0.7                                          //
+//                                                            //
+//         Date: 11/09/2010                                   //
+//                                                            //
+//       Author: Tom Shane                                    //
+//                                                            //
+////////////////////////////////////////////////////////////////
+//                                                            //
+//  Copyright (c) by Tom Shane                                //
+//                                                            //
+////////////////////////////////////////////////////////////////
 
+#region //// Using /////////////
+
+////////////////////////////////////////////////////////////////////////////
+using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonoForce.Controls;
+using System.Runtime.InteropServices;
+////////////////////////////////////////////////////////////////////////////
 
 #endregion
 
 namespace MonoForce.Demo
 {
-    /// <summary>
-    /// This is the main type for your game
-    /// </summary>
-    public class Game1 : Game
+
+    public class Game1: Game
     {
+
+        #region //// Fields ////////////
+
+        ////////////////////////////////////////////////////////////////////////////               
+        private int afps = 0;
+        private int fps = 0;
+        private double et = 0;
+        public static long Frames = 0;
         GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
+        public MainWindow MainWindow;
 
         Manager neoManager;
 
@@ -24,89 +57,61 @@ namespace MonoForce.Demo
             get { return neoManager; }
             set { neoManager = value; }
         }
+        ////////////////////////////////////////////////////////////////////////////
 
+        #endregion
+
+        #region //// Constructors //////
+
+        ////////////////////////////////////////////////////////////////////////////    
         public Game1()
-            : base()
         {
+
             graphics = new GraphicsDeviceManager(this);
 
-            Content.RootDirectory = "Content";
             neoManager = new Manager(this, "Default");
             neoManager.AutoCreateRenderTarget = true;
             neoManager.TargetFrames = 60;
             neoManager.LogUnhandledExceptions = false;
             neoManager.ShowSoftwareCursor = true;
         }
+        ////////////////////////////////////////////////////////////////////////////        
 
-        /// <summary>
-        /// Allows the game to perform any initialization it needs to before starting to run.
-        /// This is where it can query for any required services and load any non-graphic
-        /// related content.  Calling base.Initialize will enumerate through any components
-        /// and initialize them as well.
-        /// </summary>
+        #endregion
+
+        #region //// Methods ///////////
+
+        ////////////////////////////////////////////////////////////////////////////
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
-
             base.Initialize();
         }
+        ////////////////////////////////////////////////////////////////////////////
 
-        /// <summary>
-        /// LoadContent will be called once per game and is the place to load
-        /// all of your content.
-        /// </summary>
+        ////////////////////////////////////////////////////////////////////////////
         protected override void LoadContent()
         {
-            // Create a new SpriteBatch, which can be used to draw textures.
-            spriteBatch = new SpriteBatch(GraphicsDevice);
+            base.LoadContent();
             neoManager.Initialize();
-
-            Window w = new Window(NeoManager);
-            w.Init();
-            w.Text = "Demo Window";
-            w.Width = 400;
-            NeoManager.Add(w);
-
-            Button b = new Button(NeoManager);
-            b.Init();
-            b.Text = "Hello World";
-            b.Width = 128;
-            b.Top = b.Left = 16;
-            w.Add(b);
-            // TODO: use this.Content to load your game content here
+            MainWindow = new MainWindow(neoManager);
+            NeoManager.Add(MainWindow);
         }
+        ////////////////////////////////////////////////////////////////////////////    
 
-        /// <summary>
-        /// UnloadContent will be called once per game and is the place to unload
-        /// all content.
-        /// </summary>
-        protected override void UnloadContent()
-        {
-            // TODO: Unload any non ContentManager content here
-        }
-
-        /// <summary>
-        /// Allows the game to run logic such as updating the world,
-        /// checking for collisions, gathering input, and playing audio.
-        /// </summary>
-        /// <param name="gameTime">Provides a snapshot of timing values.</param>
+        ////////////////////////////////////////////////////////////////////////////
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
-
+      
             neoManager.Update(gameTime);
-            // TODO: Add your update logic here
-
+            UpdateStats(gameTime);
             base.Update(gameTime);
         }
+        ////////////////////////////////////////////////////////////////////////////
 
-        /// <summary>
-        /// This is called when the game should draw itself.
-        /// </summary>
-        /// <param name="gameTime">Provides a snapshot of timing values.</param>
+        ////////////////////////////////////////////////////////////////////////////
         protected override void Draw(GameTime gameTime)
         {
+            Frames += 1;
             neoManager.BeginDraw(gameTime);
             GraphicsDevice.Clear(Color.CornflowerBlue);
             // TODO: Add your drawing code here
@@ -115,5 +120,45 @@ namespace MonoForce.Demo
             neoManager.EndDraw();
             base.Draw(gameTime);
         }
+        ////////////////////////////////////////////////////////////////////////////
+
+        ////////////////////////////////////////////////////////////////////////////              
+        private void UpdateStats(GameTime time)
+        {
+            MainWindow wnd = MainWindow as MainWindow;
+            if (et >= 500 || et == 0)
+            {
+                if (wnd != null)
+                {
+                    wnd.lblObjects.Text = "Objects: " + Disposable.Count.ToString();
+                    wnd.lblAvgFps.Text = "Average FPS: " + afps.ToString();
+                    wnd.lblFps.Text = "Current FPS: " + fps.ToString();
+                }
+
+                if (time.TotalGameTime.TotalSeconds != 0)
+                {
+                    afps = (int)(Frames / time.TotalGameTime.TotalSeconds);
+                }
+
+                if (time.ElapsedGameTime.TotalMilliseconds != 0)
+                {
+                    fps = (int)(1000 / time.ElapsedGameTime.TotalMilliseconds);
+                }
+
+                et = 1;
+            }
+            et += time.ElapsedGameTime.TotalMilliseconds;
+        }
+        ////////////////////////////////////////////////////////////////////////////
+        /*
+            ////////////////////////////////////////////////////////////////////////////    
+            protected override RenderTarget2D CreateRenderTarget()
+            {
+              return new RenderTarget2D(GraphicsDevice, 1024, 768, false, SurfaceFormat.Color, DepthFormat.None, 0, Manager.RenderTargetUsage);
+            }
+            ////////////////////////////////////////////////////////////////////////////
+            */
+        #endregion
+
     }
 }
