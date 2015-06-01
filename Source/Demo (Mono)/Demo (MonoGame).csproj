@@ -9,7 +9,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MonoForce.Demo</RootNamespace>
-    <AssemblyName>MonoForce Demo</AssemblyName>
+    <AssemblyName>MonoForce Demo %28MonoGame%29</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MonoGamePlatform>Windows</MonoGamePlatform>
     <MonoGameContentBuilderExe>
@@ -45,7 +45,7 @@
     <StartupObject>MonoForce.Demo.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Game.cs" />
+    <Compile Include="Central.cs" />
     <Compile Include="Layout.cs" />
     <Compile Include="Logic.cs" />
     <Compile Include="Program.cs" />

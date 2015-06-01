@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework;
 namespace MonoForce.Demo
 {
     /// <summary>
-    /// The main class for the MonoGame MonoForce Demo.
+    /// The main class for the XNA MonoForce Demo.
     /// </summary>
     public static class Program
     {

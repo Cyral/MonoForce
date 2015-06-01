@@ -1,26 +1,3 @@
-////////////////////////////////////////////////////////////////
-//                                                            //
-//  Neoforce Central                                          //
-//                                                            //
-////////////////////////////////////////////////////////////////
-//                                                            //
-//         File: TaskEvents.cs                                //
-//                                                            //
-//      Version: 0.7                                          //
-//                                                            //
-//         Date: 11/09/2010                                   //
-//                                                            //
-//       Author: Tom Shane                                    //
-//                                                            //
-////////////////////////////////////////////////////////////////
-//                                                            //
-//  Copyright (c) by Tom Shane                                //
-//                                                            //
-////////////////////////////////////////////////////////////////
-
-#region //// Using /////////////
-
-////////////////////////////////////////////////////////////////////////////
 //using System;
 using System.Collections.Generic;
 using System.Text;
@@ -28,29 +5,15 @@ using MonoForce.Controls;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using System.Threading;
-////////////////////////////////////////////////////////////////////////////
-
-#endregion
 
 namespace MonoForce.Demo
 {
   public class TaskEvents: Window
-  {
-    
-    #region //// Fields ////////////
-
-    ////////////////////////////////////////////////////////////////////////////           
+  {       
     private Button btn;
     private ListBox lst;
     private ListBox txt;    
-    ////////////////////////////////////////////////////////////////////////////
-    
 
-    #endregion
-
-    #region //// Constructors //////
-
-    ////////////////////////////////////////////////////////////////////////////   
     public TaskEvents(Manager manager): base(manager)
     {                                         
       Height = 360;            
@@ -144,21 +107,6 @@ namespace MonoForce.Demo
     {
       txt.Items.Add((sender == btn ? "Button" : "List") + ": Move");
       txt.ItemIndex = txt.Items.Count - 1;
-    }
-    ////////////////////////////////////////////////////////////////////////////
-    
-    #endregion
-
-    #region //// Methods ///////////
-
-    ////////////////////////////////////////////////////////////////////////////    
-    public override void Init()
-    {
-      base.Init();          
-    }
-    ////////////////////////////////////////////////////////////////////////////   
-
-    #endregion
-    
+    } 
   }
 }
