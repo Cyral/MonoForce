@@ -1,27 +1,8 @@
-////////////////////////////////////////////////////////////////
-//                                                            //
-//  Neoforce Controls                                         //
-//                                                            //
-////////////////////////////////////////////////////////////////
-//                                                            //
-//         File: TextBox.cs                                   //
-//                                                            //
-//      Version: 0.7                                          //
-//                                                            //
-//         Date: 11/09/2010                                   //
-//                                                            //
-//       Author: Tom Shane                                    //
-//                                                            //
-////////////////////////////////////////////////////////////////
-//                                                            //
-//  Copyright (c) by Tom Shane                                //
-//                                                            //
-////////////////////////////////////////////////////////////////
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-#region //// Using /////////////
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
 using Microsoft.Xna.Framework;
-////////////////////////////////////////////////////////////////////////////
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
@@ -30,1374 +11,2289 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Microsoft.Xna.Framework.GamerServices;
-////////////////////////////////////////////////////////////////////////////
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-#endregion
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
 namespace MonoForce.Controls
 {
-
-  #region //// Enums /////////////
-
-  ////////////////////////////////////////////////////////////////////////////
-  public enum TextBoxMode
-  {
-    Normal,
-    Password,
-    Multiline
-  }
-  //////////////////////////////////////////////////////////////////////////// 
-
-  #endregion
-
-  #region //// Classes ///////////
-
-  ////////////////////////////////////////////////////////////////////////////
-  public class TextBox : ClipControl
-  {
-
-    #region //// Structs ///////////
-
-    ////////////////////////////////////////////////////////////////////////////    
-    private struct Selection
-    {
-      private int start;
-      private int end;
-
-      public int Start
-      {
-        get
-        {
-          if (start > end && start != -1 && end != -1) return end;
-          else return start;
-        }
-        set
-        {
-          start = value;
-        }
-      }
-
-      public int End
-      {
-        get
-        {
-          if (end < start && start != -1 && end != -1) return start;
-          else return end;
-        }
-        set
-        {
-          end = value;
-        }
-      }
-
-      public bool IsEmpty
-      {
-        get { return Start == -1 && End == -1; }
-      }
-
-      public int Length
-      {
-        get { return IsEmpty ? 0 : (End - Start); }
-      }
-
-      public Selection(int start, int end)
-      {
-        this.start = start;
-        this.end = end;
-      }
-
-      public void Clear()
-      {
-        Start = -1;
-        End = -1;
-      }
-    }
-    ////////////////////////////////////////////////////////////////////////////
-
-    #endregion
-
-    #region //// Consts ////////////
-
-    ////////////////////////////////////////////////////////////////////////////    
-    private const string skTextBox = "TextBox";
-    private const string lrTextBox = "Control";
-    private const string lrCursor = "Cursor";
-
-    private const string crDefault = "Default";
-    private const string crText = "Text";
-    ////////////////////////////////////////////////////////////////////////////
-
-    #endregion
-
-    #region //// Fields ////////////
-
-    ////////////////////////////////////////////////////////////////////////////              
-    private bool showCursor = false;
-    private double flashTime = 0;
-    private int posx = 0;
-    private int posy = 0;
-    private char passwordChar = '•';
-    private TextBoxMode mode = TextBoxMode.Normal;
-    private string shownText = "";
-    private bool readOnly = false;
-    private bool drawBorders = true;    
-    private Selection selection = new Selection(-1, -1);
-    private bool caretVisible = true;
-    private ScrollBar horz = null;
-    private ScrollBar vert = null;
-    private List<string> lines = new List<string>();
-    private int linesDrawn = 0;
-    private int charsDrawn = 0;
-    private SpriteFont font = null;
-    private bool wordWrap = false;
-    private ScrollBars scrollBars = ScrollBars.Both;
-    private string Separator = "\n";
-    private string text = "";
-    private string buffer = "";
-    private bool autoSelection = true;   
-    ////////////////////////////////////////////////////////////////////////////
-
-    #endregion
-
-    #region //// Properties ////////
-
-    ////////////////////////////////////////////////////////////////////////////    
-    private int PosX
-    {
-      get
-      {
-        return posx;
-      }
-      set
-      {
-        posx = value;
-
-        if (posx < 0) posx = 0;
-        if (posx > Lines[PosY].Length) posx = Lines[PosY].Length;
-      }
-    }
-    ////////////////////////////////////////////////////////////////////////////
-
-    ////////////////////////////////////////////////////////////////////////////    
-    private int PosY
-    {
-      get
-      {
-        return posy;
-      }
-      set
-      {
-        posy = value;
-
-        if (posy < 0) posy = 0;
-        if (posy > Lines.Count - 1) posy = Lines.Count - 1;
-
-        PosX = PosX;
-      }
-    }
-    ////////////////////////////////////////////////////////////////////////////
-
-
-    ////////////////////////////////////////////////////////////////////////////
-    private int Pos
-    {
-      get
-      {
-        return GetPos(PosX, PosY);
-      }
-      set
-      {
-        PosY = GetPosY(value);
-        PosX = GetPosX(value);
-      }
-    }
-    ////////////////////////////////////////////////////////////////////////////
-
-    ////////////////////////////////////////////////////////////////////////////
-    //>>>>
-    
-    public virtual bool WordWrap
-    {
-      get { return wordWrap; }
-      set 
-      { 
-        wordWrap = value;        
-        if (ClientArea != null) ClientArea.Invalidate(); 
-        SetupBars();
-      }
-    }
-    ////////////////////////////////////////////////////////////////////////////
-
-    ////////////////////////////////////////////////////////////////////////////
-    public virtual ScrollBars ScrollBars
-    {
-      get { return scrollBars; }
-      set
-      {
-        scrollBars = value;
-        SetupBars();
-      }
-    }
-    ////////////////////////////////////////////////////////////////////////////
-
-    ////////////////////////////////////////////////////////////////////////////
-    public virtual char PasswordChar
-    {
-      get { return passwordChar; }
-      set { passwordChar = value; if (ClientArea != null) ClientArea.Invalidate(); }
-    }
-    ////////////////////////////////////////////////////////////////////////////
-
-    ////////////////////////////////////////////////////////////////////////////
-    public virtual bool CaretVisible
-    {
-      get { return caretVisible; }
-      set { caretVisible = value; }
-    }
-    ////////////////////////////////////////////////////////////////////////////
-
-    ////////////////////////////////////////////////////////////////////////////
-    public virtual TextBoxMode Mode
-    {
-      get { return mode; }
-      set
-      {
-        if (value != TextBoxMode.Multiline)
-        {
-          Text = Text.Replace(Separator, "");
-        }
-        mode = value;
-        selection.Clear();
-
-        if (ClientArea != null) ClientArea.Invalidate();
-        SetupBars();
-      }
-    }
-    ////////////////////////////////////////////////////////////////////////////
-
-    ////////////////////////////////////////////////////////////////////////////
-    public virtual bool ReadOnly
-    {
-      get { return readOnly; }
-      set { readOnly = value; }
-    }
-    ////////////////////////////////////////////////////////////////////////////
-
-    ////////////////////////////////////////////////////////////////////////////
-    public virtual bool DrawBorders
-    {
-      get { return drawBorders; }
-      set { drawBorders = value; if (ClientArea != null) ClientArea.Invalidate(); }
-    }
-    ////////////////////////////////////////////////////////////////////////////
-
-    ////////////////////////////////////////////////////////////////////////////       
-    public virtual int CursorPosition
-    {
-      get { return Pos; }
-      set
-      {
-        Pos = value;
-      }
-    }
-    ////////////////////////////////////////////////////////////////////////////
-
-    ////////////////////////////////////////////////////////////////////////////
-    public virtual string SelectedText
-    {
-      get
-      {
-        if (selection.IsEmpty)
-        {
-          return "";
-        }
-        else
-        {
-          return Text.Substring(selection.Start, selection.Length);
-        }
-      }
-    }
-    ////////////////////////////////////////////////////////////////////////////
-
-    ////////////////////////////////////////////////////////////////////////////
-    public virtual int SelectionStart
-    {
-      get
-      {
-        if (selection.IsEmpty)
-        {
-          return Pos;
-        }
-        else
-        {
-          return selection.Start;
-        }
-      }
-      set
-      {
-        Pos = value;
-        if (Pos < 0) Pos = 0;
-        if (Pos > Text.Length) Pos = Text.Length;
-        selection.Start = Pos;
-        if (selection.End == -1) selection.End = Pos;
-        ClientArea.Invalidate();
-      }
-    }
-    ////////////////////////////////////////////////////////////////////////////
-    
-    ////////////////////////////////////////////////////////////////////////////
-    public virtual bool AutoSelection
-    {
-      get { return autoSelection; }
-      set { autoSelection = value; }
-    }
-    ////////////////////////////////////////////////////////////////////////////
-
-    ////////////////////////////////////////////////////////////////////////////
-    public virtual int SelectionLength
-    {
-      get
-      {
-        return selection.Length;
-      }
-      set
-      {
-        if (value == 0)
-        {
-          selection.End = selection.Start;
-        }
-        else if (selection.IsEmpty)
-        {
-          selection.Start = 0;
-          selection.End = value;
-        }
-        else if (!selection.IsEmpty)
-        {
-          selection.End = selection.Start + value;
-        }
-
-        if (!selection.IsEmpty)
-        {
-          if (selection.Start < 0) selection.Start = 0;
-          if (selection.Start > Text.Length) selection.Start = Text.Length;
-          if (selection.End < 0) selection.End = 0;
-          if (selection.End > Text.Length) selection.End = Text.Length;
-        }
-        ClientArea.Invalidate();
-      }
-    }
-    ////////////////////////////////////////////////////////////////////////////
-
-    ////////////////////////////////////////////////////////////////////////////
-    private List<string> Lines
-    {
-      get
-      {
-        return lines;
-      }
-      set
-      {
-        lines = value;
-      }
-    }
-    ////////////////////////////////////////////////////////////////////////////
-
-    ////////////////////////////////////////////////////////////////////////////       
-    public override string Text
-    {
-      get
-      {
-        return text;
-      }
-      set
-      {
-          if (wordWrap)
-              value = WrapWords(value, ClientWidth);
-
-        if (mode != TextBoxMode.Multiline && value != null)
-        {
-          value = value.Replace(Separator, "");
-        }
-
-        text = value;
-
-        if (!Suspended) OnTextChanged(new EventArgs());
-
-        lines = SplitLines(text);
-        if (ClientArea != null) ClientArea.Invalidate();
-
-        SetupBars();
-        ProcessScrolling();
-      }
-    }
-    ////////////////////////////////////////////////////////////////////////////     
-
-    #endregion
-
-    #region //// Construstors //////
-
-    ////////////////////////////////////////////////////////////////////////////       
-    public TextBox(Manager manager)
-      : base(manager)
-    {
-      CheckLayer(Skin, lrCursor);
-
-      SetDefaultSize(128, 20);
-      Lines.Add("");
-
-      ClientArea.Draw += new DrawEventHandler(ClientArea_Draw);
-
-      vert = new ScrollBar(manager, Orientation.Vertical);
-      horz = new ScrollBar(manager, Orientation.Horizontal);
-    }
-    ////////////////////////////////////////////////////////////////////////////        
-
-    #endregion
-
-    #region //// Methods ///////////
-
-    ////////////////////////////////////////////////////////////////////////////
-    public override void Init()
-    {
-      base.Init();
-
-      vert.Init();
-      vert.Range = 1;
-      vert.PageSize = 1;
-      vert.Value = 0;
-      vert.Anchor = Anchors.Top | Anchors.Right | Anchors.Bottom;
-      vert.ValueChanged += new EventHandler(sb_ValueChanged);
-
-      horz.Init();
-      horz.Range = ClientArea.Width;
-      horz.PageSize = ClientArea.Width;
-      horz.Value = 0;
-      horz.Anchor = Anchors.Right | Anchors.Left | Anchors.Bottom;
-      horz.ValueChanged += new EventHandler(sb_ValueChanged);
-
-      horz.Visible = false;
-      vert.Visible = false;
-
-      Add(vert, false);
-      Add(horz, false);
-    }
-    ////////////////////////////////////////////////////////////////////////////                                                    
-
-    ////////////////////////////////////////////////////////////////////////////
-    protected internal override void InitSkin()
-    {
-      base.InitSkin();
-      Skin = new SkinControl(Manager.Skin.Controls[skTextBox]);
-
-      #if (!XBOX && !XBOX_FAKE)
-        Cursor = Manager.Skin.Cursors[crText].Resource;
-      #endif
-
-      font = (Skin.Layers[lrTextBox].Text != null) ? Skin.Layers[lrTextBox].Text.Font.Resource : null;
-    }
-    ////////////////////////////////////////////////////////////////////////////
-
-    ////////////////////////////////////////////////////////////////////////////
-    protected override void DrawControl(Renderer renderer, Rectangle rect, GameTime gameTime)
-    {
-      if (drawBorders)
-      {
-        base.DrawControl(renderer, rect, gameTime);
-      }
-    }
-    ////////////////////////////////////////////////////////////////////////////     
-
-    ////////////////////////////////////////////////////////////////////////////     
-    private int GetFitChars(string text, int width)
-    {
-      int ret = text.Length;
-      int size = 0;
-
-      for (int i = 0; i < text.Length; i++)
-      {
-        size = (int)font.MeasureString(text.Substring(0, i)).X;
-        if (size > width)
-        {
-          ret = i;
-          break;
-        }
-      }
-
-      return ret;
-    }
-    ////////////////////////////////////////////////////////////////////////////     
-
-    ////////////////////////////////////////////////////////////////////////////     
-    private void DeterminePages()
-    {
-      if (ClientArea != null)
-      {
-        int sizey = (int)font.LineSpacing;
-        linesDrawn = (int)(ClientArea.Height / sizey);
-        if (linesDrawn > Lines.Count) linesDrawn = Lines.Count;
-
-        charsDrawn = ClientArea.Width - 1;
-      }
-    }
-    ////////////////////////////////////////////////////////////////////////////     
-
-    ////////////////////////////////////////////////////////////////////////////
-    private string GetMaxLine()
-    {
-      int max = 0;
-      int x = 0;
-
-      for (int i = 0; i < Lines.Count; i++)
-      {
-        if (Lines[i].Length > max)
-        {
-          max = Lines[i].Length;
-          x = i;
-        }
-      }
-      return Lines.Count > 0 ? Lines[x] : "";
-    }
-    ////////////////////////////////////////////////////////////////////////////
-
-    ////////////////////////////////////////////////////////////////////////////     
-    void ClientArea_Draw(object sender, DrawEventArgs e)
-    {
-      SkinLayer layer = Skin.Layers[lrTextBox];
-      Color col = Skin.Layers[lrTextBox].Text.Colors.Enabled;
-      SkinLayer cursor = Skin.Layers[lrCursor];
-      Alignment al = mode == TextBoxMode.Multiline ? Alignment.TopLeft : Alignment.MiddleLeft;
-      Renderer renderer = e.Renderer;
-      Rectangle r = e.Rectangle;
-      bool drawsel = !selection.IsEmpty;
-      string tmpText = "";
-
-      font = (Skin.Layers[lrTextBox].Text != null) ? Skin.Layers[lrTextBox].Text.Font.Resource : null;
-      
-      if (Text != null && font != null)
-      {
-        DeterminePages();
-
-        if (mode == TextBoxMode.Multiline)
-        {
-          shownText = Text;
-          tmpText = Lines[PosY];
-        }        
-        else if (mode == TextBoxMode.Password)
-        {
-          shownText = "";
-          for (int i = 0; i < Text.Length; i++)
-          {
-            shownText = shownText + passwordChar;
-          }
-          tmpText = shownText;
-        }
-        else
-        {
-          shownText = Text;
-          tmpText = Lines[PosY];        
-        }
-
-        if (TextColor != UndefinedColor && ControlState != ControlState.Disabled)
-        {
-          col = TextColor;
-        }
-
-        if (mode != TextBoxMode.Multiline)
-        {
-          linesDrawn = 0;
-          vert.Value = 0;
-        }
-
-        if (drawsel)
-        {
-          DrawSelection(e.Renderer, r);
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+/// </summary>
+/// Specifies the type of text box.
+/// <summary>
+public enum TextBoxMode
+{
+/// </summary>
+/// Standard text box control. Single line.
+/// <summary>
+Normal,
+/// </summary>
+/// Masked text box control. Input is replaced by the control's password character.
+/// <summary>
+Password,
+/// </summary>
+/// Multi-line text box control.
+/// <summary>
+Multiline
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+/// </summary>
+/// Represents a text box control.
+/// <summary>
+public class TextBox : ClipControl
+{
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+/// </summary>
+///
+/// <summary>
+private struct Selection
+{
+private int start;
+private int end;
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+public int Start
+{
+get
+{
+if (start > end && start != -1 && end != -1) return end;
+else return start;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+set
+{
+start = value;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+public int End
+{
+get
+{
+if (end < start && start != -1 && end != -1) return start;
+else return end;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+set
+{
+end = value;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+public bool IsEmpty
+{
+get { return Start == -1 && End == -1; }
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+public int Length
+{
+get { return IsEmpty ? 0 : (End - Start); }
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+public Selection(int start, int end)
+{
+this.start = start;
+this.end = end;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+public void Clear()
+{
+Start = -1;
+End = -1;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+/// </summary>
+/// String for accessing the text box control skin.
+/// <summary>
+private const string skTextBox = "TextBox";
+/// </summary>
+/// String for accessing the text box control layer.
+/// <summary>
+private const string lrTextBox = "Control";
+/// </summary>
+/// String for accessing the text box cursor layer.
+/// <summary>
+private const string lrCursor = "Cursor";
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+/// </summary>
+/// Not used?
+/// <summary>
+private const string crDefault = "Default";
+/// </summary>
+/// String indicating which cursor resource should be used for this control.
+/// <summary>
+private const string crText = "Text";
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+/// </summary>
+/// Indicates if the cursor should be displayed when hovered. ???
+/// <summary>
+private bool showCursor = false;
+private double flashTime = 0;
+/// </summary>
+/// X position of the text caret.
+/// <summary>
+private int posx = 0;
+/// </summary>
+/// Y position of the text caret.
+/// <summary>
+private int posy = 0;
+/// </summary>
+/// Specifies which character will be used to mask input when the text box is in Password mode.
+/// <summary>
+private char passwordChar = 'ï¿½';
+/// </summary>
+/// Indicates if the text box is a single-line, multi-line, or password text box.
+/// <summary>
+private TextBoxMode mode = TextBoxMode.Normal;
+/// </summary>
+/// Text that is currently visible in the client area.
+/// <summary>
+private string shownText = "";
+/// </summary>
+/// Indicates if the text box can accept user input or if it is read-only.
+/// <summary>
+private bool readOnly = false;
+/// </summary>
+/// Indicates if the borders of the text box should be drawn.
+/// <summary>
+private bool drawBorders = true;
+/// </summary>
+/// Currently selected text of the control, specified by starting and ending indexes.
+/// <summary>
+private Selection selection = new Selection(-1, -1);
+/// </summary>
+/// Indicates if the caret is displayed or not.
+/// <summary>
+private bool caretVisible = true;
+/// </summary>
+/// Horizontal scroll bar of the text box.
+/// <summary>
+private ScrollBar horz = null;
+/// </summary>
+/// Vertical scroll bar of the text box.
+/// <summary>
+private ScrollBar vert = null;
+/// </summary>
+/// Text content broken into individual lines.
+/// <summary>
+private List<string> lines = new List<string>();
+/// </summary>
+/// Number of lines of text that can fit vertically in the client area.
+/// <summary>
+private int linesDrawn = 0;
+/// </summary>
+/// Number of characters that can fit horizontally in the client area.
+/// <summary>
+private int charsDrawn = 0;
+/// </summary>
+/// Font used to draw the control's text.
+/// <summary>
+private SpriteFont font = null;
+/// </summary>
+/// Indicates if word wrap is enabled on multi-line text boxes.
+/// <summary>
+private bool wordWrap = false;
+/// </summary>
+/// Specifies which, if any, scroll bars should be displayed in the text box.
+/// <summary>
+private ScrollBars scrollBars = ScrollBars.Both;
+/// </summary>
+/// Characted used as the line separator character.
+/// <summary>
+private string Separator = "\n";
+/// </summary>
+/// Current text content of the control.
+/// <summary>
+private string text = "";
+/// </summary>
+/// Internal use during text splitting operations.
+/// <summary>
+private string buffer = "";
+/// </summary>
+/// Indicates if all text should be selected automatically when the control gains focus.
+/// <summary>
+private bool autoSelection = true;
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+/// </summary>
+/// Gets or sets the X position of the caret on the current line.
+/// <summary>
+private int PosX
+{
+get
+{
+return posx;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+set
+{
+posx = value;
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+if (posx < 0) posx = 0;
+if (posx > Lines[PosY].Length) posx = Lines[PosY].Length;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+/// </summary>
+/// Gets or sets the Y position of the caret in the text box.
+/// <summary>
+private int PosY
+{
+get
+{
+return posy;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+set
+{
+posy = value;
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+if (posy < 0) posy = 0;
+if (posy > Lines.Count - 1) posy = Lines.Count - 1;
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+PosX = PosX;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+private int Pos
+{
+get
+{
+return GetPos(PosX, PosY);
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+set
+{
+PosY = GetPosY(value);
+PosX = GetPosX(value);
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+/// </summary>
+/// Indicates if word wrap is enabled in multi-line text box controls.
+/// <summary>
+public virtual bool WordWrap
+{
+get { return wordWrap; }
+set
+{
+wordWrap = value;
+if (ClientArea != null) ClientArea.Invalidate();
+SetupBars();
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+/// </summary>
+/// Gets or sets the scroll bars the text box should display.
+/// <summary>
+public virtual ScrollBars ScrollBars
+{
+get { return scrollBars; }
+set
+{
+scrollBars = value;
+SetupBars();
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+/// </summary>
+/// Gets or sets the character used to mask input when the text box is in password mode.
+/// <summary>
+public virtual char PasswordChar
+{
+get { return passwordChar; }
+set { passwordChar = value; if (ClientArea != null) ClientArea.Invalidate(); }
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+/// </summary>
+/// Indicates if the text insertion position is visible or not.
+/// <summary>
+public virtual bool CaretVisible
+{
+get { return caretVisible; }
+set { caretVisible = value; }
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+/// </summary>
+/// Gets or sets the current mode of the text box control.
+/// <summary>
+public virtual TextBoxMode Mode
+{
+get { return mode; }
+set
+{
+if (value != TextBoxMode.Multiline)
+{
+Text = Text.Replace(Separator, "");
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+mode = value;
+// Clear selection.
+selection.Clear();
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+if (ClientArea != null) ClientArea.Invalidate();
+SetupBars();
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+/// </summary>
+/// Indicates if the text box allows user input or not.
+/// <summary>
+public virtual bool ReadOnly
+{
+get { return readOnly; }
+set { readOnly = value; }
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+/// </summary>
+/// Indicates if the borders of the text box control should be drawn or not.
+/// <summary>
+public virtual bool DrawBorders
+{
+get { return drawBorders; }
+set { drawBorders = value; if (ClientArea != null) ClientArea.Invalidate(); }
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+/// </summary>
+/// Gets or sets the current position of the caret in the text box.
+/// <summary>
+public virtual int CursorPosition
+{
+get { return Pos; }
+set
+{
+Pos = value;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+/// </summary>
+/// Gets all text within the current selection.
+/// <summary>
+public virtual string SelectedText
+{
+get
+{
+// Insert text?
+if (selection.IsEmpty)
+{
+return "";
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Replace selection?
+else
+{
+return Text.Substring(selection.Start, selection.Length);
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+/// </summary>
+/// Gets or sets the start position of the selection.
+/// <summary>
+public virtual int SelectionStart
+{
+get
+{
+// Insert text?
+if (selection.IsEmpty)
+{
+return Pos;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Replace selection?
+else
+{
+return selection.Start;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+set
+{
+Pos = value;
+if (Pos < 0) Pos = 0;
+if (Pos > Text.Length) Pos = Text.Length;
+selection.Start = Pos;
+if (selection.End == -1) selection.End = Pos;
+ClientArea.Invalidate();
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+/// </summary>
+/// Indicates if all text should be selected automatically when the text box receives focus.
+/// <summary>
+public virtual bool AutoSelection
+{
+get { return autoSelection; }
+set { autoSelection = value; }
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+/// </summary>
+/// Gets or sets (from the current value of SelectionStart) the length of the selection.
+/// <summary>
+public virtual int SelectionLength
+{
+get
+{
+return selection.Length;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+set
+{
+if (value == 0)
+{
+selection.End = selection.Start;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+else if (selection.IsEmpty)
+{
+selection.Start = 0;
+selection.End = value;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+else if (!selection.IsEmpty)
+{
+selection.End = selection.Start + value;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+// Delete all selected text?
+if (!selection.IsEmpty)
+{
+if (selection.Start < 0) selection.Start = 0;
+if (selection.Start > Text.Length) selection.Start = Text.Length;
+if (selection.End < 0) selection.End = 0;
+if (selection.End > Text.Length) selection.End = Text.Length;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+ClientArea.Invalidate();
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+/// </summary>
+/// Returns the text content as a Separator delimited list of strings.
+/// <summary>
+private List<string> Lines
+{
+get
+{
+return lines;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+set
+{
+lines = value;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+/// </summary>
+/// Gets or sets the contents of the text box control.
+/// <summary>
+public override string Text
+{
+get
+{
+return text;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+set
+{
+if (wordWrap)
+value = WrapWords(value, ClientWidth);
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+if (mode != TextBoxMode.Multiline && value != null)
+{
+value = value.Replace(Separator, "");
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+text = value;
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+if (!Suspended) OnTextChanged(new EventArgs());
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+lines = SplitLines(text);
+if (ClientArea != null) ClientArea.Invalidate();
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+SetupBars();
+ProcessScrolling();
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+/// <param name="manager">GUI manager for the control.</param>
+/// </summary>
+/// Creates a new TextBox control.
+/// <summary>
+public TextBox(Manager manager)
+: base(manager)
+{
+// Cursor layer defined?
+CheckLayer(Skin, lrCursor);
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+SetDefaultSize(128, 20);
+Lines.Add("");
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+ClientArea.Draw += new DrawEventHandler(ClientArea_Draw);
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+// Create the scroll bars for the text box.
+vert = new ScrollBar(manager, Orientation.Vertical);
+horz = new ScrollBar(manager, Orientation.Horizontal);
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+/// </summary>
+/// Initializes the text box control.
+/// <summary>
+public override void Init()
+{
+base.Init();
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+// Set up the vertical scroll bar.
+vert.Init();
+vert.Range = 1;
+vert.PageSize = 1;
+vert.Value = 0;
+vert.Anchor = Anchors.Top | Anchors.Right | Anchors.Bottom;
+vert.ValueChanged += new EventHandler(sb_ValueChanged);
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+// Set up the horizontal scroll bar.
+horz.Init();
+horz.Range = ClientArea.Width;
+horz.PageSize = ClientArea.Width;
+horz.Value = 0;
+horz.Anchor = Anchors.Right | Anchors.Left | Anchors.Bottom;
+horz.ValueChanged += new EventHandler(sb_ValueChanged);
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+horz.Visible = false;
+vert.Visible = false;
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+Add(vert, false);
+Add(horz, false);
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+/// </summary>
+/// Initializes the skin of the text box control.
+/// <summary>
+protected internal override void InitSkin()
+{
+base.InitSkin();
+Skin = new SkinControl(Manager.Skin.Controls[skTextBox]);
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+#if (!XBOX && !XBOX_FAKE)
+Cursor = Manager.Skin.Cursors[crText].Resource;
+#endif
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+// Get the font used for drawing the text box contents.
+font = (Skin.Layers[lrTextBox].Text != null) ? Skin.Layers[lrTextBox].Text.Font.Resource : null;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+protected override void DrawControl(Renderer renderer, Rectangle rect, GameTime gameTime)
+{
+// Need to draw borders?
+if (drawBorders)
+{
+base.DrawControl(renderer, rect, gameTime);
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+/// <returns>Returns the number of characters, from the start of the string, that will fit in the width specified.</returns>
+/// <param name="width">Width available for text placement.</param>
+/// <param name="text">Text string to fit.</param>
+/// </summary>
+/// Returns the number of characters of the specified text that will fit within the specified width.
+/// <summary>
+private int GetFitChars(string text, int width)
+{
+// All characters will fit unless proven otherwise.
+int ret = text.Length;
+int size = 0;
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+for (int i = 0; i < text.Length; i++)
+{
+// Get the width of the current substring.
+size = (int)font.MeasureString(text.Substring(0, i)).X;
+// Too large? Update character count and exit.
+if (size > width)
+{
+ret = i;
+break;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+return ret;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+/// </summary>
+/// client area of the text box.
+/// Updates the number of lines and characters drawn based on the current dimensions of the
+/// <summary>
+private void DeterminePages()
+{
+if (ClientArea != null)
+{
+// Get height of a single line of text.
+int sizey = (int)font.LineSpacing;
+// Update the number of lines that can fit within the current height of the text area.
+linesDrawn = (int)(ClientArea.Height / sizey);
+// Can't draw more lines than there actually is.
+if (linesDrawn > Lines.Count) linesDrawn = Lines.Count;
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+// NOTE: How exactly does this work out?
+// Update the number of characters drawn.
+charsDrawn = ClientArea.Width - 1;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+/// <returns>The longest line in the text box.</returns>
+/// </summary>
+/// Gets the line of the text box with the greatest length.
+/// <summary>
+private string GetMaxLine()
+{
+int max = 0;
+int x = 0;
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+// Determine which line the cursor is on.
+for (int i = 0; i < Lines.Count; i++)
+{
+if (Lines[i].Length > max)
+{
+max = Lines[i].Length;
+x = i;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+return Lines.Count > 0 ? Lines[x] : "";
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+/// <param name="e"></param>
+/// <param name="sender"></param>
+/// </summary>
+/// Handles drawing the client area of the text box control.
+/// <summary>
+void ClientArea_Draw(object sender, DrawEventArgs e)
+{
+// Grab the text box control's skin information.
+SkinLayer layer = Skin.Layers[lrTextBox];
+Color col = Skin.Layers[lrTextBox].Text.Colors.Enabled;
+SkinLayer cursor = Skin.Layers[lrCursor];
+// Multi-line text boxes are aligned top-left; other types have their line centered vertically.
+Alignment al = mode == TextBoxMode.Multiline ? Alignment.TopLeft : Alignment.MiddleLeft;
+Renderer renderer = e.Renderer;
+Rectangle r = e.Rectangle;
+// Text box has a selected text to consider?
+bool drawsel = !selection.IsEmpty;
+string tmpText = "";
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+// Get the font used for drawing the text box contents.
+font = (Skin.Layers[lrTextBox].Text != null) ? Skin.Layers[lrTextBox].Text.Font.Resource : null;
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+// Control has text to draw and we have a font to draw it with?
+if (Text != null && font != null)
+{
+DeterminePages();
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+// Adjust rectangle to account for current vertical scroll bar value?
+if (mode == TextBoxMode.Multiline)
+{
+shownText = Text;
+tmpText = Lines[PosY];
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+else if (mode == TextBoxMode.Password)
+{
+// Mask the text using the password character.
+shownText = "";
+for (int i = 0; i < Text.Length; i++)
+{
+shownText = shownText + passwordChar;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+tmpText = shownText;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Replace selection?
+else
+{
+shownText = Text;
+tmpText = Lines[PosY];
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+// Text color defined and control not disabled.
+if (TextColor != UndefinedColor && ControlState != ControlState.Disabled)
+{
+// Use the control's text color value.
+col = TextColor;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+if (mode != TextBoxMode.Multiline)
+{
+linesDrawn = 0;
+vert.Value = 0;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+// Is there a selection to draw?
+if (drawsel)
+{
+DrawSelection(e.Renderer, r);
 /*
-          renderer.End();          
-          renderer.SpriteBatch.Begin(SpriteBlendMode.AlphaBlend, SpriteSortMode.Immediate, SaveStateMode.None);
-          renderer.SpriteBatch.GraphicsDevice.RenderState.SeparateAlphaBlendEnabled = true;
-          renderer.SpriteBatch.GraphicsDevice.RenderState.SourceBlend = Blend.DestinationColor;
-          renderer.SpriteBatch.GraphicsDevice.RenderState.DestinationBlend = Blend.SourceColor;
-          renderer.SpriteBatch.GraphicsDevice.RenderState.BlendFunction = BlendFunction.Subtract;          
-          //renderer.SpriteBatch.GraphicsDevice.RenderState.AlphaFunction = CompareFunction.Equal;
-          //renderer.SpriteBatch.GraphicsDevice.RenderState.AlphaSourceBlend = Blend.One;
-          //renderer.SpriteBatch.GraphicsDevice.RenderState.AlphaDestinationBlend = Blend.DestinationAlpha;
- */
-        }
+renderer.End();
+renderer.SpriteBatch.Begin(SpriteBlendMode.AlphaBlend, SpriteSortMode.Immediate, SaveStateMode.None);
+renderer.SpriteBatch.GraphicsDevice.RenderState.SeparateAlphaBlendEnabled = true;
+renderer.SpriteBatch.GraphicsDevice.RenderState.SourceBlend = Blend.DestinationColor;
+renderer.SpriteBatch.GraphicsDevice.RenderState.DestinationBlend = Blend.SourceColor;
+renderer.SpriteBatch.GraphicsDevice.RenderState.BlendFunction = BlendFunction.Subtract;
+//renderer.SpriteBatch.GraphicsDevice.RenderState.AlphaDestinationBlend = Blend.DestinationAlpha;
+//renderer.SpriteBatch.GraphicsDevice.RenderState.AlphaSourceBlend = Blend.One;
+//renderer.SpriteBatch.GraphicsDevice.RenderState.AlphaFunction = CompareFunction.Equal;
+*/
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-        int sizey = (int)font.LineSpacing;
+// Get height of a single line of text.
+int sizey = (int)font.LineSpacing;
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-        if (showCursor && caretVisible)
-        {
-          Vector2 size = Vector2.Zero;
-          if (PosX > 0 && PosX <= tmpText.Length)
-          {
-            size = font.MeasureString(tmpText.Substring(0, PosX));
-          }
-          if (size.Y == 0)
-          {
-            size = font.MeasureString(" ");
-            size.X = 0;
-          }
+// Need to draw the caret?
+if (showCursor && caretVisible)
+{
+Vector2 size = Vector2.Zero;
+if (PosX > 0 && PosX <= tmpText.Length)
+{
+size = font.MeasureString(tmpText.Substring(0, PosX));
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+if (size.Y == 0)
+{
+size = font.MeasureString(" ");
+size.X = 0;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-          int m = r.Height - font.LineSpacing;
+int m = r.Height - font.LineSpacing;
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-          Rectangle rc = new Rectangle(r.Left - horz.Value + (int)size.X, r.Top + m / 2, cursor.Width, font.LineSpacing);
+// Create the rectangle where the cursor should be drawn.
+Rectangle rc = new Rectangle(r.Left - horz.Value + (int)size.X, r.Top + m / 2, cursor.Width, font.LineSpacing);
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-          if (mode == TextBoxMode.Multiline)
-          {
-            rc = new Rectangle(r.Left + (int)size.X - horz.Value, r.Top + (int)((PosY - vert.Value) * font.LineSpacing), cursor.Width, font.LineSpacing);
-          }
-          cursor.Alignment = al;
-          renderer.DrawLayer(cursor, rc, col, 0);
-        }
+// Adjust rectangle to account for current vertical scroll bar value?
+if (mode == TextBoxMode.Multiline)
+{
+rc = new Rectangle(r.Left + (int)size.X - horz.Value, r.Top + (int)((PosY - vert.Value) * font.LineSpacing), cursor.Width, font.LineSpacing);
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Draw the cursor in the text box.
+cursor.Alignment = al;
+renderer.DrawLayer(cursor, rc, col, 0);
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-        for (int i = 0; i < linesDrawn + 1; i++)
-        {
-          int ii = i + vert.Value;
-          if (ii >= Lines.Count || ii < 0) break;
+// Draw all visible text.
+for (int i = 0; i < linesDrawn + 1; i++)
+{
+int ii = i + vert.Value;
+if (ii >= Lines.Count || ii < 0) break;
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-          if (Lines[ii] != "")
-          {
-            if (mode == TextBoxMode.Multiline)
-            {
-              renderer.DrawString(font, Lines[ii], r.Left - horz.Value, r.Top + (i * sizey), col);
-            }
-            else
-            {
-              Rectangle rx = new Rectangle(r.Left - horz.Value, r.Top, r.Width, r.Height);
-              renderer.DrawString(font, shownText, rx, col, al, false);
-            }
-          }
-        }
-      /*  if (drawsel)
-        {
-          renderer.End();
-          renderer.Begin(BlendingMode.Premultiplied);
-        }*/
-      }
-    }
-    ////////////////////////////////////////////////////////////////////////////
+if (Lines[ii] != "")
+{
+// Adjust rectangle to account for current vertical scroll bar value?
+if (mode == TextBoxMode.Multiline)
+{
+renderer.DrawString(font, Lines[ii], r.Left - horz.Value, r.Top + (i * sizey), col);
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Replace selection?
+else
+{
+Rectangle rx = new Rectangle(r.Left - horz.Value, r.Top, r.Width, r.Height);
+renderer.DrawString(font, shownText, rx, col, al, false);
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+/*  if (drawsel)
+{
+renderer.End();
+renderer.Begin(BlendingMode.Premultiplied);
+}*/
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-    ////////////////////////////////////////////////////////////////////////////
-    private int GetStringWidth(string text, int count)
-    {
-      if (count > text.Length) count = text.Length;
-      return (int)font.MeasureString(text.Substring(0, count)).X;
-    }
-    ////////////////////////////////////////////////////////////////////////////
+/// <returns>Returns the width of the specified number of characters in the supplied text.</returns>
+/// <param name="count">Number of characters from the start of the string to measure.</param>
+/// <param name="text">String to measure the width of.</param>
+/// </summary>
+/// Measures the width of the specified text or a sub-string of the text.
+/// <summary>
+private int GetStringWidth(string text, int count)
+{
+if (count > text.Length) count = text.Length;
+return (int)font.MeasureString(text.Substring(0, count)).X;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-    ////////////////////////////////////////////////////////////////////////////    
-    private void ProcessScrolling()
-    {
-      if (vert != null && horz != null)
-      {
-        vert.PageSize = linesDrawn;
-        horz.PageSize = charsDrawn;
+/// </summary>
+/// of the text box and the current cursor position within the text box.
+/// Updates scroll bar values and page sizes based on the dimensions of the client area
+/// <summary>
+private void ProcessScrolling()
+{
+if (vert != null && horz != null)
+{
+// Update page size values based on dimensions of client area.
+vert.PageSize = linesDrawn;
+horz.PageSize = charsDrawn;
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-        if (horz.PageSize > horz.Range) horz.PageSize = horz.Range;
+// Clamp horizontal page value in range.
+if (horz.PageSize > horz.Range) horz.PageSize = horz.Range;
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-        if (PosY >= vert.Value + vert.PageSize)
-        {
-          vert.Value = (PosY + 1) - vert.PageSize;
-        }
-        else if (PosY < vert.Value)
-        {
-          vert.Value = PosY;
-        }
+// Update vertical scroll bar value so the current insertion position is visible.
+if (PosY >= vert.Value + vert.PageSize)
+{
+vert.Value = (PosY + 1) - vert.PageSize;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+else if (PosY < vert.Value)
+{
+vert.Value = PosY;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-        if (GetStringWidth(Lines[PosY], PosX) >= horz.Value + horz.PageSize)
-        {
-          horz.Value = (GetStringWidth(Lines[PosY], PosX) + 1) - horz.PageSize;
-        }
-        else if (GetStringWidth(Lines[PosY], PosX) < horz.Value)
-        {
-          horz.Value = GetStringWidth(Lines[PosY], PosX) - horz.PageSize;
-        }
-      }
-    }
-    ////////////////////////////////////////////////////////////////////////////   
+// Update horizontal scroll bar value so the current insertion position is visible.
+if (GetStringWidth(Lines[PosY], PosX) >= horz.Value + horz.PageSize)
+{
+horz.Value = (GetStringWidth(Lines[PosY], PosX) + 1) - horz.PageSize;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+else if (GetStringWidth(Lines[PosY], PosX) < horz.Value)
+{
+horz.Value = GetStringWidth(Lines[PosY], PosX) - horz.PageSize;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-    ////////////////////////////////////////////////////////////////////////////     
-    private void DrawSelection(Renderer renderer, Rectangle rect)
-    {
-      if (!selection.IsEmpty)
-      {
-        int s = selection.Start;
-        int e = selection.End;
+/// <param name="rect">Region where the selection overlay should be drawn.</param>
+/// <param name="renderer">Render management object.</param>
+/// </summary>
+/// Draws the text box's selection overlay to highlight selected text.
+/// <summary>
+private void DrawSelection(Renderer renderer, Rectangle rect)
+{
+// Delete all selected text?
+if (!selection.IsEmpty)
+{
+int s = selection.Start;
+int e = selection.End;
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-        int sl = GetPosY(s);
-        int el = GetPosY(e);
-        int sc = GetPosX(s);
-        int ec = GetPosX(e);
+// Get selection's starting line index, ending line index, starting column index, and ending column index.
+int sl = GetPosY(s);
+int el = GetPosY(e);
+int sc = GetPosX(s);
+int ec = GetPosX(e);
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-        int hgt = font.LineSpacing;
+// Selection height is the height of a single line of text.
+int hgt = font.LineSpacing;
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-        int start = sl;
-        int end = el;
-        
-        if (start < vert.Value) start = vert.Value;
-        if (end > vert.Value + linesDrawn) end = vert.Value + linesDrawn;
-        
-        for (int i = start; i <= end; i++)
-        {
-          Rectangle r = Rectangle.Empty;
+int start = sl;
+int end = el;
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-          if (mode == TextBoxMode.Normal)
-          {
-            int m = ClientArea.Height - font.LineSpacing;
-            r = new Rectangle(rect.Left - horz.Value + (int)font.MeasureString(Lines[i].Substring(0, sc)).X, rect.Top + m / 2,
-                             (int)font.MeasureString(Lines[i].Substring(0, ec + 0)).X - (int)font.MeasureString(Lines[i].Substring(0, sc)).X, hgt);
-          }
-          else if (sl == el)
-          {
-            r = new Rectangle(rect.Left - horz.Value + (int)font.MeasureString(Lines[i].Substring(0, sc)).X, rect.Top + (i - vert.Value) * hgt,
-                              (int)font.MeasureString(Lines[i].Substring(0, ec + 0)).X - (int)font.MeasureString(Lines[i].Substring(0, sc)).X, hgt);
-          }
-          else
-          {
-            if (i == sl) r = new Rectangle(rect.Left - horz.Value + (int)font.MeasureString(Lines[i].Substring(0, sc)).X, rect.Top + (i - vert.Value) * hgt, (int)font.MeasureString(Lines[i]).X - (int)font.MeasureString(Lines[i].Substring(0, sc)).X, hgt);
-            else if (i == el) r = new Rectangle(rect.Left - horz.Value, rect.Top + (i - vert.Value) * hgt, (int)font.MeasureString(Lines[i].Substring(0, ec + 0)).X, hgt);
-            else r = new Rectangle(rect.Left - horz.Value, rect.Top + (i - vert.Value) * hgt, (int)font.MeasureString(Lines[i]).X, hgt);
-          }
+// Adjust start and end positions to account for vertical scroll values.
+if (start < vert.Value) start = vert.Value;
+if (end > vert.Value + linesDrawn) end = vert.Value + linesDrawn;
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-          renderer.Draw(Manager.Skin.Images["Control"].Resource, r, Color.FromNonPremultiplied(160, 160, 160, 128));
-        }
-      }
-    }
-    ////////////////////////////////////////////////////////////////////////////           
+// Draw each line of the selection.
+for (int i = start; i <= end; i++)
+{
+Rectangle r = Rectangle.Empty;
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-    ////////////////////////////////////////////////////////////////////////////     
-    protected internal override void Update(GameTime gameTime)
-    {
-      base.Update(gameTime);
+if (mode == TextBoxMode.Normal)
+{
+int m = ClientArea.Height - font.LineSpacing;
+r = new Rectangle(rect.Left - horz.Value + (int)font.MeasureString(Lines[i].Substring(0, sc)).X, rect.Top + m / 2,
+(int)font.MeasureString(Lines[i].Substring(0, ec + 0)).X - (int)font.MeasureString(Lines[i].Substring(0, sc)).X, hgt);
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+else if (sl == el)
+{
+r = new Rectangle(rect.Left - horz.Value + (int)font.MeasureString(Lines[i].Substring(0, sc)).X, rect.Top + (i - vert.Value) * hgt,
+(int)font.MeasureString(Lines[i].Substring(0, ec + 0)).X - (int)font.MeasureString(Lines[i].Substring(0, sc)).X, hgt);
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Replace selection?
+else
+{
+if (i == sl) r = new Rectangle(rect.Left - horz.Value + (int)font.MeasureString(Lines[i].Substring(0, sc)).X, rect.Top + (i - vert.Value) * hgt, (int)font.MeasureString(Lines[i]).X - (int)font.MeasureString(Lines[i].Substring(0, sc)).X, hgt);
+else if (i == el) r = new Rectangle(rect.Left - horz.Value, rect.Top + (i - vert.Value) * hgt, (int)font.MeasureString(Lines[i].Substring(0, ec + 0)).X, hgt);
+else r = new Rectangle(rect.Left - horz.Value, rect.Top + (i - vert.Value) * hgt, (int)font.MeasureString(Lines[i]).X, hgt);
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-      bool sc = showCursor;
+renderer.Draw(Manager.Skin.Images["Control"].Resource, r, Color.FromNonPremultiplied(160, 160, 160, 128));
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-      showCursor = Focused;
+/// <param name="gameTime">Snapshot of the application's timing values.</param>
+/// </summary>
+/// Updates the text box cursor state.
+/// <summary>
+protected internal override void Update(GameTime gameTime)
+{
+base.Update(gameTime);
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-      if (Focused)
-      {
-        flashTime += gameTime.ElapsedGameTime.TotalSeconds;
-        showCursor = flashTime < 0.5;
-        if (flashTime > 1) flashTime = 0;
-      }
-      if (sc != showCursor) ClientArea.Invalidate();
-    }
-    ////////////////////////////////////////////////////////////////////////////        
+bool sc = showCursor;
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-    ////////////////////////////////////////////////////////////////////////////
-    private int FindPrevWord(string text)
-    {
-      bool letter = false;
+// Only show the cursor when the text box has focus.
+showCursor = Focused;
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-      int p = Pos - 1;
-      if (p < 0) p = 0;
-      if (p >= text.Length) p = text.Length - 1;
+if (Focused)
+{
+// Update the cursor flash timer and display/hide the cursor every 0.5 seconds.
+flashTime += gameTime.ElapsedGameTime.TotalSeconds;
+showCursor = flashTime < 0.5;
+if (flashTime > 1) flashTime = 0;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Visibility of the cursor has changed? Redraw.
+if (sc != showCursor) ClientArea.Invalidate();
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
+/// <returns>Returns the index of the start of the previous word or zero if the cursor has reached the starting point.</returns>
+/// <param name="text">Text content to search.</param>
+/// </summary>
+/// word, or the start of the previous word if the cursor is at the start of a word..
+/// This will be the start of the current word, if the cursor is positioned in the middle of a
+/// From the current cursor position, this finds the index of the start of the word behind it.
+/// <summary>
+private int FindPrevWord(string text)
+{
+bool letter = false;
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-      for (int i = p; i >= 0; i--)
-      {
-        if (char.IsLetterOrDigit(text[i]))
-        {
-          letter = true;
-          continue;
-        }
-        if (letter && !char.IsLetterOrDigit(text[i]))
-        {
-          return i + 1;
-        }
-      }
+// Get current position of the cursor.
+int p = Pos - 1;
+if (p < 0) p = 0;
+if (p >= text.Length) p = text.Length - 1;
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-      return 0;
-    }
-    ////////////////////////////////////////////////////////////////////////////
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-    ////////////////////////////////////////////////////////////////////////////
-    private int FindNextWord(string text)
-    {
-      bool space = false;
+// Search backwards from the current position
+for (int i = p; i >= 0; i--)
+{
+// of the word we want to find the start of.
+// First non whitespace character from current position indicates start
+if (char.IsLetterOrDigit(text[i]))
+{
+letter = true;
+continue;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// of the word behind the cursor's current position.
+// First white space character indicates that we are at the beginning
+if (letter && !char.IsLetterOrDigit(text[i]))
+{
+return i + 1;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-      for (int i = Pos; i < text.Length - 1; i++)
-      {
-        if (!char.IsLetterOrDigit(text[i]))
-        {
-          space = true;
-          continue;
-        }
-        if (space && char.IsLetterOrDigit(text[i]))
-        {
-          return i;
-        }
-      }
+// Reached the beginning of the text string.
+return 0;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-      return text.Length;
-    }
-    ////////////////////////////////////////////////////////////////////////////
+/// <returns>Returns the index of the start of the next word or the last valid index if the cursor has reached the end point.</returns>
+/// <param name="text">Text content to search.</param>
+/// </summary>
+/// From the current cursor position, this finds the index of the start of the word ahead of it.
+/// <summary>
+private int FindNextWord(string text)
+{
+bool space = false;
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-    ////////////////////////////////////////////////////////////////////////////
-    private int GetPosY(int pos)
-    {
-      if (pos >= Text.Length) return Lines.Count - 1;
+for (int i = Pos; i < text.Length - 1; i++)
+{
+if (!char.IsLetterOrDigit(text[i]))
+{
+space = true;
+continue;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// First non-whitespace character after the first encountered space is the start of the next word.
+if (space && char.IsLetterOrDigit(text[i]))
+{
+return i;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-      int p = pos;
-      for (int i = 0; i < Lines.Count; i++)
-      {
-        p -= Lines[i].Length + Separator.Length;
-        if (p < 0)
-        {
-          p = p + Lines[i].Length + Separator.Length;
-          return i;
-        }
-      }
-      return 0;
-    }
-    ////////////////////////////////////////////////////////////////////////////
+// Reached the end of the text.
+return text.Length;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-    ////////////////////////////////////////////////////////////////////////////
-    private int GetPosX(int pos)
-    {
-      if (pos >= Text.Length) return Lines[Lines.Count - 1].Length;
+/// <returns>Returns the index of the line where the cursor is positioned.</returns>
+/// <param name="pos">Cursor position in text.</param>
+/// </summary>
+/// Gets the line index where the cursor is currently positioned.
+/// <summary>
+private int GetPosY(int pos)
+{
+// Cursor is past the last line of text?
+if (pos >= Text.Length) return Lines.Count - 1;
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-      int p = pos;
-      for (int i = 0; i < Lines.Count; i++)
-      {
-        p -= Lines[i].Length + Separator.Length;
-        if (p < 0)
-        {
-          p = p + Lines[i].Length + Separator.Length;
-          return p;
-        }
-      }
-      return 0;
-    }
-    ////////////////////////////////////////////////////////////////////////////
+int p = pos;
+// Determine which line the cursor is on.
+for (int i = 0; i < Lines.Count; i++)
+{
+// in the current line. Return the current line index.
+// If p - line length is less than zero, the cursor is located somewhere
+p -= Lines[i].Length + Separator.Length;
+if (p < 0)
+{
+p = p + Lines[i].Length + Separator.Length;
+return i;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Reached the beginning of the text string.
+return 0;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-    ////////////////////////////////////////////////////////////////////////////     
-    private int GetPos(int x, int y)
-    {
-      int p = 0;
+/// <returns>Returns the index of the column at the specified cursor position.</returns>
+/// <param name="pos">Position of the cursor in the text.</param>
+/// </summary>
+/// Gets the column index of the specified position.
+/// <summary>
+private int GetPosX(int pos)
+{
+// Cursor is at the end of the text content?
+if (pos >= Text.Length) return Lines[Lines.Count - 1].Length;
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-      for (int i = 0; i < y; i++)
-      {
-        p += Lines[i].Length + Separator.Length;
-      }
-      p += x;
+int p = pos;
+// Determine which line the cursor is on.
+for (int i = 0; i < Lines.Count; i++)
+{
+// in the current line. Return the current line index.
+// If p - line length is less than zero, the cursor is located somewhere
+p -= Lines[i].Length + Separator.Length;
+if (p < 0)
+{
+p = p + Lines[i].Length + Separator.Length;
+return p;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Reached the beginning of the text string.
+return 0;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-      return p;
-    }
-    ////////////////////////////////////////////////////////////////////////////     
+/// <returns>Returns the cursor position for the specified location.</returns>
+/// <param name="y">Line index.</param>
+/// <param name="x">Column index.</param>
+/// </summary>
+/// that matches the specified location.
+/// Given the column (x) and line (y) indexes, this returns the cursor position
+/// <summary>
+private int GetPos(int x, int y)
+{
+int p = 0;
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-    ////////////////////////////////////////////////////////////////////////////     
-    private int CharAtPos(Point pos)
-    {
-      int x = pos.X;
-      int y = pos.Y;
-      int px = 0;
-      int py = 0;
+for (int i = 0; i < y; i++)
+{
+p += Lines[i].Length + Separator.Length;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+p += x;
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-      if (mode == TextBoxMode.Multiline)
-      {
-        py = vert.Value + (int)((y - ClientTop) / font.LineSpacing);
-        if (py < 0) py = 0;
-        if (py >= Lines.Count) py = Lines.Count - 1;
-      }
-      else
-      {
-        py = 0;
-      }
+return p;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-      string str = mode == TextBoxMode.Multiline ? Lines[py] : shownText;
+/// <returns>Returns the cursor position that corresponds to the point received.</returns>
+/// <param name="pos">Point to find the text position of.</param>
+/// </summary>
+/// box that is closest to the specified position.
+/// Given a point (such as mouse position), this determines the position in the text
+/// <summary>
+private int CharAtPos(Point pos)
+{
+int x = pos.X;
+int y = pos.Y;
+int px = 0;
+int py = 0;
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-      if (str != null && str != "")
-      {
-        for (int i = 1; i <= Lines[py].Length; i++)
-        {
-          Vector2 v = font.MeasureString(str.Substring(0, i)) - (font.MeasureString(str[i - 1].ToString()) / 3);
-          if (x <= (ClientLeft + (int)v.X) - horz.Value)
-          {
-            px = i - 1;
-            break;
-          }
-        }
-        if (x > ClientLeft + ((int)font.MeasureString(str).X) - horz.Value - (font.MeasureString(str[str.Length - 1].ToString()).X / 3)) px = str.Length;
-      }
+// Adjust rectangle to account for current vertical scroll bar value?
+if (mode == TextBoxMode.Multiline)
+{
+// Get the line index under the specified point.
+py = vert.Value + (int)((y - ClientTop) / font.LineSpacing);
+if (py < 0) py = 0;
+if (py >= Lines.Count) py = Lines.Count - 1;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Replace selection?
+else
+{
+// Otherwise, line index is zero.
+py = 0;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-      return GetPos(px, py);
-    }
-    ////////////////////////////////////////////////////////////////////////////
+string str = mode == TextBoxMode.Multiline ? Lines[py] : shownText;
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-    ////////////////////////////////////////////////////////////////////////////    
-    protected override void OnMouseDown(MouseEventArgs e)
-    {
-      base.OnMouseDown(e);
+if (str != null && str != "")
+{
+// Determine X position within the current line.
+for (int i = 1; i <= Lines[py].Length; i++)
+{
+Vector2 v = font.MeasureString(str.Substring(0, i)) - (font.MeasureString(str[i - 1].ToString()) / 3);
+if (x <= (ClientLeft + (int)v.X) - horz.Value)
+{
+px = i - 1;
+break;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+if (x > ClientLeft + ((int)font.MeasureString(str).X) - horz.Value - (font.MeasureString(str[str.Length - 1].ToString()).X / 3)) px = str.Length;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-      flashTime = 0;
+return GetPos(px, py);
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-      Pos = CharAtPos(e.Position);        
-      selection.Clear();
- 
-      if (e.Button == MouseButton.Left && caretVisible && mode != TextBoxMode.Password)
-      {
-        selection.Start = Pos;
-        selection.End = Pos;
-      }   
-      ClientArea.Invalidate();       
-    }
-    ////////////////////////////////////////////////////////////////////////////
+/// <param name="e"></param>
+/// </summary>
+/// Handles mouse button down events for the text box.
+/// <summary>
+protected override void OnMouseDown(MouseEventArgs e)
+{
+base.OnMouseDown(e);
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-    ////////////////////////////////////////////////////////////////////////////
-    protected override void OnMouseMove(MouseEventArgs e)
-    {
-      base.OnMouseMove(e);
+// Reset the timer used to flash the caret.
+flashTime = 0;
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-      if (e.Button == MouseButton.Left && !selection.IsEmpty && mode != TextBoxMode.Password && selection.Length < Text.Length)
-      {
-        int pos = CharAtPos(e.Position);
-        selection.End = CharAtPos(e.Position);
-        Pos = pos;
+// Reposition caret.
+Pos = CharAtPos(e.Position);
+// Clear selection.
+selection.Clear();
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-        ClientArea.Invalidate();
+// Update selection?
+if (e.Button == MouseButton.Left && caretVisible && mode != TextBoxMode.Password)
+{
+selection.Start = Pos;
+selection.End = Pos;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+ClientArea.Invalidate();
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-        ProcessScrolling();
-      }
-    }
-    ////////////////////////////////////////////////////////////////////////////       
+/// <param name="e"></param>
+/// </summary>
+/// Handles mouse move events for the text box.
+/// <summary>
+protected override void OnMouseMove(MouseEventArgs e)
+{
+base.OnMouseMove(e);
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-    ////////////////////////////////////////////////////////////////////////////       
-    protected override void OnMouseUp(MouseEventArgs e)
-    {
-      base.OnMouseUp(e);
+// Mouse move + Left button down = Update selection.
+if (e.Button == MouseButton.Left && !selection.IsEmpty && mode != TextBoxMode.Password && selection.Length < Text.Length)
+{
+int pos = CharAtPos(e.Position);
+selection.End = CharAtPos(e.Position);
+Pos = pos;
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-      if (e.Button == MouseButton.Left && !selection.IsEmpty && mode != TextBoxMode.Password)
-      {
-        if (selection.Length == 0) selection.Clear();
-      }      
-    }
-    ////////////////////////////////////////////////////////////////////////////       
+ClientArea.Invalidate();
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-    protected override void OnMouseScroll(MouseEventArgs e)
-    {
-        if (Mode != TextBoxMode.Multiline)
-        {
-            base.OnMouseScroll(e);
-            return;
-        }
- 
-        if (e.ScrollDirection == MouseScrollDirection.Down)
-            vert.ScrollDown();
-        else
-            vert.ScrollUp();
- 
-        base.OnMouseScroll(e);
-    }
+ProcessScrolling();
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-    ////////////////////////////////////////////////////////////////////////////     
-    protected override void OnKeyPress(KeyEventArgs e)
-    {
-      flashTime = 0;
-      
-      if (!e.Handled)
-      {
-        if (e.Key == Keys.A && e.Control && mode != TextBoxMode.Password)
-        {
-          SelectAll();
-        }
-        if (e.Key == Keys.Up)
-        {
-          e.Handled = true;
+/// <param name="e"></param>
+/// </summary>
+/// Handles mouse up events for the text box.
+/// <summary>
+protected override void OnMouseUp(MouseEventArgs e)
+{
+base.OnMouseUp(e);
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-          if (e.Shift && selection.IsEmpty && mode != TextBoxMode.Password)
-          {
-            selection.Start = Pos;
-          }
-          if (!e.Control)
-          {
-            PosY -= 1;
-          }
-        }
-        else if (e.Key == Keys.Down)
-        {
-          e.Handled = true;
-          if (e.Shift && selection.IsEmpty && mode != TextBoxMode.Password)
-          {
-            selection.Start = Pos;
-          }
-          if (!e.Control)
-          {
-            PosY += 1;
-          }
-        }
-        else if (e.Key == Keys.Back && !readOnly)
-        {
-          e.Handled = true;
-          if (!selection.IsEmpty)
-          {
-            Text = Text.Remove(selection.Start, selection.Length);
-            Pos = selection.Start;
-          }
-          else if (Text.Length > 0 && Pos > 0)
-          {
-            Pos -= 1;
-            Text = Text.Remove(Pos, 1);
-          }
-          selection.Clear();
-        }
-        else if (e.Key == Keys.Delete && !readOnly)
-        {
-          e.Handled = true;
-          if (!selection.IsEmpty)
-          {
-            Text = Text.Remove(selection.Start, selection.Length);
-            Pos = selection.Start;
-          }
-          else if (Pos < Text.Length)
-          {
-            Text = Text.Remove(Pos, 1);
-          }
-          selection.Clear();
-        }
-        else if (e.Key == Keys.Left)
-        {
-          e.Handled = true;
-          if (e.Shift && selection.IsEmpty && mode != TextBoxMode.Password)
-          {
-            selection.Start = Pos;
-          }
-          if (!e.Control)
-          {
-            Pos -= 1;
-          }
-          if (e.Control)
-          {
-            Pos = FindPrevWord(shownText);
-          }
-        }
-        else if (e.Key == Keys.Right)
-        {
-          e.Handled = true;
-          if (e.Shift && selection.IsEmpty && mode != TextBoxMode.Password)
-          {
-            selection.Start = Pos;
-          }
-          if (!e.Control)
-          {
-            Pos += 1;
-          }
-          if (e.Control)
-          {
-            Pos = FindNextWord(shownText);
-          }
-        }
-        else if (e.Key == Keys.Home)
-        {
-          e.Handled = true;
-          if (e.Shift && selection.IsEmpty && mode != TextBoxMode.Password)
-          {
-            selection.Start = Pos;
-          }
-          if (!e.Control)
-          {
-            PosX = 0;
-          }
-          if (e.Control)
-          {
-            Pos = 0;
-          }
-        }
-        else if (e.Key == Keys.End)
-        {
-          e.Handled = true;
-          if (e.Shift && selection.IsEmpty && mode != TextBoxMode.Password)
-          {
-            selection.Start = Pos;
-          }
-          if (!e.Control)
-          {
-            PosX = Lines[PosY].Length;
-          }
-          if (e.Control)
-          {
-            Pos = Text.Length;
-          }
-        }
-        else if (e.Key == Keys.PageUp)
-        {
-          e.Handled = true;
-          if (e.Shift && selection.IsEmpty && mode != TextBoxMode.Password)
-          {
-            selection.Start = Pos;
-          }
-          if (!e.Control)
-          {
-            PosY -= linesDrawn;
-          }
-        }
-        else if (e.Key == Keys.PageDown)
-        {
-          e.Handled = true;
-          if (e.Shift && selection.IsEmpty && mode != TextBoxMode.Password)
-          {
-            selection.Start = Pos;
-          }
-          if (!e.Control)
-          {
-            PosY += linesDrawn;
-          }
-        }
-        else if (e.Key == Keys.Enter && mode == TextBoxMode.Multiline && !readOnly)
-        {
-          e.Handled = true;
-          Text = Text.Insert(Pos, Separator);
-          PosX = 0;
-          PosY += 1;
-        }
-        else if (e.Key == Keys.Tab)
-        {          
-        }
-        else if (!readOnly && !e.Control)
-        {
-          string c = Manager.KeyboardLayout.GetKey(e);
-          if (selection.IsEmpty)
-          {
-            Text = Text.Insert(Pos, c);
-            if (c != "") PosX += 1;
-          }
-          else
-          {
-            if (Text.Length > 0)
-            {
-              Text = Text.Remove(selection.Start, selection.Length);            
-              Text = Text.Insert(selection.Start, c);
-              Pos = selection.Start + 1;
-            }            
-            selection.Clear();
-          }
-        }
+// Clear selection if the text box receives a left button click.
+if (e.Button == MouseButton.Left && !selection.IsEmpty && mode != TextBoxMode.Password)
+{
+if (selection.Length == 0) selection.Clear();
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-        if (e.Shift && !selection.IsEmpty)
-        {
-          selection.End = Pos;
-        }
+protected override void OnMouseScroll(MouseEventArgs e)
+{
+if (Mode != TextBoxMode.Multiline)
+{
+base.OnMouseScroll(e);
+return;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-        if (e.Control && e.Key == Keys.C && mode != TextBoxMode.Password)
-        {
+if (e.ScrollDirection == MouseScrollDirection.Down)
+vert.ScrollDown();
+// Replace selection?
+else
+vert.ScrollUp();
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+base.OnMouseScroll(e);
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+/// <param name="e"></param>
+/// </summary>
+/// Handles key press events for the text box.
+/// <summary>
+protected override void OnKeyPress(KeyEventArgs e)
+{
+// Reset the timer used to flash the caret.
+flashTime = 0;
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+// Key event handled already?
+if (!e.Handled)
+{
+// Control + A = Select All Text.
+if (e.Key == Keys.A && e.Control && mode != TextBoxMode.Password)
+{
+SelectAll();
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Up arrow key press?
+if (e.Key == Keys.Up)
+{
+// Display the on-screen keyboard.
+e.Handled = true;
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+// Begin selection on Shift + Up if a selection isn't already set.
+if (e.Shift && selection.IsEmpty && mode != TextBoxMode.Password)
+{
+selection.Start = Pos;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Move the caret up a line.
+if (!e.Control)
+{
+PosY -= 1;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Down arrow key press?
+else if (e.Key == Keys.Down)
+{
+// Display the on-screen keyboard.
+e.Handled = true;
+// Begin selection on Shift + Up if a selection isn't already set.
+if (e.Shift && selection.IsEmpty && mode != TextBoxMode.Password)
+{
+selection.Start = Pos;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Move the caret up a line.
+if (!e.Control)
+{
+PosY += 1;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Delete text if Backspace pressed?
+else if (e.Key == Keys.Back && !readOnly)
+{
+// Display the on-screen keyboard.
+e.Handled = true;
+// Delete all selected text?
+if (!selection.IsEmpty)
+{
+Text = Text.Remove(selection.Start, selection.Length);
+Pos = selection.Start;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Remove a single character?
+else if (Text.Length > 0 && Pos > 0)
+{
+Pos -= 1;
+Text = Text.Remove(Pos, 1);
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Clear selection.
+selection.Clear();
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Delete text if Delete is pressed?
+else if (e.Key == Keys.Delete && !readOnly)
+{
+// Display the on-screen keyboard.
+e.Handled = true;
+// Delete all selected text?
+if (!selection.IsEmpty)
+{
+Text = Text.Remove(selection.Start, selection.Length);
+Pos = selection.Start;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Remove the character after the caret?
+else if (Pos < Text.Length)
+{
+Text = Text.Remove(Pos, 1);
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Clear selection.
+selection.Clear();
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Left arrow key pressed?
+else if (e.Key == Keys.Left)
+{
+// Display the on-screen keyboard.
+e.Handled = true;
+// Begin selection on Shift + Up if a selection isn't already set.
+if (e.Shift && selection.IsEmpty && mode != TextBoxMode.Password)
+{
+selection.Start = Pos;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Move the caret up a line.
+if (!e.Control)
+{
+Pos -= 1;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Move the caret to the start of the previous word on Control + Left.
+if (e.Control)
+{
+Pos = FindPrevWord(shownText);
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Right arrow key pressed?
+else if (e.Key == Keys.Right)
+{
+// Display the on-screen keyboard.
+e.Handled = true;
+// Begin selection on Shift + Up if a selection isn't already set.
+if (e.Shift && selection.IsEmpty && mode != TextBoxMode.Password)
+{
+selection.Start = Pos;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Move the caret up a line.
+if (!e.Control)
+{
+Pos += 1;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Move the caret to the start of the previous word on Control + Left.
+if (e.Control)
+{
+Pos = FindNextWord(shownText);
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Home key pressed?
+else if (e.Key == Keys.Home)
+{
+// Display the on-screen keyboard.
+e.Handled = true;
+// Begin selection on Shift + Up if a selection isn't already set.
+if (e.Shift && selection.IsEmpty && mode != TextBoxMode.Password)
+{
+selection.Start = Pos;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Move the caret up a line.
+if (!e.Control)
+{
+PosX = 0;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Move the caret to the start of the previous word on Control + Left.
+if (e.Control)
+{
+Pos = 0;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// End key pressed?
+else if (e.Key == Keys.End)
+{
+// Display the on-screen keyboard.
+e.Handled = true;
+// Begin selection on Shift + Up if a selection isn't already set.
+if (e.Shift && selection.IsEmpty && mode != TextBoxMode.Password)
+{
+selection.Start = Pos;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Move the caret up a line.
+if (!e.Control)
+{
+PosX = Lines[PosY].Length;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Move the caret to the start of the previous word on Control + Left.
+if (e.Control)
+{
+Pos = Text.Length;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Page Up key pressed?
+else if (e.Key == Keys.PageUp)
+{
+// Display the on-screen keyboard.
+e.Handled = true;
+// Begin selection on Shift + Up if a selection isn't already set.
+if (e.Shift && selection.IsEmpty && mode != TextBoxMode.Password)
+{
+selection.Start = Pos;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Move the caret up a line.
+if (!e.Control)
+{
+PosY -= linesDrawn;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Page Down key pressed?
+else if (e.Key == Keys.PageDown)
+{
+// Display the on-screen keyboard.
+e.Handled = true;
+// Begin selection on Shift + Up if a selection isn't already set.
+if (e.Shift && selection.IsEmpty && mode != TextBoxMode.Password)
+{
+selection.Start = Pos;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Move the caret up a line.
+if (!e.Control)
+{
+PosY += linesDrawn;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Insert new line on Enter key press?
+else if (e.Key == Keys.Enter && mode == TextBoxMode.Multiline && !readOnly)
+{
+// Display the on-screen keyboard.
+e.Handled = true;
+Text = Text.Insert(Pos, Separator);
+PosX = 0;
+PosY += 1;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Tab key pressed?
+else if (e.Key == Keys.Tab)
+{
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Handle all other key press events.
+else if (!readOnly && !e.Control)
+{
+string c = Manager.KeyboardLayout.GetKey(e);
+// Insert text?
+if (selection.IsEmpty)
+{
+Text = Text.Insert(Pos, c);
+if (c != "") PosX += 1;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Replace selection?
+else
+{
+if (Text.Length > 0)
+{
+Text = Text.Remove(selection.Start, selection.Length);
+Text = Text.Insert(selection.Start, c);
+Pos = selection.Start + 1;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Clear selection.
+selection.Clear();
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+// Update the end of selection?
+if (e.Shift && !selection.IsEmpty)
+{
+selection.End = Pos;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+// Copy selected text to clipboard on Control + C pressed and running on Windows.
+if (e.Control && e.Key == Keys.C && mode != TextBoxMode.Password)
+{
 #if (!XBOX && !XBOX_FAKE)
-          System.Windows.Forms.Clipboard.Clear();
-          if (mode != TextBoxMode.Password && !selection.IsEmpty)
-          {
-            System.Windows.Forms.Clipboard.SetText((Text.Substring(selection.Start, selection.Length)).Replace("\n", Environment.NewLine));
-          }
+System.Windows.Forms.Clipboard.Clear();
+if (mode != TextBoxMode.Password && !selection.IsEmpty)
+{
+System.Windows.Forms.Clipboard.SetText((Text.Substring(selection.Start, selection.Length)).Replace("\n", Environment.NewLine));
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
 #endif
-        }
-        else if (e.Control && e.Key == Keys.V && !readOnly && mode != TextBoxMode.Password)
-        {
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Paste from clipboard on Control + V if running on Windows.
+else if (e.Control && e.Key == Keys.V && !readOnly && mode != TextBoxMode.Password)
+{
 #if (!XBOX && !XBOX_FAKE)
-          string t = System.Windows.Forms.Clipboard.GetText().Replace(Environment.NewLine, "\n");
-          if (selection.IsEmpty)
-          {
-            Text = Text.Insert(Pos, t);
-            Pos = Pos + t.Length;
-          }
-          else
-          {
-            Text = Text.Remove(selection.Start, selection.Length);
-            Text = Text.Insert(selection.Start, t);
-            PosX = selection.Start + t.Length;
-            selection.Clear();
-          }
+string t = System.Windows.Forms.Clipboard.GetText().Replace(Environment.NewLine, "\n");
+// Insert text?
+if (selection.IsEmpty)
+{
+Text = Text.Insert(Pos, t);
+Pos = Pos + t.Length;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Replace selection?
+else
+{
+Text = Text.Remove(selection.Start, selection.Length);
+Text = Text.Insert(selection.Start, t);
+PosX = selection.Start + t.Length;
+// Clear selection.
+selection.Clear();
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
 #endif
-        }
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-        if ((!e.Shift && !e.Control) || Text.Length <= 0)
-        {
-          selection.Clear();
-        }
+// Clear selection?
+if ((!e.Shift && !e.Control) || Text.Length <= 0)
+{
+// Clear selection.
+selection.Clear();
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-        if (e.Control && e.Key == Keys.Down)
-        {
-          e.Handled = true;
-        }
-        flashTime = 0;
-        if (ClientArea != null) ClientArea.Invalidate();
+// Show guide on Control + Down.
+if (e.Control && e.Key == Keys.Down)
+{
+// Display the on-screen keyboard.
+e.Handled = true;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Reset the timer used to flash the caret.
+flashTime = 0;
+if (ClientArea != null) ClientArea.Invalidate();
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-        DeterminePages();
-        ProcessScrolling();
-      }
-      base.OnKeyPress(e);
-    }
-    ////////////////////////////////////////////////////////////////////////////        
+DeterminePages();
+ProcessScrolling();
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+base.OnKeyPress(e);
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-    ////////////////////////////////////////////////////////////////////////////        
-    private void SetupBars()
-    {
-      DeterminePages();
+/// </summary>
+/// Updates scroll bar settings based on dimensions of the client area and text content.
+/// <summary>
+private void SetupBars()
+{
+DeterminePages();
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-      if (vert != null) vert.Range = Lines.Count;
-      if (horz != null)
-      {
-        horz.Range = (int)font.MeasureString(GetMaxLine()).X;
-        if (horz.Range == 0) horz.Range = ClientArea.Width;
-      }
+if (vert != null) vert.Range = Lines.Count;
+if (horz != null)
+{
+horz.Range = (int)font.MeasureString(GetMaxLine()).X;
+if (horz.Range == 0) horz.Range = ClientArea.Width;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-      if (vert != null)
-      {
-        vert.Left = Width - 16 - 2;
-        vert.Top = 2;
-        vert.Height = Height - 4 - 16;
+if (vert != null)
+{
+vert.Left = Width - 16 - 2;
+vert.Top = 2;
+vert.Height = Height - 4 - 16;
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-        if (Height < 50 || (scrollBars != ScrollBars.Both && scrollBars != ScrollBars.Vertical)) vert.Visible = false;
-        else if ((scrollBars == ScrollBars.Vertical || scrollBars == ScrollBars.Both) && mode == TextBoxMode.Multiline) vert.Visible = true;
-      }
-      if (horz != null)
-      {
-        horz.Left = 2;
-        horz.Top = Height - 16 - 2;
-        horz.Width = Width - 4 - 16;
+if (Height < 50 || (scrollBars != ScrollBars.Both && scrollBars != ScrollBars.Vertical)) vert.Visible = false;
+else if ((scrollBars == ScrollBars.Vertical || scrollBars == ScrollBars.Both) && mode == TextBoxMode.Multiline) vert.Visible = true;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+if (horz != null)
+{
+horz.Left = 2;
+horz.Top = Height - 16 - 2;
+horz.Width = Width - 4 - 16;
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-        if (Width < 50 || wordWrap || (scrollBars != ScrollBars.Both && scrollBars != ScrollBars.Horizontal)) horz.Visible = false;
-        else if ((scrollBars == ScrollBars.Horizontal || scrollBars == ScrollBars.Both) && mode == TextBoxMode.Multiline && !wordWrap) horz.Visible = true;
-      }   
-      
-      AdjustMargins();  
+if (Width < 50 || wordWrap || (scrollBars != ScrollBars.Both && scrollBars != ScrollBars.Horizontal)) horz.Visible = false;
+else if ((scrollBars == ScrollBars.Horizontal || scrollBars == ScrollBars.Both) && mode == TextBoxMode.Multiline && !wordWrap) horz.Visible = true;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-      if (vert != null) vert.PageSize = linesDrawn;
-      if (horz != null) horz.PageSize = charsDrawn;
-    }
-    ////////////////////////////////////////////////////////////////////////////        
+AdjustMargins();
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-    ////////////////////////////////////////////////////////////////////////////        
-    protected override void AdjustMargins()
-    {
-      if (horz != null && !horz.Visible)
-      {
-        vert.Height = Height - 4;
-        ClientMargins = new Margins(ClientMargins.Left, ClientMargins.Top, ClientMargins.Right, Skin.ClientMargins.Bottom);
-      }
-      else
-      {
-        ClientMargins = new Margins(ClientMargins.Left, ClientMargins.Top, ClientMargins.Right, 18 + Skin.ClientMargins.Bottom);
-      }
+if (vert != null) vert.PageSize = linesDrawn;
+if (horz != null) horz.PageSize = charsDrawn;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-      if (vert != null && !vert.Visible)
-      {
-        horz.Width = Width - 4;
-        ClientMargins = new Margins(ClientMargins.Left, ClientMargins.Top, Skin.ClientMargins.Right, ClientMargins.Bottom);
-      }
-      else
-      {
-        ClientMargins = new Margins(ClientMargins.Left, ClientMargins.Top, 18 + Skin.ClientMargins.Right, ClientMargins.Bottom);
-      }
-      base.AdjustMargins();
-    }
-    ////////////////////////////////////////////////////////////////////////////        
+/// </summary>
+/// Update the text box margins based on the visibility of the scroll bars.
+/// <summary>
+protected override void AdjustMargins()
+{
+// Horizontal scroll bar hidden?
+if (horz != null && !horz.Visible)
+{
+vert.Height = Height - 4;
+ClientMargins = new Margins(ClientMargins.Left, ClientMargins.Top, ClientMargins.Right, Skin.ClientMargins.Bottom);
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Replace selection?
+else
+{
+ClientMargins = new Margins(ClientMargins.Left, ClientMargins.Top, ClientMargins.Right, 18 + Skin.ClientMargins.Bottom);
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-    ////////////////////////////////////////////////////////////////////////////        
-    protected override void OnResize(ResizeEventArgs e)
-    {
-      base.OnResize(e);
-      selection.Clear();
-      SetupBars();
-    }
-    ////////////////////////////////////////////////////////////////////////////                  
+// Vertical scroll bar hidden?
+if (vert != null && !vert.Visible)
+{
+horz.Width = Width - 4;
+ClientMargins = new Margins(ClientMargins.Left, ClientMargins.Top, Skin.ClientMargins.Right, ClientMargins.Bottom);
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Replace selection?
+else
+{
+ClientMargins = new Margins(ClientMargins.Left, ClientMargins.Top, 18 + Skin.ClientMargins.Right, ClientMargins.Bottom);
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+base.AdjustMargins();
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-    //////////////////////////////////////////////////////////////////////////// 
-    private string WrapWords(string text, int size)
-    {
-      string ret = "";
-      string line = "";
+/// <param name="e"></param>
+/// </summary>
+/// Handles resize events for the text box.
+/// <summary>
+protected override void OnResize(ResizeEventArgs e)
+{
+// Clear text selection and update scroll bars.
+base.OnResize(e);
+// Clear selection.
+selection.Clear();
+SetupBars();
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-      string[] words = text.Replace("\v", "").Split(" ".ToCharArray());
+/// <returns>Returns the word wrapped string.</returns>
+/// <param name="size">Width of the text box the text will be wrapped in.</param>
+/// <param name="text">Text content to word wrap.</param>
+/// </summary>
+/// Breaks up text content so that all lines fit within the width of the client area of the text box.
+/// <summary>
+private string WrapWords(string text, int size)
+{
+string ret = "";
+string line = "";
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-      for (int i = 0; i < words.Length; i++)
-      {
-        if (font.MeasureString(line + words[i]).X > size)
-        {
-          ret += line + "\n";
-          line = words[i] + " ";
-        }
-        else
-        {
-          line += words[i] + " ";
-        }
-      }
+// Split text at each space and break into a word array.
+string[] words = text.Replace("\v", "").Split(" ".ToCharArray());
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-      ret += line;
+// the width of the text box client area.
+// Concatenate words until it has been reformed into lines that fit
+for (int i = 0; i < words.Length; i++)
+{
+if (font.MeasureString(line + words[i]).X > size)
+{
+ret += line + "\n";
+line = words[i] + " ";
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Replace selection?
+else
+{
+line += words[i] + " ";
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-      return ret.Remove(ret.Length - 1, 1);
-    }
-    //////////////////////////////////////////////////////////////////////////// 
+// Append last line.
+ret += line;
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-    //////////////////////////////////////////////////////////////////////////// 
-    public virtual void SelectAll()
-    {
-        if (text.Length > 0)
-        {
-            selection.Start = 0;
-            selection.End = Text.Length;
-        }
-    }
-    //////////////////////////////////////////////////////////////////////////// 
+// Remove last space and return the new formatted string.
+return ret.Remove(ret.Length - 1, 1);
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-    ////////////////////////////////////////////////////////////////////////////     
-    private List<string> SplitLines(string text)
-    {
-      if (buffer != text)
-      {
-        buffer = text;
-        List<string> list = new List<string>();
-        string[] s = text.Split(new char[] { Separator[0] });
-        list.Clear();
+public virtual void SelectAll()
+{
+if (text.Length > 0)
+{
+selection.Start = 0;
+selection.End = Text.Length;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-        //Before adding the lines back in, we will want to first, measure the lines, and split words if needed...
+/// <returns>List of strings delimited by the text box separator character.</returns>
+/// <param name="text">Text to split.</param>
+/// </summary>
+/// Splits the specified text into a list of strings based on the text box separator character.
+/// <summary>
+private List<string> SplitLines(string text)
+{
+if (buffer != text)
+{
+buffer = text;
+List<string> list = new List<string>();
+string[] s = text.Split(new char[] { Separator[0] });
+list.Clear();
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-        list.AddRange(s);
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-        if (posy < 0) posy = 0;
-        if (posy > list.Count - 1) posy = list.Count - 1;
+list.AddRange(s);
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-        if (posx < 0) posx = 0;
-        if (posx > list[PosY].Length) posx = list[PosY].Length;
+if (posy < 0) posy = 0;
+if (posy > list.Count - 1) posy = list.Count - 1;
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-        return list;
-      }
-      else return lines;
-    }
-    //////////////////////////////////////////////////////////////////////////// 
+if (posx < 0) posx = 0;
+if (posx > list[PosY].Length) posx = list[PosY].Length;
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-    //////////////////////////////////////////////////////////////////////////// 
-    void sb_ValueChanged(object sender, EventArgs e)
-    {
-      ClientArea.Invalidate();
-    }
-    //////////////////////////////////////////////////////////////////////////// 
-    
-    //////////////////////////////////////////////////////////////////////////// 
-    protected override void OnFocusLost(EventArgs e)
-    {
-      selection.Clear();      
-      ClientArea.Invalidate();
-      base.OnFocusLost(e);      
-    }
-    //////////////////////////////////////////////////////////////////////////// 
-    
-    //////////////////////////////////////////////////////////////////////////// 
-    protected override void OnFocusGained(EventArgs e)
-    {
-      if (!readOnly && autoSelection)
-      {        
-        SelectAll();        
-        ClientArea.Invalidate();
-      }
- 
-      base.OnFocusGained(e);
-    }
-    //////////////////////////////////////////////////////////////////////////// 
+return list;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+else return lines;
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-    #endregion
+/// <param name="e"></param>
+/// <param name="sender"></param>
+/// </summary>
+/// Handles scroll events for the text box.
+/// <summary>
+void sb_ValueChanged(object sender, EventArgs e)
+{
+ClientArea.Invalidate();
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-  }
-  ////////////////////////////////////////////////////////////////////////////
+/// <param name="e"></param>
+/// </summary>
+/// Handler for when the text box loses focus.
+/// <summary>
+protected override void OnFocusLost(EventArgs e)
+{
+// Clear selection.
+selection.Clear();
+ClientArea.Invalidate();
+base.OnFocusLost(e);
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
-  #endregion
+/// <param name="e"></param>
+/// </summary>
+/// Handler for when the text box gains focus.
+/// <summary>
+protected override void OnFocusGained(EventArgs e)
+{
+// Auto-select all text?
+if (!readOnly && autoSelection)
+{
+SelectAll();
+ClientArea.Invalidate();
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
 
+base.OnFocusGained(e);
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
+}
+//if (Manager.UseGuide && Guide.IsVisible) return;
+
+//if (Manager.UseGuide && Guide.IsVisible) return;
+// Guide visible?
+
+// Guide.BeginShowKeyboardInput(pi, "Enter Text", "", Text, GetText, pi.ToString());
+//if (Manager.UseGuide && !Guide.IsVisible)
 }

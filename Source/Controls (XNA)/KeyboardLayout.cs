@@ -1,461 +1,450 @@
-////////////////////////////////////////////////////////////////
-//                                                            //
-//  Neoforce Controls                                         //
-//                                                            //
-////////////////////////////////////////////////////////////////
-//                                                            //
-//         File: KeyboardLayout.cs                            //
-//                                                            //
-//      Version: 0.7                                          //
-//                                                            //
-//         Date: 11/09/2010                                   //
-//                                                            //
-//       Author: Tom Shane                                    //
-//                                                            //
-////////////////////////////////////////////////////////////////
-//                                                            //
-//  Copyright (c) by Tom Shane                                //
-//                                                            //
-////////////////////////////////////////////////////////////////
 
 /*****
- * Made Changes to the German Input, based on Kergos, input.
- *****/
+* Made Changes to the German Input, based on Kergos, input.
+*****/
 
-#region //// Using /////////////
-        
-//////////////////////////////////////////////////////////////////////////////
+
 using Microsoft.Xna.Framework.Input;
 using System.Globalization;
 using System.Collections.Generic;
 using System;
 using System.Text;
-//////////////////////////////////////////////////////////////////////////////
 
-#endregion
 
 
 namespace MonoForce.Controls
-{     
-		
-	public class KeyboardLayout
-	{    
-        
-    #region //// Fields ////////////
-                
-    //////////////////////////////////////////////////////////////////////////            
-    private string name = "English";  
-    public List<int> LayoutList = new List<int>();
-    //////////////////////////////////////////////////////////////////////////    
-   
-    #endregion                
-    
-    #region //// Properties ////////
-	  
-	  //////////////////////////////////////////////////////////////////////////	  
-    public virtual string Name
-    {
-      get { return name; }
-      set { name = value; }
-    }    
-	  //////////////////////////////////////////////////////////////////////////
-	  
-	  #endregion        
-	  
-    #region //// Constructors //////
-        
-	  //////////////////////////////////////////////////////////////////////////
-    public KeyboardLayout()
-    {          
-      LayoutList.Add(1033);
-    }
-    //////////////////////////////////////////////////////////////////////////
-    
-    #endregion      	  
-        
-    #region //// Methods ///////////
-    
-    ////////////////////////////////////////////////////////////////////////////    
-    public virtual string GetKey(KeyEventArgs args)
-    {
-      string ret = "";
-      
-      if (args.Caps && !args.Shift) ret = KeyToString(args).ToUpper();
-      else if (!args.Caps && args.Shift) ret = KeyToString(args).ToUpper();
-      else if (args.Caps && args.Shift) ret = KeyToString(args).ToLower();
-      else if (!args.Caps && !args.Shift) ret = KeyToString(args).ToLower();
-      
-      
-      return ret;
-    }
-    ////////////////////////////////////////////////////////////////////////////    
+{
 
-    ////////////////////////////////////////////////////////////////////////////    
-    protected virtual string KeyToString(KeyEventArgs args)
-    {
-      switch (args.Key)
-      {
-        case Keys.A:
-          return "a";        
-        case Keys.B:
-          return "b";
-        case Keys.C:
-          return "c";
-        case Keys.D:
-          return "d";
-        case Keys.E:
-          return "e";
-        case Keys.F:
-          return "f";
-        case Keys.G:
-          return "g";
-        case Keys.H:
-          return "h";
-        case Keys.I:
-          return "i";
-        case Keys.J:
-          return "j";
-        case Keys.K:
-          return "k";
-        case Keys.L:
-          return "l";
-        case Keys.M:
-          return "m";
-        case Keys.N:
-          return "n";
-        case Keys.O:
-          return "o";
-        case Keys.P:
-          return "p";
-        case Keys.Q:
-          return "q";
-        case Keys.R:
-          return "r";
-        case Keys.S:
-          return "s";
-        case Keys.T:
-          return "t";
-        case Keys.U:
-          return "u";
-        case Keys.V:
-          return "v";
-        case Keys.W:
-          return "w";
-        case Keys.X:
-          return "x";
-        case Keys.Y:
-          return "y";
-        case Keys.Z:
-          return "z";
+/// </summary>
+/// string representations.
+/// Microsoft.Xna.Framework.Input.Keys values to their proper
+/// Represents the layout of an English keyboard and helps to map
+/// <summary>
+public class KeyboardLayout
+{
 
-        case Keys.D0:
-          return (args.Shift) ? ")" : "0";
-        case Keys.D1:
-          return (args.Shift) ? "!" : "1";
-        case Keys.D2:
-          return (args.Shift) ? "@" : "2";
-        case Keys.D3:
-          return (args.Shift) ? "#" : "3";
-        case Keys.D4:
-          return (args.Shift) ? "$" : "4";
-        case Keys.D5:
-          return (args.Shift) ? "%" : "5";
-        case Keys.D6:
-          return (args.Shift) ? "^" : "6";
-        case Keys.D7:
-          return (args.Shift) ? "&" : "7";
-        case Keys.D8:
-          return (args.Shift) ? "*" : "8";          
-        case Keys.D9:
-          return (args.Shift) ? "(" : "9";
 
-        case Keys.OemPlus:
-          return (args.Shift) ? "+" : "=";
-        case Keys.OemMinus:
-          return (args.Shift) ? "_" : "-";
-        case Keys.OemOpenBrackets:
-          return (args.Shift) ? "{" : "[";
-        case Keys.OemCloseBrackets:
-          return (args.Shift) ? "}" : "]";
-        case Keys.OemQuestion:
-          return (args.Shift) ? "?" : "/";
-        case Keys.OemPeriod:
-          return (args.Shift) ? ">" : ".";
-        case Keys.OemComma:
-          return (args.Shift) ? "<" : ",";
-        case Keys.OemPipe:
-          return (args.Shift) ? "|" : "\\";
-        case Keys.Space:
-          return " ";
-        case Keys.OemSemicolon:
-          return (args.Shift) ? ":" : ";";
-        case Keys.OemQuotes:
-          return (args.Shift) ? "\"" : "'";
-        case Keys.OemTilde:
-          return (args.Shift) ? "~" : "`";
+/// </summary>
+/// Defines the type of keyboard layout.
+/// <summary>
+private string name = "English";
+/// </summary>
+/// ???
+/// <summary>
+public List<int> LayoutList = new List<int>();
 
-        case Keys.NumPad0:
-          return (args.Shift) ? "" : "0";
-        case Keys.NumPad1:
-          return (args.Shift) ? "" : "1";
-        case Keys.NumPad2:
-          return (args.Shift) ? "" : "2";
-        case Keys.NumPad3:
-          return (args.Shift) ? "" : "3";
-        case Keys.NumPad4:
-          return (args.Shift) ? "" : "4";
-        case Keys.NumPad5:
-          return (args.Shift) ? "" : "5";
-        case Keys.NumPad6:
-          return (args.Shift) ? "" : "6";
-        case Keys.NumPad7:
-          return (args.Shift) ? "" : "7";
-        case Keys.NumPad8:
-          return (args.Shift) ? "" : "8";
-        case Keys.NumPad9:
-          return (args.Shift) ? "" : "9";
-        case Keys.Decimal:
-          return (args.Shift) ? "" : ".";
 
-        case Keys.Divide:
-          return (args.Shift) ? "/" : "/";
-        case Keys.Multiply:
-          return (args.Shift) ? "*" : "*";
-        case Keys.Subtract:
-          return (args.Shift) ? "-" : "-";
-        case Keys.Add:
-          return (args.Shift) ? "+" : "+";
-          
-        default:
-          return "";
-      }           
-    }    
-    ////////////////////////////////////////////////////////////////////////////
 
-    #endregion
-	  
-  }
+/// </summary>
+/// Gets or sets the name of the keyboard layout.
+/// <summary>
+public virtual string Name
+{
+get { return name; }
+set { name = value; }
+}
 
-  public class CzechKeyboardLayout: KeyboardLayout
-  {
 
-    #region //// Constructors //////
 
-    //////////////////////////////////////////////////////////////////////////
-    public CzechKeyboardLayout()
-    {
-        Name = "Czech";
-        LayoutList.Clear();
-        LayoutList.Add(1029);
-    }
-    //////////////////////////////////////////////////////////////////////////
+/// </summary>
+/// Creates a new English KeyboardLayout object.
+/// <summary>
+public KeyboardLayout()
+{
+LayoutList.Add(1033);
+}
 
-    #endregion
 
-    #region //// Methods ///////////
 
-    ////////////////////////////////////////////////////////////////////////////    
-    protected override string KeyToString(KeyEventArgs args)
-    {                            
-      switch (args.Key)
-      {        
-        case Keys.D0:
-          return (args.Shift) ? "0" : "È";
-        case Keys.D1:
-          return (args.Shift) ? "1" : "+";
-        case Keys.D2:
-          return (args.Shift) ? "2" : "Ï";
-        case Keys.D3:
-          return (args.Shift) ? "3" : "ö";
-        case Keys.D4:
-          return (args.Shift) ? "4" : "Ë";
-        case Keys.D5:
-          return (args.Shift) ? "5" : "¯";
-        case Keys.D6:
-          return (args.Shift) ? "6" : "û";
-        case Keys.D7:
-          return (args.Shift) ? "7" : "˝";
-        case Keys.D8:
-          return (args.Shift) ? "8" : "·";
-        case Keys.D9:
-          return (args.Shift) ? "9" : "Ì";
+/// <returns>Returns the pressed key as a string.</returns>
+/// <param name="args">KeyEventArgs object to retrieve the key value from.</param>
+/// </summary>
+/// Gets the key value from a KeyEventArgs object case-adjusted based on modifiers.
+/// <summary>
+public virtual string GetKey(KeyEventArgs args)
+{
+string ret = "";
 
-        case Keys.OemPlus:
-          return (args.Shift) ? "°" : "¥";
-        case Keys.OemMinus:
-          return (args.Shift) ? "%" : "=";
-        case Keys.OemOpenBrackets:
-          return (args.Shift) ? "/" : "˙";
-        case Keys.OemCloseBrackets:
-          return (args.Shift) ? "(" : ")";
-        case Keys.OemQuestion:
-          return (args.Shift) ? "_" : "-";
-        case Keys.OemPeriod:
-          return (args.Shift) ? ":" : ".";
-        case Keys.OemComma:
-          return (args.Shift) ? "?" : ",";
-        case Keys.OemPipe:
-          return (args.Shift) ? "'" : "®";
-        case Keys.Space:
-          return " ";
-        case Keys.OemSemicolon:
-          return (args.Shift) ? "\"" : "˘";
-        case Keys.OemQuotes:
-          return (args.Shift) ? "!" : "ß";
-        case Keys.OemTilde:
-          return (args.Shift) ? "∞" : ";";
-        
-        case Keys.Decimal:
-          return (args.Shift) ? "" : ",";
+if (args.Caps && !args.Shift) ret = KeyToString(args).ToUpper();
+else if (!args.Caps && args.Shift) ret = KeyToString(args).ToUpper();
+else if (args.Caps && args.Shift) ret = KeyToString(args).ToLower();
+else if (!args.Caps && !args.Shift) ret = KeyToString(args).ToLower();
 
-        default:
-          return base.KeyToString(args);
-      }            
-    }
-    ////////////////////////////////////////////////////////////////////////////
 
-    ////////////////////////////////////////////////////////////////////////////    
-    ////////////////////////////////////////////////////////////////////////////
+return ret;
+}
 
-    #endregion
+/// <returns>Returns the mapped Keys value as a string.</returns>
+/// <param name="args">KeyEventArgs to get the key value from.</param>
+/// </summary>
+/// Maps Keys objects to their respective keys.
+/// <summary>
+protected virtual string KeyToString(KeyEventArgs args)
+{
+switch (args.Key)
+{
+case Keys.A:
+return "a";
+case Keys.B:
+return "b";
+case Keys.C:
+return "c";
+case Keys.D:
+return "d";
+case Keys.E:
+return "e";
+case Keys.F:
+return "f";
+case Keys.G:
+return "g";
+case Keys.H:
+return "h";
+case Keys.I:
+return "i";
+case Keys.J:
+return "j";
+case Keys.K:
+return "k";
+case Keys.L:
+return "l";
+case Keys.M:
+return "m";
+case Keys.N:
+return "n";
+case Keys.O:
+return "o";
+case Keys.P:
+return "p";
+case Keys.Q:
+return "q";
+case Keys.R:
+return "r";
+case Keys.S:
+return "s";
+case Keys.T:
+return "t";
+case Keys.U:
+return "u";
+case Keys.V:
+return "v";
+case Keys.W:
+return "w";
+case Keys.X:
+return "x";
+case Keys.Y:
+return "y";
+case Keys.Z:
+return "z";
 
-  }
+case Keys.D0:
+return (args.Shift) ? ")" : "0";
+case Keys.D1:
+return (args.Shift) ? "!" : "1";
+case Keys.D2:
+return (args.Shift) ? "@" : "2";
+case Keys.D3:
+return (args.Shift) ? "#" : "3";
+case Keys.D4:
+return (args.Shift) ? "$" : "4";
+case Keys.D5:
+return (args.Shift) ? "%" : "5";
+case Keys.D6:
+return (args.Shift) ? "^" : "6";
+case Keys.D7:
+return (args.Shift) ? "&" : "7";
+case Keys.D8:
+return (args.Shift) ? "*" : "8";
+case Keys.D9:
+return (args.Shift) ? "(" : "9";
 
-  public class GermanKeyboardLayout : KeyboardLayout
-  {
+case Keys.OemPlus:
+return (args.Shift) ? "+" : "=";
+case Keys.OemMinus:
+return (args.Shift) ? "_" : "-";
+case Keys.OemOpenBrackets:
+return (args.Shift) ? "{" : "[";
+case Keys.OemCloseBrackets:
+return (args.Shift) ? "}" : "]";
+case Keys.OemQuestion:
+return (args.Shift) ? "?" : "/";
+case Keys.OemPeriod:
+return (args.Shift) ? ">" : ".";
+case Keys.OemComma:
+return (args.Shift) ? "<" : ",";
+case Keys.OemPipe:
+return (args.Shift) ? "|" : "\\";
+case Keys.Space:
+return " ";
+case Keys.OemSemicolon:
+return (args.Shift) ? ":" : ";";
+case Keys.OemQuotes:
+return (args.Shift) ? "\"" : "'";
+case Keys.OemTilde:
+return (args.Shift) ? "~" : "`";
 
-    #region //// Constructors //////
+case Keys.NumPad0:
+return (args.Shift) ? "" : "0";
+case Keys.NumPad1:
+return (args.Shift) ? "" : "1";
+case Keys.NumPad2:
+return (args.Shift) ? "" : "2";
+case Keys.NumPad3:
+return (args.Shift) ? "" : "3";
+case Keys.NumPad4:
+return (args.Shift) ? "" : "4";
+case Keys.NumPad5:
+return (args.Shift) ? "" : "5";
+case Keys.NumPad6:
+return (args.Shift) ? "" : "6";
+case Keys.NumPad7:
+return (args.Shift) ? "" : "7";
+case Keys.NumPad8:
+return (args.Shift) ? "" : "8";
+case Keys.NumPad9:
+return (args.Shift) ? "" : "9";
+case Keys.Decimal:
+return (args.Shift) ? "" : ".";
 
-    //////////////////////////////////////////////////////////////////////////
-    public GermanKeyboardLayout()
-    {
-      Name = "German";
-      LayoutList.Clear();
-      LayoutList.Add(1031);
-    }
-    //////////////////////////////////////////////////////////////////////////
+case Keys.Divide:
+return (args.Shift) ? "/" : "/";
+case Keys.Multiply:
+return (args.Shift) ? "*" : "*";
+case Keys.Subtract:
+return (args.Shift) ? "-" : "-";
+case Keys.Add:
+return (args.Shift) ? "+" : "+";
 
-    #endregion
+default:
+return "";
+}
+}
 
-    #region //// Methods ///////////
 
-    ////////////////////////////////////////////////////////////////////////////    
-    protected override string KeyToString(KeyEventArgs args)
-    {
-      switch (args.Key)
-      {
-        case Keys.D0:
-          return (args.Shift) ? "=" : "0";
-        case Keys.D1:
-          return (args.Shift) ? "!" : "1";
-        case Keys.D2:
-          return (args.Shift) ? "\"": "2";
-        case Keys.D3:
-          return (args.Shift) ? "ß" : "3";
-        case Keys.D4:
-          return (args.Shift) ? "$" : "4";
-        case Keys.D5:
-          return (args.Shift) ? "%" : "5";
-        case Keys.D6:
-          return (args.Shift) ? "&" : "6";
-        case Keys.D7:
-          return (args.Shift) ? "/" : "7";
-        case Keys.D8:
-          return (args.Shift) ? "(" : "8";
-        case Keys.D9:
-          return (args.Shift) ? ")" : "9";
-        case Keys.OemBackslash:
-          return (args.Shift) ? ">" : "<";
-        case Keys.OemPlus:
-          return (args.Shift) ? "*" : "+";
-        case Keys.OemMinus:
-          return (args.Shift) ? "_" : "-";
-        case Keys.OemOpenBrackets:
-          return (args.Shift) ? "?" : "ﬂ";
-        case Keys.OemCloseBrackets:
-          return (args.Shift) ? "`" : "¥";
-        case Keys.OemQuestion:
-          return (args.Shift) ? "'" : "#";
-        case Keys.OemPeriod:
-          return (args.Shift) ? ":" : ".";
-        case Keys.OemComma:
-          return (args.Shift) ? ";" : ",";
-        case Keys.OemPipe:
-          return (args.Shift) ? "∞" : "^";
-        case Keys.Space:
-          return " ";
-        case Keys.OemSemicolon:
-          return (args.Shift) ? "‹" : "¸";
-        case Keys.OemQuotes:
-          return (args.Shift) ? "ƒ" : "‰";
-        case Keys.OemTilde:
-          return (args.Shift) ? "÷" : "ˆ";
-          
-        case Keys.Decimal:
-          return (args.Shift) ? "" : ".";
+}
 
-        default:
-          return base.KeyToString(args);
-      }
-    }
-    ////////////////////////////////////////////////////////////////////////////  
- 
-   
-  #endregion
-  
-  }
+public class CzechKeyboardLayout: KeyboardLayout
+{
 
-  public class PolishKeyboardLayout: KeyboardLayout
-  {
 
-    #region //// Constructors //////
-    //////////////////////////////////////////////////////////////////////////
-    public PolishKeyboardLayout()
-    {
-      Name = "Polish"; 
-      LayoutList.Clear();
-      LayoutList.Add(1045);
-    }
-    //////////////////////////////////////////////////////////////////////////
+/// </summary>
+/// Creates a new instance of the CzechKeyboardLayout class.
+/// <summary>
+public CzechKeyboardLayout()
+{
+Name = "Czech";
+LayoutList.Clear();
+LayoutList.Add(1029);
+}
 
-    #endregion
 
-    #region //// Methods ///////////
 
-    ////////////////////////////////////////////////////////////////////////////
-    protected override string KeyToString(KeyEventArgs args)
-    {     
-      if (args.Alt)
-      {
-        switch (args.Key)
-        {
-          case Keys.A:
-            return (args.Shift) ? "•" : "π";
-          case Keys.C:
-            return (args.Shift) ? "∆" : "Ê";
-          case Keys.E:
-            return (args.Shift) ? " " : "Í";
-          case Keys.L:
-            return (args.Shift) ? "£" : "≥";
-          case Keys.N:
-            return (args.Shift) ? "—" : "Ò";
-          case Keys.O:
-            return (args.Shift) ? "”" : "Û";
-          case Keys.S:
-            return (args.Shift) ? "å" : "ú";
-          case Keys.X:
-            return (args.Shift) ? "è" : "ü";
-          case Keys.Z:
-            return (args.Shift) ? "Ø" : "ø";
-        }
-      }
-      return base.KeyToString(args);
-    }
-    ////////////////////////////////////////////////////////////////////////////
-    
-    #endregion
-  
-  }
-		
+/// <returns>Returns the mapped Keys value as a string.</returns>
+/// <param name="args">KeyEventArgs to get the key value from.</param>
+/// </summary>
+/// Maps Keys objects to their respective keys.
+/// <summary>
+protected override string KeyToString(KeyEventArgs args)
+{
+switch (args.Key)
+{
+case Keys.D0:
+return (args.Shift) ? "0" : "ÔøΩ";
+case Keys.D1:
+return (args.Shift) ? "1" : "+";
+case Keys.D2:
+return (args.Shift) ? "2" : "ÔøΩ";
+case Keys.D3:
+return (args.Shift) ? "3" : "ÔøΩ";
+case Keys.D4:
+return (args.Shift) ? "4" : "ÔøΩ";
+case Keys.D5:
+return (args.Shift) ? "5" : "ÔøΩ";
+case Keys.D6:
+return (args.Shift) ? "6" : "ÔøΩ";
+case Keys.D7:
+return (args.Shift) ? "7" : "ÔøΩ";
+case Keys.D8:
+return (args.Shift) ? "8" : "ÔøΩ";
+case Keys.D9:
+return (args.Shift) ? "9" : "ÔøΩ";
+
+case Keys.OemPlus:
+return (args.Shift) ? "ÔøΩ" : "ÔøΩ";
+case Keys.OemMinus:
+return (args.Shift) ? "%" : "=";
+case Keys.OemOpenBrackets:
+return (args.Shift) ? "/" : "ÔøΩ";
+case Keys.OemCloseBrackets:
+return (args.Shift) ? "(" : ")";
+case Keys.OemQuestion:
+return (args.Shift) ? "_" : "-";
+case Keys.OemPeriod:
+return (args.Shift) ? ":" : ".";
+case Keys.OemComma:
+return (args.Shift) ? "?" : ",";
+case Keys.OemPipe:
+return (args.Shift) ? "'" : "ÔøΩ";
+case Keys.Space:
+return " ";
+case Keys.OemSemicolon:
+return (args.Shift) ? "\"" : "ÔøΩ";
+case Keys.OemQuotes:
+return (args.Shift) ? "!" : "ÔøΩ";
+case Keys.OemTilde:
+return (args.Shift) ? "ÔøΩ" : ";";
+
+case Keys.Decimal:
+return (args.Shift) ? "" : ",";
+
+default:
+return base.KeyToString(args);
+}
+}
+
+
+
+}
+
+/// </summary>
+/// string representations.
+/// Microsoft.Xna.Framework.Input.Keys values to their proper
+/// Represents the layout of a German keyboard and helps to map
+/// <summary>
+public class GermanKeyboardLayout : KeyboardLayout
+{
+
+
+/// </summary>
+/// Creates a new instance of the GermanKeyboardLayout class.
+/// <summary>
+public GermanKeyboardLayout()
+{
+Name = "German";
+LayoutList.Clear();
+LayoutList.Add(1031);
+}
+
+
+
+/// <returns>Returns the mapped Keys value as a string.</returns>
+/// <param name="args">KeyEventArgs to get the key value from.</param>
+/// </summary>
+/// Maps Keys objects to their respective keys.
+/// <summary>
+protected override string KeyToString(KeyEventArgs args)
+{
+switch (args.Key)
+{
+case Keys.D0:
+return (args.Shift) ? "=" : "0";
+case Keys.D1:
+return (args.Shift) ? "!" : "1";
+case Keys.D2:
+return (args.Shift) ? "\"": "2";
+case Keys.D3:
+return (args.Shift) ? "ÔøΩ" : "3";
+case Keys.D4:
+return (args.Shift) ? "$" : "4";
+case Keys.D5:
+return (args.Shift) ? "%" : "5";
+case Keys.D6:
+return (args.Shift) ? "&" : "6";
+case Keys.D7:
+return (args.Shift) ? "/" : "7";
+case Keys.D8:
+return (args.Shift) ? "(" : "8";
+case Keys.D9:
+return (args.Shift) ? ")" : "9";
+case Keys.OemBackslash:
+return (args.Shift) ? ">" : "<";
+case Keys.OemPlus:
+return (args.Shift) ? "*" : "+";
+case Keys.OemMinus:
+return (args.Shift) ? "_" : "-";
+case Keys.OemOpenBrackets:
+return (args.Shift) ? "?" : "ÔøΩ";
+case Keys.OemCloseBrackets:
+return (args.Shift) ? "`" : "ÔøΩ";
+case Keys.OemQuestion:
+return (args.Shift) ? "'" : "#";
+case Keys.OemPeriod:
+return (args.Shift) ? ":" : ".";
+case Keys.OemComma:
+return (args.Shift) ? ";" : ",";
+case Keys.OemPipe:
+return (args.Shift) ? "ÔøΩ" : "^";
+case Keys.Space:
+return " ";
+case Keys.OemSemicolon:
+return (args.Shift) ? "ÔøΩ" : "ÔøΩ";
+case Keys.OemQuotes:
+return (args.Shift) ? "ÔøΩ" : "ÔøΩ";
+case Keys.OemTilde:
+return (args.Shift) ? "ÔøΩ" : "ÔøΩ";
+
+case Keys.Decimal:
+return (args.Shift) ? "" : ".";
+
+default:
+return base.KeyToString(args);
+}
+}
+
+
+
+}
+
+public class PolishKeyboardLayout: KeyboardLayout
+{
+
+/// </summary>
+/// Creates a new instance of the PolishKeyboardLayout class.
+/// <summary>
+public PolishKeyboardLayout()
+{
+Name = "Polish";
+LayoutList.Clear();
+LayoutList.Add(1045);
+}
+
+
+
+/// <returns>Returns the mapped Keys value as a string.</returns>
+/// <param name="args">KeyEventArgs to get the key value from.</param>
+/// </summary>
+/// Maps Keys objects to their respective keys.
+/// <summary>
+protected override string KeyToString(KeyEventArgs args)
+{
+if (args.Alt)
+{
+switch (args.Key)
+{
+case Keys.A:
+return (args.Shift) ? "ÔøΩ" : "ÔøΩ";
+case Keys.C:
+return (args.Shift) ? "ÔøΩ" : "ÔøΩ";
+case Keys.E:
+return (args.Shift) ? "ÔøΩ" : "ÔøΩ";
+case Keys.L:
+return (args.Shift) ? "ÔøΩ" : "ÔøΩ";
+case Keys.N:
+return (args.Shift) ? "ÔøΩ" : "ÔøΩ";
+case Keys.O:
+return (args.Shift) ? "ÔøΩ" : "ÔøΩ";
+case Keys.S:
+return (args.Shift) ? "ÔøΩ" : "ÔøΩ";
+case Keys.X:
+return (args.Shift) ? "ÔøΩ" : "ÔøΩ";
+case Keys.Z:
+return (args.Shift) ? "ÔøΩ" : "ÔøΩ";
+}
+}
+return base.KeyToString(args);
+}
+
+
+}
+
 }
 

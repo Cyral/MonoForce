@@ -1,135 +1,105 @@
-﻿////////////////////////////////////////////////////////////////
-//                                                            //
-//  Neoforce Controls                                         //
-//                                                            //
-////////////////////////////////////////////////////////////////
-//                                                            //
-//         File: ToolBarPanel.cs                              //
-//                                                            //
-//      Version: 0.7                                          //
-//                                                            //
-//         Date: 11/09/2010                                   //
-//                                                            //
-//       Author: Tom Shane                                    //
-//                                                            //
-////////////////////////////////////////////////////////////////
-//                                                            //
-//  Copyright (c) by Tom Shane                                //
-//                                                            //
-////////////////////////////////////////////////////////////////
 
-#region //// Using /////////////
 
-////////////////////////////////////////////////////////////////////////////
 using Microsoft.Xna.Framework;
-////////////////////////////////////////////////////////////////////////////
 
-#endregion
 
 namespace MonoForce.Controls
 {
 
 
-  public class ToolBarPanel: Control
-  {
-
-    #region //// Fields ////////////
-
-    ////////////////////////////////////////////////////////////////////////////                 
-    ////////////////////////////////////////////////////////////////////////////
-
-    #endregion
-
-    #region //// Properties ////////
-
-    ////////////////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////
-
-    #endregion
-
-    #region //// Construstors //////
-
-    ////////////////////////////////////////////////////////////////////////////       
-    public ToolBarPanel(Manager manager): base(manager)
-    {
-      Width = 64;
-      Height = 25;
-    }
-    ////////////////////////////////////////////////////////////////////////////
-
-    #endregion
-
-    #region //// Methods ///////////
-
-    ////////////////////////////////////////////////////////////////////////////
-    public override void Init()
-    {
-      base.Init();
-    }
-    ////////////////////////////////////////////////////////////////////////////                          
-
-    ////////////////////////////////////////////////////////////////////////////                          
-    protected internal override void InitSkin()
-    {
-      base.InitSkin();
-      Skin = new SkinControl(Manager.Skin.Controls["ToolBarPanel"]);
-    }
-    ////////////////////////////////////////////////////////////////////////////                          
-
-    ////////////////////////////////////////////////////////////////////////////
-    protected override void DrawControl(Renderer renderer, Rectangle rect, GameTime gameTime)
-    {
-      base.DrawControl(renderer, rect, gameTime);
-    }
-    ////////////////////////////////////////////////////////////////////////////     
-
-    ////////////////////////////////////////////////////////////////////////////     
-    protected override void OnResize(ResizeEventArgs e)
-    {
-      base.OnResize(e);
-    }
-    ////////////////////////////////////////////////////////////////////////////     
-    
-    ////////////////////////////////////////////////////////////////////////////
-    protected internal override void Update(GameTime gameTime)
-    {
-      base.Update(gameTime);      
-      AlignBars();      
-    }
-    ////////////////////////////////////////////////////////////////////////////
-
-    ////////////////////////////////////////////////////////////////////////////
-    private void AlignBars()
-    {
-      int[] rx = new int[8];
-      int h = 0; 
-      int rm = -1;     
-      
-      foreach (Control c in Controls)
-      {
-        if (c is ToolBar)
-        {
-          ToolBar t = c as ToolBar;
-          if (t.FullRow) t.Width = Width;
-          t.Left = rx[t.Row];
-          t.Top = (t.Row * t.Height) + (t.Row > 0 ? 1 : 0);
-          rx[t.Row] += t.Width + 1;                    
-          
-          if (t.Row > rm)
-          {
-            rm = t.Row;
-            h = t.Top + t.Height + 1;
-          }
-        }
-      }
-      
-      Height = h;
-    }
-    ////////////////////////////////////////////////////////////////////////////
+public class ToolBarPanel: Control
+{
 
 
-    #endregion
 
-  }
+
+
+
+
+
+public ToolBarPanel(Manager manager): base(manager)
+{
+Width = 64;
+Height = 25;
+}
+
+
+
+/// </summary>
+/// Initializes the tool bar panel control.
+/// <summary>
+public override void Init()
+{
+base.Init();
+}
+
+/// </summary>
+/// Initializes the skin for the tool bar panel control.
+/// <summary>
+protected internal override void InitSkin()
+{
+base.InitSkin();
+Skin = new SkinControl(Manager.Skin.Controls["ToolBarPanel"]);
+}
+
+protected override void DrawControl(Renderer renderer, Rectangle rect, GameTime gameTime)
+{
+base.DrawControl(renderer, rect, gameTime);
+}
+
+/// <param name="e"></param>
+/// </summary>
+/// Handles resize events for the tool bar panel control.
+/// <summary>
+protected override void OnResize(ResizeEventArgs e)
+{
+base.OnResize(e);
+}
+
+/// <param name="gameTime">Snapshot of the application's timing values.</param>
+/// </summary>
+/// Updates the tool bar panel control.
+/// <summary>
+protected internal override void Update(GameTime gameTime)
+{
+base.Update(gameTime);
+AlignBars();
+}
+
+/// </summary>
+/// Positions and sizes the tool bar panel's child tool bar controls.
+/// <summary>
+private void AlignBars()
+{
+int[] rx = new int[8];
+int h = 0;
+int rm = -1;
+
+foreach (Control c in Controls)
+{
+// This child control is a tool bar?
+if (c is ToolBar)
+{
+ToolBar t = c as ToolBar;
+if (t.FullRow) t.Width = Width;
+// Position the tool bar.
+t.Left = rx[t.Row];
+t.Top = (t.Row * t.Height) + (t.Row > 0 ? 1 : 0);
+rx[t.Row] += t.Width + 1;
+
+if (t.Row > rm)
+{
+rm = t.Row;
+h = t.Top + t.Height + 1;
+}
+}
+}
+
+Height = h;
+}
+
+
+
+}
 
 }

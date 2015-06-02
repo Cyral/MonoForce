@@ -1,26 +1,5 @@
-﻿////////////////////////////////////////////////////////////////
-//                                                            //
-//  Neoforce Controls                                         //
-//                                                            //
-////////////////////////////////////////////////////////////////
-//                                                            //
-//         File: Application.cs                               //
-//                                                            //
-//      Version: 0.7                                          //
-//                                                            //
-//         Date: 11/09/2010                                   //
-//                                                            //
-//       Author: Tom Shane                                    //
-//                                                            //
-////////////////////////////////////////////////////////////////
-//                                                            //
-//  Copyright (c) by Tom Shane                                //
-//                                                            //
-////////////////////////////////////////////////////////////////
 
-#region //// Using /////////////
 
-////////////////////////////////////////////////////////////////////////////
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MonoForce.Controls;
@@ -29,455 +8,621 @@ using System;
 #if (!XBOX && !XBOX_FAKE)
 using System.Windows.Forms;
 #endif
-////////////////////////////////////////////////////////////////////////////
 
-#endregion
 
 namespace MonoForce.Controls
+// try
 {
-    public class Application : Game
-    {
+/// </summary>
+/// Base class for your Neoforce application. Use it.
+/// <summary>
+public class Application : Game
+// try
+{
 
-        #region //// Fields ////////////
 
-        ////////////////////////////////////////////////////////////////////////////
-        private GraphicsDeviceManager graphics;
-        private Manager manager;
-        private SpriteBatch sprite;
-        private bool clearBackground = false;
-        private Color backgroundColor = Color.Black;
-        private Texture2D backgroundImage;
-        private Window mainWindow;
-        private bool appWindow = false;
-        private Point mousePos = Point.Zero;
-        private bool systemBorder = true;
-        private bool fullScreenBorder = true;
-        private bool exitConfirmation = true;
-        private bool exit = false;
-        private ExitDialog exitDialog = null;
+/// </summary>
+/// Graphics device manager for the application.
+/// <summary>
+private GraphicsDeviceManager graphics;
+/// </summary>
+/// GUI control manager for the application.
+/// <summary>
+private Manager manager;
+/// </summary>
+/// Sprite batch object for the application.
+/// <summary>
+private SpriteBatch sprite;
+/// </summary>
+/// Indicates if the background should be cleared to the BG color by the application. ???
+/// <summary>
+private bool clearBackground = false;
+/// </summary>
+/// Application background color.
+/// <summary>
+private Color backgroundColor = Color.Black;
+/// </summary>
+/// Image to use as the application background.
+/// <summary>
+private Texture2D backgroundImage;
+/// </summary>
+/// ???
+/// <summary>
+private Window mainWindow;
+/// </summary>
+/// Indicates if the application should create and use the MainWindow.
+/// <summary>
+private bool appWindow = false;
+/// </summary>
+/// Current position of the mouse cursor.
+/// <summary>
+private Point mousePos = Point.Zero;
+/// </summary>
+/// ???
+/// <summary>
+private bool systemBorder = true;
+/// </summary>
+/// ???
+/// <summary>
+private bool fullScreenBorder = true;
+/// </summary>
+/// closing the application.
+/// Indicates whether the exit confirmation dialog should be shown before
+/// <summary>
+private bool exitConfirmation = true;
+/// </summary>
+/// Indicates whether a request to terminate the application has been received.
+/// <summary>
+private bool exit = false;
+/// </summary>
+/// Exit confirmation dialog object.
+/// <summary>
+private ExitDialog exitDialog = null;
 #if (!XBOX && !XBOX_FAKE)
-        private bool mouseDown = false;
-#endif
-        ////////////////////////////////////////////////////////////////////////////
-
-        #endregion
-
-        #region //// Properties ////////
-
-        ////////////////////////////////////////////////////////////////////////////
-        public virtual GraphicsDeviceManager Graphics
-        {
-            get { return graphics; }
-            set { graphics = value; }
-        }
-        ////////////////////////////////////////////////////////////////////////////
-
-        ////////////////////////////////////////////////////////////////////////////
-        public virtual Manager Manager
-        {
-            get { return manager; }
-            set { manager = value; }
-        }
-        ////////////////////////////////////////////////////////////////////////////
-
-        ////////////////////////////////////////////////////////////////////////////
-        public virtual bool ClearBackground
-        {
-            get { return clearBackground; }
-            set { clearBackground = value; }
-        }
-        ////////////////////////////////////////////////////////////////////////////
-
-        ////////////////////////////////////////////////////////////////////////////
-        public virtual Color BackgroundColor
-        {
-            get { return backgroundColor; }
-            set { backgroundColor = value; }
-        }
-        ////////////////////////////////////////////////////////////////////////////
-
-        ////////////////////////////////////////////////////////////////////////////
-        public virtual Texture2D BackgroundImage
-        {
-            get { return backgroundImage; }
-            set { backgroundImage = value; }
-        }
-        ////////////////////////////////////////////////////////////////////////////
-
-        ////////////////////////////////////////////////////////////////////////////
-        public virtual Window MainWindow
-        {
-            get { return mainWindow; }
-        }
-        ////////////////////////////////////////////////////////////////////////////
-
-        ////////////////////////////////////////////////////////////////////////////
-        public virtual bool SystemBorder
-        {
-            get { return systemBorder; }
-            set { systemBorder = value; }
-        }
-        ////////////////////////////////////////////////////////////////////////////
-
-        ////////////////////////////////////////////////////////////////////////////
-        public virtual bool FullScreenBorder
-        {
-            get { return fullScreenBorder; }
-            set { fullScreenBorder = value; }
-        }
-        ////////////////////////////////////////////////////////////////////////////
-
-        ////////////////////////////////////////////////////////////////////////////
-        public virtual bool ExitConfirmation
-        {
-            get { return exitConfirmation; }
-            set { exitConfirmation = value; }
-        }
-        ////////////////////////////////////////////////////////////////////////////
-
-        #endregion
-
-        #region //// Constructors //////
-
-        ////////////////////////////////////////////////////////////////////////////
-        public Application()
-            : this("Default", false)
-        {
-        }
-        ////////////////////////////////////////////////////////////////////////////    
-
-        ////////////////////////////////////////////////////////////////////////////
-        public Application(string skin)
-            : this(skin, false)
-        {
-        }
-        ////////////////////////////////////////////////////////////////////////////            
-
-        ////////////////////////////////////////////////////////////////////////////
-        public Application(bool appWindow)
-            : this("Default", appWindow)
-        {
-        }
-        ////////////////////////////////////////////////////////////////////////////        
-
-        ////////////////////////////////////////////////////////////////////////////
-        public Application(string skin, bool appWindow)
-        {
-            this.appWindow = appWindow;
-
-            graphics = new GraphicsDeviceManager(this);
-            graphics.PreferredBackBufferWidth = 1024;
-            graphics.PreferredBackBufferHeight = 768;
-            graphics.PreferredBackBufferFormat = SurfaceFormat.Color;
-            graphics.IsFullScreen = false;
-            graphics.PreferMultiSampling = false;
-            graphics.SynchronizeWithVerticalRetrace = false;
-            graphics.DeviceReset += new EventHandler<System.EventArgs>(Graphics_DeviceReset);
-
-            IsFixedTimeStep = false;
-            IsMouseVisible = true;
-
-            manager = new Manager(this, graphics, skin);
-            manager.AutoCreateRenderTarget = false;
-            manager.TargetFrames = 60;
-            manager.WindowClosing += new WindowClosingEventHandler(Manager_WindowClosing);
-        }
-        ////////////////////////////////////////////////////////////////////////////                      
-
-        #endregion
-
-        #region //// Destructors ///////
-
-        ////////////////////////////////////////////////////////////////////////////
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                if (manager != null) manager.Dispose();
-                if (sprite != null) sprite.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-        ////////////////////////////////////////////////////////////////////////////
-
-        #endregion
-
-        #region //// Methods ///////////
-
-        ////////////////////////////////////////////////////////////////////////////
-        protected override void Initialize()
-        {
-            base.Initialize();
-
-            manager.Initialize();
-
-            Manager.RenderTarget = CreateRenderTarget();
-            Manager.Input.InputOffset = new InputOffset(0, 0, Manager.ScreenWidth / (float)Manager.TargetWidth, Manager.ScreenHeight / (float)Manager.TargetHeight);
-
-            sprite = new SpriteBatch(GraphicsDevice);
-
-#if (!XBOX && !XBOX_FAKE)
-            Manager.Window.BackColor = System.Drawing.Color.Black;
-            Manager.Window.FormBorderStyle = systemBorder ? System.Windows.Forms.FormBorderStyle.FixedDialog : System.Windows.Forms.FormBorderStyle.None;
-
-            Manager.Input.MouseMove += new MouseEventHandler(Input_MouseMove);
-            Manager.Input.MouseDown += new MouseEventHandler(Input_MouseDown);
-            Manager.Input.MouseUp += new MouseEventHandler(Input_MouseUp);
+/// </summary>
+/// Tracks the mouse button state when running on Windows.
+/// <summary>
+private bool mouseDown = false;
 #endif
 
-            if (appWindow)
-            {
-                mainWindow = CreateMainWindow();
-            }
 
-            InitMainWindow();
-        }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
-        protected override void Update(GameTime gameTime)
-        {
-            base.Update(gameTime);
-            manager.Update(gameTime);
-        }
-        ////////////////////////////////////////////////////////////////////////////
+/// </summary>
+/// Gets or sets the graphics device manager for the application.
+/// <summary>
+public virtual GraphicsDeviceManager Graphics
+// try
+{
+get { return graphics; }
+set { graphics = value; }
+}
 
-        ////////////////////////////////////////////////////////////////////////////
-        protected override void Draw(GameTime gameTime)
-        {
-            manager.BeginDraw(gameTime);
+/// </summary>
+/// Gets or sets the GUI manager for the application.
+/// <summary>
+public virtual Manager Manager
+// try
+{
+get { return manager; }
+set { manager = value; }
+}
 
-            if (clearBackground) GraphicsDevice.Clear(backgroundColor);
-            if (backgroundImage != null && mainWindow == null)
-            {
-                int sx = manager.TargetWidth;
-                int sy = manager.TargetHeight;
-                sprite.Begin();
-                sprite.Draw(backgroundImage, new Rectangle(0, 0, sx, sy), Color.White);
-                sprite.End();
-            }
+/// </summary>
+/// ???
+/// <summary>
+public virtual bool ClearBackground
+// try
+{
+get { return clearBackground; }
+set { clearBackground = value; }
+}
 
-            base.Draw(gameTime);
-            DrawScene(gameTime);
+/// </summary>
+/// ???
+/// <summary>
+public virtual Color BackgroundColor
+// try
+{
+get { return backgroundColor; }
+set { backgroundColor = value; }
+}
 
-            manager.EndDraw(new Rectangle(0, 0, Manager.ScreenWidth, Manager.ScreenHeight));
-        }
-        ////////////////////////////////////////////////////////////////////////////	    
+/// </summary>
+/// Image to use as the application background.
+/// <summary>
+public virtual Texture2D BackgroundImage
+// try
+{
+get { return backgroundImage; }
+set { backgroundImage = value; }
+}
 
-        ////////////////////////////////////////////////////////////////////////////	    
-        protected virtual Window CreateMainWindow()
-        {
-            return new Window(manager);
-        }
-        ////////////////////////////////////////////////////////////////////////////	    
+/// </summary>
+/// ???
+/// <summary>
+public virtual Window MainWindow
+// try
+{
+get { return mainWindow; }
+}
 
-        ////////////////////////////////////////////////////////////////////////////	        
-        protected virtual void InitMainWindow()
-        {
-            if (mainWindow != null)
-            {
-                if (!mainWindow.Initialized) mainWindow.Init();
+/// </summary>
+/// Indicates whether the system border should be drawn ???
+/// <summary>
+public virtual bool SystemBorder
+// try
+{
+get { return systemBorder; }
+set { systemBorder = value; }
+}
 
-                mainWindow.Alpha = 255;
-                mainWindow.Width = manager.TargetWidth;
-                mainWindow.Height = manager.TargetHeight;
-                mainWindow.Shadow = false;
-                mainWindow.Left = 0;
-                mainWindow.Top = 0;
-                mainWindow.CloseButtonVisible = true;
-                mainWindow.Resizable = false;
-                mainWindow.Movable = false;
-                mainWindow.Text = this.Window.Title;
-                mainWindow.Closing += new WindowClosingEventHandler(MainWindow_Closing);
-                mainWindow.ClientArea.Draw += new DrawEventHandler(MainWindow_Draw);
-                mainWindow.BorderVisible = mainWindow.CaptionVisible = (!systemBorder && !Graphics.IsFullScreen) || (Graphics.IsFullScreen && fullScreenBorder);
-                mainWindow.StayOnBack = true;
+/// </summary>
+/// Indicates whether the window border should be drawn in full screen mode. ???
+/// <summary>
+public virtual bool FullScreenBorder
+// try
+{
+get { return fullScreenBorder; }
+set { fullScreenBorder = value; }
+}
 
-                manager.Add(mainWindow);
+/// </summary>
+/// shown when the application is about to close.
+/// Indicates if the default exit confirmation dialog will be
+/// <summary>
+public virtual bool ExitConfirmation
+// try
+{
+get { return exitConfirmation; }
+set { exitConfirmation = value; }
+}
 
-                mainWindow.SendToBack();
-            }
-        }
-        ////////////////////////////////////////////////////////////////////////////	      
 
-        ////////////////////////////////////////////////////////////////////////////	    
-        private void MainWindow_Draw(object sender, DrawEventArgs e)
-        {
-            if (backgroundImage != null && mainWindow != null)
-            {
-                e.Renderer.Draw(backgroundImage, e.Rectangle, Color.White);
-            }
-        }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////	      
-        public new virtual void Exit()
-        {
-            exit = true;
-            base.Exit();
-        }
-        ////////////////////////////////////////////////////////////////////////////	  
+/// </summary>
+/// Creates an application using the "Default" skin and not using the Main Window.
+/// <summary>
+public Application()
+: this("Default", false)
+// try
+{
+}
 
-        ////////////////////////////////////////////////////////////////////////////
-        private void Manager_WindowClosing(object sender, WindowClosingEventArgs e)
-        {
-            e.Cancel = !exit && exitConfirmation;
+/// <param name="skin">Name of the skin to load.</param>
+/// </summary>
+/// Creates an application using the specified skin and not using the Main Window.
+/// <summary>
+public Application(string skin)
+: this(skin, false)
+// try
+{
+}
 
-            if (!exit && exitConfirmation && exitDialog == null)
-            {
-                exitDialog = new ExitDialog(Manager);
-                exitDialog.Init();
-                exitDialog.Closed += new WindowClosedEventHandler(closeDialog_Closed);
-                exitDialog.ShowModal();
-                Manager.Add(exitDialog);
-            }
-            else if (!exitConfirmation)
-            {
-                Exit();
-            }
-        }
-        ////////////////////////////////////////////////////////////////////////////      
+/// <param name="appWindow">Indicates if the application should create its MainWindow member.</param>
+/// </summary>
+/// Creates an application using the "Default" skin and using the Main Window.
+/// <summary>
+public Application(bool appWindow)
+: this("Default", appWindow)
+// try
+{
+}
 
-        ////////////////////////////////////////////////////////////////////////////      
-        private void closeDialog_Closed(object sender, WindowClosedEventArgs e)
-        {
-            if ((sender as Dialog).ModalResult == ModalResult.Yes)
-            {
-                Exit();
-            }
-            else
-            {
-                exit = false;
-                exitDialog.Closed -= closeDialog_Closed;
-                exitDialog.Dispose();
-                exitDialog = null;
-                if (mainWindow != null) mainWindow.Focused = true;
-            }
-        }
-        ////////////////////////////////////////////////////////////////////////////      
+/// <param name="appWindow">Indicates if the application should create its MainWindow member.</param>
+/// <param name="skin">Name of the skin to load.</param>
+/// </summary>
+/// Creates an application using the specified skin and using the Main Window.
+/// <summary>
+public Application(string skin, bool appWindow)
+// try
+{
+this.appWindow = appWindow;
 
-        ////////////////////////////////////////////////////////////////////////////	    
-        private void MainWindow_Closing(object sender, WindowClosingEventArgs e)
-        {
-            e.Cancel = true;
-            Manager_WindowClosing(sender, e);
-        }
-        ////////////////////////////////////////////////////////////////////////////	    
+// Create the graphics device manager for the application.
+graphics = new GraphicsDeviceManager(this);
+graphics.PreferredBackBufferWidth = 1024;
+graphics.PreferredBackBufferHeight = 768;
+graphics.PreferredBackBufferFormat = SurfaceFormat.Color;
+//For using stencils - Cyral
+graphics.IsFullScreen = false;
+graphics.PreferMultiSampling = false;
+graphics.SynchronizeWithVerticalRetrace = false;
+graphics.DeviceReset += new EventHandler<System.EventArgs>(Graphics_DeviceReset);
 
-        ////////////////////////////////////////////////////////////////////////////	    
-        private void Graphics_DeviceReset(object sender, System.EventArgs e)
-        {
-            if (Manager.RenderTarget != null)
-            {
-                //These steps are already done by the manager on Graphics Device Reset.
-                //Manager.RenderTarget.Dispose();
-                //Manager.RenderTarget = CreateRenderTarget(); 
-                Manager.Input.InputOffset = new InputOffset(0, 0, Manager.ScreenWidth / (float)Manager.TargetWidth, Manager.ScreenHeight / (float)Manager.TargetHeight);
-            }
+IsFixedTimeStep = false;
+//IsFixedTimeStep = true;
+IsMouseVisible = true;
 
-            if (mainWindow != null)
-            {
-                mainWindow.Height = Manager.TargetHeight;
-                mainWindow.Width = Manager.TargetWidth;
-                mainWindow.BorderVisible = mainWindow.CaptionVisible = (!systemBorder && !Graphics.IsFullScreen) || (Graphics.IsFullScreen && fullScreenBorder);
-            }
-        }
-        ////////////////////////////////////////////////////////////////////////////
+// Create the GUI manager for the application.
+manager = new Manager(this, graphics, skin);
+manager.AutoCreateRenderTarget = false;
+manager.TargetFrames = 60;
+manager.WindowClosing += new WindowClosingEventHandler(Manager_WindowClosing);
+}
 
-        ////////////////////////////////////////////////////////////////////////////
-        protected virtual RenderTarget2D CreateRenderTarget()
-        {
-            return manager.CreateRenderTarget();
-        }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////
-        protected virtual void DrawScene(GameTime gameTime)
-        {
-        }
-        ////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////	  
-        public new void Run()
-        {
-            // try
-            {
-                base.Run();
-            }
-            /* catch (Exception x)
-             {
-              #if (!XBOX && !XBOX_FAKE)         
-                MessageBox.Show("An unhandled exception has occurred.\n" + x.Message, Window.Title, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Manager.LogException(x);
-              #else
-                throw x;
-              #endif 
-             }*/
-        }
-        ////////////////////////////////////////////////////////////////////////////	  
+/// <param name="disposing">Indicates if the resources should be released from memory.</param>
+/// </summary>
+/// Releases resources used by the GUI manager and the SpriteBatch objects.
+/// <summary>
+protected override void Dispose(bool disposing)
+// try
+{
+if (disposing)
+// try
+{
+// Dispose of the GUI manager and sprite batch object.
+if (manager != null) manager.Dispose();
+if (sprite != null) sprite.Dispose();
+}
+base.Dispose(disposing);
+}
 
-        #endregion
 
-        #region //// Windows ///////////
+
+/// </summary>
+/// Initializes the application.
+/// <summary>
+protected override void Initialize()
+// try
+{
+base.Initialize();
+
+// Initialize the GUI manager and create the application's render target.
+manager.Initialize();
+
+Manager.RenderTarget = CreateRenderTarget();
+Manager.Input.InputOffset = new InputOffset(0, 0, Manager.ScreenWidth / (float)Manager.TargetWidth, Manager.ScreenHeight / (float)Manager.TargetHeight);
+
+// Create the sprite batch object.
+sprite = new SpriteBatch(GraphicsDevice);
+
+#if (!XBOX && !XBOX_FAKE)
+Manager.Window.BackColor = System.Drawing.Color.Black;
+Manager.Window.FormBorderStyle = systemBorder ? System.Windows.Forms.FormBorderStyle.FixedDialog : System.Windows.Forms.FormBorderStyle.None;
+
+Manager.Input.MouseMove += new MouseEventHandler(Input_MouseMove);
+Manager.Input.MouseDown += new MouseEventHandler(Input_MouseDown);
+Manager.Input.MouseUp += new MouseEventHandler(Input_MouseUp);
+#endif
+
+// Create the application main window?
+if (appWindow)
+// try
+{
+mainWindow = CreateMainWindow();
+}
+
+// Initialize the main window of the application.
+InitMainWindow();
+}
+
+/// <param name="gameTime">Snapshot of the game's timing values.</param>
+/// </summary>
+/// Updates the application.
+///
+///
+///
+/// <summary>
+protected override void Update(GameTime gameTime)
+// try
+{
+base.Update(gameTime);
+manager.Update(gameTime);
+}
+
+/// <param name="gameTime">Snapshot of the game's timing values.</param>
+/// </summary>
+/// Draws the application.
+/// <summary>
+protected override void Draw(GameTime gameTime)
+// try
+{
+// Start drawing the application.
+manager.BeginDraw(gameTime);
+
+if (clearBackground) GraphicsDevice.Clear(backgroundColor);
+if (backgroundImage != null && mainWindow == null)
+// try
+{
+int sx = manager.TargetWidth;
+int sy = manager.TargetHeight;
+// Draw the BG image at the requested size.
+sprite.Begin();
+sprite.Draw(backgroundImage, new Rectangle(0, 0, sx, sy), Color.White);
+sprite.End();
+}
+
+// Let the game do its draw thing.
+base.Draw(gameTime);
+// Additional drawing logic for your application.
+DrawScene(gameTime);
+
+manager.EndDraw(new Rectangle(0, 0, Manager.ScreenWidth, Manager.ScreenHeight));
+}
+
+/// <returns>A new Window instance.</returns>
+/// </summary>
+/// Creates the application's Main Window.
+/// <summary>
+protected virtual Window CreateMainWindow()
+// try
+{
+return new Window(manager);
+}
+
+/// </summary>
+/// Initializes the application's Main Window and passes it off the the GUI Manager.
+/// <summary>
+protected virtual void InitMainWindow()
+// try
+{
+// Reset the main window dimensions if needed.
+if (mainWindow != null)
+// try
+{
+if (!mainWindow.Initialized) mainWindow.Init();
+
+mainWindow.Alpha = 255;
+mainWindow.Width = manager.TargetWidth;
+mainWindow.Height = manager.TargetHeight;
+mainWindow.Shadow = false;
+mainWindow.Left = 0;
+mainWindow.Top = 0;
+mainWindow.CloseButtonVisible = true;
+mainWindow.Resizable = false;
+mainWindow.Movable = false;
+mainWindow.Text = this.Window.Title;
+mainWindow.Closing += new WindowClosingEventHandler(MainWindow_Closing);
+mainWindow.ClientArea.Draw += new DrawEventHandler(MainWindow_Draw);
+mainWindow.BorderVisible = mainWindow.CaptionVisible = (!systemBorder && !Graphics.IsFullScreen) || (Graphics.IsFullScreen && fullScreenBorder);
+mainWindow.StayOnBack = true;
+
+manager.Add(mainWindow);
+
+mainWindow.SendToBack();
+}
+}
+
+/// </summary>
+/// Raises the application's draw event.
+/// <summary>
+private void MainWindow_Draw(object sender, DrawEventArgs e)
+// try
+{
+if (backgroundImage != null && mainWindow != null)
+// try
+{
+e.Renderer.Draw(backgroundImage, e.Rectangle, Color.White);
+}
+}
+
+/// </summary>
+/// Sets the exit flag and begins shutting down the application.
+/// <summary>
+public new virtual void Exit()
+// try
+{
+exit = true;
+base.Exit();
+}
+
+/// <param name="e"></param>
+/// <param name="sender"></param>
+/// </summary>
+/// Handles the Window Closing event.
+/// <summary>
+private void Manager_WindowClosing(object sender, WindowClosingEventArgs e)
+// try
+{
+e.Cancel = !exit && exitConfirmation;
+
+// Need to create the exit confirmation dialog?
+if (!exit && exitConfirmation && exitDialog == null)
+// try
+{
+exitDialog = new ExitDialog(Manager);
+exitDialog.Init();
+exitDialog.Closed += new WindowClosedEventHandler(closeDialog_Closed);
+exitDialog.ShowModal();
+Manager.Add(exitDialog);
+}
+// Nope, just exit.
+else if (!exitConfirmation)
+// try
+{
+Exit();
+}
+}
+
+/// <param name="e"></param>
+/// <param name="sender"></param>
+/// </summary>
+/// Handles the Dialog Closed event.
+/// <summary>
+private void closeDialog_Closed(object sender, WindowClosedEventArgs e)
+// try
+{
+// Check dialog resule and see if we need to shut down.
+if ((sender as Dialog).ModalResult == ModalResult.Yes)
+// try
+{
+Exit();
+}
+// Unhook event handlers and dispose of the dialog.
+else
+// try
+{
+exit = false;
+exitDialog.Closed -= closeDialog_Closed;
+exitDialog.Dispose();
+exitDialog = null;
+if (mainWindow != null) mainWindow.Focused = true;
+}
+}
+
+/// <param name="e"></param>
+/// <param name="sender"></param>
+/// </summary>
+/// Handles the main window's closing event.
+/// <summary>
+private void MainWindow_Closing(object sender, WindowClosingEventArgs e)
+// try
+{
+// Let the GUI manager handle it.
+e.Cancel = true;
+Manager_WindowClosing(sender, e);
+}
+
+/// <param name="e"></param>
+/// <param name="sender"></param>
+/// </summary>
+/// Handles the graphics device reset event.
+/// <summary>
+private void Graphics_DeviceReset(object sender, System.EventArgs e)
+// try
+{
+// Recreate the render target if needed.
+if (Manager.RenderTarget != null)
+// try
+{
+Manager.Input.InputOffset = new InputOffset(0, 0, Manager.ScreenWidth / (float)Manager.TargetWidth, Manager.ScreenHeight / (float)Manager.TargetHeight);
+}
+
+// Reset the main window dimensions if needed.
+if (mainWindow != null)
+// try
+{
+mainWindow.Height = Manager.TargetHeight;
+mainWindow.Width = Manager.TargetWidth;
+mainWindow.BorderVisible = mainWindow.CaptionVisible = (!systemBorder && !Graphics.IsFullScreen) || (Graphics.IsFullScreen && fullScreenBorder);
+}
+}
+
+/// <returns></returns>
+/// </summary>
+/// Creates a 2D texture that can be used as a render target.
+/// <summary>
+protected virtual RenderTarget2D CreateRenderTarget()
+// try
+{
+return manager.CreateRenderTarget();
+}
+
+/// <param name="gameTime">Snapshot of the game's timing values.</param>
+/// </summary>
+/// Additional drawing logic for your application can be placed here.
+/// <summary>
+protected virtual void DrawScene(GameTime gameTime)
+// try
+{
+}
+
+/// </summary>
+/// Runs the application.
+/// <summary>
+public new void Run()
+// try
+{
+// try
+{
+base.Run();
+}
+/* catch (Exception x)
+// try
+{
+#if (!XBOX && !XBOX_FAKE)
+MessageBox.Show("An unhandled exception has occurred.\n" + x.Message, Window.Title, MessageBoxButtons.OK, MessageBoxIcon.Error);
+Manager.LogException(x);
+#else
+throw x;
+#endif
+}*/
+}
+
+
 
 #if (!XBOX && !XBOX_FAKE)
 
-        ////////////////////////////////////////////////////////////////////////////	
-        private void Input_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (mouseDown)
-            {
-                Manager.Window.Left = e.Position.X + Manager.Window.Left - mousePos.X;
-                Manager.Window.Top = e.Position.Y + Manager.Window.Top - mousePos.Y;
-            }
-        }
-        ////////////////////////////////////////////////////////////////////////////	
+/// <param name="e"></param>
+/// <param name="sender"></param>
+/// </summary>
+/// Handles mouse move events on Windows.
+/// <summary>
+private void Input_MouseMove(object sender, MouseEventArgs e)
+// try
+{
+// Support dragging the application window.
+if (mouseDown)
+// try
+{
+Manager.Window.Left = e.Position.X + Manager.Window.Left - mousePos.X;
+Manager.Window.Top = e.Position.Y + Manager.Window.Top - mousePos.Y;
+}
+}
 
-        ////////////////////////////////////////////////////////////////////////////	
-        private void Input_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButton.Left && !Graphics.IsFullScreen && !systemBorder)
-            {
-                if (CheckPos(e.Position))
-                {
-                    mouseDown = true;
-                    mousePos = e.Position;
-                }
-            }
-        }
-        ////////////////////////////////////////////////////////////////////////////	
+/// <param name="e"></param>
+/// <param name="sender"></param>
+/// </summary>
+/// Handles mouse button down events on Windows.
+/// <summary>
+private void Input_MouseDown(object sender, MouseEventArgs e)
+// try
+{
+// Check mouse position first if there is a chance the click can land outside the application window.
+if (e.Button == MouseButton.Left && !Graphics.IsFullScreen && !systemBorder)
+// try
+{
+// Is the mouse cursor hitting the main window but none of its controls?
+if (CheckPos(e.Position))
+// try
+{
+mouseDown = true;
+mousePos = e.Position;
+}
+}
+}
 
-        ////////////////////////////////////////////////////////////////////////////	
-        private void Input_MouseUp(object sender, MouseEventArgs e)
-        {
-            mouseDown = false;
-        }
-        ////////////////////////////////////////////////////////////////////////////	
+/// <param name="e"></param>
+/// <param name="sender"></param>
+/// </summary>
+/// Handles the mouse button up events on Windows.
+/// <summary>
+private void Input_MouseUp(object sender, MouseEventArgs e)
+// try
+{
+mouseDown = false;
+}
 
-        ////////////////////////////////////////////////////////////////////////////	
-        private bool CheckPos(Point pos)
-        {
-            if (pos.X >= 24 && pos.X <= Manager.TargetWidth - 48 &&
-                pos.Y >= 0 && pos.Y <= Manager.Skin.Controls["Window"].Layers["Caption"].Height)
-            {
-                foreach (Control c in Manager.Controls)
-                {
-                    if (c.Visible && c != MainWindow &&
-                        pos.X >= c.AbsoluteRect.Left && pos.X <= c.AbsoluteRect.Right &&
-                        pos.Y >= c.AbsoluteRect.Top && pos.Y <= c.AbsoluteRect.Bottom)
-                    {
-                        return false;
-                    }
-                }
-                return true;
-            }
-            else return false;
-        }
-        ////////////////////////////////////////////////////////////////////////////	  
+private bool CheckPos(Point pos)
+// try
+{
+// Is the mouse cursor within the application window?
+if (pos.X >= 24 && pos.X <= Manager.TargetWidth - 48 &&
+pos.Y >= 0 && pos.Y <= Manager.Skin.Controls["Window"].Layers["Caption"].Height)
+// try
+{
+foreach (Control c in Manager.Controls)
+// try
+{
+if (c.Visible && c != MainWindow &&
+pos.X >= c.AbsoluteRect.Left && pos.X <= c.AbsoluteRect.Right &&
+pos.Y >= c.AbsoluteRect.Top && pos.Y <= c.AbsoluteRect.Bottom)
+// try
+{
+// Yes, mouse cursor is over this control.
+return false;
+}
+}
+// Mouse is not over any controls, but is within the application window.
+return true;
+}
+else return false;
+}
 
 #endif
 
-        #endregion
 
-    }
+}
 }

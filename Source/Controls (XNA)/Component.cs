@@ -1,105 +1,81 @@
-////////////////////////////////////////////////////////////////
-//                                                            //
-//  Neoforce Controls                                         //
-//                                                            //
-////////////////////////////////////////////////////////////////
-//                                                            //
-//         File: Component.cs                                 //
-//                                                            //
-//      Version: 0.7                                          //
-//                                                            //
-//         Date: 11/09/2010                                   //
-//                                                            //
-//       Author: Tom Shane                                    //
-//                                                            //
-////////////////////////////////////////////////////////////////
-//                                                            //
-//  Copyright (c) by Tom Shane                                //
-//                                                            //
-////////////////////////////////////////////////////////////////
 
-#region //// Using /////////////
 
-////////////////////////////////////////////////////////////////////////////
 using System;
 using Microsoft.Xna.Framework;
-////////////////////////////////////////////////////////////////////////////
 
-#endregion
 
 namespace MonoForce.Controls
 {
 
-  public class Component: Disposable
-  {
+public class Component: Disposable
+{
 
-    #region //// Fields ////////////
 
-    ////////////////////////////////////////////////////////////////////////////
-    private Manager manager = null;
-    private bool initialized = false;      
-    ////////////////////////////////////////////////////////////////////////////
+/// </summary>
+/// GUI manager for the component.
+/// <summary>
+private Manager manager = null;
+/// </summary>
+/// Indicates if the component has been initialized or not.
+/// <summary>
+private bool initialized = false;
 
-    #endregion
 
-    #region //// Properties ////////
 
-    ////////////////////////////////////////////////////////////////////////////
-    public virtual Manager Manager { get { return manager; } set { manager = value; } }
-    public virtual bool Initialized { get { return initialized; } }    
-    ////////////////////////////////////////////////////////////////////////////
+public virtual Manager Manager { get { return manager; } set { manager = value; } }
+public virtual bool Initialized { get { return initialized; } }
 
-    #endregion
 
-    #region //// Constructors //////
 
-    ////////////////////////////////////////////////////////////////////////////
-    public Component(Manager manager)
-    {      
-      if (manager != null)
-      {
-       this.manager = manager;                 
-      }
-      else
-      {
-        throw new Exception("Component cannot be created. Manager instance is needed.");
-      }                 
-    }
-    ////////////////////////////////////////////////////////////////////////////
+/// <param name="manager">GUI manager for the component.</param>
+/// </summary>
+/// Creates a new Component.
+/// <summary>
+public Component(Manager manager)
+{
+if (manager != null)
+{
+this.manager = manager;
+}
+else
+{
+throw new Exception("Component cannot be created. Manager instance is needed.");
+}
+}
 
-    #endregion
 
-    #region //// Destructors ///////
 
-    ////////////////////////////////////////////////////////////////////////////
-    protected override void Dispose(bool disposing)
-    {      
-      if (disposing)
-      {      
-      }
-      base.Dispose(disposing);
-    }
-    ////////////////////////////////////////////////////////////////////////////
+/// <param name="disposing"></param>
+/// </summary>
+/// Releases resources used by the component.
+/// <summary>
+protected override void Dispose(bool disposing)
+{
+if (disposing)
+{
+}
+base.Dispose(disposing);
+}
 
-    #endregion
 
-    #region //// Methods ///////////
 
-    ////////////////////////////////////////////////////////////////////////////         
-    public virtual void Init()
-    {
-      initialized = true;
-    }
-    ////////////////////////////////////////////////////////////////////////////          
+/// </summary>
+/// Initializes the component.
+/// <summary>
+public virtual void Init()
+{
+initialized = true;
+}
 
-    ////////////////////////////////////////////////////////////////////////////   
-    protected internal virtual void Update(GameTime gameTime)
-    {       
-    }
-    ////////////////////////////////////////////////////////////////////////////   
+/// <param name="gameTime">Snapshot of the application's timing values.</param>
+/// </summary>
+/// Updates the component.
+/// <summary>
+protected internal virtual void Update(GameTime gameTime)
+{
+}
 
-    #endregion
 
-  }
+}
 
 }

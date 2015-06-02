@@ -1,93 +1,73 @@
-////////////////////////////////////////////////////////////////
-//                                                            //
-//  Neoforce Controls                                         //
-//                                                            //
-////////////////////////////////////////////////////////////////
-//                                                            //
-//         File: Disposable.cs                                //
-//                                                            //
-//      Version: 0.7                                          //
-//                                                            //
-//         Date: 11/09/2010                                   //
-//                                                            //
-//       Author: Tom Shane                                    //
-//                                                            //
-////////////////////////////////////////////////////////////////
-//                                                            //
-//  Copyright (c) by Tom Shane                                //
-//                                                            //
-////////////////////////////////////////////////////////////////
 
-#region //// Using /////////////
 
-////////////////////////////////////////////////////////////////////////////
 using System;
-////////////////////////////////////////////////////////////////////////////
 
-#endregion
 
 namespace MonoForce.Controls
 {
 
-  public abstract class Disposable: Unknown, IDisposable
-  {
+public abstract class Disposable: Unknown, IDisposable
+{
 
-    #region //// Fields ////////////
 
-    ////////////////////////////////////////////////////////////////////////////
-    private static int count = 0;
-    ////////////////////////////////////////////////////////////////////////////
+/// </summary>
+/// Number of references to this object.
+/// <summary>
+private static int count = 0;
 
-    #endregion
 
-    #region //// Properties ////////
 
-    ////////////////////////////////////////////////////////////////////////////
-    public static int Count { get { return count; } }
-    ////////////////////////////////////////////////////////////////////////////
+public static int Count { get { return count; } }
 
-    #endregion
 
-    #region //// Constructors //////
 
-    ////////////////////////////////////////////////////////////////////////////
-    protected Disposable()
-    {
-      count += 1;
-    }
-    ////////////////////////////////////////////////////////////////////////////
+/// </summary>
+/// Creates a reference counted object.
+/// <summary>
+protected Disposable()
+{
+count += 1;
+//GC.SuppressFinalize(this);
+}
 
-    #endregion
-    
-    #region //// Destructors ///////
 
-    //////////////////////////////////////////////////////////////////////////
-    ~Disposable()
-    {      
-      Dispose(false);
-    }
-    //////////////////////////////////////////////////////////////////////////
 
-    //////////////////////////////////////////////////////////////////////////	  	  
-    public void Dispose()
-    {
-      Dispose(true);
-      GC.SuppressFinalize(this);
-    }
-    //////////////////////////////////////////////////////////////////////////	  	  	  
+/// </summary>
+/// Releases resources used by the object.
+/// <summary>
+~Disposable()
+{
+Dispose(false);
+//GC.SuppressFinalize(this);
+}
 
-    //////////////////////////////////////////////////////////////////////////	  	  	  
-    protected virtual void Dispose(bool disposing)
-    {
-      if (disposing)
-      {
-        count -= 1;                
-      }
-    }
-    //////////////////////////////////////////////////////////////////////////	  	  	  	  	 
+/// </summary>
+/// Cleans up after the disposable object.
+/// <summary>
+public void Dispose()
+{
+Dispose(true);
+GC.SuppressFinalize(this);
+//GC.SuppressFinalize(this);
+}
 
-    #endregion
+/// <param name="disposing"></param>
+/// </summary>
+/// Decreases the object's reference count.
+/// <summary>
+protected virtual void Dispose(bool disposing)
+{
+if (disposing)
+{
+count -= 1;
+//GC.SuppressFinalize(this);
+}
+//GC.SuppressFinalize(this);
+}
 
-  }
-  
+
+//GC.SuppressFinalize(this);
+}
+
+//GC.SuppressFinalize(this);
 }

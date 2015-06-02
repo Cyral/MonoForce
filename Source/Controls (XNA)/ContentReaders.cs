@@ -1,138 +1,128 @@
-﻿////////////////////////////////////////////////////////////////
-//                                                            //
-//  Neoforce Controls                                         //
-//                                                            //
-////////////////////////////////////////////////////////////////
-//                                                            //
-//         File: ContentReaders.cs                            //
-//                                                            //
-//      Version: 0.7                                          //
-//                                                            //
-//         Date: 11/09/2010                                   //
-//                                                            //
-//       Author: Tom Shane                                    //
-//                                                            //
-////////////////////////////////////////////////////////////////
-//                                                            //
-//  Copyright (c) by Tom Shane                                //
-//                                                            //
-////////////////////////////////////////////////////////////////
 
-#region //// Using /////////////
 
-//////////////////////////////////////////////////////////////////////////////
 using System;
 using System.IO;
 using System.Xml;
 using Microsoft.Xna.Framework.Content;
 
 #if (!XBOX && !XBOX_FAKE)
-  using System.Windows.Forms;
+using System.Windows.Forms;
 #endif
-//////////////////////////////////////////////////////////////////////////////
 
-#endregion
 
 namespace MonoForce.Controls
 {
 
-  ////////////////////////////////////////////////////////////////////////////
-  public class LayoutXmlDocument : XmlDocument { }  
-  public class SkinXmlDocument : XmlDocument { }  
-  ////////////////////////////////////////////////////////////////////////////
-  
-  
-  public class SkinReader: ContentTypeReader<SkinXmlDocument>
-  {
+/// </summary>
+/// Represents a Neoforce Layout file.
+/// <summary>
+public class LayoutXmlDocument : XmlDocument { }
+/// </summary>
+/// Represents a Neoforce Skin file.
+/// <summary>
+public class SkinXmlDocument : XmlDocument { }
 
-    #region //// Methods ///////////
 
-    ////////////////////////////////////////////////////////////////////////////
-    protected override SkinXmlDocument Read(ContentReader input, SkinXmlDocument existingInstance)
-    {
-      if (existingInstance == null)
-      {
-        SkinXmlDocument doc = new SkinXmlDocument();
-        doc.LoadXml(input.ReadString());
-        return doc;
-      }
-      else
-      {
-        existingInstance.LoadXml(input.ReadString());
-      }
+public class SkinReader: ContentTypeReader<SkinXmlDocument>
+{
 
-      return existingInstance;
-    } 
-    ////////////////////////////////////////////////////////////////////////////
 
-    #endregion
-       
-  }
+/// <returns>Returns the loaded skin file.</returns>
+/// <param name="existingInstance">Existing instance to read stream data into.</param>
+/// <param name="input">Content reader used to read the skin file.</param>
+/// </summary>
+/// Reads a Skin file from binary format.
+/// <summary>
+protected override SkinXmlDocument Read(ContentReader input, SkinXmlDocument existingInstance)
+{
+if (existingInstance == null)
+{
+SkinXmlDocument doc = new SkinXmlDocument();
+doc.LoadXml(input.ReadString());
+return doc;
+}
+else
+{
+existingInstance.LoadXml(input.ReadString());
+}
 
-  public class LayoutReader : ContentTypeReader<LayoutXmlDocument>
-  {
+return existingInstance;
+}
 
-    #region //// Methods ///////////
 
-    ////////////////////////////////////////////////////////////////////////////
-    protected override LayoutXmlDocument Read(ContentReader input, LayoutXmlDocument existingInstance)
-    {
-      if (existingInstance == null)
-      {
-        LayoutXmlDocument doc = new LayoutXmlDocument();
-        doc.LoadXml(input.ReadString());
-        return doc;
-      }
-      else
-      {
-        existingInstance.LoadXml(input.ReadString());
-      }
+}
 
-      return existingInstance;
-    }
-    ////////////////////////////////////////////////////////////////////////////
+/// </summary>
+/// Reads a Layout document from binary format.
+/// <summary>
+public class LayoutReader : ContentTypeReader<LayoutXmlDocument>
+{
 
-    #endregion
 
-  }
+/// <returns>Returns the Layout document from the stream.</returns>
+/// <param name="existingInstance">Existing instance to read into.</param>
+/// <param name="input">Content reader used to read the Layout document.</param>
+/// </summary>
+/// Reads a Layout document from the current stream.
+/// <summary>
+protected override LayoutXmlDocument Read(ContentReader input, LayoutXmlDocument existingInstance)
+{
+if (existingInstance == null)
+{
+LayoutXmlDocument doc = new LayoutXmlDocument();
+doc.LoadXml(input.ReadString());
+return doc;
+}
+else
+{
+existingInstance.LoadXml(input.ReadString());
+}
 
-  #if (!XBOX && !XBOX_FAKE)
-  
-    public class CursorReader: ContentTypeReader<Cursor>
-    {
+return existingInstance;
+}
 
-      #region //// Methods ///////////
 
-      ////////////////////////////////////////////////////////////////////////////
-      protected override Cursor Read(ContentReader input, Cursor existingInstance)
-      {
-        if (existingInstance == null)
-        {        
-          int count = input.ReadInt32();
-          byte[] data = input.ReadBytes(count);
-          
-          string path = Path.GetTempFileName();
-          File.WriteAllBytes(path, data);
-          
-          IntPtr handle = NativeMethods.LoadCursor(path);                
-          Cursor cur = new Cursor(handle);
-          File.Delete(path);
-                  
-          return cur;        
-        }
-        else
-        {                
-        }
+}
 
-        return existingInstance;
-      }
-      ////////////////////////////////////////////////////////////////////////////
+#if (!XBOX && !XBOX_FAKE)
 
-      #endregion
+public class CursorReader: ContentTypeReader<Cursor>
+{
 
-    }   
-  
-  #endif  
+
+/// <returns>Returns the cursor object from the stream.</returns>
+/// <param name="existingInstance">Existing cursor object to read into.</param>
+/// <param name="input">Content reader used to read the cursor.</param>
+/// </summary>
+/// Reads a cursor type from the current stream.
+/// <summary>
+protected override Cursor Read(ContentReader input, Cursor existingInstance)
+{
+if (existingInstance == null)
+{
+int count = input.ReadInt32();
+byte[] data = input.ReadBytes(count);
+
+string path = Path.GetTempFileName();
+File.WriteAllBytes(path, data);
+
+IntPtr handle = NativeMethods.LoadCursor(path);
+Cursor cur = new Cursor(handle);
+File.Delete(path);
+
+return cur;
+}
+else
+{
+}
+
+return existingInstance;
+}
+
+
+}
+
+#endif
 
 }
 
