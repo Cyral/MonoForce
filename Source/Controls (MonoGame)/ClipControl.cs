@@ -1,181 +1,162 @@
-////////////////////////////////////////////////////////////////
-//                                                            //
-//  Neoforce Controls                                         //
-//                                                            //
-////////////////////////////////////////////////////////////////
-//                                                            //
-//         File: Control.cs                                   //
-//                                                            //
-//      Version: 0.7                                          //
-//                                                            //
-//         Date: 11/09/2010                                   //
-//                                                            //
-//       Author: Tom Shane                                    //
-//                                                            //
-////////////////////////////////////////////////////////////////
-//                                                            //
-//  Copyright (c) by Tom Shane                                //
-//                                                            //
-////////////////////////////////////////////////////////////////
 
-#region //// Using /////////////
 
-////////////////////////////////////////////////////////////////////////////
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-////////////////////////////////////////////////////////////////////////////
 
-#endregion
 
 namespace MonoForce.Controls
-{     
-      
-  public class ClipControl: Control
-  {
-   
-    #region //// Fields ////////////
+{
 
-    ////////////////////////////////////////////////////////////////////////////    
-    private ClipBox clientArea;  
-    ////////////////////////////////////////////////////////////////////////////
+public class ClipControl: Control
+{
 
-    #endregion   
 
-    #region //// Properties ////////
-   
-    ////////////////////////////////////////////////////////////////////////////    
-    public virtual ClipBox ClientArea
-    {
-      get { return clientArea; }
-      set { clientArea = value; }
-    }   
-    ////////////////////////////////////////////////////////////////////////////          
+/// </summary>
+/// Client area of the clip control.
+/// <summary>
+private ClipBox clientArea;
 
-    ////////////////////////////////////////////////////////////////////////////
-    public override Margins ClientMargins
-    {
-      get
-      {
-        return base.ClientMargins;
-      }
-      set
-      {
-        base.ClientMargins = value;
-        if (clientArea != null)
-        {
-          clientArea.Left = ClientLeft;
-          clientArea.Top = ClientTop;
-          clientArea.Width = ClientWidth;
-          clientArea.Height = ClientHeight;        
-        }  
-      }
-    }
-    ////////////////////////////////////////////////////////////////////////////
-        
-    #endregion
-    
- 	  #region //// Constructors //////
-	 		
-	  ////////////////////////////////////////////////////////////////////////////
-		public ClipControl(Manager manager): base(manager)
-    {                              
-      clientArea = new ClipBox(manager);      
-      
-      clientArea.Init();
-      clientArea.MinimumWidth = 0;
-      clientArea.MinimumHeight = 0;
-      clientArea.Left = ClientLeft;
-      clientArea.Top = ClientTop;
-      clientArea.Width = ClientWidth;
-      clientArea.Height = ClientHeight;
-                
-      base.Add(clientArea);
-    }
-    ////////////////////////////////////////////////////////////////////////////       
-       
-  	#endregion   
 
-    #region //// Methods ///////////
-    
-    ////////////////////////////////////////////////////////////////////////////
-    public override void Init()
-    {      
-      base.Init();
-    }
-    ////////////////////////////////////////////////////////////////////////////        
-    
-    ////////////////////////////////////////////////////////////////////////////
-    protected internal override void InitSkin()
-    {
-      base.InitSkin();           
-    }
-    ////////////////////////////////////////////////////////////////////////////
-    
-    ////////////////////////////////////////////////////////////////////////////
-    public virtual void Add(Control control, bool client)
-    {
-      if (client)
-      {
-        clientArea.Add(control);        
-      }
-      else
-      {
-        base.Add(control);
-      }                  
-    }
-    ////////////////////////////////////////////////////////////////////////////           
 
-    ////////////////////////////////////////////////////////////////////////////
-    public override void Add(Control control)
-    {
-      Add(control, true);
-    }
-    ////////////////////////////////////////////////////////////////////////////       
+/// </summary>
+/// Gets or sets the client area of the clip control.
+/// <summary>
+public virtual ClipBox ClientArea
+{
+get { return clientArea; }
+set { clientArea = value; }
+}
 
-    ////////////////////////////////////////////////////////////////////////////       
-    public override void Remove(Control control)
-    {
-      base.Remove(control);
-      clientArea.Remove(control);
-    }
-    ////////////////////////////////////////////////////////////////////////////
+/// </summary>
+/// Gets or sets the client area margins of the clip control.
+/// <summary>
+public override Margins ClientMargins
+{
+get
+{
+return base.ClientMargins;
+}
+set
+{
+base.ClientMargins = value;
+// Update client area dimensions.
+if (clientArea != null)
+{
+clientArea.Left = ClientLeft;
+clientArea.Top = ClientTop;
+clientArea.Width = ClientWidth;
+clientArea.Height = ClientHeight;
+}
+}
+}
 
-    ////////////////////////////////////////////////////////////////////////////
-    protected internal override void Update(GameTime gameTime)
-    {      
-      base.Update(gameTime);               
-    }
-    ////////////////////////////////////////////////////////////////////////////
-    
-    ////////////////////////////////////////////////////////////////////////////
-    protected override void DrawControl(Renderer renderer, Rectangle rect, GameTime gameTime)
-    {      
-      base.DrawControl(renderer, rect, gameTime);
-    }
-    ////////////////////////////////////////////////////////////////////////////  
-    
-    ////////////////////////////////////////////////////////////////////////////  
-    protected override void OnResize(ResizeEventArgs e)
-    {
-      base.OnResize(e);
-      
-      if (clientArea != null)
-      {      
-        clientArea.Left = ClientLeft;
-        clientArea.Top = ClientTop;
-        clientArea.Width = ClientWidth;
-        clientArea.Height = ClientHeight;
-      }  
-    }
-    ////////////////////////////////////////////////////////////////////////////             
 
-    ////////////////////////////////////////////////////////////////////////////  
-    protected virtual void AdjustMargins()
-    {
-    }
-    ////////////////////////////////////////////////////////////////////////////
-                         
-    #endregion
-  }
+
+public ClipControl(Manager manager): base(manager)
+{
+clientArea = new ClipBox(manager);
+
+clientArea.Init();
+clientArea.MinimumWidth = 0;
+clientArea.MinimumHeight = 0;
+clientArea.Left = ClientLeft;
+clientArea.Top = ClientTop;
+clientArea.Width = ClientWidth;
+clientArea.Height = ClientHeight;
+
+base.Add(clientArea);
+}
+
+
+
+/// </summary>
+/// Initializes the clip control.
+/// <summary>
+public override void Init()
+{
+base.Init();
+}
+
+/// </summary>
+/// Initializes the skin for the clip control.
+/// <summary>
+protected internal override void InitSkin()
+{
+base.InitSkin();
+}
+
+/// clip box (true) or the a direct child of the clip control itself (false)</param>
+/// <param name="client">Indicates if the control to add will be a child of the client area
+/// <param name="control">Child control to add to the clip control.</param>
+/// </summary>
+/// Adds a child control to the clip control.
+/// <summary>
+public virtual void Add(Control control, bool client)
+{
+if (client)
+{
+clientArea.Add(control);
+}
+else
+{
+base.Add(control);
+}
+}
+
+/// <param name="control">Child control to add to the clip control.</param>
+/// </summary>
+/// Adds a child control to the clip box.
+/// <summary>
+public override void Add(Control control)
+{
+Add(control, true);
+}
+
+public override void Remove(Control control)
+{
+base.Remove(control);
+clientArea.Remove(control);
+}
+
+/// <param name="gameTime">Snapshot of the application's timing values.</param>
+/// </summary>
+/// Updates the clip control and its child controls.
+/// <summary>
+protected internal override void Update(GameTime gameTime)
+{
+base.Update(gameTime);
+}
+
+protected override void DrawControl(Renderer renderer, Rectangle rect, GameTime gameTime)
+{
+base.DrawControl(renderer, rect, gameTime);
+}
+
+/// <param name="e"></param>
+/// </summary>
+/// Handles resize events for the clip control.
+/// <summary>
+protected override void OnResize(ResizeEventArgs e)
+{
+base.OnResize(e);
+
+// Update client area dimensions.
+if (clientArea != null)
+{
+clientArea.Left = ClientLeft;
+clientArea.Top = ClientTop;
+clientArea.Width = ClientWidth;
+clientArea.Height = ClientHeight;
+}
+}
+
+/// </summary>
+/// Adjusts the margins of the clip control.
+/// <summary>
+protected virtual void AdjustMargins()
+{
+}
+
+}
 
 }

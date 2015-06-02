@@ -1,141 +1,148 @@
-////////////////////////////////////////////////////////////////
-//                                                            //
-//  Neoforce Controls                                         //
-//                                                            //
-////////////////////////////////////////////////////////////////
-//                                                            //
-//         File: MenuBase.cs                                  //
-//                                                            //
-//      Version: 0.7                                          //
-//                                                            //
-//         Date: 11/09/2010                                   //
-//                                                            //
-//       Author: Tom Shane                                    //
-//                                                            //
-////////////////////////////////////////////////////////////////
-//                                                            //
-//  Copyright (c) by Tom Shane                                //
-//                                                            //
-////////////////////////////////////////////////////////////////
 
-#region //// Using /////////////
 
-////////////////////////////////////////////////////////////////////////////
 using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-////////////////////////////////////////////////////////////////////////////
 
-#endregion
 
 namespace MonoForce.Controls
-{ 
+{
 
-  public class MenuItem: Unknown
-  {    
+public class MenuItem: Unknown
+{
 
-    #region //// Fields ////////////
 
-    ////////////////////////////////////////////////////////////////////////////
-    public string Text = "MenuItem";
-    public List<MenuItem> Items = new List<MenuItem>();
-    public bool Separated = false;     
-    public Texture2D Image = null;
-    public bool Enabled = true;
-    public object Tag { get; set; }
-    ////////////////////////////////////////////////////////////////////////////
+/// </summary>
+/// Text to display for this menu item.
+/// <summary>
+public string Text = "MenuItem";
+/// </summary>
+/// List of child menu items belonging to this menu item.
+/// <summary>
+public List<MenuItem> Items = new List<MenuItem>();
+/// </summary>
+/// Indicates if the menu item appears after a menu separator. ???
+/// <summary>
+public bool Separated = false;
+/// </summary>
+/// Image to display to the left of the menu item.
+/// <summary>
+public Texture2D Image = null;
+/// </summary>
+/// Indicates if the menu item is able to be selected or not.
+/// <summary>
+public bool Enabled = true;
+public object Tag { get; set; }
 
-    #endregion
 
-    #region //// Constructors //////
 
-    ////////////////////////////////////////////////////////////////////////////
-    public MenuItem()
-    {
-    }
-    ////////////////////////////////////////////////////////////////////////////
+/// </summary>
+/// Creates a new default menu item.
+/// <summary>
+public MenuItem()
+{
+}
 
-    ////////////////////////////////////////////////////////////////////////////
-    public MenuItem(string text): this()
-    {
-      Text = text;
-    }
-    ////////////////////////////////////////////////////////////////////////////
+public MenuItem(string text): this()
+{
+Text = text;
+}
 
-    ////////////////////////////////////////////////////////////////////////////
-    public MenuItem(string text, bool separated): this(text)
-    {      
-      Separated = separated;
-    }
-    ////////////////////////////////////////////////////////////////////////////
+public MenuItem(string text, bool separated): this(text)
+{
+Separated = separated;
+}
 
-    #endregion
 
-    #region //// Methods ///////////
 
-    ////////////////////////////////////////////////////////////////////////////
-    public event EventHandler Click;
-    public event EventHandler Selected;
-    ////////////////////////////////////////////////////////////////////////////
-    
-    ////////////////////////////////////////////////////////////////////////////
-    internal void ClickInvoke(EventArgs e)
-    {
-      if (Click != null) Click.Invoke(this, e);
-    } 
-    ////////////////////////////////////////////////////////////////////////////
+/// </summary>
+/// Occurs when the menu item is clicked.
+/// <summary>
+public event EventHandler Click;
+/// </summary>
+/// Occurs when the menu item is selected.
+/// <summary>
+public event EventHandler Selected;
 
-    ////////////////////////////////////////////////////////////////////////////
-    internal void SelectedInvoke(EventArgs e)
-    {
-      if (Selected != null) Selected.Invoke(this, e);
-    }
-    ////////////////////////////////////////////////////////////////////////////
+/// <param name="e"></param>
+/// </summary>
+/// Raises the menu item click event.
+/// <summary>
+internal void ClickInvoke(EventArgs e)
+{
+if (Click != null) Click.Invoke(this, e);
+}
 
-    #endregion
-    
-  } 
+/// <param name="e"></param>
+/// </summary>
+/// Raises the menu item selected event.
+/// <summary>
+internal void SelectedInvoke(EventArgs e)
+{
+if (Selected != null) Selected.Invoke(this, e);
+}
 
-  public abstract class MenuBase: Control
-  {
 
-    #region //// Fields ////////////
+}
 
-    ////////////////////////////////////////////////////////////////////////////                 
-    private int itemIndex = -1;
-    private List<MenuItem> items = new List<MenuItem>();
-    private MenuBase childMenu = null;   
-    private MenuBase rootMenu = null;
-    private MenuBase parentMenu = null;    
-    ////////////////////////////////////////////////////////////////////////////
+public abstract class MenuBase: Control
+{
 
-    #endregion
 
-    #region //// Properties ////////
+/// </summary>
+/// Selected menu item index.
+/// <summary>
+private int itemIndex = -1;
+/// </summary>
+/// List of menu items composing the menu.
+/// <summary>
+private List<MenuItem> items = new List<MenuItem>();
+/// </summary>
+/// Child menu of this menu.
+/// <summary>
+private MenuBase childMenu = null;
+/// </summary>
+/// Root menu of this menu.
+/// <summary>
+private MenuBase rootMenu = null;
+/// </summary>
+/// Parent menu of this menu.
+/// <summary>
+private MenuBase parentMenu = null;
 
-    ////////////////////////////////////////////////////////////////////////////
-    protected internal int ItemIndex { get { return itemIndex; } set { itemIndex = value; } }
-    protected internal MenuBase ChildMenu { get { return childMenu; } set { childMenu = value; } }
-    protected internal MenuBase RootMenu { get { return rootMenu; } set { rootMenu = value; } }
-    protected internal MenuBase ParentMenu { get { return parentMenu; } set { parentMenu = value; } }    
-    public List<MenuItem> Items { get { return items; } }    
-    ////////////////////////////////////////////////////////////////////////////
 
-    #endregion
 
-    #region //// Construstors //////
+/// </summary>
+/// Gets or sets the menu's selected menu item index.
+/// <summary>
+protected internal int ItemIndex { get { return itemIndex; } set { itemIndex = value; } }
+/// </summary>
+/// Gets or sets the menu's child menu.
+/// <summary>
+protected internal MenuBase ChildMenu { get { return childMenu; } set { childMenu = value; } }
+/// </summary>
+/// Gets or sets the menu's root menu.
+/// <summary>
+protected internal MenuBase RootMenu { get { return rootMenu; } set { rootMenu = value; } }
+/// </summary>
+/// Gets or sets the menu's parent menu.
+/// <summary>
+protected internal MenuBase ParentMenu { get { return parentMenu; } set { parentMenu = value; } }
+/// </summary>
+/// Gets the list of menu items that make up the menu.
+/// <summary>
+public List<MenuItem> Items { get { return items; } }
 
-    ////////////////////////////////////////////////////////////////////////////       
-    public MenuBase(Manager manager): base(manager)
-    {            
-      rootMenu = this;            
-    }
-    ////////////////////////////////////////////////////////////////////////////
 
-    #endregion
-        
-  }
+
+public MenuBase(Manager manager): base(manager)
+{
+rootMenu = this;
+}
+
+
+}
 
 }

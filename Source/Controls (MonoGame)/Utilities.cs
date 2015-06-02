@@ -1,85 +1,69 @@
-////////////////////////////////////////////////////////////////
-//                                                            //
-//  Neoforce Controls                                         //
-//                                                            //
-////////////////////////////////////////////////////////////////
-//                                                            //
-//         File: Utilities.cs                                 //
-//                                                            //
-//      Version: 0.7                                          //
-//                                                            //
-//         Date: 11/09/2010                                   //
-//                                                            //
-//       Author: Tom Shane                                    //
-//                                                            //
-////////////////////////////////////////////////////////////////
-//                                                            //
-//  Copyright (c) by Tom Shane                                //
-//                                                            //
-////////////////////////////////////////////////////////////////
 
-#region //// Using /////////////
 
-////////////////////////////////////////////////////////////////////////////
 using System;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework;
-////////////////////////////////////////////////////////////////////////////
 
-#endregion
 
 namespace MonoForce.Controls
 {
-  static class Utilities
-  {
-  
-    #region //// Methods ///////////
-    
-    ////////////////////////////////////////////////////////////////////////////
-    public static string DeriveControlName(Control control)
-    {
-      if (control != null)
-      {
-        try
-        {
-          string str = control.ToString();
-          int i = str.LastIndexOf(".");
-          return str.Remove(0, i + 1);
-        }
-        catch
-        {
-          return control.ToString();
-        }
-      }
-      return control.ToString();
-    }
-    ////////////////////////////////////////////////////////////////////////////
+static class Utilities
+{
 
-    ////////////////////////////////////////////////////////////////////////////
-    public static Color ParseColor(string str)
-    {
 
-      string[] val = str.Split(';');
-      byte r = 255, g = 255, b = 255, a = 255;
+/// <returns>Returns the unqualified name of the specified control.</returns>
+/// <param name="control">Control to get the name of.</param>
+/// </summary>
+/// Attempts to return the name of a control.
+/// <summary>
+public static string DeriveControlName(Control control)
+{
+if (control != null)
+{
+try
+{
+string str = control.ToString();
+int i = str.LastIndexOf(".");
+return str.Remove(0, i + 1);
+}
+catch
+{
+return control.ToString();
+}
+}
+return control.ToString();
+}
 
-      if (val.Length >= 1) r = byte.Parse(val[0]);
-      if (val.Length >= 2) g = byte.Parse(val[1]);
-      if (val.Length >= 3) b = byte.Parse(val[2]);
-      if (val.Length >= 4) a = byte.Parse(val[3]);
+/// <returns>Returns the string converted to a Color object.</returns>
+/// <param name="str">";" delimited string of RGBA values.</param>
+/// </summary>
+/// Parses a color value defined in XML.
+/// <summary>
+public static Color ParseColor(string str)
+{
 
-      return Color.FromNonPremultiplied(r, g, b, a);
-    }
-    ////////////////////////////////////////////////////////////////////////////
+string[] val = str.Split(';');
+byte r = 255, g = 255, b = 255, a = 255;
 
-    ////////////////////////////////////////////////////////////////////////////
-    public static BevelStyle ParseBevelStyle(string str)
-    {
-      return (BevelStyle)Enum.Parse(typeof(BevelStyle), str, true);
-    }
-    ////////////////////////////////////////////////////////////////////////////    
+if (val.Length >= 1) r = byte.Parse(val[0]);
+if (val.Length >= 2) g = byte.Parse(val[1]);
+if (val.Length >= 3) b = byte.Parse(val[2]);
+if (val.Length >= 4) a = byte.Parse(val[3]);
 
-    #endregion    
-    
-  }
+return Color.FromNonPremultiplied(r, g, b, a);
+}
+
+/// <returns>Returns the string converted to a BevelStyle object.</returns>
+/// <param name="str">Name of the bevel style value.</param>
+/// </summary>
+/// Parses a BevelStyle enumeration defined in XML.
+/// <summary>
+public static BevelStyle ParseBevelStyle(string str)
+{
+return (BevelStyle)Enum.Parse(typeof(BevelStyle), str, true);
+}
+
+
+}
 }
