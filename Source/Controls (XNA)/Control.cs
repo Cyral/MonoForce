@@ -60,7 +60,6 @@ public GamePadButton PrevControl = GamePadButton.LeftShoulder;
 /// Button mapped to show the context menu of a control.
 /// <summary>
 public GamePadButton ContextMenu = GamePadButton.X;
-//set { virtualHeight = value; }
 }
 
 public class ControlsList: EventedList<Control>
@@ -68,7 +67,6 @@ public class ControlsList: EventedList<Control>
 public ControlsList(): base() {}
 public ControlsList(int capacity): base(capacity) {}
 public ControlsList(IEnumerable<Control> collection): base(collection) {}
-//set { virtualHeight = value; }
 }
 
 public class Control: Component
@@ -351,7 +349,6 @@ public Cursor Cursor
 {
 get { return cursor; }
 set { cursor = value; }
-//set { virtualHeight = value; }
 }
 #endif
 
@@ -446,7 +443,6 @@ public virtual GamePadActions GamePadActions
 {
 get { return gamePadActions; }
 set { gamePadActions = value; }
-//set { virtualHeight = value; }
 }
 
 /// </summary>
@@ -456,7 +452,6 @@ public virtual bool PartialOutline
 {
 get { return partialOutline; }
 set { partialOutline = value; }
-//set { virtualHeight = value; }
 }
 
 /// </summary>
@@ -469,9 +464,7 @@ set
 {
 if (value && stayOnTop) stayOnTop = false;
 stayOnBack = value;
-//set { virtualHeight = value; }
 }
-//set { virtualHeight = value; }
 }
 
 /// </summary>
@@ -484,9 +477,7 @@ set
 {
 if (value && stayOnBack) stayOnBack = false;
 stayOnTop = value;
-//set { virtualHeight = value; }
 }
-//set { virtualHeight = value; }
 }
 
 /// </summary>
@@ -496,7 +487,6 @@ public virtual string Name
 {
 get { return name; }
 set { name = value; }
-//set { virtualHeight = value; }
 }
 
 /// </summary>
@@ -507,7 +497,6 @@ public virtual bool Focused
 get
 {
 return (Manager.FocusedControl == this);
-//set { virtualHeight = value; }
 }
 set
 {
@@ -520,9 +509,7 @@ if (!Suspended && value && !f) OnFocusGained(new EventArgs());
 if (Focused && Root != null && Root is Container)
 {
 (Root as Container).ScrollTo(this);
-//set { virtualHeight = value; }
 }
-//set { virtualHeight = value; }
 }
 // Not a match.
 else
@@ -530,11 +517,8 @@ else
 bool f = Focused;
 if (Manager.FocusedControl == this) Manager.FocusedControl = null;
 if (!Suspended && !value && f) OnFocusLost(new EventArgs());
-//set { virtualHeight = value; }
 }
-//set { virtualHeight = value; }
 }
-//set { virtualHeight = value; }
 }
 
 /// </summary>
@@ -555,11 +539,8 @@ if ((IsPressed && inside) || (Focused && IsPressed)) return ControlState.Pressed
 else if (hovered && !IsPressed) return ControlState.Hovered;
 else if ((Focused && !inside) || (hovered && IsPressed && !inside) || (Focused && !hovered && inside)) return ControlState.Focused;
 else return ControlState.Enabled;
-//set { virtualHeight = value; }
 }
-//set { virtualHeight = value; }
 }
-//set { virtualHeight = value; }
 }
 
 /// </summary>
@@ -575,11 +556,8 @@ if (toolTip != null)
 {
 toolTip.Dispose();
 toolTip = null;
-//set { virtualHeight = value; }
 }
-//set { virtualHeight = value; }
 }
-//set { virtualHeight = value; }
 }
 
 /// </summary>
@@ -597,17 +575,13 @@ object[] p = new object[1] {Manager};
 toolTip = (ToolTip)toolTipType.GetConstructor(t).Invoke(p);
 toolTip.Init();
 toolTip.Visible = false;
-//set { virtualHeight = value; }
 }
 return toolTip;
-//set { virtualHeight = value; }
 }
 set
 {
 toolTip = value;
-//set { virtualHeight = value; }
 }
-//set { virtualHeight = value; }
 }
 
 /// </summary>
@@ -620,12 +594,9 @@ get
 for (int i = 0; i < pressed.Length - 1; i++)
 {
 if (pressed[i]) return true;
-//set { virtualHeight = value; }
 }
 return false;
-//set { virtualHeight = value; }
 }
-//set { virtualHeight = value; }
 }
 
 /// </summary>
@@ -636,7 +607,6 @@ internal virtual int TopModifier
 {
 get { return topModifier; }
 set { topModifier = value; }
-//set { virtualHeight = value; }
 }
 
 /// </summary>
@@ -647,7 +617,6 @@ internal virtual int LeftModifier
 {
 get { return leftModifier; }
 set { leftModifier = value; }
-//set { virtualHeight = value; }
 }
 /// </summary>
 /// ???
@@ -655,7 +624,6 @@ set { leftModifier = value; }
 internal virtual int VirtualHeight
 {
 get { return GetVirtualHeight(); }
-//set { virtualHeight = value; }
 }
 /// </summary>
 /// ???
@@ -663,7 +631,6 @@ get { return GetVirtualHeight(); }
 internal virtual int VirtualWidth
 {
 get { return GetVirtualWidth(); }
-//set { virtualHeight = value; }
 }
 
 /// </summary>
@@ -673,7 +640,6 @@ public Rectangle DrawingRect
 {
 get { return drawingRect; }
 private set { drawingRect = value; }
-//set { virtualHeight = value; }
 }
 
 /// </summary>
@@ -683,7 +649,6 @@ public virtual bool Suspended
 {
 get { return suspended; }
 set { suspended = value; }
-//set { virtualHeight = value; }
 }
 
 /// </summary>
@@ -692,7 +657,6 @@ set { suspended = value; }
 internal protected virtual bool Hovered
 {
 get { return hovered; }
-//set { virtualHeight = value; }
 }
 
 /// </summary>
@@ -701,7 +665,6 @@ get { return hovered; }
 internal protected virtual bool Inside
 {
 get { return inside; }
-//set { virtualHeight = value; }
 }
 
 /// </summary>
@@ -710,7 +673,6 @@ get { return inside; }
 internal protected virtual bool[] Pressed
 {
 get { return pressed; }
-//set { virtualHeight = value; }
 }
 
 /// </summary>
@@ -721,14 +683,11 @@ protected virtual bool IsMoving
 get
 {
 return isMoving;
-//set { virtualHeight = value; }
 }
 set
 {
 isMoving = value;
-//set { virtualHeight = value; }
 }
-//set { virtualHeight = value; }
 }
 
 /// </summary>
@@ -739,14 +698,11 @@ protected virtual bool IsResizing
 get
 {
 return isResizing;
-//set { virtualHeight = value; }
 }
 set
 {
 isResizing = value;
-//set { virtualHeight = value; }
 }
-//set { virtualHeight = value; }
 }
 
 /// </summary>
@@ -757,16 +713,13 @@ public virtual Anchors Anchor
 get
 {
 return anchor;
-//set { virtualHeight = value; }
 }
 set
 {
 anchor = value;
 SetAnchorMargins();
 if (!Suspended) OnAnchorChanged(new EventArgs());
-//set { virtualHeight = value; }
 }
-//set { virtualHeight = value; }
 }
 
 /// </summary>
@@ -777,14 +730,11 @@ public virtual Anchors ResizeEdge
 get
 {
 return resizeEdge;
-//set { virtualHeight = value; }
 }
 set
 {
 resizeEdge = value;
-//set { virtualHeight = value; }
 }
-//set { virtualHeight = value; }
 }
 
 /// </summary>
@@ -795,15 +745,12 @@ public virtual SkinControl Skin
 get
 {
 return skin;
-//set { virtualHeight = value; }
 }
 set
 {
 skin = value;
 ClientMargins = skin.ClientMargins;
-//set { virtualHeight = value; }
 }
-//set { virtualHeight = value; }
 }
 
 /// </summary>
@@ -817,9 +764,7 @@ set
 text = value;
 Invalidate();
 if (!Suspended) OnTextChanged(new EventArgs());
-//set { virtualHeight = value; }
 }
-//set { virtualHeight = value; }
 }
 
 public virtual byte Alpha
@@ -827,15 +772,12 @@ public virtual byte Alpha
 get
 {
 return alpha;
-//set { virtualHeight = value; }
 }
 set
 {
 alpha = value;
 if (!Suspended) OnAlphaChanged(new EventArgs());
-//set { virtualHeight = value; }
 }
-//set { virtualHeight = value; }
 }
 
 /// </summary>
@@ -846,16 +788,13 @@ public virtual Color BackColor
 get
 {
 return backColor;
-//set { virtualHeight = value; }
 }
 set
 {
 backColor = value;
 Invalidate();
 if (!Suspended) OnBackColorChanged(new EventArgs());
-//set { virtualHeight = value; }
 }
-//set { virtualHeight = value; }
 }
 
 /// </summary>
@@ -866,7 +805,6 @@ public virtual Color Color
 get
 {
 return color;
-//set { virtualHeight = value; }
 }
 set
 {
@@ -875,11 +813,8 @@ if (value != color)
 color = value;
 Invalidate();
 if (!Suspended) OnColorChanged(new EventArgs());
-//set { virtualHeight = value; }
 }
-//set { virtualHeight = value; }
 }
-//set { virtualHeight = value; }
 }
 
 /// </summary>
@@ -890,7 +825,6 @@ public virtual Color TextColor
 get
 {
 return textColor;
-//set { virtualHeight = value; }
 }
 set
 {
@@ -899,11 +833,8 @@ if (value != textColor)
 textColor = value;
 Invalidate();
 if (!Suspended) OnTextColorChanged(new EventArgs());
-//set { virtualHeight = value; }
 }
-//set { virtualHeight = value; }
 }
-//set { virtualHeight = value; }
 }
 
 /// </summary>
@@ -914,7 +845,6 @@ public virtual bool Enabled
 get
 {
 return enabled;
-//set { virtualHeight = value; }
 }
 set
 {
@@ -926,13 +856,10 @@ Invalidate();
 foreach (Control c in controls)
 {
 c.Enabled = value;
-//set { virtualHeight = value; }
 }
 
 if (!Suspended) OnEnabledChanged(new EventArgs());
-//set { virtualHeight = value; }
 }
-//set { virtualHeight = value; }
 }
 
 /// </summary>
@@ -943,7 +870,6 @@ public virtual bool Visible
 get
 {
 return (visible && (parent == null || parent.Visible));
-//set { virtualHeight = value; }
 }
 set
 {
@@ -951,9 +877,7 @@ visible = value;
 Invalidate();
 
 if (!Suspended) OnVisibleChanged(new EventArgs());
-//set { virtualHeight = value; }
 }
-//set { virtualHeight = value; }
 }
 
 /// </summary>
@@ -964,7 +888,6 @@ public virtual Control Parent
 get
 {
 return parent;
-//set { virtualHeight = value; }
 }
 set
 {
@@ -972,11 +895,8 @@ if (parent != value)
 {
 if (value != null) value.Add(this);
 else Manager.Add(this);
-//set { virtualHeight = value; }
 }
-//set { virtualHeight = value; }
 }
-//set { virtualHeight = value; }
 }
 
 /// </summary>
@@ -987,7 +907,6 @@ public virtual Control Root
 get
 {
 return root;
-//set { virtualHeight = value; }
 }
 private set
 {
@@ -998,15 +917,11 @@ root = value;
 foreach (Control c in controls)
 {
 c.Root = root;
-//set { virtualHeight = value; }
 }
 
 if (!Suspended) OnRootChanged(new EventArgs());
-//set { virtualHeight = value; }
 }
-//set { virtualHeight = value; }
 }
-//set { virtualHeight = value; }
 }
 
 /// </summary>
@@ -1017,7 +932,6 @@ public virtual int Left
 get
 {
 return left;
-//set { virtualHeight = value; }
 }
 set
 {
@@ -1029,11 +943,8 @@ left = value;
 SetAnchorMargins();
 
 if (!Suspended) OnMove(new MoveEventArgs(left, top, old, top));
-//set { virtualHeight = value; }
 }
-//set { virtualHeight = value; }
 }
-//set { virtualHeight = value; }
 }
 
 /// </summary>
@@ -1044,7 +955,6 @@ public virtual int Top
 get
 {
 return top;
-//set { virtualHeight = value; }
 }
 set
 {
@@ -1056,11 +966,8 @@ top = value;
 SetAnchorMargins();
 
 if (!Suspended) OnMove(new MoveEventArgs(left, top, left, old));
-//set { virtualHeight = value; }
 }
-//set { virtualHeight = value; }
 }
-//set { virtualHeight = value; }
 }
 
 /// </summary>
@@ -1071,7 +978,6 @@ public virtual int Width
 get
 {
 return width;
-//set { virtualHeight = value; }
 }
 set
 {
@@ -1083,24 +989,19 @@ width = value;
 if (skin != null)
 {
 if (width + skin.OriginMargins.Horizontal > MaximumWidth) width = MaximumWidth - skin.OriginMargins.Horizontal;
-//set { virtualHeight = value; }
 }
 // Not a match.
 else
 {
 if (width > MaximumWidth) width = MaximumWidth;
-//set { virtualHeight = value; }
 }
 if (width < MinimumWidth) width = MinimumWidth;
 
 if (width > 0) SetAnchorMargins();
 
 if (!Suspended) OnResize(new ResizeEventArgs(width, height, old, height));
-//set { virtualHeight = value; }
 }
-//set { virtualHeight = value; }
 }
-//set { virtualHeight = value; }
 }
 
 /// </summary>
@@ -1111,7 +1012,6 @@ public virtual int Height
 get
 {
 return height;
-//set { virtualHeight = value; }
 }
 set
 {
@@ -1125,26 +1025,21 @@ if (skin != null)
 {
 if (height + skin.OriginMargins.Vertical > MaximumHeight)
 height = MaximumHeight - skin.OriginMargins.Vertical;
-//set { virtualHeight = value; }
 }
 // Not a match.
 else
 {
 if (height > MaximumHeight) height = MaximumHeight;
-//set { virtualHeight = value; }
 }
 if (height < MinimumHeight) height = MinimumHeight;
 
 if (height > 0) SetAnchorMargins();
 
 if (!Suspended) OnResize(new ResizeEventArgs(width, height, width, old));
-//set { virtualHeight = value; }
 }
 
-//set { virtualHeight = value; }
 }
 
-//set { virtualHeight = value; }
 }
 
 /// </summary>
@@ -1155,7 +1050,6 @@ public virtual int MinimumWidth
 get
 {
 return minimumWidth;
-//set { virtualHeight = value; }
 }
 set
 {
@@ -1163,9 +1057,7 @@ minimumWidth = value;
 if (minimumWidth < 0) minimumWidth = 0;
 if (minimumWidth > maximumWidth) minimumWidth = maximumWidth;
 if (width < MinimumWidth) Width = MinimumWidth;
-//set { virtualHeight = value; }
 }
-//set { virtualHeight = value; }
 }
 
 /// </summary>
@@ -1176,7 +1068,6 @@ public virtual int MinimumHeight
 get
 {
 return minimumHeight;
-//set { virtualHeight = value; }
 }
 set
 {
@@ -1184,9 +1075,7 @@ minimumHeight = value;
 if (minimumHeight < 0) minimumHeight = 0;
 if (minimumHeight > maximumHeight) minimumHeight = maximumHeight;
 if (height < MinimumHeight) Height = MinimumHeight;
-//set { virtualHeight = value; }
 }
-//set { virtualHeight = value; }
 }
 
 /// </summary>
@@ -1199,7 +1088,6 @@ get
 int max = maximumWidth;
 if (max > Manager.TargetWidth) max = Manager.TargetWidth;
 return max;
-//set { virtualWidth = value; }
 }
 set
 {
