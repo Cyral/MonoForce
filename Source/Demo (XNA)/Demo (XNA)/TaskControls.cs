@@ -310,35 +310,6 @@ namespace MonoForce.Demo
             TaskControls_SkinChanged(null, null);
         }
 
-        private void TaskControls_SkinChanged(object sender, EventArgs e)
-        {
-#if (!XBOX && !XBOX_FAKE)
-            prgMain.Cursor = Manager.Skin.Cursors["Busy"].Resource;
-#endif
-        }
-
-        private void ModeChanged(object sender, EventArgs e)
-        {
-            if (sender == rdbNormal)
-            {
-                txtEdit.Mode = TextBoxMode.Normal;
-            }
-            else if (sender == rdbPassword)
-            {
-                txtEdit.Mode = TextBoxMode.Password;
-            }
-        }
-
-        private void chkReadOnly_CheckedChanged(object sender, EventArgs e)
-        {
-            txtEdit.ReadOnly = chkReadOnly.Checked;
-        }
-
-        private void chkBorders_CheckedChanged(object sender, EventArgs e)
-        {
-            txtEdit.DrawBorders = !chkBorders.Checked;
-        }
-
         private void btnDisable_Click(object sender, EventArgs e)
         {
             if (txtEdit.Enabled)
@@ -366,6 +337,35 @@ namespace MonoForce.Demo
             lstMain.Items.Add(new Random().Next().ToString());
             lstMain.ItemIndex = lstMain.Items.Count - 1;
             cmbMain.Text = "!!!";
+        }
+
+        private void chkBorders_CheckedChanged(object sender, EventArgs e)
+        {
+            txtEdit.DrawBorders = !chkBorders.Checked;
+        }
+
+        private void chkReadOnly_CheckedChanged(object sender, EventArgs e)
+        {
+            txtEdit.ReadOnly = chkReadOnly.Checked;
+        }
+
+        private void ModeChanged(object sender, EventArgs e)
+        {
+            if (sender == rdbNormal)
+            {
+                txtEdit.Mode = TextBoxMode.Normal;
+            }
+            else if (sender == rdbPassword)
+            {
+                txtEdit.Mode = TextBoxMode.Password;
+            }
+        }
+
+        private void TaskControls_SkinChanged(object sender, EventArgs e)
+        {
+#if (!XBOX && !XBOX_FAKE)
+            prgMain.Cursor = Manager.Skin.Cursors["Busy"].Resource;
+#endif
         }
 
         private void trkMain_ValueChanged(object sender, EventArgs e)

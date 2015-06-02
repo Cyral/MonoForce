@@ -3,8 +3,8 @@
   ////////////////////////////////////////////////////////////////////////////
   <Class name="ArchiveManager">
     <summary>
-      Loads managed objects from the binary files produced by the design time 
-      content pipeline the same way like <see cref="Microsoft.Xna.Framework.Content.ContentManager"/> does. 
+      Loads managed objects from the binary files produced by the design time
+      content pipeline the same way like <see cref="Microsoft.Xna.Framework.Content.ContentManager" /> does.
       Additionally it is capable of loading assets from a zip file.
     </summary>
     <remarks>
@@ -12,7 +12,7 @@
     </remarks>
   </Class>
   ////////////////////////////////////////////////////////////////////////////
-  
+
   ////////////////////////////////////////////////////////////////////////////
   <Member name="ArchivePath">
     <summary>
@@ -20,27 +20,27 @@
     </summary>
   </Member>
   ////////////////////////////////////////////////////////////////////////////
-  
+
   ////////////////////////////////////////////////////////////////////////////
   <Member name="ArchiveManager">
     <param name="serviceProvider">
-      The service provider that the <see cref="ArchiveManager"/> should use to locate services.
+      The service provider that the <see cref="ArchiveManager" /> should use to locate services.
     </param>
     <remarks>
-      By using this constructor <see cref="ArchiveManager"/> works like classic <see cref="ContentManager"/>. 
+      By using this constructor <see cref="ArchiveManager" /> works like classic <see cref="ContentManager" />.
     </remarks>
   </Member>
   ////////////////////////////////////////////////////////////////////////////
-  
+
   ////////////////////////////////////////////////////////////////////////////
   <Member name="ArchiveManager1">
     <param name="serviceProvider">
-      The service provider that the <see cref="ArchiveManager"/> should use to locate services.
+      The service provider that the <see cref="ArchiveManager" /> should use to locate services.
     </param>
     <param name="archive">
-      The path to the zip file, which will be used for reading assets from. 
-      If the parameter is set to null, <see cref="ArchiveManager"/> works like 
-      classic <see cref="ContentManager"/>.
+      The path to the zip file, which will be used for reading assets from.
+      If the parameter is set to null, <see cref="ArchiveManager" /> works like
+      classic <see cref="ContentManager" />.
     </param>
   </Member>
   ////////////////////////////////////////////////////////////////////////////
@@ -71,7 +71,7 @@
       Returns an array of strings.
     </returns>
     <remarks>
-      Asset names include full path.  
+      Asset names include full path.
     </remarks>
   </Member>
   ////////////////////////////////////////////////////////////////////////////
@@ -105,7 +105,7 @@
       Returns the opened stream.
     </returns>
     <remarks>
-      This method is looking for file names, not assets.  
+      This method is looking for file names, not assets.
     </remarks>
   </Member>
   ////////////////////////////////////////////////////////////////////////////

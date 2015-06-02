@@ -1,5 +1,4 @@
 using System;
-using System.Threading;
 using MonoForce.Controls;
 using EventArgs = MonoForce.Controls.EventArgs;
 
@@ -11,6 +10,35 @@ namespace MonoForce.Demo
 
         private readonly string[] Tasks = new string[TasksCount]
         {"Dialog Template", "Controls Test", "Auto Scrolling", "Layout Window", "Events Test"};
+
+        private void btnApply_Click(object sender, EventArgs e)
+        {
+            Manager.Graphics.IsFullScreen = chkResFull.Checked;
+
+            var w = 1024;
+            var h = 768;
+
+            if (rdbRes1024.Checked)
+            {
+                w = 1024;
+                h = 768;
+            }
+            else if (rdbRes1280.Checked)
+            {
+                w = 1280;
+                h = 1024;
+            }
+            else if (rdbRes1680.Checked)
+            {
+                w = 1680;
+                h = 1050;
+            }
+
+            Manager.Graphics.PreferredBackBufferWidth = w;
+            Manager.Graphics.PreferredBackBufferHeight = h;
+
+            Manager.Graphics.ApplyChanges();
+        }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
@@ -28,6 +56,11 @@ namespace MonoForce.Demo
                 }
             }
             list.Clear();
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Close();
         }
 
         private void btnRandom_Click(object sender, EventArgs e)
@@ -91,45 +124,6 @@ namespace MonoForce.Demo
             win.Add(btn, true);
             win.Show();
             Manager.Add(win);
-        }
-
-        private void win_Closed(object sender, WindowClosedEventArgs e)
-        {
-            e.Dispose = true;
-        }
-
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void btnApply_Click(object sender, EventArgs e)
-        {
-            Manager.Graphics.IsFullScreen = chkResFull.Checked;
-
-            var w = 1024;
-            var h = 768;
-
-            if (rdbRes1024.Checked)
-            {
-                w = 1024;
-                h = 768;
-            }
-            else if (rdbRes1280.Checked)
-            {
-                w = 1280;
-                h = 1024;
-            }
-            else if (rdbRes1680.Checked)
-            {
-                w = 1680;
-                h = 1050;
-            }
-
-            Manager.Graphics.PreferredBackBufferWidth = w;
-            Manager.Graphics.PreferredBackBufferHeight = h;
-
-            Manager.Graphics.ApplyChanges();
         }
 
         private void btnTask_Click(object sender, EventArgs e)
@@ -203,9 +197,9 @@ namespace MonoForce.Demo
             ((sender as Button).Root as Window).Close();
         }
 
-        private void WindowClosing(object sender, WindowClosingEventArgs e)
+        private void win_Closed(object sender, WindowClosedEventArgs e)
         {
-            //e.Cancel = true; 
+            e.Dispose = true;
         }
 
         private void WindowClosed(object sender, WindowClosedEventArgs e)
@@ -236,6 +230,11 @@ namespace MonoForce.Demo
                 btnTasks[4].Focused = true;
             }
             e.Dispose = true;
+        }
+
+        private void WindowClosing(object sender, WindowClosingEventArgs e)
+        {
+            //e.Cancel = true; 
         }
     }
 }

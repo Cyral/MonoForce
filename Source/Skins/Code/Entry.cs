@@ -21,42 +21,38 @@
 #region //// Using /////////////
 
 ////////////////////////////////////////////////////////////////////////////
-using System;
-using System.IO;
+using System.Diagnostics;
+
 ////////////////////////////////////////////////////////////////////////////
 
 #endregion
 
 namespace MonoForce.Skins
 {
-  
-  static class Entry  
-  {
+    internal static class Entry
+    {
+        #region //// Methods ///////////
 
-    #region //// Methods ///////////
-
-    ////////////////////////////////////////////////////////////////////////////
-    static void Main(string[] args)
-    {      
-      #if (!XBOX && !XBOX_FAKE)
-        try
+        ////////////////////////////////////////////////////////////////////////////
+        private static void Main(string[] args)
         {
-          System.Diagnostics.Process Proc = new System.Diagnostics.Process();
-          Proc.StartInfo.FileName = "..\\..\\BuildSkins.bat";      
-          Proc.Start();     
-        }
-        catch
-        {
-        }  
-      #else
+#if (!XBOX && !XBOX_FAKE)
+            try
+            {
+                var Proc = new Process();
+                Proc.StartInfo.FileName = "..\\..\\BuildSkins.bat";
+                Proc.Start();
+            }
+            catch
+            {
+            }
+#else
         Console.WriteLine("No action for Xbox platform defined.");
       #endif
-       
-    }
-    ////////////////////////////////////////////////////////////////////////////
+        }
 
-    #endregion    
-    
-  }
-  
+        ////////////////////////////////////////////////////////////////////////////
+
+        #endregion
+    }
 }

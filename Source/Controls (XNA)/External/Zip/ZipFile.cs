@@ -1,65 +1,108 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.IO;
 
 namespace TomShane.Neoforce.External.Zip
 {
-
-    internal class ZipFile : System.Collections.Generic.IEnumerable<ZipEntry>,
-      IDisposable
+    internal class ZipFile : IEnumerable<ZipEntry>,
+        IDisposable
     {
-        private string _name;
-        public string Name
-        {
-            get { return _name; }
-        }
+        public string Name { get; private set; }
+        // when this is set, we trim the volume (eg C:) off any fully-qualified pathname, 
+        // before writing the ZipEntry into the ZipFile. 
+        // We default this to true.  This allows Windows Explorer to read the zip archives properly. 
+        public bool TrimVolumeFromFullyQualifiedPaths { get; set; } = true;
 
-
-
-      // when this is set, we trim the volume (eg C:) off any fully-qualified pathname, 
-      // before writing the ZipEntry into the ZipFile. 
-      // We default this to true.  This allows Windows Explorer to read the zip archives properly. 
-      private bool _TrimVolumeFromFullyQualifiedPaths= true;
-      public bool TrimVolumeFromFullyQualifiedPaths
-      {
-            get { return _TrimVolumeFromFullyQualifiedPaths; }
-            set { _TrimVolumeFromFullyQualifiedPaths= value; }
-      }
-
-        private System.IO.Stream ReadStream
+        private Stream ReadStream
         {
             get
             {
                 if (_readstream == null)
                 {
-                    _readstream = System.IO.File.OpenRead(_name);
+                    _readstream = File.OpenRead(Name);
                 }
                 return _readstream;
             }
         }
 
-        private System.IO.FileStream WriteStream
+        private FileStream WriteStream
         {
             get
             {
                 if (_writestream == null)
                 {
-                    _writestream = new System.IO.FileStream(_name, System.IO.FileMode.CreateNew);
+                    _writestream = new FileStream(Name, FileMode.CreateNew);
                 }
                 return _writestream;
             }
         }
 
-        private ZipFile() { }
+        private bool _Debug;
+        private List<ZipDirEntry> _direntries;
+        private bool _disposed;
+        private List<ZipEntry> _entries;
+        private Stream _readstream;
+        private FileStream _writestream;
 
+        private ZipFile()
+        {
+        }
+
+        #region IDisposable Members
+
+        public void Dispose()
+        {
+            // dispose of the managed and unmanaged resources
+            Dispose(true);
+
+            // tell the GC that the Finalize process no longer needs
+            // to be run for this object.
+            GC.SuppressFinalize(this);
+        }
+
+        #endregion
+
+        protected virtual void Dispose(bool disposeManagedResources)
+        {
+            if (!_disposed)
+            {
+                if (disposeManagedResources)
+                {
+                    // dispose managed resources
+                    if (_readstream != null)
+                    {
+                        _readstream.Dispose();
+                        _readstream = null;
+                    }
+                    if (_writestream != null)
+                    {
+                        _writestream.Dispose();
+                        _writestream = null;
+                    }
+                }
+                _disposed = true;
+            }
+        }
+
+        // the destructor
+        ~ZipFile()
+        {
+            // call Dispose with false.  Since we're in the
+            // destructor call, the managed resources will be
+            // disposed of anyways.
+            Dispose(false);
+        }
 
         #region For Writing Zip Files
 
         public ZipFile(string NewZipFileName)
         {
             // create a new zipfile
-            _name = NewZipFileName;
-            if (System.IO.File.Exists(_name))
-                throw new System.Exception(String.Format("That file ({0}) already exists.", NewZipFileName));
-            _entries = new System.Collections.Generic.List<ZipEntry>();
+            Name = NewZipFileName;
+            if (File.Exists(Name))
+                throw new Exception(string.Format("That file ({0}) already exists.", NewZipFileName));
+            _entries = new List<ZipEntry>();
         }
 
 
@@ -70,13 +113,13 @@ namespace TomShane.Neoforce.External.Zip
 
         public void AddItem(string FileOrDirectoryName, bool WantVerbose)
         {
-            if (System.IO.File.Exists(FileOrDirectoryName))
+            if (File.Exists(FileOrDirectoryName))
                 AddFile(FileOrDirectoryName, WantVerbose);
-            else if (System.IO.Directory.Exists(FileOrDirectoryName))
+            else if (Directory.Exists(FileOrDirectoryName))
                 AddDirectory(FileOrDirectoryName, WantVerbose);
 
             else
-                throw new Exception(String.Format("That file or directory ({0}) does not exist!", FileOrDirectoryName));
+                throw new Exception(string.Format("That file or directory ({0}) does not exist!", FileOrDirectoryName));
         }
 
         public void AddFile(string FileName)
@@ -86,10 +129,10 @@ namespace TomShane.Neoforce.External.Zip
 
         public void AddFile(string FileName, bool WantVerbose)
         {
-            ZipEntry ze = ZipEntry.Create(FileName);
-            ze.TrimVolumeFromFullyQualifiedPaths= TrimVolumeFromFullyQualifiedPaths;
+            var ze = ZipEntry.Create(FileName);
+            ze.TrimVolumeFromFullyQualifiedPaths = TrimVolumeFromFullyQualifiedPaths;
             if (WantVerbose) Console.WriteLine("adding {0}...", FileName);
-			ze.Write(WriteStream);
+            ze.Write(WriteStream);
             _entries.Add(ze);
         }
 
@@ -100,8 +143,8 @@ namespace TomShane.Neoforce.External.Zip
 
         public void AddDirectory(string DirectoryName, bool WantVerbose)
         {
-            String[] filenames = System.IO.Directory.GetFiles(DirectoryName);
-            foreach (String filename in filenames)
+            var filenames = Directory.GetFiles(DirectoryName);
+            foreach (var filename in filenames)
             {
                 if (WantVerbose) Console.WriteLine("adding {0}...", filename);
                 AddFile(filename);
@@ -120,12 +163,12 @@ namespace TomShane.Neoforce.External.Zip
         private void WriteCentralDirectoryStructure()
         {
             // the central directory structure
-            long Start = WriteStream.Length;
-            foreach (ZipEntry e in _entries)
+            var Start = WriteStream.Length;
+            foreach (var e in _entries)
             {
                 e.WriteCentralDirectoryEntry(WriteStream);
             }
-            long Finish = WriteStream.Length;
+            var Finish = WriteStream.Length;
 
             // now, the footer
             WriteCentralDirectoryFooter(Start, Finish);
@@ -134,10 +177,10 @@ namespace TomShane.Neoforce.External.Zip
 
         private void WriteCentralDirectoryFooter(long StartOfCentralDirectory, long EndOfCentralDirectory)
         {
-            byte[] bytes = new byte[1024];
-            int i = 0;
+            var bytes = new byte[1024];
+            var i = 0;
             // signature
-            UInt32 EndOfCentralDirectorySignature = 0x06054b50;
+            uint EndOfCentralDirectorySignature = 0x06054b50;
             bytes[i++] = (byte)(EndOfCentralDirectorySignature & 0x000000FF);
             bytes[i++] = (byte)((EndOfCentralDirectorySignature & 0x0000FF00) >> 8);
             bytes[i++] = (byte)((EndOfCentralDirectorySignature & 0x00FF0000) >> 16);
@@ -160,14 +203,14 @@ namespace TomShane.Neoforce.External.Zip
             bytes[i++] = (byte)((_entries.Count & 0xFF00) >> 8);
 
             // size of the central directory
-            Int32 SizeOfCentralDirectory = (Int32)(EndOfCentralDirectory - StartOfCentralDirectory);
+            var SizeOfCentralDirectory = (int)(EndOfCentralDirectory - StartOfCentralDirectory);
             bytes[i++] = (byte)(SizeOfCentralDirectory & 0x000000FF);
             bytes[i++] = (byte)((SizeOfCentralDirectory & 0x0000FF00) >> 8);
             bytes[i++] = (byte)((SizeOfCentralDirectory & 0x00FF0000) >> 16);
             bytes[i++] = (byte)((SizeOfCentralDirectory & 0xFF000000) >> 24);
 
             // offset of the start of the central directory 
-            Int32 StartOffset = (Int32)StartOfCentralDirectory;  // cast down from Long
+            var StartOffset = (int)StartOfCentralDirectory; // cast down from Long
             bytes[i++] = (byte)(StartOffset & 0x000000FF);
             bytes[i++] = (byte)((StartOffset & 0x0000FF00) >> 8);
             bytes[i++] = (byte)((StartOffset & 0x00FF0000) >> 16);
@@ -191,38 +234,37 @@ namespace TomShane.Neoforce.External.Zip
 
         internal static ZipFile Read(string zipfilename, bool TurnOnDebug)
         {
-
-            ZipFile zf = new ZipFile();
+            var zf = new ZipFile();
             zf._Debug = TurnOnDebug;
-            zf._name = zipfilename;
-            zf._entries = new System.Collections.Generic.List<ZipEntry>();
+            zf.Name = zipfilename;
+            zf._entries = new List<ZipEntry>();
             ZipEntry e;
             while ((e = ZipEntry.Read(zf.ReadStream, zf._Debug)) != null)
             {
-                if (zf._Debug) System.Console.WriteLine("  ZipFile::Read(): ZipEntry: {0}", e.FileName);
+                if (zf._Debug) Console.WriteLine("  ZipFile::Read(): ZipEntry: {0}", e.FileName);
                 zf._entries.Add(e);
             }
 
             // read the zipfile's central directory structure here.
-            zf._direntries = new System.Collections.Generic.List<ZipDirEntry>();
+            zf._direntries = new List<ZipDirEntry>();
 
             ZipDirEntry de;
             while ((de = ZipDirEntry.Read(zf.ReadStream, zf._Debug)) != null)
             {
-                if (zf._Debug) System.Console.WriteLine("  ZipFile::Read(): ZipDirEntry: {0}", de.FileName);
+                if (zf._Debug) Console.WriteLine("  ZipFile::Read(): ZipDirEntry: {0}", de.FileName);
                 zf._direntries.Add(de);
             }
 
             return zf;
         }
 
-        public System.Collections.Generic.IEnumerator<ZipEntry> GetEnumerator()
+        public IEnumerator<ZipEntry> GetEnumerator()
         {
-            foreach (ZipEntry e in _entries)
+            foreach (var e in _entries)
                 yield return e;
         }
 
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
         }
@@ -236,23 +278,23 @@ namespace TomShane.Neoforce.External.Zip
 
         public void ExtractAll(string path, bool WantVerbose)
         {
-            bool header = WantVerbose;
-            foreach (ZipEntry e in _entries)
+            var header = WantVerbose;
+            foreach (var e in _entries)
             {
                 if (header)
                 {
-                    System.Console.WriteLine("\n{1,-22} {2,-6} {3,4}   {4,-8}  {0}",
-                                 "Name", "Modified", "Size", "Ratio", "Packed");
-                    System.Console.WriteLine(new System.String('-', 72));
+                    Console.WriteLine("\n{1,-22} {2,-6} {3,4}   {4,-8}  {0}",
+                        "Name", "Modified", "Size", "Ratio", "Packed");
+                    Console.WriteLine(new string('-', 72));
                     header = false;
                 }
                 if (WantVerbose)
-                    System.Console.WriteLine("{1,-22} {2,-6} {3,4:F0}%   {4,-8} {0}",
-                                 e.FileName,
-                                 e.LastModified.ToString("yyyy-MM-dd HH:mm:ss"),
-                                 e.UncompressedSize,
-                                 e.CompressionRatio,
-                                 e.CompressedSize);
+                    Console.WriteLine("{1,-22} {2,-6} {3,4:F0}%   {4,-8} {0}",
+                        e.FileName,
+                        e.LastModified.ToString("yyyy-MM-dd HH:mm:ss"),
+                        e.UncompressedSize,
+                        e.CompressionRatio,
+                        e.CompressedSize);
                 e.Extract(path);
             }
         }
@@ -264,17 +306,17 @@ namespace TomShane.Neoforce.External.Zip
         }
 
 
-        public void Extract(string filename, System.IO.Stream s)
+        public void Extract(string filename, Stream s)
         {
             this[filename].Extract(s);
         }
 
 
-        public ZipEntry this[String filename]
+        public ZipEntry this[string filename]
         {
             get
             {
-                foreach (ZipEntry e in _entries)
+                foreach (var e in _entries)
                 {
                     if (e.FileName == filename) return e;
                 }
@@ -283,61 +325,11 @@ namespace TomShane.Neoforce.External.Zip
         }
 
         #endregion
-
-        // the destructor
-        ~ZipFile()
-        {
-            // call Dispose with false.  Since we're in the
-            // destructor call, the managed resources will be
-            // disposed of anyways.
-            Dispose(false);
-        }
-
-        public void Dispose()
-        {
-            // dispose of the managed and unmanaged resources
-            Dispose(true);
-
-            // tell the GC that the Finalize process no longer needs
-            // to be run for this object.
-            GC.SuppressFinalize(this);
-        }
-
-
-        protected virtual void Dispose(bool disposeManagedResources)
-        {
-            if (!this._disposed)
-            {
-                if (disposeManagedResources)
-                {
-                    // dispose managed resources
-                    if (_readstream != null)
-                    {
-                        _readstream.Dispose();
-                        _readstream = null;
-                    }
-                    if (_writestream != null)
-                    {
-                        _writestream.Dispose();
-                        _writestream = null;
-                    }
-                }
-                this._disposed = true;
-            }
-        }
-
-
-        private System.IO.Stream _readstream;
-        private System.IO.FileStream _writestream;
-        private bool _Debug = false;
-        private bool _disposed = false;
-        private System.Collections.Generic.List<ZipEntry> _entries = null;
-        private System.Collections.Generic.List<ZipDirEntry> _direntries = null;
     }
-
 }
 
 #region More Info
+
 // Example usage: 
 // 1. Extracting all files from a Zip file: 
 //

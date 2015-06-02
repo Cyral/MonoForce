@@ -1,5 +1,4 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using MonoForce.Controls;
 
 namespace MonoForce.Demo
@@ -26,6 +25,76 @@ namespace MonoForce.Demo
         public MainWindow(Manager manager) : base(manager)
         {
             InitControls();
+        }
+
+        private void con1_MessageSent(object sender, ConsoleMessageEventArgs e)
+        {
+            if (e.Message.Channel == 0)
+            {
+                //e.Message.Text = "(!) " + e.Message.Text;
+            }
+        }
+
+        private void InitConsole()
+        {
+            var tbc = new TabControl(Manager);
+            var con1 = new Console(Manager);
+            var con2 = new Console(Manager);
+
+            // Setup of TabControl, which will be holding both consoles
+            tbc.Init();
+            tbc.AddPage("Global");
+            tbc.AddPage("Private");
+
+            tbc.Alpha = 220;
+            tbc.Left = 220;
+            tbc.Height = 220;
+            tbc.Width = 400;
+            tbc.Top = Manager.TargetHeight - tbc.Height - 32;
+
+            tbc.Movable = true;
+            tbc.Resizable = true;
+            tbc.MinimumHeight = 96;
+            tbc.MinimumWidth = 160;
+
+            tbc.TabPages[0].Add(con1);
+            tbc.TabPages[1].Add(con2);
+
+            con1.Init();
+            con1.Sender = "Console1";
+            con2.Init();
+            con2.Sender = "Console2";
+
+            con2.Width = con1.Width = tbc.TabPages[0].ClientWidth;
+            con2.Height = con1.Height = tbc.TabPages[0].ClientHeight;
+            con2.Anchor = con1.Anchor = Anchors.All;
+
+            con1.Channels.Add(new ConsoleChannel(0, "General", Color.Orange));
+            con1.Channels.Add(new ConsoleChannel(1, "Private", Color.White));
+            con1.Channels.Add(new ConsoleChannel(2, "System", Color.Yellow));
+
+            // We want to share channels and message buffer in both consoles
+            con2.Channels = con1.Channels;
+            con2.MessageBuffer = con1.MessageBuffer;
+
+            // In the second console we display only "Private" messages
+            con2.ChannelFilter.Add(1);
+
+            // Select default channels for each tab
+            con1.SelectedChannel = 0;
+            con2.SelectedChannel = 1;
+
+            // Do we want to add timestamp or channel name at the start of every message?
+            con1.MessageFormat = ConsoleMessageFormats.All;
+            con2.MessageFormat = ConsoleMessageFormats.TimeStamp;
+
+            // Handler for altering incoming message
+            con1.MessageSent += con1_MessageSent;
+
+            // We send initial welcome message to System channel
+            con1.MessageBuffer.Add(new ConsoleMessage("Application", "Welcome to Neoforce!", 2));
+
+            Manager.Add(tbc);
         }
 
         private void InitControls()
@@ -114,6 +183,48 @@ namespace MonoForce.Demo
             btnExit.Click += btnExit_Click;
         }
 
+        private void InitStats()
+        {
+            pnlStats = new SideBarPanel(Manager);
+            pnlStats.Init();
+            pnlStats.Passive = true;
+            pnlStats.Parent = sidebar;
+            pnlStats.Left = 16;
+            pnlStats.Width = sidebar.Width - pnlStats.Left;
+            pnlStats.Height = 64;
+            pnlStats.Top = ClientHeight - 16 - pnlStats.Height;
+            pnlStats.Anchor = Anchors.Left | Anchors.Bottom;
+            pnlStats.CanFocus = false;
+
+            lblObjects = new Label(Manager);
+            lblObjects.Init();
+            lblObjects.Parent = pnlStats;
+            lblObjects.Left = 8;
+            lblObjects.Top = 8;
+            lblObjects.Height = 16;
+            lblObjects.Width = pnlStats.Width - lblObjects.Left * 2;
+            ;
+            lblObjects.Alignment = Alignment.MiddleLeft;
+
+            lblAvgFps = new Label(Manager);
+            lblAvgFps.Init();
+            lblAvgFps.Parent = pnlStats;
+            lblAvgFps.Left = 8;
+            lblAvgFps.Top = 24;
+            lblAvgFps.Height = 16;
+            lblAvgFps.Width = pnlStats.Width - lblObjects.Left * 2;
+            lblAvgFps.Alignment = Alignment.MiddleLeft;
+
+            lblFps = new Label(Manager);
+            lblFps.Init();
+            lblFps.Parent = pnlStats;
+            lblFps.Left = 8;
+            lblFps.Top = 40;
+            lblFps.Height = 16;
+            lblFps.Width = pnlStats.Width - lblObjects.Left * 2;
+            lblFps.Alignment = Alignment.MiddleLeft;
+        }
+
         private void InitTasks()
         {
             pnlTasks = new SideBarPanel(Manager);
@@ -158,118 +269,6 @@ namespace MonoForce.Demo
             ;
             btnClose.Text = "Close";
             btnClose.Click += btnClose_Click;
-        }
-
-        private void InitStats()
-        {
-            pnlStats = new SideBarPanel(Manager);
-            pnlStats.Init();
-            pnlStats.Passive = true;
-            pnlStats.Parent = sidebar;
-            pnlStats.Left = 16;
-            pnlStats.Width = sidebar.Width - pnlStats.Left;
-            pnlStats.Height = 64;
-            pnlStats.Top = ClientHeight - 16 - pnlStats.Height;
-            pnlStats.Anchor = Anchors.Left | Anchors.Bottom;
-            pnlStats.CanFocus = false;
-
-            lblObjects = new Label(Manager);
-            lblObjects.Init();
-            lblObjects.Parent = pnlStats;
-            lblObjects.Left = 8;
-            lblObjects.Top = 8;
-            lblObjects.Height = 16;
-            lblObjects.Width = pnlStats.Width - lblObjects.Left * 2;
-            ;
-            lblObjects.Alignment = Alignment.MiddleLeft;
-
-            lblAvgFps = new Label(Manager);
-            lblAvgFps.Init();
-            lblAvgFps.Parent = pnlStats;
-            lblAvgFps.Left = 8;
-            lblAvgFps.Top = 24;
-            lblAvgFps.Height = 16;
-            lblAvgFps.Width = pnlStats.Width - lblObjects.Left * 2;
-            lblAvgFps.Alignment = Alignment.MiddleLeft;
-
-            lblFps = new Label(Manager);
-            lblFps.Init();
-            lblFps.Parent = pnlStats;
-            lblFps.Left = 8;
-            lblFps.Top = 40;
-            lblFps.Height = 16;
-            lblFps.Width = pnlStats.Width - lblObjects.Left * 2;
-            lblFps.Alignment = Alignment.MiddleLeft;
-        }
-
-        private void InitConsole()
-        {
-            var tbc = new TabControl(Manager);
-            var con1 = new Console(Manager);
-            var con2 = new Console(Manager);
-
-            // Setup of TabControl, which will be holding both consoles
-            tbc.Init();
-            tbc.AddPage("Global");
-            tbc.AddPage("Private");
-
-            tbc.Alpha = 220;
-            tbc.Left = 220;
-            tbc.Height = 220;
-            tbc.Width = 400;
-            tbc.Top = Manager.TargetHeight - tbc.Height - 32;
-
-            tbc.Movable = true;
-            tbc.Resizable = true;
-            tbc.MinimumHeight = 96;
-            tbc.MinimumWidth = 160;
-
-            tbc.TabPages[0].Add(con1);
-            tbc.TabPages[1].Add(con2);
-
-            con1.Init();
-            con1.Sender = "Console1";
-            con2.Init();
-            con2.Sender = "Console2";
-
-            con2.Width = con1.Width = tbc.TabPages[0].ClientWidth;
-            con2.Height = con1.Height = tbc.TabPages[0].ClientHeight;
-            con2.Anchor = con1.Anchor = Anchors.All;
-
-            con1.Channels.Add(new ConsoleChannel(0, "General", Color.Orange));
-            con1.Channels.Add(new ConsoleChannel(1, "Private", Color.White));
-            con1.Channels.Add(new ConsoleChannel(2, "System", Color.Yellow));
-
-            // We want to share channels and message buffer in both consoles
-            con2.Channels = con1.Channels;
-            con2.MessageBuffer = con1.MessageBuffer;
-
-            // In the second console we display only "Private" messages
-            con2.ChannelFilter.Add(1);
-
-            // Select default channels for each tab
-            con1.SelectedChannel = 0;
-            con2.SelectedChannel = 1;
-
-            // Do we want to add timestamp or channel name at the start of every message?
-            con1.MessageFormat = ConsoleMessageFormats.All;
-            con2.MessageFormat = ConsoleMessageFormats.TimeStamp;
-
-            // Handler for altering incoming message
-            con1.MessageSent += con1_MessageSent;
-
-            // We send initial welcome message to System channel
-            con1.MessageBuffer.Add(new ConsoleMessage("Application", "Welcome to Neoforce!", 2));
-
-            Manager.Add(tbc);
-        }
-
-        private void con1_MessageSent(object sender, ConsoleMessageEventArgs e)
-        {
-            if (e.Message.Channel == 0)
-            {
-                //e.Message.Text = "(!) " + e.Message.Text;
-            }
         }
     }
 }

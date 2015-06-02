@@ -9,7 +9,6 @@ namespace MonoForce.Demo
     public sealed class Central : Application
     {
         public static long Frames { get; set; }
-
         private int afps;
         private double et;
         private int fps;
@@ -32,21 +31,21 @@ namespace MonoForce.Demo
         }
 
         /// <summary>
-        /// Update the game and UI.
-        /// </summary>
-        protected override void Update(GameTime gameTime)
-        {
-            base.Update(gameTime);
-            UpdateStats(gameTime);
-        }
-
-        /// <summary>
         /// Draw the game and UI.
         /// </summary>
         protected override void Draw(GameTime gameTime)
         {
             Frames += 1;
             base.Draw(gameTime);
+        }
+
+        /// <summary>
+        /// Update the game and UI.
+        /// </summary>
+        protected override void Update(GameTime gameTime)
+        {
+            base.Update(gameTime);
+            UpdateStats(gameTime);
         }
 
         /// <summary>

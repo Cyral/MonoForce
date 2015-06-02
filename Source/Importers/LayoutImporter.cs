@@ -18,94 +18,93 @@
 //                                                            //
 ////////////////////////////////////////////////////////////////
 
-
 #region //// Using /////////////
 
 ////////////////////////////////////////////////////////////////////////////
 using System.Xml;
-using System.Collections.Generic;
-using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content.Pipeline;
 using Microsoft.Xna.Framework.Content.Pipeline.Serialization.Compiler;
-using Microsoft.Xna.Framework.Graphics;
-using System.IO;
+
 ////////////////////////////////////////////////////////////////////////////
 
 #endregion
 
-
 namespace MonoForce.Importers
 {
 
-  #region //// Importer //////////
+    #region //// Importer //////////
 
-  ////////////////////////////////////////////////////////////////////////////
-  public class LayoutXmlDocument : XmlDocument { }
-  ////////////////////////////////////////////////////////////////////////////
-  
-  ////////////////////////////////////////////////////////////////////////////
-  [ContentImporter(".xml", DisplayName = "Layout - Neoforce Controls")]
-  class LayoutImporter: ContentImporter<LayoutXmlDocument>
-  {
-		#region //// Methods ///////////
-			
-		////////////////////////////////////////////////////////////////////////////
-		public override LayoutXmlDocument Import(string filename, ContentImporterContext context)
-    {      
-      LayoutXmlDocument doc = new LayoutXmlDocument();            
-      doc.Load(filename);
-
-      return doc;
-    }
-		////////////////////////////////////////////////////////////////////////////
-			
-  	#endregion  
-  }  	
-  ////////////////////////////////////////////////////////////////////////////
-
-  #endregion
-
-  #region //// Writer ////////////
-
-  ////////////////////////////////////////////////////////////////////////////
-  [ContentTypeWriter]
-  class LayoutWriter:ContentTypeWriter<LayoutXmlDocument>
-  {
-
-    #region //// Methods ///////////
-    
     ////////////////////////////////////////////////////////////////////////////
-    protected override void Write(ContentWriter output, LayoutXmlDocument value)
-    {      
-      output.Write(value.InnerXml);              
-    }
-    ///////////////////////////////////////////////////////////////////////////
-    
-    ////////////////////////////////////////////////////////////////////////////
-    public override string GetRuntimeType(TargetPlatform targetPlatform)
+    public class LayoutXmlDocument : XmlDocument
     {
-      return typeof(LayoutXmlDocument).AssemblyQualifiedName;
     }
+
     ////////////////////////////////////////////////////////////////////////////
-    
-    ////////////////////////////////////////////////////////////////////////////    
-    public override string GetRuntimeReader(TargetPlatform targetPlatform)
-    {      
-      if (targetPlatform == TargetPlatform.Xbox360)
-      {
-        return "MonoForce.Controls.LayoutReader, MonoForce.Controls.360";
-      } 
-      else
-      {
-        return "MonoForce.Controls.LayoutReader, MonoForce.Controls";
-      } 
-    }      
+
+    ////////////////////////////////////////////////////////////////////////////
+    [ContentImporter(".xml", DisplayName = "Layout - Neoforce Controls")]
+    internal class LayoutImporter : ContentImporter<LayoutXmlDocument>
+    {
+        #region //// Methods ///////////
+
+        ////////////////////////////////////////////////////////////////////////////
+        public override LayoutXmlDocument Import(string filename, ContentImporterContext context)
+        {
+            var doc = new LayoutXmlDocument();
+            doc.Load(filename);
+
+            return doc;
+        }
+
+        ////////////////////////////////////////////////////////////////////////////
+
+        #endregion
+    }
+
     ////////////////////////////////////////////////////////////////////////////
 
     #endregion
-  } 
-  ////////////////////////////////////////////////////////////////////////////
 
-  #endregion
-  
+    #region //// Writer ////////////
+
+    ////////////////////////////////////////////////////////////////////////////
+    [ContentTypeWriter]
+    internal class LayoutWriter : ContentTypeWriter<LayoutXmlDocument>
+    {
+        #region //// Methods ///////////
+
+        ////////////////////////////////////////////////////////////////////////////
+        protected override void Write(ContentWriter output, LayoutXmlDocument value)
+        {
+            output.Write(value.InnerXml);
+        }
+
+        ///////////////////////////////////////////////////////////////////////////
+
+        ////////////////////////////////////////////////////////////////////////////
+        public override string GetRuntimeType(TargetPlatform targetPlatform)
+        {
+            return typeof (LayoutXmlDocument).AssemblyQualifiedName;
+        }
+
+        ////////////////////////////////////////////////////////////////////////////
+
+        ////////////////////////////////////////////////////////////////////////////    
+        public override string GetRuntimeReader(TargetPlatform targetPlatform)
+        {
+            if (targetPlatform == TargetPlatform.Xbox360)
+            {
+                return "MonoForce.Controls.LayoutReader, MonoForce.Controls.360";
+            }
+            return "MonoForce.Controls.LayoutReader, MonoForce.Controls";
+        }
+
+        ////////////////////////////////////////////////////////////////////////////
+
+        #endregion
+    }
+
+    ////////////////////////////////////////////////////////////////////////////
+
+    #endregion
 }

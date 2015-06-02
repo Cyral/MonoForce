@@ -1,5 +1,4 @@
 using System;
-using Microsoft.Xna.Framework;
 
 namespace MonoForce.Demo
 {
@@ -9,7 +8,7 @@ namespace MonoForce.Demo
     public static class Program
     {
         [STAThread]
-        static void Main()
+        private static void Main()
         {
             //Create an instance of the game and run it.
             using (var game = new Central())

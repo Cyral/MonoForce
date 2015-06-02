@@ -1,121 +1,104 @@
-
-
-using Microsoft.Xna.Framework;
-using System.Collections.Generic;
-using Microsoft.Xna.Framework.Graphics;
 using System;
-
+using Microsoft.Xna.Framework;
 
 namespace MonoForce.Controls
 {
+    public class StackPanel : Container
+    {
+        private const int refreshTime = 300; //ms
 
-public class StackPanel: Container
-{
+        /// </summary>
+        /// Should the stack panel refresh itself, when a control is added
+        /// <summary>
+        public bool AutoRefresh { get; set; }
 
+        public Orientation Orientation
+        {
+            get { return orientation; }
+            set
+            {
+                orientation = value;
+                CalcLayout();
+            }
+        }
 
-private Orientation orientation;
-public Orientation Orientation
-{
-get { return this.orientation; }
-set
-{
-this.orientation = value;
-this.CalcLayout();
-}
-}
-private bool autoRefresh;
+        private Orientation orientation;
+        private TimeSpan refreshTimer;
 
-/// </summary>
-/// Should the stack panel refresh itself, when a control is added
-/// <summary>
-public bool AutoRefresh
-{
-get { return autoRefresh; }
-set { autoRefresh = value; }
-}
+        public StackPanel(Manager manager, Orientation orientation) : base(manager)
+        {
+            this.orientation = orientation;
+            Color = Color.Transparent;
+            AutoRefresh = true;
+            refreshTimer = new TimeSpan(0, 0, 0, 0, refreshTime);
+        }
 
-private TimeSpan refreshTimer;
-private const int refreshTime = 300; //ms
+        public override void Add(Control control)
+        {
+            base.Add(control);
+            if (AutoRefresh) Refresh();
+        }
 
+        public override void Add(Control control, bool client)
+        {
+            base.Add(control, client);
+            if (AutoRefresh) Refresh();
+        }
 
-public StackPanel(Manager manager, Orientation orientation): base(manager)
-{
-this.orientation = orientation;
-this.Color = Color.Transparent;
-this.autoRefresh = true;
-refreshTimer = new TimeSpan(0, 0, 0, 0, refreshTime);
-}
+        protected internal override void Update(GameTime gameTime)
+        {
+            base.Update(gameTime);
 
+            if (AutoRefresh)
+            {
+                refreshTimer =
+                    refreshTimer.Subtract(TimeSpan.FromMilliseconds(gameTime.ElapsedGameTime.TotalMilliseconds));
+                if (refreshTimer.TotalMilliseconds <= 0.00)
+                {
+                    Refresh();
+                    refreshTimer = new TimeSpan(0, 0, 0, 0, refreshTime);
+                }
+            }
+        }
 
+        protected override void DrawControl(Renderer renderer, Rectangle rect, GameTime gameTime)
+        {
+            base.DrawControl(renderer, rect, gameTime);
+        }
 
-private void CalcLayout()
-{
-int top = Top;
-int left = Left;
+        protected override void OnResize(ResizeEventArgs e)
+        {
+            CalcLayout();
+            base.OnResize(e);
+        }
 
-foreach (Control c in ClientArea.Controls)
-{
-Margins m = c.Margins;
+        private void CalcLayout()
+        {
+            var top = Top;
+            var left = Left;
 
-if (orientation == Orientation.Vertical)
-{
-top += m.Top;
-c.Top = top;
-top += c.Height;
-top += m.Bottom;
-c.Left = left;
-}
+            foreach (var c in ClientArea.Controls)
+            {
+                var m = c.Margins;
 
-if (orientation == Orientation.Horizontal)
-{
-left += m.Left;
-c.Left = left;
-left += c.Width;
-left += m.Right;
-c.Top = top;
-}
-}
-}
+                if (orientation == Orientation.Vertical)
+                {
+                    top += m.Top;
+                    c.Top = top;
+                    top += c.Height;
+                    top += m.Bottom;
+                    c.Left = left;
+                }
 
-protected override void DrawControl(Renderer renderer, Rectangle rect, GameTime gameTime)
-{
-base.DrawControl(renderer, rect, gameTime);
-}
-
-protected override void OnResize(ResizeEventArgs e)
-{
-CalcLayout();
-base.OnResize(e);
-}
-
-protected internal override void Update(GameTime gameTime)
-{
-base.Update(gameTime);
-
-if (autoRefresh)
-{
-refreshTimer = refreshTimer.Subtract(TimeSpan.FromMilliseconds(gameTime.ElapsedGameTime.TotalMilliseconds));
-if (refreshTimer.TotalMilliseconds <= 0.00)
-{
-Refresh();
-refreshTimer = new TimeSpan(0, 0, 0, 0, refreshTime);
-}
-}
-}
-
-public override void Add(Control control)
-{
-base.Add(control);
-if (autoRefresh) Refresh();
-}
-
-public override void Add(Control control, bool client)
-{
-base.Add(control, client);
-if (autoRefresh) Refresh();
-}
-
-
-}
-
+                if (orientation == Orientation.Horizontal)
+                {
+                    left += m.Left;
+                    c.Left = left;
+                    left += c.Width;
+                    left += m.Right;
+                    c.Top = top;
+                }
+            }
+        }
+    }
 }
