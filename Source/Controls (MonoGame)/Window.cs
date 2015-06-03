@@ -29,7 +29,7 @@ namespace MonoForce.Controls
         /// <summary>
         public virtual bool BorderVisible
         {
-            get { return borderVisible; }
+            get { return borderVisible && !clearBackground; }
             set
             {
                 borderVisible = value;
@@ -43,7 +43,7 @@ namespace MonoForce.Controls
         /// <summary>
         public virtual bool CaptionVisible
         {
-            get { return captionVisible; }
+            get { return captionVisible && !clearBackground; }
             set
             {
                 captionVisible = value;
@@ -57,7 +57,7 @@ namespace MonoForce.Controls
         /// <summary>
         public virtual bool CloseButtonVisible
         {
-            get { return closeButtonVisible; }
+            get { return closeButtonVisible && !clearBackground; }
             set
             {
                 closeButtonVisible = value;
@@ -97,8 +97,21 @@ namespace MonoForce.Controls
         /// <summary>
         public virtual bool Shadow
         {
-            get { return shadow; }
+            get { return shadow && !clearBackground; }
             set { shadow = value; }
+        }
+
+        /// <summary>
+        /// Indicates if the window has no visible background, shadow, or borders.
+        /// </summary>
+        public virtual bool ClearBackground
+        {
+            get { return clearBackground; }
+            set
+            {
+                clearBackground = value;
+                AdjustMargins();
+            }
         }
 
         private readonly Button btnClose;
@@ -142,6 +155,11 @@ namespace MonoForce.Controls
         /// Indicates if the window shadow is drawn.
         /// <summary>
         private bool shadow = true;
+
+        /// <summary>
+        /// Indicates if the window has no visible background, shadow, or borders.
+        /// </summary>
+        private bool clearBackground = false;
 
         public Window(Manager manager) : base(manager)
         {
@@ -220,19 +238,19 @@ namespace MonoForce.Controls
         /// <summary>
         protected override void AdjustMargins()
         {
-            if (captionVisible && borderVisible)
+            if (CaptionVisible && BorderVisible)
             {
 // Adjust margins to account for the window border and caption area.
                 ClientMargins = new Margins(Skin.ClientMargins.Left, Skin.Layers[lrCaption].Height,
                     Skin.ClientMargins.Right, Skin.ClientMargins.Bottom);
             }
-            else if (!captionVisible && borderVisible)
+            else if (!CaptionVisible && BorderVisible)
             {
 // Adjust margins to account for the window border.
                 ClientMargins = new Margins(Skin.ClientMargins.Left, Skin.ClientMargins.Top, Skin.ClientMargins.Right,
                     Skin.ClientMargins.Bottom);
             }
-            else if (!borderVisible)
+            else if (!BorderVisible)
             {
 // Nothing to account for.
                 ClientMargins = new Margins(0, 0, 0, 0);
@@ -240,7 +258,7 @@ namespace MonoForce.Controls
 
             if (btnClose != null)
             {
-                btnClose.Visible = closeButtonVisible && captionVisible && borderVisible;
+                btnClose.Visible = closeButtonVisible && CaptionVisible && BorderVisible;
             }
 
             SetMovableArea();
@@ -300,11 +318,12 @@ namespace MonoForce.Controls
                 c1 = l1.Text.Colors.Enabled;
             }
 
+            if (!clearBackground)
             renderer.DrawLayer(Skin.Layers[lrWindow], rect, Skin.Layers[lrWindow].States.Enabled.Color,
                 Skin.Layers[lrWindow].States.Enabled.Index);
 
 // Need to draw the window border?
-            if (borderVisible)
+            if (BorderVisible)
             {
 // Draw caption layer or top frame layer, then draw the left, right, and bottom frame layers.
                 renderer.DrawLayer(l1, new Rectangle(rect.Left, rect.Top, rect.Width, l1.Height), s1.Color, s1.Index);
@@ -318,14 +337,14 @@ namespace MonoForce.Controls
                     s4.Color, s4.Index);
 
 // Draw the window icon if there is one and the window caption is displayed.
-                if (iconVisible && (icon != null || l5 != null) && captionVisible)
+                if (iconVisible && (icon != null || l5 != null) && CaptionVisible)
                 {
                     var i = (icon != null) ? icon : l5.Image.Resource;
                     renderer.Draw(i, GetIconRect(), Color.White);
                 }
 
                 var icosize = 0;
-                if (l5 != null && iconVisible && captionVisible)
+                if (l5 != null && iconVisible && CaptionVisible)
                 {
                     icosize = l1.Height - l1.ContentMargins.Vertical + 4 + l5.OffsetX;
                 }
@@ -483,12 +502,12 @@ namespace MonoForce.Controls
         /// <summary>
         private void SetMovableArea()
         {
-            if (captionVisible && borderVisible)
+            if (CaptionVisible && BorderVisible)
             {
                 MovableArea = new Rectangle(Skin.OriginMargins.Left, Skin.OriginMargins.Top, Width,
                     Skin.Layers[lrCaption].Height - Skin.OriginMargins.Top);
             }
-            else if (!captionVisible)
+            else if (!CaptionVisible)
             {
                 MovableArea = new Rectangle(0, 0, Width, Height);
             }

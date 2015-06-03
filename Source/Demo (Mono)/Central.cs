@@ -48,7 +48,7 @@ namespace MonoForce.Demo
             MainWindow.Init();
 
             //To emulate behavior of the Application class in the XNA version, create a full size window.
-            MainWindow.BorderVisible = false;
+            MainWindow.ClearBackground = true;
             MainWindow.Resizable = false;
             MainWindow.Movable = false;
             MainWindow.CanFocus = false;
@@ -78,7 +78,7 @@ namespace MonoForce.Demo
             Frames += 1;
 
             Manager.BeginDraw(gameTime);
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.White);
 
             // TODO: Add your drawing code here
 
