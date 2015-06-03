@@ -262,7 +262,7 @@ namespace MonoForce.Controls
             Skin = new SkinControl(Manager.Skin.Controls["SpinBox"]);
         }
 
-        protected override void DrawControl(Renderer renderer, Rectangle rect, GameTime gameTime)
+        public override void DrawControl(Renderer renderer, Rectangle rect, GameTime gameTime)
         {
             base.DrawControl(renderer, rect, gameTime);
 

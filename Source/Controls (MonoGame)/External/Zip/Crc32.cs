@@ -1,6 +1,6 @@
 using System.IO;
 
-namespace TomShane.Neoforce.External.Zip
+namespace MonoForce.External.Zip
 {
     internal class CRC32
     {

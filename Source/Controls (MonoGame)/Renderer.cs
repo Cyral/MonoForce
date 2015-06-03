@@ -1,22 +1,6 @@
-// currentMonster.Name, Color.Red.ToHex(true));
-// string.Format("You attempt to hit the [color:#FFFF0000]{0}[/color] but [color:{1}]MISS[/color]!",
-// example:
-
-// currentMonster.Name, Color.Red.ToHex(true));
-// string.Format("You attempt to hit the [color:#FFFF0000]{0}[/color] but [color:{1}]MISS[/color]!",
-// example:
-
 using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-
-// currentMonster.Name, Color.Red.ToHex(true));
-// string.Format("You attempt to hit the [color:#FFFF0000]{0}[/color] but [color:{1}]MISS[/color]!",
-// example:
-
-// currentMonster.Name, Color.Red.ToHex(true));
-// string.Format("You attempt to hit the [color:#FFFF0000]{0}[/color] but [color:{1}]MISS[/color]!",
-// example:
 
 namespace MonoForce.Controls
 {
@@ -36,14 +20,6 @@ namespace MonoForce.Controls
         None,
         Additive
     }
-
-// currentMonster.Name, Color.Red.ToHex(true));
-// string.Format("You attempt to hit the [color:#FFFF0000]{0}[/color] but [color:{1}]MISS[/color]!",
-// example:
-
-// currentMonster.Name, Color.Red.ToHex(true));
-// string.Format("You attempt to hit the [color:#FFFF0000]{0}[/color] but [color:{1}]MISS[/color]!",
-// example:
 
     /// </summary>
     /// Contains state information for the GraphicsDevice.
@@ -70,10 +46,6 @@ namespace MonoForce.Controls
         /// <summary>
         public readonly SamplerState SamplerState;
 
-// currentMonster.Name, Color.Red.ToHex(true));
-// string.Format("You attempt to hit the [color:#FFFF0000]{0}[/color] but [color:{1}]MISS[/color]!",
-// example:
-
         /// </summary>
         /// <summary>
         public DeviceStates()
@@ -92,9 +64,6 @@ namespace MonoForce.Controls
             BlendState.ColorWriteChannels2 = BlendState.AlphaBlend.ColorWriteChannels2;
             BlendState.ColorWriteChannels3 = BlendState.AlphaBlend.ColorWriteChannels3;
             BlendState.MultiSampleMask = BlendState.AlphaBlend.MultiSampleMask;
-// currentMonster.Name, Color.Red.ToHex(true));
-// string.Format("You attempt to hit the [color:#FFFF0000]{0}[/color] but [color:{1}]MISS[/color]!",
-// example:
 
 // Default rasterizer state settings.
             RasterizerState = new RasterizerState();
@@ -104,14 +73,7 @@ namespace MonoForce.Controls
             RasterizerState.MultiSampleAntiAlias = RasterizerState.CullNone.MultiSampleAntiAlias;
             RasterizerState.ScissorTestEnable = RasterizerState.CullNone.ScissorTestEnable;
             RasterizerState.SlopeScaleDepthBias = RasterizerState.CullNone.SlopeScaleDepthBias;
-// currentMonster.Name, Color.Red.ToHex(true));
-// string.Format("You attempt to hit the [color:#FFFF0000]{0}[/color] but [color:{1}]MISS[/color]!",
-// example:
-
             RasterizerState.ScissorTestEnable = true;
-// currentMonster.Name, Color.Red.ToHex(true));
-// string.Format("You attempt to hit the [color:#FFFF0000]{0}[/color] but [color:{1}]MISS[/color]!",
-// example:
 
 // Default sampler state settings.
             SamplerState = new SamplerState();
@@ -122,9 +84,6 @@ namespace MonoForce.Controls
             SamplerState.MaxAnisotropy = SamplerState.AnisotropicClamp.MaxAnisotropy;
             SamplerState.MaxMipLevel = SamplerState.AnisotropicClamp.MaxMipLevel;
             SamplerState.MipMapLevelOfDetailBias = SamplerState.AnisotropicClamp.MipMapLevelOfDetailBias;
-// currentMonster.Name, Color.Red.ToHex(true));
-// string.Format("You attempt to hit the [color:#FFFF0000]{0}[/color] but [color:{1}]MISS[/color]!",
-// example:
 
 // Default depth stencil state settings.
             DepthStencilState = new DepthStencilState();
@@ -132,35 +91,13 @@ namespace MonoForce.Controls
         }
     }
 
-// currentMonster.Name, Color.Red.ToHex(true));
-// string.Format("You attempt to hit the [color:#FFFF0000]{0}[/color] but [color:{1}]MISS[/color]!",
-// example:
-
-// currentMonster.Name, Color.Red.ToHex(true));
-// string.Format("You attempt to hit the [color:#FFFF0000]{0}[/color] but [color:{1}]MISS[/color]!",
-// example:
 
     /// </summary>
     /// Provides methods for drawing control layers and strings.
     /// <summary>
     public class Renderer : Component
     {
-// currentMonster.Name, Color.Red.ToHex(true));
-// string.Format("You attempt to hit the [color:#FFFF0000]{0}[/color] but [color:{1}]MISS[/color]!",
-// example:
-
         public Matrix? CustomMatrix { get; set; }
-// currentMonster.Name, Color.Red.ToHex(true));
-// string.Format("You attempt to hit the [color:#FFFF0000]{0}[/color] but [color:{1}]MISS[/color]!",
-// example:
-
-// currentMonster.Name, Color.Red.ToHex(true));
-// string.Format("You attempt to hit the [color:#FFFF0000]{0}[/color] but [color:{1}]MISS[/color]!",
-// example:
-
-// currentMonster.Name, Color.Red.ToHex(true));
-// string.Format("You attempt to hit the [color:#FFFF0000]{0}[/color] but [color:{1}]MISS[/color]!",
-// example:
 
         /// </summary>
         /// Accesses the renderer's sprite batch object.
@@ -170,36 +107,23 @@ namespace MonoForce.Controls
             get { return sb; }
         }
 
+        private readonly char[] newLine = Environment.NewLine.ToCharArray();
+
         /// </summary>
         /// Various graphics device settings for the renderer.
         /// <summary>
         private readonly DeviceStates states = new DeviceStates();
 
         private BlendingMode bmode = BlendingMode.Default;
-// currentMonster.Name, Color.Red.ToHex(true));
-// string.Format("You attempt to hit the [color:#FFFF0000]{0}[/color] but [color:{1}]MISS[/color]!",
-// example:
-
-// currentMonster.Name, Color.Red.ToHex(true));
-// string.Format("You attempt to hit the [color:#FFFF0000]{0}[/color] but [color:{1}]MISS[/color]!",
-// example:
+        private string color = "Red";
+        private string[] msgs;
 
         /// </summary>
         /// Sprite batch object used for drawing.
         /// <summary>
         private SpriteBatch sb;
 
-// currentMonster.Name, Color.Red.ToHex(true));
-// string.Format("You attempt to hit the [color:#FFFF0000]{0}[/color] but [color:{1}]MISS[/color]!",
-// example:
-
-// currentMonster.Name, Color.Red.ToHex(true));
-// string.Format("You attempt to hit the [color:#FFFF0000]{0}[/color] but [color:{1}]MISS[/color]!",
-// example:
-
-// currentMonster.Name, Color.Red.ToHex(true));
-// string.Format("You attempt to hit the [color:#FFFF0000]{0}[/color] but [color:{1}]MISS[/color]!",
-// example:
+        private string[] splits;
 
         /// <param name="manager">GUI manager for creating the sprite batch.</param>
         /// </summary>
@@ -310,10 +234,6 @@ namespace MonoForce.Controls
             return rect;
         }
 
-// currentMonster.Name, Color.Red.ToHex(true));
-// string.Format("You attempt to hit the [color:#FFFF0000]{0}[/color] but [color:{1}]MISS[/color]!",
-// example:
-
         /// BlendingMode.Default will begin drawing using the default blend state settings.
         /// </param>
         /// <param name="mode">
@@ -331,9 +251,7 @@ namespace MonoForce.Controls
                 {
                     state = BlendState.Additive;
                 }
-// currentMonster.Name, Color.Red.ToHex(true));
-// string.Format("You attempt to hit the [color:#FFFF0000]{0}[/color] but [color:{1}]MISS[/color]!",
-// example:
+
 
                 if (CustomMatrix.HasValue)
                 {
@@ -364,10 +282,6 @@ namespace MonoForce.Controls
             }
         }
 
-// currentMonster.Name, Color.Red.ToHex(true));
-// string.Format("You attempt to hit the [color:#FFFF0000]{0}[/color] but [color:{1}]MISS[/color]!",
-// example:
-
         /// <param name="color">Color tint to apply to the image.</param>
         /// <param name="destination">Destination region where the image will be drawn.</param>
         /// <param name="texture">Image to draw.</param>
@@ -383,10 +297,6 @@ namespace MonoForce.Controls
             }
         }
 
-// currentMonster.Name, Color.Red.ToHex(true));
-// string.Format("You attempt to hit the [color:#FFFF0000]{0}[/color] but [color:{1}]MISS[/color]!",
-// example:
-
         public virtual void Draw(Texture2D texture, Rectangle destination, Rectangle source, Color color)
         {
 // Valid source region and destination region?
@@ -395,10 +305,6 @@ namespace MonoForce.Controls
                 sb.Draw(texture, destination, source, color, 0.0f, Vector2.Zero, SpriteEffects.None, Manager.GlobalDepth);
             }
         }
-
-// currentMonster.Name, Color.Red.ToHex(true));
-// string.Format("You attempt to hit the [color:#FFFF0000]{0}[/color] but [color:{1}]MISS[/color]!",
-// example:
 
         /// <param name="color">Color tint to apply to the image.</param>
         /// <param name="top">Destination Y position.</param>
@@ -413,10 +319,6 @@ namespace MonoForce.Controls
                 Manager.GlobalDepth);
         }
 
-// currentMonster.Name, Color.Red.ToHex(true));
-// string.Format("You attempt to hit the [color:#FFFF0000]{0}[/color] but [color:{1}]MISS[/color]!",
-// example:
-
         public virtual void Draw(Texture2D texture, int left, int top, Rectangle source, Color color)
         {
 // Valid source region?
@@ -424,6 +326,70 @@ namespace MonoForce.Controls
             {
                 sb.Draw(texture, new Vector2(left, top), source, color, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None,
                     Manager.GlobalDepth);
+            }
+        }
+
+        public virtual void DrawColorFormattedText(SpriteFont font, Vector2 position, string text, Color defaultColor)
+        {
+            // only bother if we have color commands involved
+            if (text.Contains("[color:"))
+            {
+                // how far in x to offset from position
+                var currentOffsetX = 0;
+                var currentOffsetY = 0;
+
+
+                var newLines = text.Split(newLine, StringSplitOptions.RemoveEmptyEntries);
+                for (var i = 0; i < newLines.Length; i++)
+                {
+                    currentOffsetX = 0;
+                    var line = newLines[i];
+                    currentOffsetY = i * font.LineSpacing;
+                    splits = line.Split(Manager.StringColorStart, StringSplitOptions.RemoveEmptyEntries);
+                    foreach (var str in splits)
+                    {
+                        // if this section starts with a color
+                        if (str.StartsWith(":"))
+                        {
+                            // #AARRGGBB
+                            // #FFFFFFFFF
+                            // #123456789
+                            var end = str.IndexOf("]");
+
+                            color = str.Substring(1, end - 1);
+
+                            // any subsequent msgs after the [/color] tag are defaultColor
+                            msgs = str.Substring(end + 1)
+                                .Split(Manager.StringColorEnd, StringSplitOptions.RemoveEmptyEntries);
+                            if (msgs.Length > 0)
+                            {
+                                // always draw [0] there should be at least one
+                                sb.DrawString(font, msgs[0], position + new Vector2(currentOffsetX, currentOffsetY),
+                                    color.FromName());
+                                currentOffsetX += (int)font.MeasureString(msgs[0]).X;
+
+                                // there should only ever be one other string or none
+                                if (msgs.Length == 2)
+                                {
+                                    sb.DrawString(font, msgs[1], position + new Vector2(currentOffsetX, currentOffsetY),
+                                        defaultColor);
+                                    currentOffsetX += (int)font.MeasureString(msgs[1]).X;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            sb.DrawString(font, str, position + new Vector2(currentOffsetX, currentOffsetY),
+                                defaultColor);
+                            currentOffsetX += (int)font.MeasureString(str).X;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                // just draw the string as ordered
+                sb.DrawString(font, text, position, defaultColor);
             }
         }
 
@@ -610,225 +576,303 @@ namespace MonoForce.Controls
             }
         }
 
-// currentMonster.Name, Color.Red.ToHex(true));
-// string.Format("You attempt to hit the [color:#FFFF0000]{0}[/color] but [color:{1}]MISS[/color]!",
-// example:
-
-        public virtual void DrawString(SpriteFont font, string text, int left, int top, Color color)
+        /// <summary>
+        /// Draws a string at the specified location.
+        /// </summary>
+        /// <param name="font">Sprite font used for drawing text.</param>
+        /// <param name="text">Text to draw.</param>
+        /// <param name="left">Starting X position of the text.</param>
+        /// <param name="top">Starting Y position of the text.</param>
+        /// <param name="color">Color of the text.</param>
+        public virtual void DrawString(SpriteFont font, string text, float left, float top, Color color,
+            bool DrawFormattedText = true)
         {
-            sb.DrawString(font, text, new Vector2(left, top), color, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None,
-                Manager.GlobalDepth);
+            if (DrawFormattedText)
+                DrawColorFormattedText(font, new Vector2(left, top), text, color);
+            else
+                sb.DrawString(font, text, new Vector2(left, top), color);
         }
 
-// currentMonster.Name, Color.Red.ToHex(true));
-// string.Format("You attempt to hit the [color:#FFFF0000]{0}[/color] but [color:{1}]MISS[/color]!",
-// example:
-
-        public virtual void DrawString(SpriteFont font, string text, Rectangle rect, Color color, Alignment alignment)
-        {
-            DrawString(font, text, rect, color, alignment, 0, 0, true);
-        }
-
-// currentMonster.Name, Color.Red.ToHex(true));
-// string.Format("You attempt to hit the [color:#FFFF0000]{0}[/color] but [color:{1}]MISS[/color]!",
-// example:
-
+        /// <summary>
+        /// Draws a string aligned within the specified region.
+        /// </summary>
+        /// <param name="font">Sprite font used for drawing text.</param>
+        /// <param name="text">Text to draw.</param>
+        /// <param name="rect">Destination region where text should be drawn.</param>
+        /// <param name="color">Color of the text.</param>
+        /// <param name="alignment">Indicates how the text is aligned within the destination region.</param>
         public virtual void DrawString(SpriteFont font, string text, Rectangle rect, Color color, Alignment alignment,
-            bool ellipsis)
+            bool DrawFormattedText = true)
         {
-            DrawString(font, text, rect, color, alignment, 0, 0, ellipsis);
+            DrawString(font, text, rect, color, alignment, 0, 0, true, DrawFormattedText);
         }
 
-// currentMonster.Name, Color.Red.ToHex(true));
-// string.Format("You attempt to hit the [color:#FFFF0000]{0}[/color] but [color:{1}]MISS[/color]!",
-// example:
-
-        public virtual void DrawString(Control control, SkinLayer layer, string text, Rectangle rect)
+        /// <summary>
+        /// Draw a string aligned within the specified region.
+        /// </summary>
+        /// <param name="font">Sprite font used for drawing text.</param>
+        /// <param name="text">Text to draw.</param>
+        /// <param name="rect">Destination region where text should be drawn.</param>
+        /// <param name="color">Color of the text.</param>
+        /// <param name="alignment">Indicates how the text is aligned within the destination region.</param>
+        /// <param name="ellipsis">Indicates if text that doesn't fit within the specified region should be truncated with "..."</param>
+        public virtual void DrawString(SpriteFont font, string text, Rectangle rect, Color color, Alignment alignment,
+            bool ellipsis, bool DrawFormattedText = true)
         {
-            DrawString(control, layer, text, rect, true, 0, 0, true);
+            DrawString(font, text, rect, color, alignment, 0, 0, ellipsis, DrawFormattedText);
         }
 
-// currentMonster.Name, Color.Red.ToHex(true));
-// string.Format("You attempt to hit the [color:#FFFF0000]{0}[/color] but [color:{1}]MISS[/color]!",
-// example:
-
-        public virtual void DrawString(Control control, SkinLayer layer, string text, Rectangle rect, ControlState state)
+        /// <summary>
+        /// Draws a string in the region on the specified layer of the control.
+        /// </summary>
+        /// <param name="control">Control to draw the text on.</param>
+        /// <param name="layer">Control layer to draw the text on.</param>
+        /// <param name="text">Text to draw.</param>
+        /// <param name="rect">Destination region where text should be drawn.</param>
+        public virtual void DrawString(Control control, SkinLayer layer, string text, Rectangle rect,
+            bool DrawFormattedText = true)
         {
-            DrawString(control, layer, text, rect, state, true, 0, 0, true);
+            DrawString(control, layer, text, rect, true, 0, 0, true, DrawFormattedText);
         }
 
-// currentMonster.Name, Color.Red.ToHex(true));
-// string.Format("You attempt to hit the [color:#FFFF0000]{0}[/color] but [color:{1}]MISS[/color]!",
-// example:
-
-        public virtual void DrawString(Control control, SkinLayer layer, string text, Rectangle rect, bool margins)
-        {
-            DrawString(control, layer, text, rect, margins, 0, 0, true);
-        }
-
-// currentMonster.Name, Color.Red.ToHex(true));
-// string.Format("You attempt to hit the [color:#FFFF0000]{0}[/color] but [color:{1}]MISS[/color]!",
-// example:
-
+        /// <summary>
+        /// Draws a string in the region on the specified layer of the control.
+        /// </summary>
+        /// <param name="control">Control to draw the text on.</param>
+        /// <param name="layer">Control layer to draw the text on.</param>
+        /// <param name="text">Text to draw.</param>
+        /// <param name="rect">Destination region where text should be drawn.</param>
+        /// <param name="state">Defines the control state used when drawing.</param>
         public virtual void DrawString(Control control, SkinLayer layer, string text, Rectangle rect, ControlState state,
-            bool margins)
+            bool DrawFormattedText = true)
         {
-            DrawString(control, layer, text, rect, state, margins, 0, 0, true);
+            DrawString(control, layer, text, rect, state, true, 0, 0, true, DrawFormattedText);
         }
 
-// currentMonster.Name, Color.Red.ToHex(true));
-// string.Format("You attempt to hit the [color:#FFFF0000]{0}[/color] but [color:{1}]MISS[/color]!",
-// example:
-
+        /// <summary>
+        /// Draws a string in the region on the specified layer of the control.
+        /// </summary>
+        /// <param name="control">Control to draw the text on.</param>
+        /// <param name="layer">Control layer to draw the text on.</param>
+        /// <param name="text">Text to draw.</param>
+        /// <param name="rect">Destination region where text should be drawn.</param>
+        /// <param name="margins">Respect the control margins when positioning text?</param>
         public virtual void DrawString(Control control, SkinLayer layer, string text, Rectangle rect, bool margins,
-            int ox, int oy)
+            bool DrawFormattedText = true)
         {
-            DrawString(control, layer, text, rect, margins, ox, oy, true);
+            DrawString(control, layer, text, rect, margins, 0, 0, true, DrawFormattedText);
         }
 
-// currentMonster.Name, Color.Red.ToHex(true));
-// string.Format("You attempt to hit the [color:#FFFF0000]{0}[/color] but [color:{1}]MISS[/color]!",
-// example:
-
+        /// <summary>
+        /// Draws the text in the supplied region on the specified layer of the control.
+        /// </summary>
+        /// <param name="control">Control to draw the text on.</param>
+        /// <param name="layer">Control layer to draw the text on.</param>
+        /// <param name="text">Text to draw.</param>
+        /// <param name="rect">Destination region where text should be drawn.</param>
+        /// <param name="state">Control state to grab text color information from.</param>
+        /// <param name="margins">Respect the control margins when positioning text?</param>
         public virtual void DrawString(Control control, SkinLayer layer, string text, Rectangle rect, ControlState state,
-            bool margins, int ox, int oy)
+            bool margins, bool DrawFormattedText = true)
         {
-            DrawString(control, layer, text, rect, state, margins, ox, oy, true);
+            DrawString(control, layer, text, rect, state, margins, 0, 0, true, DrawFormattedText);
         }
 
-// currentMonster.Name, Color.Red.ToHex(true));
-// string.Format("You attempt to hit the [color:#FFFF0000]{0}[/color] but [color:{1}]MISS[/color]!",
-// example:
-
+        /// <summary>
+        /// Draws the text in the supplied region on the specified layer of the control.
+        /// </summary>
+        /// <param name="control">Control to draw the text on.</param>
+        /// <param name="layer">Control layer to draw the text on.</param>
+        /// <param name="text">Text to draw.</param>
+        /// <param name="rect">Destination region where text should be drawn.</param>
+        /// <param name="margins">Respect the margins of the control when positioning text?</param>
+        /// <param name="ox">X offset to apply when positioning text in the defined region.</param>
+        /// <param name="oy">Y offset to apply when positioning text in the defined region.</param>
         public virtual void DrawString(Control control, SkinLayer layer, string text, Rectangle rect, bool margins,
-            int ox, int oy, bool ellipsis)
+            int ox, int oy, bool DrawFormattedText = true)
         {
-            DrawString(control, layer, text, rect, control.ControlState, margins, ox, oy, ellipsis);
+            DrawString(control, layer, text, rect, margins, ox, oy, true, DrawFormattedText);
         }
 
-// currentMonster.Name, Color.Red.ToHex(true));
-// string.Format("You attempt to hit the [color:#FFFF0000]{0}[/color] but [color:{1}]MISS[/color]!",
-// example:
-
+        /// <summary>
+        /// Draws the text in the supplied region on the specified layer of the control.
+        /// </summary>
+        /// <param name="control">Control to draw the text on.</param>
+        /// <param name="layer">Control layer to draw the text on.</param>
+        /// <param name="text">Text to draw.</param>
+        /// <param name="rect">Destination region where text should be drawn.</param>
+        /// <param name="state">Control state to get the text color from.</param>
+        /// <param name="margins">Respect the margins of the control when positioning text?</param>
+        /// <param name="ox">X offset to apply when positioning text in the defined region.</param>
+        /// <param name="oy">Y offset to apply when positioning text in the defined region.</param>
         public virtual void DrawString(Control control, SkinLayer layer, string text, Rectangle rect, ControlState state,
-            bool margins, int ox, int oy, bool ellipsis)
+            bool margins, int ox, int oy, bool DrawFormattedText = true)
+        {
+            DrawString(control, layer, text, rect, state, margins, ox, oy, true, DrawFormattedText);
+        }
+
+        /// <summary>
+        /// Draws the text in the supplied region on the specified layer of the control.
+        /// </summary>
+        /// <param name="control">Control to draw the text on.</param>
+        /// <param name="layer">Control layer to draw the text on.</param>
+        /// <param name="text">Text to draw.</param>
+        /// <param name="rect">Destination region where text should be drawn.</param>
+        /// <param name="margins">Respect the margins of the control when positioning text?</param>
+        /// <param name="ox">X offset to apply when positioning text in the defined region.</param>
+        /// <param name="oy">Y offset to apply when positioning text in the defined region.</param>
+        /// <param name="ellipsis">Indicates if text that doesn't fit in the specified region should be truncated with "..."</param>
+        public virtual void DrawString(Control control, SkinLayer layer, string text, Rectangle rect, bool margins,
+            int ox, int oy, bool ellipsis, bool DrawFormattedText = true)
+        {
+            DrawString(control, layer, text, rect, control.ControlState, margins, ox, oy, ellipsis, DrawFormattedText);
+        }
+
+        /// <summary>
+        /// Draws the text in the supplied region on the specified layer of the control
+        /// </summary>
+        /// <param name="control">Control to draw the text on.</param>
+        /// <param name="layer">Control layer to draw the text on.</param>
+        /// <param name="text">Text to draw.</param>
+        /// <param name="rect">Destination region where text should be drawn.</param>
+        /// <param name="state">Control state to get the text color from.</param>
+        /// <param name="margins">Respect the control margins when positioning text?</param>
+        /// <param name="ox">X offset to apply when positioning text in the defined region.</param>
+        /// <param name="oy">Y offset to apply when positioning text in the defined region.</param>
+        /// <param name="ellipsis">Indicates if text that doesn't fit in the specified region should be truncated with "..."</param>
+        public virtual void DrawString(Control control, SkinLayer layer, string text, Rectangle rect, ControlState state,
+            bool margins, int ox, int oy, bool ellipsis, bool DrawFormattedText = true)
         {
             var col = Color.White;
-// currentMonster.Name, Color.Red.ToHex(true));
-// string.Format("You attempt to hit the [color:#FFFF0000]{0}[/color] but [color:{1}]MISS[/color]!",
-// example:
 
-// Layer has text component defined?
+            // Layer has text component defined?
             if (layer.Text != null)
             {
-// And it has margins?
+                // And it has margins?
                 if (margins)
                 {
-// Grab the layer's margins and update the destination region to account for them.
+                    // Grab the layer's margins and update the destination region to account for them.
                     var m = layer.ContentMargins;
                     rect = new Rectangle(rect.Left + m.Left, rect.Top + m.Top, rect.Width - m.Horizontal,
                         rect.Height - m.Vertical);
                 }
-// currentMonster.Name, Color.Red.ToHex(true));
-// string.Format("You attempt to hit the [color:#FFFF0000]{0}[/color] but [color:{1}]MISS[/color]!",
-// example:
 
-// Grab the text color of the Hovered state?
+                // Grab the text color of the Hovered state?
                 if (state == ControlState.Hovered && (layer.States.Hovered.Index != -1))
                 {
                     col = layer.Text.Colors.Hovered;
                 }
-// Grab the text color of the Pressed state?
+
+                // Grab the text color of the Pressed state?
                 else if (state == ControlState.Pressed)
                 {
                     col = layer.Text.Colors.Pressed;
                 }
-// Grab the text color of the Focused state?
+
+                // Grab the text color of the Focused state?
                 else if (state == ControlState.Focused ||
                          (control.Focused && state == ControlState.Hovered && layer.States.Hovered.Index == -1))
                 {
                     col = layer.Text.Colors.Focused;
                 }
-// Grab the text color of the Disabled state?
+
+                // Grab the text color of the Disabled state?
                 else if (state == ControlState.Disabled)
                 {
                     col = layer.Text.Colors.Disabled;
                 }
-// Grab the text color of the Enabled state.
+
+                // Grab the text color of the Enabled state.
                 else
                 {
                     col = layer.Text.Colors.Enabled;
                 }
-// currentMonster.Name, Color.Red.ToHex(true));
-// string.Format("You attempt to hit the [color:#FFFF0000]{0}[/color] but [color:{1}]MISS[/color]!",
-// example:
 
-// Valid text string supplied?
+                // Valid text string supplied?
                 if (text != null && text != "")
                 {
                     var font = layer.Text;
+
+                    // Control has a defined color to override if not disabled?
                     if (control.TextColor != Control.UndefinedColor && control.ControlState != ControlState.Disabled)
+                    {
                         col = control.TextColor;
+                    }
+
+                    // Pass the updated arguments off to the real draw function.
                     DrawString(font.Font.Resource, text, rect, col, font.Alignment, font.OffsetX + ox, font.OffsetY + oy,
-                        ellipsis);
+                        ellipsis, DrawFormattedText);
                 }
             }
         }
 
-// currentMonster.Name, Color.Red.ToHex(true));
-// string.Format("You attempt to hit the [color:#FFFF0000]{0}[/color] but [color:{1}]MISS[/color]!",
-// example:
-
+        /// <summary>
+        /// Draws text in the specified region.
+        /// </summary>
+        /// <param name="font">Sprite font used for drawing text.</param>
+        /// <param name="text">Text to draw.</param>
+        /// <param name="rect">Destination region where text should be drawn.</param>
+        /// <param name="color">Color of the text.</param>
+        /// <param name="alignment">Indicates how the text is aligned within the destination region.</param>
+        /// <param name="offsetX">X offset to apply when positioning the text in the defined region.</param>
+        /// <param name="offsetY">Y offset to apply when positioning the text in the defined region.</param>
+        /// <param name="ellipsis">Indicates if text that doesn't fit within the specified region should be truncated with "..."</param>
         public virtual void DrawString(SpriteFont font, string text, Rectangle rect, Color color, Alignment alignment,
-            int offsetX, int offsetY, bool ellipsis)
+            int offsetX, int offsetY, bool ellipsis, bool DrawFormattedText = true)
         {
-// currentMonster.Name, Color.Red.ToHex(true));
-// string.Format("You attempt to hit the [color:#FFFF0000]{0}[/color] but [color:{1}]MISS[/color]!",
-// example:
-
-// Truncate text that doesn't fit?
+            // Truncate text that doesn't fit?
             if (ellipsis)
             {
                 const string elli = "...";
-                var size = (int)Math.Ceiling(font.MeasureString(text).X);
-// Text is wider then the destination region?
+
+                // Get the width of the text string.
+                var size = (int)Math.Ceiling(font.MeasureRichString(text, Manager, DrawFormattedText).X);
+
+                // Text is wider then the destination region?
                 if (size > rect.Width)
                 {
-                    var es = (int)Math.Ceiling(font.MeasureString(elli).X);
+                    // Don't forget to account for the length of the "..." string.
+                    var es = (int)Math.Ceiling(font.MeasureRichString(elli, Manager, DrawFormattedText).X);
                     for (var i = text.Length - 1; i > 0; i--)
                     {
                         var c = 1;
-// Remove two letters if the preceding character is a space.
+
+                        // Remove two letters if the preceding character is a space.
                         if (char.IsWhiteSpace(text[i - 1]))
                         {
                             c = 2;
                             i--;
                         }
-// Chop off the tail of the string and remeasure the width.
+
+                        // Chop off the tail of the string and remeasure the width.
                         text = text.Remove(i, c);
-                        size = (int)Math.Ceiling(font.MeasureString(text).X);
-// Text is short enough?
+                        size = (int)Math.Ceiling(font.MeasureRichString(text, Manager, DrawFormattedText).X);
+
+                        // Text is short enough?
                         if (size + es <= rect.Width)
                         {
                             break;
                         }
                     }
-// Append the ellipsis to the truncated string.
+
+                    // Append the ellipsis to the truncated string.
                     text += elli;
                 }
             }
 
-// Destination region is not degenerate?
+            // Destination region is not degenerate?
             if (rect.Width > 0 && rect.Height > 0)
             {
-// Text starts from the destination region origin.
+                // Text starts from the destination region origin.
                 var pos = new Vector2(rect.Left, rect.Top);
-                var size = font.MeasureString(text);
+
+                // Get the size of the text string so we can align it properly.
+                var size = font.MeasureRichString(text, Manager, DrawFormattedText);
 
                 var x = 0;
                 var y = 0;
 
-// Adjust the text position to account for the specified alignment.
+                // Adjust the text position to account for the specified alignment.
                 switch (alignment)
                 {
                     case Alignment.TopLeft:
@@ -858,23 +902,20 @@ namespace MonoForce.Controls
                         y = rect.Height - (int)size.Y;
                         break;
 
-                    default:
+                    default: // case Alignment.MiddleCenter:
                         x = GetTextCenter(rect.Width, size.X);
                         y = GetTextCenter(rect.Height, size.Y);
                         break;
                 }
 
-// Add the text position offsets to the mix.
+                // Add the text position offsets to the mix.
                 pos.X = (int)(pos.X + x);
                 pos.Y = (int)(pos.Y + y);
 
-                DrawString(font, text, (int)pos.X + offsetX, (int)pos.Y + offsetY, color);
+                // Draw the string.
+                DrawString(font, text, (int)pos.X + offsetX, (int)pos.Y + offsetY, color, DrawFormattedText);
             }
         }
-
-// currentMonster.Name, Color.Red.ToHex(true));
-// string.Format("You attempt to hit the [color:#FFFF0000]{0}[/color] but [color:{1}]MISS[/color]!",
-// example:
 
         public virtual void DrawTileTexture(Texture2D texture, Rectangle destination, Color color)
         {
@@ -882,9 +923,7 @@ namespace MonoForce.Controls
             if (destination.Width > 0 && destination.Height > 0)
             {
                 End();
-// currentMonster.Name, Color.Red.ToHex(true));
-// string.Format("You attempt to hit the [color:#FFFF0000]{0}[/color] but [color:{1}]MISS[/color]!",
-// example:
+
 
                 if (CustomMatrix.HasValue)
                 {
@@ -899,18 +938,12 @@ namespace MonoForce.Controls
                 }
                 sb.Draw(texture, new Vector2(destination.X, destination.Y), destination, color, 0, Vector2.Zero, 1,
                     SpriteEffects.None, 0);
-// currentMonster.Name, Color.Red.ToHex(true));
-// string.Format("You attempt to hit the [color:#FFFF0000]{0}[/color] but [color:{1}]MISS[/color]!",
-// example:
+
 
                 End();
                 Begin(bmode);
             }
         }
-
-// currentMonster.Name, Color.Red.ToHex(true));
-// string.Format("You attempt to hit the [color:#FFFF0000]{0}[/color] but [color:{1}]MISS[/color]!",
-// example:
 
         /// </summary>
         /// Ends drawing of batched objects.
@@ -920,18 +953,6 @@ namespace MonoForce.Controls
             sb.End();
         }
 
-// currentMonster.Name, Color.Red.ToHex(true));
-// string.Format("You attempt to hit the [color:#FFFF0000]{0}[/color] but [color:{1}]MISS[/color]!",
-// example:
-
-// currentMonster.Name, Color.Red.ToHex(true));
-// string.Format("You attempt to hit the [color:#FFFF0000]{0}[/color] but [color:{1}]MISS[/color]!",
-// example:
-
-// currentMonster.Name, Color.Red.ToHex(true));
-// string.Format("You attempt to hit the [color:#FFFF0000]{0}[/color] but [color:{1}]MISS[/color]!",
-// example:
-
         /// </summary>
         /// Initializes the renderer.
         /// <summary>
@@ -939,18 +960,6 @@ namespace MonoForce.Controls
         {
             base.Init();
         }
-
-// currentMonster.Name, Color.Red.ToHex(true));
-// string.Format("You attempt to hit the [color:#FFFF0000]{0}[/color] but [color:{1}]MISS[/color]!",
-// example:
-
-// currentMonster.Name, Color.Red.ToHex(true));
-// string.Format("You attempt to hit the [color:#FFFF0000]{0}[/color] but [color:{1}]MISS[/color]!",
-// example:
-
-// currentMonster.Name, Color.Red.ToHex(true));
-// string.Format("You attempt to hit the [color:#FFFF0000]{0}[/color] but [color:{1}]MISS[/color]!",
-// example:
 
         /// <param name="disposing"></param>
         /// </summary>

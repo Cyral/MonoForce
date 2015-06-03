@@ -52,7 +52,7 @@ namespace MonoForce.Controls
             Skin = Manager.Skin.Controls["ToolTip"];
         }
 
-        protected override void DrawControl(Renderer renderer, Rectangle rect, GameTime gameTime)
+        public override void DrawControl(Renderer renderer, Rectangle rect, GameTime gameTime)
         {
             renderer.DrawLayer(this, Skin.Layers[0], rect);
             renderer.DrawString(this, Skin.Layers[0], Text, rect, true);

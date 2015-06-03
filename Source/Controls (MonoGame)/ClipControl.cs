@@ -120,7 +120,7 @@ namespace MonoForce.Controls
         {
         }
 
-        protected override void DrawControl(Renderer renderer, Rectangle rect, GameTime gameTime)
+        public override void DrawControl(Renderer renderer, Rectangle rect, GameTime gameTime)
         {
             base.DrawControl(renderer, rect, gameTime);
         }

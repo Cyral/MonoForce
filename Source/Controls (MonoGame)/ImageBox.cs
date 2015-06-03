@@ -116,7 +116,7 @@ namespace MonoForce.Controls
         /// <summary>
         public event EventHandler SizeModeChanged;
 
-        protected override void DrawControl(Renderer renderer, Rectangle rect, GameTime gameTime)
+        public override void DrawControl(Renderer renderer, Rectangle rect, GameTime gameTime)
         {
             if (image != null)
             {

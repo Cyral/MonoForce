@@ -212,7 +212,7 @@ namespace MonoForce.Controls
             base.Dispose(disposing);
         }
 
-        protected override void DrawControl(Renderer renderer, Rectangle rect, GameTime gameTime)
+        public override void DrawControl(Renderer renderer, Rectangle rect, GameTime gameTime)
         {
 // Toggle button in pressed state?
             if (mode == ButtonMode.PushButton && pushed)
@@ -260,6 +260,13 @@ namespace MonoForce.Controls
             {
                 renderer.DrawString(this, layer, Text, rect, true, ox, oy);
             }
+        }
+
+        protected virtual Rectangle DrawText(Renderer renderer, Rectangle rect, SkinLayer layer, int ox, int oy)
+        {
+            // Draw the button text.
+            renderer.DrawString(this, layer, Text, rect, true, ox, oy, DrawFormattedText);
+            return rect;
         }
 
         /// <param name="e"></param>

@@ -72,7 +72,7 @@ namespace MonoForce.Controls
             base.Dispose(disposing);
         }
 
-        protected override void DrawControl(Renderer renderer, Rectangle rect, GameTime gameTime)
+        public override void DrawControl(Renderer renderer, Rectangle rect, GameTime gameTime)
         {
             var l1 = Skin.Layers["Control"];
             var l2 = Skin.Layers["Selection"];
@@ -98,12 +98,12 @@ namespace MonoForce.Controls
 // Draw in the enabled state?
                     if (mi.Enabled && Enabled)
                     {
-                        renderer.DrawString(this, l1, mi.Text, rs[i], ControlState.Enabled, false);
+                        renderer.DrawString(this, l1, mi.Text, rs[i], ControlState.Enabled, false, DrawFormattedText);
                     }
 // Draw in the disabled state?
                     else
                     {
-                        renderer.DrawString(this, l1, mi.Text, rs[i], ControlState.Disabled, false);
+                        renderer.DrawString(this, l1, mi.Text, rs[i], ControlState.Disabled, false, DrawFormattedText);
                     }
                 }
 // Draw in the disabled state?
@@ -113,13 +113,13 @@ namespace MonoForce.Controls
                     if (Items[i].Enabled && Enabled)
                     {
                         renderer.DrawLayer(this, l2, rs[i], ControlState.Enabled);
-                        renderer.DrawString(this, l2, mi.Text, rs[i], ControlState.Enabled, false);
+                        renderer.DrawString(this, l2, mi.Text, rs[i], ControlState.Enabled, false, DrawFormattedText);
                     }
 // Draw in the disabled state?
                     else
                     {
                         renderer.DrawLayer(this, l2, rs[i], ControlState.Disabled);
-                        renderer.DrawString(this, l2, mi.Text, rs[i], ControlState.Disabled, false);
+                        renderer.DrawString(this, l2, mi.Text, rs[i], ControlState.Disabled, false, DrawFormattedText);
                     }
                 }
             }

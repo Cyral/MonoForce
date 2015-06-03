@@ -50,7 +50,8 @@ namespace MonoForce.Controls
         /// <summary>
         protected internal void CalcRect(Rectangle prev, SpriteFont font, Margins margins, Point offset, bool first)
         {
-            var size = (int)Math.Ceiling(font.MeasureString(Text).X) + margins.Horizontal;
+            int size = (int)Math.Ceiling(font.MeasureRichString(Text, Manager, DrawFormattedText).X) + margins.Horizontal;
+
 
             if (first) offset.X = 0;
 
@@ -215,7 +216,7 @@ namespace MonoForce.Controls
             base.InitSkin();
         }
 
-        protected override void DrawControl(Renderer renderer, Rectangle rect, GameTime gameTime)
+        public override void DrawControl(Renderer renderer, Rectangle rect, GameTime gameTime)
         {
             var l1 = Skin.Layers["Control"];
             var l2 = Skin.Layers["Header"];
@@ -267,7 +268,7 @@ namespace MonoForce.Controls
                     if (i != selectedIndex)
                     {
                         renderer.DrawLayer(l2, rx, col, li);
-                        renderer.DrawString(l2.Text.Font.Resource, tabPages[i].Text, sx, lc, l2.Text.Alignment);
+                        renderer.DrawString(l2.Text.Font.Resource, tabPages[i].Text, sx, lc, l2.Text.Alignment, DrawFormattedText);
                     }
                 }
 
@@ -279,7 +280,7 @@ namespace MonoForce.Controls
 // Draw the header for the selected tab page.
                 renderer.DrawLayer(l2, ri, col, l2.States.Focused.Index);
                 renderer.DrawString(l2.Text.Font.Resource, tabPages[selectedIndex].Text, si, l2.Text.Colors.Focused,
-                    l2.Text.Alignment, l2.Text.OffsetX, l2.Text.OffsetY, false);
+                    l2.Text.Alignment, l2.Text.OffsetX, l2.Text.OffsetY, false, DrawFormattedText);
             }
         }
 

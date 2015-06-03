@@ -107,7 +107,7 @@ namespace MonoForce.Controls
             base.InitSkin();
         }
 
-        protected override void DrawControl(Renderer renderer, Rectangle rect, GameTime gameTime)
+        public override void DrawControl(Renderer renderer, Rectangle rect, GameTime gameTime)
         {
 // Is there anything to draw?
             if (Border != BevelBorder.None && Style != BevelStyle.None)

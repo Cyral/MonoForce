@@ -204,9 +204,9 @@ namespace MonoForce.Demo
 
         private void InitConsole()
         {
-            var tbc = new TabControl(Manager);
-            var con1 = new Console(Manager);
-            var con2 = new Console(Manager);
+            TabControl tbc = new TabControl(Manager);
+            Console con1 = new Console(Manager);
+            Console con2 = new Console(Manager);
 
             // Setup of TabControl, which will be holding both consoles
             tbc.Init();
@@ -228,9 +228,7 @@ namespace MonoForce.Demo
             tbc.TabPages[1].Add(con2);
 
             con1.Init();
-            con1.Sender = "Console1";
             con2.Init();
-            con2.Sender = "Console2";
 
             con2.Width = con1.Width = tbc.TabPages[0].ClientWidth;
             con2.Height = con1.Height = tbc.TabPages[0].ClientHeight;
@@ -256,20 +254,15 @@ namespace MonoForce.Demo
             con2.MessageFormat = ConsoleMessageFormats.TimeStamp;
 
             // Handler for altering incoming message
-            con1.MessageSent += con1_MessageSent;
-
-            // We send initial welcome message to System channel
-            con1.MessageBuffer.Add(new ConsoleMessage("Application", "Welcome to Neoforce!", 2));
+            con1.MessageSent += new ConsoleMessageEventHandler(con1_MessageSent);
 
             Manager.Add(tbc);
         }
 
-        private void con1_MessageSent(object sender, ConsoleMessageEventArgs e)
+        void con1_MessageSent(object sender, ConsoleMessageEventArgs e)
         {
-            if (e.Message.Channel == 0)
-            {
-                //e.Message.Text = "(!) " + e.Message.Text;
-            }
+            var console = sender as Console;
+            if (console != null) console.MessageBuffer.Add(e.Message);
         }
     }
 }

@@ -567,7 +567,7 @@ namespace MonoForce.Controls
 // Crappy fix to certain scrolling issue
         }
 
-        protected override void DrawControl(Renderer renderer, Rectangle rect, GameTime gameTime)
+        public override void DrawControl(Renderer renderer, Rectangle rect, GameTime gameTime)
         {
             base.DrawControl(renderer, rect, gameTime);
 //if (sbHorz != null) sbHorz.Value -= 1;

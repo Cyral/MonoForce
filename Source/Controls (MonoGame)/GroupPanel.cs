@@ -20,7 +20,7 @@ namespace MonoForce.Controls
             base.Init();
         }
 
-        protected override void DrawControl(Renderer renderer, Rectangle rect, GameTime gameTime)
+        public override void DrawControl(Renderer renderer, Rectangle rect, GameTime gameTime)
         {
             var layer = Skin.Layers["Control"];
             var font = (layer.Text != null && layer.Text.Font != null) ? layer.Text.Font.Resource : null;
@@ -34,7 +34,7 @@ namespace MonoForce.Controls
             {
                 renderer.DrawString(this, layer, Text,
                     new Rectangle(rect.Left, rect.Top + layer.ContentMargins.Top, rect.Width,
-                        Skin.ClientMargins.Top - layer.ContentMargins.Horizontal), false, offset.X, offset.Y, false);
+                        Skin.ClientMargins.Top - layer.ContentMargins.Horizontal), false, offset.X, offset.Y, false, DrawFormattedText);
             }
         }
     }

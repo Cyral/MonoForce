@@ -193,7 +193,7 @@ namespace MonoForce.Controls
             base.AdjustMargins();
         }
 
-        protected override void DrawControl(Renderer renderer, Rectangle rect, GameTime gameTime)
+        public override void DrawControl(Renderer renderer, Rectangle rect, GameTime gameTime)
         {
 // Grab location, dimensions, and margins.
             var x = rect.Left;

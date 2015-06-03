@@ -219,7 +219,7 @@ namespace MonoForce.Controls
             base.Dispose(disposing);
         }
 
-        protected override void DrawControl(Renderer renderer, Rectangle rect, GameTime gameTime)
+        public override void DrawControl(Renderer renderer, Rectangle rect, GameTime gameTime)
         {
             base.DrawControl(renderer, rect, gameTime);
 

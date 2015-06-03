@@ -35,17 +35,7 @@ namespace MonoForce.Controls
                 borderVisible = value;
 // Set up window margins.
                 AdjustMargins();
-//ClientArea.Skin = sc;
-//ClientArea.BackColor = Color.Transparent;
-//ClientArea.Color = Color.Transparent;
-//sc.Layers[0] = Skin.Layers[lrWindow];
-//SkinControl sc = new SkinControl(ClientArea.Skin);
             }
-//ClientArea.Skin = sc;
-//ClientArea.BackColor = Color.Transparent;
-//ClientArea.Color = Color.Transparent;
-//sc.Layers[0] = Skin.Layers[lrWindow];
-//SkinControl sc = new SkinControl(ClientArea.Skin);
         }
 
         /// </summary>
@@ -59,17 +49,7 @@ namespace MonoForce.Controls
                 captionVisible = value;
 // Set up window margins.
                 AdjustMargins();
-//ClientArea.Skin = sc;
-//ClientArea.BackColor = Color.Transparent;
-//ClientArea.Color = Color.Transparent;
-//sc.Layers[0] = Skin.Layers[lrWindow];
-//SkinControl sc = new SkinControl(ClientArea.Skin);
             }
-//ClientArea.Skin = sc;
-//ClientArea.BackColor = Color.Transparent;
-//ClientArea.Color = Color.Transparent;
-//sc.Layers[0] = Skin.Layers[lrWindow];
-//SkinControl sc = new SkinControl(ClientArea.Skin);
         }
 
         /// </summary>
@@ -77,30 +57,12 @@ namespace MonoForce.Controls
         /// <summary>
         public virtual bool CloseButtonVisible
         {
-            get
-            {
-                return closeButtonVisible;
-//ClientArea.Skin = sc;
-//ClientArea.BackColor = Color.Transparent;
-//ClientArea.Color = Color.Transparent;
-//sc.Layers[0] = Skin.Layers[lrWindow];
-//SkinControl sc = new SkinControl(ClientArea.Skin);
-            }
+            get { return closeButtonVisible; }
             set
             {
                 closeButtonVisible = value;
                 if (btnClose != null) btnClose.Visible = value;
-//ClientArea.Skin = sc;
-//ClientArea.BackColor = Color.Transparent;
-//ClientArea.Color = Color.Transparent;
-//sc.Layers[0] = Skin.Layers[lrWindow];
-//SkinControl sc = new SkinControl(ClientArea.Skin);
             }
-//ClientArea.Skin = sc;
-//ClientArea.BackColor = Color.Transparent;
-//ClientArea.Color = Color.Transparent;
-//sc.Layers[0] = Skin.Layers[lrWindow];
-//SkinControl sc = new SkinControl(ClientArea.Skin);
         }
 
         /// </summary>
@@ -110,11 +72,6 @@ namespace MonoForce.Controls
         {
             get { return dragAlpha; }
             set { dragAlpha = value; }
-//ClientArea.Skin = sc;
-//ClientArea.BackColor = Color.Transparent;
-//ClientArea.Color = Color.Transparent;
-//sc.Layers[0] = Skin.Layers[lrWindow];
-//SkinControl sc = new SkinControl(ClientArea.Skin);
         }
 
         /// </summary>
@@ -124,11 +81,6 @@ namespace MonoForce.Controls
         {
             get { return icon; }
             set { icon = value; }
-//ClientArea.Skin = sc;
-//ClientArea.BackColor = Color.Transparent;
-//ClientArea.Color = Color.Transparent;
-//sc.Layers[0] = Skin.Layers[lrWindow];
-//SkinControl sc = new SkinControl(ClientArea.Skin);
         }
 
         /// </summary>
@@ -136,29 +88,8 @@ namespace MonoForce.Controls
         /// <summary>
         public virtual bool IconVisible
         {
-            get
-            {
-                return iconVisible;
-//ClientArea.Skin = sc;
-//ClientArea.BackColor = Color.Transparent;
-//ClientArea.Color = Color.Transparent;
-//sc.Layers[0] = Skin.Layers[lrWindow];
-//SkinControl sc = new SkinControl(ClientArea.Skin);
-            }
-            set
-            {
-                iconVisible = value;
-//ClientArea.Skin = sc;
-//ClientArea.BackColor = Color.Transparent;
-//ClientArea.Color = Color.Transparent;
-//sc.Layers[0] = Skin.Layers[lrWindow];
-//SkinControl sc = new SkinControl(ClientArea.Skin);
-            }
-//ClientArea.Skin = sc;
-//ClientArea.BackColor = Color.Transparent;
-//ClientArea.Color = Color.Transparent;
-//sc.Layers[0] = Skin.Layers[lrWindow];
-//SkinControl sc = new SkinControl(ClientArea.Skin);
+            get { return iconVisible; }
+            set { iconVisible = value; }
         }
 
         /// </summary>
@@ -168,11 +99,6 @@ namespace MonoForce.Controls
         {
             get { return shadow; }
             set { shadow = value; }
-//ClientArea.Skin = sc;
-//ClientArea.BackColor = Color.Transparent;
-//ClientArea.Color = Color.Transparent;
-//sc.Layers[0] = Skin.Layers[lrWindow];
-//SkinControl sc = new SkinControl(ClientArea.Skin);
         }
 
         private readonly Button btnClose;
@@ -210,7 +136,7 @@ namespace MonoForce.Controls
         /// </summary>
         /// Alpha value of the window.
         /// <summary>
-        private byte oldAlpha = 255;
+        private float oldAlpha = 255;
 
         /// </summary>
         /// Indicates if the window shadow is drawn.
@@ -252,11 +178,6 @@ namespace MonoForce.Controls
             Add(btnClose, false);
 
             oldAlpha = Alpha;
-//ClientArea.Skin = sc;
-//ClientArea.BackColor = Color.Transparent;
-//ClientArea.Color = Color.Transparent;
-//sc.Layers[0] = Skin.Layers[lrWindow];
-//SkinControl sc = new SkinControl(ClientArea.Skin);
         }
 
         /// </summary>
@@ -266,11 +187,6 @@ namespace MonoForce.Controls
         {
             Left = (Manager.ScreenWidth / 2) - (Width / 2);
             Top = (Manager.ScreenHeight - Height) / 2;
-//ClientArea.Skin = sc;
-//ClientArea.BackColor = Color.Transparent;
-//ClientArea.Color = Color.Transparent;
-//sc.Layers[0] = Skin.Layers[lrWindow];
-//SkinControl sc = new SkinControl(ClientArea.Skin);
         }
 
         /// </summary>
@@ -286,12 +202,6 @@ namespace MonoForce.Controls
             btnClose.Left = OriginWidth - Skin.OriginMargins.Right - btnClose.Width + l.OffsetX;
             btnClose.Top = Skin.OriginMargins.Top + l.OffsetY;
             btnClose.Anchor = Anchors.Top | Anchors.Right;
-
-//ClientArea.Skin = sc;
-//ClientArea.BackColor = Color.Transparent;
-//ClientArea.Color = Color.Transparent;
-//sc.Layers[0] = Skin.Layers[lrWindow];
-//SkinControl sc = new SkinControl(ClientArea.Skin);
         }
 
         /// </summary>
@@ -303,11 +213,6 @@ namespace MonoForce.Controls
             Skin = new SkinControl(Manager.Skin.Controls[skWindow]);
 // Set up window margins.
             AdjustMargins();
-//ClientArea.Skin = sc;
-//ClientArea.BackColor = Color.Transparent;
-//ClientArea.Color = Color.Transparent;
-//sc.Layers[0] = Skin.Layers[lrWindow];
-//SkinControl sc = new SkinControl(ClientArea.Skin);
         }
 
         /// </summary>
@@ -351,21 +256,11 @@ namespace MonoForce.Controls
         {
             if (disposing)
             {
-//ClientArea.Skin = sc;
-//ClientArea.BackColor = Color.Transparent;
-//ClientArea.Color = Color.Transparent;
-//sc.Layers[0] = Skin.Layers[lrWindow];
-//SkinControl sc = new SkinControl(ClientArea.Skin);
             }
             base.Dispose(disposing);
-//ClientArea.Skin = sc;
-//ClientArea.BackColor = Color.Transparent;
-//ClientArea.Color = Color.Transparent;
-//sc.Layers[0] = Skin.Layers[lrWindow];
-//SkinControl sc = new SkinControl(ClientArea.Skin);
         }
 
-        protected override void DrawControl(Renderer renderer, Rectangle rect, GameTime gameTime)
+        public override void DrawControl(Renderer renderer, Rectangle rect, GameTime gameTime)
         {
             var l1 = captionVisible ? Skin.Layers[lrCaption] : Skin.Layers[lrFrameTop];
             var l2 = Skin.Layers[lrFrameLeft];
@@ -385,11 +280,6 @@ namespace MonoForce.Controls
                 s3 = l3.States.Focused;
                 s4 = l4.States.Focused;
                 c1 = l1.Text.Colors.Focused;
-//ClientArea.Skin = sc;
-//ClientArea.BackColor = Color.Transparent;
-//ClientArea.Color = Color.Transparent;
-//sc.Layers[0] = Skin.Layers[lrWindow];
-//SkinControl sc = new SkinControl(ClientArea.Skin);
             }
 // Window is disabled?
             else if (ControlState == ControlState.Disabled)
@@ -399,11 +289,6 @@ namespace MonoForce.Controls
                 s3 = l3.States.Disabled;
                 s4 = l4.States.Disabled;
                 c1 = l1.Text.Colors.Disabled;
-//ClientArea.Skin = sc;
-//ClientArea.BackColor = Color.Transparent;
-//ClientArea.Color = Color.Transparent;
-//sc.Layers[0] = Skin.Layers[lrWindow];
-//SkinControl sc = new SkinControl(ClientArea.Skin);
             }
 // Window not active or child control has focus?
             else
@@ -413,11 +298,6 @@ namespace MonoForce.Controls
                 s3 = l3.States.Enabled;
                 s4 = l4.States.Enabled;
                 c1 = l1.Text.Colors.Enabled;
-//ClientArea.Skin = sc;
-//ClientArea.BackColor = Color.Transparent;
-//ClientArea.Color = Color.Transparent;
-//sc.Layers[0] = Skin.Layers[lrWindow];
-//SkinControl sc = new SkinControl(ClientArea.Skin);
             }
 
             renderer.DrawLayer(Skin.Layers[lrWindow], rect, Skin.Layers[lrWindow].States.Enabled.Color,
@@ -442,33 +322,18 @@ namespace MonoForce.Controls
                 {
                     var i = (icon != null) ? icon : l5.Image.Resource;
                     renderer.Draw(i, GetIconRect(), Color.White);
-//ClientArea.Skin = sc;
-//ClientArea.BackColor = Color.Transparent;
-//ClientArea.Color = Color.Transparent;
-//sc.Layers[0] = Skin.Layers[lrWindow];
-//SkinControl sc = new SkinControl(ClientArea.Skin);
                 }
 
                 var icosize = 0;
                 if (l5 != null && iconVisible && captionVisible)
                 {
                     icosize = l1.Height - l1.ContentMargins.Vertical + 4 + l5.OffsetX;
-//ClientArea.Skin = sc;
-//ClientArea.BackColor = Color.Transparent;
-//ClientArea.Color = Color.Transparent;
-//sc.Layers[0] = Skin.Layers[lrWindow];
-//SkinControl sc = new SkinControl(ClientArea.Skin);
                 }
 // Draw the close button if visible.
                 var closesize = 0;
                 if (btnClose.Visible)
                 {
                     closesize = btnClose.Width - (btnClose.Skin.Layers[lrButton].OffsetX);
-//ClientArea.Skin = sc;
-//ClientArea.BackColor = Color.Transparent;
-//ClientArea.Color = Color.Transparent;
-//sc.Layers[0] = Skin.Layers[lrWindow];
-//SkinControl sc = new SkinControl(ClientArea.Skin);
                 }
 
 // Create the rectangle defining the remaining caption area to draw text in.
@@ -479,17 +344,7 @@ namespace MonoForce.Controls
                 var ox = l1.Text.OffsetX;
                 var oy = l1.Text.OffsetY;
                 renderer.DrawString(f1, Text, r, c1, l1.Text.Alignment, ox, oy, true);
-//ClientArea.Skin = sc;
-//ClientArea.BackColor = Color.Transparent;
-//ClientArea.Color = Color.Transparent;
-//sc.Layers[0] = Skin.Layers[lrWindow];
-//SkinControl sc = new SkinControl(ClientArea.Skin);
             }
-//ClientArea.Skin = sc;
-//ClientArea.BackColor = Color.Transparent;
-//ClientArea.Color = Color.Transparent;
-//sc.Layers[0] = Skin.Layers[lrWindow];
-//SkinControl sc = new SkinControl(ClientArea.Skin);
         }
 
         /// <param name="e"></param>
@@ -527,25 +382,10 @@ namespace MonoForce.Controls
             {
                 oldAlpha = Alpha;
                 Alpha = dragAlpha;
-//ClientArea.Skin = sc;
-//ClientArea.BackColor = Color.Transparent;
-//ClientArea.Color = Color.Transparent;
-//sc.Layers[0] = Skin.Layers[lrWindow];
-//SkinControl sc = new SkinControl(ClientArea.Skin);
             }
             catch
             {
-//ClientArea.Skin = sc;
-//ClientArea.BackColor = Color.Transparent;
-//ClientArea.Color = Color.Transparent;
-//sc.Layers[0] = Skin.Layers[lrWindow];
-//SkinControl sc = new SkinControl(ClientArea.Skin);
             }
-//ClientArea.Skin = sc;
-//ClientArea.BackColor = Color.Transparent;
-//ClientArea.Color = Color.Transparent;
-//sc.Layers[0] = Skin.Layers[lrWindow];
-//SkinControl sc = new SkinControl(ClientArea.Skin);
         }
 
         /// <param name="e"></param>
@@ -559,25 +399,10 @@ namespace MonoForce.Controls
             try
             {
                 Alpha = oldAlpha;
-//ClientArea.Skin = sc;
-//ClientArea.BackColor = Color.Transparent;
-//ClientArea.Color = Color.Transparent;
-//sc.Layers[0] = Skin.Layers[lrWindow];
-//SkinControl sc = new SkinControl(ClientArea.Skin);
             }
             catch
             {
-//ClientArea.Skin = sc;
-//ClientArea.BackColor = Color.Transparent;
-//ClientArea.Color = Color.Transparent;
-//sc.Layers[0] = Skin.Layers[lrWindow];
-//SkinControl sc = new SkinControl(ClientArea.Skin);
             }
-//ClientArea.Skin = sc;
-//ClientArea.BackColor = Color.Transparent;
-//ClientArea.Color = Color.Transparent;
-//sc.Layers[0] = Skin.Layers[lrWindow];
-//SkinControl sc = new SkinControl(ClientArea.Skin);
         }
 
         /// <param name="e"></param>
@@ -588,11 +413,6 @@ namespace MonoForce.Controls
         {
             SetMovableArea();
             base.OnResize(e);
-//ClientArea.Skin = sc;
-//ClientArea.BackColor = Color.Transparent;
-//ClientArea.Color = Color.Transparent;
-//sc.Layers[0] = Skin.Layers[lrWindow];
-//SkinControl sc = new SkinControl(ClientArea.Skin);
         }
 
         /// <param name="gameTime">Snapshot of the application's timing values.</param>
@@ -609,26 +429,16 @@ namespace MonoForce.Controls
                 var l = c.Layers[lrShadow];
 
                 var cl = Color.FromNonPremultiplied(l.States.Enabled.Color.R, l.States.Enabled.Color.G,
-                    l.States.Enabled.Color.B, Alpha);
+                    l.States.Enabled.Color.B, Alpha > 255 ? 255 : (byte)Alpha);
 
                 renderer.Begin(BlendingMode.Default);
                 renderer.DrawLayer(l,
                     new Rectangle(Left - c.OriginMargins.Left, Top - c.OriginMargins.Top,
                         Width + c.OriginMargins.Horizontal, Height + c.OriginMargins.Vertical), cl, 0);
                 renderer.End();
-//ClientArea.Skin = sc;
-//ClientArea.BackColor = Color.Transparent;
-//ClientArea.Color = Color.Transparent;
-//sc.Layers[0] = Skin.Layers[lrWindow];
-//SkinControl sc = new SkinControl(ClientArea.Skin);
             }
 // Draw the window.
             base.Render(renderer, gameTime);
-//ClientArea.Skin = sc;
-//ClientArea.BackColor = Color.Transparent;
-//ClientArea.Color = Color.Transparent;
-//sc.Layers[0] = Skin.Layers[lrWindow];
-//SkinControl sc = new SkinControl(ClientArea.Skin);
         }
 
         /// <param name="e"></param>
@@ -639,11 +449,6 @@ namespace MonoForce.Controls
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close(ModalResult = ModalResult.Cancel);
-//ClientArea.Skin = sc;
-//ClientArea.BackColor = Color.Transparent;
-//ClientArea.Color = Color.Transparent;
-//sc.Layers[0] = Skin.Layers[lrWindow];
-//SkinControl sc = new SkinControl(ClientArea.Skin);
         }
 
         /// <param name="e"></param>
@@ -654,11 +459,6 @@ namespace MonoForce.Controls
         private void btnClose_SkinChanged(object sender, EventArgs e)
         {
             btnClose.Skin = new SkinControl(Manager.Skin.Controls[skButton]);
-//ClientArea.Skin = sc;
-//ClientArea.BackColor = Color.Transparent;
-//ClientArea.Color = Color.Transparent;
-//sc.Layers[0] = Skin.Layers[lrWindow];
-//SkinControl sc = new SkinControl(ClientArea.Skin);
         }
 
         /// <returns>Returns the window icon's destination region where it will be drawn. </returns>
@@ -676,12 +476,6 @@ namespace MonoForce.Controls
             return new Rectangle(DrawingRect.Left + l1.ContentMargins.Left + l5.OffsetX,
                 DrawingRect.Top + l1.ContentMargins.Top + l5.OffsetY,
                 s, s);
-
-//ClientArea.Skin = sc;
-//ClientArea.BackColor = Color.Transparent;
-//ClientArea.Color = Color.Transparent;
-//sc.Layers[0] = Skin.Layers[lrWindow];
-//SkinControl sc = new SkinControl(ClientArea.Skin);
         }
 
         /// </summary>

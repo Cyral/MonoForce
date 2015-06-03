@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.IO.Compression;
 
-namespace TomShane.Neoforce.External.Zip
+namespace MonoForce.External.Zip
 {
     internal class ZipEntry
     {

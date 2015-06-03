@@ -1,43 +1,29 @@
-//DrawPane(this, new DrawEventArgs(renderer, rect, gameTime));
-
-//DrawPane(this, new DrawEventArgs(renderer, rect, gameTime));
-
 using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
-//DrawPane(this, new DrawEventArgs(renderer, rect, gameTime));
-
-//DrawPane(this, new DrawEventArgs(renderer, rect, gameTime));
-
 namespace MonoForce.Controls
-//if (itemIndex != value)
+
 {
-//DrawPane(this, new DrawEventArgs(renderer, rect, gameTime));
-
-//DrawPane(this, new DrawEventArgs(renderer, rect, gameTime));
-
     /// </summary>
     /// Represents a list box control. Single selection only.
     /// <summary>
     public class ListBox : Control
-//if (itemIndex != value)
-    {
-//DrawPane(this, new DrawEventArgs(renderer, rect, gameTime));
 
+    {
         /// </summary>
         /// Indicates if the selection overlay should be drawn over the selected item.
         /// <summary>
         public virtual bool HideSelection
-//if (itemIndex != value)
+
         {
             get { return hideSelection; }
             set
-//if (itemIndex != value)
+
             {
                 if (hideSelection != value)
-//if (itemIndex != value)
+
                 {
                     hideSelection = value;
                     Invalidate();
@@ -46,20 +32,18 @@ namespace MonoForce.Controls
             }
         }
 
-//DrawPane(this, new DrawEventArgs(renderer, rect, gameTime));
-
         /// </summary>
         /// Indicates if mouse over event can update the selected index.
         /// <summary>
         public virtual bool HotTrack
-//if (itemIndex != value)
+
         {
             get { return hotTrack; }
             set
-//if (itemIndex != value)
+
             {
                 if (hotTrack != value)
-//if (itemIndex != value)
+
                 {
                     hotTrack = value;
                     if (!Suspended) OnHotTrackChanged(new EventArgs());
@@ -67,56 +51,46 @@ namespace MonoForce.Controls
             }
         }
 
-//DrawPane(this, new DrawEventArgs(renderer, rect, gameTime));
-
         /// </summary>
         /// Gets or sets the index of the selected list box item.
         /// <summary>
         public virtual int ItemIndex
-//if (itemIndex != value)
+
         {
             get { return itemIndex; }
             set
-//if (itemIndex != value)
+
             {
-//if (itemIndex != value)
+
                 {
                     if (value >= 0 && value < items.Count)
-//if (itemIndex != value)
+
                     {
                         itemIndex = value;
                     }
 // Empty collection. Default height to 32.
                     else
-//if (itemIndex != value)
+
                     {
                         itemIndex = -1;
                     }
                     ScrollTo(itemIndex);
-//DrawPane(this, new DrawEventArgs(renderer, rect, gameTime));
+
 
                     if (!Suspended) OnItemIndexChanged(new EventArgs());
                 }
             }
         }
 
-//DrawPane(this, new DrawEventArgs(renderer, rect, gameTime));
-
-//DrawPane(this, new DrawEventArgs(renderer, rect, gameTime));
-
-//DrawPane(this, new DrawEventArgs(renderer, rect, gameTime));
-
         /// </summary>
         /// Gets the list of items.
         /// <summary>
         public virtual List<object> Items
-//if (itemIndex != value)
+
         {
             get { return items; }
             internal set { items = value; }
         }
-
-//DrawPane(this, new DrawEventArgs(renderer, rect, gameTime));
 
         public override int MinimumHeight
         {
@@ -128,22 +102,13 @@ namespace MonoForce.Controls
             }
         }
 
-        private readonly ClipBox pane;
-        private readonly ScrollBar sbVert;
-        private bool hideSelection = true;
-        private bool hotTrack;
-        private int itemIndex = -1;
-//DrawPane(this, new DrawEventArgs(renderer, rect, gameTime));
-
-//DrawPane(this, new DrawEventArgs(renderer, rect, gameTime));
-
-        private List<object> items = new List<object>();
+        protected readonly ScrollBar sbVert;
+        protected readonly ClipBox pane;
+        protected bool hideSelection = true;
+        protected bool hotTrack;
+        protected int itemIndex = -1;
+        protected List<object> items = new List<object>();
         private int itemsCount;
-//DrawPane(this, new DrawEventArgs(renderer, rect, gameTime));
-
-//DrawPane(this, new DrawEventArgs(renderer, rect, gameTime));
-
-//DrawPane(this, new DrawEventArgs(renderer, rect, gameTime));
 
         /// <param name="manager">GUI manager for the control.</param>
         /// </summary>
@@ -151,12 +116,12 @@ namespace MonoForce.Controls
         /// <summary>
         public ListBox(Manager manager)
             : base(manager)
-//if (itemIndex != value)
+
         {
             Width = 64;
             Height = 64;
             MinimumHeight = 16;
-//DrawPane(this, new DrawEventArgs(renderer, rect, gameTime));
+
 
 // Set up the scroll bar.
             sbVert = new ScrollBar(Manager, Orientation.Vertical);
@@ -170,7 +135,7 @@ namespace MonoForce.Controls
             sbVert.Range = 1;
             sbVert.PageSize = 1;
             sbVert.StepSize = 10;
-//DrawPane(this, new DrawEventArgs(renderer, rect, gameTime));
+
 
 // Set up the clip box.
             pane = new ClipBox(manager);
@@ -184,13 +149,11 @@ namespace MonoForce.Controls
             pane.Passive = true;
             pane.CanFocus = false;
             pane.Draw += DrawPane;
-//DrawPane(this, new DrawEventArgs(renderer, rect, gameTime));
+
 
             CanFocus = true;
             Passive = false;
         }
-
-//DrawPane(this, new DrawEventArgs(renderer, rect, gameTime));
 
         /// <param name="maxItems">Number of items that can be displayed without needing a scroll bar.</param>
         /// </summary>
@@ -214,7 +177,7 @@ namespace MonoForce.Controls
                 pane.Width = Width - sbVert.Width - Skin.Layers["Control"].ContentMargins.Horizontal - 1;
                 sbVert.Visible = true;
             }
-//DrawPane(this, new DrawEventArgs(renderer, rect, gameTime));
+
 
 // Get the list box font resource.
             var font = Skin.Layers["Control"].Text;
@@ -225,7 +188,7 @@ namespace MonoForce.Controls
             {
                 var h = (int)font.Font.Resource.MeasureString(items[0].ToString()).Y;
                 Height = (h * maxItems) + (Skin.Layers["Control"].ContentMargins.Vertical);
-                    // - Skin.OriginMargins.Vertical);
+                // - Skin.OriginMargins.Vertical);
             }
 // Empty collection. Default height to 32.
             else
@@ -234,27 +197,24 @@ namespace MonoForce.Controls
             }
         }
 
+        public override void DrawControl(Renderer renderer, Rectangle rect, GameTime gameTime)
+        {
+            sbVert.Invalidate();
+            pane.Invalidate();
+
+
+            base.DrawControl(renderer, rect, gameTime);
+        }
+
         /// </summary>
         /// Occurs when the hide selection value changes.
         /// <summary>
         public event EventHandler HideSelectionChanged;
 
-//DrawPane(this, new DrawEventArgs(renderer, rect, gameTime));
-
-//DrawPane(this, new DrawEventArgs(renderer, rect, gameTime));
-
-//DrawPane(this, new DrawEventArgs(renderer, rect, gameTime));
-
         /// </summary>
         /// Occurs when the hot tracking value changes.
         /// <summary>
         public event EventHandler HotTrackChanged;
-
-//DrawPane(this, new DrawEventArgs(renderer, rect, gameTime));
-
-//DrawPane(this, new DrawEventArgs(renderer, rect, gameTime));
-
-//DrawPane(this, new DrawEventArgs(renderer, rect, gameTime));
 
         /// </summary>
         /// Initializes the list box control.
@@ -304,17 +264,6 @@ namespace MonoForce.Controls
                 itemsCount = items.Count;
                 ItemsChanged();
             }
-        }
-
-//DrawPane(this, new DrawEventArgs(renderer, rect, gameTime));
-
-        protected override void DrawControl(Renderer renderer, Rectangle rect, GameTime gameTime)
-        {
-            sbVert.Invalidate();
-            pane.Invalidate();
-//DrawPane(this, new DrawEventArgs(renderer, rect, gameTime));
-
-            base.DrawControl(renderer, rect, gameTime);
         }
 
         /// <param name="e"></param>
@@ -371,8 +320,6 @@ namespace MonoForce.Controls
             if (ItemIndexChanged != null) ItemIndexChanged.Invoke(this, e);
         }
 
-//DrawPane(this, new DrawEventArgs(renderer, rect, gameTime));
-
         /// <param name="e"></param>
         /// </summary>
         /// Handles key press events for the list box.
@@ -425,8 +372,6 @@ namespace MonoForce.Controls
             base.OnKeyPress(e);
         }
 
-//DrawPane(this, new DrawEventArgs(renderer, rect, gameTime));
-
         /// <param name="e"></param>
         /// </summary>
         /// Handles mouse button down events for the list box.
@@ -434,7 +379,7 @@ namespace MonoForce.Controls
         protected override void OnMouseDown(MouseEventArgs e)
         {
             base.OnMouseDown(e);
-//DrawPane(this, new DrawEventArgs(renderer, rect, gameTime));
+
 
 // Need to update the selected item?
             if (e.Button == MouseButton.Left || e.Button == MouseButton.Right)
@@ -443,8 +388,6 @@ namespace MonoForce.Controls
             }
         }
 
-//DrawPane(this, new DrawEventArgs(renderer, rect, gameTime));
-
         /// <param name="e"></param>
         /// </summary>
         /// Handles mouse move events for the list box.
@@ -452,7 +395,7 @@ namespace MonoForce.Controls
         protected override void OnMouseMove(MouseEventArgs e)
         {
             base.OnMouseMove(e);
-//DrawPane(this, new DrawEventArgs(renderer, rect, gameTime));
+
 
 // Update selection?
             if (hotTrack)
@@ -499,9 +442,7 @@ namespace MonoForce.Controls
             ItemsChanged();
         }
 
-//DrawPane(this, new DrawEventArgs(renderer, rect, gameTime));
-
-        private void DrawPane(object sender, DrawEventArgs e)
+        protected virtual void DrawPane(object sender, DrawEventArgs e)
         {
 // should be able to display in it.
 // height of the list pane based on the specified number of items that
@@ -517,7 +458,7 @@ namespace MonoForce.Controls
                 var d = (int)(((sbVert.Value % 10) / 10f) * h);
                 var c = items.Count;
                 var s = itemIndex;
-//DrawPane(this, new DrawEventArgs(renderer, rect, gameTime));
+
 
 // Draw the visible collection items in the list pane.
                 for (var i = v; i <= v + p + 1; i++)
@@ -526,7 +467,7 @@ namespace MonoForce.Controls
                     {
                         e.Renderer.DrawString(this, Skin.Layers["Control"], items[i].ToString(),
                             new Rectangle(e.Rectangle.Left, e.Rectangle.Top - d + ((i - v) * h), e.Rectangle.Width, h),
-                            false);
+                            false, DrawFormattedText);
                     }
                 }
 // Draw selection overlay?
@@ -539,13 +480,13 @@ namespace MonoForce.Controls
                         e.Renderer.DrawLayer(this, sel,
                             new Rectangle(e.Rectangle.Left, e.Rectangle.Top + pos, e.Rectangle.Width, h));
                         e.Renderer.DrawString(this, sel, items[s].ToString(),
-                            new Rectangle(e.Rectangle.Left, e.Rectangle.Top + pos, e.Rectangle.Width, h), false);
+                            new Rectangle(e.Rectangle.Left, e.Rectangle.Top + pos, e.Rectangle.Width, h), false, DrawFormattedText);
                     }
                 }
             }
         }
 
-        private void ItemsChanged()
+        protected virtual void ItemsChanged()
         {
 // List box collection is non-empty?
             if (items != null && items.Count > 0)
@@ -569,8 +510,6 @@ namespace MonoForce.Controls
                 Invalidate();
             }
         }
-
-//DrawPane(this, new DrawEventArgs(renderer, rect, gameTime));
 
         /// <param name="y">Mouse Y position.</param>
         /// <param name="x">Mouse X position.</param>

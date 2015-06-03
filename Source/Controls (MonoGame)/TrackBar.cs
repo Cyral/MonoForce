@@ -175,7 +175,7 @@ namespace MonoForce.Controls
             Skin = new SkinControl(Manager.Skin.Controls["TrackBar"]);
         }
 
-        protected override void DrawControl(Renderer renderer, Rectangle rect, GameTime gameTime)
+        public override void DrawControl(Renderer renderer, Rectangle rect, GameTime gameTime)
         {
             RecalcParams();
 

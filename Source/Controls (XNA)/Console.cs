@@ -1,7 +1,7 @@
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
 using System;
@@ -9,15 +9,15 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
 namespace MonoForce.Controls
 {
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
     /// </summary>
@@ -42,7 +42,7 @@ namespace MonoForce.Controls
         /// <summary>
         public DateTime Time;
 
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
         public ConsoleMessage(string sender, string text, byte channel)
@@ -54,7 +54,7 @@ namespace MonoForce.Controls
         }
     }
 
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
     /// </summary>
@@ -62,10 +62,10 @@ namespace MonoForce.Controls
     /// <summary>
     public class ChannelList : EventedList<ConsoleChannel>
     {
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
         /// <param name="name">Console channel name.</param>
@@ -86,7 +86,7 @@ namespace MonoForce.Controls
                 }
                 return default(ConsoleChannel);
             }
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
             set
             {
@@ -101,7 +101,7 @@ namespace MonoForce.Controls
             }
         }
 
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
         /// <param name="index">Console channel index.</param>
@@ -122,7 +122,7 @@ namespace MonoForce.Controls
                 }
                 return default(ConsoleChannel);
             }
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
             set
             {
@@ -138,7 +138,7 @@ namespace MonoForce.Controls
         }
     }
 
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
     /// </summary>
@@ -146,7 +146,7 @@ namespace MonoForce.Controls
     /// <summary>
     public class ConsoleChannel
     {
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
         /// </summary>
@@ -158,7 +158,7 @@ namespace MonoForce.Controls
             set { color = value; }
         }
 
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
         /// </summary>
@@ -170,7 +170,7 @@ namespace MonoForce.Controls
             set { index = value; }
         }
 
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
         /// </summary>
@@ -197,7 +197,7 @@ namespace MonoForce.Controls
         /// <summary>
         private string name;
 
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
         /// <param name="color">Color of the console channel message text.</param>
@@ -214,7 +214,7 @@ namespace MonoForce.Controls
         }
     }
 
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
     /// </summary>
@@ -241,7 +241,7 @@ namespace MonoForce.Controls
         All = Sender | ChannelName | TimeStamp
     }
 
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
     /// </summary>
@@ -249,7 +249,7 @@ namespace MonoForce.Controls
     /// <summary>
     public class Console : Container
     {
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
         /// </summary>
@@ -261,7 +261,7 @@ namespace MonoForce.Controls
             set { filter = value; }
         }
 
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
         /// </summary>
@@ -279,7 +279,7 @@ namespace MonoForce.Controls
             }
         }
 
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
         /// </summary>
@@ -296,7 +296,7 @@ namespace MonoForce.Controls
             }
         }
 
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
         /// </summary>
@@ -313,7 +313,7 @@ namespace MonoForce.Controls
             }
         }
 
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
         /// </summary>
@@ -325,7 +325,7 @@ namespace MonoForce.Controls
             set { messageFormat = value; }
         }
 
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
         /// </summary>
@@ -337,17 +337,17 @@ namespace MonoForce.Controls
             get { return channels[cmbMain.Text].Index; }
         }
 
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
         public string Sender { get; set; }
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
         /// </summary>
@@ -366,10 +366,10 @@ namespace MonoForce.Controls
         }
 
         private readonly ComboBox cmbMain;
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
         private readonly TextBox txtMain;
@@ -404,13 +404,13 @@ namespace MonoForce.Controls
         /// <summary>
         private bool textBoxVisible = true;
 
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
         /// <param name="manager">GUI manager for the console.</param>
@@ -427,7 +427,7 @@ namespace MonoForce.Controls
             CanFocus = false;
             Resizable = false;
             Movable = false;
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
             cmbMain = new ComboBox(manager);
@@ -440,7 +440,7 @@ namespace MonoForce.Controls
             cmbMain.DrawSelection = false;
             cmbMain.Visible = channelsVisible;
             Add(cmbMain, false);
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
             txtMain = new TextBox(manager);
@@ -454,7 +454,7 @@ namespace MonoForce.Controls
             txtMain.GamePadDown += txtMain_GamePadDown;
             txtMain.FocusGained += txtMain_FocusGained;
             Add(txtMain, false);
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
             VerticalScrollBar.Top = 2;
@@ -463,23 +463,23 @@ namespace MonoForce.Controls
             VerticalScrollBar.PageSize = 1;
             VerticalScrollBar.ValueChanged += VerticalScrollBar_ValueChanged;
             VerticalScrollBar.Visible = true;
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
             ClientArea.Draw += ClientArea_Draw;
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
             buffer.ItemAdded += buffer_ItemAdded;
             channels.ItemAdded += channels_ItemAdded;
             channels.ItemRemoved += channels_ItemRemoved;
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
             PositionControls();
         }
 
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
         /// </summary>
@@ -490,13 +490,13 @@ namespace MonoForce.Controls
             base.Init();
         }
 
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
         /// </summary>
@@ -504,7 +504,7 @@ namespace MonoForce.Controls
         /// <summary>
         public event ConsoleMessageEventHandler MessageSent;
 
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
         /// </summary>
@@ -514,13 +514,13 @@ namespace MonoForce.Controls
         {
             base.InitSkin();
             Skin = new SkinControl(Manager.Skin.Controls["Console"]);
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
             PositionControls();
         }
 
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
         /// <param name="gameTime">Snapshot of the application's timing values.</param>
@@ -532,7 +532,7 @@ namespace MonoForce.Controls
             base.Update(gameTime);
         }
 
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
         protected override void DrawControl(Renderer renderer, Rectangle rect, GameTime gameTime)
@@ -543,7 +543,7 @@ namespace MonoForce.Controls
             base.DrawControl(renderer, r, gameTime);
         }
 
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
         /// <param name="e"></param>
@@ -555,7 +555,7 @@ namespace MonoForce.Controls
             if (MessageSent != null) MessageSent.Invoke(this, e);
         }
 
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
         /// <param name="e"></param>
@@ -569,7 +569,7 @@ namespace MonoForce.Controls
             base.OnResize(e);
         }
 
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
         /// <param name="e"></param>
@@ -584,7 +584,7 @@ namespace MonoForce.Controls
             ClientArea.Invalidate();
         }
 
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
         /// </summary>
@@ -598,7 +598,7 @@ namespace MonoForce.Controls
                 var line = Skin.Layers[0].Text.Font.Resource.LineSpacing;
                 var c = GetFilteredBuffer(filter).Count;
                 var p = (int)Math.Ceiling(ClientArea.ClientHeight / (float)line);
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
                 VerticalScrollBar.Range = c == 0 ? 1 : c;
@@ -607,7 +607,7 @@ namespace MonoForce.Controls
             }
         }
 
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
         /// <param name="e"></param>
@@ -626,7 +626,7 @@ namespace MonoForce.Controls
             }
         }
 
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
         /// <param name="e"></param>
@@ -645,7 +645,7 @@ namespace MonoForce.Controls
             }
         }
 
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
         /// <param name="e"></param>
@@ -658,7 +658,7 @@ namespace MonoForce.Controls
             var font = Skin.Layers[0].Text.Font.Resource;
             var r = new Rectangle(e.Rectangle.Left, e.Rectangle.Top, e.Rectangle.Width, e.Rectangle.Height);
             var pos = 0;
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
 // Are there messages to display?
@@ -669,7 +669,7 @@ namespace MonoForce.Controls
                 var c = b.Count;
                 var s = (VerticalScrollBar.Value + VerticalScrollBar.PageSize);
                 var f = s - VerticalScrollBar.PageSize;
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
 // Still messages to display?
@@ -681,13 +681,13 @@ namespace MonoForce.Controls
                         {
                             var x = 4;
                             var y = r.Bottom - (pos + 1) * (font.LineSpacing + 0);
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
                             var msg = b[i].Text;
                             var pre = "";
                             var ch = channels[b[i].Channel];
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
 // Prefix message with console channel name?
@@ -704,11 +704,11 @@ namespace MonoForce.Controls
                             {
                                 pre = string.Format("[{0}]", b[i].Time.ToLongTimeString()) + pre;
                             }
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
                             if (pre != "") msg = pre + ": " + msg;
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
                             e.Renderer.DrawString(font,
@@ -722,7 +722,7 @@ namespace MonoForce.Controls
             }
         }
 
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
         /// <returns>Returns all messages from channels whose index is specified in the filter list.</returns>
@@ -733,7 +733,7 @@ namespace MonoForce.Controls
         private EventedList<ConsoleMessage> GetFilteredBuffer(List<byte> filter)
         {
             var ret = new EventedList<ConsoleMessage>();
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
             if (filter.Count > 0)
@@ -752,13 +752,13 @@ namespace MonoForce.Controls
             return buffer;
         }
 
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
         /// </summary>
@@ -772,7 +772,7 @@ namespace MonoForce.Controls
 // Position the input text box based on the visibility of the channel selection box.
                 txtMain.Left = channelsVisible ? cmbMain.Width + 1 : 0;
                 txtMain.Width = channelsVisible ? Width - cmbMain.Width - 1 : Width;
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
                 if (textBoxVisible)
@@ -791,7 +791,7 @@ namespace MonoForce.Controls
             }
         }
 
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
         /// <param name="x"></param>
@@ -802,13 +802,13 @@ namespace MonoForce.Controls
         {
             var k = new KeyEventArgs();
             var g = new GamePadEventArgs(PlayerIndex.One);
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
 // Cast to Key/GamePad event arguments as needed.
             if (x is KeyEventArgs) k = x as KeyEventArgs;
             else if (x is GamePadEventArgs) g = x as GamePadEventArgs;
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
 // based on the channel selected in the combo box control.
@@ -818,7 +818,7 @@ namespace MonoForce.Controls
             {
 // Set the text colors according to channel.
                 txtMain.TextColor = ch.Color;
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
 // Get the message text from the input textbox.
@@ -827,22 +827,22 @@ namespace MonoForce.Controls
                 if ((k.Key == Keys.Enter || g.Button == GamePadActions.Press) && message != null && message != "")
                 {
                     x.Handled = true;
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
                     var me = new ConsoleMessageEventArgs(new ConsoleMessage(Sender, message, ch.Index));
                     OnMessageSent(me);
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
                     buffer.Add(new ConsoleMessage(Sender, me.Message.Text, me.Message.Channel));
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
 // Clear the text.
                     txtMain.Text = "";
                     ClientArea.Invalidate();
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
 // Update scroll bar value.
@@ -851,7 +851,7 @@ namespace MonoForce.Controls
             }
         }
 
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
         /// <param name="e"></param>
@@ -868,7 +868,7 @@ namespace MonoForce.Controls
             if (ch != null) txtMain.TextColor = ch.Color;
         }
 
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
         /// <param name="e"></param>
@@ -881,7 +881,7 @@ namespace MonoForce.Controls
             SendMessage(e);
         }
 
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
         /// <param name="e"></param>
@@ -894,7 +894,7 @@ namespace MonoForce.Controls
             SendMessage(e);
         }
 
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 
         private void VerticalScrollBar_ValueChanged(object sender, EventArgs e)
@@ -903,6 +903,6 @@ namespace MonoForce.Controls
         }
     }
 
-//if (Manager.UseGuide && Guide.IsVisible) return;
+
 // Respect the guide.
 }

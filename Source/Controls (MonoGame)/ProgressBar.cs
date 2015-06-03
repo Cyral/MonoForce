@@ -190,7 +190,7 @@ namespace MonoForce.Controls
 
 ////////////////////////////////////////////////////////////////////////////
 
-        protected override void DrawControl(Renderer renderer, Rectangle rect, GameTime gameTime)
+        public override void DrawControl(Renderer renderer, Rectangle rect, GameTime gameTime)
         {
             CheckLayer(Skin, "Control");
             CheckLayer(Skin, "Scale");

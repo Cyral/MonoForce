@@ -65,7 +65,7 @@ namespace MonoForce.Controls
             Skin = new SkinControl(Manager.Skin.Controls[skCheckBox]);
         }
 
-        protected override void DrawControl(Renderer renderer, Rectangle rect, GameTime gameTime)
+        public override void DrawControl(Renderer renderer, Rectangle rect, GameTime gameTime)
         {
 // Grab the checked skin layer and skin font.
             var layer = Skin.Layers[lrChecked];
@@ -83,7 +83,7 @@ namespace MonoForce.Controls
             var rc = new Rectangle(rect.Left + rect.Width + 4, rect.Y, Width - (layer.Width + 4), rect.Height);
 
             renderer.DrawLayer(this, layer, rect);
-            renderer.DrawString(this, layer, Text, rc, false, 0, 0);
+            renderer.DrawString(this, layer, Text, rc, false, 0, 0, DrawFormattedText);
         }
 
         /// <param name="e"></param>

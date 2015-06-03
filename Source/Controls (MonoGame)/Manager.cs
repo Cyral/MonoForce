@@ -703,6 +703,10 @@ namespace MonoForce.Controls
         /// <summary>
         private bool useGuide;
 
+        public static string StringNewline = "&n";
+        public static string[] StringColorStart = new string[1] { "[color" };
+        public static string[] StringColorEnd = new string[1] { "[/color]" };
+
         /// </param>
         /// The name of the skin being loaded at the start.
         /// <param name="skin">
@@ -1402,31 +1406,6 @@ game.Window.Title += " (XBOX_FAKE)";
             return true;
         }
 
-        private bool CheckParent(Control control, Point pos)
-        {
-            if (control.Parent != null && !CheckDetached(control))
-            {
-                var parent = control.Parent;
-                var root = control.Root;
-
-                var pr = new Rectangle(parent.AbsoluteLeft,
-                    parent.AbsoluteTop,
-                    parent.Width,
-                    parent.Height);
-
-                var margins = root.Skin.ClientMargins;
-                var rr = new Rectangle(root.AbsoluteLeft + margins.Left,
-                    root.AbsoluteTop + margins.Top,
-                    root.OriginWidth - margins.Horizontal,
-                    root.OriginHeight - margins.Vertical);
-
-
-                return (rr.Contains(pos) && pr.Contains(pos));
-            }
-
-            return true;
-        }
-
         private bool CheckPosition(Control control, Point pos)
         {
             return (control.AbsoluteLeft <= pos.X &&
@@ -1434,6 +1413,37 @@ game.Window.Title += " (XBOX_FAKE)";
                     control.AbsoluteLeft + control.Width >= pos.X &&
                     control.AbsoluteTop + control.Height >= pos.Y &&
                     CheckParent(control, pos));
+        }
+
+        /// <summary>
+		/// 
+		/// </summary>
+		/// <param name="control"></param>
+		/// <param name="pos"></param>
+		/// <returns></returns>
+		public virtual bool CheckParent(Control control, Point pos)
+        {
+            if (control.Parent != null && !CheckDetached(control))
+            {
+                Control parent = control.Parent;
+                Control root = control.Root;
+
+                Rectangle pr = new Rectangle(parent.AbsoluteLeft,
+                                             parent.AbsoluteTop,
+                                             parent.Width,
+                                             parent.Height);
+
+                Margins margins = root.Skin.ClientMargins;
+                Rectangle rr = new Rectangle(root.AbsoluteLeft + margins.Left,
+                                             root.AbsoluteTop + margins.Top,
+                                             root.OriginWidth - margins.Horizontal,
+                                             root.OriginHeight - margins.Vertical);
+
+
+                return (rr.Contains(pos) && pr.Contains(pos));
+            }
+
+            return true;
         }
 
         /// <returns></returns>

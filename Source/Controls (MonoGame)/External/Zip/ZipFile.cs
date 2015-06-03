@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 
-namespace TomShane.Neoforce.External.Zip
+namespace MonoForce.External.Zip
 {
     internal class ZipFile : IEnumerable<ZipEntry>,
         IDisposable

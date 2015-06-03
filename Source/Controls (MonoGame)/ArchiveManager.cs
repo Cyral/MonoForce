@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using Microsoft.Xna.Framework.Content;
-using TomShane.Neoforce.External.Zip;
+using MonoForce.External.Zip;
 
 namespace MonoForce.Controls
 {

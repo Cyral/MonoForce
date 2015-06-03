@@ -46,12 +46,14 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="ArchiveManager.cs" />
+    <Compile Include="Banner.cs" />
     <Compile Include="Bevel.cs" />
     <Compile Include="Button.cs" />
     <Compile Include="ButtonBase.cs" />
     <Compile Include="CheckBox.cs" />
     <Compile Include="ClipBox.cs" />
     <Compile Include="ClipControl.cs" />
+    <Compile Include="ColorPicker.cs" />
     <Compile Include="ComboBox.cs" />
     <Compile Include="Component.cs" />
     <Compile Include="Console.cs" />
@@ -59,6 +61,7 @@
     <Compile Include="ContentReaders.cs" />
     <Compile Include="ContextMenu.cs" />
     <Compile Include="Control.cs" />
+    <Compile Include="ControlList.cs" />
     <Compile Include="Cursor.cs" />
     <Compile Include="Delegates.cs" />
     <Compile Include="Dialog.cs" />
@@ -66,11 +69,13 @@
     <Compile Include="EventArgs.cs" />
     <Compile Include="EventedList.cs" />
     <Compile Include="ExitDialog.cs" />
+    <Compile Include="Extensions.cs" />
     <Compile Include="External\Zip\Crc32.cs" />
     <Compile Include="External\Zip\Shared.cs" />
     <Compile Include="External\Zip\ZipDirEntry.cs" />
     <Compile Include="External\Zip\ZipEntry.cs" />
     <Compile Include="External\Zip\ZipFile.cs" />
+    <Compile Include="FileDialog.cs" />
     <Compile Include="GroupBox.cs" />
     <Compile Include="GroupPanel.cs" />
     <Compile Include="ImageBox.cs" />
@@ -82,6 +87,7 @@
     <Compile Include="MainMenu.cs" />
     <Compile Include="Manager.cs" />
     <Compile Include="MenuBase.cs" />
+    <Compile Include="MessageBox.cs" />
     <Compile Include="ModalContainer.cs" />
     <Compile Include="NativeMethods.cs" />
     <Compile Include="Panel.cs" />
