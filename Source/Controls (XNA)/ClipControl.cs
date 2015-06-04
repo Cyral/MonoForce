@@ -6,7 +6,7 @@ namespace MonoForce.Controls
     {
         /// </summary>
         /// Gets or sets the client area of the clip control.
-        /// <summary>
+        /// </summary>
         public virtual ClipBox ClientArea
         {
             get { return clientArea; }
@@ -15,7 +15,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets or sets the client area margins of the clip control.
-        /// <summary>
+        /// </summary>
         public override Margins ClientMargins
         {
             get { return base.ClientMargins; }
@@ -35,7 +35,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Client area of the clip control.
-        /// <summary>
+        /// </summary>
         private ClipBox clientArea;
 
         public ClipControl(Manager manager) : base(manager)
@@ -60,7 +60,7 @@ namespace MonoForce.Controls
         /// <param name="control">Child control to add to the clip control.</param>
         /// </summary>
         /// Adds a child control to the clip control.
-        /// <summary>
+        /// </summary>
         public virtual void Add(Control control, bool client)
         {
             if (client)
@@ -76,7 +76,7 @@ namespace MonoForce.Controls
         /// <param name="control">Child control to add to the clip control.</param>
         /// </summary>
         /// Adds a child control to the clip box.
-        /// <summary>
+        /// </summary>
         public override void Add(Control control)
         {
             Add(control, true);
@@ -84,7 +84,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Initializes the clip control.
-        /// <summary>
+        /// </summary>
         public override void Init()
         {
             base.Init();
@@ -98,7 +98,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Initializes the skin for the clip control.
-        /// <summary>
+        /// </summary>
         protected internal override void InitSkin()
         {
             base.InitSkin();
@@ -107,7 +107,7 @@ namespace MonoForce.Controls
         /// <param name="gameTime">Snapshot of the application's timing values.</param>
         /// </summary>
         /// Updates the clip control and its child controls.
-        /// <summary>
+        /// </summary>
         protected internal override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
@@ -115,7 +115,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Adjusts the margins of the clip control.
-        /// <summary>
+        /// </summary>
         protected virtual void AdjustMargins()
         {
         }
@@ -128,7 +128,7 @@ namespace MonoForce.Controls
         /// <param name="e"></param>
         /// </summary>
         /// Handles resize events for the clip control.
-        /// <summary>
+        /// </summary>
         protected override void OnResize(ResizeEventArgs e)
         {
             base.OnResize(e);

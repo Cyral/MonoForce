@@ -22,24 +22,24 @@ namespace MonoForce.Controls
 
     /// </summary>
     /// Represents a single message sent to a console.
-    /// <summary>
+    /// </summary>
     public struct ConsoleMessage
     {
         /// </summary>
         /// Console channel index.
-        /// <summary>
+        /// </summary>
         public byte Channel;
 
         public string Sender;
 
         /// </summary>
         /// Message text.
-        /// <summary>
+        /// </summary>
         public string Text;
 
         /// </summary>
         /// Message time stamp.
-        /// <summary>
+        /// </summary>
         public DateTime Time;
 
 
@@ -59,7 +59,7 @@ namespace MonoForce.Controls
 
     /// </summary>
     /// Represents a list of console channels.
-    /// <summary>
+    /// </summary>
     public class ChannelList : EventedList<ConsoleChannel>
     {
 
@@ -71,7 +71,7 @@ namespace MonoForce.Controls
         /// <param name="name">Console channel name.</param>
         /// </summary>
         /// Gets or sets a console channel by channel name.
-        /// <summary>
+        /// </summary>
         public ConsoleChannel this[string name]
         {
             get
@@ -107,7 +107,7 @@ namespace MonoForce.Controls
         /// <param name="index">Console channel index.</param>
         /// </summary>
         /// Gets or sets a console channel by the channel's index.
-        /// <summary>
+        /// </summary>
         public ConsoleChannel this[byte index]
         {
             get
@@ -143,7 +143,7 @@ namespace MonoForce.Controls
 
     /// </summary>
     /// Represents a single channel of the console.
-    /// <summary>
+    /// </summary>
     public class ConsoleChannel
     {
 
@@ -151,7 +151,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets or sets the text color of the console channel's messages.
-        /// <summary>
+        /// </summary>
         public virtual Color Color
         {
             get { return color; }
@@ -163,7 +163,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets or sets the index of the console channel.
-        /// <summary>
+        /// </summary>
         public virtual byte Index
         {
             get { return index; }
@@ -175,7 +175,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets or sets the name of the console channel.
-        /// <summary>
+        /// </summary>
         public virtual string Name
         {
             get { return name; }
@@ -184,17 +184,17 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Color of the console channel's message text.
-        /// <summary>
+        /// </summary>
         private Color color;
 
         /// </summary>
         /// Index of the console channel.
-        /// <summary>
+        /// </summary>
         private byte index;
 
         /// </summary>
         /// Name of the console channel.
-        /// <summary>
+        /// </summary>
         private string name;
 
 
@@ -205,7 +205,7 @@ namespace MonoForce.Controls
         /// <param name="index">Index of the console channel.</param>
         /// </summary>
         /// Creates a new console channel.
-        /// <summary>
+        /// </summary>
         public ConsoleChannel(byte index, string name, Color color)
         {
             this.name = name;
@@ -219,23 +219,23 @@ namespace MonoForce.Controls
 
     /// </summary>
     /// Describes the format of a console message.
-    /// <summary>
+    /// </summary>
     [Flags]
     public enum ConsoleMessageFormats
     {
         /// </summary>
         /// Messages only display the body text.
-        /// <summary>
+        /// </summary>
         None = 0x00,
 
         /// </summary>
         /// Messages are prefixed with the channel name.
-        /// <summary>
+        /// </summary>
         ChannelName = 0x01,
 
         /// </summary>
         /// Messages are prefixed with the time they were sent.
-        /// <summary>
+        /// </summary>
         TimeStamp = 0x02,
         Sender = 0x03,
         All = Sender | ChannelName | TimeStamp
@@ -246,7 +246,7 @@ namespace MonoForce.Controls
 
     /// </summary>
     /// Multi-channel console control that also allows user text input.
-    /// <summary>
+    /// </summary>
     public class Console : Container
     {
 
@@ -254,7 +254,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets or sets the console's channel filter.
-        /// <summary>
+        /// </summary>
         public virtual List<byte> ChannelFilter
         {
             get { return filter; }
@@ -266,7 +266,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets or sets the console's channel list.
-        /// <summary>
+        /// </summary>
         public virtual ChannelList Channels
         {
             get { return channels; }
@@ -284,7 +284,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Indicates whether the console is displaying the console channels or not. ???
-        /// <summary>
+        /// </summary>
         public virtual bool ChannelsVisible
         {
             get { return channelsVisible; }
@@ -301,7 +301,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets or sets the console's message buffer.
-        /// <summary>
+        /// </summary>
         public virtual EventedList<ConsoleMessage> MessageBuffer
         {
             get { return buffer; }
@@ -318,7 +318,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets or sets the console's message format.
-        /// <summary>
+        /// </summary>
         public virtual ConsoleMessageFormats MessageFormat
         {
             get { return messageFormat; }
@@ -330,7 +330,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets or sets the console's current channel.
-        /// <summary>
+        /// </summary>
         public virtual byte SelectedChannel
         {
             set { cmbMain.Text = channels[value].Name; }
@@ -352,7 +352,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Indicates if the console's text box is visible or not.
-        /// <summary>
+        /// </summary>
         public virtual bool TextBoxVisible
         {
             get { return textBoxVisible; }
@@ -376,32 +376,32 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Console message list.
-        /// <summary>
+        /// </summary>
         private EventedList<ConsoleMessage> buffer = new EventedList<ConsoleMessage>();
 
         /// </summary>
         /// List of console channels for this console.
-        /// <summary>
+        /// </summary>
         private ChannelList channels = new ChannelList();
 
         /// </summary>
         /// Indicates if the channel selection combo box is visible.
-        /// <summary>
+        /// </summary>
         private bool channelsVisible = true;
 
         /// </summary>
         /// Console channel filter list.
-        /// <summary>
+        /// </summary>
         private List<byte> filter = new List<byte>();
 
         /// </summary>
         /// Console message format.
-        /// <summary>
+        /// </summary>
         private ConsoleMessageFormats messageFormat = ConsoleMessageFormats.None;
 
         /// </summary>
         /// Indicates if the user input text box is visible.
-        /// <summary>
+        /// </summary>
         private bool textBoxVisible = true;
 
 
@@ -416,7 +416,7 @@ namespace MonoForce.Controls
         /// <param name="manager">GUI manager for the console.</param>
         /// </summary>
         /// Creates a new console control.
-        /// <summary>
+        /// </summary>
         public Console(Manager manager)
             : base(manager)
         {
@@ -484,7 +484,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Initializes the console control.
-        /// <summary>
+        /// </summary>
         public override void Init()
         {
             base.Init();
@@ -501,7 +501,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Occurs when a console message is sent.
-        /// <summary>
+        /// </summary>
         public event ConsoleMessageEventHandler MessageSent;
 
 
@@ -509,7 +509,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Initializes the skin of the console control.
-        /// <summary>
+        /// </summary>
         protected internal override void InitSkin()
         {
             base.InitSkin();
@@ -526,7 +526,7 @@ namespace MonoForce.Controls
         /// <param name="gameTime">Snapshot of the application's timing values.</param>
         /// </summary>
         /// Updates the state of the list box and watches for changes in list size.
-        /// <summary>
+        /// </summary>
         protected internal override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
@@ -549,7 +549,7 @@ namespace MonoForce.Controls
         /// <param name="e"></param>
         /// </summary>
         /// Handles console message sent events.
-        /// <summary>
+        /// </summary>
         protected virtual void OnMessageSent(ConsoleMessageEventArgs e)
         {
             if (MessageSent != null) MessageSent.Invoke(this, e);
@@ -561,7 +561,7 @@ namespace MonoForce.Controls
         /// <param name="e"></param>
         /// </summary>
         /// Updates scroll bar values after the console window has been resized.
-        /// <summary>
+        /// </summary>
         protected override void OnResize(ResizeEventArgs e)
         {
 // Update scroll bar value.
@@ -576,7 +576,7 @@ namespace MonoForce.Controls
         /// <param name="sender"></param>
         /// </summary>
         /// Handles adding new messages to the console message area.
-        /// <summary>
+        /// </summary>
         private void buffer_ItemAdded(object sender, EventArgs e)
         {
 // Update scroll bar value.
@@ -589,7 +589,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Updates the scroll bar values based on the font size, console dimensions, and number of messages.
-        /// <summary>
+        /// </summary>
         private void CalcScrolling()
         {
             if (VerticalScrollBar != null)
@@ -614,7 +614,7 @@ namespace MonoForce.Controls
         /// <param name="sender"></param>
         /// </summary>
         /// Handles repopulating the channel list when an item is added.
-        /// <summary>
+        /// </summary>
         private void channels_ItemAdded(object sender, EventArgs e)
         {
 // Clear the channels list.
@@ -633,7 +633,7 @@ namespace MonoForce.Controls
         /// <param name="sender"></param>
         /// </summary>
         /// Handles repopulating the channels list when items are removed.
-        /// <summary>
+        /// </summary>
         private void channels_ItemRemoved(object sender, EventArgs e)
         {
 // Clear the channels list.
@@ -652,7 +652,7 @@ namespace MonoForce.Controls
         /// <param name="sender"></param>
         /// </summary>
         /// Draws the client area of the console.
-        /// <summary>
+        /// </summary>
         private void ClientArea_Draw(object sender, DrawEventArgs e)
         {
             var font = Skin.Layers[0].Text.Font.Resource;
@@ -729,7 +729,7 @@ namespace MonoForce.Controls
         /// <param name="filter">List of channel indexes to retrieve messages for.</param>
         /// </summary>
         /// Gets all console messages from channels with matching indexes specified in the filter list.
-        /// <summary>
+        /// </summary>
         private EventedList<ConsoleMessage> GetFilteredBuffer(List<byte> filter)
         {
             var ret = new EventedList<ConsoleMessage>();
@@ -763,7 +763,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Helper to position controls based on the visibility of the input text box control.
-        /// <summary>
+        /// </summary>
         private void PositionControls()
         {
 // Is the user input text box initialized?
@@ -797,7 +797,7 @@ namespace MonoForce.Controls
         /// <param name="x"></param>
         /// </summary>
         /// Handles key and button press events the console input text box receives.
-        /// <summary>
+        /// </summary>
         private void SendMessage(EventArgs x)
         {
             var k = new KeyEventArgs();
@@ -859,7 +859,7 @@ namespace MonoForce.Controls
         /// </summary>
         /// the text box control receives focus.
         /// Updates the active console channel and the text color when
-        /// <summary>
+        /// </summary>
         private void txtMain_FocusGained(object sender, EventArgs e)
         {
 // based on the channel selected in the combo box control.
@@ -875,7 +875,7 @@ namespace MonoForce.Controls
         /// <param name="sender"></param>
         /// </summary>
         /// Handles gamepad button down events for the text box.
-        /// <summary>
+        /// </summary>
         private void txtMain_GamePadDown(object sender, GamePadEventArgs e)
         {
             SendMessage(e);
@@ -888,7 +888,7 @@ namespace MonoForce.Controls
         /// <param name="sender"></param>
         /// </summary>
         /// Handles key down events for the text box.
-        /// <summary>
+        /// </summary>
         private void txtMain_KeyDown(object sender, KeyEventArgs e)
         {
             SendMessage(e);

@@ -14,12 +14,12 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Control associated with the context menu.
-        /// <summary>
+        /// </summary>
         private Control sender;
 
         /// </summary>
         /// Menu delay timer.
-        /// <summary>
+        /// </summary>
         private long timer;
 
         public ContextMenu(Manager manager) : base(manager)
@@ -37,7 +37,7 @@ namespace MonoForce.Controls
         /// </param>
         /// </summary>
         /// Hides the context menu or one of its child menus.
-        /// <summary>
+        /// </summary>
         public virtual void HideMenu(bool hideCurrent)
         {
 // Hide this menu?
@@ -58,7 +58,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Initializes the context menu control.
-        /// <summary>
+        /// </summary>
         public override void Init()
         {
             base.Init();
@@ -66,7 +66,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Displays the context menu.
-        /// <summary>
+        /// </summary>
         public override void Show()
         {
             Show(null, Left, Top);
@@ -77,7 +77,7 @@ namespace MonoForce.Controls
         /// <param name="sender">Control requesting the context menu is displayed.</param>
         /// </summary>
         /// Displays the menu at the specified position.
-        /// <summary>
+        /// </summary>
         public virtual void Show(Control sender, int x, int y)
         {
 // Calculate the dimenstions of the context menu.
@@ -144,7 +144,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Initializes the skin of the context menu control.
-        /// <summary>
+        /// </summary>
         protected internal override void InitSkin()
         {
             base.InitSkin();
@@ -154,7 +154,7 @@ namespace MonoForce.Controls
         /// <param name="gameTime">Snapshot of the application's timing values.</param>
         /// </summary>
         /// Updates the context menu control.
-        /// <summary>
+        /// </summary>
         protected internal override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
@@ -175,7 +175,7 @@ namespace MonoForce.Controls
         /// <param name="disposing"></param>
         /// </summary>
         /// Releases resources used by the context menu control.
-        /// <summary>
+        /// </summary>
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -285,7 +285,7 @@ namespace MonoForce.Controls
         /// <param name="e"></param>
         /// </summary>
         /// Handles mouse click events for the context menu.
-        /// <summary>
+        /// </summary>
         protected override void OnClick(EventArgs e)
         {
             if (sender != null && !(sender is MenuBase)) sender.Focused = true;
@@ -341,7 +341,7 @@ namespace MonoForce.Controls
         /// <param name="e"></param>
         /// </summary>
         /// Handles button press events for the context menu.
-        /// <summary>
+        /// </summary>
         protected override void OnGamePadPress(GamePadEventArgs e)
         {
             timer = 0;
@@ -388,7 +388,7 @@ namespace MonoForce.Controls
         /// <param name="e"></param>
         /// </summary>
         /// Handles key press events for the context menu.
-        /// <summary>
+        /// </summary>
         protected override void OnKeyPress(KeyEventArgs e)
         {
             base.OnKeyPress(e);
@@ -442,7 +442,7 @@ namespace MonoForce.Controls
         /// <param name="e"></param>
         /// </summary>
         /// Handles mouse move events for the context menu.
-        /// <summary>
+        /// </summary>
         protected override void OnMouseMove(MouseEventArgs e)
         {
 // Update the selected item index.
@@ -453,7 +453,7 @@ namespace MonoForce.Controls
         /// <param name="e"></param>
         /// </summary>
         /// Handles mouse out events for the context menu.
-        /// <summary>
+        /// </summary>
         protected override void OnMouseOut(MouseEventArgs e)
         {
             base.OnMouseOut(e);
@@ -468,7 +468,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Calculates the dimensions of the context menu.
-        /// <summary>
+        /// </summary>
         private void AutoSize()
         {
             var font = Skin.Layers["Control"].Text;
@@ -496,7 +496,7 @@ namespace MonoForce.Controls
         /// <param name="x">X position to check.</param>
         /// </summary>
         /// Determines if the specified point lies within the context menu or one of its child menus.
-        /// <summary>
+        /// </summary>
         private bool CheckArea(int x, int y)
         {
 // Context menu is visible?
@@ -543,7 +543,7 @@ namespace MonoForce.Controls
         /// <returns>Returns the height of a single context menu entry.</returns>
         /// </summary>
         /// Gets the height of a single entry in the context menu.
-        /// <summary>
+        /// </summary>
         private int LineHeight()
         {
             var h = 0;
@@ -558,7 +558,7 @@ namespace MonoForce.Controls
         /// <returns>Returns the width of the longest entry in the context menu.</returns>
         /// </summary>
         /// Gets the width of the longest entry in the context menu.
-        /// <summary>
+        /// </summary>
         private int LineWidth()
         {
             var w = 0;
@@ -582,7 +582,7 @@ namespace MonoForce.Controls
         /// </summary>
         /// the selected index, and raises the selected event for the new selection if needed.
         /// Determines which, if any, menu entry of the context menu is at the specified offset and updates
-        /// <summary>
+        /// </summary>
         private void TrackItem(int x, int y)
         {
 // Context menu has menu entries?

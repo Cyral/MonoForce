@@ -3,9 +3,9 @@ using System.Runtime.InteropServices;
 
 namespace MonoForce.Controls
 {
-    /// </summary>
-    /// Imports a few native functions we need.
     /// <summary>
+    /// Imports a few native functions we need.
+    /// </summary>
     internal static class NativeMethods
     {
         [DllImport("User32.dll")]

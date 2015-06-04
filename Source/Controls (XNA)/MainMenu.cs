@@ -5,14 +5,14 @@ namespace MonoForce.Controls
 {
     public class MainMenu : MenuBase
     {
-        /// </summary>
-        /// Last selected menu entry index.
         /// <summary>
+        /// Last selected menu entry index.
+        /// </summary>
         private int lastIndex = -1;
 
-        /// </summary>
-        /// Array of rectangles.
         /// <summary>
+        /// Array of rectangles.
+        /// </summary>
         private Rectangle[] rs;
 
         public MainMenu(Manager manager) : base(manager)
@@ -25,9 +25,9 @@ namespace MonoForce.Controls
             StayOnBack = true;
         }
 
-        /// </summary>
-        /// Hides the menu and any visible child menus.
         /// <summary>
+        /// Hides the menu and any visible child menus.
+        /// </summary>
         public virtual void HideMenu()
         {
 // Child menu to hide?
@@ -43,17 +43,17 @@ namespace MonoForce.Controls
             ItemIndex = -1;
         }
 
-        /// </summary>
-        /// Initializes the main menu.
         /// <summary>
+        /// Initializes the main menu.
+        /// </summary>
         public override void Init()
         {
             base.Init();
         }
 
-        /// </summary>
-        /// Initializes the skin for the main menu.
         /// <summary>
+        /// Initializes the skin for the main menu.
+        /// </summary>
         protected internal override void InitSkin()
         {
             base.InitSkin();
@@ -61,9 +61,9 @@ namespace MonoForce.Controls
         }
 
         /// <param name="disposing"></param>
-        /// </summary>
-        /// Cleans up after the main menu.
         /// <summary>
+        /// Cleans up after the main menu.
+        /// </summary>
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -126,9 +126,9 @@ namespace MonoForce.Controls
         }
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Handles mouse button click events for the main menu.
         /// <summary>
+        /// Handles mouse button click events for the main menu.
+        /// </summary>
         protected override void OnClick(EventArgs e)
         {
             base.OnClick(e);
@@ -174,9 +174,9 @@ namespace MonoForce.Controls
         }
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Handles focus gained events for the main menu.
         /// <summary>
+        /// Handles focus gained events for the main menu.
+        /// </summary>
         protected override void OnFocusGained(EventArgs e)
         {
             base.OnFocusGained(e);
@@ -184,9 +184,9 @@ namespace MonoForce.Controls
         }
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Handles focus lost events for the main menu control.
         /// <summary>
+        /// Handles focus lost events for the main menu control.
+        /// </summary>
         protected override void OnFocusLost(EventArgs e)
         {
             base.OnFocusLost(e);
@@ -194,9 +194,9 @@ namespace MonoForce.Controls
         }
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Handles game pad button press events for the main menu.
         /// <summary>
+        /// Handles game pad button press events for the main menu.
+        /// </summary>
         protected override void OnGamePadPress(GamePadEventArgs e)
         {
             base.OnGamePadPress(e);
@@ -226,9 +226,9 @@ namespace MonoForce.Controls
         }
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Handles arrow key press events for the main menu.
         /// <summary>
+        /// Handles arrow key press events for the main menu.
+        /// </summary>
         protected override void OnKeyPress(KeyEventArgs e)
         {
             base.OnKeyPress(e);
@@ -264,18 +264,18 @@ namespace MonoForce.Controls
         }
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Handles mouse button down events for the main menu.
         /// <summary>
+        /// Handles mouse button down events for the main menu.
+        /// </summary>
         protected override void OnMouseDown(MouseEventArgs e)
         {
             base.OnMouseDown(e);
         }
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Handles mouse move events for the main menu.
         /// <summary>
+        /// Handles mouse move events for the main menu.
+        /// </summary>
         protected override void OnMouseMove(MouseEventArgs e)
         {
             base.OnMouseMove(e);
@@ -302,9 +302,9 @@ namespace MonoForce.Controls
         }
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Handles mouse out events for the main menu.
         /// <summary>
+        /// Handles mouse out events for the main menu.
+        /// </summary>
         protected override void OnMouseOut(MouseEventArgs e)
         {
             base.OnMouseOut(e);
@@ -315,17 +315,17 @@ namespace MonoForce.Controls
         /// <returns>Returns true.</returns>
         /// <param name="y">Y position to check.</param>
         /// <param name="x">X position to check.</param>
-        /// </summary>
-        /// Checks to see if the specified position is within the bounds of the menu or a child menu. ???
         /// <summary>
+        /// Checks to see if the specified position is within the bounds of the menu or a child menu. ???
+        /// </summary>
         private bool CheckArea(int x, int y)
         {
             return true;
         }
 
-        /// </summary>
-        /// Hides the currently visible child menu.
         /// <summary>
+        /// Hides the currently visible child menu.
+        /// </summary>
         private void HideSubMenu()
         {
 // Child menu to hide?
@@ -339,9 +339,9 @@ namespace MonoForce.Controls
 
         /// <param name="y">Y position to check.</param>
         /// <param name="x">X position to check.</param>
-        /// </summary>
-        /// Highlights the menu item under the specified position.
         /// <summary>
+        /// Highlights the menu item under the specified position.
+        /// </summary>
         private void TrackItem(int x, int y)
         {
 // Menu has a list of menu items?

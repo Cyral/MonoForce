@@ -5,17 +5,17 @@ using System.Xml;
 
 namespace MonoForce.Controls
 {
-    /// </summary>
-    /// Provides methods for loading Neoforce controls from XML files.
     /// <summary>
+    /// Provides methods for loading Neoforce controls from XML files.
+    /// </summary>
     public static class Layout
     {
         /// <returns>Returns the root control of the layout file with all child controls initialized.</returns>
         /// <param name="asset">Name of the layout XML asset. (Default asset names are file names without extensions.)</param>
         /// <param name="manager">GUI manager responsible for the controls contained in the layout XML file.</param>
-        /// </summary>
-        /// Reads the specified layout XML file asset.
         /// <summary>
+        /// Reads the specified layout XML file asset.
+        /// </summary>
         public static Container Load(Manager manager, string asset)
         {
             Container win = null;
@@ -70,9 +70,9 @@ namespace MonoForce.Controls
         /// <param name="type">Type of control specified in XML.</param>
         /// <param name="node">Control XML node.</param>
         /// <param name="manager">GUI manager for the control to load.</param>
-        /// </summary>
-        /// Loads a control from a layout XML file.
         /// <summary>
+        /// Loads a control from a layout XML file.
+        /// </summary>
         private static Control LoadControl(Manager manager, XmlNode node, Type type, Control parent)
         {
             Control c = null;
@@ -109,9 +109,9 @@ namespace MonoForce.Controls
 
         /// <param name="c">Control to apply the property values to.</param>
         /// <param name="node">Current XML node list.</param>
-        /// </summary>
-        /// Loads all properties defined in a layout XML file.
         /// <summary>
+        /// Loads all properties defined in a layout XML file.
+        /// </summary>
         private static void LoadProperties(XmlNodeList node, Control c)
         {
             foreach (XmlElement e in node)

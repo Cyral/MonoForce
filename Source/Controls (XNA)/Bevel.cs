@@ -2,9 +2,9 @@ using Microsoft.Xna.Framework;
 
 namespace MonoForce.Controls
 {
-    /// </summary>
-    /// Describes different bevel styles.
     /// <summary>
+    /// Describes different bevel styles.
+    /// </summary>
     public enum BevelStyle
     {
         None,
@@ -15,9 +15,9 @@ namespace MonoForce.Controls
         Raised
     }
 
-    /// </summary>
-    /// Describes the side(s) of a control where a bevel will be applied.
     /// <summary>
+    /// Describes the side(s) of a control where a bevel will be applied.
+    /// </summary>
     public enum BevelBorder
     {
         None,
@@ -31,9 +31,9 @@ namespace MonoForce.Controls
 
     public class Bevel : Control
     {
-        /// </summary>
-        /// Gets or sets the sides of a control the beveled edge will be applied to.
         /// <summary>
+        /// Gets or sets the sides of a control the beveled edge will be applied to.
+        /// </summary>
         public BevelBorder Border
         {
             get { return border; }
@@ -47,9 +47,9 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
-        /// Gets or sets the style of the beveled control.
         /// <summary>
+        /// Gets or sets the style of the beveled control.
+        /// </summary>
         public BevelStyle Style
         {
             get { return style; }
@@ -63,14 +63,14 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
-        /// Specifies which sides of a control the beveled edge will be applied to.
         /// <summary>
+        /// Specifies which sides of a control the beveled edge will be applied to.
+        /// </summary>
         private BevelBorder border = BevelBorder.All;
 
-        /// </summary>
-        /// Describes the style of the beveled edges.
         /// <summary>
+        /// Describes the style of the beveled edges.
+        /// </summary>
         private BevelStyle style = BevelStyle.Etched;
 
         public Bevel(Manager manager) : base(manager)
@@ -81,27 +81,27 @@ namespace MonoForce.Controls
             Height = 64;
         }
 
-        /// </summary>
-        /// Occurs when the border style of the bevel changes.
         /// <summary>
+        /// Occurs when the border style of the bevel changes.
+        /// </summary>
         public event EventHandler BorderChanged;
 
-        /// </summary>
-        /// Initializes the control.
         /// <summary>
+        /// Initializes the control.
+        /// </summary>
         public override void Init()
         {
             base.Init();
         }
 
-        /// </summary>
-        /// Occurs when the style of the bevel changes.
         /// <summary>
+        /// Occurs when the style of the bevel changes.
+        /// </summary>
         public event EventHandler StyleChanged;
 
-        /// </summary>
-        /// Initializes the control skin.
         /// <summary>
+        /// Initializes the control skin.
+        /// </summary>
         protected internal override void InitSkin()
         {
             base.InitSkin();
@@ -130,18 +130,18 @@ namespace MonoForce.Controls
         }
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Handles bevel border changed events.
         /// <summary>
+        /// Handles bevel border changed events.
+        /// </summary>
         protected virtual void OnBorderChanged(EventArgs e)
         {
             if (BorderChanged != null) BorderChanged.Invoke(this, e);
         }
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Handles bevel style changed events.
         /// <summary>
+        /// Handles bevel style changed events.
+        /// </summary>
         protected virtual void OnStyleChanged(EventArgs e)
         {
             if (StyleChanged != null) StyleChanged.Invoke(this, e);
@@ -152,9 +152,9 @@ namespace MonoForce.Controls
         /// <param name="pos">Specifies which side of the control is beveled.</param>
         /// <param name="rect">Bounds of the control the bevel is applied to.</param>
         /// <param name="renderer">Render management object.</param>
-        /// </summary>
-        /// Draws a piece of the beveled control based on the bevel's border and style.
         /// <summary>
+        /// Draws a piece of the beveled control based on the bevel's border and style.
+        /// </summary>
         private void DrawPart(Renderer renderer, Rectangle rect, BevelBorder pos, BevelStyle style, bool all)
         {
 // Get the skin's control layer and parse the bevel color values.

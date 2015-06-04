@@ -10,13 +10,13 @@ namespace MonoForce.Controls
 {
     /// </summary>
     /// Base class for your Neoforce application. Use it.
-    /// <summary>
+    /// </summary>
     public class Application : Game
 // try
     {
         /// </summary>
         /// ???
-        /// <summary>
+        /// </summary>
         public virtual Color BackgroundColor
 // try
         {
@@ -26,7 +26,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Image to use as the application background.
-        /// <summary>
+        /// </summary>
         public virtual Texture2D BackgroundImage
 // try
         {
@@ -36,7 +36,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// ???
-        /// <summary>
+        /// </summary>
         public virtual bool ClearBackground
 // try
         {
@@ -47,7 +47,7 @@ namespace MonoForce.Controls
         /// </summary>
         /// shown when the application is about to close.
         /// Indicates if the default exit confirmation dialog will be
-        /// <summary>
+        /// </summary>
         public virtual bool ExitConfirmation
 // try
         {
@@ -57,7 +57,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Indicates whether the window border should be drawn in full screen mode. ???
-        /// <summary>
+        /// </summary>
         public virtual bool FullScreenBorder
 // try
         {
@@ -67,7 +67,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets or sets the graphics device manager for the application.
-        /// <summary>
+        /// </summary>
         public virtual GraphicsDeviceManager Graphics
 // try
         {
@@ -77,7 +77,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// ???
-        /// <summary>
+        /// </summary>
         public virtual Window MainWindow
 // try
         {
@@ -86,7 +86,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets or sets the GUI manager for the application.
-        /// <summary>
+        /// </summary>
         public virtual Manager Manager
 // try
         {
@@ -96,7 +96,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Indicates whether the system border should be drawn ???
-        /// <summary>
+        /// </summary>
         public virtual bool SystemBorder
 // try
         {
@@ -106,85 +106,85 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Indicates if the application should create and use the MainWindow.
-        /// <summary>
+        /// </summary>
         private readonly bool appWindow;
 
         /// </summary>
         /// Application background color.
-        /// <summary>
+        /// </summary>
         private Color backgroundColor = Color.Black;
 
         /// </summary>
         /// Image to use as the application background.
-        /// <summary>
+        /// </summary>
         private Texture2D backgroundImage;
 
         /// </summary>
         /// Indicates if the background should be cleared to the BG color by the application. ???
-        /// <summary>
+        /// </summary>
         private bool clearBackground;
 
         /// </summary>
         /// Indicates whether a request to terminate the application has been received.
-        /// <summary>
+        /// </summary>
         private bool exit;
 
         /// </summary>
         /// closing the application.
         /// Indicates whether the exit confirmation dialog should be shown before
-        /// <summary>
+        /// </summary>
         private bool exitConfirmation = true;
 
         /// </summary>
         /// Exit confirmation dialog object.
-        /// <summary>
+        /// </summary>
         private ExitDialog exitDialog;
 
         /// </summary>
         /// ???
-        /// <summary>
+        /// </summary>
         private bool fullScreenBorder = true;
 
         /// </summary>
         /// Graphics device manager for the application.
-        /// <summary>
+        /// </summary>
         private GraphicsDeviceManager graphics;
 
         /// </summary>
         /// ???
-        /// <summary>
+        /// </summary>
         private Window mainWindow;
 
         /// </summary>
         /// GUI control manager for the application.
-        /// <summary>
+        /// </summary>
         private Manager manager;
 
 #if (!XBOX && !XBOX_FAKE)
         /// </summary>
         /// Tracks the mouse button state when running on Windows.
-        /// <summary>
+        /// </summary>
         private bool mouseDown;
 #endif
 
         /// </summary>
         /// Current position of the mouse cursor.
-        /// <summary>
+        /// </summary>
         private Point mousePos = Point.Zero;
 
         /// </summary>
         /// Sprite batch object for the application.
-        /// <summary>
+        /// </summary>
         private SpriteBatch sprite;
 
         /// </summary>
         /// ???
-        /// <summary>
+        /// </summary>
         private bool systemBorder = true;
 
         /// </summary>
         /// Creates an application using the "Default" skin and not using the Main Window.
-        /// <summary>
+        /// </summary>
         public Application()
             : this("Default", false)
 // try
@@ -194,7 +194,7 @@ namespace MonoForce.Controls
         /// <param name="skin">Name of the skin to load.</param>
         /// </summary>
         /// Creates an application using the specified skin and not using the Main Window.
-        /// <summary>
+        /// </summary>
         public Application(string skin)
             : this(skin, false)
 // try
@@ -204,7 +204,7 @@ namespace MonoForce.Controls
         /// <param name="appWindow">Indicates if the application should create its MainWindow member.</param>
         /// </summary>
         /// Creates an application using the "Default" skin and using the Main Window.
-        /// <summary>
+        /// </summary>
         public Application(bool appWindow)
             : this("Default", appWindow)
 // try
@@ -215,7 +215,7 @@ namespace MonoForce.Controls
         /// <param name="skin">Name of the skin to load.</param>
         /// </summary>
         /// Creates an application using the specified skin and using the Main Window.
-        /// <summary>
+        /// </summary>
         public Application(string skin, bool appWindow)
 // try
         {
@@ -245,7 +245,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Sets the exit flag and begins shutting down the application.
-        /// <summary>
+        /// </summary>
         public new virtual void Exit()
 // try
         {
@@ -255,7 +255,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Runs the application.
-        /// <summary>
+        /// </summary>
         public new void Run()
 // try
         {
@@ -278,7 +278,7 @@ throw x;
         /// <returns>A new Window instance.</returns>
         /// </summary>
         /// Creates the application's Main Window.
-        /// <summary>
+        /// </summary>
         protected virtual Window CreateMainWindow()
 // try
         {
@@ -288,7 +288,7 @@ throw x;
         /// <returns></returns>
         /// </summary>
         /// Creates a 2D texture that can be used as a render target.
-        /// <summary>
+        /// </summary>
         protected virtual RenderTarget2D CreateRenderTarget()
 // try
         {
@@ -298,7 +298,7 @@ throw x;
         /// <param name="disposing">Indicates if the resources should be released from memory.</param>
         /// </summary>
         /// Releases resources used by the GUI manager and the SpriteBatch objects.
-        /// <summary>
+        /// </summary>
         protected override void Dispose(bool disposing)
 // try
         {
@@ -315,7 +315,7 @@ throw x;
         /// <param name="gameTime">Snapshot of the game's timing values.</param>
         /// </summary>
         /// Draws the application.
-        /// <summary>
+        /// </summary>
         protected override void Draw(GameTime gameTime)
 // try
         {
@@ -345,7 +345,7 @@ throw x;
         /// <param name="gameTime">Snapshot of the game's timing values.</param>
         /// </summary>
         /// Additional drawing logic for your application can be placed here.
-        /// <summary>
+        /// </summary>
         protected virtual void DrawScene(GameTime gameTime)
 // try
         {
@@ -353,7 +353,7 @@ throw x;
 
         /// </summary>
         /// Initializes the application.
-        /// <summary>
+        /// </summary>
         protected override void Initialize()
 // try
         {
@@ -391,7 +391,7 @@ throw x;
 
         /// </summary>
         /// Initializes the application's Main Window and passes it off the the GUI Manager.
-        /// <summary>
+        /// </summary>
         protected virtual void InitMainWindow()
 // try
         {
@@ -427,7 +427,7 @@ throw x;
         /// <param name="gameTime">Snapshot of the game's timing values.</param>
         /// </summary>
         /// Updates the application.
-        /// <summary>
+        /// </summary>
         protected override void Update(GameTime gameTime)
 // try
         {
@@ -439,7 +439,7 @@ throw x;
         /// <param name="sender"></param>
         /// </summary>
         /// Handles the Dialog Closed event.
-        /// <summary>
+        /// </summary>
         private void closeDialog_Closed(object sender, WindowClosedEventArgs e)
 // try
         {
@@ -465,7 +465,7 @@ throw x;
         /// <param name="sender"></param>
         /// </summary>
         /// Handles the graphics device reset event.
-        /// <summary>
+        /// </summary>
         private void Graphics_DeviceReset(object sender, System.EventArgs e)
 // try
         {
@@ -493,7 +493,7 @@ throw x;
         /// <param name="sender"></param>
         /// </summary>
         /// Handles the main window's closing event.
-        /// <summary>
+        /// </summary>
         private void MainWindow_Closing(object sender, WindowClosingEventArgs e)
 // try
         {
@@ -504,7 +504,7 @@ throw x;
 
         /// </summary>
         /// Raises the application's draw event.
-        /// <summary>
+        /// </summary>
         private void MainWindow_Draw(object sender, DrawEventArgs e)
 // try
         {
@@ -519,7 +519,7 @@ throw x;
         /// <param name="sender"></param>
         /// </summary>
         /// Handles the Window Closing event.
-        /// <summary>
+        /// </summary>
         private void Manager_WindowClosing(object sender, WindowClosingEventArgs e)
 // try
         {
@@ -549,7 +549,7 @@ throw x;
         /// <param name="sender"></param>
         /// </summary>
         /// Handles mouse move events on Windows.
-        /// <summary>
+        /// </summary>
         private void Input_MouseMove(object sender, MouseEventArgs e)
 // try
         {
@@ -566,7 +566,7 @@ throw x;
         /// <param name="sender"></param>
         /// </summary>
         /// Handles mouse button down events on Windows.
-        /// <summary>
+        /// </summary>
         private void Input_MouseDown(object sender, MouseEventArgs e)
 // try
         {
@@ -588,7 +588,7 @@ throw x;
         /// <param name="sender"></param>
         /// </summary>
         /// Handles the mouse button up events on Windows.
-        /// <summary>
+        /// </summary>
         private void Input_MouseUp(object sender, MouseEventArgs e)
 // try
         {

@@ -2,14 +2,14 @@ namespace MonoForce.Controls
 {
     public class ExitDialog : Dialog
     {
-        /// </summary>
-        /// Dialog window icon image.
         /// <summary>
+        /// Dialog window icon image.
+        /// </summary>
         private readonly ImageBox imgIcon;
 
-        /// </summary>
-        /// Do you want to exit message.
         /// <summary>
+        /// Do you want to exit message.
+        /// </summary>
         private readonly Label lblMessage;
 
         public Button btnNo;
@@ -68,9 +68,9 @@ namespace MonoForce.Controls
             DefaultControl = btnNo;
         }
 
-        /// </summary>
-        /// Initializes the exit dialog window.
         /// <summary>
+        /// Initializes the exit dialog window.
+        /// </summary>
         public override void Init()
         {
             base.Init();

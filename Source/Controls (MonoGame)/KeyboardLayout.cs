@@ -1,4 +1,4 @@
-﻿/*****
+/*****
 * Made Changes to the German Input, based on Kergos, input.
 *****/
 
@@ -8,35 +8,35 @@ using Microsoft.Xna.Framework.Input;
 
 namespace MonoForce.Controls
 {
-    /// </summary>
+    /// <summary>
     /// string representations.
     /// Microsoft.Xna.Framework.Input.Keys values to their proper
     /// Represents the layout of an English keyboard and helps to map
-    /// <summary>
+    /// </summary>
     public class KeyboardLayout
     {
-        /// </summary>
-        /// Gets or sets the name of the keyboard layout.
         /// <summary>
+        /// Gets or sets the name of the keyboard layout.
+        /// </summary>
         public virtual string Name
         {
             get { return name; }
             set { name = value; }
         }
 
-        /// </summary>
-        /// ???
         /// <summary>
+        /// ???
+        /// </summary>
         public List<int> LayoutList = new List<int>();
 
-        /// </summary>
-        /// Defines the type of keyboard layout.
         /// <summary>
+        /// Defines the type of keyboard layout.
+        /// </summary>
         private string name = "English";
 
-        /// </summary>
-        /// Creates a new English KeyboardLayout object.
         /// <summary>
+        /// Creates a new English KeyboardLayout object.
+        /// </summary>
         public KeyboardLayout()
         {
             LayoutList.Add(1033);
@@ -44,9 +44,9 @@ namespace MonoForce.Controls
 
         /// <returns>Returns the pressed key as a string.</returns>
         /// <param name="args">KeyEventArgs object to retrieve the key value from.</param>
-        /// </summary>
-        /// Gets the key value from a KeyEventArgs object case-adjusted based on modifiers.
         /// <summary>
+        /// Gets the key value from a KeyEventArgs object case-adjusted based on modifiers.
+        /// </summary>
         public virtual string GetKey(KeyEventArgs args)
         {
             var ret = "";
@@ -62,9 +62,9 @@ namespace MonoForce.Controls
 
         /// <returns>Returns the mapped Keys value as a string.</returns>
         /// <param name="args">KeyEventArgs to get the key value from.</param>
-        /// </summary>
-        /// Maps Keys objects to their respective keys.
         /// <summary>
+        /// Maps Keys objects to their respective keys.
+        /// </summary>
         protected virtual string KeyToString(KeyEventArgs args)
         {
             switch (args.Key)
@@ -208,9 +208,9 @@ namespace MonoForce.Controls
 
     public class CzechKeyboardLayout : KeyboardLayout
     {
-        /// </summary>
-        /// Creates a new instance of the CzechKeyboardLayout class.
         /// <summary>
+        /// Creates a new instance of the CzechKeyboardLayout class.
+        /// </summary>
         public CzechKeyboardLayout()
         {
             Name = "Czech";
@@ -220,9 +220,9 @@ namespace MonoForce.Controls
 
         /// <returns>Returns the mapped Keys value as a string.</returns>
         /// <param name="args">KeyEventArgs to get the key value from.</param>
-        /// </summary>
-        /// Maps Keys objects to their respective keys.
         /// <summary>
+        /// Maps Keys objects to their respective keys.
+        /// </summary>
         protected override string KeyToString(KeyEventArgs args)
         {
             switch (args.Key)
@@ -282,16 +282,16 @@ namespace MonoForce.Controls
         }
     }
 
-    /// </summary>
+    /// <summary>
     /// string representations.
     /// Microsoft.Xna.Framework.Input.Keys values to their proper
     /// Represents the layout of a German keyboard and helps to map
-    /// <summary>
+    /// </summary>
     public class GermanKeyboardLayout : KeyboardLayout
     {
-        /// </summary>
-        /// Creates a new instance of the GermanKeyboardLayout class.
         /// <summary>
+        /// Creates a new instance of the GermanKeyboardLayout class.
+        /// </summary>
         public GermanKeyboardLayout()
         {
             Name = "German";
@@ -301,9 +301,9 @@ namespace MonoForce.Controls
 
         /// <returns>Returns the mapped Keys value as a string.</returns>
         /// <param name="args">KeyEventArgs to get the key value from.</param>
-        /// </summary>
-        /// Maps Keys objects to their respective keys.
         /// <summary>
+        /// Maps Keys objects to their respective keys.
+        /// </summary>
         protected override string KeyToString(KeyEventArgs args)
         {
             switch (args.Key)
@@ -366,9 +366,9 @@ namespace MonoForce.Controls
 
     public class PolishKeyboardLayout : KeyboardLayout
     {
-        /// </summary>
-        /// Creates a new instance of the PolishKeyboardLayout class.
         /// <summary>
+        /// Creates a new instance of the PolishKeyboardLayout class.
+        /// </summary>
         public PolishKeyboardLayout()
         {
             Name = "Polish";
@@ -378,9 +378,9 @@ namespace MonoForce.Controls
 
         /// <returns>Returns the mapped Keys value as a string.</returns>
         /// <param name="args">KeyEventArgs to get the key value from.</param>
-        /// </summary>
-        /// Maps Keys objects to their respective keys.
         /// <summary>
+        /// Maps Keys objects to their respective keys.
+        /// </summary>
         protected override string KeyToString(KeyEventArgs args)
         {
             if (args.Alt)

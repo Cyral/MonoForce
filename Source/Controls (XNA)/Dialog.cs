@@ -2,56 +2,56 @@ namespace MonoForce.Controls
 {
     public class Dialog : Window
     {
-        /// </summary>
-        /// Gets the bottom panel of the dialog. (Contains the dialog button controls.)
         /// <summary>
+        /// Gets the bottom panel of the dialog. (Contains the dialog button controls.)
+        /// </summary>
         public Panel BottomPanel
         {
             get { return pnlBottom; }
         }
 
-        /// </summary>
-        /// Gets the dialog window title.
         /// <summary>
+        /// Gets the dialog window title.
+        /// </summary>
         public Label Caption
         {
             get { return lblCapt; }
         }
 
-        /// </summary>
-        /// Gets the dialog window message.
         /// <summary>
+        /// Gets the dialog window message.
+        /// </summary>
         public Label Description
         {
             get { return lblDesc; }
         }
 
-        /// </summary>
-        /// Gets the top panel of the dialog. (Contains the caption and description.)
         /// <summary>
+        /// Gets the top panel of the dialog. (Contains the caption and description.)
+        /// </summary>
         public Panel TopPanel
         {
             get { return pnlTop; }
         }
 
-        /// </summary>
-        /// Dialog window title.
         /// <summary>
+        /// Dialog window title.
+        /// </summary>
         private readonly Label lblCapt;
 
-        /// </summary>
-        /// Dialog window message.
         /// <summary>
+        /// Dialog window message.
+        /// </summary>
         private readonly Label lblDesc;
 
-        /// </summary>
-        /// Panel containing the dialog buttons.
         /// <summary>
+        /// Panel containing the dialog buttons.
+        /// </summary>
         private readonly Panel pnlBottom;
 
-        /// </summary>
-        /// Panel containing the title and message of the dialog.
         /// <summary>
+        /// Panel containing the title and message of the dialog.
+        /// </summary>
         private readonly Panel pnlTop;
 
         public Dialog(Manager manager) : base(manager)
@@ -97,9 +97,9 @@ namespace MonoForce.Controls
             pnlBottom.Anchor = Anchors.Left | Anchors.Bottom | Anchors.Right;
         }
 
-        /// </summary>
-        /// Initializes the dialog window.
         /// <summary>
+        /// Initializes the dialog window.
+        /// </summary>
         public override void Init()
         {
             base.Init();

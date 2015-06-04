@@ -2,9 +2,9 @@ namespace MonoForce.Controls
 {
     public abstract class ButtonBase : Control
     {
-        /// </summary>
-        /// Gets the state of the button control.
         /// <summary>
+        /// Gets the state of the button control.
+        /// </summary>
         public override ControlState ControlState
         {
             get
@@ -24,9 +24,9 @@ namespace MonoForce.Controls
         }
 
         /// <param name="manager">GUI manager for this control.</param>
-        /// </summary>
-        /// ButtonBase constructor.
         /// <summary>
+        /// ButtonBase constructor.
+        /// </summary>
         protected ButtonBase(Manager manager)
             : base(manager)
         {
@@ -34,18 +34,18 @@ namespace MonoForce.Controls
             DoubleClicks = false;
         }
 
-        /// </summary>
-        /// Initializes the button base.
         /// <summary>
+        /// Initializes the button base.
+        /// </summary>
         public override void Init()
         {
             base.Init();
         }
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Handles button click events.
         /// <summary>
+        /// Handles button click events.
+        /// </summary>
         protected override void OnClick(EventArgs e)
         {
             var ex = (e is MouseEventArgs) ? (MouseEventArgs)e : new MouseEventArgs();

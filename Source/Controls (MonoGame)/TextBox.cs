@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using Microsoft.Xna.Framework;
@@ -7,88 +7,88 @@ using Keys = Microsoft.Xna.Framework.Input.Keys;
 
 namespace MonoForce.Controls
 {
-    /// </summary>
-    /// Specifies the type of text box.
     /// <summary>
+    /// Specifies the type of text box.
+    /// </summary>
     public enum TextBoxMode
     {
-        /// </summary>
-        /// Standard text box control. Single line.
         /// <summary>
+        /// Standard text box control. Single line.
+        /// </summary>
         Normal,
 
-        /// </summary>
-        /// Masked text box control. Input is replaced by the control's password character.
         /// <summary>
+        /// Masked text box control. Input is replaced by the control's password character.
+        /// </summary>
         Password,
 
-        /// </summary>
-        /// Multi-line text box control.
         /// <summary>
+        /// Multi-line text box control.
+        /// </summary>
         Multiline
     }
 
 
-    /// </summary>
-    /// Represents a text box control.
     /// <summary>
+    /// Represents a text box control.
+    /// </summary>
     public class TextBox : ClipControl
     {
-        /// </summary>
-        /// Not used?
         /// <summary>
+        /// Not used?
+        /// </summary>
         private const string crDefault = "Default";
 
-        /// </summary>
-        /// String indicating which cursor resource should be used for this control.
         /// <summary>
+        /// String indicating which cursor resource should be used for this control.
+        /// </summary>
         private const string crText = "Text";
 
-        /// </summary>
-        /// String for accessing the text box cursor layer.
         /// <summary>
+        /// String for accessing the text box cursor layer.
+        /// </summary>
         private const string lrCursor = "Cursor";
 
-        /// </summary>
-        /// String for accessing the text box control layer.
         /// <summary>
+        /// String for accessing the text box control layer.
+        /// </summary>
         private const string lrTextBox = "Control";
 
-        /// </summary>
-        /// String for accessing the text box control skin.
         /// <summary>
+        /// String for accessing the text box control skin.
+        /// </summary>
         private const string skTextBox = "TextBox";
 
-        /// </summary>
-        /// Indicates if all text should be selected automatically when the text box receives focus.
         /// <summary>
+        /// Indicates if all text should be selected automatically when the text box receives focus.
+        /// </summary>
         public virtual bool AutoSelection
         {
             get { return autoSelection; }
             set { autoSelection = value; }
         }
 
-        /// </summary>
-        /// Indicates if the text insertion position is visible or not.
         /// <summary>
+        /// Indicates if the text insertion position is visible or not.
+        /// </summary>
         public virtual bool CaretVisible
         {
             get { return caretVisible; }
             set { caretVisible = value; }
         }
 
-        /// </summary>
-        /// Gets or sets the current position of the caret in the text box.
         /// <summary>
+        /// Gets or sets the current position of the caret in the text box.
+        /// </summary>
         public virtual int CursorPosition
         {
             get { return Pos; }
             set { Pos = value; }
         }
 
-        /// </summary>
-        /// Indicates if the borders of the text box control should be drawn or not.
         /// <summary>
+        /// Indicates if the borders of the text box control should be drawn or not.
+        /// </summary>
         public virtual bool DrawBorders
         {
             get { return drawBorders; }
@@ -99,9 +99,9 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
-        /// Gets or sets the current mode of the text box control.
         /// <summary>
+        /// Gets or sets the current mode of the text box control.
+        /// </summary>
         public virtual TextBoxMode Mode
         {
             get { return mode; }
@@ -121,9 +121,9 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
-        /// Gets or sets the character used to mask input when the text box is in password mode.
         /// <summary>
+        /// Gets or sets the character used to mask input when the text box is in password mode.
+        /// </summary>
         public virtual char PasswordChar
         {
             get { return passwordChar; }
@@ -138,18 +138,18 @@ namespace MonoForce.Controls
 
         public Color PlaceholderColor { get; set; } = Color.LightGray;
 
-        /// </summary>
-        /// Indicates if the text box allows user input or not.
         /// <summary>
+        /// Indicates if the text box allows user input or not.
+        /// </summary>
         public virtual bool ReadOnly
         {
             get { return readOnly; }
             set { readOnly = value; }
         }
 
-        /// </summary>
-        /// Gets or sets the scroll bars the text box should display.
         /// <summary>
+        /// Gets or sets the scroll bars the text box should display.
+        /// </summary>
         public virtual ScrollBars ScrollBars
         {
             get { return scrollBars; }
@@ -160,9 +160,9 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
-        /// Gets all text within the current selection.
         /// <summary>
+        /// Gets all text within the current selection.
+        /// </summary>
         public virtual string SelectedText
         {
             get
@@ -177,9 +177,9 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
-        /// Gets or sets (from the current value of SelectionStart) the length of the selection.
         /// <summary>
+        /// Gets or sets (from the current value of SelectionStart) the length of the selection.
+        /// </summary>
         public virtual int SelectionLength
         {
             get { return selection.Length; }
@@ -212,9 +212,9 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
-        /// Gets or sets the start position of the selection.
         /// <summary>
+        /// Gets or sets the start position of the selection.
+        /// </summary>
         public virtual int SelectionStart
         {
             get
@@ -238,9 +238,9 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
-        /// Gets or sets the contents of the text box control.
         /// <summary>
+        /// Gets or sets the contents of the text box control.
+        /// </summary>
         public override string Text
         {
             get { return text; }
@@ -271,9 +271,9 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
-        /// Indicates if word wrap is enabled in multi-line text box controls.
         /// <summary>
+        /// Indicates if word wrap is enabled in multi-line text box controls.
+        /// </summary>
         public virtual bool WordWrap
         {
             get { return wordWrap; }
@@ -285,9 +285,9 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
-        /// Returns the text content as a Separator delimited list of strings.
         /// <summary>
+        /// Returns the text content as a Separator delimited list of strings.
+        /// </summary>
         private List<string> Lines
         {
             get { return lines; }
@@ -304,9 +304,9 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
-        /// Gets or sets the X position of the caret on the current line.
         /// <summary>
+        /// Gets or sets the X position of the caret on the current line.
+        /// </summary>
         private int PosX
         {
             get { return posx; }
@@ -320,9 +320,9 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
-        /// Gets or sets the Y position of the caret in the text box.
         /// <summary>
+        /// Gets or sets the Y position of the caret in the text box.
+        /// </summary>
         private int PosY
         {
             get { return posy; }
@@ -339,122 +339,122 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
-        /// Horizontal scroll bar of the text box.
         /// <summary>
+        /// Horizontal scroll bar of the text box.
+        /// </summary>
         private readonly ScrollBar horz;
 
-        /// </summary>
-        /// Characted used as the line separator character.
         /// <summary>
+        /// Characted used as the line separator character.
+        /// </summary>
         private readonly string Separator = "\n";
 
-        /// </summary>
-        /// Vertical scroll bar of the text box.
         /// <summary>
+        /// Vertical scroll bar of the text box.
+        /// </summary>
         private readonly ScrollBar vert;
 
-        /// </summary>
-        /// Indicates if all text should be selected automatically when the control gains focus.
         /// <summary>
+        /// Indicates if all text should be selected automatically when the control gains focus.
+        /// </summary>
         private bool autoSelection = true;
 
-        /// </summary>
-        /// Internal use during text splitting operations.
         /// <summary>
+        /// Internal use during text splitting operations.
+        /// </summary>
         private string buffer = "";
 
-        /// </summary>
-        /// Indicates if the caret is displayed or not.
         /// <summary>
+        /// Indicates if the caret is displayed or not.
+        /// </summary>
         private bool caretVisible = true;
 
-        /// </summary>
-        /// Number of characters that can fit horizontally in the client area.
         /// <summary>
+        /// Number of characters that can fit horizontally in the client area.
+        /// </summary>
         private int charsDrawn;
 
-        /// </summary>
-        /// Indicates if the borders of the text box should be drawn.
         /// <summary>
+        /// Indicates if the borders of the text box should be drawn.
+        /// </summary>
         private bool drawBorders = true;
 
         private double flashTime;
 
-        /// </summary>
-        /// Font used to draw the control's text.
         /// <summary>
+        /// Font used to draw the control's text.
+        /// </summary>
         private SpriteFont font;
 
-        /// </summary>
-        /// Text content broken into individual lines.
         /// <summary>
+        /// Text content broken into individual lines.
+        /// </summary>
         private List<string> lines = new List<string>();
 
-        /// </summary>
-        /// Number of lines of text that can fit vertically in the client area.
         /// <summary>
+        /// Number of lines of text that can fit vertically in the client area.
+        /// </summary>
         private int linesDrawn;
 
-        /// </summary>
-        /// Indicates if the text box is a single-line, multi-line, or password text box.
         /// <summary>
+        /// Indicates if the text box is a single-line, multi-line, or password text box.
+        /// </summary>
         private TextBoxMode mode = TextBoxMode.Normal;
 
-        /// </summary>
-        /// Specifies which character will be used to mask input when the text box is in Password mode.
         /// <summary>
+        /// Specifies which character will be used to mask input when the text box is in Password mode.
+        /// </summary>
         private char passwordChar = '•';
 
-        /// </summary>
-        /// X position of the text caret.
         /// <summary>
+        /// X position of the text caret.
+        /// </summary>
         private int posx;
 
-        /// </summary>
-        /// Y position of the text caret.
         /// <summary>
+        /// Y position of the text caret.
+        /// </summary>
         private int posy;
 
-        /// </summary>
-        /// Indicates if the text box can accept user input or if it is read-only.
         /// <summary>
+        /// Indicates if the text box can accept user input or if it is read-only.
+        /// </summary>
         private bool readOnly;
 
-        /// </summary>
-        /// Specifies which, if any, scroll bars should be displayed in the text box.
         /// <summary>
+        /// Specifies which, if any, scroll bars should be displayed in the text box.
+        /// </summary>
         private ScrollBars scrollBars = ScrollBars.Both;
 
-        /// </summary>
-        /// Currently selected text of the control, specified by starting and ending indexes.
         /// <summary>
+        /// Currently selected text of the control, specified by starting and ending indexes.
+        /// </summary>
         private Selection selection = new Selection(-1, -1);
 
-        /// </summary>
-        /// Indicates if the cursor should be displayed when hovered. ???
         /// <summary>
+        /// Indicates if the cursor should be displayed when hovered. ???
+        /// </summary>
         private bool showCursor;
 
-        /// </summary>
-        /// Text that is currently visible in the client area.
         /// <summary>
+        /// Text that is currently visible in the client area.
+        /// </summary>
         private string shownText = "";
 
-        /// </summary>
-        /// Current text content of the control.
         /// <summary>
+        /// Current text content of the control.
+        /// </summary>
         private string text = "";
 
-        /// </summary>
-        /// Indicates if word wrap is enabled on multi-line text boxes.
         /// <summary>
+        /// Indicates if word wrap is enabled on multi-line text boxes.
+        /// </summary>
         private bool wordWrap;
 
         /// <param name="manager">GUI manager for the control.</param>
-        /// </summary>
-        /// Creates a new TextBox control.
         /// <summary>
+        /// Creates a new TextBox control.
+        /// </summary>
         public TextBox(Manager manager)
             : base(manager)
         {
@@ -474,9 +474,9 @@ namespace MonoForce.Controls
             horz = new ScrollBar(manager, Orientation.Horizontal);
         }
 
-        /// </summary>
-        /// Initializes the text box control.
         /// <summary>
+        /// Initializes the text box control.
+        /// </summary>
         public override void Init()
         {
             base.Init();
@@ -517,9 +517,9 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
-        /// Initializes the skin of the text box control.
         /// <summary>
+        /// Initializes the skin of the text box control.
+        /// </summary>
         protected internal override void InitSkin()
         {
             base.InitSkin();
@@ -536,9 +536,9 @@ namespace MonoForce.Controls
         }
 
         /// <param name="gameTime">Snapshot of the application's timing values.</param>
-        /// </summary>
-        /// Updates the text box cursor state.
         /// <summary>
+        /// Updates the text box cursor state.
+        /// </summary>
         protected internal override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
@@ -562,9 +562,9 @@ namespace MonoForce.Controls
             if (sc != showCursor) ClientArea.Invalidate();
         }
 
-        /// </summary>
-        /// Update the text box margins based on the visibility of the scroll bars.
         /// <summary>
+        /// Update the text box margins based on the visibility of the scroll bars.
+        /// </summary>
         protected override void AdjustMargins()
         {
 // Horizontal scroll bar hidden?
@@ -610,9 +610,9 @@ namespace MonoForce.Controls
 // Guide visible?
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Handler for when the text box gains focus.
         /// <summary>
+        /// Handler for when the text box gains focus.
+        /// </summary>
         protected override void OnFocusGained(EventArgs e)
         {
 // Auto-select all text?
@@ -630,9 +630,9 @@ namespace MonoForce.Controls
 // Guide visible?
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Handler for when the text box loses focus.
         /// <summary>
+        /// Handler for when the text box loses focus.
+        /// </summary>
         protected override void OnFocusLost(EventArgs e)
         {
 // Clear selection.
@@ -642,9 +642,9 @@ namespace MonoForce.Controls
         }
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Handles key press events for the text box.
         /// <summary>
+        /// Handles key press events for the text box.
+        /// </summary>
         protected override void OnKeyPress(KeyEventArgs e)
         {
 // Reset the timer used to flash the caret.
@@ -958,9 +958,9 @@ namespace MonoForce.Controls
         }
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Handles mouse button down events for the text box.
         /// <summary>
+        /// Handles mouse button down events for the text box.
+        /// </summary>
         protected override void OnMouseDown(MouseEventArgs e)
         {
             base.OnMouseDown(e);
@@ -986,9 +986,9 @@ namespace MonoForce.Controls
         }
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Handles mouse move events for the text box.
         /// <summary>
+        /// Handles mouse move events for the text box.
+        /// </summary>
         protected override void OnMouseMove(MouseEventArgs e)
         {
             base.OnMouseMove(e);
@@ -1030,9 +1030,9 @@ namespace MonoForce.Controls
         }
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Handles mouse up events for the text box.
         /// <summary>
+        /// Handles mouse up events for the text box.
+        /// </summary>
         protected override void OnMouseUp(MouseEventArgs e)
         {
             base.OnMouseUp(e);
@@ -1046,9 +1046,9 @@ namespace MonoForce.Controls
         }
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Handles resize events for the text box.
         /// <summary>
+        /// Handles resize events for the text box.
+        /// </summary>
         protected override void OnResize(ResizeEventArgs e)
         {
 // Clear text selection and update scroll bars.
@@ -1060,10 +1060,10 @@ namespace MonoForce.Controls
 
         /// <returns>Returns the cursor position that corresponds to the point received.</returns>
         /// <param name="pos">Point to find the text position of.</param>
-        /// </summary>
+        /// <summary>
         /// box that is closest to the specified position.
         /// Given a point (such as mouse position), this determines the position in the text
-        /// <summary>
+        /// </summary>
         private int CharAtPos(Point pos)
         {
             var x = pos.X;
@@ -1114,9 +1114,9 @@ namespace MonoForce.Controls
 
         /// <param name="e"></param>
         /// <param name="sender"></param>
-        /// </summary>
-        /// Handles drawing the client area of the text box control.
         /// <summary>
+        /// Handles drawing the client area of the text box control.
+        /// </summary>
         private void ClientArea_Draw(object sender, DrawEventArgs e)
         {
 // Grab the text box control's skin information.
@@ -1275,10 +1275,10 @@ renderer.Begin(BlendingMode.Premultiplied);
             }
         }
 
-        /// </summary>
+        /// <summary>
         /// client area of the text box.
         /// Updates the number of lines and characters drawn based on the current dimensions of the
-        /// <summary>
+        /// </summary>
         private void DeterminePages()
         {
             if (ClientArea != null)
@@ -1299,9 +1299,9 @@ renderer.Begin(BlendingMode.Premultiplied);
 
         /// <param name="rect">Region where the selection overlay should be drawn.</param>
         /// <param name="renderer">Render management object.</param>
-        /// </summary>
-        /// Draws the text box's selection overlay to highlight selected text.
         /// <summary>
+        /// Draws the text box's selection overlay to highlight selected text.
+        /// </summary>
         private void DrawSelection(Renderer renderer, Rectangle rect)
         {
 // Delete all selected text?
@@ -1384,9 +1384,9 @@ renderer.Begin(BlendingMode.Premultiplied);
         /// point.
         /// </returns>
         /// <param name="text">Text content to search.</param>
-        /// </summary>
-        /// From the current cursor position, this finds the index of the start of the word ahead of it.
         /// <summary>
+        /// From the current cursor position, this finds the index of the start of the word ahead of it.
+        /// </summary>
         private int FindNextWord(string text)
         {
             var space = false;
@@ -1413,11 +1413,11 @@ renderer.Begin(BlendingMode.Premultiplied);
 
         /// <returns>Returns the index of the start of the previous word or zero if the cursor has reached the starting point.</returns>
         /// <param name="text">Text content to search.</param>
-        /// </summary>
+        /// <summary>
         /// word, or the start of the previous word if the cursor is at the start of a word..
         /// This will be the start of the current word, if the cursor is positioned in the middle of a
         /// From the current cursor position, this finds the index of the start of the word behind it.
-        /// <summary>
+        /// </summary>
         private int FindPrevWord(string text)
         {
             var letter = false;
@@ -1455,9 +1455,9 @@ renderer.Begin(BlendingMode.Premultiplied);
         /// <returns>Returns the number of characters, from the start of the string, that will fit in the width specified.</returns>
         /// <param name="width">Width available for text placement.</param>
         /// <param name="text">Text string to fit.</param>
-        /// </summary>
-        /// Returns the number of characters of the specified text that will fit within the specified width.
         /// <summary>
+        /// Returns the number of characters of the specified text that will fit within the specified width.
+        /// </summary>
         private int GetFitChars(string text, int width)
         {
 // All characters will fit unless proven otherwise.
@@ -1482,9 +1482,9 @@ renderer.Begin(BlendingMode.Premultiplied);
         }
 
         /// <returns>The longest line in the text box.</returns>
-        /// </summary>
-        /// Gets the line of the text box with the greatest length.
         /// <summary>
+        /// Gets the line of the text box with the greatest length.
+        /// </summary>
         private string GetMaxLine()
         {
             var max = 0;
@@ -1506,10 +1506,10 @@ renderer.Begin(BlendingMode.Premultiplied);
         /// <returns>Returns the cursor position for the specified location.</returns>
         /// <param name="y">Line index.</param>
         /// <param name="x">Column index.</param>
-        /// </summary>
+        /// <summary>
         /// that matches the specified location.
         /// Given the column (x) and line (y) indexes, this returns the cursor position
-        /// <summary>
+        /// </summary>
         private int GetPos(int x, int y)
         {
             var p = 0;
@@ -1527,9 +1527,9 @@ renderer.Begin(BlendingMode.Premultiplied);
 
         /// <returns>Returns the index of the column at the specified cursor position.</returns>
         /// <param name="pos">Position of the cursor in the text.</param>
-        /// </summary>
-        /// Gets the column index of the specified position.
         /// <summary>
+        /// Gets the column index of the specified position.
+        /// </summary>
         private int GetPosX(int pos)
         {
 // Cursor is at the end of the text content?
@@ -1555,9 +1555,9 @@ renderer.Begin(BlendingMode.Premultiplied);
 
         /// <returns>Returns the index of the line where the cursor is positioned.</returns>
         /// <param name="pos">Cursor position in text.</param>
-        /// </summary>
-        /// Gets the line index where the cursor is currently positioned.
         /// <summary>
+        /// Gets the line index where the cursor is currently positioned.
+        /// </summary>
         private int GetPosY(int pos)
         {
 // Cursor is past the last line of text?
@@ -1584,19 +1584,19 @@ renderer.Begin(BlendingMode.Premultiplied);
         /// <returns>Returns the width of the specified number of characters in the supplied text.</returns>
         /// <param name="count">Number of characters from the start of the string to measure.</param>
         /// <param name="text">String to measure the width of.</param>
-        /// </summary>
-        /// Measures the width of the specified text or a sub-string of the text.
         /// <summary>
+        /// Measures the width of the specified text or a sub-string of the text.
+        /// </summary>
         private int GetStringWidth(string text, int count)
         {
             if (count > text.Length) count = text.Length;
             return (int)font.MeasureString(text.Substring(0, count)).X;
         }
 
-        /// </summary>
+        /// <summary>
         /// of the text box and the current cursor position within the text box.
         /// Updates scroll bar values and page sizes based on the dimensions of the client area
-        /// <summary>
+        /// </summary>
         private void ProcessScrolling()
         {
             if (vert != null && horz != null)
@@ -1635,17 +1635,17 @@ renderer.Begin(BlendingMode.Premultiplied);
 
         /// <param name="e"></param>
         /// <param name="sender"></param>
-        /// </summary>
-        /// Handles scroll events for the text box.
         /// <summary>
+        /// Handles scroll events for the text box.
+        /// </summary>
         private void sb_ValueChanged(object sender, EventArgs e)
         {
             ClientArea.Invalidate();
         }
 
-        /// </summary>
-        /// Updates scroll bar settings based on dimensions of the client area and text content.
         /// <summary>
+        /// Updates scroll bar settings based on dimensions of the client area and text content.
+        /// </summary>
         private void SetupBars()
         {
             DeterminePages();
@@ -1694,9 +1694,9 @@ renderer.Begin(BlendingMode.Premultiplied);
 
         /// <returns>List of strings delimited by the text box separator character.</returns>
         /// <param name="text">Text to split.</param>
-        /// </summary>
-        /// Splits the specified text into a list of strings based on the text box separator character.
         /// <summary>
+        /// Splits the specified text into a list of strings based on the text box separator character.
+        /// </summary>
         private List<string> SplitLines(string text)
         {
             if (buffer != text)
@@ -1726,9 +1726,9 @@ renderer.Begin(BlendingMode.Premultiplied);
         /// <returns>Returns the word wrapped string.</returns>
         /// <param name="size">Width of the text box the text will be wrapped in.</param>
         /// <param name="text">Text content to word wrap.</param>
-        /// </summary>
-        /// Breaks up text content so that all lines fit within the width of the client area of the text box.
         /// <summary>
+        /// Breaks up text content so that all lines fit within the width of the client area of the text box.
+        /// </summary>
         private string WrapWords(string text, int size)
         {
             var ret = "";
@@ -1766,8 +1766,8 @@ renderer.Begin(BlendingMode.Premultiplied);
 
         #region Nested type: Struct
 
-        /// </summary>
         /// <summary>
+        /// </summary>
         private struct Selection
         {
             public int End

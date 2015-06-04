@@ -10,9 +10,9 @@ namespace MonoForce.Controls
             Height = 64;
         }
 
-        /// </summary>
-        /// Initializes the side bar panel control.
         /// <summary>
+        /// Initializes the side bar panel control.
+        /// </summary>
         public override void Init()
         {
             base.Init();

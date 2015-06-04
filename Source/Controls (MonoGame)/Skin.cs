@@ -8,34 +8,34 @@ using Microsoft.Xna.Framework.Graphics;
 namespace MonoForce.Controls
 {
     /// <typeparam name="T">The type of data to store in the struct.</typeparam>
-    /// </summary>
-    /// Stores data about each skin state.
     /// <summary>
+    /// Stores data about each skin state.
+    /// </summary>
     public struct SkinStates<T>
     {
-        /// </summary>
-        /// Data for the skin's Disabled state.
         /// <summary>
+        /// Data for the skin's Disabled state.
+        /// </summary>
         public T Disabled;
 
-        /// </summary>
-        /// Data for the skin's Enabled state.
         /// <summary>
+        /// Data for the skin's Enabled state.
+        /// </summary>
         public T Enabled;
 
-        /// </summary>
-        /// Data for the skin's Focused state.
         /// <summary>
+        /// Data for the skin's Focused state.
+        /// </summary>
         public T Focused;
 
-        /// </summary>
-        /// Data for the skin's Hovered state.
         /// <summary>
+        /// Data for the skin's Hovered state.
+        /// </summary>
         public T Hovered;
 
-        /// </summary>
-        /// Data for the skin's Pressed state.
         /// <summary>
+        /// Data for the skin's Pressed state.
+        /// </summary>
         public T Pressed;
 
         /// <param name="disabled">Data to store for the skin's Disabled state.</param>
@@ -43,9 +43,9 @@ namespace MonoForce.Controls
         /// <param name="pressed">Data to store for the skin's Pressed state.</param>
         /// <param name="hovered">Data to store for the skin's Hovered state.</param>
         /// <param name="enabled">Data to store for the skin's Enabled state.</param>
-        /// </summary>
-        /// Creates a new SkinStates instance.
         /// <summary>
+        /// Creates a new SkinStates instance.
+        /// </summary>
         public SkinStates(T enabled, T hovered, T pressed, T focused, T disabled)
         {
             Enabled = enabled;
@@ -56,74 +56,74 @@ namespace MonoForce.Controls
         }
     }
 
-    /// </summary>
-    /// Stores data about a skin Layer's state.
     /// <summary>
+    /// Stores data about a skin Layer's state.
+    /// </summary>
     public struct LayerStates
     {
-        /// </summary>
-        /// Color tint to apply to the layer state's image asset.
         /// <summary>
+        /// Color tint to apply to the layer state's image asset.
+        /// </summary>
         public Color Color;
 
-        /// </summary>
-        /// Index of the layer state's image asset.
         /// <summary>
+        /// Index of the layer state's image asset.
+        /// </summary>
         public int Index;
 
-        /// </summary>
-        /// Indicates if the layer state's image asset is to be applied as an overlay or not.
         /// <summary>
+        /// Indicates if the layer state's image asset is to be applied as an overlay or not.
+        /// </summary>
         public bool Overlay;
     }
 
-    /// </summary>
-    /// Stores data about a skin layer overlay.
     /// <summary>
+    /// Stores data about a skin layer overlay.
+    /// </summary>
     public struct LayerOverlays
     {
-        /// </summary>
-        /// Color tint to apply to the layer state's image asset.
         /// <summary>
+        /// Color tint to apply to the layer state's image asset.
+        /// </summary>
         public Color Color;
 
-        /// </summary>
-        /// Index of the layer state's image asset.
         /// <summary>
+        /// Index of the layer state's image asset.
+        /// </summary>
         public int Index;
     }
 
-    /// </summary>
-    /// Stores skin metadata.
     /// <summary>
+    /// Stores skin metadata.
+    /// </summary>
     public struct SkinInfo
     {
-        /// </summary>
-        /// Person who made the skin.
         /// <summary>
+        /// Person who made the skin.
+        /// </summary>
         public string Author;
 
-        /// </summary>
-        /// Description of the skin.
         /// <summary>
+        /// Description of the skin.
+        /// </summary>
         public string Description;
 
-        /// </summary>
-        /// Name of the skin.
         /// <summary>
+        /// Name of the skin.
+        /// </summary>
         public string Name;
 
-        /// </summary>
-        /// Version of the skin. (Should be 0.7 for this version of Neoforce.)
         /// <summary>
+        /// Version of the skin. (Should be 0.7 for this version of Neoforce.)
+        /// </summary>
         public string Version;
     }
 
 
     /// <typeparam name="T"></typeparam>
-    /// </summary>
-    /// Defines a list of Skins, accessible by name.
     /// <summary>
+    /// Defines a list of Skins, accessible by name.
+    /// </summary>
     public class SkinList<T> : List<T>
     {
         /// default skin if the specified name is not found.
@@ -131,9 +131,9 @@ namespace MonoForce.Controls
         /// <returns>
         /// Returns the skin with the specified name or a
         /// <param name="index">Name of the skin to access.</param>
-        /// </summary>
-        /// Accesses a skin in the list by name.
         /// <summary>
+        /// Accesses a skin in the list by name.
+        /// </summary>
         public T this[string index]
         {
             get
@@ -162,17 +162,17 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
-        /// Creates a default instance of the SkinList class.
         /// <summary>
+        /// Creates a default instance of the SkinList class.
+        /// </summary>
         public SkinList()
         {
         }
 
         /// <param name="source">Skin list to copy.</param>
-        /// </summary>
-        /// Copy constructor.
         /// <summary>
+        /// Copy constructor.
+        /// </summary>
         public SkinList(SkinList<T> source)
         {
             for (var i = 0; i < source.Count; i++)
@@ -188,33 +188,33 @@ namespace MonoForce.Controls
         }
     }
 
-    /// </summary>
-    /// Base class for all things skin related.
     /// <summary>
+    /// Base class for all things skin related.
+    /// </summary>
     public class SkinBase
     {
-        /// </summary>
-        /// Indicates if the object is located in a skin file archive. ???
         /// <summary>
+        /// Indicates if the object is located in a skin file archive. ???
+        /// </summary>
         public bool Archive;
 
-        /// </summary>
-        /// Name of the skin.
         /// <summary>
+        /// Name of the skin.
+        /// </summary>
         public string Name;
 
-        /// </summary>
-        /// Creates a new SkinBase object.
         /// <summary>
+        /// Creates a new SkinBase object.
+        /// </summary>
         public SkinBase()
         {
             Archive = false;
         }
 
         /// <param name="source">SkinBase object to copy.</param>
-        /// </summary>
-        /// Copy constructor for the SkinBase.
         /// <summary>
+        /// Copy constructor for the SkinBase.
+        /// </summary>
         public SkinBase(SkinBase source)
         {
             if (source != null)
@@ -225,65 +225,65 @@ namespace MonoForce.Controls
         }
     }
 
-    /// </summary>
-    /// Represents a single layer of a skin.
     /// <summary>
+    /// Represents a single layer of a skin.
+    /// </summary>
     public class SkinLayer : SkinBase
     {
-        /// </summary>
         /// <summary>
+        /// </summary>
         public Alignment Alignment;
 
-        /// </summary>
         /// <summary>
+        /// </summary>
         public SkinList<SkinAttribute> Attributes = new SkinList<SkinAttribute>();
 
-        /// </summary>
         /// <summary>
+        /// </summary>
         public Margins ContentMargins;
 
-        /// </summary>
-        /// Height of the skin layer.
         /// <summary>
+        /// Height of the skin layer.
+        /// </summary>
         public int Height;
 
-        /// </summary>
-        /// Image resource for the skin layer.
         /// <summary>
+        /// Image resource for the skin layer.
+        /// </summary>
         public SkinImage Image = new SkinImage();
 
-        /// </summary>
         /// <summary>
+        /// </summary>
         public int OffsetX;
 
-        /// </summary>
         /// <summary>
+        /// </summary>
         public int OffsetY;
 
-        /// </summary>
         /// <summary>
+        /// </summary>
         public SkinStates<LayerOverlays> Overlays;
 
-        /// </summary>
         /// <summary>
+        /// </summary>
         public Margins SizingMargins;
 
-        /// </summary>
         /// <summary>
+        /// </summary>
         public SkinStates<LayerStates> States;
 
-        /// </summary>
         /// <summary>
+        /// </summary>
         public SkinText Text = new SkinText();
 
-        /// </summary>
-        /// Width of the skin layer.
         /// <summary>
+        /// Width of the skin layer.
+        /// </summary>
         public int Width;
 
-        /// </summary>
-        /// Creates a new skin layer.
         /// <summary>
+        /// Creates a new skin layer.
+        /// </summary>
         public SkinLayer()
         {
             States.Enabled.Color = Color.White;
@@ -300,9 +300,9 @@ namespace MonoForce.Controls
         }
 
         /// <param name="source">SkinLayer to copy.</param>
-        /// </summary>
-        /// Creates a new copy of an existing skin layer.
         /// <summary>
+        /// Creates a new copy of an existing skin layer.
+        /// </summary>
         public SkinLayer(SkinLayer source)
             : base(source)
         {
@@ -328,36 +328,36 @@ namespace MonoForce.Controls
         }
     }
 
-    /// </summary>
-    /// Represents a text object of a skin.
     /// <summary>
+    /// Represents a text object of a skin.
+    /// </summary>
     public class SkinText : SkinBase
     {
-        /// </summary>
         /// <summary>
+        /// </summary>
         public Alignment Alignment;
 
-        /// </summary>
-        /// Text color for each skin state.
         /// <summary>
+        /// Text color for each skin state.
+        /// </summary>
         public SkinStates<Color> Colors;
 
-        /// </summary>
-        /// Font object used for drawing the text.
         /// <summary>
+        /// Font object used for drawing the text.
+        /// </summary>
         public SkinFont Font;
 
-        /// </summary>
         /// <summary>
+        /// </summary>
         public int OffsetX;
 
-        /// </summary>
         /// <summary>
+        /// </summary>
         public int OffsetY;
 
-        /// </summary>
-        /// Creates a new SkinText object.
         /// <summary>
+        /// Creates a new SkinText object.
+        /// </summary>
         public SkinText()
         {
             Colors.Enabled = Color.White;
@@ -368,9 +368,9 @@ namespace MonoForce.Controls
         }
 
         /// <param name="source">SkinText object to copy.</param>
-        /// </summary>
-        /// Creates a new copy of an existing SkinText object.
         /// <summary>
+        /// Creates a new copy of an existing SkinText object.
+        /// </summary>
         public SkinText(SkinText source)
             : base(source)
         {
@@ -385,14 +385,14 @@ namespace MonoForce.Controls
         }
     }
 
-    /// </summary>
-    /// Represents a font object of a skin.
     /// <summary>
+    /// Represents a font object of a skin.
+    /// </summary>
     public class SkinFont : SkinBase
     {
-        /// </summary>
-        /// Returns the height of a line of text.
         /// <summary>
+        /// Returns the height of a line of text.
+        /// </summary>
         public int Height
         {
             get
@@ -405,31 +405,31 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
         /// <summary>
+        /// </summary>
         public string Addon;
 
-        /// </summary>
-        /// The sprite font asset file.
         /// <summary>
+        /// The sprite font asset file.
+        /// </summary>
         public string Asset;
 
-        /// </summary>
-        /// Sprite font used for drawing text.
         /// <summary>
+        /// Sprite font used for drawing text.
+        /// </summary>
         public SpriteFont Resource;
 
-        /// </summary>
-        /// Creates a new SkinFont object.
         /// <summary>
+        /// Creates a new SkinFont object.
+        /// </summary>
         public SkinFont()
         {
         }
 
         /// <param name="source">SkinFont to copy.</param>
-        /// </summary>
-        /// Creates a new copy of an existing SkinFont object.
         /// <summary>
+        /// Creates a new copy of an existing SkinFont object.
+        /// </summary>
         public SkinFont(SkinFont source)
             : base(source)
         {
@@ -441,36 +441,36 @@ namespace MonoForce.Controls
         }
     }
 
-    /// </summary>
-    /// Represents an image of a skin.
     /// <summary>
+    /// Represents an image of a skin.
+    /// </summary>
     public class SkinImage : SkinBase
     {
-        /// </summary>
         /// <summary>
+        /// </summary>
         public string Addon;
 
-        /// </summary>
-        /// The sprite font asset file.
         /// <summary>
+        /// The sprite font asset file.
+        /// </summary>
         public string Asset;
 
-        /// </summary>
-        /// Image resource.
         /// <summary>
+        /// Image resource.
+        /// </summary>
         public Texture2D Resource;
 
-        /// </summary>
-        /// Creates a new SkinImage object.
         /// <summary>
+        /// Creates a new SkinImage object.
+        /// </summary>
         public SkinImage()
         {
         }
 
         /// <param name="source">SkinImage to copy.</param>
-        /// </summary>
-        /// Creates a copy of an existing SkinImage object.
         /// <summary>
+        /// Creates a copy of an existing SkinImage object.
+        /// </summary>
         public SkinImage(SkinImage source)
             : base(source)
         {
@@ -479,36 +479,36 @@ namespace MonoForce.Controls
         }
     }
 
-    /// </summary>
-    /// Represents a cursor that is part of a skin.
     /// <summary>
+    /// Represents a cursor that is part of a skin.
+    /// </summary>
     public class SkinCursor : SkinBase
     {
-        /// </summary>
         /// <summary>
+        /// </summary>
         public string Addon;
 
-        /// </summary>
-        /// The sprite font asset file.
         /// <summary>
+        /// The sprite font asset file.
+        /// </summary>
         public string Asset;
 
-        /// </summary>
-        /// Cursor image for Windows.
         /// <summary>
+        /// Cursor image for Windows.
+        /// </summary>
         public Cursor Resource;
 
-        /// </summary>
-        /// Creates a new SkinCursor object.
         /// <summary>
+        /// Creates a new SkinCursor object.
+        /// </summary>
         public SkinCursor()
         {
         }
 
         /// <param name="source">SkinCursor object to copy.</param>
-        /// </summary>
-        /// Creates a copy of an existing SkinCursor object.
         /// <summary>
+        /// Creates a copy of an existing SkinCursor object.
+        /// </summary>
         public SkinCursor(SkinCursor source)
             : base(source)
         {
@@ -518,62 +518,62 @@ namespace MonoForce.Controls
         }
     }
 
-    /// </summary>
-    /// Defines the look of a skinned control.
     /// <summary>
+    /// Defines the look of a skinned control.
+    /// </summary>
     public class SkinControl : SkinBase
     {
-        /// </summary>
-        /// List of skin control attributes.
         /// <summary>
+        /// List of skin control attributes.
+        /// </summary>
         public SkinList<SkinAttribute> Attributes = new SkinList<SkinAttribute>();
 
-        /// </summary>
-        /// Inner margin values for the control
         /// <summary>
+        /// Inner margin values for the control
+        /// </summary>
         public Margins ClientMargins;
 
-        /// </summary>
-        /// Default size of the control.
         /// <summary>
+        /// Default size of the control.
+        /// </summary>
         public Size DefaultSize;
 
-        /// </summary>
-        /// Indicates which, if any, base skin control settings are inherited by this skin control.
         /// <summary>
+        /// Indicates which, if any, base skin control settings are inherited by this skin control.
+        /// </summary>
         public string Inherits;
 
-        /// </summary>
-        /// List of skin control layers.
         /// <summary>
+        /// List of skin control layers.
+        /// </summary>
         public SkinList<SkinLayer> Layers = new SkinList<SkinLayer>();
 
-        /// </summary>
-        /// Minimum size settings for this control.
         /// <summary>
+        /// Minimum size settings for this control.
+        /// </summary>
         public Size MinimumSize;
 
-        /// </summary>
-        /// Outer margin values for the control.
         /// <summary>
+        /// Outer margin values for the control.
+        /// </summary>
         public Margins OriginMargins;
 
-        /// </summary>
-        /// Default size of the resize border around the edge of the control.
         /// <summary>
+        /// Default size of the resize border around the edge of the control.
+        /// </summary>
         public int ResizerSize;
 
-        /// </summary>
-        /// Creates a new SkinControl object.
         /// <summary>
+        /// Creates a new SkinControl object.
+        /// </summary>
         public SkinControl()
         {
         }
 
         /// <param name="source">SkinControl object to copy.</param>
-        /// </summary>
-        /// Creates a copy of an existing SkinControl object.
         /// <summary>
+        /// Creates a copy of an existing SkinControl object.
+        /// </summary>
         public SkinControl(SkinControl source)
             : base(source)
         {
@@ -588,27 +588,27 @@ namespace MonoForce.Controls
         }
     }
 
-    /// </summary>
-    /// Defines an attribute of a skinned control.
     /// <summary>
+    /// Defines an attribute of a skinned control.
+    /// </summary>
     public class SkinAttribute : SkinBase
     {
-        /// </summary>
-        /// Value of the skin attribute.
         /// <summary>
+        /// Value of the skin attribute.
+        /// </summary>
         public string Value;
 
-        /// </summary>
-        /// Creates a new SkinAttribute object.
         /// <summary>
+        /// Creates a new SkinAttribute object.
+        /// </summary>
         public SkinAttribute()
         {
         }
 
         /// <param name="source">SkinAttribute to copy.</param>
-        /// </summary>
-        /// Creates a copy of an existing SkinAttribute.
         /// <summary>
+        /// Creates a copy of an existing SkinAttribute.
+        /// </summary>
         public SkinAttribute(SkinAttribute source)
             : base(source)
         {
@@ -616,130 +616,130 @@ namespace MonoForce.Controls
         }
     }
 
-    /// </summary>
-    /// Defines the look and attributes of various controls.
     /// <summary>
+    /// Defines the look and attributes of various controls.
+    /// </summary>
     public class Skin : Component
     {
-        /// </summary>
-        /// Gets the list of attributes belonging to this skin.
         /// <summary>
+        /// Gets the list of attributes belonging to this skin.
+        /// </summary>
         public virtual SkinList<SkinAttribute> Attributes
         {
             get { return attributes; }
         }
 
-        /// </summary>
-        /// Gets the list of controls supported by this skin.
         /// <summary>
+        /// Gets the list of controls supported by this skin.
+        /// </summary>
         public virtual SkinList<SkinControl> Controls
         {
             get { return controls; }
         }
 
-        /// </summary>
-        /// Gets the list of cursors this skin uses.
         /// <summary>
+        /// Gets the list of cursors this skin uses.
+        /// </summary>
         public virtual SkinList<SkinCursor> Cursors
         {
             get { return cursors; }
         }
 
-        /// </summary>
-        /// Gets the list of fonts this skin uses.
         /// <summary>
+        /// Gets the list of fonts this skin uses.
+        /// </summary>
         public virtual SkinList<SkinFont> Fonts
         {
             get { return fonts; }
         }
 
-        /// </summary>
-        /// Gets the list of images belonging to this skin.
         /// <summary>
+        /// Gets the list of images belonging to this skin.
+        /// </summary>
         public virtual SkinList<SkinImage> Images
         {
             get { return images; }
         }
 
-        /// </summary>
-        /// Gets the skin's metadata info.
         /// <summary>
+        /// Gets the skin's metadata info.
+        /// </summary>
         public virtual SkinInfo Info
         {
             get { return info; }
         }
 
-        /// </summary>
-        /// Gets the name of the skin.
         /// <summary>
+        /// Gets the name of the skin.
+        /// </summary>
         public virtual string Name
         {
             get { return name; }
         }
 
-        /// </summary>
-        /// Gets the skin file version.
         /// <summary>
+        /// Gets the skin file version.
+        /// </summary>
         public virtual Version Version
         {
             get { return version; }
         }
 
-        /// </summary>
-        /// List of attributes the skin uses.
         /// <summary>
+        /// List of attributes the skin uses.
+        /// </summary>
         private readonly SkinList<SkinAttribute> attributes;
 
-        /// </summary>
-        /// List of controls the skin supports.
         /// <summary>
+        /// List of controls the skin supports.
+        /// </summary>
         private readonly SkinList<SkinControl> controls;
 
-        /// </summary>
-        /// List of cursors the skin uses.
         /// <summary>
+        /// List of cursors the skin uses.
+        /// </summary>
         private readonly SkinList<SkinCursor> cursors;
 
-        /// </summary>
-        /// List of fonts the skin uses.
         /// <summary>
+        /// List of fonts the skin uses.
+        /// </summary>
         private readonly SkinList<SkinFont> fonts;
 
-        /// </summary>
-        /// List of images the skin uses.
         /// <summary>
+        /// List of images the skin uses.
+        /// </summary>
         private readonly SkinList<SkinImage> images;
 
-        /// </summary>
-        /// Content manager for loading skin files.
         /// <summary>
+        /// Content manager for loading skin files.
+        /// </summary>
         private ArchiveManager content;
 
-        /// </summary>
-        /// Skin XML document where the skin info is defined.
         /// <summary>
+        /// Skin XML document where the skin info is defined.
+        /// </summary>
         private SkinXmlDocument doc;
 
-        /// </summary>
-        /// Skin metadata information.
         /// <summary>
+        /// Skin metadata information.
+        /// </summary>
         private SkinInfo info;
 
-        /// </summary>
-        /// Name of the skin.
         /// <summary>
+        /// Name of the skin.
+        /// </summary>
         private string name;
 
-        /// </summary>
-        /// Skin file version.
         /// <summary>
+        /// Skin file version.
+        /// </summary>
         private Version version;
 
         /// <param name="name">Name of the skin file to load.</param>
         /// <param name="manager">GUI manager for the skin.</param>
-        /// </summary>
-        /// Creates a new Skin object.
         /// <summary>
+        /// Creates a new Skin object.
+        /// </summary>
         public Skin(Manager manager, string name)
             : base(manager)
         {
@@ -781,8 +781,8 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
         /// <summary>
+        /// </summary>
         public override void Init()
         {
             base.Init();
@@ -839,9 +839,9 @@ namespace MonoForce.Controls
         }
 
         /// <param name="disposing"></param>
-        /// </summary>
-        /// Releases the skin's resources.
         /// <summary>
+        /// Releases the skin's resources.
+        /// </summary>
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -859,17 +859,17 @@ namespace MonoForce.Controls
 
         /// <returns></returns>
         /// <param name="c"></param>
-        /// </summary>
         /// <summary>
+        /// </summary>
         private string ColorToString(Color c)
         {
             return string.Format("{0};{1};{2};{3}", c.R, c.G, c.B, c.A);
         }
 
         /// <returns>Returns the full path to the skin's addon folder.</returns>
-        /// </summary>
-        /// Gets the full path to the skin's addon folder.
         /// <summary>
+        /// Gets the full path to the skin's addon folder.
+        /// </summary>
         private string GetAddonsFolder()
         {
             var path = Path.GetFullPath(Manager.SkinDirectory) + name + "\\Addons\\";
@@ -890,9 +890,9 @@ namespace MonoForce.Controls
 
         /// <returns>Returns true if the file exists in the skin directory; false otherwise.</returns>
         /// <param name="name">Name of the skin file archive.</param>
-        /// </summary>
-        /// Returns the path to the specified skin file.
         /// <summary>
+        /// Returns the path to the specified skin file.
+        /// </summary>
         private string GetArchiveLocation(string name)
         {
             var path = Path.GetFullPath(Manager.SkinDirectory) + Path.GetFileNameWithoutExtension(name) + "\\";
@@ -909,9 +909,9 @@ namespace MonoForce.Controls
         /// <param name="addon">Addon directory if asset if part of an addon. </param>
         /// <param name="asset">Name of the skin asset to get.</param>
         /// <param name="type">Type of skin asset to get. ("Fonts", "Cursors", or "Images")</param>
-        /// </summary>
-        /// Gets the path to the specified asset.
         /// <summary>
+        /// Gets the path to the specified asset.
+        /// </summary>
         private string GetAsset(string type, string asset, string addon)
         {
             var ret = GetFolder(type) + asset;
@@ -924,9 +924,9 @@ namespace MonoForce.Controls
         }
 
         /// <returns>Returns the full path to the skin directory.</returns>
-        /// </summary>
-        /// Gets the full path to the skin folder.
         /// <summary>
+        /// Gets the full path to the skin folder.
+        /// </summary>
         private string GetFolder()
         {
             var path = Path.GetFullPath(Manager.SkinDirectory) + name + "\\";
@@ -940,8 +940,8 @@ namespace MonoForce.Controls
 
         /// <returns></returns>
         /// <param name="type">Type of skin asset to get. ("Fonts", "Cursors", or "Images")</param>
-        /// </summary>
         /// <summary>
+        /// </summary>
         private string GetFolder(string type)
         {
             return GetFolder() + type + "\\";
@@ -950,8 +950,8 @@ namespace MonoForce.Controls
         /// <param name="colors"></param>
         /// <param name="e"></param>
         /// <param name="inherited"></param>
-        /// </summary>
         /// <summary>
+        /// </summary>
         private void LoadColors(bool inherited, XmlElement e, ref SkinStates<Color> colors)
         {
             if (e != null)
@@ -967,8 +967,8 @@ namespace MonoForce.Controls
 
         /// <param name="l"></param>
         /// <param name="sc"></param>
-        /// </summary>
         /// <summary>
+        /// </summary>
         private void LoadControlAttributes(SkinControl sc, XmlNodeList l)
         {
             foreach (XmlElement e in l)
@@ -990,8 +990,8 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
         /// <summary>
+        /// </summary>
         private void LoadControls()
         {
             if (doc["Skin"]["Controls"] == null) return;
@@ -1061,8 +1061,8 @@ namespace MonoForce.Controls
 
         /// <param name="archive"></param>
         /// <param name="addon"></param>
-        /// </summary>
         /// <summary>
+        /// </summary>
         private void LoadCursors(string addon, bool archive)
         {
             if (doc["Skin"]["Cursors"] == null) return;
@@ -1084,8 +1084,8 @@ namespace MonoForce.Controls
 
         /// <param name="archive"></param>
         /// <param name="addon"></param>
-        /// </summary>
         /// <summary>
+        /// </summary>
         private void LoadFonts(string addon, bool archive)
         {
             if (doc["Skin"]["Fonts"] == null) return;
@@ -1107,8 +1107,8 @@ namespace MonoForce.Controls
 
         /// <param name="archive"></param>
         /// <param name="addon"></param>
-        /// </summary>
         /// <summary>
+        /// </summary>
         private void LoadImages(string addon, bool archive)
         {
             if (doc["Skin"]["Images"] == null) return;
@@ -1129,8 +1129,8 @@ namespace MonoForce.Controls
 
         /// <param name="l"></param>
         /// <param name="sl"></param>
-        /// </summary>
         /// <summary>
+        /// </summary>
         private void LoadLayerAttributes(SkinLayer sl, XmlNodeList l)
         {
             foreach (XmlElement e in l)
@@ -1154,8 +1154,8 @@ namespace MonoForce.Controls
 
         /// <param name="l"></param>
         /// <param name="sc"></param>
-        /// </summary>
         /// <summary>
+        /// </summary>
         private void LoadLayers(SkinControl sc, XmlNodeList l)
         {
             foreach (XmlElement e in l)
@@ -1270,8 +1270,8 @@ namespace MonoForce.Controls
 
         /// <param name="archive"></param>
         /// <param name="addon"></param>
-        /// </summary>
         /// <summary>
+        /// </summary>
         private void LoadSkin(string addon, bool archive)
         {
             try
@@ -1355,8 +1355,8 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
         /// <summary>
+        /// </summary>
         private void LoadSkinAttributes()
         {
             if (doc["Skin"]["Attributes"] == null) return;
@@ -1380,8 +1380,8 @@ namespace MonoForce.Controls
         /// <param name="defval"></param>
         /// <param name="attrib"></param>
         /// <param name="element"></param>
-        /// </summary>
         /// <summary>
+        /// </summary>
         private string ReadAttribute(XmlElement element, string attrib, string defval, bool needed)
         {
             if (element != null && element.HasAttribute(attrib))
@@ -1401,8 +1401,8 @@ namespace MonoForce.Controls
         /// <param name="element"></param>
         /// <param name="inherited"></param>
         /// <param name="retval"></param>
-        /// </summary>
         /// <summary>
+        /// </summary>
         private void ReadAttribute(ref string retval, bool inherited, XmlElement element, string attrib, string defval,
             bool needed)
         {
@@ -1428,8 +1428,8 @@ namespace MonoForce.Controls
         /// <param name="defval"></param>
         /// <param name="attrib"></param>
         /// <param name="element"></param>
-        /// </summary>
         /// <summary>
+        /// </summary>
         private bool ReadAttributeBool(XmlElement element, string attrib, bool defval, bool needed)
         {
             return bool.Parse(ReadAttribute(element, attrib, defval.ToString(), needed));
@@ -1441,8 +1441,8 @@ namespace MonoForce.Controls
         /// <param name="element"></param>
         /// <param name="inherited"></param>
         /// <param name="retval"></param>
-        /// </summary>
         /// <summary>
+        /// </summary>
         private void ReadAttributeBool(ref bool retval, bool inherited, XmlElement element, string attrib, bool defval,
             bool needed)
         {
@@ -1456,8 +1456,8 @@ namespace MonoForce.Controls
         /// <param name="defval"></param>
         /// <param name="attrib"></param>
         /// <param name="element"></param>
-        /// </summary>
         /// <summary>
+        /// </summary>
         private byte ReadAttributeByte(XmlElement element, string attrib, byte defval, bool needed)
         {
             return byte.Parse(ReadAttribute(element, attrib, defval.ToString(), needed));
@@ -1469,8 +1469,8 @@ namespace MonoForce.Controls
         /// <param name="element"></param>
         /// <param name="inherited"></param>
         /// <param name="retval"></param>
-        /// </summary>
         /// <summary>
+        /// </summary>
         private void ReadAttributeByte(ref byte retval, bool inherited, XmlElement element, string attrib, byte defval,
             bool needed)
         {
@@ -1485,8 +1485,8 @@ namespace MonoForce.Controls
         /// <param name="element"></param>
         /// <param name="inherited"></param>
         /// <param name="retval"></param>
-        /// </summary>
         /// <summary>
+        /// </summary>
         private void ReadAttributeColor(ref Color retval, bool inherited, XmlElement element, string attrib,
             Color defval, bool needed)
         {
@@ -1500,8 +1500,8 @@ namespace MonoForce.Controls
         /// <param name="defval"></param>
         /// <param name="attrib"></param>
         /// <param name="element"></param>
-        /// </summary>
         /// <summary>
+        /// </summary>
         private int ReadAttributeInt(XmlElement element, string attrib, int defval, bool needed)
         {
             return int.Parse(ReadAttribute(element, attrib, defval.ToString(), needed));
@@ -1513,8 +1513,8 @@ namespace MonoForce.Controls
         /// <param name="element"></param>
         /// <param name="inherited"></param>
         /// <param name="retval"></param>
-        /// </summary>
         /// <summary>
+        /// </summary>
         private void ReadAttributeInt(ref int retval, bool inherited, XmlElement element, string attrib, int defval,
             bool needed)
         {

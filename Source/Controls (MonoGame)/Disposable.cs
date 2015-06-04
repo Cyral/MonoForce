@@ -4,9 +4,9 @@ namespace MonoForce.Controls
 {
     public abstract class Disposable : Unknown, IDisposable
     {
-        /// </summary>
-        /// Number of references to this object.
         /// <summary>
+        /// Number of references to this object.
+        /// </summary>
         private static int count;
 
         public static int Count
@@ -14,9 +14,9 @@ namespace MonoForce.Controls
             get { return count; }
         }
 
-        /// </summary>
-        /// Creates a reference counted object.
         /// <summary>
+        /// Creates a reference counted object.
+        /// </summary>
         protected Disposable()
         {
             count += 1;
@@ -25,9 +25,9 @@ namespace MonoForce.Controls
 
         #region IDisposable Members
 
-        /// </summary>
-        /// Cleans up after the disposable object.
         /// <summary>
+        /// Cleans up after the disposable object.
+        /// </summary>
         public void Dispose()
         {
             Dispose(true);
@@ -38,9 +38,9 @@ namespace MonoForce.Controls
         #endregion
 
         /// <param name="disposing"></param>
-        /// </summary>
-        /// Decreases the object's reference count.
         /// <summary>
+        /// Decreases the object's reference count.
+        /// </summary>
         protected virtual void Dispose(bool disposing)
         {
             if (disposing)
@@ -51,9 +51,9 @@ namespace MonoForce.Controls
 //GC.SuppressFinalize(this);
         }
 
-        /// </summary>
-        /// Releases resources used by the object.
         /// <summary>
+        /// Releases resources used by the object.
+        /// </summary>
         ~Disposable()
         {
             Dispose(false);

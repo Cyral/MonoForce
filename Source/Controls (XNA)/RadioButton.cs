@@ -2,59 +2,59 @@ using Microsoft.Xna.Framework;
 
 namespace MonoForce.Controls
 {
-    /// </summary>
-    /// Indicates how other radio buttons are updated when a radio button is clicked.
     /// <summary>
+    /// Indicates how other radio buttons are updated when a radio button is clicked.
+    /// </summary>
     public enum RadioButtonMode
     {
-        /// </summary>
-        /// Clicked radio button will update the checked state of other radio buttons.
         /// <summary>
+        /// Clicked radio button will update the checked state of other radio buttons.
+        /// </summary>
         Auto,
 
-        /// </summary>
-        /// Updating the check state of other radio buttons is a task left to the user.
         /// <summary>
+        /// Updating the check state of other radio buttons is a task left to the user.
+        /// </summary>
         Manual
     }
 
 
     public class RadioButton : CheckBox
     {
-        /// </summary>
-        /// String used to access the RadioButton's skin control.
         /// <summary>
+        /// String used to access the RadioButton's skin control.
+        /// </summary>
         private const string skRadioButton = "RadioButton";
 
-        /// </summary>
-        /// Gets or sets the way the radio button handles updating other radio button control check states when it is clicked.
         /// <summary>
+        /// Gets or sets the way the radio button handles updating other radio button control check states when it is clicked.
+        /// </summary>
         public RadioButtonMode Mode
         {
             get { return mode; }
             set { mode = value; }
         }
 
-        /// </summary>
-        /// Indicates if the control will update the check state of other radio button clicks when it's clicked.
         /// <summary>
+        /// Indicates if the control will update the check state of other radio button clicks when it's clicked.
+        /// </summary>
         private RadioButtonMode mode = RadioButtonMode.Auto;
 
         public RadioButton(Manager manager) : base(manager)
         {
         }
 
-        /// </summary>
-        /// Initializes the radio button control.
         /// <summary>
+        /// Initializes the radio button control.
+        /// </summary>
         public override void Init()
         {
             base.Init();
         }
 
-        /// </summary>
-        /// Initializes the skin of the radio button control.
         /// <summary>
+        /// Initializes the skin of the radio button control.
+        /// </summary>
         protected internal override void InitSkin()
         {
             base.InitSkin();
@@ -67,9 +67,9 @@ namespace MonoForce.Controls
         }
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Handles radio button mouse click events.
         /// <summary>
+        /// Handles radio button mouse click events.
+        /// </summary>
         protected override void OnClick(EventArgs e)
         {
             var ex = (e is MouseEventArgs) ? (MouseEventArgs)e : new MouseEventArgs();

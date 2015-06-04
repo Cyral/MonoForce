@@ -2,23 +2,23 @@ using Microsoft.Xna.Framework;
 
 namespace MonoForce.Controls
 {
-    /// </summary>
-    /// Defines how the GroupBox looks when rendered.
     /// <summary>
+    /// Defines how the GroupBox looks when rendered.
+    /// </summary>
     public enum GroupBoxType
     {
         Normal,
         Flat
     }
 
-    /// </summary>
-    /// Represents a container used to group together related controls.
     /// <summary>
+    /// Represents a container used to group together related controls.
+    /// </summary>
     public class GroupBox : Container
     {
-        /// </summary>
-        /// Gets or sets the group box type.
         /// <summary>
+        /// Gets or sets the group box type.
+        /// </summary>
         public virtual GroupBoxType Type
         {
             get { return type; }
@@ -29,15 +29,15 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
-        /// Defines the rendered look of the group box.
         /// <summary>
+        /// Defines the rendered look of the group box.
+        /// </summary>
         private GroupBoxType type = GroupBoxType.Normal;
 
         /// <param name="manager">GUI manager for the group box.</param>
-        /// </summary>
-        /// Creates a new GroupBox container control.
         /// <summary>
+        /// Creates a new GroupBox container control.
+        /// </summary>
         public GroupBox(Manager manager)
             : base(manager)
         {
@@ -51,9 +51,9 @@ namespace MonoForce.Controls
             BackColor = Color.Transparent;
         }
 
-        /// </summary>
-        /// Initializes the group box control.
         /// <summary>
+        /// Initializes the group box control.
+        /// </summary>
         public override void Init()
         {
             base.Init();

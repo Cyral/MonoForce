@@ -10,17 +10,17 @@ namespace MonoForce.Controls
             Text = "";
         }
 
-        /// </summary>
-        /// Initializes the tool bar button.
         /// <summary>
+        /// Initializes the tool bar button.
+        /// </summary>
         public override void Init()
         {
             base.Init();
         }
 
-        /// </summary>
-        /// Initializes the skin of the tool bar button.
         /// <summary>
+        /// Initializes the skin of the tool bar button.
+        /// </summary>
         protected internal override void InitSkin()
         {
             base.InitSkin();

@@ -10,17 +10,17 @@ namespace MonoForce.Controls
             Height = 25;
         }
 
-        /// </summary>
-        /// Initializes the tool bar panel control.
         /// <summary>
+        /// Initializes the tool bar panel control.
+        /// </summary>
         public override void Init()
         {
             base.Init();
         }
 
-        /// </summary>
-        /// Initializes the skin for the tool bar panel control.
         /// <summary>
+        /// Initializes the skin for the tool bar panel control.
+        /// </summary>
         protected internal override void InitSkin()
         {
             base.InitSkin();
@@ -28,9 +28,9 @@ namespace MonoForce.Controls
         }
 
         /// <param name="gameTime">Snapshot of the application's timing values.</param>
-        /// </summary>
-        /// Updates the tool bar panel control.
         /// <summary>
+        /// Updates the tool bar panel control.
+        /// </summary>
         protected internal override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
@@ -43,17 +43,17 @@ namespace MonoForce.Controls
         }
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Handles resize events for the tool bar panel control.
         /// <summary>
+        /// Handles resize events for the tool bar panel control.
+        /// </summary>
         protected override void OnResize(ResizeEventArgs e)
         {
             base.OnResize(e);
         }
 
-        /// </summary>
-        /// Positions and sizes the tool bar panel's child tool bar controls.
         /// <summary>
+        /// Positions and sizes the tool bar panel's child tool bar controls.
+        /// </summary>
         private void AlignBars()
         {
             var rx = new int[8];

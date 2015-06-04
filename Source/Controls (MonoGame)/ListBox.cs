@@ -6,15 +6,15 @@ using Microsoft.Xna.Framework.Input;
 namespace MonoForce.Controls
 
 {
-    /// </summary>
-    /// Represents a list box control. Single selection only.
     /// <summary>
+    /// Represents a list box control. Single selection only.
+    /// </summary>
     public class ListBox : Control
 
     {
-        /// </summary>
-        /// Indicates if the selection overlay should be drawn over the selected item.
         /// <summary>
+        /// Indicates if the selection overlay should be drawn over the selected item.
+        /// </summary>
         public virtual bool HideSelection
 
         {
@@ -32,9 +32,9 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
-        /// Indicates if mouse over event can update the selected index.
         /// <summary>
+        /// Indicates if mouse over event can update the selected index.
+        /// </summary>
         public virtual bool HotTrack
 
         {
@@ -51,9 +51,9 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
-        /// Gets or sets the index of the selected list box item.
         /// <summary>
+        /// Gets or sets the index of the selected list box item.
+        /// </summary>
         public virtual int ItemIndex
 
         {
@@ -82,9 +82,9 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
-        /// Gets the list of items.
         /// <summary>
+        /// Gets the list of items.
+        /// </summary>
         public virtual List<object> Items
 
         {
@@ -111,9 +111,9 @@ namespace MonoForce.Controls
         private int itemsCount;
 
         /// <param name="manager">GUI manager for the control.</param>
-        /// </summary>
-        /// Creates a new ListBox control.
         /// <summary>
+        /// Creates a new ListBox control.
+        /// </summary>
         public ListBox(Manager manager)
             : base(manager)
 
@@ -156,10 +156,10 @@ namespace MonoForce.Controls
         }
 
         /// <param name="maxItems">Number of items that can be displayed without needing a scroll bar.</param>
-        /// </summary>
+        /// <summary>
         /// displayed in it without needing a scroll bar.
         /// Sizes the list pane so the specified number of items will be able to be
-        /// <summary>
+        /// </summary>
         public virtual void AutoHeight(int maxItems)
         {
 // Collection has less than the maximum items specified?
@@ -206,34 +206,34 @@ namespace MonoForce.Controls
             base.DrawControl(renderer, rect, gameTime);
         }
 
-        /// </summary>
-        /// Occurs when the hide selection value changes.
         /// <summary>
+        /// Occurs when the hide selection value changes.
+        /// </summary>
         public event EventHandler HideSelectionChanged;
 
-        /// </summary>
-        /// Occurs when the hot tracking value changes.
         /// <summary>
+        /// Occurs when the hot tracking value changes.
+        /// </summary>
         public event EventHandler HotTrackChanged;
 
-        /// </summary>
-        /// Initializes the list box control.
         /// <summary>
+        /// Initializes the list box control.
+        /// </summary>
         public override void Init()
         {
             base.Init();
         }
 
-        /// </summary>
-        /// Occurs when the selected item index changes.
         /// <summary>
+        /// Occurs when the selected item index changes.
+        /// </summary>
         public event EventHandler ItemIndexChanged;
 
         /// <param name="index">Index to scroll to.</param>
-        /// </summary>
+        /// <summary>
         /// specified list item is visible in the list box.
         /// Adjusts the scroll bar value to make sure the
-        /// <summary>
+        /// </summary>
         public virtual void ScrollTo(int index)
         {
             ItemsChanged();
@@ -250,9 +250,9 @@ namespace MonoForce.Controls
         }
 
         /// <param name="gameTime">Snapshot of the application's timing values.</param>
-        /// </summary>
-        /// Updates the state of the list box and watches for changes in list size.
         /// <summary>
+        /// Updates the state of the list box and watches for changes in list size.
+        /// </summary>
         protected internal override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
@@ -267,9 +267,9 @@ namespace MonoForce.Controls
         }
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Handles gamepad button presses for the list box. Specifically, the up and down buttons.
         /// <summary>
+        /// Handles gamepad button presses for the list box. Specifically, the up and down buttons.
+        /// </summary>
         protected override void OnGamePadPress(GamePadEventArgs e)
         {
 // Move selection down?
@@ -294,36 +294,36 @@ namespace MonoForce.Controls
         }
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Raises the HideSelectionChanged event.
         /// <summary>
+        /// Raises the HideSelectionChanged event.
+        /// </summary>
         protected virtual void OnHideSelectionChanged(EventArgs e)
         {
             if (HideSelectionChanged != null) HideSelectionChanged.Invoke(this, e);
         }
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Raises the HotTrackChanged event.
         /// <summary>
+        /// Raises the HotTrackChanged event.
+        /// </summary>
         protected virtual void OnHotTrackChanged(EventArgs e)
         {
             if (HotTrackChanged != null) HotTrackChanged.Invoke(this, e);
         }
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Raises the ItemIndexChangedEvent.
         /// <summary>
+        /// Raises the ItemIndexChangedEvent.
+        /// </summary>
         protected virtual void OnItemIndexChanged(EventArgs e)
         {
             if (ItemIndexChanged != null) ItemIndexChanged.Invoke(this, e);
         }
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Handles key press events for the list box.
         /// <summary>
+        /// Handles key press events for the list box.
+        /// </summary>
         protected override void OnKeyPress(KeyEventArgs e)
         {
 // Scroll down?
@@ -373,9 +373,9 @@ namespace MonoForce.Controls
         }
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Handles mouse button down events for the list box.
         /// <summary>
+        /// Handles mouse button down events for the list box.
+        /// </summary>
         protected override void OnMouseDown(MouseEventArgs e)
         {
             base.OnMouseDown(e);
@@ -389,9 +389,9 @@ namespace MonoForce.Controls
         }
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Handles mouse move events for the list box.
         /// <summary>
+        /// Handles mouse move events for the list box.
+        /// </summary>
         protected override void OnMouseMove(MouseEventArgs e)
         {
             base.OnMouseMove(e);
@@ -405,9 +405,9 @@ namespace MonoForce.Controls
         }
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Handles mouse scroll events for the list box.
         /// <summary>
+        /// Handles mouse scroll events for the list box.
+        /// </summary>
         protected override void OnMouseScroll(MouseEventArgs e)
         {
             Focused = true;
@@ -433,9 +433,9 @@ namespace MonoForce.Controls
         }
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Handles resizing of the list box.
         /// <summary>
+        /// Handles resizing of the list box.
+        /// </summary>
         protected override void OnResize(ResizeEventArgs e)
         {
             base.OnResize(e);
@@ -513,9 +513,9 @@ namespace MonoForce.Controls
 
         /// <param name="y">Mouse Y position.</param>
         /// <param name="x">Mouse X position.</param>
-        /// </summary>
-        /// Updates the list box selection when the mouse moves over one.
         /// <summary>
+        /// Updates the list box selection when the mouse moves over one.
+        /// </summary>
         private void TrackItem(int x, int y)
         {
 // Collection is non-empty and position is within the list?

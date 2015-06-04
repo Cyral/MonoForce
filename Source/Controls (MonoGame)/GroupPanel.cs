@@ -12,9 +12,9 @@ namespace MonoForce.Controls
             Height = 64;
         }
 
-        /// </summary>
-        /// Initializes the group panel control.
         /// <summary>
+        /// Initializes the group panel control.
+        /// </summary>
         public override void Init()
         {
             base.Init();

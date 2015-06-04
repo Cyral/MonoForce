@@ -16,97 +16,97 @@ using System.Media;
 
 namespace MonoForce.Controls
 {
-    /// </summary>
-    /// Manages rendering of all controls.
     /// <summary>
+    /// Manages rendering of all controls.
+    /// </summary>
     public class Manager : DrawableGameComponent
     {
-        /// </summary>
-        /// Name of the default skin file asset.
         /// <summary>
+        /// Name of the default skin file asset.
+        /// </summary>
         internal const string _DefaultSkin = "Default";
 
-        /// </summary>
+        /// <summary>
         /// will be interpreted as a double click event.
         /// Maximum delay between two click events. Two clicks occuring within this limit
-        /// <summary>
+        /// </summary>
         internal const int _DoubleClickTime = 500;
 
-        /// </summary>
-        /// Directory in the content project where the manager expects to find layout files.
         /// <summary>
+        /// Directory in the content project where the manager expects to find layout files.
+        /// </summary>
         internal const string _LayoutDirectory = ".\\Content\\Layout\\";
 
-        /// </summary>
-        /// Amount of milliseconds to delay the initial display of menus.
         /// <summary>
+        /// Amount of milliseconds to delay the initial display of menus.
+        /// </summary>
         internal const int _MenuDelay = 500;
 
-        /// </summary>
-        /// Indicates how the manager's render target data is used when a new render target is set.
         /// <summary>
+        /// Indicates how the manager's render target data is used when a new render target is set.
+        /// </summary>
         internal const RenderTargetUsage _RenderTargetUsage = RenderTargetUsage.DiscardContents;
 
-        /// </summary>
-        /// Directory in the content project where the manager expects to find skin files.
         /// <summary>
+        /// Directory in the content project where the manager expects to find skin files.
+        /// </summary>
         internal const string _SkinDirectory = ".\\Content\\Skins\\";
 
-        /// </summary>
-        /// Extension of valid skin file archives.
         /// <summary>
+        /// Extension of valid skin file archives.
+        /// </summary>
         internal const string _SkinExtension = ".skin";
 
-        /// </summary>
-        /// Increment at which a texture can be resized.
         /// <summary>
+        /// Increment at which a texture can be resized.
+        /// </summary>
         internal const int _TextureResizeIncrement = 32;
 
-        /// </summary>
+        /// <summary>
         /// tip is displayed.
         /// Amount of milliseconds the mouse cursor has to hover a control before its tool
-        /// <summary>
+        /// </summary>
         internal const int _ToolTipDelay = 500;
 
-        /// </summary>
-        /// Gets or sets a value indicating whether the Manager should create render target automatically.
         /// <summary>
+        /// Gets or sets a value indicating whether the Manager should create render target automatically.
+        /// </summary>
         public virtual bool AutoCreateRenderTarget
         {
             get { return autoCreateRenderTarget; }
             set { autoCreateRenderTarget = value; }
         }
 
-        /// </summary>
-        /// Gets or sets a value indicating if a control should unfocus if you click outside on the screen.
         /// <summary>
+        /// Gets or sets a value indicating if a control should unfocus if you click outside on the screen.
+        /// </summary>
         public virtual bool AutoUnfocus
         {
             get { return autoUnfocus; }
             set { autoUnfocus = value; }
         }
 
-        /// </summary>
-        /// Returns list of components added to the manager.
         /// <summary>
+        /// Returns list of components added to the manager.
+        /// </summary>
         public virtual IEnumerable<Component> Components
         {
             get { return components; }
         }
 
-        /// </summary>
+        /// <summary>
         /// Returns
         /// <see cref="ArchiveManager" />
         /// used for loading assets.
-        /// <summary>
+        /// </summary>
         public virtual ArchiveManager Content
         {
             get { return content; }
         }
 
-        /// </summary>
-        /// Returns list of controls added to the manager.
         /// <summary>
+        /// Returns list of controls added to the manager.
+        /// </summary>
         public virtual IEnumerable<Control> Controls
         {
             get { return controls; }
@@ -118,26 +118,26 @@ namespace MonoForce.Controls
             set { cursor = value; }
         }
 
-        /// </summary>
-        /// Gets a value indicating whether Manager is in the process of disposing.
         /// <summary>
+        /// Gets a value indicating whether Manager is in the process of disposing.
+        /// </summary>
         public virtual bool Disposing
         {
             get { return disposing; }
         }
 
-        /// </summary>
-        /// Gets or sets the maximum number of milliseconds that can elapse between a first click and a second click to consider the mouse action a double-click.
         /// <summary>
+        /// Gets or sets the maximum number of milliseconds that can elapse between a first click and a second click to consider the mouse action a double-click.
+        /// </summary>
         public virtual int DoubleClickTime
         {
             get { return doubleClickTime; }
             set { doubleClickTime = value; }
         }
 
-        /// </summary>
-        /// Gets or sets the currently focused control.
         /// <summary>
+        /// Gets or sets the currently focused control.
+        /// </summary>
         public virtual Control FocusedControl
         {
             get { return focusedControl; }
@@ -181,67 +181,67 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
+        /// <summary>
         /// Returns associated
         /// <see cref="Game" />
         /// component.
-        /// <summary>
+        /// </summary>
         public new virtual Game Game
         {
             get { return base.Game; }
         }
 
-        /// </summary>
-        /// Gets or sets the depth value used for rendering sprites.
         /// <summary>
+        /// Gets or sets the depth value used for rendering sprites.
+        /// </summary>
         public virtual float GlobalDepth
         {
             get { return globalDepth; }
             set { globalDepth = value; }
         }
 
-        /// </summary>
+        /// <summary>
         /// Returns associated
         /// <see cref="GraphicsDeviceManager" />
         /// .
-        /// <summary>
+        /// </summary>
         public virtual GraphicsDeviceManager Graphics
         {
             get { return graphics; }
         }
 
-        /// </summary>
+        /// <summary>
         /// Returns associated
         /// <see cref="GraphicsDevice" />
         /// .
-        /// <summary>
+        /// </summary>
         public new virtual GraphicsDevice GraphicsDevice
         {
             get { return base.GraphicsDevice; }
         }
 
-        /// </summary>
+        /// <summary>
         /// Returns
         /// <see cref="InputSystem" />
         /// instance responsible for managing user input.
-        /// <summary>
+        /// </summary>
         public virtual InputSystem Input
         {
             get { return input; }
         }
 
-        /// </summary>
-        /// Enables or disables input processing.
         /// <summary>
+        /// Enables or disables input processing.
+        /// </summary>
         public virtual bool InputEnabled
         {
             get { return inputEnabled; }
             set { inputEnabled = value; }
         }
 
-        /// </summary>
-        /// Gets or sets current keyboard layout for proper text inputs.
         /// <summary>
+        /// Gets or sets current keyboard layout for proper text inputs.
+        /// </summary>
         public virtual KeyboardLayout KeyboardLayout
         {
             get
@@ -255,18 +255,18 @@ namespace MonoForce.Controls
             set { keyboardLayout = value; }
         }
 
-        /// </summary>
-        /// Gets or sets collection of active keyboard layouts.
         /// <summary>
+        /// Gets or sets collection of active keyboard layouts.
+        /// </summary>
         public virtual List<KeyboardLayout> KeyboardLayouts
         {
             get { return keyboardLayouts; }
             set { keyboardLayouts = value; }
         }
 
-        /// </summary>
-        /// Gets or sets the directory where layout files are located.
         /// <summary>
+        /// Gets or sets the directory where layout files are located.
+        /// </summary>
         public virtual string LayoutDirectory
         {
             get
@@ -287,27 +287,27 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
-        /// Enables or disables logging of unhandled exceptions.
         /// <summary>
+        /// Enables or disables logging of unhandled exceptions.
+        /// </summary>
         public virtual bool LogUnhandledExceptions
         {
             get { return logUnhandledExceptions; }
             set { logUnhandledExceptions = value; }
         }
 
-        /// </summary>
-        /// Gets or sets the time that passes before a submenu appears when hovered over menu item.
         /// <summary>
+        /// Gets or sets the time that passes before a submenu appears when hovered over menu item.
+        /// </summary>
         public virtual int MenuDelay
         {
             get { return menuDelay; }
             set { menuDelay = value; }
         }
 
-        /// </summary>
-        /// Gets or sets the currently active modal window.
         /// <summary>
+        /// Gets or sets the currently active modal window.
+        /// </summary>
         public virtual ModalContainer ModalWindow
         {
             get { return modalWindow; }
@@ -325,28 +325,28 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
+        /// <summary>
         /// Returns
         /// <see cref="Renderer" />
         /// used for rendering controls.
-        /// <summary>
+        /// </summary>
         public virtual Renderer Renderer
         {
             get { return renderer; }
         }
 
-        /// </summary>
-        /// Gets or sets render target for drawing.
         /// <summary>
+        /// Gets or sets render target for drawing.
+        /// </summary>
         public virtual RenderTarget2D RenderTarget
         {
             get { return renderTarget; }
             set { renderTarget = value; }
         }
 
-        /// </summary>
-        /// Gets current height of the screen in pixels.
         /// <summary>
+        /// Gets current height of the screen in pixels.
+        /// </summary>
         public virtual int ScreenHeight
         {
             get
@@ -359,9 +359,9 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
-        /// Gets current width of the screen in pixels.
         /// <summary>
+        /// Gets current width of the screen in pixels.
+        /// </summary>
         public virtual int ScreenWidth
         {
             get
@@ -376,18 +376,18 @@ namespace MonoForce.Controls
 
         public bool ShowSoftwareCursor { get; set; } = false;
 
-        /// </summary>
-        /// Gets or sets the skin applied to all controls.
         /// <summary>
+        /// Gets or sets the skin applied to all controls.
+        /// </summary>
         public virtual Skin Skin
         {
             get { return skin; }
             set { SetSkin(value); }
         }
 
-        /// </summary>
-        /// Gets or sets the directory where skin files are located.
         /// <summary>
+        /// Gets or sets the directory where skin files are located.
+        /// </summary>
         public virtual string SkinDirectory
         {
             get
@@ -408,9 +408,9 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
-        /// Gets or sets file extension for archived skin files.
         /// <summary>
+        /// Gets or sets file extension for archived skin files.
+        /// </summary>
         public string SkinExtension
         {
             get
@@ -431,18 +431,18 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
-        /// Gets or sets update interval for drawing, logic and input.
         /// <summary>
+        /// Gets or sets update interval for drawing, logic and input.
+        /// </summary>
         public virtual int TargetFrames
         {
             get { return targetFrames; }
             set { targetFrames = value; }
         }
 
-        /// </summary>
-        /// Gets height of the selected render target in pixels.
         /// <summary>
+        /// Gets height of the selected render target in pixels.
+        /// </summary>
         public virtual int TargetHeight
         {
             get
@@ -455,9 +455,9 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
-        /// Gets width of the selected render target in pixels.
         /// <summary>
+        /// Gets width of the selected render target in pixels.
+        /// </summary>
         public virtual int TargetWidth
         {
             get
@@ -470,237 +470,237 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
-        /// Gets or sets texture size increment in pixel while performing controls resizing.
         /// <summary>
+        /// Gets or sets texture size increment in pixel while performing controls resizing.
+        /// </summary>
         public virtual int TextureResizeIncrement
         {
             get { return textureResizeIncrement; }
             set { textureResizeIncrement = value; }
         }
 
-        /// </summary>
+        /// <summary>
         /// Gets or sets the time that passes before the
         /// <see cref="ToolTip" />
         /// appears.
-        /// <summary>
+        /// </summary>
         public virtual int ToolTipDelay
         {
             get { return toolTipDelay; }
             set { toolTipDelay = value; }
         }
 
-        /// </summary>
-        /// Enables or disables showing of tooltips globally.
         /// <summary>
+        /// Enables or disables showing of tooltips globally.
+        /// </summary>
         public virtual bool ToolTipsEnabled
         {
             get { return toolTipsEnabled; }
             set { toolTipsEnabled = value; }
         }
 
-        /// </summary>
-        /// Gets or sets a value indicating if Guide component can be used
         /// <summary>
+        /// Gets or sets a value indicating if Guide component can be used
+        /// </summary>
         public bool UseGuide
         {
             get { return useGuide; }
             set { useGuide = value; }
         }
 
-        /// </summary>
-        /// Gets the list of visible controls being managed.
         /// <summary>
+        /// Gets the list of visible controls being managed.
+        /// </summary>
         internal virtual ControlsList OrderList
         {
             get { return orderList; }
         }
 
-        /// </summary>
-        /// List of all components being managed.
         /// <summary>
+        /// List of all components being managed.
+        /// </summary>
         private readonly List<Component> components;
 
-        /// </summary>
-        /// List of all controls being managed.
         /// <summary>
+        /// List of all controls being managed.
+        /// </summary>
         private readonly ControlsList controls;
 
-        /// </summary>
-        /// Graphics device manager for the application.
         /// <summary>
+        /// Graphics device manager for the application.
+        /// </summary>
         private readonly GraphicsDeviceManager graphics;
 
-        /// </summary>
-        /// List of visible controls in the controls list.
         /// <summary>
+        /// List of visible controls in the controls list.
+        /// </summary>
         private readonly ControlsList orderList;
 
-        /// </summary>
-        /// Layout file version the manager expects to work with.
         /// <summary>
+        /// Layout file version the manager expects to work with.
+        /// </summary>
         internal Version _LayoutVersion = new Version(0, 7);
 
-        /// </summary>
-        /// Skin version the manager expects to work with.
         /// <summary>
+        /// Skin version the manager expects to work with.
+        /// </summary>
         internal Version _SkinVersion = new Version(0, 7);
 
-        /// </summary>
-        /// Indicates if the manager's render target should be created automatically when initialized.
         /// <summary>
+        /// Indicates if the manager's render target should be created automatically when initialized.
+        /// </summary>
         private bool autoCreateRenderTarget = true;
 
-        /// </summary>
-        /// Indicates if controls automatically unfocus when a new control is navigated to. ???
         /// <summary>
+        /// Indicates if controls automatically unfocus when a new control is navigated to. ???
+        /// </summary>
         private bool autoUnfocus = true;
 
-        /// </summary>
-        /// Archive content manager for loading skin files.
         /// <summary>
+        /// Archive content manager for loading skin files.
+        /// </summary>
         private ArchiveManager content;
 
-        /// </summary>
-        /// Application's cursor used when running on Windows.
         /// <summary>
+        /// Application's cursor used when running on Windows.
+        /// </summary>
         private Cursor cursor;
 
-        /// </summary>
-        /// Indicates if the graphics device has been reset.
         /// <summary>
+        /// Indicates if the graphics device has been reset.
+        /// </summary>
         private bool deviceReset;
 
-        /// </summary>
-        /// Indicates if the manager is being disposed.
         /// <summary>
+        /// Indicates if the manager is being disposed.
+        /// </summary>
         private bool disposing;
 
-        /// </summary>
-        /// Indicates how fast two click events must occur to trigger a double click event.
         /// <summary>
+        /// Indicates how fast two click events must occur to trigger a double click event.
+        /// </summary>
         private int doubleClickTime = _DoubleClickTime;
 
-        /// </summary>
-        /// Tracks elapsed time to control drawing to match target FPS.
         /// <summary>
+        /// Tracks elapsed time to control drawing to match target FPS.
+        /// </summary>
         private long drawTime;
 
-        /// </summary>
-        /// Application control that currently has input focus.
         /// <summary>
+        /// Application control that currently has input focus.
+        /// </summary>
         private Control focusedControl;
 
-        /// </summary>
-        /// Global depth value used when drawing controls.
         /// <summary>
+        /// Global depth value used when drawing controls.
+        /// </summary>
         private float globalDepth;
 
-        /// </summary>
-        /// Handles input device updates for the application.
         /// <summary>
+        /// Handles input device updates for the application.
+        /// </summary>
         private InputSystem input;
 
-        /// </summary>
-        /// Indicates if the manager is responding to user input.
         /// <summary>
+        /// Indicates if the manager is responding to user input.
+        /// </summary>
         private bool inputEnabled = true;
 
-        /// </summary>
-        /// Active keyboard layout.
         /// <summary>
+        /// Active keyboard layout.
+        /// </summary>
         private KeyboardLayout keyboardLayout;
 
-        /// </summary>
-        /// List of keyboard layouts available for the application.
         /// <summary>
+        /// List of keyboard layouts available for the application.
+        /// </summary>
         private List<KeyboardLayout> keyboardLayouts = new List<KeyboardLayout>();
 
-        /// </summary>
-        /// Directory where layout files are located.
         /// <summary>
+        /// Directory where layout files are located.
+        /// </summary>
         private string layoutDirectory = _LayoutDirectory;
 
-        /// </summary>
-        /// Indicates if unhandled exceptions should be logged to file.
         /// <summary>
+        /// Indicates if unhandled exceptions should be logged to file.
+        /// </summary>
         private bool logUnhandledExceptions = true;
 
-        /// </summary>
-        /// Indicates how long the display of a menu is delayed.
         /// <summary>
+        /// Indicates how long the display of a menu is delayed.
+        /// </summary>
         private int menuDelay = _MenuDelay;
 
-        /// </summary>
-        /// Current modal window displayed, if any.
         /// <summary>
+        /// Current modal window displayed, if any.
+        /// </summary>
         private ModalContainer modalWindow;
 
-        /// </summary>
-        /// Render manager for the application.
         /// <summary>
+        /// Render manager for the application.
+        /// </summary>
         private Renderer renderer;
 
-        /// </summary>
-        /// Render target where control drawing takes place before being displayed.
         /// <summary>
+        /// Render target where control drawing takes place before being displayed.
+        /// </summary>
         private RenderTarget2D renderTarget;
 
         private bool renderTargetValid;
 
-        /// </summary>
-        /// Current skin being applied to the application controls.
         /// <summary>
+        /// Current skin being applied to the application controls.
+        /// </summary>
         private Skin skin;
 
-        /// </summary>
-        /// Directory where skin files are located.
         /// <summary>
+        /// Directory where skin files are located.
+        /// </summary>
         private string skinDirectory = _SkinDirectory;
 
-        /// </summary>
-        /// Extension of skin files.
         /// <summary>
+        /// Extension of skin files.
+        /// </summary>
         private string skinExtension = _SkinExtension;
 
-        /// </summary>
-        /// Name of the skin file being used.
         /// <summary>
+        /// Name of the skin file being used.
+        /// </summary>
         private string skinName = _DefaultSkin;
 
-        /// </summary>
-        /// ???
         /// <summary>
+        /// ???
+        /// </summary>
         private ControlStates states;
 
-        /// </summary>
-        /// Application's target FPS.
         /// <summary>
+        /// Application's target FPS.
+        /// </summary>
         private int targetFrames = 60;
 
-        /// </summary>
-        /// Increment which textures can be resized at.
         /// <summary>
+        /// Increment which textures can be resized at.
+        /// </summary>
         private int textureResizeIncrement = _TextureResizeIncrement;
 
-        /// </summary>
-        /// Indicates how long a mouse has to hover a control in order to activate its tool tip.
         /// <summary>
+        /// Indicates how long a mouse has to hover a control in order to activate its tool tip.
+        /// </summary>
         private int toolTipDelay = _ToolTipDelay;
 
-        /// </summary>
-        /// Indicates if the application can use tool tips.
         /// <summary>
+        /// Indicates if the application can use tool tips.
+        /// </summary>
         private bool toolTipsEnabled = true;
 
-        /// </summary>
-        /// Tracks elapsed time to control frequency of updates.
         /// <summary>
+        /// Tracks elapsed time to control frequency of updates.
+        /// </summary>
         private long updateTime;
 
-        /// </summary>
-        /// Indicates if the guide component can be used.
         /// <summary>
+        /// Indicates if the guide component can be used.
+        /// </summary>
         private bool useGuide;
 
         public static string StringNewline = "&n";
@@ -716,9 +716,9 @@ namespace MonoForce.Controls
         /// </param>
         /// The Game class.
         /// <param name="game">
-        /// </summary>
-        /// Initializes a new instance of the Manager class.
         /// <summary>
+        /// Initializes a new instance of the Manager class.
+        /// </summary>
         public Manager(Game game, GraphicsDeviceManager graphics, string skin)
             : base(game)
         {
@@ -770,9 +770,9 @@ game.Window.Title += " (XBOX_FAKE)";
 
         /// <param name="skin">The name of the skin being loaded at the start.</param>
         /// <param name="game">The Game class.</param>
-        /// </summary>
-        /// Initializes a new instance of the Manager class.
         /// <summary>
+        /// Initializes a new instance of the Manager class.
+        /// </summary>
         public Manager(Game game, string skin)
             : this(game, game.Services.GetService(typeof (IGraphicsDeviceManager)) as GraphicsDeviceManager, skin)
         {
@@ -780,18 +780,18 @@ game.Window.Title += " (XBOX_FAKE)";
 
         /// <param name="graphics">The GraphicsDeviceManager class provided by the Game class.</param>
         /// <param name="game">The Game class.</param>
-        /// </summary>
-        /// Initializes a new instance of the Manager class, loads the default skin and registers manager in the game class automatically.
         /// <summary>
+        /// Initializes a new instance of the Manager class, loads the default skin and registers manager in the game class automatically.
+        /// </summary>
         public Manager(Game game, GraphicsDeviceManager graphics)
             : this(game, graphics, _DefaultSkin)
         {
         }
 
         /// <param name="game">The Game class.</param>
-        /// </summary>
-        /// Initializes a new instance of the Manager class, loads the default skin and registers manager in the game class automatically.
         /// <summary>
+        /// Initializes a new instance of the Manager class, loads the default skin and registers manager in the game class automatically.
+        /// </summary>
         public Manager(Game game)
             : this(
                 game, game.Services.GetService(typeof (IGraphicsDeviceManager)) as GraphicsDeviceManager, _DefaultSkin)
@@ -801,9 +801,9 @@ game.Window.Title += " (XBOX_FAKE)";
         /// </param>
         /// The component or control being added.
         /// <param name="component">
-        /// </summary>
-        /// Adds a component or a control to the manager.
         /// <summary>
+        /// Adds a component or a control to the manager.
+        /// </summary>
         public virtual void Add(Component component)
         {
 // Component exists?
@@ -839,9 +839,9 @@ game.Window.Title += " (XBOX_FAKE)";
         /// </param>
         /// Time passed since the last call to Draw.
         /// <param name="gameTime">
-        /// </summary>
-        /// Renders all controls added to the manager.
         /// <summary>
+        /// Renders all controls added to the manager.
+        /// </summary>
         public virtual void BeginDraw(GameTime gameTime)
         {
             if (!renderTargetValid && AutoCreateRenderTarget)
@@ -857,9 +857,9 @@ game.Window.Title += " (XBOX_FAKE)";
         /// </param>
         /// The control being brought to the front.
         /// <param name="control">
-        /// </summary>
-        /// Brings the control to the front of the z-order.
         /// <summary>
+        /// Brings the control to the front of the z-order.
+        /// </summary>
         public virtual void BringToFront(Control control)
         {
 // Valid control and allowed to be in front?
@@ -892,9 +892,9 @@ game.Window.Title += " (XBOX_FAKE)";
         }
 
         /// <returns>Returns the created render target.</returns>
-        /// </summary>
-        /// Creates a render target.
         /// <summary>
+        /// Creates a render target.
+        /// </summary>
         public virtual RenderTarget2D CreateRenderTarget()
         {
             return CreateRenderTarget(ScreenWidth, ScreenHeight);
@@ -903,9 +903,9 @@ game.Window.Title += " (XBOX_FAKE)";
         /// <returns>Returns the created render target.</returns>
         /// <param name="height">Height of the new render target.</param>
         /// <param name="width">Width of the new render target.</param>
-        /// </summary>
-        /// Creates a render target with the specified dimensions.
         /// <summary>
+        /// Creates a render target with the specified dimensions.
+        /// </summary>
         public virtual RenderTarget2D CreateRenderTarget(int width, int height)
         {
             Input.InputOffset = new InputOffset(0, 0, ScreenWidth / (float)width, ScreenHeight / (float)height);
@@ -913,15 +913,15 @@ game.Window.Title += " (XBOX_FAKE)";
                 GraphicsDevice.PresentationParameters.MultiSampleCount, _RenderTargetUsage);
         }
 
-        /// </summary>
-        /// Occurs when the GraphicsDevice settings are changed.
         /// <summary>
+        /// Occurs when the GraphicsDevice settings are changed.
+        /// </summary>
         public event DeviceEventHandler DeviceSettingsChanged;
 
         /// <param name="gameTime">Snapshot of the application's timing values.</param>
-        /// </summary>
-        /// Draws the manager's controls.
         /// <summary>
+        /// Draws the manager's controls.
+        /// </summary>
         public override void Draw(GameTime gameTime)
         {
             if (renderTarget != null)
@@ -985,17 +985,17 @@ game.Window.Title += " (XBOX_FAKE)";
             }
         }
 
-        /// </summary>
-        /// Draws texture resolved from RenderTarget used for rendering.
         /// <summary>
+        /// Draws texture resolved from RenderTarget used for rendering.
+        /// </summary>
         public virtual void EndDraw()
         {
             EndDraw(new Rectangle(0, 0, ScreenWidth, ScreenHeight));
         }
 
-        /// </summary>
-        /// Draws texture resolved from RenderTarget to specified rectangle.
         /// <summary>
+        /// Draws texture resolved from RenderTarget to specified rectangle.
+        /// </summary>
         public virtual void EndDraw(Rectangle rect)
         {
             if (renderTarget != null && !deviceReset)
@@ -1012,9 +1012,9 @@ game.Window.Title += " (XBOX_FAKE)";
 
         /// <returns>Returns the control with the specified name.</returns>
         /// <param name="name">Name of the control to retrieve.</param>
-        /// </summary>
-        /// Gets the control with the specified name.
         /// <summary>
+        /// Gets the control with the specified name.
+        /// </summary>
         public virtual Control GetControl(string name)
         {
 // Make sure no control can be larger than the back buffer.
@@ -1028,9 +1028,9 @@ game.Window.Title += " (XBOX_FAKE)";
             return null;
         }
 
-        /// </summary>
-        /// Initializes the control manager.
         /// <summary>
+        /// Initializes the control manager.
+        /// </summary>
         public override void Initialize()
         {
             base.Initialize();
@@ -1055,9 +1055,9 @@ game.Window.Title += " (XBOX_FAKE)";
         }
 
         /// <param name="e">The exception to log.</param>
-        /// </summary>
-        /// Logs exceptions to files on Windows.
         /// <summary>
+        /// Logs exceptions to files on Windows.
+        /// </summary>
         public virtual void LogException(Exception e)
         {
 #if (!XBOX && !XBOX_FAKE)
@@ -1079,9 +1079,9 @@ game.Window.Title += " (XBOX_FAKE)";
         }
 
         /// <param name="gameTime">Snapshot of the application's timing values.</param>
-        /// </summary>
-        /// Draws the controls on their respective render targets.
         /// <summary>
+        /// Draws the controls on their respective render targets.
+        /// </summary>
         public virtual void Prepare(GameTime gameTime)
         {
         }
@@ -1089,9 +1089,9 @@ game.Window.Title += " (XBOX_FAKE)";
         /// </param>
         /// The component or control being removed.
         /// <param name="component">
-        /// </summary>
-        /// Removes a component or a control from the manager.
         /// <summary>
+        /// Removes a component or a control from the manager.
+        /// </summary>
         public virtual void Remove(Component component)
         {
 // Component exists?
@@ -1119,9 +1119,9 @@ game.Window.Title += " (XBOX_FAKE)";
         /// </param>
         /// The control being sent back.
         /// <param name="control">
-        /// </summary>
-        /// Sends the control to the back of the z-order.
         /// <summary>
+        /// Sends the control to the back of the z-order.
+        /// </summary>
         public virtual void SendToBack(Control control)
         {
             if (control != null && !control.StayOnTop)
@@ -1165,9 +1165,9 @@ game.Window.Title += " (XBOX_FAKE)";
         /// </param>
         /// The name of the skin being loaded.
         /// <param name="name">
-        /// </summary>
-        /// Sets and loads the new skin.
         /// <summary>
+        /// Sets and loads the new skin.
+        /// </summary>
         public virtual void SetSkin(string name)
         {
             var skin = new Skin(this, name);
@@ -1177,9 +1177,9 @@ game.Window.Title += " (XBOX_FAKE)";
         /// </param>
         /// The skin being set.
         /// <param name="skin">
-        /// </summary>
-        /// Sets the new skin.
         /// <summary>
+        /// Sets the new skin.
+        /// </summary>
         public virtual void SetSkin(Skin skin)
         {
 // Raise the skin changing event.
@@ -1215,22 +1215,22 @@ game.Window.Title += " (XBOX_FAKE)";
             InitControls();
         }
 
-        /// </summary>
-        /// Occurs when the skin changes.
         /// <summary>
+        /// Occurs when the skin changes.
+        /// </summary>
         public event SkinEventHandler SkinChanged;
 
-        /// </summary>
-        /// Occurs when the skin is about to change.
         /// <summary>
+        /// Occurs when the skin is about to change.
+        /// </summary>
         public event SkinEventHandler SkinChanging;
 
         /// </param>
         /// Time elapsed since the last call to Update.
         /// <param name="gameTime">
-        /// </summary>
-        /// Called when the manager needs to be updated.
         /// <summary>
+        /// Called when the manager needs to be updated.
+        /// </summary>
         public override void Update(GameTime gameTime)
         {
             updateTime += gameTime.ElapsedGameTime.Ticks;
@@ -1274,15 +1274,15 @@ game.Window.Title += " (XBOX_FAKE)";
             }
         }
 
-        /// </summary>
-        /// Occurs when game window is about to close.
         /// <summary>
+        /// Occurs when game window is about to close.
+        /// </summary>
         public event WindowClosingEventHandler WindowClosing;
 
         /// <param name="disposing"></param>
-        /// </summary>
-        /// Releases resources used by the manager.
         /// <summary>
+        /// Releases resources used by the manager.
+        /// </summary>
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -1335,9 +1335,9 @@ game.Window.Title += " (XBOX_FAKE)";
             base.Dispose(disposing);
         }
 
-        /// </summary>
-        /// Method used as an event handler for the GraphicsDeviceManager.PreparingDeviceSettings event.
         /// <summary>
+        /// Method used as an event handler for the GraphicsDeviceManager.PreparingDeviceSettings event.
+        /// </summary>
         protected virtual void PrepareGraphicsDevice(object sender, PreparingDeviceSettingsEventArgs e)
         {
             e.GraphicsDeviceInformation.PresentationParameters.RenderTargetUsage = _RenderTargetUsage;
@@ -1357,8 +1357,8 @@ game.Window.Title += " (XBOX_FAKE)";
 
         /// <returns></returns>
         /// <param name="index"></param>
-        /// </summary>
         /// <summary>
+        /// </summary>
         private bool CheckButtons(int index)
         {
             for (var i = 0; i < states.Buttons.Length; i++)
@@ -1372,8 +1372,8 @@ game.Window.Title += " (XBOX_FAKE)";
 
         /// <returns></returns>
         /// <param name="control"></param>
-        /// </summary>
         /// <summary>
+        /// </summary>
         private bool CheckDetached(Control control)
         {
             var ret = control.Detached;
@@ -1387,8 +1387,8 @@ game.Window.Title += " (XBOX_FAKE)";
         /// <returns></returns>
         /// <param name="pos"></param>
         /// <param name="control"></param>
-        /// </summary>
         /// <summary>
+        /// </summary>
         private bool CheckOrder(Control control, Point pos)
         {
             if (!CheckPosition(control, pos)) return false;
@@ -1415,9 +1415,9 @@ game.Window.Title += " (XBOX_FAKE)";
                     CheckParent(control, pos));
         }
 
-        /// <summary>
+        /// </summary>
 		/// 
-		/// </summary>
+		/// <summary>
 		/// <param name="control"></param>
 		/// <param name="pos"></param>
 		/// <returns></returns>
@@ -1448,8 +1448,8 @@ game.Window.Title += " (XBOX_FAKE)";
 
         /// <returns></returns>
         /// <param name="control"></param>
-        /// </summary>
         /// <summary>
+        /// </summary>
         private bool CheckState(Control control)
         {
             var modal = (ModalWindow == null) ? true : (ModalWindow == control.Root);
@@ -1459,9 +1459,9 @@ game.Window.Title += " (XBOX_FAKE)";
 
         /// <param name="e"></param>
         /// <param name="sender"></param>
-        /// </summary>
-        /// Handles gamepad button down events for the manager.
         /// <summary>
+        /// Handles gamepad button down events for the manager.
+        /// </summary>
         private void GamePadDownProcess(object sender, GamePadEventArgs e)
         {
             var c = FocusedControl;
@@ -1488,9 +1488,9 @@ game.Window.Title += " (XBOX_FAKE)";
 
         /// <param name="e"></param>
         /// <param name="sender"></param>
-        /// </summary>
-        /// Handles gamepad button presses for the manager.
         /// <summary>
+        /// Handles gamepad button presses for the manager.
+        /// </summary>
         private void GamePadPressProcess(object sender, GamePadEventArgs e)
         {
             var c = states.Buttons[(int)e.Button];
@@ -1525,9 +1525,9 @@ game.Window.Title += " (XBOX_FAKE)";
 
         /// <param name="e"></param>
         /// <param name="sender"></param>
-        /// </summary>
-        /// Handles gamepad button up events for the manager.
         /// <summary>
+        /// Handles gamepad button up events for the manager.
+        /// </summary>
         private void GamePadUpProcess(object sender, GamePadEventArgs e)
         {
             var c = states.Buttons[(int)e.Button];
@@ -1548,9 +1548,9 @@ game.Window.Title += " (XBOX_FAKE)";
 
         /// <param name="e"></param>
         /// <param name="sender"></param>
-        /// </summary>
-        /// Recreates the render target when the graphics device is reset.
         /// <summary>
+        /// Recreates the render target when the graphics device is reset.
+        /// </summary>
         private void GraphicsDevice_DeviceReset(object sender, System.EventArgs e)
         {
             deviceReset = true;
@@ -1565,9 +1565,9 @@ RenderTarget = CreateRenderTarget();
 
         /// <param name="e"></param>
         /// <param name="sender"></param>
-        /// </summary>
-        /// Handles unhandled exceptions.
         /// <summary>
+        /// Handles unhandled exceptions.
+        /// </summary>
         private void HandleUnhadledExceptions(object sender, UnhandledExceptionEventArgs e)
         {
             if (LogUnhandledExceptions)
@@ -1576,9 +1576,9 @@ RenderTarget = CreateRenderTarget();
             }
         }
 
-        /// </summary>
-        /// Initializes every single control created.
         /// <summary>
+        /// Initializes every single control created.
+        /// </summary>
         private void InitControls()
         {
 // not added to the manager or another parent.
@@ -1589,9 +1589,9 @@ RenderTarget = CreateRenderTarget();
             }
         }
 
-        /// </summary>
-        /// Initializes the skin of every single control created.
         /// <summary>
+        /// Initializes the skin of every single control created.
+        /// </summary>
         private void InitSkins()
         {
 // not added to the manager or another parent.
@@ -1609,9 +1609,9 @@ RenderTarget = CreateRenderTarget();
 
         /// <param name="e"></param>
         /// <param name="sender"></param>
-        /// </summary>
-        /// Handles key down events for the manager.
         /// <summary>
+        /// Handles key down events for the manager.
+        /// </summary>
         private void KeyDownProcess(object sender, KeyEventArgs e)
         {
             var c = FocusedControl;
@@ -1638,9 +1638,9 @@ RenderTarget = CreateRenderTarget();
 
         /// <param name="e"></param>
         /// <param name="sender"></param>
-        /// </summary>
-        /// Handles key press events for the manager.
         /// <summary>
+        /// Handles key press events for the manager.
+        /// </summary>
         private void KeyPressProcess(object sender, KeyEventArgs e)
         {
             var c = states.Buttons[(int)MouseButton.None];
@@ -1675,9 +1675,9 @@ RenderTarget = CreateRenderTarget();
 
         /// <param name="e"></param>
         /// <param name="sender"></param>
-        /// </summary>
-        /// Handles key up events for the manager.
         /// <summary>
+        /// Handles key up events for the manager.
+        /// </summary>
         private void KeyUpProcess(object sender, KeyEventArgs e)
         {
             var c = states.Buttons[(int)MouseButton.None];
@@ -1698,9 +1698,9 @@ RenderTarget = CreateRenderTarget();
 
         /// <param name="e"></param>
         /// <param name="sender"></param>
-        /// </summary>
-        /// Processes mouse button down events for the manager.
         /// <summary>
+        /// Processes mouse button down events for the manager.
+        /// </summary>
         private void MouseDownProcess(object sender, MouseEventArgs e)
         {
 // Get the visible controls.
@@ -1772,9 +1772,9 @@ RenderTarget = CreateRenderTarget();
 
         /// <param name="e"></param>
         /// <param name="sender"></param>
-        /// </summary>
-        /// Processes mouse move events for the manager.
         /// <summary>
+        /// Processes mouse move events for the manager.
+        /// </summary>
         private void MouseMoveProcess(object sender, MouseEventArgs e)
         {
 // Get the visible controls.
@@ -1830,9 +1830,9 @@ RenderTarget = CreateRenderTarget();
 
         /// <param name="e"></param>
         /// <param name="sender"></param>
-        /// </summary>
-        /// Processes mouse button press events for the manager.
         /// <summary>
+        /// Processes mouse button press events for the manager.
+        /// </summary>
         private void MousePressProcess(object sender, MouseEventArgs e)
         {
             var c = states.Buttons[(int)e.Button];
@@ -1847,9 +1847,9 @@ RenderTarget = CreateRenderTarget();
 
         /// <param name="e"></param>
         /// <param name="sender"></param>
-        /// </summary>
-        /// Processes mouse scroll events for the manager.
         /// <summary>
+        /// Processes mouse scroll events for the manager.
+        /// </summary>
         private void MouseScrollProcess(object sender, MouseEventArgs e)
         {
 // Get the visible controls.
@@ -1872,9 +1872,9 @@ RenderTarget = CreateRenderTarget();
 
         /// <param name="e"></param>
         /// <param name="sender"></param>
-        /// </summary>
-        /// Processes mouse button up events for the manager.
         /// <summary>
+        /// Processes mouse button up events for the manager.
+        /// </summary>
         private void MouseUpProcess(object sender, MouseEventArgs e)
         {
             var c = states.Buttons[(int)e.Button];
@@ -1895,9 +1895,9 @@ RenderTarget = CreateRenderTarget();
         /// <param name="gpe">Gamepad event arguments.</param>
         /// <param name="kbe">Key event arguments.</param>
         /// <param name="control">Control to process arrow keys for.</param>
-        /// </summary>
-        /// Processes up/down/left/right inputs for the manager.
         /// <summary>
+        /// Processes up/down/left/right inputs for the manager.
+        /// </summary>
         private void ProcessArrows(Control control, KeyEventArgs kbe, GamePadEventArgs gpe)
         {
             var c = control;
@@ -2026,10 +2026,10 @@ RenderTarget = CreateRenderTarget();
         /// <param name="h">Maximum height of the control.</param>
         /// <param name="w">Maximum width of the control.</param>
         /// <param name="c">Control to check the dimensions of.</param>
-        /// </summary>
+        /// <summary>
         /// dimensions and resizes it if necessary.
         /// Makes sure the specified control does not exceed the specified
-        /// <summary>
+        /// </summary>
         private void SetMaxSize(Control c, int w, int h)
         {
 // Control to wide?
@@ -2053,8 +2053,8 @@ RenderTarget = CreateRenderTarget();
         }
 
         /// <param name="cs"></param>
-        /// </summary>
         /// <summary>
+        /// </summary>
         private void SortLevel(ControlsList cs)
         {
             if (cs != null)
@@ -2071,9 +2071,9 @@ RenderTarget = CreateRenderTarget();
         }
 
         /// <param name="control">Current control we are tabbing from.</param>
-        /// </summary>
-        /// Tabs to the next control in the list.
         /// <summary>
+        /// Tabs to the next control in the list.
+        /// </summary>
         private void TabNextControl(Control control)
         {
             var start = OrderList.IndexOf(control);
@@ -2090,9 +2090,9 @@ RenderTarget = CreateRenderTarget();
         }
 
         /// <param name="control">Current control we are tabbing from.</param>
-        /// </summary>
-        /// Tabs to the previous control in the list.
         /// <summary>
+        /// Tabs to the previous control in the list.
+        /// </summary>
         private void TabPrevControl(Control control)
         {
             var start = OrderList.IndexOf(control);
@@ -2109,20 +2109,20 @@ RenderTarget = CreateRenderTarget();
 
         #region Nested type: Struct
 
-        /// </summary>
         /// <summary>
+        /// </summary>
         private struct ControlStates
         {
-            /// </summary>
             /// <summary>
+            /// </summary>
             public Control[] Buttons;
 
-            /// </summary>
             /// <summary>
+            /// </summary>
             public int Click;
 
-            /// </summary>
             /// <summary>
+            /// </summary>
             public Control Over;
         }
 

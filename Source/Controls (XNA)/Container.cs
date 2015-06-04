@@ -2,9 +2,9 @@ using Microsoft.Xna.Framework;
 
 namespace MonoForce.Controls
 {
-    /// </summary>
-    /// Stores the values of the container's horizontal and vertical scroll bars.
     /// <summary>
+    /// Stores the values of the container's horizontal and vertical scroll bars.
+    /// </summary>
     public struct ScrollBarValue
     {
         public int Horizontal;
@@ -13,9 +13,9 @@ namespace MonoForce.Controls
 
     public class Container : ClipControl
     {
-        /// </summary>
-        /// Indicates if scroll bars will be displayed/hidden automatically.
         /// <summary>
+        /// Indicates if scroll bars will be displayed/hidden automatically.
+        /// </summary>
         public virtual bool AutoScroll
         {
             get { return autoScroll; }
@@ -25,9 +25,9 @@ namespace MonoForce.Controls
 // Crappy fix to certain scrolling issue
         }
 
-        /// </summary>
-        /// Gets or sets the default control of the container.
         /// <summary>
+        /// Gets or sets the default control of the container.
+        /// </summary>
         public virtual Control DefaultControl
         {
             get { return defaultControl; }
@@ -37,9 +37,9 @@ namespace MonoForce.Controls
 // Crappy fix to certain scrolling issue
         }
 
-        /// </summary>
-        /// Gets or sets the main menu of the container control.
         /// <summary>
+        /// Gets or sets the main menu of the container control.
+        /// </summary>
         public virtual MainMenu MainMenu
         {
             get { return mainMenu; }
@@ -74,9 +74,9 @@ namespace MonoForce.Controls
 // Crappy fix to certain scrolling issue
         }
 
-        /// </summary>
-        /// Scroll by PageSize (true) or StepSize (false)
         /// <summary>
+        /// Scroll by PageSize (true) or StepSize (false)
+        /// </summary>
         public virtual bool ScrollAlot
         {
             get { return scrollAlot; }
@@ -86,9 +86,9 @@ namespace MonoForce.Controls
 // Crappy fix to certain scrolling issue
         }
 
-        /// </summary>
-        /// Gets the values of the container's horizontal and vertical scroll bars.
         /// <summary>
+        /// Gets the values of the container's horizontal and vertical scroll bars.
+        /// </summary>
         public virtual ScrollBarValue ScrollBarValue
         {
             get
@@ -106,9 +106,9 @@ namespace MonoForce.Controls
 // Crappy fix to certain scrolling issue
         }
 
-        /// </summary>
-        /// Gets or sets the container's status bar control.
         /// <summary>
+        /// Gets or sets the container's status bar control.
+        /// </summary>
         public virtual StatusBar StatusBar
         {
             get
@@ -149,9 +149,9 @@ namespace MonoForce.Controls
 // Crappy fix to certain scrolling issue
         }
 
-        /// </summary>
-        /// Gets or sets the tool bar panel of the container control.
         /// <summary>
+        /// Gets or sets the tool bar panel of the container control.
+        /// </summary>
         public virtual ToolBarPanel ToolBarPanel
         {
             get
@@ -192,9 +192,9 @@ namespace MonoForce.Controls
 // Crappy fix to certain scrolling issue
         }
 
-        /// </summary>
-        /// Indicates if the container is visible.
         /// <summary>
+        /// Indicates if the container is visible.
+        /// </summary>
         public override bool Visible
         {
             get
@@ -229,9 +229,9 @@ namespace MonoForce.Controls
 // Crappy fix to certain scrolling issue
         }
 
-        /// </summary>
-        /// Gets the container's horizontal scroll bar.
         /// <summary>
+        /// Gets the container's horizontal scroll bar.
+        /// </summary>
         protected virtual ScrollBar HorizontalScrollBar
         {
             get { return sbHorz; }
@@ -240,9 +240,9 @@ namespace MonoForce.Controls
 // Crappy fix to certain scrolling issue
         }
 
-        /// </summary>
-        /// Gets the container's vertical scroll bar.
         /// <summary>
+        /// Gets the container's vertical scroll bar.
+        /// </summary>
         protected virtual ScrollBar VerticalScrollBar
         {
             get { return sbVert; }
@@ -251,44 +251,44 @@ namespace MonoForce.Controls
 // Crappy fix to certain scrolling issue
         }
 
-        /// </summary>
-        /// Container control's horizontal scroll bar.
         /// <summary>
+        /// Container control's horizontal scroll bar.
+        /// </summary>
         private readonly ScrollBar sbHorz;
 
-        /// </summary>
-        /// Container control's vertical scroll bar.
         /// <summary>
+        /// Container control's vertical scroll bar.
+        /// </summary>
         private readonly ScrollBar sbVert;
 
-        /// </summary>
-        /// Indicates if the container will automatically show/hide the client area scroll bars as needed.
         /// <summary>
+        /// Indicates if the container will automatically show/hide the client area scroll bars as needed.
+        /// </summary>
         private bool autoScroll;
 
-        /// </summary>
-        /// Container's default control.
         /// <summary>
+        /// Container's default control.
+        /// </summary>
         private Control defaultControl;
 
-        /// </summary>
-        /// Container control's main menu.
         /// <summary>
+        /// Container control's main menu.
+        /// </summary>
         private MainMenu mainMenu;
 
-        /// </summary>
-        /// Scroll by PageSize (true) or StepSize (false)
         /// <summary>
+        /// Scroll by PageSize (true) or StepSize (false)
+        /// </summary>
         private bool scrollAlot = true;
 
-        /// </summary>
-        /// Status bar control of the container.
         /// <summary>
+        /// Status bar control of the container.
+        /// </summary>
         private StatusBar statusBar;
 
-        /// </summary>
-        /// Tool bar panel of the container control.
         /// <summary>
+        /// Tool bar panel of the container control.
+        /// </summary>
         private ToolBarPanel toolBarPanel;
 
         public Container(Manager manager) : base(manager)
@@ -327,9 +327,9 @@ namespace MonoForce.Controls
         /// <param name="client">
         /// Indicates if the control will be a child of the client area
         /// <param name="control">The child control to add to the container.</param>
-        /// </summary>
-        /// Adds a child control to the container.
         /// <summary>
+        /// Adds a child control to the container.
+        /// </summary>
         public override void Add(Control control, bool client)
         {
             base.Add(control, client);
@@ -339,9 +339,9 @@ namespace MonoForce.Controls
 // Crappy fix to certain scrolling issue
         }
 
-        /// </summary>
-        /// Initializes the container control.
         /// <summary>
+        /// Initializes the container control.
+        /// </summary>
         public override void Init()
         {
             base.Init();
@@ -350,9 +350,9 @@ namespace MonoForce.Controls
 // Crappy fix to certain scrolling issue
         }
 
-        /// </summary>
-        /// Invalidates the control and forces redrawing of it.
         /// <summary>
+        /// Invalidates the control and forces redrawing of it.
+        /// </summary>
         public override void Invalidate()
         {
             base.Invalidate();
@@ -363,9 +363,9 @@ namespace MonoForce.Controls
 
         /// <param name="y">New vertical scroll bar value.</param>
         /// <param name="x">New horizontal scroll bar value.</param>
-        /// </summary>
-        /// Scrolls to the specified scroll bar positions.
         /// <summary>
+        /// Scrolls to the specified scroll bar positions.
+        /// </summary>
         public virtual void ScrollTo(int x, int y)
         {
             sbVert.Value = y;
@@ -376,9 +376,9 @@ namespace MonoForce.Controls
         }
 
         /// <param name="control"></param>
-        /// </summary>
-        /// Adjusts the scroll bar values so the specified control is displayed in the client region.
         /// <summary>
+        /// Adjusts the scroll bar values so the specified control is displayed in the client region.
+        /// </summary>
         public virtual void ScrollTo(Control control)
         {
 // Make sure the control exists inside the client area somewhere.
@@ -427,9 +427,9 @@ namespace MonoForce.Controls
 // Crappy fix to certain scrolling issue
         }
 
-        /// </summary>
-        /// Initializes the skin of the container control.
         /// <summary>
+        /// Initializes the skin of the container control.
+        /// </summary>
         protected internal override void InitSkin()
         {
             base.InitSkin();
@@ -439,9 +439,9 @@ namespace MonoForce.Controls
         }
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Handler for when the container's skin is changed.
         /// <summary>
+        /// Handler for when the container's skin is changed.
+        /// </summary>
         protected internal override void OnSkinChanged(EventArgs e)
         {
             base.OnSkinChanged(e);
@@ -460,9 +460,9 @@ namespace MonoForce.Controls
         }
 
         /// <param name="gameTime"></param>
-        /// </summary>
-        /// Updates the container control and all child controls.
         /// <summary>
+        /// Updates the container control and all child controls.
+        /// </summary>
         protected internal override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
@@ -471,10 +471,10 @@ namespace MonoForce.Controls
 // Crappy fix to certain scrolling issue
         }
 
-        /// </summary>
+        /// <summary>
         /// the tool bar panel, the status bar, and the scroll bars.
         /// Adjusts the container's margins to account for the visibility of the main menu,
-        /// <summary>
+        /// </summary>
         protected override void AdjustMargins()
         {
 // Get the skin margin values.
@@ -576,9 +576,9 @@ namespace MonoForce.Controls
         }
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Handles click events for the container control.
         /// <summary>
+        /// Handles click events for the container control.
+        /// </summary>
         protected override void OnClick(EventArgs e)
         {
             var ex = e as MouseEventArgs;
@@ -639,9 +639,9 @@ namespace MonoForce.Controls
         }
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Handles resizing of the container control.
         /// <summary>
+        /// Handles resizing of the container control.
+        /// </summary>
         protected override void OnResize(ResizeEventArgs e)
         {
             base.OnResize(e);
@@ -654,10 +654,10 @@ namespace MonoForce.Controls
 
         /// <param name="e"></param>
         /// <param name="sender"></param>
-        /// </summary>
+        /// <summary>
         /// (Updates the container margins.)
         /// Handlers for when the main menu, tool bar panel, or status bar are resized.
-        /// <summary>
+        /// </summary>
         private void Bars_Resize(object sender, ResizeEventArgs e)
         {
 // Update margins to account for the removal of the scroll bar.
@@ -667,9 +667,9 @@ namespace MonoForce.Controls
 // Crappy fix to certain scrolling issue
         }
 
-        /// </summary>
-        /// Updates the visibility of scroll bars based on client area actual and vitual dimensions.
         /// <summary>
+        /// Updates the visibility of scroll bars based on client area actual and vitual dimensions.
+        /// </summary>
         private void CalcScrolling()
         {
             if (sbVert != null && autoScroll)
@@ -776,9 +776,9 @@ namespace MonoForce.Controls
 // Crappy fix to certain scrolling issue
         }
 
-        /// </summary>
-        /// Adjusts the position of the container's horizontal and vertical scroll bars.
         /// <summary>
+        /// Adjusts the position of the container's horizontal and vertical scroll bars.
+        /// </summary>
         private void PositionScrollBars()
         {
             if (sbVert != null)
@@ -819,9 +819,9 @@ namespace MonoForce.Controls
 
         /// <param name="e"></param>
         /// <param name="sender"></param>
-        /// </summary>
-        /// Handles changes in scroll bar values.
         /// <summary>
+        /// Handles changes in scroll bar values.
+        /// </summary>
         private void ScrollBarValueChanged(object sender, EventArgs e)
         {
             CalcScrolling();

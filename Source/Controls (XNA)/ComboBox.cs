@@ -6,18 +6,18 @@ namespace MonoForce.Controls
 {
     public class ComboBox : TextBox
     {
-        /// </summary>
-        /// Indicates if the selection image should be drawn on the drop-down list control.
         /// <summary>
+        /// Indicates if the selection image should be drawn on the drop-down list control.
+        /// </summary>
         public bool DrawSelection
         {
             get { return drawSelection; }
             set { drawSelection = value; }
         }
 
-        /// </summary>
-        /// Gets or sets the index of the selected item.
         /// <summary>
+        /// Gets or sets the index of the selected item.
+        /// </summary>
         public int ItemIndex
         {
             get { return lstCombo.ItemIndex; }
@@ -40,17 +40,17 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
-        /// Gets the combo box's drop-down list contents.
         /// <summary>
+        /// Gets the combo box's drop-down list contents.
+        /// </summary>
         public virtual List<object> Items
         {
             get { return items; }
         }
 
-        /// </summary>
-        /// Gets or sets the number of selections in the drop-down list.
         /// <summary>
+        /// Gets or sets the number of selections in the drop-down list.
+        /// </summary>
         public int MaxItems
         {
             get { return maxItems; }
@@ -64,9 +64,9 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
-        /// Indicates if the combo box's text box control is read-only or not.
         /// <summary>
+        /// Indicates if the combo box's text box control is read-only or not.
+        /// </summary>
         public override bool ReadOnly
         {
             get { return base.ReadOnly; }
@@ -103,29 +103,29 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
-        /// Drop-down button.
         /// <summary>
+        /// Drop-down button.
+        /// </summary>
         private readonly Button btnDown;
 
-        /// </summary>
-        /// List of selectable entries that compose the drop-down list.
         /// <summary>
+        /// List of selectable entries that compose the drop-down list.
+        /// </summary>
         private readonly List<object> items = new List<object>();
 
-        /// </summary>
-        /// Indicates whether the selected index should be drawn. ???
         /// <summary>
+        /// Indicates whether the selected index should be drawn. ???
+        /// </summary>
         private bool drawSelection = true;
 
-        /// </summary>
-        /// List box control of the combo box.
         /// <summary>
+        /// List box control of the combo box.
+        /// </summary>
         private ListBox lstCombo;
 
-        /// </summary>
-        /// Maximum number of entries in the combo box's drop-down list.
         /// <summary>
+        /// Maximum number of entries in the combo box's drop-down list.
+        /// </summary>
         private int maxItems = 5;
 
         public ComboBox(Manager manager) : base(manager)
@@ -155,9 +155,9 @@ namespace MonoForce.Controls
             manager.Input.MouseDown += Input_MouseDown;
         }
 
-        /// </summary>
-        /// Initializes the combo box control.
         /// <summary>
+        /// Initializes the combo box control.
+        /// </summary>
         public override void Init()
         {
             base.Init();
@@ -169,19 +169,19 @@ namespace MonoForce.Controls
             btnDown.Glyph.SizeMode = SizeMode.Centered;
         }
 
-        /// </summary>
-        /// Occurs when the index of the selected item changes.
         /// <summary>
+        /// Occurs when the index of the selected item changes.
+        /// </summary>
         public event EventHandler ItemIndexChanged;
 
-        /// </summary>
-        /// Occurs when the number of selections in the drop-down list changes.
         /// <summary>
+        /// Occurs when the number of selections in the drop-down list changes.
+        /// </summary>
         public event EventHandler MaxItemsChanged;
 
-        /// </summary>
-        /// Initializes the skin of the combo box control.
         /// <summary>
+        /// Initializes the skin of the combo box control.
+        /// </summary>
         protected internal override void InitSkin()
         {
             base.InitSkin();
@@ -190,9 +190,9 @@ namespace MonoForce.Controls
             ReadOnly = ReadOnly; // To init the right cursor
         }
 
-        /// </summary>
-        /// Adjusts the margins of the client area of the combo box control.
         /// <summary>
+        /// Adjusts the margins of the client area of the combo box control.
+        /// </summary>
         protected override void AdjustMargins()
         {
             base.AdjustMargins();
@@ -201,9 +201,9 @@ namespace MonoForce.Controls
         }
 
         /// <param name="disposing"></param>
-        /// </summary>
-        /// Releases resources used by the combo box control.
         /// <summary>
+        /// Releases resources used by the combo box control.
+        /// </summary>
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -236,9 +236,9 @@ namespace MonoForce.Controls
         }
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Handles gamepad button down events for the combo box control.
         /// <summary>
+        /// Handles gamepad button down events for the combo box control.
+        /// </summary>
         protected override void OnGamePadDown(GamePadEventArgs e)
         {
             if (!e.Handled)
@@ -254,18 +254,18 @@ namespace MonoForce.Controls
         }
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Handles list item index changed events for the combo box control.
         /// <summary>
+        /// Handles list item index changed events for the combo box control.
+        /// </summary>
         protected virtual void OnItemIndexChanged(EventArgs e)
         {
             if (ItemIndexChanged != null) ItemIndexChanged.Invoke(this, e);
         }
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Handles a key down event for the combo box control.
         /// <summary>
+        /// Handles a key down event for the combo box control.
+        /// </summary>
         protected override void OnKeyDown(KeyEventArgs e)
         {
             if (e.Key == Keys.Down)
@@ -277,18 +277,18 @@ namespace MonoForce.Controls
         }
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Handles additions/removals to/from the combo box list control.
         /// <summary>
+        /// Handles additions/removals to/from the combo box list control.
+        /// </summary>
         protected virtual void OnMaxItemsChanged(EventArgs e)
         {
             if (MaxItemsChanged != null) MaxItemsChanged.Invoke(this, e);
         }
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Handles mouse down event for the combo box control.
         /// <summary>
+        /// Handles mouse down event for the combo box control.
+        /// </summary>
         protected override void OnMouseDown(MouseEventArgs e)
         {
             base.OnMouseDown(e);
@@ -300,9 +300,9 @@ namespace MonoForce.Controls
         }
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Handles the resize event.
         /// <summary>
+        /// Handles the resize event.
+        /// </summary>
         protected override void OnResize(ResizeEventArgs e)
         {
             base.OnResize(e);
@@ -318,9 +318,9 @@ namespace MonoForce.Controls
 
         /// <param name="e"></param>
         /// <param name="sender"></param>
-        /// </summary>
-        /// Handles the click event.
         /// <summary>
+        /// Handles the click event.
+        /// </summary>
         private void btnDown_Click(object sender, EventArgs e)
         {
 // Is there a drop-down list to display?
@@ -356,9 +356,9 @@ namespace MonoForce.Controls
 
         /// <param name="e"></param>
         /// <param name="sender"></param>
-        /// </summary>
-        /// Handles the mouse button down event.
         /// <summary>
+        /// Handles the mouse button down event.
+        /// </summary>
         private void Input_MouseDown(object sender, MouseEventArgs e)
         {
             if (ReadOnly &&
@@ -384,9 +384,9 @@ namespace MonoForce.Controls
 
         /// <param name="e"></param>
         /// <param name="sender"></param>
-        /// </summary>
-        /// Handles a click on the drop-down list of the combo box control.
         /// <summary>
+        /// Handles a click on the drop-down list of the combo box control.
+        /// </summary>
         private void lstCombo_Click(object sender, EventArgs e)
         {
             var ex = (e is MouseEventArgs) ? (MouseEventArgs)e : new MouseEventArgs();
@@ -405,9 +405,9 @@ namespace MonoForce.Controls
 
         /// <param name="e"></param>
         /// <param name="sender"></param>
-        /// </summary>
-        /// Handles the focus lost event for a combo box's list control.
         /// <summary>
+        /// Handles the focus lost event for a combo box's list control.
+        /// </summary>
         private void lstCombo_FocusLost(object sender, EventArgs e)
         {
 //lstCombo.Visible = false;

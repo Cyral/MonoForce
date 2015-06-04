@@ -4,21 +4,21 @@ namespace MonoForce.Controls
 {
     public class CheckBox : ButtonBase
     {
-        /// </summary>
-        /// String to reference the control layer the checkbox is a part of.
         /// <summary>
+        /// String to reference the control layer the checkbox is a part of.
+        /// </summary>
         private const string lrCheckBox = "Control";
 
         private const string lrChecked = "Checked";
 
-        /// </summary>
-        /// String to reference the check box element in the skin file.
         /// <summary>
+        /// String to reference the check box element in the skin file.
+        /// </summary>
         private const string skCheckBox = "CheckBox";
 
-        /// </summary>
-        /// Gets or sets the checked state of the control.
         /// <summary>
+        /// Gets or sets the checked state of the control.
+        /// </summary>
         public virtual bool Checked
         {
             get { return state; }
@@ -30,9 +30,9 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
-        /// Indicates if the control is checked (true) or unchecked (false.)
         /// <summary>
+        /// Indicates if the control is checked (true) or unchecked (false.)
+        /// </summary>
         private bool state;
 
         public CheckBox(Manager manager) : base(manager)
@@ -43,22 +43,22 @@ namespace MonoForce.Controls
             Height = 16;
         }
 
-        /// </summary>
-        /// Occurs when the control's check state value changes.
         /// <summary>
+        /// Occurs when the control's check state value changes.
+        /// </summary>
         public event EventHandler CheckedChanged;
 
-        /// </summary>
-        /// Initializes the check box control.
         /// <summary>
+        /// Initializes the check box control.
+        /// </summary>
         public override void Init()
         {
             base.Init();
         }
 
-        /// </summary>
-        /// Initializes the check box control's skin.
         /// <summary>
+        /// Initializes the check box control's skin.
+        /// </summary>
         protected internal override void InitSkin()
         {
             base.InitSkin();
@@ -87,18 +87,18 @@ namespace MonoForce.Controls
         }
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Handles the checked changed event when the value of the check state changes.
         /// <summary>
+        /// Handles the checked changed event when the value of the check state changes.
+        /// </summary>
         protected virtual void OnCheckedChanged(EventArgs e)
         {
             if (CheckedChanged != null) CheckedChanged.Invoke(this, e);
         }
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Handles checkbox click events.
         /// <summary>
+        /// Handles checkbox click events.
+        /// </summary>
         protected override void OnClick(EventArgs e)
         {
             var ex = (e is MouseEventArgs) ? (MouseEventArgs)e : new MouseEventArgs();

@@ -6,7 +6,7 @@ namespace MonoForce.Controls
     {
         /// </summary>
         /// Indicates how the label's text is aligned.
-        /// <summary>
+        /// </summary>
         public virtual Alignment Alignment
         {
             get { return alignment; }
@@ -15,7 +15,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Indicates if the label's text should be truncated with "..." if it's too large.
-        /// <summary>
+        /// </summary>
         public virtual bool Ellipsis
         {
             get { return ellipsis; }
@@ -24,12 +24,12 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Indicates how the label's text is aligned.
-        /// <summary>
+        /// </summary>
         private Alignment alignment = Alignment.MiddleLeft;
 
         /// </summary>
         /// Indicates if the text should be truncated with "..."
-        /// <summary>
+        /// </summary>
         private bool ellipsis = true;
 
         public Label(Manager manager) : base(manager)
@@ -42,7 +42,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Initializes the label control.
-        /// <summary>
+        /// </summary>
         public override void Init()
         {
             base.Init();

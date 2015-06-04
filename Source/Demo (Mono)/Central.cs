@@ -48,7 +48,7 @@ namespace MonoForce.Demo
             MainWindow.Init();
 
             //To emulate behavior of the Application class in the XNA version, create a full size window.
-            MainWindow.ClearBackground = true;
+            MainWindow.BorderVisible = false;
             MainWindow.Resizable = false;
             MainWindow.Movable = false;
             MainWindow.CanFocus = false;

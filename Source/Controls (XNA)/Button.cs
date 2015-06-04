@@ -5,86 +5,86 @@ namespace MonoForce.Controls
 {
     /// </summary>
     /// Specifies how an image is sized and positioned within a control.
-    /// <summary>
+    /// </summary>
     public enum SizeMode
     {
         /// </summary>
         /// ???
-        /// <summary>
+        /// </summary>
         Normal,
 
         /// </summary>
         /// ???
-        /// <summary>
+        /// </summary>
         Auto,
 
         /// </summary>
         /// Image is centered within the control.
-        /// <summary>
+        /// </summary>
         Centered,
 
         /// </summary>
         /// Image is scaled to fit in the control.
-        /// <summary>
+        /// </summary>
         Stretched,
 
         /// </summary>
         /// Only Supported by ImageBox
-        /// <summary>
+        /// </summary>
         Tiled
     }
 
     /// </summary>
     /// Specifies how a button reacts to clicks.
-    /// <summary>
+    /// </summary>
     public enum ButtonMode
     {
         /// </summary>
         /// ???
-        /// <summary>
+        /// </summary>
         Normal,
 
         /// </summary>
         /// Toggle button.
-        /// <summary>
+        /// </summary>
         PushButton
     }
 
 
     /// </summary>
     /// Represents an image on a button.
-    /// <summary>
+    /// </summary>
     public class Glyph
     {
         /// </summary>
         /// Color tint to apply to the button.
-        /// <summary>
+        /// </summary>
         public Color Color = Color.White;
 
         /// </summary>
         /// The image asset.
-        /// <summary>
+        /// </summary>
         public Texture2D Image;
 
         /// </summary>
         /// Offset from the button's position where the image will be drawn.
-        /// <summary>
+        /// </summary>
         public Point Offset = Point.Zero;
 
         /// </summary>
         /// Specifies how the image is sized on the button.
-        /// <summary>
+        /// </summary>
         public SizeMode SizeMode = SizeMode.Stretched;
 
         /// </summary>
         /// Source region on the texture where the glyph appears.
-        /// <summary>
+        /// </summary>
         public Rectangle SourceRect = Rectangle.Empty;
 
         /// <param name="image">Glyph image asset.</param>
         /// </summary>
         /// Creates a new glyph from the specified texture.
-        /// <summary>
+        /// </summary>
         public Glyph(Texture2D image)
         {
             Image = image;
@@ -100,17 +100,17 @@ namespace MonoForce.Controls
     {
         /// </summary>
         /// The name of the layer that a button appears on.
-        /// <summary>
+        /// </summary>
         private const string lrButton = "Control";
 
         /// </summary>
         /// The name of the button element in the skin file.
-        /// <summary>
+        /// </summary>
         private const string skButton = "Button";
 
         /// </summary>
         /// Gets or sets the button's glyph. (image)
-        /// <summary>
+        /// </summary>
         public Glyph Glyph
         {
             get { return glyph; }
@@ -123,7 +123,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets or sets the value returned when the button of a dialog is clicked.
-        /// <summary>
+        /// </summary>
         public ModalResult ModalResult
         {
             get { return modalResult; }
@@ -132,7 +132,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets or sets the way the button operates, standard or toggle button.
-        /// <summary>
+        /// </summary>
         public ButtonMode Mode
         {
             get { return mode; }
@@ -141,7 +141,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Indicates whether the button is pressed or not.
-        /// <summary>
+        /// </summary>
         public bool Pushed
         {
             get { return pushed; }
@@ -154,23 +154,23 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Image to display on the button.
-        /// <summary>
+        /// </summary>
         private Glyph glyph;
 
         /// </summary>
         /// should be returned when the button is clicked.
         /// When the button appears on a dialog, this indicates what value
-        /// <summary>
+        /// </summary>
         private ModalResult modalResult = ModalResult.None;
 
         /// </summary>
         /// Specifies the type of button. Standard or Toggle.
-        /// <summary>
+        /// </summary>
         private ButtonMode mode = ButtonMode.Normal;
 
         /// </summary>
         /// Indicates whether the button is currently pressed or not.
-        /// <summary>
+        /// </summary>
         private bool pushed;
 
         public Button(Manager manager) : base(manager)
@@ -180,12 +180,12 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Occurs when the button's glyph is changed.
-        /// <summary>
+        /// </summary>
         public event EventHandler GlyphChanged;
 
         /// </summary>
         /// Initializes the button control.
-        /// <summary>
+        /// </summary>
         public override void Init()
         {
             base.Init();
@@ -193,7 +193,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Initializes the skin for the button control.
-        /// <summary>
+        /// </summary>
         protected internal override void InitSkin()
         {
             base.InitSkin();
@@ -203,7 +203,7 @@ namespace MonoForce.Controls
         /// <param name="disposing"></param>
         /// </summary>
         /// Releases resources used by the button control.
-        /// <summary>
+        /// </summary>
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -265,7 +265,7 @@ namespace MonoForce.Controls
         /// <param name="e"></param>
         /// </summary>
         /// Button click event handler.
-        /// <summary>
+        /// </summary>
         protected override void OnClick(EventArgs e)
         {
             var ex = (e is MouseEventArgs) ? (MouseEventArgs)e : new MouseEventArgs();
@@ -295,7 +295,7 @@ namespace MonoForce.Controls
         /// <param name="e"></param>
         /// </summary>
         /// Event handler for when the button's glyph is changed.
-        /// <summary>
+        /// </summary>
         private void OnGlyphChanged(EventArgs e)
         {
             if (GlyphChanged != null) GlyphChanged.Invoke(this, e);

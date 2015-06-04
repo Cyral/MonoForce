@@ -4,38 +4,38 @@ namespace MonoForce.Controls
 {
     public class Label : Control
     {
-        /// </summary>
-        /// Indicates how the label's text is aligned.
         /// <summary>
+        /// Indicates how the label's text is aligned.
+        /// </summary>
         public virtual Alignment Alignment
         {
             get { return alignment; }
             set { alignment = value; }
         }
 
-        /// </summary>
-        /// Indicates if the label's text should be truncated with "..." if it's too large.
         /// <summary>
+        /// Indicates if the label's text should be truncated with "..." if it's too large.
+        /// </summary>
         public virtual bool Ellipsis
         {
             get { return ellipsis; }
             set { ellipsis = value; }
         }
 
-        /// </summary>
-        /// Indicates how the label's text is aligned.
         /// <summary>
+        /// Indicates how the label's text is aligned.
+        /// </summary>
         private Alignment alignment = Alignment.MiddleLeft;
 
-        /// </summary>
-        /// Indicates if the text should be truncated with "..."
         /// <summary>
+        /// Indicates if the text should be truncated with "..."
+        /// </summary>
         private bool ellipsis = true;
 
         private bool bold;
-        /// <summary>
-        /// Indicates if the font should be bold
         /// </summary>
+        /// Indicates if the font should be bold
+        /// <summary>
         public bool Bold
         {
             get { return bold; }
@@ -44,9 +44,9 @@ namespace MonoForce.Controls
 
         private FontSize font = FontSize.Default8;
 
-        /// <summary>
-        /// Size of the font
         /// </summary>
+        /// Size of the font
+        /// <summary>
         public FontSize Font
         {
             get { return font; }
@@ -61,17 +61,17 @@ namespace MonoForce.Controls
             Height = 16;
         }
 
-        /// </summary>
-        /// Initializes the label control.
         /// <summary>
+        /// Initializes the label control.
+        /// </summary>
         public override void Init()
         {
             base.Init();
         }
 
-        /// <summary>
-        /// Initializes the skin
         /// </summary>
+        /// Initializes the skin
+        /// <summary>
         protected internal override void InitSkin()
         {
             base.InitSkin();
@@ -93,9 +93,9 @@ namespace MonoForce.Controls
         }
     }
 
-    /// <summary>
-    /// Font size (Name = Size)
     /// </summary>
+    /// Font size (Name = Size)
+    /// <summary>
     public enum FontSize
     {
         Default6 = 0,

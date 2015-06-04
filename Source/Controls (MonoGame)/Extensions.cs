@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -75,7 +75,7 @@ namespace MonoForce.Controls
         /// <see cref="Color" />
         /// value from an ARGB or RGB hex string.  The string may
         /// begin with or without the hash mark (#) character.
-        /// </summary>
+        /// <summary>
         /// <param name="hexString">The ARGB hex string to parse.</param>
         /// <returns>
         /// A <see cref="Color" /> value as defined by the ARGB or RGB hex string.
@@ -117,9 +117,9 @@ namespace MonoForce.Controls
         //    System.Drawing.Color systemColor = System.Drawing.Color.FromName(colorName);
         //    return new Color(systemColor.R, systemColor.G, systemColor.B, systemColor.A); //Here Color is Microsoft.Xna.Framework.Graphics.Color
         //}
-        /// <summary>
-        /// Creates an ARGB hex string representation of the <see cref="Color" /> value.
         /// </summary>
+        /// Creates an ARGB hex string representation of the <see cref="Color" /> value.
+        /// <summary>
         /// <param name="color">The <see cref="Color" /> value to parse.</param>
         /// <param name="includeHash">Determines whether to include the hash mark (#) character in the string.</param>
         /// <returns>A hex string representation of the specified <see cref="Color" /> value.</returns>
@@ -135,9 +135,9 @@ namespace MonoForce.Controls
             return (includeHash ? "#" : string.Empty) + string.Join(string.Empty, argb);
         }
 
-        /// <summary>
-        /// Lowercase string.
         /// </summary>
+        /// Lowercase string.
+        /// <summary>
         public static string ToLowerFast(this string value)
         {
             var output = value.ToCharArray();
@@ -183,13 +183,13 @@ namespace MonoForce.Controls
 
         #region Color Extensions
 
-        /// <summary>
+        /// </summary>
         /// Convert HSV to RGB
         /// h is from 0-360
         /// s,v values are 0-1
         /// r,g,b values are 0-255
         /// Based upon http://ilab.usc.edu/wiki/index.php/HSV_And_H2SV_Color_Space#HSV_Transformation_C_.2F_C.2B.2B_Code_2
-        /// </summary>
+        /// <summary>
         public static Color ColorFromHSV(double h, double S, double V)
         {
             int r, g, b;
@@ -292,9 +292,9 @@ namespace MonoForce.Controls
             return new Color(r, g, b);
         }
 
-        /// <summary>
-        /// Clamp a value to 0-255
         /// </summary>
+        /// Clamp a value to 0-255
+        /// <summary>
         private static int Clamp(int i)
         {
             if (i < 0) return 0;

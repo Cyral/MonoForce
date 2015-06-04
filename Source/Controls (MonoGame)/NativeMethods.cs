@@ -4,9 +4,9 @@ using System.Runtime.InteropServices;
 namespace MonoForce.Controls
 {
     [Obsolete("Native methods should be avoided at all times")]
-    /// </summary>
-    /// Imports a few native functions we need.
     /// <summary>
+    /// Imports a few native functions we need.
+    /// </summary>
     internal static class NativeMethods
     {
         [Obsolete, DllImport("User32.dll")]

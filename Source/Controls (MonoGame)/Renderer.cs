@@ -4,50 +4,50 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MonoForce.Controls
 {
-    /// </summary>
-    /// Specifies the blend mode that will be used when the renderer draws objects.
     /// <summary>
+    /// Specifies the blend mode that will be used when the renderer draws objects.
+    /// </summary>
     public enum BlendingMode
     {
-        /// </summary>
-        /// The renderer will draw with the default blend settings.
         /// <summary>
+        /// The renderer will draw with the default blend settings.
+        /// </summary>
         Default,
 
-        /// </summary>
-        /// The renderer will draw in overwrite mode.
         /// <summary>
+        /// The renderer will draw in overwrite mode.
+        /// </summary>
         None,
         Additive
     }
 
-    /// </summary>
-    /// Contains state information for the GraphicsDevice.
     /// <summary>
+    /// Contains state information for the GraphicsDevice.
+    /// </summary>
     public class DeviceStates
     {
-        /// </summary>
-        /// Graphics device blend state information.
         /// <summary>
+        /// Graphics device blend state information.
+        /// </summary>
         public readonly BlendState BlendState;
 
-        /// </summary>
-        /// Graphics device depth stencil state.
         /// <summary>
+        /// Graphics device depth stencil state.
+        /// </summary>
         public readonly DepthStencilState DepthStencilState;
 
-        /// </summary>
-        /// Indicates how the graphics device converts vector data into raster data.
         /// <summary>
+        /// Indicates how the graphics device converts vector data into raster data.
+        /// </summary>
         public readonly RasterizerState RasterizerState;
 
-        /// </summary>
-        /// Indicates how the graphics device samples texture data.
         /// <summary>
+        /// Indicates how the graphics device samples texture data.
+        /// </summary>
         public readonly SamplerState SamplerState;
 
-        /// </summary>
         /// <summary>
+        /// </summary>
         public DeviceStates()
         {
 // Default blend state settings.
@@ -92,16 +92,16 @@ namespace MonoForce.Controls
     }
 
 
-    /// </summary>
-    /// Provides methods for drawing control layers and strings.
     /// <summary>
+    /// Provides methods for drawing control layers and strings.
+    /// </summary>
     public class Renderer : Component
     {
         public Matrix? CustomMatrix { get; set; }
 
-        /// </summary>
-        /// Accesses the renderer's sprite batch object.
         /// <summary>
+        /// Accesses the renderer's sprite batch object.
+        /// </summary>
         public virtual SpriteBatch SpriteBatch
         {
             get { return sb; }
@@ -109,26 +109,26 @@ namespace MonoForce.Controls
 
         private readonly char[] newLine = Environment.NewLine.ToCharArray();
 
-        /// </summary>
-        /// Various graphics device settings for the renderer.
         /// <summary>
+        /// Various graphics device settings for the renderer.
+        /// </summary>
         private readonly DeviceStates states = new DeviceStates();
 
         private BlendingMode bmode = BlendingMode.Default;
         private string color = "Red";
         private string[] msgs;
 
-        /// </summary>
-        /// Sprite batch object used for drawing.
         /// <summary>
+        /// Sprite batch object used for drawing.
+        /// </summary>
         private SpriteBatch sb;
 
         private string[] splits;
 
         /// <param name="manager">GUI manager for creating the sprite batch.</param>
-        /// </summary>
-        /// Creates a new renderer.
         /// <summary>
+        /// Creates a new renderer.
+        /// </summary>
         public Renderer(Manager manager)
             : base(manager)
         {
@@ -139,9 +139,9 @@ namespace MonoForce.Controls
         /// <param name="alignment">Which piece of the asset is this?</param>
         /// <param name="margins">Margin values applied to the region.</param>
         /// <param name="area">Entire destination region where the image should be drawn.</param>
-        /// </summary>
-        /// Calculates the correct piece of the destination region where the partial source area should be drawn.
         /// <summary>
+        /// Calculates the correct piece of the destination region where the partial source area should be drawn.
+        /// </summary>
         public static Rectangle GetDestinationArea(Rectangle area, Margins margins, Alignment alignment)
         {
             var rect = new Rectangle();
@@ -238,9 +238,9 @@ namespace MonoForce.Controls
         /// </param>
         /// <param name="mode">
         /// Specify BlendingMode.None will begin drawing in overwrite mode.
-        /// </summary>
-        /// Begins drawing batched objects.
         /// <summary>
+        /// Begins drawing batched objects.
+        /// </summary>
         public virtual void Begin(BlendingMode mode)
         {
             bmode = mode;
@@ -285,9 +285,9 @@ namespace MonoForce.Controls
         /// <param name="color">Color tint to apply to the image.</param>
         /// <param name="destination">Destination region where the image will be drawn.</param>
         /// <param name="texture">Image to draw.</param>
-        /// </summary>
-        /// Draws the texture in the specified region.
         /// <summary>
+        /// Draws the texture in the specified region.
+        /// </summary>
         public virtual void Draw(Texture2D texture, Rectangle destination, Color color)
         {
 // Valid destination region?
@@ -310,9 +310,9 @@ namespace MonoForce.Controls
         /// <param name="top">Destination Y position.</param>
         /// <param name="left">Destination X position.</param>
         /// <param name="texture">Image to draw.</param>
-        /// </summary>
-        /// Draws the texture at the specified location.
         /// <summary>
+        /// Draws the texture at the specified location.
+        /// </summary>
         public virtual void Draw(Texture2D texture, int left, int top, Color color)
         {
             sb.Draw(texture, new Vector2(left, top), null, color, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None,
@@ -395,9 +395,9 @@ namespace MonoForce.Controls
 
         /// <param name="rect">Destination region where the glyph will be drawn.</param>
         /// <param name="glyph">Glyph to draw.</param>
-        /// </summary>
-        /// Draws a glyph. (An image on a control.)
         /// <summary>
+        /// Draws a glyph. (An image on a control.)
+        /// </summary>
         public void DrawGlyph(Glyph glyph, Rectangle rect)
         {
 // Get the dimensions of the glyph image asset.
@@ -445,9 +445,9 @@ namespace MonoForce.Controls
         /// <param name="color">Color tint to apply to the skin layer.</param>
         /// <param name="rect">Destination region where the layer will be drawn.</param>
         /// <param name="layer">Skin layer to draw.</param>
-        /// </summary>
-        /// Draws a skin layer in the specified region.
         /// <summary>
+        /// Draws a skin layer in the specified region.
+        /// </summary>
         public virtual void DrawLayer(SkinLayer layer, Rectangle rect, Color color, int index)
         {
 // Get the size of the layer image asset and the size of the layer itself.
@@ -478,9 +478,9 @@ namespace MonoForce.Controls
         /// <param name="rect">Destination region where the control layer will be drawn.</param>
         /// <param name="layer">Skin layer of the control to draw.</param>
         /// <param name="control">Control to draw the layer of.</param>
-        /// </summary>
-        /// Draws the specified layer of the control in the defined region.
         /// <summary>
+        /// Draws the specified layer of the control in the defined region.
+        /// </summary>
         public virtual void DrawLayer(Control control, SkinLayer layer, Rectangle rect)
         {
             DrawLayer(control, layer, rect, control.ControlState);
@@ -490,9 +490,9 @@ namespace MonoForce.Controls
         /// <param name="rect">Destination region where the control layer will be drawn.</param>
         /// <param name="layer">Skin layer of the control to draw.</param>
         /// <param name="control">Control to draw the layer of.</param>
-        /// </summary>
-        /// Draws the specified layer of the control in the defined region.
         /// <summary>
+        /// Draws the specified layer of the control in the defined region.
+        /// </summary>
         public virtual void DrawLayer(Control control, SkinLayer layer, Rectangle rect, ControlState state)
         {
 // Get the layer color and overlay color.
@@ -576,9 +576,9 @@ namespace MonoForce.Controls
             }
         }
 
-        /// <summary>
-        /// Draws a string at the specified location.
         /// </summary>
+        /// Draws a string at the specified location.
+        /// <summary>
         /// <param name="font">Sprite font used for drawing text.</param>
         /// <param name="text">Text to draw.</param>
         /// <param name="left">Starting X position of the text.</param>
@@ -593,9 +593,9 @@ namespace MonoForce.Controls
                 sb.DrawString(font, text, new Vector2(left, top), color);
         }
 
-        /// <summary>
-        /// Draws a string aligned within the specified region.
         /// </summary>
+        /// Draws a string aligned within the specified region.
+        /// <summary>
         /// <param name="font">Sprite font used for drawing text.</param>
         /// <param name="text">Text to draw.</param>
         /// <param name="rect">Destination region where text should be drawn.</param>
@@ -607,9 +607,9 @@ namespace MonoForce.Controls
             DrawString(font, text, rect, color, alignment, 0, 0, true, DrawFormattedText);
         }
 
-        /// <summary>
-        /// Draw a string aligned within the specified region.
         /// </summary>
+        /// Draw a string aligned within the specified region.
+        /// <summary>
         /// <param name="font">Sprite font used for drawing text.</param>
         /// <param name="text">Text to draw.</param>
         /// <param name="rect">Destination region where text should be drawn.</param>
@@ -622,9 +622,9 @@ namespace MonoForce.Controls
             DrawString(font, text, rect, color, alignment, 0, 0, ellipsis, DrawFormattedText);
         }
 
-        /// <summary>
-        /// Draws a string in the region on the specified layer of the control.
         /// </summary>
+        /// Draws a string in the region on the specified layer of the control.
+        /// <summary>
         /// <param name="control">Control to draw the text on.</param>
         /// <param name="layer">Control layer to draw the text on.</param>
         /// <param name="text">Text to draw.</param>
@@ -635,9 +635,9 @@ namespace MonoForce.Controls
             DrawString(control, layer, text, rect, true, 0, 0, true, DrawFormattedText);
         }
 
-        /// <summary>
-        /// Draws a string in the region on the specified layer of the control.
         /// </summary>
+        /// Draws a string in the region on the specified layer of the control.
+        /// <summary>
         /// <param name="control">Control to draw the text on.</param>
         /// <param name="layer">Control layer to draw the text on.</param>
         /// <param name="text">Text to draw.</param>
@@ -649,9 +649,9 @@ namespace MonoForce.Controls
             DrawString(control, layer, text, rect, state, true, 0, 0, true, DrawFormattedText);
         }
 
-        /// <summary>
-        /// Draws a string in the region on the specified layer of the control.
         /// </summary>
+        /// Draws a string in the region on the specified layer of the control.
+        /// <summary>
         /// <param name="control">Control to draw the text on.</param>
         /// <param name="layer">Control layer to draw the text on.</param>
         /// <param name="text">Text to draw.</param>
@@ -663,9 +663,9 @@ namespace MonoForce.Controls
             DrawString(control, layer, text, rect, margins, 0, 0, true, DrawFormattedText);
         }
 
-        /// <summary>
-        /// Draws the text in the supplied region on the specified layer of the control.
         /// </summary>
+        /// Draws the text in the supplied region on the specified layer of the control.
+        /// <summary>
         /// <param name="control">Control to draw the text on.</param>
         /// <param name="layer">Control layer to draw the text on.</param>
         /// <param name="text">Text to draw.</param>
@@ -678,9 +678,9 @@ namespace MonoForce.Controls
             DrawString(control, layer, text, rect, state, margins, 0, 0, true, DrawFormattedText);
         }
 
-        /// <summary>
-        /// Draws the text in the supplied region on the specified layer of the control.
         /// </summary>
+        /// Draws the text in the supplied region on the specified layer of the control.
+        /// <summary>
         /// <param name="control">Control to draw the text on.</param>
         /// <param name="layer">Control layer to draw the text on.</param>
         /// <param name="text">Text to draw.</param>
@@ -694,9 +694,9 @@ namespace MonoForce.Controls
             DrawString(control, layer, text, rect, margins, ox, oy, true, DrawFormattedText);
         }
 
-        /// <summary>
-        /// Draws the text in the supplied region on the specified layer of the control.
         /// </summary>
+        /// Draws the text in the supplied region on the specified layer of the control.
+        /// <summary>
         /// <param name="control">Control to draw the text on.</param>
         /// <param name="layer">Control layer to draw the text on.</param>
         /// <param name="text">Text to draw.</param>
@@ -711,9 +711,9 @@ namespace MonoForce.Controls
             DrawString(control, layer, text, rect, state, margins, ox, oy, true, DrawFormattedText);
         }
 
-        /// <summary>
-        /// Draws the text in the supplied region on the specified layer of the control.
         /// </summary>
+        /// Draws the text in the supplied region on the specified layer of the control.
+        /// <summary>
         /// <param name="control">Control to draw the text on.</param>
         /// <param name="layer">Control layer to draw the text on.</param>
         /// <param name="text">Text to draw.</param>
@@ -728,9 +728,9 @@ namespace MonoForce.Controls
             DrawString(control, layer, text, rect, control.ControlState, margins, ox, oy, ellipsis, DrawFormattedText);
         }
 
-        /// <summary>
-        /// Draws the text in the supplied region on the specified layer of the control
         /// </summary>
+        /// Draws the text in the supplied region on the specified layer of the control
+        /// <summary>
         /// <param name="control">Control to draw the text on.</param>
         /// <param name="layer">Control layer to draw the text on.</param>
         /// <param name="text">Text to draw.</param>
@@ -806,9 +806,9 @@ namespace MonoForce.Controls
             }
         }
 
-        /// <summary>
-        /// Draws text in the specified region.
         /// </summary>
+        /// Draws text in the specified region.
+        /// <summary>
         /// <param name="font">Sprite font used for drawing text.</param>
         /// <param name="text">Text to draw.</param>
         /// <param name="rect">Destination region where text should be drawn.</param>
@@ -945,26 +945,26 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
-        /// Ends drawing of batched objects.
         /// <summary>
+        /// Ends drawing of batched objects.
+        /// </summary>
         public virtual void End()
         {
             sb.End();
         }
 
-        /// </summary>
-        /// Initializes the renderer.
         /// <summary>
+        /// Initializes the renderer.
+        /// </summary>
         public override void Init()
         {
             base.Init();
         }
 
         /// <param name="disposing"></param>
-        /// </summary>
-        /// Cleans up resources used by the renderer.
         /// <summary>
+        /// Cleans up resources used by the renderer.
+        /// </summary>
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -984,10 +984,10 @@ namespace MonoForce.Controls
         /// <param name="margins">???</param>
         /// <param name="partSize">Size of the asset piece to retrieve the source region for.</param>
         /// <param name="imageSize">Size of the entire image.</param>
-        /// </summary>
+        /// <summary>
         /// when multiple assets are packed into a single image file.
         /// Used to grab a piece of the source region of a skin resource
-        /// <summary>
+        /// </summary>
         private static Rectangle GetSourceArea(Size imageSize, Size partSize, Margins margins, Alignment alignment,
             int index)
         {
@@ -1090,9 +1090,9 @@ namespace MonoForce.Controls
         /// <returns>Returns the center point of the text.</returns>
         /// <param name="size2">Size of the text itself.</param>
         /// <param name="size1">Size of the container the text will be in.</param>
-        /// </summary>
-        /// Gets the center point of text within a container.
         /// <summary>
+        /// Gets the center point of text within a container.
+        /// </summary>
         private static int GetTextCenter(float size1, float size2)
         {
             return (int)Math.Ceiling((size1 / 2) - (size2 / 2));

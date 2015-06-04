@@ -6,9 +6,9 @@ namespace MonoForce.Controls
 {
     public class TrackBar : Control
     {
-        /// </summary>
-        /// Gets or sets the amount the track bar's value is altered for large increments.
         /// <summary>
+        /// Gets or sets the amount the track bar's value is altered for large increments.
+        /// </summary>
         public virtual int PageSize
         {
             get { return pageSize; }
@@ -24,9 +24,9 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
-        /// Gets or sets the value range of the track bar control.
         /// <summary>
+        /// Gets or sets the value range of the track bar control.
+        /// </summary>
         public virtual int Range
         {
             get { return range; }
@@ -43,18 +43,18 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
-        /// Indicates if the scale for the track bar should be drawn.
         /// <summary>
+        /// Indicates if the scale for the track bar should be drawn.
+        /// </summary>
         public virtual bool Scale
         {
             get { return scale; }
             set { scale = value; }
         }
 
-        /// </summary>
-        /// Gets or sets the amount the track bar's value is altered for small increments.
         /// <summary>
+        /// Gets or sets the amount the track bar's value is altered for small increments.
+        /// </summary>
         public virtual int StepSize
         {
             get { return stepSize; }
@@ -69,9 +69,9 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
-        /// Gets or sets the current value of the track bar control.
         /// <summary>
+        /// Gets or sets the current value of the track bar control.
+        /// </summary>
         public virtual int Value
         {
             get { return value; }
@@ -88,34 +88,34 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
-        /// Slider button that can be dragged to change the value of the track bar control.
         /// <summary>
+        /// Slider button that can be dragged to change the value of the track bar control.
+        /// </summary>
         private readonly Button btnSlider;
 
-        /// </summary>
-        /// Large increment at which the track bar value changes.
         /// <summary>
+        /// Large increment at which the track bar value changes.
+        /// </summary>
         private int pageSize = 5;
 
-        /// </summary>
-        /// Range the track bar control's value can be within. [0, range]
         /// <summary>
+        /// Range the track bar control's value can be within. [0, range]
+        /// </summary>
         private int range = 100;
 
-        /// </summary>
-        /// Indicates if the scale for the track bar should be drawn.
         /// <summary>
+        /// Indicates if the scale for the track bar should be drawn.
+        /// </summary>
         private bool scale = true;
 
-        /// </summary>
-        /// Small increment at which the track bar value changes.
         /// <summary>
+        /// Small increment at which the track bar value changes.
+        /// </summary>
         private int stepSize = 1;
 
-        /// </summary>
-        /// Current value of the track bar control.
         /// <summary>
+        /// Current value of the track bar control.
+        /// </summary>
         private int value;
 
         public TrackBar(Manager manager) : base(manager)
@@ -137,38 +137,38 @@ namespace MonoForce.Controls
             btnSlider.GamePadPress += btnSlider_GamePadPress;
         }
 
-        /// </summary>
-        /// Initializes the track bar control.
         /// <summary>
+        /// Initializes the track bar control.
+        /// </summary>
         public override void Init()
         {
             base.Init();
             btnSlider.Skin = new SkinControl(Manager.Skin.Controls["TrackBar.Button"]);
         }
 
-        /// </summary>
-        /// Occurs when the page size of the track bar changes.
         /// <summary>
+        /// Occurs when the page size of the track bar changes.
+        /// </summary>
         public event EventHandler PageSizeChanged;
 
-        /// </summary>
-        /// Occurs when the range of the track bar changes.
         /// <summary>
+        /// Occurs when the range of the track bar changes.
+        /// </summary>
         public event EventHandler RangeChanged;
 
-        /// </summary>
-        /// Occurs when the step size value of the track bar changes.
         /// <summary>
+        /// Occurs when the step size value of the track bar changes.
+        /// </summary>
         public event EventHandler StepSizeChanged;
 
-        /// </summary>
-        /// Occurs when the value of the track bar changes.
         /// <summary>
+        /// Occurs when the value of the track bar changes.
+        /// </summary>
         public event EventHandler ValueChanged;
 
-        /// </summary>
-        /// Initializes the skin of the track bar control.
         /// <summary>
+        /// Initializes the skin of the track bar control.
+        /// </summary>
         protected internal override void InitSkin()
         {
             base.InitSkin();
@@ -202,9 +202,9 @@ namespace MonoForce.Controls
         }
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Handles mouse press events for the track bar control.
         /// <summary>
+        /// Handles mouse press events for the track bar control.
+        /// </summary>
         protected override void OnMousePress(MouseEventArgs e)
         {
             OnMouseDown(e);
@@ -227,27 +227,27 @@ namespace MonoForce.Controls
         }
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Handles changes in the track bar's page size.
         /// <summary>
+        /// Handles changes in the track bar's page size.
+        /// </summary>
         protected virtual void OnPageSizeChanged(EventArgs e)
         {
             if (PageSizeChanged != null) PageSizeChanged.Invoke(this, e);
         }
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Handles changes in the track bar's range.
         /// <summary>
+        /// Handles changes in the track bar's range.
+        /// </summary>
         protected virtual void OnRangeChanged(EventArgs e)
         {
             if (RangeChanged != null) RangeChanged.Invoke(this, e);
         }
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Handles resizing of the track bar control.
         /// <summary>
+        /// Handles resizing of the track bar control.
+        /// </summary>
         protected override void OnResize(ResizeEventArgs e)
         {
             base.OnResize(e);
@@ -255,18 +255,18 @@ namespace MonoForce.Controls
         }
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Handles changes in the track bar's step size.
         /// <summary>
+        /// Handles changes in the track bar's step size.
+        /// </summary>
         protected virtual void OnStepSizeChanged(EventArgs e)
         {
             if (StepSizeChanged != null) StepSizeChanged.Invoke(this, e);
         }
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Handles changes in the track bar's value.
         /// <summary>
+        /// Handles changes in the track bar's value.
+        /// </summary>
         protected virtual void OnValueChanged(EventArgs e)
         {
             if (ValueChanged != null) ValueChanged.Invoke(this, e);
@@ -274,9 +274,9 @@ namespace MonoForce.Controls
 
         /// <param name="e"></param>
         /// <param name="sender"></param>
-        /// </summary>
-        /// Handles gamepad left/right button presses for the track bar control.
         /// <summary>
+        /// Handles gamepad left/right button presses for the track bar control.
+        /// </summary>
         private void btnSlider_GamePadPress(object sender, GamePadEventArgs e)
         {
 // Step up/down the track bar's value as needed.
@@ -286,9 +286,9 @@ namespace MonoForce.Controls
 
         /// <param name="e"></param>
         /// <param name="sender"></param>
-        /// </summary>
-        /// Handles key press events for the track bar control.
         /// <summary>
+        /// Handles key press events for the track bar control.
+        /// </summary>
         private void btnSlider_KeyPress(object sender, KeyEventArgs e)
         {
             if (e.Key == Keys.Left || e.Key == Keys.Down) Value -= stepSize;
@@ -301,9 +301,9 @@ namespace MonoForce.Controls
 
         /// <param name="e"></param>
         /// <param name="sender"></param>
-        /// </summary>
-        /// Handles slider button move events.
         /// <summary>
+        /// Handles slider button move events.
+        /// </summary>
         private void btnSlider_Move(object sender, MoveEventArgs e)
         {
             var p = Skin.Layers["Control"];
@@ -323,9 +323,9 @@ namespace MonoForce.Controls
             Value = (int)(Math.Ceiling((pos - p.ContentMargins.Left) * px));
         }
 
-        /// </summary>
-        /// Updates the position of the slider button.
         /// <summary>
+        /// Updates the position of the slider button.
+        /// </summary>
         private void RecalcParams()
         {
 // The slider button is created?

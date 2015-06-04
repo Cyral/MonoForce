@@ -8,16 +8,16 @@ using System.Windows.Forms;
 
 namespace MonoForce.Controls
 {
-    /// </summary>
-    /// Represents a Neoforce Layout file.
     /// <summary>
+    /// Represents a Neoforce Layout file.
+    /// </summary>
     public class LayoutXmlDocument : XmlDocument
     {
     }
 
-    /// </summary>
-    /// Represents a Neoforce Skin file.
     /// <summary>
+    /// Represents a Neoforce Skin file.
+    /// </summary>
     public class SkinXmlDocument : XmlDocument
     {
     }
@@ -28,9 +28,9 @@ namespace MonoForce.Controls
         /// <returns>Returns the loaded skin file.</returns>
         /// <param name="existingInstance">Existing instance to read stream data into.</param>
         /// <param name="input">Content reader used to read the skin file.</param>
-        /// </summary>
-        /// Reads a Skin file from binary format.
         /// <summary>
+        /// Reads a Skin file from binary format.
+        /// </summary>
         protected override SkinXmlDocument Read(ContentReader input, SkinXmlDocument existingInstance)
         {
             if (existingInstance == null)
@@ -45,17 +45,17 @@ namespace MonoForce.Controls
         }
     }
 
-    /// </summary>
-    /// Reads a Layout document from binary format.
     /// <summary>
+    /// Reads a Layout document from binary format.
+    /// </summary>
     public class LayoutReader : ContentTypeReader<LayoutXmlDocument>
     {
         /// <returns>Returns the Layout document from the stream.</returns>
         /// <param name="existingInstance">Existing instance to read into.</param>
         /// <param name="input">Content reader used to read the Layout document.</param>
-        /// </summary>
-        /// Reads a Layout document from the current stream.
         /// <summary>
+        /// Reads a Layout document from the current stream.
+        /// </summary>
         protected override LayoutXmlDocument Read(ContentReader input, LayoutXmlDocument existingInstance)
         {
             if (existingInstance == null)
@@ -77,9 +77,9 @@ namespace MonoForce.Controls
         /// <returns>Returns the cursor object from the stream.</returns>
         /// <param name="existingInstance">Existing cursor object to read into.</param>
         /// <param name="input">Content reader used to read the cursor.</param>
-        /// </summary>
-        /// Reads a cursor type from the current stream.
         /// <summary>
+        /// Reads a cursor type from the current stream.
+        /// </summary>
         protected override Cursor Read(ContentReader input, Cursor existingInstance)
         {
             if (existingInstance == null)

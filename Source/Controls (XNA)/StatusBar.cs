@@ -13,17 +13,17 @@ namespace MonoForce.Controls
             CanFocus = false;
         }
 
-        /// </summary>
-        /// Initializes the status bar control.
         /// <summary>
+        /// Initializes the status bar control.
+        /// </summary>
         public override void Init()
         {
             base.Init();
         }
 
-        /// </summary>
-        /// Initializes the skin of the status bar control.
         /// <summary>
+        /// Initializes the skin of the status bar control.
+        /// </summary>
         protected internal override void InitSkin()
         {
             base.InitSkin();

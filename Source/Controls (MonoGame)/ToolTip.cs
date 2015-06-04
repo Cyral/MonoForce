@@ -5,9 +5,9 @@ namespace MonoForce.Controls
 {
     public class ToolTip : Control
     {
-        /// </summary>
-        /// Indicates whether the tool tip is visible or not.
         /// <summary>
+        /// Indicates whether the tool tip is visible or not.
+        /// </summary>
         public override bool Visible
         {
             set
@@ -33,9 +33,9 @@ namespace MonoForce.Controls
             Text = "";
         }
 
-        /// </summary>
-        /// Initializes the tool tip control.
         /// <summary>
+        /// Initializes the tool tip control.
+        /// </summary>
         public override void Init()
         {
             base.Init();
@@ -43,9 +43,9 @@ namespace MonoForce.Controls
             Passive = true;
         }
 
-        /// </summary>
-        /// Initializes the skin of the tool tip control.
         /// <summary>
+        /// Initializes the skin of the tool tip control.
+        /// </summary>
         protected internal override void InitSkin()
         {
             base.InitSkin();

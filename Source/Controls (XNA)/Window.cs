@@ -24,9 +24,9 @@ namespace MonoForce.Controls
         private const string skShadow = "Window.Shadow";
         private const string skWindow = "Window";
 
-        /// </summary>
-        /// Indicates if the window should draw its border.
         /// <summary>
+        /// Indicates if the window should draw its border.
+        /// </summary>
         public virtual bool BorderVisible
         {
             get { return borderVisible; }
@@ -48,9 +48,9 @@ namespace MonoForce.Controls
 
         }
 
-        /// </summary>
-        /// Indicates if the window should draw its caption.
         /// <summary>
+        /// Indicates if the window should draw its caption.
+        /// </summary>
         public virtual bool CaptionVisible
         {
             get { return captionVisible; }
@@ -72,9 +72,9 @@ namespace MonoForce.Controls
 
         }
 
-        /// </summary>
-        /// Indicates if the window should draw its close button.
         /// <summary>
+        /// Indicates if the window should draw its close button.
+        /// </summary>
         public virtual bool CloseButtonVisible
         {
             get
@@ -103,9 +103,9 @@ namespace MonoForce.Controls
 
         }
 
-        /// </summary>
-        /// Gets or sets the alpha value that should be applied to the window during a drag operation.
         /// <summary>
+        /// Gets or sets the alpha value that should be applied to the window during a drag operation.
+        /// </summary>
         public virtual byte DragAlpha
         {
             get { return dragAlpha; }
@@ -117,9 +117,9 @@ namespace MonoForce.Controls
 
         }
 
-        /// </summary>
-        /// Gets or sets the window icon image.
         /// <summary>
+        /// Gets or sets the window icon image.
+        /// </summary>
         public virtual Texture2D Icon
         {
             get { return icon; }
@@ -131,9 +131,9 @@ namespace MonoForce.Controls
 
         }
 
-        /// </summary>
-        /// Indicates if the window should draw its icon.
         /// <summary>
+        /// Indicates if the window should draw its icon.
+        /// </summary>
         public virtual bool IconVisible
         {
             get
@@ -161,9 +161,9 @@ namespace MonoForce.Controls
 
         }
 
-        /// </summary>
-        /// Indicates if the window should draw its shadow.
         /// <summary>
+        /// Indicates if the window should draw its shadow.
+        /// </summary>
         public virtual bool Shadow
         {
             get { return shadow; }
@@ -177,44 +177,44 @@ namespace MonoForce.Controls
 
         private readonly Button btnClose;
 
-        /// </summary>
-        /// Indicates if the window border is drawn.
         /// <summary>
+        /// Indicates if the window border is drawn.
+        /// </summary>
         private bool borderVisible = true;
 
-        /// </summary>
-        /// Indicates if the window caption is drawn.
         /// <summary>
+        /// Indicates if the window caption is drawn.
+        /// </summary>
         private bool captionVisible = true;
 
-        /// </summary>
-        /// Indicates if the close button is drawn.
         /// <summary>
+        /// Indicates if the close button is drawn.
+        /// </summary>
         private bool closeButtonVisible = true;
 
-        /// </summary>
-        /// Alpha value used when dragging the window.
         /// <summary>
+        /// Alpha value used when dragging the window.
+        /// </summary>
         private byte dragAlpha = 200;
 
-        /// </summary>
-        /// Window icon image.
         /// <summary>
+        /// Window icon image.
+        /// </summary>
         private Texture2D icon;
 
-        /// </summary>
-        /// Indicates if the window icon is drawn.
         /// <summary>
+        /// Indicates if the window icon is drawn.
+        /// </summary>
         private bool iconVisible = true;
 
-        /// </summary>
-        /// Alpha value of the window.
         /// <summary>
+        /// Alpha value of the window.
+        /// </summary>
         private byte oldAlpha = 255;
 
-        /// </summary>
-        /// Indicates if the window shadow is drawn.
         /// <summary>
+        /// Indicates if the window shadow is drawn.
+        /// </summary>
         private bool shadow = true;
 
         public Window(Manager manager) : base(manager)
@@ -259,9 +259,9 @@ namespace MonoForce.Controls
 
         }
 
-        /// </summary>
-        /// Centers the window on screen.
         /// <summary>
+        /// Centers the window on screen.
+        /// </summary>
         public virtual void Center()
         {
             Left = (Manager.ScreenWidth / 2) - (Width / 2);
@@ -273,9 +273,9 @@ namespace MonoForce.Controls
 
         }
 
-        /// </summary>
-        /// Initializes the window.
         /// <summary>
+        /// Initializes the window.
+        /// </summary>
         public override void Init()
         {
             base.Init();
@@ -294,9 +294,9 @@ namespace MonoForce.Controls
 
         }
 
-        /// </summary>
-        /// Initializes the skin of the window.
         /// <summary>
+        /// Initializes the skin of the window.
+        /// </summary>
         protected internal override void InitSkin()
         {
             base.InitSkin();
@@ -310,9 +310,9 @@ namespace MonoForce.Controls
 
         }
 
-        /// </summary>
-        /// Adjusts the client area margins based on the visibility of the caption area and window border.
         /// <summary>
+        /// Adjusts the client area margins based on the visibility of the caption area and window border.
+        /// </summary>
         protected override void AdjustMargins()
         {
             if (captionVisible && borderVisible)
@@ -344,9 +344,9 @@ namespace MonoForce.Controls
         }
 
         /// <param name="disposing"></param>
-        /// </summary>
-        /// Cleans up window resources.
         /// <summary>
+        /// Cleans up window resources.
+        /// </summary>
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -493,9 +493,9 @@ namespace MonoForce.Controls
         }
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Handles double click events for the window.
         /// <summary>
+        /// Handles double click events for the window.
+        /// </summary>
         protected override void OnDoubleClick(EventArgs e)
         {
             base.OnDoubleClick(e);
@@ -515,9 +515,9 @@ namespace MonoForce.Controls
         }
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Handler for when the window starts a move event.
         /// <summary>
+        /// Handler for when the window starts a move event.
+        /// </summary>
         protected override void OnMoveBegin(EventArgs e)
         {
             base.OnMoveBegin(e);
@@ -549,9 +549,9 @@ namespace MonoForce.Controls
         }
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Handler for when the window completes a move event.
         /// <summary>
+        /// Handler for when the window completes a move event.
+        /// </summary>
         protected override void OnMoveEnd(EventArgs e)
         {
             base.OnMoveEnd(e);
@@ -581,9 +581,9 @@ namespace MonoForce.Controls
         }
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Handles resizing of the window.
         /// <summary>
+        /// Handles resizing of the window.
+        /// </summary>
         protected override void OnResize(ResizeEventArgs e)
         {
             SetMovableArea();
@@ -597,9 +597,9 @@ namespace MonoForce.Controls
 
         /// <param name="gameTime">Snapshot of the application's timing values.</param>
         /// <param name="renderer">Render management object.</param>
-        /// </summary>
-        /// Draws the window.
         /// <summary>
+        /// Draws the window.
+        /// </summary>
         internal override void Render(Renderer renderer, GameTime gameTime)
         {
 // Draw the shadow first if the window is displayed and the shadow is being used.
@@ -633,9 +633,9 @@ namespace MonoForce.Controls
 
         /// <param name="e"></param>
         /// <param name="sender"></param>
-        /// </summary>
-        /// Handles closing the window when the close button is clicked.
         /// <summary>
+        /// Handles closing the window when the close button is clicked.
+        /// </summary>
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close(ModalResult = ModalResult.Cancel);
@@ -648,9 +648,9 @@ namespace MonoForce.Controls
 
         /// <param name="e"></param>
         /// <param name="sender"></param>
-        /// </summary>
-        /// Handles reskinning the close button when the skin changes.
         /// <summary>
+        /// Handles reskinning the close button when the skin changes.
+        /// </summary>
         private void btnClose_SkinChanged(object sender, EventArgs e)
         {
             btnClose.Skin = new SkinControl(Manager.Skin.Controls[skButton]);
@@ -662,9 +662,9 @@ namespace MonoForce.Controls
         }
 
         /// <returns>Returns the window icon's destination region where it will be drawn. </returns>
-        /// </summary>
-        /// Creates the rectangle where the window icon should be displayed.
         /// <summary>
+        /// Creates the rectangle where the window icon should be displayed.
+        /// </summary>
         private Rectangle GetIconRect()
         {
             var l1 = Skin.Layers[lrCaption];
@@ -684,9 +684,9 @@ namespace MonoForce.Controls
 
         }
 
-        /// </summary>
-        /// Sets the region where the window can be moved to.
         /// <summary>
+        /// Sets the region where the window can be moved to.
+        /// </summary>
         private void SetMovableArea()
         {
             if (captionVisible && borderVisible)

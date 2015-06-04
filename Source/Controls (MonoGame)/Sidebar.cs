@@ -9,18 +9,18 @@ namespace MonoForce.Controls
 // CanFocus = true;
         }
 
-        /// </summary>
-        /// Initializes the side bar panel.
         /// <summary>
+        /// Initializes the side bar panel.
+        /// </summary>
         public override void Init()
         {
             base.Init();
 // CanFocus = true;
         }
 
-        /// </summary>
-        /// Initializes the skin of the side bar panel.
         /// <summary>
+        /// Initializes the skin of the side bar panel.
+        /// </summary>
         protected internal override void InitSkin()
         {
             base.InitSkin();

@@ -18,9 +18,9 @@ namespace MonoForce.Controls
         }
 
         /// <param name="item">Item to add to the collection.</param>
-        /// </summary>
-        /// Adds a new item to the collection.
         /// <summary>
+        /// Adds a new item to the collection.
+        /// </summary>
         public new void Add(T item)
         {
             var c = Count;
@@ -29,9 +29,9 @@ namespace MonoForce.Controls
         }
 
         /// <param name="collection">Collection of items to add to the collection.</param>
-        /// </summary>
-        /// Adds a collection of items to the collection.
         /// <summary>
+        /// Adds a collection of items to the collection.
+        /// </summary>
         public new void AddRange(IEnumerable<T> collection)
         {
             var c = Count;
@@ -39,9 +39,9 @@ namespace MonoForce.Controls
             if (ItemAdded != null && c != Count) ItemAdded.Invoke(this, new EventArgs());
         }
 
-        /// </summary>
-        /// Removes all the items from the collection.
         /// <summary>
+        /// Removes all the items from the collection.
+        /// </summary>
         public new void Clear()
         {
             var c = Count;
@@ -51,9 +51,9 @@ namespace MonoForce.Controls
 
         /// <param name="item">Item to be inserted into the collection.</param>
         /// <param name="index">Zero-based index defining the insertion position.</param>
-        /// </summary>
-        /// Inserts a new item into the collection at the specified index.
         /// <summary>
+        /// Inserts a new item into the collection at the specified index.
+        /// </summary>
         public new void Insert(int index, T item)
         {
             var c = Count;
@@ -63,9 +63,9 @@ namespace MonoForce.Controls
 
         /// <param name="collection">Collection of items to add to the collection at the specified index.</param>
         /// <param name="index">Zero-based index where the collection will be inserted.</param>
-        /// </summary>
-        /// Inserts a collection of items into the collection at the specified position.
         /// <summary>
+        /// Inserts a collection of items into the collection at the specified position.
+        /// </summary>
         public new void InsertRange(int index, IEnumerable<T> collection)
         {
             var c = Count;
@@ -73,20 +73,20 @@ namespace MonoForce.Controls
             if (ItemAdded != null && c != Count) ItemAdded.Invoke(this, new EventArgs());
         }
 
-        /// </summary>
-        /// Occurs when an item is added to the list.
         /// <summary>
+        /// Occurs when an item is added to the list.
+        /// </summary>
         public event EventHandler ItemAdded;
 
-        /// </summary>
-        /// Occurs when an item is removed from the list.
         /// <summary>
+        /// Occurs when an item is removed from the list.
+        /// </summary>
         public event EventHandler ItemRemoved;
 
         /// <param name="obj">Item to remove from the collection.</param>
-        /// </summary>
-        /// Removes the specified item from the collection.
         /// <summary>
+        /// Removes the specified item from the collection.
+        /// </summary>
         public new void Remove(T obj)
         {
             var c = Count;
@@ -96,9 +96,9 @@ namespace MonoForce.Controls
 
         /// <returns>Returns the number of items removed from the collection.</returns>
         /// <param name="match">Predicate method used to evaluate collection items.</param>
-        /// </summary>
-        /// Removes all items in the collection that match the specified condition.
         /// <summary>
+        /// Removes all items in the collection that match the specified condition.
+        /// </summary>
         public new int RemoveAll(Predicate<T> match)
         {
             var c = Count;
@@ -108,9 +108,9 @@ namespace MonoForce.Controls
         }
 
         /// <param name="index">Zero-based index specifying which item to remove.</param>
-        /// </summary>
-        /// Removes an item from the collection at the specified index.
         /// <summary>
+        /// Removes an item from the collection at the specified index.
+        /// </summary>
         public new void RemoveAt(int index)
         {
             var c = Count;
@@ -120,9 +120,9 @@ namespace MonoForce.Controls
 
         /// <param name="count">Number of items to remove from the collection.</param>
         /// <param name="index">Zero-based index to begin removal.</param>
-        /// </summary>
-        /// Removes a range of items from the collection beginning at the specified index.
         /// <summary>
+        /// Removes a range of items from the collection beginning at the specified index.
+        /// </summary>
         public new void RemoveRange(int index, int count)
         {
             var c = Count;

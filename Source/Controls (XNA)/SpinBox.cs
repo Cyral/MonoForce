@@ -4,19 +4,19 @@ using Microsoft.Xna.Framework.Input;
 
 namespace MonoForce.Controls
 {
-    /// </summary>
-    /// Specifies the data that the spin box works with.
     /// <summary>
+    /// Specifies the data that the spin box works with.
+    /// </summary>
     public enum SpinBoxMode
     {
-        /// </summary>
-        /// Adjusts a single numeric value by the defined step amount.
         /// <summary>
+        /// Adjusts a single numeric value by the defined step amount.
+        /// </summary>
         Range,
 
-        /// </summary>
-        /// Adjusts the index referencing the selected item in a collection.
         /// <summary>
+        /// Adjusts the index referencing the selected item in a collection.
+        /// </summary>
         List
     }
 
@@ -25,9 +25,9 @@ namespace MonoForce.Controls
     {
         public string DisplayFormat { get; set; }
 
-        /// </summary>
-        /// Gets or sets the index of the selected item in the collection in List mode.
         /// <summary>
+        /// Gets or sets the index of the selected item in the collection in List mode.
+        /// </summary>
         public int ItemIndex
         {
             get { return itemIndex; }
@@ -42,17 +42,17 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
-        /// Gets the collection of objects the spin box iterates through in List mode.
         /// <summary>
+        /// Gets the collection of objects the spin box iterates through in List mode.
+        /// </summary>
         public virtual List<object> Items
         {
             get { return items; }
         }
 
-        /// </summary>
-        /// Gets or sets the maximum value of the spin box in Range mode.
         /// <summary>
+        /// Gets or sets the maximum value of the spin box in Range mode.
+        /// </summary>
         public float Maximum
         {
             get { return maximum; }
@@ -65,9 +65,9 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
-        /// Gets or sets the minimum value of the spin box in Range mode.
         /// <summary>
+        /// Gets or sets the minimum value of the spin box in Range mode.
+        /// </summary>
         public float Minimum
         {
             get { return minimum; }
@@ -80,18 +80,18 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
-        /// Gets or sets the data that the spin box works with. (Collection or numeric value.)
         /// <summary>
+        /// Gets or sets the data that the spin box works with. (Collection or numeric value.)
+        /// </summary>
         public new virtual SpinBoxMode Mode
         {
             get { return mode; }
             set { mode = value; }
         }
 
-        /// </summary>
-        /// Indicates if the control's text box is read-only or not.
         /// <summary>
+        /// Indicates if the control's text box is read-only or not.
+        /// </summary>
         public override bool ReadOnly
         {
             get { return base.ReadOnly; }
@@ -114,9 +114,9 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
-        /// Gets or sets the number of decimal places the spin box allows.
         /// <summary>
+        /// Gets or sets the number of decimal places the spin box allows.
+        /// </summary>
         public int Rounding
         {
             get { return rounding; }
@@ -130,10 +130,10 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
+        /// <summary>
         /// the up or down button is pressed in Range mode.
         /// Gets or sets the amount the value of the spin box changes when
-        /// <summary>
+        /// </summary>
         public float Step
         {
             get { return step; }
@@ -146,9 +146,9 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
-        /// Gets or sets the spin box value in Range mode.
         /// <summary>
+        /// Gets or sets the spin box value in Range mode.
+        /// </summary>
         public float Value
         {
             get { return value; }
@@ -162,55 +162,55 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
-        /// Button used to decrease the spin box value.
         /// <summary>
+        /// Button used to decrease the spin box value.
+        /// </summary>
         private readonly Button btnDown;
 
-        /// </summary>
-        /// Button used to increase the spin box value.
         /// <summary>
+        /// Button used to increase the spin box value.
+        /// </summary>
         private readonly Button btnUp;
 
-        /// </summary>
-        /// Collection of items the spin box will display
         /// <summary>
+        /// Collection of items the spin box will display
+        /// </summary>
         private readonly List<object> items = new List<object>();
 
-        /// </summary>
-        /// Selected item index if the items list is used.
         /// <summary>
+        /// Selected item index if the items list is used.
+        /// </summary>
         private int itemIndex = -1;
 
-        /// </summary>
-        /// Maximum value of the spin box.
         /// <summary>
+        /// Maximum value of the spin box.
+        /// </summary>
         private float maximum = 100;
 
-        /// </summary>
-        /// Minimum value of the spin box.
         /// <summary>
+        /// Minimum value of the spin box.
+        /// </summary>
         private float minimum;
 
-        /// </summary>
+        /// <summary>
         /// it iterates through items defined in its item list.
         /// Defines whether the spin box works with numeric values or if
-        /// <summary>
+        /// </summary>
         private SpinBoxMode mode = SpinBoxMode.List;
 
-        /// </summary>
-        /// Decimal places to round values to.
         /// <summary>
+        /// Decimal places to round values to.
+        /// </summary>
         private int rounding = 2;
 
-        /// </summary>
-        /// Amount the value increases/decreases when the up/down buttons are clicked.
         /// <summary>
+        /// Amount the value increases/decreases when the up/down buttons are clicked.
+        /// </summary>
         private float step = 0.25f;
 
-        /// </summary>
-        /// Current value of the spin box.
         /// <summary>
+        /// Current value of the spin box.
+        /// </summary>
         private float value;
 
         public SpinBox(Manager manager, SpinBoxMode mode) : base(manager)
@@ -235,9 +235,9 @@ namespace MonoForce.Controls
             Add(btnDown, false);
         }
 
-        /// </summary>
-        /// Initializes the spin box control.
         /// <summary>
+        /// Initializes the spin box control.
+        /// </summary>
         public override void Init()
         {
             base.Init();
@@ -256,9 +256,9 @@ namespace MonoForce.Controls
             btnDown.Glyph.Color = Manager.Skin.Controls["Button"].Layers["Control"].Text.Colors.Enabled;
         }
 
-        /// </summary>
-        /// Initializes the skin of the spin box control.
         /// <summary>
+        /// Initializes the skin of the spin box control.
+        /// </summary>
         protected internal override void InitSkin()
         {
             base.InitSkin();
@@ -282,18 +282,18 @@ namespace MonoForce.Controls
         }
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Handles gamepad button press events.
         /// <summary>
+        /// Handles gamepad button press events.
+        /// </summary>
         protected override void OnGamePadDown(GamePadEventArgs e)
         {
             base.OnGamePadDown(e);
         }
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Handles up/down inputs from a gamepad.
         /// <summary>
+        /// Handles up/down inputs from a gamepad.
+        /// </summary>
         protected override void OnGamePadPress(GamePadEventArgs e)
         {
             if (e.Button == GamePadActions.Up)
@@ -311,9 +311,9 @@ namespace MonoForce.Controls
         }
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Handles key press events.
         /// <summary>
+        /// Handles key press events.
+        /// </summary>
         protected override void OnKeyPress(KeyEventArgs e)
         {
             if (e.Key == Keys.Up)
@@ -331,9 +331,9 @@ namespace MonoForce.Controls
         }
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Handles resizing the spin box control.
         /// <summary>
+        /// Handles resizing the spin box control.
+        /// </summary>
         protected override void OnResize(ResizeEventArgs e)
         {
             base.OnResize(e);
@@ -358,9 +358,9 @@ namespace MonoForce.Controls
 
         /// <param name="e"></param>
         /// <param name="sender"></param>
-        /// </summary>
-        /// Handles button up/down clicks.
         /// <summary>
+        /// Handles button up/down clicks.
+        /// </summary>
         private void btn_MousePress(object sender, MouseEventArgs e)
         {
             Focused = true;
@@ -369,9 +369,9 @@ namespace MonoForce.Controls
         }
 
         /// <param name="direction">Indicates which way to shift index/values. (True to increase; false to decrease.)</param>
-        /// </summary>
-        /// Adjusts the spin box's value up or down.
         /// <summary>
+        /// Adjusts the spin box's value up or down.
+        /// </summary>
         private void ShiftIndex(bool direction)
         {
             if (mode == SpinBoxMode.List)

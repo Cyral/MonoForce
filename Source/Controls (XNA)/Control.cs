@@ -11,52 +11,52 @@ namespace MonoForce.Controls
 {
     /// </summary>
     /// Defines the gamepad button to action mappings.
-    /// <summary>
+    /// </summary>
     public class GamePadActions
     {
         /// </summary>
         /// Button mapped to a control click event.
-        /// <summary>
+        /// </summary>
         public GamePadButton Click = GamePadButton.A;
 
         /// </summary>
         /// Button mapped to show the context menu of a control.
-        /// <summary>
+        /// </summary>
         public GamePadButton ContextMenu = GamePadButton.X;
 
         /// </summary>
         /// Button mapped to the Down action.
-        /// <summary>
+        /// </summary>
         public GamePadButton Down = GamePadButton.LeftStickDown;
 
         /// </summary>
         /// Button mapped to the Left action.
-        /// <summary>
+        /// </summary>
         public GamePadButton Left = GamePadButton.LeftStickLeft;
 
         /// </summary>
         /// Button mapped to control navigation.
-        /// <summary>
+        /// </summary>
         public GamePadButton NextControl = GamePadButton.RightShoulder;
 
         /// </summary>
         /// Button mapped to a control press event.
-        /// <summary>
+        /// </summary>
         public GamePadButton Press = GamePadButton.Y;
 
         /// </summary>
         /// Button mapped to control navigation.
-        /// <summary>
+        /// </summary>
         public GamePadButton PrevControl = GamePadButton.LeftShoulder;
 
         /// </summary>
         /// Button mapped to the Right action.
-        /// <summary>
+        /// </summary>
         public GamePadButton Right = GamePadButton.LeftStickRight;
 
         /// </summary>
         /// Button mapped to the Up action.
-        /// <summary>
+        /// </summary>
         public GamePadButton Up = GamePadButton.LeftStickUp;
     }
 
@@ -79,17 +79,17 @@ namespace MonoForce.Controls
     {
         /// </summary>
         /// Default color used when a color is not defined.
-        /// <summary>
+        /// </summary>
         public static readonly Color UndefinedColor = new Color(255, 255, 255, 0);
 
         /// </summary>
         /// An internal list of all controls in memory managed by the GUI manager.
-        /// <summary>
+        /// </summary>
         internal static ControlsList Stack = new ControlsList();
 
         /// </summary>
         /// Gets the absolute screen X position of the control.
-        /// <summary>
+        /// </summary>
         public virtual int AbsoluteLeft
         {
             get
@@ -102,7 +102,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets a rectangle that contains the control and its margin amounts. (Absolute X and Y positions are specified.)
-        /// <summary>
+        /// </summary>
         public virtual Rectangle AbsoluteRect
         {
             get { return new Rectangle(AbsoluteLeft, AbsoluteTop, OriginWidth, OriginHeight); }
@@ -110,7 +110,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets the absolute screen Y position of the control.
-        /// <summary>
+        /// </summary>
         public virtual int AbsoluteTop
         {
             get
@@ -133,7 +133,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets or sets the edges of the container to which a control is bound and determines how a control is resized with its parent.
-        /// <summary>
+        /// </summary>
         public virtual Anchors Anchor
         {
             get { return anchor; }
@@ -147,7 +147,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets or sets the background color for the control.
-        /// <summary>
+        /// </summary>
         public virtual Color BackColor
         {
             get { return backColor; }
@@ -161,7 +161,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets or sets a value indicating whether this control can receive focus.
-        /// <summary>
+        /// </summary>
         public virtual bool CanFocus
         {
             get { return canFocus; }
@@ -170,7 +170,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets or sets the height of the control's client area.
-        /// <summary>
+        /// </summary>
         public virtual int ClientHeight
         {
             get
@@ -183,7 +183,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets the X position of the control's client area. (Relative offset from control origin.)
-        /// <summary>
+        /// </summary>
         public virtual int ClientLeft
         {
             get
@@ -195,7 +195,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets the client (inner) margins for the control.
-        /// <summary>
+        /// </summary>
         public virtual Margins ClientMargins
         {
             get { return clientMargins; }
@@ -204,7 +204,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets a rectangle that contains the control's client area. (Relative X and Y offsets from the control origin are specified.
-        /// <summary>
+        /// </summary>
         public virtual Rectangle ClientRect
         {
             get { return new Rectangle(ClientLeft, ClientTop, ClientWidth, ClientHeight); }
@@ -212,7 +212,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets the Y position of the control's client area. (Relative offset from control origin.)
-        /// <summary>
+        /// </summary>
         public virtual int ClientTop
         {
             get
@@ -224,7 +224,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets or sets the width of the control's client area.
-        /// <summary>
+        /// </summary>
         public virtual int ClientWidth
         {
             get
@@ -237,7 +237,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets or sets the color for the control.
-        /// <summary>
+        /// </summary>
         public virtual Color Color
         {
             get { return color; }
@@ -254,7 +254,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets or sets the ContextMenu associated with this control.
-        /// <summary>
+        /// </summary>
         public virtual ContextMenu ContextMenu
         {
             get { return contextMenu; }
@@ -263,7 +263,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets or sets the rectangle that contains the entire control and all margins.
-        /// <summary>
+        /// </summary>
         public virtual Rectangle ControlRect
         {
             get { return new Rectangle(Left, Top, Width, Height); }
@@ -278,7 +278,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets a list of all child controls.
-        /// <summary>
+        /// </summary>
         public virtual IEnumerable<Control> Controls
         {
             get { return controls; }
@@ -286,7 +286,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets a value indicating current state of the control.
-        /// <summary>
+        /// </summary>
         public virtual ControlState ControlState
         {
             get
@@ -307,7 +307,7 @@ namespace MonoForce.Controls
 #if (!XBOX && !XBOX_FAKE)
         /// </summary>
         /// Gets or sets the cursor displaying over the control.
-        /// <summary>
+        /// </summary>
         public Cursor Cursor
         {
             get { return cursor; }
@@ -317,7 +317,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets or sets the value indicating wheter control is in design mode.
-        /// <summary>
+        /// </summary>
         public virtual bool DesignMode
         {
             get { return designMode; }
@@ -326,7 +326,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets or sets a value indicating whether this control is rendered off the parents texture.
-        /// <summary>
+        /// </summary>
         public virtual bool Detached
         {
             get { return detached; }
@@ -335,7 +335,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets or sets a value indicating whether this control should process mouse double-clicks.
-        /// <summary>
+        /// </summary>
         public virtual bool DoubleClicks
         {
             get { return doubleClicks; }
@@ -344,7 +344,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets an area where is the control supposed to be drawn.
-        /// <summary>
+        /// </summary>
         public Rectangle DrawingRect
         {
             get { return drawingRect; }
@@ -353,7 +353,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets or sets a value indicating whether the control can respond to user interaction.
-        /// <summary>
+        /// </summary>
         public virtual bool Enabled
         {
             get { return enabled; }
@@ -375,7 +375,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets or sets a value indicating whether this control has input focus.
-        /// <summary>
+        /// </summary>
         public virtual bool Focused
         {
             get { return (Manager.FocusedControl == this); }
@@ -404,7 +404,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets or sets gamepad actions for the control.
-        /// <summary>
+        /// </summary>
         public virtual GamePadActions GamePadActions
         {
             get { return gamePadActions; }
@@ -413,7 +413,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets or sets the height of the control.
-        /// <summary>
+        /// </summary>
         public virtual int Height
         {
             get { return height; }
@@ -446,7 +446,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets a value indicating whether this control is a child control.
-        /// <summary>
+        /// </summary>
         public virtual bool IsChild
         {
             get { return (parent != null); }
@@ -454,7 +454,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets a value indicating whether this control is a parent control.
-        /// <summary>
+        /// </summary>
         public virtual bool IsParent
         {
             get { return (controls != null && controls.Count > 0); }
@@ -462,7 +462,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets a value indicating whether this control is a root control.
-        /// <summary>
+        /// </summary>
         public virtual bool IsRoot
         {
             get { return (root == this); }
@@ -470,7 +470,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets or sets the distance, in pixels, between the left edge of the control and the left edge of its parent.
-        /// <summary>
+        /// </summary>
         public virtual int Left
         {
             get { return left; }
@@ -496,7 +496,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets or sets the maximum height in pixels the control can be sized to.
-        /// <summary>
+        /// </summary>
         public virtual int MaximumHeight
         {
             get
@@ -515,7 +515,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets or sets the maximum width in pixels the control can be sized to.
-        /// <summary>
+        /// </summary>
         public virtual int MaximumWidth
         {
             get
@@ -534,7 +534,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets or sets the minimum height in pixels the control can be sized to.
-        /// <summary>
+        /// </summary>
         public virtual int MinimumHeight
         {
             get { return minimumHeight; }
@@ -549,7 +549,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets or sets the minimum width in pixels the control can be sized to.
-        /// <summary>
+        /// </summary>
         public virtual int MinimumWidth
         {
             get { return minimumWidth; }
@@ -564,7 +564,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets or sets a value indicating whether this control can be moved by the mouse.
-        /// <summary>
+        /// </summary>
         public virtual bool Movable
         {
             get { return movable; }
@@ -573,7 +573,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets or sets a rectangular area that reacts on moving the control with the mouse.
-        /// <summary>
+        /// </summary>
         public virtual Rectangle MovableArea
         {
             get { return movableArea; }
@@ -582,7 +582,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets or sets a name of the control.
-        /// <summary>
+        /// </summary>
         public virtual string Name
         {
             get { return name; }
@@ -591,7 +591,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets the height of the control, including margin amounts.
-        /// <summary>
+        /// </summary>
         public virtual int OriginHeight
         {
             get
@@ -603,7 +603,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets the absolute screen X position of the control. (Control origin margins are factored in.)
-        /// <summary>
+        /// </summary>
         public virtual int OriginLeft
         {
             get
@@ -615,7 +615,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets a rectangle that contains the control and its margin amounts. (Relative X and Y offsets from the control origin are specified.)
-        /// <summary>
+        /// </summary>
         public virtual Rectangle OriginRect
         {
             get { return new Rectangle(OriginLeft, OriginTop, OriginWidth, OriginHeight); }
@@ -623,7 +623,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets the absolute screen Y position of the control. (Control origin margins are factored in.
-        /// <summary>
+        /// </summary>
         public virtual int OriginTop
         {
             get
@@ -635,7 +635,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets the width of the control, including margin amounts.
-        /// <summary>
+        /// </summary>
         public virtual int OriginWidth
         {
             get
@@ -647,7 +647,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets or sets a value indicating whether this control should use outline moving.
-        /// <summary>
+        /// </summary>
         public virtual bool OutlineMoving
         {
             get { return outlineMoving; }
@@ -656,7 +656,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets or sets a value indicating whether this control should use ouline resizing.
-        /// <summary>
+        /// </summary>
         public virtual bool OutlineResizing
         {
             get { return outlineResizing; }
@@ -665,7 +665,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets or sets the parent for the control.
-        /// <summary>
+        /// </summary>
         public virtual Control Parent
         {
             get { return parent; }
@@ -681,7 +681,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets or sets the value indicating whether the control outline is displayed only for certain edges.
-        /// <summary>
+        /// </summary>
         public virtual bool PartialOutline
         {
             get { return partialOutline; }
@@ -690,7 +690,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets or sets a value indicating whether this controls can receive user input events.
-        /// <summary>
+        /// </summary>
         public virtual bool Passive
         {
             get { return passive; }
@@ -699,7 +699,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets or sets a value indicating whether this control can be resized by the mouse.
-        /// <summary>
+        /// </summary>
         public virtual bool Resizable
         {
             get { return resizable; }
@@ -708,7 +708,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets or sets the edges of the contol which are allowed for resizing.
-        /// <summary>
+        /// </summary>
         public virtual Anchors ResizeEdge
         {
             get { return resizeEdge; }
@@ -717,7 +717,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets or sets the size of the rectangular borders around the control used for resizing by the mouse.
-        /// <summary>
+        /// </summary>
         public virtual int ResizerSize
         {
             get { return resizerSize; }
@@ -726,7 +726,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets or sets the root for the control.
-        /// <summary>
+        /// </summary>
         public virtual Control Root
         {
             get { return root; }
@@ -748,7 +748,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets or sets the skin used for rendering the control.
-        /// <summary>
+        /// </summary>
         public virtual SkinControl Skin
         {
             get { return skin; }
@@ -761,7 +761,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets or sets the value indicating whether the control is allowed to be brought in the front.
-        /// <summary>
+        /// </summary>
         public virtual bool StayOnBack
         {
             get { return stayOnBack; }
@@ -774,7 +774,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets or sets the value indicating that the control should stay on top of other controls.
-        /// <summary>
+        /// </summary>
         public virtual bool StayOnTop
         {
             get { return stayOnTop; }
@@ -787,7 +787,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets or sets a value indicating whether this control should receive any events.
-        /// <summary>
+        /// </summary>
         public virtual bool Suspended
         {
             get { return suspended; }
@@ -802,7 +802,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets or sets the text associated with this control.
-        /// <summary>
+        /// </summary>
         public virtual string Text
         {
             get { return text; }
@@ -816,7 +816,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets or sets the text color for the control.
-        /// <summary>
+        /// </summary>
         public virtual Color TextColor
         {
             get { return textColor; }
@@ -833,7 +833,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets or sets the control's tool tip that will display when hovered.
-        /// <summary>
+        /// </summary>
         public virtual ToolTip ToolTip
         {
             get
@@ -854,7 +854,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets or sets the type of the control's ToolTip.
-        /// <summary>
+        /// </summary>
         public virtual Type ToolTipType
         {
             get { return toolTipType; }
@@ -871,7 +871,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets or sets the distance, in pixels, between the top edge of the control and the top edge of its parent.
-        /// <summary>
+        /// </summary>
         public virtual int Top
         {
             get { return top; }
@@ -891,7 +891,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets or sets a value that indicates whether the control is rendered.
-        /// <summary>
+        /// </summary>
         public virtual bool Visible
         {
             get { return (visible && (parent == null || parent.Visible)); }
@@ -906,7 +906,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets or sets the width of the control.
-        /// <summary>
+        /// </summary>
         public virtual int Width
         {
             get { return width; }
@@ -938,7 +938,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Indicates if the control is hovered by the mouse cursor.
-        /// <summary>
+        /// </summary>
         protected internal virtual bool Hovered
         {
             get { return hovered; }
@@ -946,7 +946,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Indicates if the mouse cursor is within the bounds of the control. ???
-        /// <summary>
+        /// </summary>
         protected internal virtual bool Inside
         {
             get { return inside; }
@@ -954,7 +954,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Indicates if the control is in the pressed state.
-        /// <summary>
+        /// </summary>
         protected internal virtual bool IsPressed
         {
             get
@@ -969,7 +969,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Tracks the pressed state of various input buttons.
-        /// <summary>
+        /// </summary>
         protected internal virtual bool[] Pressed
         {
             get { return pressed; }
@@ -977,7 +977,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets or sets a value indicating whether this controls is currently being moved.
-        /// <summary>
+        /// </summary>
         protected virtual bool IsMoving
         {
             get { return isMoving; }
@@ -986,7 +986,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets or sets a value indicating whether this controls is currently being resized.
-        /// <summary>
+        /// </summary>
         protected virtual bool IsResizing
         {
             get { return isResizing; }
@@ -996,7 +996,7 @@ namespace MonoForce.Controls
         /// </summary>
         /// adjust the control's position when a horizontal scroll bar is present.)
         /// Gets or sets the X position offset applied to the control. (Used to
-        /// <summary>
+        /// </summary>
         internal virtual int LeftModifier
         {
             get { return leftModifier; }
@@ -1006,7 +1006,7 @@ namespace MonoForce.Controls
         /// </summary>
         /// adjust the control's position when a vertical scroll bar is present.)
         /// Gets or sets the Y position offset applied to the control. (Used to
-        /// <summary>
+        /// </summary>
         internal virtual int TopModifier
         {
             get { return topModifier; }
@@ -1015,7 +1015,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// ???
-        /// <summary>
+        /// </summary>
         internal virtual int VirtualHeight
         {
             get { return GetVirtualHeight(); }
@@ -1023,7 +1023,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// ???
-        /// <summary>
+        /// </summary>
         internal virtual int VirtualWidth
         {
             get { return GetVirtualWidth(); }
@@ -1031,7 +1031,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets or sets the size of the outline rectangle drawn during a resize operation.
-        /// <summary>
+        /// </summary>
         private Rectangle OutlineRect
         {
             get { return outlineRect; }
@@ -1050,17 +1050,17 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// List of child controls belonging to the control.
-        /// <summary>
+        /// </summary>
         private readonly ControlsList controls = new ControlsList();
 
         /// </summary>
         /// ???
-        /// <summary>
+        /// </summary>
         private readonly int[] pressDiff = new int[4];
 
         /// </summary>
         /// Tracks the pressed state of various input buttons.
-        /// <summary>
+        /// </summary>
         private readonly bool[] pressed = new bool[32];
 
         private byte alpha = 255;
@@ -1068,261 +1068,261 @@ namespace MonoForce.Controls
         /// </summary>
         /// bound and how the control is resized in relation to its parent control.
         /// Control's anchor values that define which edge of a container a control is
-        /// <summary>
+        /// </summary>
         private Anchors anchor = Anchors.Left | Anchors.Top;
 
         /// </summary>
         /// ???
-        /// <summary>
+        /// </summary>
         private Margins anchorMargins;
 
         /// </summary>
         /// Color of the control's background.
-        /// <summary>
+        /// </summary>
         private Color backColor = Color.Transparent;
 
         /// </summary>
         /// Indicates if the control can receive input focus or not.
-        /// <summary>
+        /// </summary>
         private bool canFocus = true;
 
         /// </summary>
         /// Margins defining how much offset to define the client area of the control.
-        /// <summary>
+        /// </summary>
         private Margins clientMargins;
 
         /// </summary>
         /// Color of the control.
-        /// <summary>
+        /// </summary>
         private Color color = UndefinedColor;
 
         /// </summary>
         /// Context menu for this control.
-        /// <summary>
+        /// </summary>
         private ContextMenu contextMenu;
 
 #if (!XBOX && !XBOX_FAKE)
         /// </summary>
         /// Cursor displayed when the mouse is over the control.
-        /// <summary>
+        /// </summary>
         private Cursor cursor;
 #endif
 
         /// </summary>
         /// Indicates if the control is in design mode.
-        /// <summary>
+        /// </summary>
         private bool designMode;
 
         /// </summary>
         /// Indicates if the control is rendered off the parents texture.
-        /// <summary>
+        /// </summary>
         private bool detached;
 
         /// </summary>
         /// Specifies which mouse button should be detected for double click events.
-        /// <summary>
+        /// </summary>
         private MouseButton doubleClickButton = MouseButton.None;
 
         /// </summary>
         /// Indicates if the control can receive double clicks.
-        /// <summary>
+        /// </summary>
         private bool doubleClicks = true;
 
         /// </summary>
         /// Tracks the time of the last doubleClickButton click to help detect double click events.
-        /// <summary>
+        /// </summary>
         private long doubleClickTimer;
 
         /// </summary>
         /// Defines the area where the control should be drawn.
-        /// <summary>
+        /// </summary>
         private Rectangle drawingRect = Rectangle.Empty;
 
         /// </summary>
         /// Indicates if the control is enabled or not.
-        /// <summary>
+        /// </summary>
         private bool enabled = true;
 
         /// </summary>
         /// Gamepad button to control action mappings.
-        /// <summary>
+        /// </summary>
         private GamePadActions gamePadActions = new GamePadActions();
 
         /// </summary>
         /// Height of the control.
-        /// <summary>
+        /// </summary>
         private int height = 64;
 
         /// </summary>
         /// Indicates if the mouse cursor is hovering the control.
-        /// <summary>
+        /// </summary>
         private bool hovered;
 
         /// </summary>
         /// ???
-        /// <summary>
+        /// </summary>
         private bool inside;
 
         /// </summary>
         /// Indicates if the control needs to be redrawn.
-        /// <summary>
+        /// </summary>
         private bool invalidated = true;
 
         /// </summary>
         /// Indicates if the control is currently involved in a move event.
-        /// <summary>
+        /// </summary>
         private bool isMoving;
 
         /// </summary>
         /// Indicates if the control is currently involved in a resizing event.
-        /// <summary>
+        /// </summary>
         private bool isResizing;
 
         /// </summary>
         /// X position of the control as an offset from the left edge of its parent control
-        /// <summary>
+        /// </summary>
         private int left;
 
         /// </summary>
         /// X position offset to apply to the control.
-        /// <summary>
+        /// </summary>
         private int leftModifier;
 
         /// </summary>
         /// Margins between this control and another control. Usable with the StackPanel control.
-        /// <summary>
+        /// </summary>
         private Margins margins = new Margins(4, 4, 4, 4);
 
         /// </summary>
         /// Maximum height of the control.
-        /// <summary>
+        /// </summary>
         private int maximumHeight = 4096;
 
         /// </summary>
         /// Maximum width of the control.
-        /// <summary>
+        /// </summary>
         private int maximumWidth = 4096;
 
         /// </summary>
         /// Minimum height of the control.
-        /// <summary>
+        /// </summary>
         private int minimumHeight;
 
         /// </summary>
         /// Minimum width of the control.
-        /// <summary>
+        /// </summary>
         private int minimumWidth;
 
         /// </summary>
         /// Indicates if the control can be moved by a drag operation.
-        /// <summary>
+        /// </summary>
         private bool movable;
 
         /// </summary>
         /// Defines the region of the control where the mouse can click to start a move operation.
-        /// <summary>
+        /// </summary>
         private Rectangle movableArea = Rectangle.Empty;
 
         /// </summary>
         /// Name of the control.
-        /// <summary>
+        /// </summary>
         private string name = "Control";
 
         /// </summary>
         /// Indicates if the control should use outline moving.
-        /// <summary>
+        /// </summary>
         private bool outlineMoving;
 
         /// </summary>
         /// Rectangle drawn when the control is being resized to indicate the new size of the control.
-        /// <summary>
+        /// </summary>
         private Rectangle outlineRect = Rectangle.Empty;
 
         /// </summary>
         /// Indicates if the control should use outline resizing.
-        /// <summary>
+        /// </summary>
         private bool outlineResizing;
 
         private Control parent;
 
         /// </summary>
         /// Indicates if the control outline is only displayed for certain edges.
-        /// <summary>
+        /// </summary>
         private bool partialOutline = true;
 
         /// </summary>
         /// Indicates if the control can receive user input events or not.
-        /// <summary>
+        /// </summary>
         private bool passive;
 
         /// </summary>
         /// detect move and resize events on the control.
         /// Indicates where the mouse cursor is pressing on the control. Used to help
-        /// <summary>
+        /// </summary>
         private Point pressSpot = Point.Zero;
 
         /// </summary>
         /// Indicates if the control can be resized by a drag operation.
-        /// <summary>
+        /// </summary>
         private bool resizable;
 
         /// </summary>
         /// ???
-        /// <summary>
+        /// </summary>
         private Alignment resizeArea = Alignment.None;
 
         /// </summary>
         /// Indicates which edge of the control will show the resize cursor and support resizing.
-        /// <summary>
+        /// </summary>
         private Anchors resizeEdge = Anchors.All;
 
         /// </summary>
         /// The size of the borders around the control used for resizing by the mouse.
-        /// <summary>
+        /// </summary>
         private int resizerSize = 4;
 
         private Control root;
 
         /// </summary>
         /// Tracks the position of the mouse scroll wheel
-        /// <summary>
+        /// </summary>
         private int scrollWheel = 0;
 
         private SkinControl skin;
 
         /// </summary>
         /// Indicates if the control should stay under other controls.
-        /// <summary>
+        /// </summary>
         private bool stayOnBack;
 
         /// </summary>
         /// Indicates if the control should stay on top of other controls.
-        /// <summary>
+        /// </summary>
         private bool stayOnTop;
 
         /// </summary>
         /// Indicates if the control should receive any events.
-        /// <summary>
+        /// </summary>
         private bool suspended;
 
         /// </summary>
         /// Custom user-defined data associated with the control.
-        /// <summary>
+        /// </summary>
         private object tag;
 
         /// </summary>
         /// Texture the control pre-draws to before being rendered on screen.
-        /// <summary>
+        /// </summary>
         private RenderTarget2D target;
 
         /// </summary>
         /// Text of the control.
-        /// <summary>
+        /// </summary>
         private string text = "Control";
 
         /// </summary>
         /// Color of the control's text.
-        /// <summary>
+        /// </summary>
         private Color textColor = UndefinedColor;
 
         private ToolTip toolTip;
@@ -1330,37 +1330,37 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Type argument for the tool tip.
-        /// <summary>
+        /// </summary>
         private Type toolTipType = typeof (ToolTip);
 
         /// </summary>
         /// Y position of the control as an offset from the top edge of its parent control.
-        /// <summary>
+        /// </summary>
         private int top;
 
         /// </summary>
         /// Y position offset to apply to the control.
-        /// <summary>
+        /// </summary>
         private int topModifier;
 
         /// </summary>
         /// ???
-        /// <summary>
+        /// </summary>
         private int virtualHeight = 64;
 
         /// </summary>
         /// ???
-        /// <summary>
+        /// </summary>
         private int virtualWidth = 64;
 
         /// </summary>
         /// Indicates if the control is visible or not.
-        /// <summary>
+        /// </summary>
         private bool visible = true;
 
         /// </summary>
         /// Width of the control.
-        /// <summary>
+        /// </summary>
         private int width = 64;
 
         public Control(Manager manager) : base(manager)
@@ -1398,7 +1398,7 @@ namespace MonoForce.Controls
         /// <param name="control">Child control to add to the list.</param>
         /// </summary>
         /// Adds the specified control as a child to this control.
-        /// <summary>
+        /// </summary>
         public virtual void Add(Control control)
         {
 // Valid control received?
@@ -1435,22 +1435,22 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Occurs when the transparency of the control changes.
-        /// <summary>
+        /// </summary>
         public event EventHandler AlphaChanged;
 
         /// </summary>
         /// Occurs when the control's anchor values change.
-        /// <summary>
+        /// </summary>
         public event EventHandler AnchorChanged;
 
         /// </summary>
         /// Occurs when the color of the control's background changes.
-        /// <summary>
+        /// </summary>
         public event EventHandler BackColorChanged;
 
         /// </summary>
         /// Brings the control to the front-most Z-order.
-        /// <summary>
+        /// </summary>
         public virtual void BringToFront()
         {
             if (Manager != null) Manager.BringToFront(this);
@@ -1458,12 +1458,12 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Occurs when the control is clicked.
-        /// <summary>
+        /// </summary>
         public event EventHandler Click;
 
         /// </summary>
         /// Occurs when the color of the control changes.
-        /// <summary>
+        /// </summary>
         public event EventHandler ColorChanged;
 
         /// <returns>Returns true if the specified control is a child of this control.</returns>
@@ -1474,7 +1474,7 @@ namespace MonoForce.Controls
         /// <param name="control">Control to search for in the child control collection.</param>
         /// </summary>
         /// Determines if the specified control is a child or descendant of this control.
-        /// <summary>
+        /// </summary>
         public virtual bool Contains(Control control, bool recursively)
         {
             if (Controls != null)
@@ -1491,54 +1491,54 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Occurs when the control is double clicked.
-        /// <summary>
+        /// </summary>
         public event EventHandler DoubleClick;
 
         /// </summary>
         /// Occurs when the control needs to draw.
-        /// <summary>
+        /// </summary>
         public event DrawEventHandler Draw;
 
         /// </summary>
         /// Occurs when the control needs to draw itself.
-        /// <summary>
+        /// </summary>
         public event DrawEventHandler DrawTexture;
 
         /// </summary>
         /// Occurs when the control's enabled value changes.
-        /// <summary>
+        /// </summary>
         public event EventHandler EnabledChanged;
 
         /// </summary>
         /// Occurs when the control gains input focus.
-        /// <summary>
+        /// </summary>
         public event EventHandler FocusGained;
 
         /// </summary>
         /// Occurs when the control loses input focus.
-        /// <summary>
+        /// </summary>
         public event EventHandler FocusLost;
 
         /// </summary>
         /// Occurs when a gamepad button is initially pressed.
-        /// <summary>
+        /// </summary>
         public event GamePadEventHandler GamePadDown;
 
         /// </summary>
         /// Occurs after a GamePadDown event and fires repeated press events when a button is held down.
-        /// <summary>
+        /// </summary>
         public event GamePadEventHandler GamePadPress;
 
         /// </summary>
         /// Occurs when a gamepad button is released from the pressed state.
-        /// <summary>
+        /// </summary>
         public event GamePadEventHandler GamePadUp;
 
         /// <returns>Returns the control with the specified name or null if not found.</returns>
         /// <param name="name">Name of the control to search for.</param>
         /// </summary>
         /// Gets a child control by name.
-        /// <summary>
+        /// </summary>
         public virtual Control GetControl(string name)
         {
             Control ret = null;
@@ -1561,7 +1561,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Hides the control from rendering.
-        /// <summary>
+        /// </summary>
         public virtual void Hide()
         {
             Visible = false;
@@ -1569,7 +1569,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Initializes the control.
-        /// <summary>
+        /// </summary>
         public override void Init()
         {
             base.Init();
@@ -1580,7 +1580,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Invalidates the control and parent controls forcing a redraw.
-        /// <summary>
+        /// </summary>
         public virtual void Invalidate()
         {
             invalidated = true;
@@ -1593,77 +1593,77 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Occurs when a key is initially pressed down.
-        /// <summary>
+        /// </summary>
         public event KeyEventHandler KeyDown;
 
         /// </summary>
         /// Occurs just after a KeyDown event.
-        /// <summary>
+        /// </summary>
         public event KeyEventHandler KeyPress;
 
         /// </summary>
         /// Occurs when a key is released from the pressed state.
-        /// <summary>
+        /// </summary>
         public event KeyEventHandler KeyUp;
 
         /// </summary>
         /// Occurs when the control receives a mouse button down event.
-        /// <summary>
+        /// </summary>
         public event MouseEventHandler MouseDown;
 
         /// </summary>
         /// Occurs when the mouse position changes.
-        /// <summary>
+        /// </summary>
         public event MouseEventHandler MouseMove;
 
         /// </summary>
         /// Occurs when the mouse cursor leaves the boundaries of the control.
-        /// <summary>
+        /// </summary>
         public event MouseEventHandler MouseOut;
 
         /// </summary>
         /// Occurs when the mouse cursor is hovering over the controls.
-        /// <summary>
+        /// </summary>
         public event MouseEventHandler MouseOver;
 
         /// </summary>
         /// Occurs right after a MouseDown event and fires repeatedly with a delay.
-        /// <summary>
+        /// </summary>
         public event MouseEventHandler MousePress;
 
         /// </summary>
         /// Occurs when the mouse scroll wheel position changes
-        /// <summary>
+        /// </summary>
         public event MouseEventHandler MouseScroll;
 
         /// </summary>
         /// Occurs when the control receives a mouse button up event.
-        /// <summary>
+        /// </summary>
         public event MouseEventHandler MouseUp;
 
         /// </summary>
         /// Occurs when the control is moving.
-        /// <summary>
+        /// </summary>
         public event MoveEventHandler Move;
 
         /// </summary>
         /// Occurs at the start of a move event.
-        /// <summary>
+        /// </summary>
         public event EventHandler MoveBegin;
 
         /// </summary>
         /// Occurs at the end of a move event.
-        /// <summary>
+        /// </summary>
         public event EventHandler MoveEnd;
 
         /// </summary>
         /// Occurs when the value of the control's parent changes.
-        /// <summary>
+        /// </summary>
         public event EventHandler ParentChanged;
 
         /// </summary>
         /// Refreshes the control.
-        /// <summary>
+        /// </summary>
         public virtual void Refresh()
         {
             OnMove(new MoveEventArgs(left, top, left, top));
@@ -1696,29 +1696,29 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Occurs when the control is resized.
-        /// <summary>
+        /// </summary>
         public event ResizeEventHandler Resize;
 
         /// </summary>
         /// Occurs at the start of a resize event.
-        /// <summary>
+        /// </summary>
         public event EventHandler ResizeBegin;
 
         /// </summary>
         /// Occurs at the end of a resize event.
-        /// <summary>
+        /// </summary>
         public event EventHandler ResizeEnd;
 
         /// </summary>
         /// Occurs when the value of the control's root changes.
-        /// <summary>
+        /// </summary>
         public event EventHandler RootChanged;
 
         /// <param name="e">Event arguments for the message.</param>
         /// <param name="message">Message to send to the control.</param>
         /// </summary>
         /// Sends an event message to the control.
-        /// <summary>
+        /// </summary>
         public virtual void SendMessage(Message message, EventArgs e)
         {
             MessageProcess(message, e);
@@ -1726,7 +1726,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Sends the control to the back of the Z-order.
-        /// <summary>
+        /// </summary>
         public virtual void SendToBack()
         {
             if (Manager != null) Manager.SendToBack(this);
@@ -1736,7 +1736,7 @@ namespace MonoForce.Controls
         /// <param name="left">X position of the control.</param>
         /// </summary>
         /// Sets the position of the control to the specified values.
-        /// <summary>
+        /// </summary>
         public virtual void SetPosition(int left, int top)
         {
             this.left = left;
@@ -1747,7 +1747,7 @@ namespace MonoForce.Controls
         /// <param name="width">Width of the control.</param>
         /// </summary>
         /// Sets the size of the control to the specified dimensions.
-        /// <summary>
+        /// </summary>
         public virtual void SetSize(int width, int height)
         {
             this.width = width;
@@ -1756,7 +1756,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Makes the control visible.
-        /// <summary>
+        /// </summary>
         public virtual void Show()
         {
             Visible = true;
@@ -1764,44 +1764,44 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Occurs when the control's skin has changed.
-        /// <summary>
+        /// </summary>
         public event EventHandler SkinChanged;
 
         /// </summary>
         /// Occurs when the control's skin is changing.
-        /// <summary>
+        /// </summary>
         public event EventHandler SkinChanging;
 
         /// </summary>
         /// Occurs when the text of the control changes.
-        /// <summary>
+        /// </summary>
         public event EventHandler TextChanged;
 
         /// </summary>
         /// Occurs when the color of the control's text changes.
-        /// <summary>
+        /// </summary>
         public event EventHandler TextColorChanged;
 
         /// </summary>
         /// Occurs just before a move event is finalized.
-        /// <summary>
+        /// </summary>
         public event MoveEventHandler ValidateMove;
 
         /// </summary>
         /// Occurs just before a resize event is finalized.
-        /// <summary>
+        /// </summary>
         public event ResizeEventHandler ValidateResize;
 
         /// </summary>
         /// Occurs when the visibility of the control changes.
-        /// <summary>
+        /// </summary>
         public event EventHandler VisibleChanged;
 
         /// <param name="layer">Layer of the skin to check the existance of.</param>
         /// <param name="skin">Skin to check the layers of.</param>
         /// </summary>
         /// Makes sure the specified skin and layer are actually defined.
-        /// <summary>
+        /// </summary>
         protected internal virtual void CheckLayer(SkinControl skin, string layer)
         {
             if (!(skin != null && skin.Layers != null && skin.Layers.Count > 0 && skin.Layers[layer] != null))
@@ -1815,7 +1815,7 @@ namespace MonoForce.Controls
         /// <param name="skin">Skin to check the layers of.</param>
         /// </summary>
         /// Makes sure the specified skin and layer are actually defined.
-        /// <summary>
+        /// </summary>
         protected internal virtual void CheckLayer(SkinControl skin, int layer)
         {
             if (!(skin != null && skin.Layers != null && skin.Layers.Count > 0 && skin.Layers[layer] != null))
@@ -1827,7 +1827,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Initializes the control's skin.
-        /// <summary>
+        /// </summary>
         protected internal virtual void InitSkin()
         {
             if (Manager != null && Manager.Skin != null && Manager.Skin.Controls != null)
@@ -1846,7 +1846,7 @@ namespace MonoForce.Controls
         /// <param name="e"></param>
         /// </summary>
         /// Handler for when the graphics device's settings change.
-        /// <summary>
+        /// </summary>
         protected internal void OnDeviceSettingsChanged(DeviceEventArgs e)
         {
             if (!e.Handled)
@@ -1858,7 +1858,7 @@ namespace MonoForce.Controls
         /// <param name="e"></param>
         /// </summary>
         /// Handles draw events for the control.
-        /// <summary>
+        /// </summary>
         protected internal void OnDraw(DrawEventArgs e)
         {
             if (Draw != null) Draw.Invoke(this, e);
@@ -1867,7 +1867,7 @@ namespace MonoForce.Controls
         /// <param name="e"></param>
         /// </summary>
         /// Handles skin changed events for the control.
-        /// <summary>
+        /// </summary>
         protected internal virtual void OnSkinChanged(EventArgs e)
         {
             if (SkinChanged != null) SkinChanged.Invoke(this, e);
@@ -1876,7 +1876,7 @@ namespace MonoForce.Controls
         /// <param name="e"></param>
         /// </summary>
         /// Handles skin changing events for the control.
-        /// <summary>
+        /// </summary>
         protected internal virtual void OnSkinChanging(EventArgs e)
         {
             if (SkinChanging != null) SkinChanging.Invoke(this, e);
@@ -1895,7 +1895,7 @@ namespace MonoForce.Controls
                 /// <param name="gameTime">Snapshot of the application's timing values.</param>
                 /// </summary>
                 /// Updates the control.
-                /// <summary>
+                /// </summary>
                 var list = new ControlsList();
                 list.AddRange(controls);
                 foreach (var c in list)
@@ -1908,7 +1908,7 @@ namespace MonoForce.Controls
         /// <param name="disposing"></param>
         /// </summary>
         /// Releases resources used by the control and removes itself from parent and manager control lists.
-        /// <summary>
+        /// </summary>
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -1975,7 +1975,7 @@ namespace MonoForce.Controls
         /// <param name="message">Event message to process.</param>
         /// </summary>
         /// Processes message events for the control.
-        /// <summary>
+        /// </summary>
         protected virtual void MessageProcess(Message message, EventArgs e)
         {
             switch (message)
@@ -2056,7 +2056,7 @@ namespace MonoForce.Controls
         /// <param name="e"></param>
         /// </summary>
         /// Handles changes in the alpha value of the control.
-        /// <summary>
+        /// </summary>
         protected virtual void OnAlphaChanged(EventArgs e)
         {
             if (AlphaChanged != null) AlphaChanged.Invoke(this, e);
@@ -2065,7 +2065,7 @@ namespace MonoForce.Controls
         /// <param name="e"></param>
         /// </summary>
         /// Handles changes of the control's anchor points.
-        /// <summary>
+        /// </summary>
         protected virtual void OnAnchorChanged(EventArgs e)
         {
             if (AnchorChanged != null) AnchorChanged.Invoke(this, e);
@@ -2074,7 +2074,7 @@ namespace MonoForce.Controls
         /// <param name="e"></param>
         /// </summary>
         /// Handles changes of the control's background color.
-        /// <summary>
+        /// </summary>
         protected virtual void OnBackColorChanged(EventArgs e)
         {
             if (BackColorChanged != null) BackColorChanged.Invoke(this, e);
@@ -2083,7 +2083,7 @@ namespace MonoForce.Controls
         /// <param name="e"></param>
         /// </summary>
         /// Handles mouse click events for the control.
-        /// <summary>
+        /// </summary>
         protected virtual void OnClick(EventArgs e)
         {
             if (Click != null) Click.Invoke(this, e);
@@ -2092,7 +2092,7 @@ namespace MonoForce.Controls
         /// <param name="e"></param>
         /// </summary>
         /// Handles color change events for the control.
-        /// <summary>
+        /// </summary>
         protected virtual void OnColorChanged(EventArgs e)
         {
             if (ColorChanged != null) ColorChanged.Invoke(this, e);
@@ -2101,7 +2101,7 @@ namespace MonoForce.Controls
         /// <param name="e"></param>
         /// </summary>
         /// Handles double click events for the control.
-        /// <summary>
+        /// </summary>
         protected virtual void OnDoubleClick(EventArgs e)
         {
             if (DoubleClick != null) DoubleClick.Invoke(this, e);
@@ -2110,7 +2110,7 @@ namespace MonoForce.Controls
         /// <param name="e"></param>
         /// </summary>
         /// Handles draw texture events for the control. (Drawing to the control's render target.)
-        /// <summary>
+        /// </summary>
         protected void OnDrawTexture(DrawEventArgs e)
         {
             if (DrawTexture != null) DrawTexture.Invoke(this, e);
@@ -2119,7 +2119,7 @@ namespace MonoForce.Controls
         /// <param name="e"></param>
         /// </summary>
         /// Handles changes in the enabled value of the control.
-        /// <summary>
+        /// </summary>
         protected virtual void OnEnabledChanged(EventArgs e)
         {
             if (EnabledChanged != null) EnabledChanged.Invoke(this, e);
@@ -2128,7 +2128,7 @@ namespace MonoForce.Controls
         /// <param name="e"></param>
         /// </summary>
         /// Handles focus gained events for the control.
-        /// <summary>
+        /// </summary>
         protected virtual void OnFocusGained(EventArgs e)
         {
             if (FocusGained != null) FocusGained.Invoke(this, e);
@@ -2137,7 +2137,7 @@ namespace MonoForce.Controls
         /// <param name="e"></param>
         /// </summary>
         /// Handles focus lost events for the control.
-        /// <summary>
+        /// </summary>
         protected virtual void OnFocusLost(EventArgs e)
         {
             if (FocusLost != null) FocusLost.Invoke(this, e);
@@ -2146,7 +2146,7 @@ namespace MonoForce.Controls
         /// <param name="e"></param>
         /// </summary>
         /// Handles gamepad button down events for the control.
-        /// <summary>
+        /// </summary>
         protected virtual void OnGamePadDown(GamePadEventArgs e)
         {
             if (GamePadDown != null) GamePadDown.Invoke(this, e);
@@ -2155,7 +2155,7 @@ namespace MonoForce.Controls
         /// <param name="e"></param>
         /// </summary>
         /// Handle gamepad button press events for the control.
-        /// <summary>
+        /// </summary>
         protected virtual void OnGamePadPress(GamePadEventArgs e)
         {
             if (GamePadPress != null) GamePadPress.Invoke(this, e);
@@ -2164,7 +2164,7 @@ namespace MonoForce.Controls
         /// <param name="e"></param>
         /// </summary>
         /// Handles gamepad button up events for the control.
-        /// <summary>
+        /// </summary>
         protected virtual void OnGamePadUp(GamePadEventArgs e)
         {
             if (GamePadUp != null) GamePadUp.Invoke(this, e);
@@ -2173,7 +2173,7 @@ namespace MonoForce.Controls
         /// <param name="e"></param>
         /// </summary>
         /// Handles key down events for the control.
-        /// <summary>
+        /// </summary>
         protected virtual void OnKeyDown(KeyEventArgs e)
         {
             if (KeyDown != null) KeyDown.Invoke(this, e);
@@ -2182,7 +2182,7 @@ namespace MonoForce.Controls
         /// <param name="e"></param>
         /// </summary>
         /// Handles key press events for the control.
-        /// <summary>
+        /// </summary>
         protected virtual void OnKeyPress(KeyEventArgs e)
         {
             if (KeyPress != null) KeyPress.Invoke(this, e);
@@ -2191,7 +2191,7 @@ namespace MonoForce.Controls
         /// <param name="e"></param>
         /// </summary>
         /// Handles key up events for the control.
-        /// <summary>
+        /// </summary>
         protected virtual void OnKeyUp(KeyEventArgs e)
         {
             if (KeyUp != null) KeyUp.Invoke(this, e);
@@ -2200,7 +2200,7 @@ namespace MonoForce.Controls
         /// <param name="e"></param>
         /// </summary>
         /// Handles mouse button down events for the control.
-        /// <summary>
+        /// </summary>
         protected virtual void OnMouseDown(MouseEventArgs e)
         {
             if (MouseDown != null) MouseDown.Invoke(this, e);
@@ -2209,7 +2209,7 @@ namespace MonoForce.Controls
         /// <param name="e"></param>
         /// </summary>
         /// Handles mouse move events for the control.
-        /// <summary>
+        /// </summary>
         protected virtual void OnMouseMove(MouseEventArgs e)
         {
             if (MouseMove != null) MouseMove.Invoke(this, e);
@@ -2218,7 +2218,7 @@ namespace MonoForce.Controls
         /// <param name="e"></param>
         /// </summary>
         /// Handle mouse out events for the control.
-        /// <summary>
+        /// </summary>
         protected virtual void OnMouseOut(MouseEventArgs e)
         {
             if (MouseOut != null) MouseOut.Invoke(this, e);
@@ -2227,7 +2227,7 @@ namespace MonoForce.Controls
         /// <param name="e"></param>
         /// </summary>
         /// Handles mouse over events for the control.
-        /// <summary>
+        /// </summary>
         protected virtual void OnMouseOver(MouseEventArgs e)
         {
             if (MouseOver != null) MouseOver.Invoke(this, e);
@@ -2236,7 +2236,7 @@ namespace MonoForce.Controls
         /// <param name="e"></param>
         /// </summary>
         /// Handles mouse press events for the control.
-        /// <summary>
+        /// </summary>
         protected virtual void OnMousePress(MouseEventArgs e)
         {
             if (MousePress != null) MousePress.Invoke(this, e);
@@ -2250,7 +2250,7 @@ namespace MonoForce.Controls
         /// <param name="e"></param>
         /// </summary>
         /// Handles mouse button up events for the control.
-        /// <summary>
+        /// </summary>
         protected virtual void OnMouseUp(MouseEventArgs e)
         {
             if (MouseUp != null) MouseUp.Invoke(this, e);
@@ -2259,7 +2259,7 @@ namespace MonoForce.Controls
         /// <param name="e"></param>
         /// </summary>
         /// Handles move events for the control.
-        /// <summary>
+        /// </summary>
         protected virtual void OnMove(MoveEventArgs e)
         {
             if (parent != null) parent.Invalidate();
@@ -2269,7 +2269,7 @@ namespace MonoForce.Controls
         /// <param name="e"></param>
         /// </summary>
         /// Handler for when a move operation begins.
-        /// <summary>
+        /// </summary>
         protected virtual void OnMoveBegin(EventArgs e)
         {
             if (MoveBegin != null) MoveBegin.Invoke(this, e);
@@ -2278,7 +2278,7 @@ namespace MonoForce.Controls
         /// <param name="e"></param>
         /// </summary>
         /// Handler for when a move operation has finished.
-        /// <summary>
+        /// </summary>
         protected virtual void OnMoveEnd(EventArgs e)
         {
             if (MoveEnd != null) MoveEnd.Invoke(this, e);
@@ -2287,7 +2287,7 @@ namespace MonoForce.Controls
         /// <param name="e"></param>
         /// </summary>
         /// Handles changes of the control's parent.
-        /// <summary>
+        /// </summary>
         protected virtual void OnParentChanged(EventArgs e)
         {
             if (ParentChanged != null) ParentChanged.Invoke(this, e);
@@ -2297,7 +2297,7 @@ namespace MonoForce.Controls
         /// <param name="sender"></param>
         /// </summary>
         /// Handles changes in the parent control's size for the control.
-        /// <summary>
+        /// </summary>
         protected virtual void OnParentResize(object sender, ResizeEventArgs e)
         {
             ProcessAnchor(e);
@@ -2306,7 +2306,7 @@ namespace MonoForce.Controls
         /// <param name="e"></param>
         /// </summary>
         /// Handles resize events for the control.
-        /// <summary>
+        /// </summary>
         protected virtual void OnResize(ResizeEventArgs e)
         {
             Invalidate();
@@ -2316,7 +2316,7 @@ namespace MonoForce.Controls
         /// <param name="e"></param>
         /// </summary>
         /// Handler used when a resize operation has begun.
-        /// <summary>
+        /// </summary>
         protected virtual void OnResizeBegin(EventArgs e)
         {
             if (ResizeBegin != null) ResizeBegin.Invoke(this, e);
@@ -2325,7 +2325,7 @@ namespace MonoForce.Controls
         /// <param name="e"></param>
         /// </summary>
         /// Handler used when a resize operation has completed.
-        /// <summary>
+        /// </summary>
         protected virtual void OnResizeEnd(EventArgs e)
         {
             if (ResizeEnd != null) ResizeEnd.Invoke(this, e);
@@ -2334,7 +2334,7 @@ namespace MonoForce.Controls
         /// <param name="e"></param>
         /// </summary>
         /// Handles changes of the root control of the control.
-        /// <summary>
+        /// </summary>
         protected virtual void OnRootChanged(EventArgs e)
         {
             if (RootChanged != null) RootChanged.Invoke(this, e);
@@ -2343,7 +2343,7 @@ namespace MonoForce.Controls
         /// <param name="e"></param>
         /// </summary>
         /// Handles changes of the control's text.
-        /// <summary>
+        /// </summary>
         protected virtual void OnTextChanged(EventArgs e)
         {
             if (TextChanged != null) TextChanged.Invoke(this, e);
@@ -2352,7 +2352,7 @@ namespace MonoForce.Controls
         /// <param name="e"></param>
         /// </summary>
         /// Handles changes of the control's text color.
-        /// <summary>
+        /// </summary>
         protected virtual void OnTextColorChanged(EventArgs e)
         {
             if (TextColorChanged != null) TextColorChanged.Invoke(this, e);
@@ -2361,7 +2361,7 @@ namespace MonoForce.Controls
         /// <param name="e"></param>
         /// </summary>
         /// Handles validation of new positions after a move event takes place.
-        /// <summary>
+        /// </summary>
         protected virtual void OnValidateMove(MoveEventArgs e)
         {
             if (ValidateMove != null) ValidateMove.Invoke(this, e);
@@ -2370,7 +2370,7 @@ namespace MonoForce.Controls
         /// <param name="e"></param>
         /// </summary>
         /// Handles validation of new sizes after a move event takes place.
-        /// <summary>
+        /// </summary>
         protected virtual void OnValidateResize(ResizeEventArgs e)
         {
             if (ValidateResize != null) ValidateResize.Invoke(this, e);
@@ -2379,7 +2379,7 @@ namespace MonoForce.Controls
         /// <param name="e"></param>
         /// </summary>
         /// Handles changes in the visibility of the control.
-        /// <summary>
+        /// </summary>
         protected virtual void OnVisibleChanged(EventArgs e)
         {
             if (VisibleChanged != null) VisibleChanged.Invoke(this, e);
@@ -2393,7 +2393,7 @@ namespace MonoForce.Controls
         /// <param name="width">Default width of the control.</param>
         /// </summary>
         /// Sets the default size of the control.
-        /// <summary>
+        /// </summary>
         protected virtual void SetDefaultSize(int width, int height)
         {
             if (skin.DefaultSize.Width > 0) Width = skin.DefaultSize.Width;
@@ -2410,7 +2410,7 @@ namespace MonoForce.Controls
         /// <param name="minimumWidth">Minimum width of the control.</param>
         /// </summary>
         /// Sets the minimum size of the control.
-        /// <summary>
+        /// </summary>
         protected virtual void SetMinimumSize(int minimumWidth, int minimumHeight)
         {
             if (skin.MinimumSize.Width > 0) MinimumWidth = skin.MinimumSize.Width;
@@ -2433,7 +2433,7 @@ namespace MonoForce.Controls
         /// <param name="renderer">Render management object.</param>
         /// </summary>
         /// Draws the control on the render target.
-        /// <summary>
+        /// </summary>
         internal virtual void PrepareTexture(Renderer renderer, GameTime gameTime)
         {
             if (visible)
@@ -2487,7 +2487,7 @@ namespace MonoForce.Controls
         /// <param name="gameTime"></param>
         /// <param name="renderer"></param>
         /// </summary>
-        /// <summary>
+        /// </summary>
         internal virtual void Render(Renderer renderer, GameTime gameTime)
         {
             if (visible && target != null)
@@ -2509,7 +2509,7 @@ namespace MonoForce.Controls
         }
 
         /// </summary>
-        /// <summary>
+        /// </summary>
         internal void SetAnchorMargins()
         {
             if (Parent != null)
@@ -2530,7 +2530,7 @@ namespace MonoForce.Controls
         /// <param name="c">Control to check.</param>
         /// </summary>
         /// Determines if the control is detached.
-        /// <summary>
+        /// </summary>
         private bool CheckDetached(Control c)
         {
             var parent = c.Parent;
@@ -2551,7 +2551,7 @@ namespace MonoForce.Controls
         /// <returns></returns>
         /// <param name="h"></param>
         /// </summary>
-        /// <summary>
+        /// </summary>
         private int CheckHeight(ref int h)
         {
             var diff = 0;
@@ -2573,7 +2573,7 @@ namespace MonoForce.Controls
         /// <returns></returns>
         /// <param name="pos"></param>
         /// </summary>
-        /// <summary>
+        /// </summary>
         private bool CheckMovableArea(Point pos)
         {
             if (movable)
@@ -2603,7 +2603,7 @@ namespace MonoForce.Controls
         /// <param name="pos">Position to test.</param>
         /// </summary>
         /// Determines if the specified point is within the bounds of the control.
-        /// <summary>
+        /// </summary>
         private bool CheckPosition(Point pos)
         {
             if ((pos.X >= AbsoluteLeft) && (pos.X < AbsoluteLeft + Width))
@@ -2619,7 +2619,7 @@ namespace MonoForce.Controls
         /// <returns></returns>
         /// <param name="pos"></param>
         /// </summary>
-        /// <summary>
+        /// </summary>
         private bool CheckResizableArea(Point pos)
         {
             if (resizable)
@@ -2641,7 +2641,7 @@ namespace MonoForce.Controls
         /// <returns></returns>
         /// <param name="w"></param>
         /// </summary>
-        /// <summary>
+        /// </summary>
         private int CheckWidth(ref int w)
         {
             var diff = 0;
@@ -2663,7 +2663,7 @@ namespace MonoForce.Controls
         /// <param name="e"></param>
         /// </summary>
         /// Processes mouse button click events for the control.
-        /// <summary>
+        /// </summary>
         private void ClickProcess(EventArgs e)
         {
             var timer = (long)TimeSpan.FromTicks(DateTime.Now.Ticks).TotalMilliseconds;
@@ -2702,7 +2702,7 @@ namespace MonoForce.Controls
         /// <param name="width">Width of the render target.</param>
         /// </summary>
         /// Creates the render target for the control.
-        /// <summary>
+        /// </summary>
         private RenderTarget2D CreateRenderTarget(int width, int height)
         {
             if (width > 0 && height > 0)
@@ -2766,7 +2766,7 @@ namespace MonoForce.Controls
         /// <param name="rect"></param>
         /// <param name="renderer"></param>
         /// </summary>
-        /// <summary>
+        /// </summary>
         private void DrawControls(Renderer renderer, Rectangle rect, GameTime gameTime, bool firstDetach)
         {
             renderer.Begin(BlendingMode.Default);
@@ -2789,7 +2789,7 @@ namespace MonoForce.Controls
         /// <param name="renderer"></param>
         /// <param name="control"></param>
         /// </summary>
-        /// <summary>
+        /// </summary>
         private void DrawDetached(Control control, Renderer renderer, GameTime gameTime)
         {
             if (control.Controls != null)
@@ -2808,7 +2808,7 @@ namespace MonoForce.Controls
         /// <param name="child"></param>
         /// <param name="renderer"></param>
         /// </summary>
-        /// <summary>
+        /// </summary>
         private void DrawOutline(Renderer renderer, bool child)
         {
             if (!OutlineRect.IsEmpty)
@@ -2868,7 +2868,7 @@ namespace MonoForce.Controls
         /// <param name="e"></param>
         /// </summary>
         /// Processes gamepad button down events for the control.
-        /// <summary>
+        /// </summary>
         private void GamePadDownProcess(GamePadEventArgs e)
         {
             Invalidate();
@@ -2887,7 +2887,7 @@ namespace MonoForce.Controls
         /// <param name="e"></param>
         /// </summary>
         /// Processes gamepad button press events for the control.
-        /// <summary>
+        /// </summary>
         private void GamePadPressProcess(GamePadEventArgs e)
         {
             Invalidate();
@@ -2897,7 +2897,7 @@ namespace MonoForce.Controls
         /// <param name="e"></param>
         /// </summary>
         /// Processes gamepad button up events for the control.
-        /// <summary>
+        /// </summary>
         private void GamePadUpProcess(GamePadEventArgs e)
         {
             Invalidate();
@@ -2925,7 +2925,7 @@ namespace MonoForce.Controls
         /// <param name="c">Control to get the clip rectangle of.</param>
         /// </summary>
         /// Gets the controls clipping region.
-        /// <summary>
+        /// </summary>
         private Rectangle GetClippingRect(Control c)
         {
             var r = Rectangle.Empty;
@@ -2982,7 +2982,7 @@ namespace MonoForce.Controls
 #if (!XBOX && !XBOX_FAKE)
         /// <returns></returns>
         /// </summary>
-        /// <summary>
+        /// </summary>
         private Cursor GetResizeCursor()
         {
             var cur = Cursor;
@@ -3045,7 +3045,7 @@ namespace MonoForce.Controls
 
         /// <param name="e"></param>
         /// </summary>
-        /// <summary>
+        /// </summary>
         private void GetResizePosition(MouseEventArgs e)
         {
             var x = e.Position.X - AbsoluteLeft;
@@ -3080,7 +3080,7 @@ namespace MonoForce.Controls
         /// <returns></returns>
         /// </summary>
         /// Gets the virtual height of the control. (Total scrollable height of the client area, not just the region being displayed.)
-        /// <summary>
+        /// </summary>
         private int GetVirtualHeight()
         {
 // Control may have scroll bars?
@@ -3110,7 +3110,7 @@ namespace MonoForce.Controls
         /// <returns></returns>
         /// </summary>
         /// Gets the virtual width of the control. (Total scrollable width of the client area, not just the region being displayed.)
-        /// <summary>
+        /// </summary>
         private int GetVirtualWidth()
         {
 // Control may have scroll bars?
@@ -3139,7 +3139,7 @@ namespace MonoForce.Controls
         /// <param name="e"></param>
         /// </summary>
         /// Handles key down events for the control.
-        /// <summary>
+        /// </summary>
         private void KeyDownProcess(KeyEventArgs e)
         {
             Invalidate();
@@ -3158,7 +3158,7 @@ namespace MonoForce.Controls
         /// <param name="e"></param>
         /// </summary>
         /// Processes key press events for the control.
-        /// <summary>
+        /// </summary>
         private void KeyPressProcess(KeyEventArgs e)
         {
             Invalidate();
@@ -3168,7 +3168,7 @@ namespace MonoForce.Controls
         /// <param name="e"></param>
         /// </summary>
         /// Handles key up events for the control.
-        /// <summary>
+        /// </summary>
         private void KeyUpProcess(KeyEventArgs e)
         {
             Invalidate();
@@ -3193,7 +3193,7 @@ namespace MonoForce.Controls
         /// <param name="e"></param>
         /// </summary>
         /// Processes mouse button down events for the control.
-        /// <summary>
+        /// </summary>
         private void MouseDownProcess(MouseEventArgs e)
         {
             Invalidate();
@@ -3230,7 +3230,7 @@ namespace MonoForce.Controls
         /// <param name="e"></param>
         /// </summary>
         /// Processes mouse move events for the control.
-        /// <summary>
+        /// </summary>
         private void MouseMoveProcess(MouseEventArgs e)
         {
             if (CheckPosition(e.Position) && !inside)
@@ -3285,7 +3285,7 @@ namespace MonoForce.Controls
         /// <param name="e"></param>
         /// </summary>
         /// Processes mouse out events for the control.
-        /// <summary>
+        /// </summary>
         private void MouseOutProcess(MouseEventArgs e)
         {
             Invalidate();
@@ -3302,7 +3302,7 @@ namespace MonoForce.Controls
         /// <param name="e"></param>
         /// </summary>
         /// Processes mouse over events for the control.
-        /// <summary>
+        /// </summary>
         private void MouseOverProcess(MouseEventArgs e)
         {
             Invalidate();
@@ -3319,7 +3319,7 @@ namespace MonoForce.Controls
         /// <param name="e"></param>
         /// </summary>
         /// Processes mouse button press events for the control.
-        /// <summary>
+        /// </summary>
         private void MousePressProcess(MouseEventArgs e)
         {
             if (pressed[(int)e.Button] && !IsMoving && !IsResizing)
@@ -3339,7 +3339,7 @@ namespace MonoForce.Controls
         /// <param name="e"></param>
         /// </summary>
         /// Processes mouse button up events for the control.
-        /// <summary>
+        /// </summary>
         private void MouseUpProcess(MouseEventArgs e)
         {
             Invalidate();
@@ -3380,7 +3380,7 @@ namespace MonoForce.Controls
 
         /// <param name="e"></param>
         /// </summary>
-        /// <summary>
+        /// </summary>
         private void PerformResize(MouseEventArgs e)
         {
             if (resizable && !IsMoving)
@@ -3496,7 +3496,7 @@ namespace MonoForce.Controls
 
         /// <param name="e"></param>
         /// </summary>
-        /// <summary>
+        /// </summary>
         private void ProcessAnchor(ResizeEventArgs e)
         {
             if (((Anchor & Anchors.Right) == Anchors.Right) && ((Anchor & Anchors.Left) != Anchors.Left))

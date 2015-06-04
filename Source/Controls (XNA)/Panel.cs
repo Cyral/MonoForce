@@ -4,9 +4,9 @@ namespace MonoForce.Controls
 {
     public class Panel : Container
     {
-        /// </summary>
-        /// Get or set which side(s) of the panel will have a beveled edge.
         /// <summary>
+        /// Get or set which side(s) of the panel will have a beveled edge.
+        /// </summary>
         public BevelBorder BevelBorder
         {
             get { return bevelBorder; }
@@ -22,18 +22,18 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
-        /// Gets or sets the color of the panel's beveled edges.
         /// <summary>
+        /// Gets or sets the color of the panel's beveled edges.
+        /// </summary>
         public virtual Color BevelColor
         {
             get { return bevelColor; }
             set { bevel.Color = bevelColor = value; }
         }
 
-        /// </summary>
-        /// Gets or sets the margin amount between the bevel and the panel's content area.
         /// <summary>
+        /// Gets or sets the margin amount between the bevel and the panel's content area.
+        /// </summary>
         public int BevelMargin
         {
             get { return bevelMargin; }
@@ -48,9 +48,9 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
-        /// Gets or sets the style of beveled edge to use when drawing the panel border.
         /// <summary>
+        /// Gets or sets the style of beveled edge to use when drawing the panel border.
+        /// </summary>
         public BevelStyle BevelStyle
         {
             get { return bevelStyle; }
@@ -65,29 +65,29 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
-        /// Describes the edges of the panel.
         /// <summary>
+        /// Describes the edges of the panel.
+        /// </summary>
         private readonly Bevel bevel;
 
-        /// </summary>
-        /// Specifies which side(s) of the panel container will be drawn with a beveled edge.
         /// <summary>
+        /// Specifies which side(s) of the panel container will be drawn with a beveled edge.
+        /// </summary>
         private BevelBorder bevelBorder = BevelBorder.None;
 
-        /// </summary>
-        /// Color of the panel's bevel.
         /// <summary>
+        /// Color of the panel's bevel.
+        /// </summary>
         private Color bevelColor = Color.Transparent;
 
-        /// </summary>
-        /// Margin between the beveled edge and the panel's content area. ???
         /// <summary>
+        /// Margin between the beveled edge and the panel's content area. ???
+        /// </summary>
         private int bevelMargin;
 
-        /// </summary>
-        /// Describes the style of beveled edge to apply when drawing.
         /// <summary>
+        /// Describes the style of beveled edge to apply when drawing.
+        /// </summary>
         private BevelStyle bevelStyle = BevelStyle.None;
 
         public Panel(Manager manager) : base(manager)
@@ -100,24 +100,24 @@ namespace MonoForce.Controls
             bevel = new Bevel(Manager);
         }
 
-        /// </summary>
-        /// Occurs when the panel's bevel border style has changed.
         /// <summary>
+        /// Occurs when the panel's bevel border style has changed.
+        /// </summary>
         public event EventHandler BevelBorderChanged;
 
-        /// </summary>
-        /// Occurs when the panel's bevel margin has changed.
         /// <summary>
+        /// Occurs when the panel's bevel margin has changed.
+        /// </summary>
         public event EventHandler BevelMarginChanged;
 
-        /// </summary>
-        /// Occurs when the panel's bevel styl has changed.
         /// <summary>
+        /// Occurs when the panel's bevel styl has changed.
+        /// </summary>
         public event EventHandler BevelStyleChanged;
 
-        /// </summary>
-        /// Initializes the Panel control.
         /// <summary>
+        /// Initializes the Panel control.
+        /// </summary>
         public override void Init()
         {
             base.Init();
@@ -136,18 +136,18 @@ namespace MonoForce.Controls
             AdjustMargins();
         }
 
-        /// </summary>
-        /// Initializes the skin of the panel control.
         /// <summary>
+        /// Initializes the skin of the panel control.
+        /// </summary>
         protected internal override void InitSkin()
         {
             base.InitSkin();
             Skin = new SkinControl(Manager.Skin.Controls["Panel"]);
         }
 
-        /// </summary>
-        /// Updates the client area margins of the panel based on style, borders, and skin settings.
         /// <summary>
+        /// Updates the client area margins of the panel based on style, borders, and skin settings.
+        /// </summary>
         protected override void AdjustMargins()
         {
             var l = 0;
@@ -239,27 +239,27 @@ namespace MonoForce.Controls
         }
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Handles bevel border changes for the panel.
         /// <summary>
+        /// Handles bevel border changes for the panel.
+        /// </summary>
         protected virtual void OnBevelBorderChanged(EventArgs e)
         {
             if (BevelBorderChanged != null) BevelBorderChanged.Invoke(this, e);
         }
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Handles bevel margin changes for the panel.
         /// <summary>
+        /// Handles bevel margin changes for the panel.
+        /// </summary>
         protected virtual void OnBevelMarginChanged(EventArgs e)
         {
             if (BevelMarginChanged != null) BevelMarginChanged.Invoke(this, e);
         }
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Handles bevel style changes for the panel.
         /// <summary>
+        /// Handles bevel style changes for the panel.
+        /// </summary>
         protected virtual void OnBevelStyleChanged(EventArgs e)
         {
             if (BevelStyleChanged != null) BevelStyleChanged.Invoke(this, e);

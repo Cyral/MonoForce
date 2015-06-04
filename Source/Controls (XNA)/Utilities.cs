@@ -7,9 +7,9 @@ namespace MonoForce.Controls
     {
         /// <returns>Returns the unqualified name of the specified control.</returns>
         /// <param name="control">Control to get the name of.</param>
-        /// </summary>
-        /// Attempts to return the name of a control.
         /// <summary>
+        /// Attempts to return the name of a control.
+        /// </summary>
         public static string DeriveControlName(Control control)
         {
             if (control != null)
@@ -30,9 +30,9 @@ namespace MonoForce.Controls
 
         /// <returns>Returns the string converted to a BevelStyle object.</returns>
         /// <param name="str">Name of the bevel style value.</param>
-        /// </summary>
-        /// Parses a BevelStyle enumeration defined in XML.
         /// <summary>
+        /// Parses a BevelStyle enumeration defined in XML.
+        /// </summary>
         public static BevelStyle ParseBevelStyle(string str)
         {
             return (BevelStyle)Enum.Parse(typeof (BevelStyle), str, true);
@@ -40,9 +40,9 @@ namespace MonoForce.Controls
 
         /// <returns>Returns the string converted to a Color object.</returns>
         /// <param name="str">";" delimited string of RGBA values.</param>
-        /// </summary>
-        /// Parses a color value defined in XML.
         /// <summary>
+        /// Parses a color value defined in XML.
+        /// </summary>
         public static Color ParseColor(string str)
         {
             var val = str.Split(';');

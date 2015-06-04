@@ -9,43 +9,43 @@ namespace MonoForce.Controls
     /// </remarks>
     /// This class is based on Nick Gravelyn's EasyZip library.
     /// <remarks>
-    /// </summary>
+    /// <summary>
     /// Additionally it is capable of loading assets from a zip file.
     /// content pipeline the same way like <see cref="Microsoft.Xna.Framework.Content.ContentManager" /> does.
     /// Loads managed objects from the binary files produced by the design time
-    /// <summary>
+    /// </summary>
     public class ArchiveManager : ContentManager
     {
-        /// </summary>
-        /// Gets the path to the archive file associated with the manager.
         /// <summary>
+        /// Gets the path to the archive file associated with the manager.
+        /// </summary>
         public virtual string ArchivePath
         {
             get { return archivePath; }
         }
 
-        /// </summary>
-        /// Indicates if an archive file was specified to read from or not. ???
         /// <summary>
+        /// Indicates if an archive file was specified to read from or not. ???
+        /// </summary>
         public bool UseArchive
         {
             get { return useArchive; }
             set { useArchive = value; }
         }
 
-        /// </summary>
-        /// Archive file associated with the archive manager.
         /// <summary>
+        /// Archive file associated with the archive manager.
+        /// </summary>
         private readonly ZipFile archive;
 
-        /// </summary>
-        /// Path to the archive file associated with the archive manager.
         /// <summary>
+        /// Path to the archive file associated with the archive manager.
+        /// </summary>
         private readonly string archivePath;
 
-        /// </summary>
-        /// Indicates if an archive file was specified to read from or not. ???
         /// <summary>
+        /// Indicates if an archive file was specified to read from or not. ???
+        /// </summary>
         private bool useArchive;
 
         public ArchiveManager(IServiceProvider serviceProvider) : this(serviceProvider, null)
@@ -66,9 +66,9 @@ namespace MonoForce.Controls
         /// </returns>
         /// <returns>
         /// Returns an array of asset names contained in the archive.
-        /// </summary>
-        /// Gets the list of all assets contained inside of the archive.
         /// <summary>
+        /// Gets the list of all assets contained inside of the archive.
+        /// </summary>
         public string[] GetAssetNames()
         {
             if (useArchive && archive != null)
@@ -94,9 +94,9 @@ namespace MonoForce.Controls
         /// <returns>
         /// Returns an array of asset names contained in the specified directory.
         /// <param name="path">Directory in the archive to retrieve asset names from.</param>
-        /// </summary>
-        /// Gets the list of all assets contained inside the archive in the specified directory.
         /// <summary>
+        /// Gets the list of all assets contained inside the archive in the specified directory.
+        /// </summary>
         public string[] GetAssetNames(string path)
         {
             if (useArchive && archive != null)
@@ -138,9 +138,9 @@ namespace MonoForce.Controls
 
         /// <returns>Returns an array of all directories under the specified path.</returns>
         /// <param name="path">Directory to start searching from in the archive.</param>
-        /// </summary>
-        /// Gets the list of all directories contained in the archive.
         /// <summary>
+        /// Gets the list of all directories contained in the archive.
+        /// </summary>
         public string[] GetDirectories(string path)
         {
             if (useArchive && archive != null)
@@ -187,9 +187,9 @@ namespace MonoForce.Controls
 
         /// <returns>Returns the opened stream.</returns>
         /// <param name="filename">Name of the file to read.</param>
-        /// </summary>
-        /// Opens a stream for reading the specified file from the archive.
         /// <summary>
+        /// Opens a stream for reading the specified file from the archive.
+        /// </summary>
         public Stream GetFileStream(string filename)
         {
             if (useArchive && archive != null)
@@ -212,9 +212,9 @@ namespace MonoForce.Controls
 
         /// <returns>Returns the opened stream.</returns>
         /// <param name="assetName">Name of the asset to read.</param>
-        /// </summary>
-        /// Opens a stream for reading the specified asset contained inside the archive.
         /// <summary>
+        /// Opens a stream for reading the specified asset contained inside the archive.
+        /// </summary>
         protected override Stream OpenStream(string assetName)
         {
             if (useArchive && archive != null)

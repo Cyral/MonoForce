@@ -34,7 +34,7 @@ namespace MonoForce.Controls
 
     /// </summary>
     /// Defines the input devices a Neoforce Application supports.
-    /// <summary>
+    /// </summary>
     [Flags]
     public enum InputMethods
     {
@@ -54,7 +54,7 @@ namespace MonoForce.Controls
 
     /// </summary>
     /// Identifies a particular button on a mouse.
-    /// <summary>
+    /// </summary>
     public enum MouseButton
     {
         None = 0,
@@ -88,7 +88,7 @@ namespace MonoForce.Controls
 
     /// </summary>
     /// Identifies a particular button on an Xbox 360 gamepad.
-    /// <summary>
+    /// </summary>
     public enum GamePadButton
     {
         None = 0,
@@ -128,7 +128,7 @@ namespace MonoForce.Controls
 
     /// </summary>
     /// Identifies the index of the player who has input focus.
-    /// <summary>
+    /// </summary>
     public enum ActivePlayer
     {
         None = -1,
@@ -155,27 +155,27 @@ namespace MonoForce.Controls
 
     /// </summary>
     /// Stores the thumb stick and trigger values of a gamepad.
-    /// <summary>
+    /// </summary>
     public struct GamePadVectors
     {
         /// </summary>
         /// Left thumb stick axis values.
-        /// <summary>
+        /// </summary>
         public Vector2 LeftStick;
 
         /// </summary>
         /// Left trigger value.
-        /// <summary>
+        /// </summary>
         public float LeftTrigger;
 
         /// </summary>
         /// Right thumb stick axis values.
-        /// <summary>
+        /// </summary>
         public Vector2 RightStick;
 
         /// </summary>
         /// Right trigger value.
-        /// <summary>
+        /// </summary>
         public float RightTrigger;
     }
 
@@ -185,27 +185,27 @@ namespace MonoForce.Controls
 
     /// </summary>
     /// Defines the input offset and ratio to use when rescaling controls in the render target.
-    /// <summary>
+    /// </summary>
     public struct InputOffset
     {
         /// </summary>
         /// Target Width / Actual Screen Width.
-        /// <summary>
+        /// </summary>
         public float RatioX;
 
         /// </summary>
         /// Target Height / Actual Screen Height.
-        /// <summary>
+        /// </summary>
         public float RatioY;
 
         /// </summary>
         /// Mouse position X offset.
-        /// <summary>
+        /// </summary>
         public int X;
 
         /// </summary>
         /// Mouse position Y offset.
-        /// <summary>
+        /// </summary>
         public int Y;
 
 // return;
@@ -218,7 +218,7 @@ namespace MonoForce.Controls
         /// <param name="x">Mouse position X offset.</param>
         /// </summary>
         /// Creates a new instance of the InputOffset class.
-        /// <summary>
+        /// </summary>
         public InputOffset(int x, int y, float rx, float ry)
         {
             X = x;
@@ -260,13 +260,13 @@ namespace MonoForce.Controls
         /// </summary>
         /// will register a repeated press event when held down.
         /// Indicates how much delay (in ms) there will be before a key/button
-        /// <summary>
+        /// </summary>
         private const int RepeatDelay = 500;
 
         /// </summary>
         /// press events after the initial RepeatDelay timer has expired.
         /// Indicates how much delay (in ms) there will be between repeated key/button
-        /// <summary>
+        /// </summary>
         private const int RepeatRate = 50;
 
 // return;
@@ -275,7 +275,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Gets or sets the index of the player who has input focus.
-        /// <summary>
+        /// </summary>
         public virtual ActivePlayer ActivePlayer
         {
             get { return activePlayer; }
@@ -291,7 +291,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Sets or gets input methods allowed for navigation.
-        /// <summary>
+        /// </summary>
         public virtual InputMethods InputMethods
         {
             get { return inputMethods; }
@@ -315,7 +315,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Sets or gets input offset and ratio when rescaling controls in render target.
-        /// <summary>
+        /// </summary>
         public virtual InputOffset InputOffset
         {
             get { return inputOffset; }
@@ -328,12 +328,12 @@ namespace MonoForce.Controls
         /// </summary>
         /// an action.
         /// Indicates how far a thumbstick must be moved from center position to register
-        /// <summary>
+        /// </summary>
         private readonly float ClickThreshold = 0.5f;
 
         /// </summary>
         /// List to track the state and repeat timers of all gamepad buttons.
-        /// <summary>
+        /// </summary>
         private readonly List<InputGamePadButton> gamePadButtons = new List<InputGamePadButton>();
 
 // return;
@@ -342,17 +342,17 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// List to track the state and repeat timers of all keyboard keys.
-        /// <summary>
+        /// </summary>
         private readonly List<InputKey> keys = new List<InputKey>();
 
         /// </summary>
         /// Application's GUI manager.
-        /// <summary>
+        /// </summary>
         private readonly Manager manager;
 
         /// </summary>
         /// List to track the state and repeat timers of all mouse buttons.
-        /// <summary>
+        /// </summary>
         private readonly List<InputMouseButton> mouseButtons = new List<InputMouseButton>();
 
 // return;
@@ -370,33 +370,33 @@ namespace MonoForce.Controls
 #if (!XBOX && !XBOX_FAKE)
         /// </summary>
         /// The focused form of the application when running on Windows.
-        /// <summary>
+        /// </summary>
         private readonly Form window;
 #endif
 
         /// </summary>
         /// Index of the player with input focus over the application.
-        /// <summary>
+        /// </summary>
         private ActivePlayer activePlayer = ActivePlayer.None;
 
         /// </summary>
         /// Current gamepad state.
-        /// <summary>
+        /// </summary>
         private GamePadState gamePadState;
 
         /// </summary>
         /// Specifies what input devices can be used to navigate the application's controls.
-        /// <summary>
+        /// </summary>
         private InputMethods inputMethods = InputMethods.All;
 
         /// </summary>
         /// Input offset and ratio to use when rescaling controls in the render target.
-        /// <summary>
+        /// </summary>
         private InputOffset inputOffset = new InputOffset(0, 0, 1.0f, 1.0f);
 
         /// </summary>
         /// Current mouse state.
-        /// <summary>
+        /// </summary>
         private MouseState mouseState;
 
 // return;
@@ -415,7 +415,7 @@ namespace MonoForce.Controls
         /// <param name="manager">Application's GUI manager.</param>
         /// </summary>
         /// Creates the Input System.
-        /// <summary>
+        /// </summary>
         public InputSystem(Manager manager, InputOffset offset)
         {
             inputOffset = offset;
@@ -441,17 +441,17 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Occurs when a gamepad button enters the pressed state.
-        /// <summary>
+        /// </summary>
         public event GamePadEventHandler GamePadDown;
 
         /// </summary>
         /// Occurs when the values of the gamepad thumb sticks change.
-        /// <summary>
+        /// </summary>
         public event GamePadEventHandler GamePadMove;
 
         /// </summary>
         /// Occurs after a gamepad down event and occurs for repeat button press events.
-        /// <summary>
+        /// </summary>
         public event GamePadEventHandler GamePadPress;
 
 // return;
@@ -460,7 +460,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Occurs when a gamepad button leaves the pressed state.
-        /// <summary>
+        /// </summary>
         public event GamePadEventHandler GamePadUp;
 
 // return;
@@ -477,7 +477,7 @@ namespace MonoForce.Controls
 
         /// </summary>
         /// Initializes the input system.
-        /// <summary>
+        /// </summary>
         public virtual void Initialize()
         {
             keys.Clear();
@@ -574,17 +574,17 @@ gamePadButtons.Add(new InputGamePadButton(GamePadButton.RightStickDown));
 
         /// </summary>
         /// Occurs when a key enters the pressed state.
-        /// <summary>
+        /// </summary>
         public event KeyEventHandler KeyDown;
 
         /// </summary>
         /// Occurs after a key down event and also occurs for repeat key press events.
-        /// <summary>
+        /// </summary>
         public event KeyEventHandler KeyPress;
 
         /// </summary>
         /// Occurs when a key leaves the pressed state.
-        /// <summary>
+        /// </summary>
         public event KeyEventHandler KeyUp;
 
 // return;
@@ -593,27 +593,27 @@ gamePadButtons.Add(new InputGamePadButton(GamePadButton.RightStickDown));
 
         /// </summary>
         /// Occurs when a mouse button enters the pressed state.
-        /// <summary>
+        /// </summary>
         public event MouseEventHandler MouseDown;
 
         /// </summary>
         /// Occurs when the mouse is moved.
-        /// <summary>
+        /// </summary>
         public event MouseEventHandler MouseMove;
 
         /// </summary>
         /// Occurs after a mouse down event and occurs for repeat mouse press events.
-        /// <summary>
+        /// </summary>
         public event MouseEventHandler MousePress;
 
         /// </summary>
         /// Occurs when the mouse is scrolled.
-        /// <summary>
+        /// </summary>
         public event MouseEventHandler MouseScroll;
 
         /// </summary>
         /// Occurs when a mouse button leaves the pressed state.
-        /// <summary>
+        /// </summary>
         public event MouseEventHandler MouseUp;
 
 // return;
@@ -625,7 +625,7 @@ gamePadButtons.Add(new InputGamePadButton(GamePadButton.RightStickDown));
         /// <param name="playerIndex">PlayerIndex of the gamepad to update.</param>
         /// </summary>
         /// Updates the state of the specified gamepad using the supplied arguments.
-        /// <summary>
+        /// </summary>
         public virtual void SendGamePadState(PlayerIndex playerIndex, GamePadState state, GameTime gameTime)
         {
             UpdateGamePad(playerIndex, state, gameTime);
@@ -642,7 +642,7 @@ gamePadButtons.Add(new InputGamePadButton(GamePadButton.RightStickDown));
         /// <param name="state">Keyboard state used to update the current state of the keyboard.</param>
         /// </summary>
         /// Updates the current keyboard state with the supplied arguments.
-        /// <summary>
+        /// </summary>
         public virtual void SendKeyboardState(KeyboardState state, GameTime gameTime)
         {
             UpdateKeys(state, gameTime);
@@ -659,7 +659,7 @@ gamePadButtons.Add(new InputGamePadButton(GamePadButton.RightStickDown));
         /// <param name="state">Mouse state to use to update the current mouse state.</param>
         /// </summary>
         /// Updates the current mouse state using the supplied arguments.
-        /// <summary>
+        /// </summary>
         public virtual void SendMouseState(MouseState state, GameTime gameTime)
         {
             UpdateMouse(state, gameTime);
@@ -675,7 +675,7 @@ gamePadButtons.Add(new InputGamePadButton(GamePadButton.RightStickDown));
         /// <param name="gameTime">Snapshot of the application's timing values.</param>
         /// </summary>
         /// Updates the state of supported input devices.
-        /// <summary>
+        /// </summary>
         public virtual void Update(GameTime gameTime)
         {
 #if (!XBOX && !XBOX_FAKE)
@@ -716,7 +716,7 @@ gamePadButtons.Add(new InputGamePadButton(GamePadButton.RightStickDown));
         /// <param name="e">Mouse event arguments.</param>
         /// </summary>
         /// Adjusts the position of the mouse cursor to keep it within the client region of the window.
-        /// <summary>
+        /// </summary>
         private void AdjustPosition(ref MouseEventArgs e)
         {
             var screen = manager.Game.Window.ClientBounds;
@@ -742,7 +742,7 @@ gamePadButtons.Add(new InputGamePadButton(GamePadButton.RightStickDown));
         /// <param name="state">Current gamepad state to grab stick and trigger values from.</param>
         /// </summary>
         /// Updates the GamePadEventArgs with the specified button, stick and trigger values.
-        /// <summary>
+        /// </summary>
         private void BuildGamePadEvent(GamePadState state, GamePadButton button, ref GamePadEventArgs e)
         {
             e.State = state;
@@ -818,7 +818,7 @@ gamePadButtons.Add(new InputGamePadButton(GamePadButton.RightStickDown));
         /// <param name="button">Left/Right thumbstick direction or trigger button to get the state of.</param>
         /// </summary>
         /// Checks the specified thumbstick or trigger button and returns its ButtonState.
-        /// <summary>
+        /// </summary>
         private ButtonState GetVectorState(GamePadButton button, GamePadState state)
         {
             var ret = ButtonState.Released;
@@ -895,7 +895,7 @@ gamePadButtons.Add(new InputGamePadButton(GamePadButton.RightStickDown));
         /// <param name="pos">Original mouse position.</param>
         /// </summary>
         /// Adjusts the mouse position to account for rescaling on the render target.
-        /// <summary>
+        /// </summary>
         private Point RecalcPosition(Point pos)
         {
             return new Point((int)((pos.X - InputOffset.X) / InputOffset.RatioX),
@@ -914,7 +914,7 @@ gamePadButtons.Add(new InputGamePadButton(GamePadButton.RightStickDown));
         /// <param name="state">Current state of the mouse device.</param>
         /// </summary>
         /// Updates the state of the Mouse buttons.
-        /// <summary>
+        /// </summary>
         private void UpdateButtons(MouseState state, GameTime gameTime)
         {
 #if (!XBOX && !XBOX_FAKE)
@@ -1026,7 +1026,7 @@ gamePadButtons.Add(new InputGamePadButton(GamePadButton.RightStickDown));
         /// </summary>
         /// applicable gamepad events as needed.
         /// Updates the state of the gamepad with the specified player index and raises
-        /// <summary>
+        /// </summary>
         private void UpdateGamePad(PlayerIndex playerIndex, GamePadState state, GameTime gameTime)
         {
             var e = new GamePadEventArgs(playerIndex);
@@ -1165,7 +1165,7 @@ gamePadButtons.Add(new InputGamePadButton(GamePadButton.RightStickDown));
         /// <param name="state">Current keyboard state.</param>
         /// </summary>
         /// Updates the state of the keys in the list.
-        /// <summary>
+        /// </summary>
         private void UpdateKeys(KeyboardState state, GameTime gameTime)
         {
 #if (!XBOX && !XBOX_FAKE)
@@ -1297,7 +1297,7 @@ gamePadButtons.Add(new InputGamePadButton(GamePadButton.RightStickDown));
         /// <param name="state">Current mouse state.</param>
         /// </summary>
         /// Updates the mouse device.
-        /// <summary>
+        /// </summary>
         private void UpdateMouse(MouseState state, GameTime gameTime)
         {
 #if (!XBOX && !XBOX_FAKE)
@@ -1393,22 +1393,22 @@ gamePadButtons.Add(new InputGamePadButton(GamePadButton.RightStickDown));
 
         /// </summary>
         /// Represents a gamepad button, its state, and repeat delay timer.
-        /// <summary>
+        /// </summary>
         private class InputGamePadButton
         {
             /// </summary>
             /// Gamepad button this object represents.
-            /// <summary>
+            /// </summary>
             public GamePadButton Button = GamePadButton.None;
 
             /// </summary>
             /// Timer used to delay firing of repeat key presses.
-            /// <summary>
+            /// </summary>
             public double Countdown = RepeatDelay;
 
             /// </summary>
             /// Indicates if the key is pressed or released.
-            /// <summary>
+            /// </summary>
             public bool Pressed;
 
 // return;
@@ -1417,7 +1417,7 @@ gamePadButtons.Add(new InputGamePadButton(GamePadButton.RightStickDown));
 
             /// </summary>
             /// Creates a default instance of the InputGamePadButton class.
-            /// <summary>
+            /// </summary>
             public InputGamePadButton()
             {
 //}
@@ -1432,7 +1432,7 @@ gamePadButtons.Add(new InputGamePadButton(GamePadButton.RightStickDown));
             /// <param name="button">Button this instance will represent.</param>
             /// </summary>
             /// Creates an InputGamePadButton instance for the specified button.
-            /// <summary>
+            /// </summary>
             public InputGamePadButton(GamePadButton button)
             {
                 Button = button;
@@ -1456,22 +1456,22 @@ gamePadButtons.Add(new InputGamePadButton(GamePadButton.RightStickDown));
 
         /// </summary>
         /// Represents a key, its state, and repeat delay timer.
-        /// <summary>
+        /// </summary>
         private class InputKey
         {
             /// </summary>
             /// Timer used to delay firing of repeat key presses.
-            /// <summary>
+            /// </summary>
             public double Countdown = RepeatDelay;
 
             /// </summary>
             /// Key that this object represents.
-            /// <summary>
+            /// </summary>
             public Keys Key = Keys.None;
 
             /// </summary>
             /// Indicates if the key is pressed or released.
-            /// <summary>
+            /// </summary>
             public bool Pressed;
         }
 
@@ -1485,17 +1485,17 @@ gamePadButtons.Add(new InputGamePadButton(GamePadButton.RightStickDown));
 
         /// </summary>
         /// Represents the state of the mouse device and the current mouse cursor position.
-        /// <summary>
+        /// </summary>
         private class InputMouse
         {
             /// </summary>
             /// Current mouse cursor position.
-            /// <summary>
+            /// </summary>
             public Point Position = new Point(0, 0);
 
             /// </summary>
             /// Current mouse state.
-            /// <summary>
+            /// </summary>
             public MouseState State = new MouseState();
         }
 
@@ -1509,22 +1509,22 @@ gamePadButtons.Add(new InputGamePadButton(GamePadButton.RightStickDown));
 
         /// </summary>
         /// Represents a mouse button, its state, and repeat delay timer.
-        /// <summary>
+        /// </summary>
         private class InputMouseButton
         {
             /// </summary>
             /// The mouse button this object represents.
-            /// <summary>
+            /// </summary>
             public MouseButton Button = MouseButton.None;
 
             /// </summary>
             /// Timer used to delay firing of repeat key presses.
-            /// <summary>
+            /// </summary>
             public double Countdown = RepeatDelay;
 
             /// </summary>
             /// Indicates if the key is pressed or released.
-            /// <summary>
+            /// </summary>
             public bool Pressed;
 
 // return;
@@ -1533,7 +1533,7 @@ gamePadButtons.Add(new InputGamePadButton(GamePadButton.RightStickDown));
 
             /// </summary>
             /// Creates a default instance of the InputMouseButton class.
-            /// <summary>
+            /// </summary>
             public InputMouseButton()
             {
 //}
@@ -1548,7 +1548,7 @@ gamePadButtons.Add(new InputGamePadButton(GamePadButton.RightStickDown));
             /// <param name="button">Mouse button this instance will represent.</param>
             /// </summary>
             /// Creates an instance of the InputMouseButton class set for the specified mouse button.
-            /// <summary>
+            /// </summary>
             public InputMouseButton(MouseButton button)
             {
                 Button = button;

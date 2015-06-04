@@ -5,9 +5,9 @@ namespace MonoForce.Controls
 {
     public class ScrollBar : Control
     {
-        /// </summary>
-        /// Gets or sets the increment the scroll bar value changes for large increments.
         /// <summary>
+        /// Gets or sets the increment the scroll bar value changes for large increments.
+        /// </summary>
         public virtual int PageSize
         {
             get { return pageSize; }
@@ -23,9 +23,9 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
-        /// Gets or sets the maximum value of the scroll bar.
         /// <summary>
+        /// Gets or sets the maximum value of the scroll bar.
+        /// </summary>
         public virtual int Range
         {
             get { return range; }
@@ -41,9 +41,9 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
-        /// Gets or sets the increment the scroll bar value changes for small increments.
         /// <summary>
+        /// Gets or sets the increment the scroll bar value changes for small increments.
+        /// </summary>
         public virtual int StepSize
         {
             get { return stepSize; }
@@ -57,9 +57,9 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
-        /// Gets or sets the current value of the scroll bar.
         /// <summary>
+        /// Gets or sets the current value of the scroll bar.
+        /// </summary>
         public virtual int Value
         {
             get { return value; }
@@ -76,77 +76,77 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
-        /// Button used to decrease the value of the scroll bar.
         /// <summary>
+        /// Button used to decrease the value of the scroll bar.
+        /// </summary>
         private readonly Button btnMinus;
 
-        /// </summary>
-        /// Button used to increase the value of the scroll bar.
         /// <summary>
+        /// Button used to increase the value of the scroll bar.
+        /// </summary>
         private readonly Button btnPlus;
 
-        /// </summary>
+        /// <summary>
         /// can drag up/down or left/right to scroll.
         /// Button indicating the current value of the scroll bar that the user
-        /// <summary>
+        /// </summary>
         private readonly Button btnSlider;
 
-        /// </summary>
-        /// Indicates if the control is a horizontal or vertical scroll bar.
         /// <summary>
+        /// Indicates if the control is a horizontal or vertical scroll bar.
+        /// </summary>
         private readonly Orientation orientation = Orientation.Vertical;
 
-        /// </summary>
+        /// <summary>
         /// minus buttons.
         /// String for accessing the resource used to draw the scroll bar plus and
-        /// <summary>
+        /// </summary>
         private readonly string strButton = "ScrollBar.ButtonVert";
 
-        /// </summary>
-        /// String for accessing the glyph displayed on the scroll bar slider button.
         /// <summary>
+        /// String for accessing the glyph displayed on the scroll bar slider button.
+        /// </summary>
         private readonly string strGlyph = "ScrollBar.GlyphVert";
 
-        /// </summary>
-        /// String for accessing the Arrow Up glyph for the scroll bar.
         /// <summary>
+        /// String for accessing the Arrow Up glyph for the scroll bar.
+        /// </summary>
         private readonly string strMinus = "ScrollBar.ArrowUp";
 
-        /// </summary>
-        /// String for accessing the Arrow Down glyph for the scroll bar.
         /// <summary>
+        /// String for accessing the Arrow Down glyph for the scroll bar.
+        /// </summary>
         private readonly string strPlus = "ScrollBar.ArrowDown";
 
-        /// </summary>
+        /// <summary>
         /// button moves on.
         /// String for accessing the resource used to draw the rail that the slider
-        /// <summary>
+        /// </summary>
         private readonly string strRail = "ScrollBar.RailVert";
 
-        /// </summary>
-        /// String for accessing the resource used to draw the scroll bar slider button.
         /// <summary>
+        /// String for accessing the resource used to draw the scroll bar slider button.
+        /// </summary>
         private readonly string strSlider = "ScrollBar.SliderVert";
 
-        /// </summary>
-        /// Increment used for large changes to the scroll bar value.
         /// <summary>
+        /// Increment used for large changes to the scroll bar value.
+        /// </summary>
         private int pageSize = 50;
 
-        /// </summary>
-        /// Maximum value of the scroll bar control.
         /// <summary>
+        /// Maximum value of the scroll bar control.
+        /// </summary>
         private int range = 100;
 
-        /// </summary>
-        /// Increment used for small changes to the scroll bar value.
         /// <summary>
+        /// Increment used for small changes to the scroll bar value.
+        /// </summary>
         private int stepSize = 1;
 
-        /// </summary>
-        /// Current value of the scroll bar control.
         /// <summary>
+        /// Current value of the scroll bar control.
+        /// </summary>
         private int value;
 
         public ScrollBar(Manager manager, Orientation orientation) : base(manager)
@@ -215,9 +215,9 @@ namespace MonoForce.Controls
             Add(btnPlus);
         }
 
-        /// </summary>
-        /// Initializes the scroll bar control.
         /// <summary>
+        /// Initializes the scroll bar control.
+        /// </summary>
         public override void Init()
         {
             base.Init();
@@ -244,14 +244,14 @@ namespace MonoForce.Controls
             btnSlider.Glyph.SizeMode = SizeMode.Centered;
         }
 
-        /// </summary>
-        /// Occurs when the page size of the scroll bar changes.
         /// <summary>
+        /// Occurs when the page size of the scroll bar changes.
+        /// </summary>
         public event EventHandler PageSizeChanged;
 
-        /// </summary>
-        /// Occurs when the range of the scroll bar changes.
         /// <summary>
+        /// Occurs when the range of the scroll bar changes.
+        /// </summary>
         public event EventHandler RangeChanged;
 
         public void ScrollDown()
@@ -290,19 +290,19 @@ namespace MonoForce.Controls
                 ScrollUp();
         }
 
-        /// </summary>
-        /// Occurs when the step size of the scroll bar changes.
         /// <summary>
+        /// Occurs when the step size of the scroll bar changes.
+        /// </summary>
         public event EventHandler StepSizeChanged;
 
-        /// </summary>
-        /// Occurs when the value of the scroll bar changes.
         /// <summary>
+        /// Occurs when the value of the scroll bar changes.
+        /// </summary>
         public event EventHandler ValueChanged;
 
-        /// </summary>
-        /// Initializes the skin for the scroll bar control.
         /// <summary>
+        /// Initializes the skin for the scroll bar control.
+        /// </summary>
         protected internal override void InitSkin()
         {
             base.InitSkin();
@@ -318,9 +318,9 @@ namespace MonoForce.Controls
         }
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Handles mouse button down events for the scroll bar.
         /// <summary>
+        /// Handles mouse button down events for the scroll bar.
+        /// </summary>
         protected override void OnMouseDown(MouseEventArgs e)
         {
             base.OnMouseDown(e);
@@ -361,9 +361,9 @@ namespace MonoForce.Controls
         }
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Handles mouse button up events for the scroll bar.
         /// <summary>
+        /// Handles mouse button up events for the scroll bar.
+        /// </summary>
         protected override void OnMouseUp(MouseEventArgs e)
         {
             btnSlider.Passive = false;
@@ -371,27 +371,27 @@ namespace MonoForce.Controls
         }
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Handles changes in the scroll bar's page size.
         /// <summary>
+        /// Handles changes in the scroll bar's page size.
+        /// </summary>
         protected virtual void OnPageSizeChanged(EventArgs e)
         {
             if (PageSizeChanged != null) PageSizeChanged.Invoke(this, e);
         }
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Handles changes in the scroll bar's range.
         /// <summary>
+        /// Handles changes in the scroll bar's range.
+        /// </summary>
         protected virtual void OnRangeChanged(EventArgs e)
         {
             if (RangeChanged != null) RangeChanged.Invoke(this, e);
         }
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Handles resizing the scroll bar control.
         /// <summary>
+        /// Handles resizing the scroll bar control.
+        /// </summary>
         protected override void OnResize(ResizeEventArgs e)
         {
             base.OnResize(e);
@@ -400,18 +400,18 @@ namespace MonoForce.Controls
         }
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Handles changes in the scroll bar's step size.
         /// <summary>
+        /// Handles changes in the scroll bar's step size.
+        /// </summary>
         protected virtual void OnStepSizeChanged(EventArgs e)
         {
             if (StepSizeChanged != null) StepSizeChanged.Invoke(this, e);
         }
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Handles scroll bar value changes.
         /// <summary>
+        /// Handles scroll bar value changes.
+        /// </summary>
         protected virtual void OnValueChanged(EventArgs e)
         {
             if (ValueChanged != null) ValueChanged.Invoke(this, e);
@@ -419,9 +419,9 @@ namespace MonoForce.Controls
 
         /// <param name="e"></param>
         /// <param name="sender"></param>
-        /// </summary>
-        /// Handles click events for plus and minus button controls.
         /// <summary>
+        /// Handles click events for plus and minus button controls.
+        /// </summary>
         private void ArrowPress(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButton.Left)
@@ -439,9 +439,9 @@ namespace MonoForce.Controls
 
         /// <param name="e"></param>
         /// <param name="sender"></param>
-        /// </summary>
-        /// Handles movement of the slider button.
         /// <summary>
+        /// Handles movement of the slider button.
+        /// </summary>
         private void btnSlider_Move(object sender, MoveEventArgs e)
         {
 // Horizontal scroll bar?
@@ -485,9 +485,9 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
-        /// Adjusts the sizes and positions of all buttons based on scroll bar orientation, dimensions, and value.
         /// <summary>
+        /// Adjusts the sizes and positions of all buttons based on scroll bar orientation, dimensions, and value.
+        /// </summary>
         private void RecalcParams()
         {
 // Buttons exist?

@@ -7,9 +7,9 @@ namespace MonoForce.Controls
     {
         private const int refreshTime = 300; //ms
 
-        /// </summary>
-        /// Should the stack panel refresh itself, when a control is added
         /// <summary>
+        /// Should the stack panel refresh itself, when a control is added
+        /// </summary>
         public bool AutoRefresh { get; set; }
 
         public Orientation Orientation

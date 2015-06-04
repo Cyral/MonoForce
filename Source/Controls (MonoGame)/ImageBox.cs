@@ -5,9 +5,9 @@ namespace MonoForce.Controls
 {
     public class ImageBox : Control
     {
-        /// </summary>
-        /// Gets or sets the image the control will display.
         /// <summary>
+        /// Gets or sets the image the control will display.
+        /// </summary>
         public Texture2D Image
         {
             get { return image; }
@@ -20,10 +20,10 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
+        /// <summary>
         /// image and control dimensions are different sizes.
         /// Indicates how the image will be positioned and scaled when the
-        /// <summary>
+        /// </summary>
         public SizeMode SizeMode
         {
             get { return sizeMode; }
@@ -40,9 +40,9 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
-        /// Defines the region of the texture that is displayed in the image box control.
         /// <summary>
+        /// Defines the region of the texture that is displayed in the image box control.
+        /// </summary>
         public Rectangle SourceRect
         {
             get { return sourceRect; }
@@ -76,34 +76,34 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
-        /// Image the control will display.
         /// <summary>
+        /// Image the control will display.
+        /// </summary>
         private Texture2D image;
 
-        /// </summary>
+        /// <summary>
         /// and control dimensions are not the same.
         /// Indicates how the image will be positioned/scaled when image
-        /// <summary>
+        /// </summary>
         private SizeMode sizeMode = SizeMode.Normal;
 
-        /// </summary>
-        /// Defines the region of the texture that is displayed in the control.
         /// <summary>
+        /// Defines the region of the texture that is displayed in the control.
+        /// </summary>
         private Rectangle sourceRect = Rectangle.Empty;
 
         public ImageBox(Manager manager) : base(manager)
         {
         }
 
-        /// </summary>
-        /// Occurs when the control's image is changed.
         /// <summary>
+        /// Occurs when the control's image is changed.
+        /// </summary>
         public event EventHandler ImageChanged;
 
-        /// </summary>
-        /// Initializes the image box control.
         /// <summary>
+        /// Initializes the image box control.
+        /// </summary>
         public override void Init()
         {
             base.Init();
@@ -111,9 +111,9 @@ namespace MonoForce.Controls
             Color = Color.White;
         }
 
-        /// </summary>
-        /// Occurs when the control's size mode is changed.
         /// <summary>
+        /// Occurs when the control's size mode is changed.
+        /// </summary>
         public event EventHandler SizeModeChanged;
 
         public override void DrawControl(Renderer renderer, Rectangle rect, GameTime gameTime)
@@ -147,18 +147,18 @@ namespace MonoForce.Controls
         }
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Handles when the control's image is changed.
         /// <summary>
+        /// Handles when the control's image is changed.
+        /// </summary>
         protected virtual void OnImageChanged(EventArgs e)
         {
             if (ImageChanged != null) ImageChanged.Invoke(this, e);
         }
 
         /// <param name="e"></param>
-        /// </summary>
-        /// Handles when the control's size mode value is changed.
         /// <summary>
+        /// Handles when the control's size mode value is changed.
+        /// </summary>
         protected virtual void OnSizeModeChanged(EventArgs e)
         {
             if (SizeModeChanged != null) SizeModeChanged.Invoke(this, e);
