@@ -24,6 +24,11 @@ namespace MonoForce.Controls
         Centered,
 
         /// <summary>
+        /// Image is scaled down but its aspect ratio stays the same.
+        /// </summary>
+        Fit,
+
+        /// <summary>
         /// Image is scaled to fit in the control.
         /// </summary>
         Stretched,

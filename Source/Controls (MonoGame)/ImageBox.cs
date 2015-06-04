@@ -1,3 +1,4 @@
+using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -132,15 +133,27 @@ namespace MonoForce.Controls
                 {
                     renderer.Draw(image, rect, sourceRect, Color);
                 }
+                else if (sizeMode == SizeMode.Fit)
+                {
+                    float widthScale = Width / (float)image.Width;
+                    float heightScale = Height / (float)image.Height;
+                    float scale = MathHelper.Clamp((float)Math.Min(widthScale, heightScale), 0f, 1f);
+                    rect.Width = (int)Math.Round((image.Width * scale));
+                    rect.Height = (int)Math.Round((image.Height * scale));
+                    rect.Y = rect.Y + ((this.Height - rect.Height) / 2);
+                    rect.X = rect.X + ((this.Width - rect.Width) / 2);
+                    renderer.Draw(image, rect, sourceRect, Color);
+                }
                 else if (sizeMode == SizeMode.Centered)
                 {
-                    var x = (rect.Width / 2) - (image.Width / 2);
-                    var y = (rect.Height / 2) - (image.Height / 2);
+                    int x = rect.X + (rect.Width / 2) - (image.Width / 2);
+                    int y = rect.Y + (rect.Height / 2) - (image.Height / 2);
 
                     renderer.Draw(image, x, y, sourceRect, Color);
                 }
                 else if (sizeMode == SizeMode.Tiled)
                 {
+
                     renderer.DrawTileTexture(image, rect, Color);
                 }
             }

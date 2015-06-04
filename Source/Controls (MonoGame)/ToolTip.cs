@@ -14,11 +14,7 @@ namespace MonoForce.Controls
             {
                 if (value && Text != null && Text != "" && Skin != null && Skin.Layers[0] != null)
                 {
-                    var size = Skin.Layers[0].Text.Font.Resource.MeasureString(Text);
-                    Width = (int)size.X + Skin.Layers[0].ContentMargins.Horizontal;
-                    Height = (int)size.Y + Skin.Layers[0].ContentMargins.Vertical;
-                    Left = Mouse.GetState().X;
-                    Top = Mouse.GetState().Y + 24;
+                    ResetSize();
                     base.Visible = value;
                 }
                 else
@@ -27,6 +23,21 @@ namespace MonoForce.Controls
                 }
             }
         }
+
+        private void ResetSize()
+        {
+            var size = Skin.Layers[0].Text.Font.Resource.MeasureRichString(Text, Manager);
+            Width = (int)size.X + Skin.Layers[0].ContentMargins.Horizontal;
+            Height = (int)size.Y + Skin.Layers[0].ContentMargins.Vertical;
+            Left = Mouse.GetState().X;
+            Top = Mouse.GetState().Y + 16;
+            if (Width + Left >= Manager.ScreenWidth)
+                Left -= Width - 16;
+
+            if (Height + Top >= Manager.ScreenHeight)
+                Top = Manager.ScreenHeight - Height;
+        }
+
 
         public ToolTip(Manager manager) : base(manager)
         {
