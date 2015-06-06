@@ -1,6 +1,7 @@
 using System.Windows.Forms;
 using Microsoft.Xna.Framework;
 using MonoForce.Controls;
+using LinkLabel = MonoForce.Controls.LinkLabel;
 
 namespace MonoForce.Demo
 {

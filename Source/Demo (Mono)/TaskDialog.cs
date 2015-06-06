@@ -122,6 +122,7 @@ namespace MonoForce.Demo
             btnFirst.Focused = true;
         }
 
+        private LinkLabel link;
         public override void Init()
         {
             base.Init();

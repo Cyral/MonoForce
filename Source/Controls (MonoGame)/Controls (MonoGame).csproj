@@ -84,6 +84,7 @@
     <Compile Include="KeyboardLayout.cs" />
     <Compile Include="Label.cs" />
     <Compile Include="Layout.cs" />
+    <Compile Include="LinkLabel.cs" />
     <Compile Include="ListBox.cs" />
     <Compile Include="MainMenu.cs" />
     <Compile Include="Manager.cs" />
