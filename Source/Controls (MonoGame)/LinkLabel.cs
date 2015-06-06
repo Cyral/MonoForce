@@ -49,14 +49,12 @@ namespace MonoForce.Controls
         protected override void OnMouseOut(MouseEventArgs e)
         {
             TextColor = Color;
-            Cursor = Manager.Skin.Cursors["Default"].Resource;
             base.OnMouseOut(e);
         }
 
         protected override void OnMouseOver(MouseEventArgs e)
         {
             TextColor = HoverColor;
-            Cursor = Manager.Skin.Cursors["Move"].Resource;
             base.OnMouseOver(e);
         }
 
