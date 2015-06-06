@@ -136,7 +136,7 @@ namespace MonoForce.Controls
 
         public string Placeholder { get; set; } = "";
 
-        public Color PlaceholderColor { get; set; } = Color.LightGray;
+        public Color PlaceholderColor { get; set; }= new Color(0, 0, 0, 90);
 
         /// <summary>
         /// Indicates if the text box allows user input or not.
@@ -1181,7 +1181,7 @@ namespace MonoForce.Controls
                 }
 
 
-                if (string.IsNullOrEmpty(text))
+                if (string.IsNullOrEmpty(text) && !Focused)
                 {
                     var rx = new Rectangle(r.Left - horz.Value, r.Top, r.Width, r.Height);
                     renderer.DrawString(font, Placeholder, rx, PlaceholderColor, al, false, DrawFormattedText);

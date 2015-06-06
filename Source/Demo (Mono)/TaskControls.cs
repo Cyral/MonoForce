@@ -80,7 +80,7 @@ namespace MonoForce.Demo
             txtEdit.Width = grpEdit.ClientWidth - 32;
             txtEdit.Height = 20;
             txtEdit.Anchor = Anchors.Left | Anchors.Top | Anchors.Right | Anchors.Bottom;
-            txtEdit.Text = "Text";
+            txtEdit.Placeholder = "Text";
 
             rdbNormal = new RadioButton(manager);
             rdbNormal.Init();
