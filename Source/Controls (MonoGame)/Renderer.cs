@@ -331,6 +331,7 @@ namespace MonoForce.Controls
 
         public virtual void DrawColorFormattedText(SpriteFont font, Vector2 position, string text, Color defaultColor)
         {
+            position.Y -= 1;
             // only bother if we have color commands involved
             if (text.Contains("[color:"))
             {
@@ -590,7 +591,7 @@ namespace MonoForce.Controls
             if (DrawFormattedText)
                 DrawColorFormattedText(font, new Vector2(left, top), text, color);
             else
-                sb.DrawString(font, text, new Vector2(left, top), color);
+                sb.DrawString(font, text, new Vector2(left, top - 1), color);
         }
 
         /// </summary>

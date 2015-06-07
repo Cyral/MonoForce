@@ -1229,16 +1229,17 @@ renderer.SpriteBatch.GraphicsDevice.RenderState.BlendFunction = BlendFunction.Su
 
 
 // Create the rectangle where the cursor should be drawn.
-                    var rc = new Rectangle(r.Left - horz.Value + (int)size.X, r.Top + m / 2, cursor.Width,
-                        font.LineSpacing);
+                    var rc = new Rectangle(r.Left - horz.Value + (int)size.X, (r.Top + m / 2), cursor.Width,
+                        font.LineSpacing - 2);
 
 
 // Adjust rectangle to account for current vertical scroll bar value?
                     if (mode == TextBoxMode.Multiline)
                     {
                         rc = new Rectangle(r.Left + (int)size.X - horz.Value,
-                            r.Top + (PosY - vert.Value) * font.LineSpacing, cursor.Width, font.LineSpacing);
+                            (r.Top + (PosY - vert.Value) * font.LineSpacing) - 1, cursor.Width, font.LineSpacing - 2);
                     }
+              
 // Draw the cursor in the text box.
                     cursor.Alignment = al;
                     renderer.DrawLayer(cursor, rc, col, 0);

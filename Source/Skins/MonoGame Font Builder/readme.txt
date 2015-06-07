@@ -1,0 +1,1 @@
+For some reason the XNA content builder makes blurry or pixelated fonts on many of the fonts I tested, but the MonoGame pipeline does not have this issue.

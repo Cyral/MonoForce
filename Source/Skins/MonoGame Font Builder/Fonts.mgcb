@@ -1,0 +1,267 @@
+
+#----------------------------- Global Properties ----------------------------#
+
+/outputDir:bin
+/intermediateDir:obj
+/platform:Windows
+/config:
+/profile:Reach
+/compress:False
+
+#-------------------------------- References --------------------------------#
+
+
+#---------------------------------- Content ---------------------------------#
+
+#begin ../Content/Skins/Bricklayer/Fonts/Bold6.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:../Content/Skins/Bricklayer/Fonts/Bold6.spritefont
+
+#begin ../Content/Skins/Bricklayer/Fonts/Bold8.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:../Content/Skins/Bricklayer/Fonts/Bold8.spritefont
+
+#begin ../Content/Skins/Bricklayer/Fonts/Bold9.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:../Content/Skins/Bricklayer/Fonts/Bold9.spritefont
+
+#begin ../Content/Skins/Bricklayer/Fonts/Bold10.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:../Content/Skins/Bricklayer/Fonts/Bold10.spritefont
+
+#begin ../Content/Skins/Bricklayer/Fonts/Bold11.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:../Content/Skins/Bricklayer/Fonts/Bold11.spritefont
+
+#begin ../Content/Skins/Bricklayer/Fonts/Bold12.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:../Content/Skins/Bricklayer/Fonts/Bold12.spritefont
+
+#begin ../Content/Skins/Bricklayer/Fonts/Bold13.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:../Content/Skins/Bricklayer/Fonts/Bold13.spritefont
+
+#begin ../Content/Skins/Bricklayer/Fonts/Bold14.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:../Content/Skins/Bricklayer/Fonts/Bold14.spritefont
+
+#begin ../Content/Skins/Bricklayer/Fonts/Bold20.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:../Content/Skins/Bricklayer/Fonts/Bold20.spritefont
+
+#begin ../Content/Skins/Bricklayer/Fonts/Bold32.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:../Content/Skins/Bricklayer/Fonts/Bold32.spritefont
+
+#begin ../Content/Skins/Bricklayer/Fonts/Default.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:../Content/Skins/Bricklayer/Fonts/Default.spritefont
+
+#begin ../Content/Skins/Bricklayer/Fonts/Default6.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:../Content/Skins/Bricklayer/Fonts/Default6.spritefont
+
+#begin ../Content/Skins/Bricklayer/Fonts/Default8.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:../Content/Skins/Bricklayer/Fonts/Default8.spritefont
+
+#begin ../Content/Skins/Bricklayer/Fonts/Default9.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:../Content/Skins/Bricklayer/Fonts/Default9.spritefont
+
+#begin ../Content/Skins/Bricklayer/Fonts/Default10.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:../Content/Skins/Bricklayer/Fonts/Default10.spritefont
+
+#begin ../Content/Skins/Bricklayer/Fonts/Default11.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:../Content/Skins/Bricklayer/Fonts/Default11.spritefont
+
+#begin ../Content/Skins/Bricklayer/Fonts/Default12.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:../Content/Skins/Bricklayer/Fonts/Default12.spritefont
+
+#begin ../Content/Skins/Bricklayer/Fonts/Default13.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:../Content/Skins/Bricklayer/Fonts/Default13.spritefont
+
+#begin ../Content/Skins/Bricklayer/Fonts/Default14.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:../Content/Skins/Bricklayer/Fonts/Default14.spritefont
+
+#begin ../Content/Skins/Bricklayer/Fonts/Default20.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:../Content/Skins/Bricklayer/Fonts/Default20.spritefont
+
+#begin ../Content/Skins/Bricklayer/Fonts/Default32.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:../Content/Skins/Bricklayer/Fonts/Default32.spritefont
+
+#begin ../Content/Skins/Default/Fonts/Bold6.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:../Content/Skins/Default/Fonts/Bold6.spritefont
+
+#begin ../Content/Skins/Default/Fonts/Bold8.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:../Content/Skins/Default/Fonts/Bold8.spritefont
+
+#begin ../Content/Skins/Default/Fonts/Bold9.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:../Content/Skins/Default/Fonts/Bold9.spritefont
+
+#begin ../Content/Skins/Default/Fonts/Bold10.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:../Content/Skins/Default/Fonts/Bold10.spritefont
+
+#begin ../Content/Skins/Default/Fonts/Bold11.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:../Content/Skins/Default/Fonts/Bold11.spritefont
+
+#begin ../Content/Skins/Default/Fonts/Bold12.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:../Content/Skins/Default/Fonts/Bold12.spritefont
+
+#begin ../Content/Skins/Default/Fonts/Bold13.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:../Content/Skins/Default/Fonts/Bold13.spritefont
+
+#begin ../Content/Skins/Default/Fonts/Bold14.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:../Content/Skins/Default/Fonts/Bold14.spritefont
+
+#begin ../Content/Skins/Default/Fonts/Bold20.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:../Content/Skins/Default/Fonts/Bold20.spritefont
+
+#begin ../Content/Skins/Default/Fonts/Bold32.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:../Content/Skins/Default/Fonts/Bold32.spritefont
+
+#begin ../Content/Skins/Default/Fonts/Default.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:../Content/Skins/Default/Fonts/Default.spritefont
+
+#begin ../Content/Skins/Default/Fonts/Default6.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:../Content/Skins/Default/Fonts/Default6.spritefont
+
+#begin ../Content/Skins/Default/Fonts/Default8.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:../Content/Skins/Default/Fonts/Default8.spritefont
+
+#begin ../Content/Skins/Default/Fonts/Default9.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:../Content/Skins/Default/Fonts/Default9.spritefont
+
+#begin ../Content/Skins/Default/Fonts/Default10.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:../Content/Skins/Default/Fonts/Default10.spritefont
+
+#begin ../Content/Skins/Default/Fonts/Default11.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:../Content/Skins/Default/Fonts/Default11.spritefont
+
+#begin ../Content/Skins/Default/Fonts/Default12.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:../Content/Skins/Default/Fonts/Default12.spritefont
+
+#begin ../Content/Skins/Default/Fonts/Default13.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:../Content/Skins/Default/Fonts/Default13.spritefont
+
+#begin ../Content/Skins/Default/Fonts/Default14.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:../Content/Skins/Default/Fonts/Default14.spritefont
+
+#begin ../Content/Skins/Default/Fonts/Default20.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:../Content/Skins/Default/Fonts/Default20.spritefont
+
+#begin ../Content/Skins/Default/Fonts/Default32.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:../Content/Skins/Default/Fonts/Default32.spritefont
+
