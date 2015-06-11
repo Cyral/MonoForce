@@ -1343,36 +1343,10 @@ renderer.Begin(BlendingMode.Premultiplied);
                         var m = ClientArea.Height - font.LineSpacing;
                         r = new Rectangle(
                             rect.Left - horz.Value + (int)font.MeasureString(Lines[i].Substring(0, sc)).X,
-                            rect.Top + m / 2,
+                            rect.Top + m / 2 -1,
                             (int)font.MeasureString(Lines[i].Substring(0, ec + 0)).X -
-                            (int)font.MeasureString(Lines[i].Substring(0, sc)).X, hgt);
+                            (int)font.MeasureString(Lines[i].Substring(0, sc)).X, hgt - 1);
                     }
-                    else if (sl == el)
-                    {
-                        r = new Rectangle(
-                            rect.Left - horz.Value + (int)font.MeasureString(Lines[i].Substring(0, sc)).X,
-                            rect.Top + (i - vert.Value) * hgt,
-                            (int)font.MeasureString(Lines[i].Substring(0, ec + 0)).X -
-                            (int)font.MeasureString(Lines[i].Substring(0, sc)).X, hgt);
-                    }
-// Replace selection?
-                    else
-                    {
-                        if (i == sl)
-                            r =
-                                new Rectangle(
-                                    rect.Left - horz.Value + (int)font.MeasureString(Lines[i].Substring(0, sc)).X,
-                                    rect.Top + (i - vert.Value) * hgt,
-                                    (int)font.MeasureString(Lines[i]).X -
-                                    (int)font.MeasureString(Lines[i].Substring(0, sc)).X, hgt);
-                        else if (i == el)
-                            r = new Rectangle(rect.Left - horz.Value, rect.Top + (i - vert.Value) * hgt,
-                                (int)font.MeasureString(Lines[i].Substring(0, ec + 0)).X, hgt);
-                        else
-                            r = new Rectangle(rect.Left - horz.Value, rect.Top + (i - vert.Value) * hgt,
-                                (int)font.MeasureString(Lines[i]).X, hgt);
-                    }
-
 
                     renderer.Draw(Manager.Skin.Images["Control"].Resource, r,
                         Color.FromNonPremultiplied(160, 160, 160, 128));
