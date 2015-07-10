@@ -19,3 +19,6 @@ Linux support is currently being worked on.
 - **Controls:** A new file dialog control, color slider, and message box creator.
 - Tooltip fade in and fade out.
 - Improvements to the console, such as pressing "up" to scroll through the history.
+
+Screenshot:
+![Screenshot](http://i.imgur.com/Avt6hVn.png)
