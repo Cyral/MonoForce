@@ -57,9 +57,15 @@ namespace MonoForce.Controls
                 {
                     if (i < c)
                     {
-                        foreach (Control ctr in (items[i] as T).Controls)
+                        if (i < items.Count)
                         {
-                            ctr.DrawControl(e.Renderer, new Rectangle(e.Rectangle.Left + ctr.Left, (e.Rectangle.Top - d + ((i - v) * h)) + ctr.Top, e.Rectangle.Width, h), e.GameTime);
+                            foreach (Control ctr in (items[i] as T).Controls)
+                            {
+                                ctr.DrawControl(e.Renderer,
+                                    new Rectangle(e.Rectangle.Left + ctr.Left,
+                                        (e.Rectangle.Top - d + ((i - v) * h)) + ctr.Top, e.Rectangle.Width, h),
+                                    e.GameTime);
+                            }
                         }
                     }
                 }

@@ -934,28 +934,30 @@ game.Window.Title += " (XBOX_FAKE)";
                 gameTime = new GameTime(gameTime.TotalGameTime, span);
                 drawTime = 0;
 
-// Are there controls to draw?
+                // Are there controls to draw?
                 if ((controls != null))
                 {
                     var list = new ControlsList();
                     list.AddRange(controls);
 
-                    foreach (var c in list)
+                    // Draw each control to its render target.
+                    for (int i = 0; i < list.Count; i++)
                     {
-// Draw each control to its render target.
-                        c.PrepareTexture(renderer, gameTime);
+                        var c = list[i];
+                        c?.PrepareTexture(renderer, gameTime);
                     }
 
-// Draw all controls on the manager's render target and display them.
+                    // Draw all controls on the manager's render target and display them.
                     GraphicsDevice.SetRenderTarget(renderTarget);
                     GraphicsDevice.Clear(Color.Transparent);
 
-// And the renderer.
+                    // And the renderer.
                     if (renderer != null)
                     {
-                        foreach (var c in list)
+                        for (int i = 0; i < list.Count; i++)
                         {
-                            c.Render(renderer, gameTime);
+                            var c = list[i];
+                            c?.Render(renderer, gameTime);
                         }
                     }
                 }
@@ -1244,7 +1246,7 @@ game.Window.Title += " (XBOX_FAKE)";
                 updateTime = 0;
 
 // Update the state of the input devices?
-                if (inputEnabled)
+                if (inputEnabled && Game.IsActive)
                 {
                     input.Update(gameTime);
                 }

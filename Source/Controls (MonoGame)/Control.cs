@@ -1933,39 +1933,46 @@ namespace MonoForce.Controls
             // Has child controls?
             if (controls != null)
             {
-                foreach (Control c in controls)
+                for (int i = 0; i < controls.Count; i++)
                 {
-                    // We skip detached controls for first level after root (they are rendered separately in Draw() method)
-                    if (((c.Root == c.Parent && !c.Detached) || c.Root != c.Parent) && AbsoluteRect.Intersects(c.AbsoluteRect) && c.visible)
+                    var c = controls[i];
+                    if (c != null)
                     {
-                        Rectangle oldRect = Manager.GraphicsDevice.ScissorRectangle;
-                        Manager.GraphicsDevice.ScissorRectangle = GetClippingRect(c);
-
-                        Rectangle rect = new Rectangle(c.OriginLeft - root.AbsoluteLeft, c.OriginTop - root.AbsoluteTop, c.OriginWidth, c.OriginHeight);
-
-                        if (c.Root != c.Parent && ((!c.Detached && CheckDetached(c)) || firstDetachedLevel))
+// We skip detached controls for first level after root (they are rendered separately in Draw() method)
+                        if (((c.Root == c.Parent && !c.Detached) || c.Root != c.Parent) &&
+                            AbsoluteRect.Intersects(c.AbsoluteRect) && c.visible)
                         {
-                            rect = new Rectangle(c.OriginLeft, c.OriginTop, c.OriginWidth, c.OriginHeight);
-                            Manager.GraphicsDevice.ScissorRectangle = rect;
+                            Rectangle oldRect = Manager.GraphicsDevice.ScissorRectangle;
+                            Manager.GraphicsDevice.ScissorRectangle = GetClippingRect(c);
+
+                            Rectangle rect = new Rectangle(c.OriginLeft - root.AbsoluteLeft,
+                                c.OriginTop - root.AbsoluteTop,
+                                c.OriginWidth, c.OriginHeight);
+
+                            if (c.Root != c.Parent && ((!c.Detached && CheckDetached(c)) || firstDetachedLevel))
+                            {
+                                rect = new Rectangle(c.OriginLeft, c.OriginTop, c.OriginWidth, c.OriginHeight);
+                                Manager.GraphicsDevice.ScissorRectangle = rect;
+                            }
+
+                            renderer.Begin(BlendingMode.Default);
+                            c.DrawingRect = rect;
+
+                            c.DrawControl(renderer, rect, gameTime);
+
+                            DrawEventArgs args = new DrawEventArgs();
+                            args.Rectangle = rect;
+                            args.Renderer = renderer;
+                            args.GameTime = gameTime;
+                            c.OnDraw(args);
+                            renderer.End();
+
+                            c.DrawChildControls(renderer, gameTime, firstDetachedLevel);
+
+                            c.DrawOutline(renderer, true);
+
+                            Manager.GraphicsDevice.ScissorRectangle = oldRect;
                         }
-
-                        renderer.Begin(BlendingMode.Default);
-                        c.DrawingRect = rect;
-
-                        c.DrawControl(renderer, rect, gameTime);
-
-                        DrawEventArgs args = new DrawEventArgs();
-                        args.Rectangle = rect;
-                        args.Renderer = renderer;
-                        args.GameTime = gameTime;
-                        c.OnDraw(args);
-                        renderer.End();
-
-                        c.DrawChildControls(renderer, gameTime, firstDetachedLevel);
-
-                        c.DrawOutline(renderer, true);
-
-                        Manager.GraphicsDevice.ScissorRectangle = oldRect;
                     }
                 }
             }
@@ -2359,7 +2366,8 @@ namespace MonoForce.Controls
             base.Update(gameTime);
 
             // Update the control's tool tip.
-            ToolTipUpdate(gameTime);
+            if (Manager.Game.IsActive)
+                ToolTipUpdate(gameTime);
             // Update all child controls.
             if (controls != null)
             {

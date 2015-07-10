@@ -89,7 +89,7 @@ namespace MonoForce.Controls
 
         {
             get { return items; }
-            internal set { items = value; }
+            set { items = value; }
         }
 
         public override int MinimumHeight
