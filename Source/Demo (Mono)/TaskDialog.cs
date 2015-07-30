@@ -32,7 +32,7 @@ namespace MonoForce.Demo
 
             imgTop = new ImageBox(manager);
             imgTop.Init();
-            imgTop.Parent = TopPanel;
+           // imgTop.Parent = TopPanel;
             imgTop.Top = 0;
             imgTop.Left = 0;
             imgTop.Width = TopPanel.ClientWidth;
@@ -109,6 +109,7 @@ namespace MonoForce.Demo
             btnApply.Top = btnOk.Parent.ClientHeight - btnOk.Height - 8;
             btnApply.Left = btnOk.Parent.ClientWidth - 4 - btnOk.Width * 2 - 8;
             btnApply.Text = "Apply";
+            btnApply.Alpha = 128;
 
             btnClose = new Button(manager);
             btnClose.Init();
@@ -120,6 +121,18 @@ namespace MonoForce.Demo
             btnClose.ModalResult = ModalResult.Cancel;
 
             btnFirst.Focused = true;
+
+            var lblMsg = new Label(Manager)
+            {
+                Width = 100,
+                Text = "Testing123 Alpha",
+                Left = 10,
+                Top = 24,
+                Alignment = Alignment.TopLeft,
+            };
+            lblMsg.Init();
+            lblMsg.Alpha = 255;
+            Add(lblMsg);
         }
 
         private LinkLabel link;

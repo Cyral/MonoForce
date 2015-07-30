@@ -188,6 +188,17 @@ namespace MonoForce.Controls
             }
         }
         #endregion
+
+        protected internal override void Update(GameTime gameTime)
+        {
+            foreach (var control in Items)
+            {
+                var item = control as Control;
+                item?.Update(gameTime);
+            }
+            base.Update(gameTime);
+        }
+
         /// <summary>
         /// Updates scroll bar values based on font size, list box size, and the number of collection items.
         /// </summary>

@@ -102,6 +102,16 @@ namespace MonoForce.Controls
             }
         }
 
+        public virtual bool HideScrollbars
+        {
+            get { return hideScrollbars; }
+            set
+            {
+                hideScrollbars = value;
+                if (sbVert != null) sbVert.Visible = !HideScrollbars;
+            }
+        }
+
         protected readonly ScrollBar sbVert;
         protected readonly ClipBox pane;
         protected bool hideSelection = true;
@@ -109,6 +119,7 @@ namespace MonoForce.Controls
         protected int itemIndex = -1;
         protected List<object> items = new List<object>();
         private int itemsCount;
+        private bool hideScrollbars;
 
         /// <param name="manager">GUI manager for the control.</param>
         /// <summary>
@@ -135,6 +146,7 @@ namespace MonoForce.Controls
             sbVert.Range = 1;
             sbVert.PageSize = 1;
             sbVert.StepSize = 10;
+            sbVert.Visible = !HideScrollbars;
 
 
 // Set up the clip box.

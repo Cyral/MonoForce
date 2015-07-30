@@ -270,13 +270,13 @@ namespace MonoForce.Controls
             {
                 if (CustomMatrix.HasValue)
                 {
-                    sb.Begin(SpriteSortMode.Immediate, BlendState.Opaque, states.SamplerState, states.DepthStencilState,
+                    sb.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, states.SamplerState, states.DepthStencilState,
                         states.RasterizerState, null, CustomMatrix.Value);
                 }
 // Grab the text color of the Enabled state.
                 else
                 {
-                    sb.Begin(SpriteSortMode.Immediate, BlendState.Opaque, states.SamplerState, states.DepthStencilState,
+                    sb.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, states.SamplerState, states.DepthStencilState,
                         states.RasterizerState);
                 }
             }
@@ -321,7 +321,7 @@ namespace MonoForce.Controls
 
         public virtual void Draw(Texture2D texture, int left, int top, Rectangle source, Color color)
         {
-// Valid source region?
+            // Valid source region?
             if (source.Width > 0 && source.Height > 0)
             {
                 sb.Draw(texture, new Vector2(left, top), source, color, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None,
@@ -331,6 +331,8 @@ namespace MonoForce.Controls
 
         public virtual void DrawColorFormattedText(SpriteFont font, Vector2 position, string text, Color defaultColor)
         {
+            if (defaultColor.A <= 0)
+                return;
             position.Y -= 1;
             // only bother if we have color commands involved
             if (text.Contains("[color:"))
@@ -366,7 +368,7 @@ namespace MonoForce.Controls
                             {
                                 // always draw [0] there should be at least one
                                 sb.DrawString(font, msgs[0], position + new Vector2(currentOffsetX, currentOffsetY),
-                                    color.FromName());
+                                    color.FromName() * (defaultColor.A / 255f));
                                 currentOffsetX += (int)font.MeasureString(msgs[0]).X;
 
                                 // there should only ever be one other string or none
@@ -565,12 +567,11 @@ namespace MonoForce.Controls
                     oi = l.Overlays.Enabled.Index;
                 }
             }
-
             if (control.Color != Control.UndefinedColor) c = control.Color * (control.Color.A / 255f);
-// Draw the control layer.
+            // Draw the control layer.
             DrawLayer(l, rect, c, i);
 
-// And draw the overlay if needed.
+            // And draw the overlay if needed.
             if (oi != -1)
             {
                 DrawLayer(l, rect, oc, oi);
@@ -790,7 +791,7 @@ namespace MonoForce.Controls
                 }
 
                 // Valid text string supplied?
-                if (text != null && text != "")
+                if (!string.IsNullOrEmpty(text))
                 {
                     var font = layer.Text;
 
@@ -799,7 +800,7 @@ namespace MonoForce.Controls
                     {
                         col = control.TextColor;
                     }
-
+                    col = col * (control.Alpha / 255f);
                     // Pass the updated arguments off to the real draw function.
                     DrawString(font.Font.Resource, text, rect, col, font.Alignment, font.OffsetX + ox, font.OffsetY + oy,
                         ellipsis, DrawFormattedText);
