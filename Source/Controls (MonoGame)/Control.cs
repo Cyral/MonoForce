@@ -116,7 +116,7 @@ namespace MonoForce.Controls
         /// </summary>
         /// Color of the control's text.
         /// <summary>
-        private Color textColor = UndefinedColor;
+        protected Color textColor = UndefinedColor;
         /// </summary>
         /// Color of the control's background.
         /// <summary>

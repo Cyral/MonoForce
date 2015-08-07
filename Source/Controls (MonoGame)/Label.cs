@@ -42,6 +42,11 @@ namespace MonoForce.Controls
             set { bold = value; InitFontSize(); }
         }
 
+        /// <summary>
+        /// Indicates if a shadow should be rendered.
+        /// </summary>
+        public bool Shadow { get; set; }
+
         private FontSize font = FontSize.Default8;
 
         /// </summary>
@@ -89,6 +94,18 @@ namespace MonoForce.Controls
             //base.DrawControl(renderer, rect, gameTime);
             SkinLayer s = new SkinLayer(Skin.Layers[0]);
             s.Text.Alignment = alignment;
+
+            if (Shadow)
+            {
+                textColor = Color.Black;
+                rect.X += 1;
+                rect.Y += 1;
+                renderer.DrawString(this, s, Text, rect, true, 0, 0, ellipsis, DrawFormattedText);
+
+                rect.X -= 1;
+                rect.Y -= 1;
+                textColor = Color.White;
+            }
             renderer.DrawString(this, s, Text, rect, true, 0, 0, ellipsis, DrawFormattedText);
         }
     }
