@@ -412,7 +412,6 @@ namespace MonoForce.Controls
             txtMain.Detached = false;
             txtMain.Visible = textBoxVisible;
             txtMain.KeyDown += new KeyEventHandler(txtMain_KeyDown);
-            txtMain.GamePadDown += new GamePadEventHandler(txtMain_GamePadDown);
             txtMain.FocusGained += new EventHandler(txtMain_FocusGained);
             Add(txtMain, false);
 
@@ -640,16 +639,6 @@ namespace MonoForce.Controls
         {
             SendMessage(e);
         }
-
-        /// <summary>
-        /// Handles gamepad button down events for the text box.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        void txtMain_GamePadDown(object sender, GamePadEventArgs e)
-        {
-            SendMessage(e);
-        }
     
         /// <summary>
         /// Handles key and button press events the console input text box receives.
@@ -657,33 +646,26 @@ namespace MonoForce.Controls
         /// <param name="x"></param>
         private void SendMessage(EventArgs x)
         {
-            // Respect the guide.
-            
-
-            KeyEventArgs k = new KeyEventArgs();
-            GamePadEventArgs g = new GamePadEventArgs(PlayerIndex.One);
-
-            // Cast to Key/GamePad event arguments as needed.
+            var k = new KeyEventArgs();
             if (x is KeyEventArgs) k = x as KeyEventArgs;
-            else if (x is GamePadEventArgs) g = x as GamePadEventArgs;
 
             // Get the selected console channel.
-            ConsoleChannel ch = channels[cmbMain.Text];
+            var ch = channels[cmbMain.Text];
             if (ch != null)
             {
                 // Set the text colors according to channel.
                 txtMain.TextColor = ch.Color;
 
                 // Get the message text from the input textbox.
-                string message = txtMain.Text;
+                var message = txtMain.Text;
 
                 // Send the message to the console if the Enter key or the Y button was pressed.
-                if ((k.Key == Microsoft.Xna.Framework.Input.Keys.Enter || g.Button == GamePadActions.Press) && message != null && message != "")
+                if (k.Key == Keys.Enter && !string.IsNullOrEmpty(message))
                 {
                     x.Handled = true;
 
                     // Send console message event.
-                    ConsoleMessageEventArgs me = new ConsoleMessageEventArgs(new ConsoleMessage(message, ch.Index, ch.Color));
+                    var me = new ConsoleMessageEventArgs(new ConsoleMessage(message, ch.Index, ch.Color));
                     OnMessageSent(me);
                     sentMessages.Add(me.Message);
                     // Clear the text.
@@ -722,10 +704,7 @@ namespace MonoForce.Controls
         /// <param name="e"></param>
         protected virtual void OnMessageSent(ConsoleMessageEventArgs e)
         {
-            if (MessageSent != null)
-            {
-                MessageSent.Invoke(this, e);
-            }
+            MessageSent?.Invoke(this, e);
         }
 
         /// <summary>
@@ -737,10 +716,10 @@ namespace MonoForce.Controls
         {
             // Clear the channels list.
             cmbMain.Items.Clear();
-            for (int i = 0; i < channels.Count; i++)
+            foreach (var t in channels)
             {
                 // Repopulate the channels list with fresh content.
-                cmbMain.Items.Add((channels[i] as ConsoleChannel).Name);
+                cmbMain.Items.Add(t.Name);
             }
         }
 
@@ -753,10 +732,10 @@ namespace MonoForce.Controls
         {
             // Clear the channels list.
             cmbMain.Items.Clear();
-            for (int i = 0; i < channels.Count; i++)
+            foreach (var t in channels)
             {
-                // Repopulate the channels list with fresh content.
-                cmbMain.Items.Add((channels[i] as ConsoleChannel).Name);
+// Repopulate the channels list with fresh content.
+                cmbMain.Items.Add(((ConsoleChannel) t).Name);
             }
         }
 
@@ -780,9 +759,9 @@ namespace MonoForce.Controls
             if (sbVert != null)
             {
                 // Get the line height of the text, the number of lines displayed, and the number of lines that can be displayed at once.
-                int line = Skin.Layers[0].Text.Font.Resource.LineSpacing;
-                int c = GetFilteredBuffer(filter).Count;
-                int p = (int)Math.Ceiling(ClientArea.ClientHeight / (float)line);
+                var line = Skin.Layers[0].Text.Font.Resource.LineSpacing;
+                var c = GetFilteredBuffer(filter).Count;
+                var p = (int)Math.Ceiling(ClientArea.ClientHeight / (float)line);
 
                 // Update the scroll bar values.
                 sbVert.Range = c == 0 ? 1 : c;
@@ -818,12 +797,12 @@ namespace MonoForce.Controls
         /// <returns>Returns all messages from channels whose index is specified in the filter list.</returns>
         private EventedList<ConsoleMessage> GetFilteredBuffer(List<byte> filter)
         {
-            EventedList<ConsoleMessage> ret = new EventedList<ConsoleMessage>();
+            var ret = new EventedList<ConsoleMessage>();
 
             if (filter.Count > 0)
             {
                 // Only return messages sent by the channels listed in the filter list.
-                for (int i = 0; i < buffer.Count; i++)
+                for (var i = 0; i < buffer.Count; i++)
                 {
                     if (filter.Contains(((ConsoleMessage)buffer[i]).Channel))
                     {
@@ -834,7 +813,7 @@ namespace MonoForce.Controls
             }
 
             // No filter? Return full message buffer.
-            else return buffer;
+            return buffer;
         }
 
         public bool SmallFont { get; set; }

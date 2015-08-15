@@ -23,23 +23,16 @@ namespace MonoForce.Controls
         }
 
         /// <summary>
-        /// Indicates how the label's text is aligned.
-        /// </summary>
-        private Alignment alignment = Alignment.MiddleLeft;
-
-        /// <summary>
-        /// Indicates if the text should be truncated with "..."
-        /// </summary>
-        private bool ellipsis = true;
-
-        private bool bold;
-        /// </summary>
         /// Indicates if the font should be bold
-        /// <summary>
+        /// </summary>
         public bool Bold
         {
             get { return bold; }
-            set { bold = value; InitFontSize(); }
+            set
+            {
+                bold = value;
+                InitFontSize();
+            }
         }
 
         /// <summary>
@@ -47,16 +40,32 @@ namespace MonoForce.Controls
         /// </summary>
         public bool Shadow { get; set; }
 
-        private FontSize font = FontSize.Default8;
-
-        /// </summary>
-        /// Size of the font
         /// <summary>
+        /// Size of the font
+        /// </summary>
         public FontSize Font
         {
             get { return font; }
-            set { font = value; InitFontSize(); }
+            set
+            {
+                font = value;
+                InitFontSize();
+            }
         }
+
+        /// <summary>
+        /// Indicates how the label's text is aligned.
+        /// </summary>
+        private Alignment alignment = Alignment.MiddleLeft;
+
+        private bool bold;
+
+        /// <summary>
+        /// Indicates if the text should be truncated with "..."
+        /// </summary>
+        private bool ellipsis = true;
+
+        private FontSize font = FontSize.Default8;
 
         public Label(Manager manager) : base(manager)
         {
@@ -67,32 +76,25 @@ namespace MonoForce.Controls
         }
 
         /// <summary>
-        /// Initializes the label control.
-        /// </summary>
-        public override void Init()
-        {
-            base.Init();
-        }
-
-        /// </summary>
         /// Initializes the skin
-        /// <summary>
+        /// </summary>
         protected internal override void InitSkin()
         {
             base.InitSkin();
             InitFontSize();
         }
+
         private void InitFontSize()
         {
-            int m = Bold ? 10 : 0;
-            int f = ((int)Font) + m;
+            var m = Bold ? 10 : 0;
+            var f = ((int) Font) + m;
             Skin.Layers[0].Text.Font.Resource = Manager.Skin.Fonts[f].Resource;
         }
 
         public override void DrawControl(Renderer renderer, Rectangle rect, GameTime gameTime)
         {
             //base.DrawControl(renderer, rect, gameTime);
-            SkinLayer s = new SkinLayer(Skin.Layers[0]);
+            var s = new SkinLayer(Skin.Layers[0]);
             s.Text.Alignment = alignment;
 
             if (Shadow)
@@ -110,9 +112,9 @@ namespace MonoForce.Controls
         }
     }
 
-    /// </summary>
-    /// Font size (Name = Size)
     /// <summary>
+    /// Font size (Name = Size)
+    /// </summary>
     public enum FontSize
     {
         Default6 = 0,
@@ -124,6 +126,6 @@ namespace MonoForce.Controls
         Default13 = 6,
         Default14 = 7,
         Default20 = 8,
-        Default32 = 9,
+        Default32 = 9
     }
 }

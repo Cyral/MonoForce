@@ -3,12 +3,6 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MonoForce.Controls
 {
-    public class WindowGamePadActions : GamePadActions
-    {
-        public GamePadButton Accept = GamePadButton.Start;
-        public GamePadButton Cancel = GamePadButton.Back;
-    }
-
     public class Window : ModalContainer
     {
         private const string lrButton = "Control";

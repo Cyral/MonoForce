@@ -280,35 +280,6 @@ namespace MonoForce.Controls
 
         /// <param name="e"></param>
         /// <summary>
-        /// Handles gamepad button press events.
-        /// </summary>
-        protected override void OnGamePadDown(GamePadEventArgs e)
-        {
-            base.OnGamePadDown(e);
-        }
-
-        /// <param name="e"></param>
-        /// <summary>
-        /// Handles up/down inputs from a gamepad.
-        /// </summary>
-        protected override void OnGamePadPress(GamePadEventArgs e)
-        {
-            if (e.Button == GamePadActions.Up)
-            {
-                e.Handled = true;
-                ShiftIndex(true);
-            }
-            else if (e.Button == GamePadActions.Down)
-            {
-                e.Handled = true;
-                ShiftIndex(false);
-            }
-
-            base.OnGamePadPress(e);
-        }
-
-        /// <param name="e"></param>
-        /// <summary>
         /// Handles key press events.
         /// </summary>
         protected override void OnKeyPress(KeyEventArgs e)

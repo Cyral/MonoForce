@@ -18,9 +18,6 @@ namespace MonoForce.Controls
         KeyDown,
         KeyUp,
         KeyPress,
-        GamePadDown,
-        GamePadUp,
-        GamePadPress
     }
 
     /// <summary>

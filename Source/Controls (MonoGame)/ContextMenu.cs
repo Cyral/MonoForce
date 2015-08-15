@@ -10,20 +10,20 @@ namespace MonoForce.Controls
     public class ContextMenu : MenuBase
     {
         #region Fields
-        /// </summary>
+        /// <summary>
         /// Menu delay timer.
-        /// <summary>
-        private long timer = 0;
         /// </summary>
-        /// Control associated with the context menu.
+        private long timer = 0;
         /// <summary>
+        /// Control associated with the context menu.
+        /// </summary>
         private Control sender = null;
         #endregion
 
         #region Properties
-        /// </summary>
-        /// Gets or sets the control requesting the context menu be displayed.
         /// <summary>
+        /// Gets or sets the control requesting the context menu be displayed.
+        /// </summary>
         protected internal Control Sender
         {
             get { return sender; }
@@ -32,9 +32,9 @@ namespace MonoForce.Controls
         #endregion
 
         #region Constructor
-        /// </summary>
-        /// Creates a new context menu control.
         /// <summary>
+        /// Creates a new context menu control.
+        /// </summary>
         /// <param name="manager">GUI manager for the context menu control.</param>
         public ContextMenu(Manager manager)
             : base(manager)
@@ -48,9 +48,9 @@ namespace MonoForce.Controls
         #endregion
 
         #region Destructors
-        /// </summary>
-        /// Releases resources used by the context menu control.
         /// <summary>
+        /// Releases resources used by the context menu control.
+        /// </summary>
         /// <param name="disposing"></param>
         protected override void Dispose(bool disposing)
         {
@@ -62,20 +62,10 @@ namespace MonoForce.Controls
         }
         #endregion
 
-        #region Init
-        /// </summary>
-        /// Initializes the context menu control.
-        /// <summary>
-        public override void Init()
-        {
-            base.Init();
-        }
-        #endregion
-
         #region Init Skin
-        /// </summary>
-        /// Initializes the skin of the context menu control.
         /// <summary>
+        /// Initializes the skin of the context menu control.
+        /// </summary>
         protected internal override void InitSkin()
         {
             base.InitSkin();
@@ -84,9 +74,9 @@ namespace MonoForce.Controls
         #endregion
 
         #region Draw Control
-        /// </summary>
-        /// Draws the context menu control.
         /// <summary>
+        /// Draws the context menu control.
+        /// </summary>
         /// <param name="renderer">Render management object.</param>
         /// <param name="rect">Destination rectangle.</param>
         /// <param name="gameTime">Snapshot of the application's timing values.</param>
@@ -94,19 +84,19 @@ namespace MonoForce.Controls
         {
             base.DrawControl(renderer, rect, gameTime);
 
-            SkinLayer l1 = Skin.Layers["Control"];
-            SkinLayer l2 = Skin.Layers["Selection"];
+            var l1 = Skin.Layers["Control"];
+            var l2 = Skin.Layers["Selection"];
 
-            int vsize = LineHeight();
-            Color col = Color.White;
+            var vsize = LineHeight();
+            var col = Color.White;
 
             // Draw each context menu entry.
-            for (int i = 0; i < Items.Count; i++)
+            for (var i = 0; i < Items.Count; i++)
             {
-                int mod = i > 0 ? 2 : 0;
-                int left = rect.Left + l1.ContentMargins.Left + vsize;
-                int h = vsize - mod - (i < (Items.Count - 1) ? 1 : 0);
-                int top = rect.Top + l1.ContentMargins.Top + (i * vsize) + mod;
+                var mod = i > 0 ? 2 : 0;
+                var left = rect.Left + l1.ContentMargins.Left + vsize;
+                var h = vsize - mod - (i < (Items.Count - 1) ? 1 : 0);
+                var top = rect.Top + l1.ContentMargins.Top + (i * vsize) + mod;
 
 
                 if (Items[i].Separated && i > 0)
@@ -168,7 +158,7 @@ namespace MonoForce.Controls
                 // Menu item has an image icon?
                 if (Items[i].Image != null)
                 {
-                    Rectangle r = new Rectangle(rect.Left + l1.ContentMargins.Left + 3,
+                    var r = new Rectangle(rect.Left + l1.ContentMargins.Left + 3,
                                                 rect.Top + top + 3,
                                                 LineHeight() - 6,
                                                 LineHeight() - 6);
@@ -184,16 +174,16 @@ namespace MonoForce.Controls
         #endregion
 
         #region Line Height
-        /// </summary>
-        /// Gets the height of a single entry in the context menu.
         /// <summary>
+        /// Gets the height of a single entry in the context menu.
+        /// </summary>
         /// <returns>Returns the height of a single context menu entry.</returns>
         private int LineHeight()
         {
             int h = 0;
             if (Items.Count > 0)
             {
-                SkinLayer l = Skin.Layers["Control"];
+                var l = Skin.Layers["Control"];
                 h = (int)l.Text.Font.Resource.LineSpacing + 9;
             }
             return h;
@@ -208,7 +198,7 @@ namespace MonoForce.Controls
         private int LineWidth()
         {
             int w = 0;
-            SkinFont font = Skin.Layers["Control"].Text.Font;
+            var font = Skin.Layers["Control"].Text.Font;
             if (Items.Count > 0)
             {
                 for (int i = 0; i < Items.Count; i++)
@@ -364,7 +354,7 @@ namespace MonoForce.Controls
 
             MouseEventArgs ex = (e is MouseEventArgs) ? (MouseEventArgs)e : new MouseEventArgs();
 
-            // Left button click or phantom click event from key/gamepad press event handlers?
+            // Left button click or phantom click event from key press event handlers?
             if (ex.Button == MouseButton.Left || ex.Button == MouseButton.None)
             {
                 // Context menu entry is selected and enabled?
@@ -417,9 +407,9 @@ namespace MonoForce.Controls
         #endregion
 
         #region On Key Press Event Handler
-        /// </summary>
-        /// Handles key press events for the context menu.
         /// <summary>
+        /// Handles key press events for the context menu.
+        /// </summary>
         /// <param name="e"></param>
         protected override void OnKeyPress(KeyEventArgs e)
         {
@@ -473,61 +463,11 @@ namespace MonoForce.Controls
         }
         #endregion
 
-        #region On Game Pad Press Event Handler
-        /// </summary>
-        /// Handles button press events for the context menu.
-        /// <summary>
-        /// <param name="e"></param>
-        protected override void OnGamePadPress(GamePadEventArgs e)
-        {
-            timer = 0;
-
-            if (e.Button == GamePadButton.None) return;
-
-            // Move to the next menu entry on Down or Right Shoulder button presses.
-            if (e.Button == GamePadActions.Down || e.Button == GamePadActions.NextControl)
-            {
-                e.Handled = true;
-                ItemIndex += 1;
-            }
-
-            // Move to the previous menu entry on Up or Left Shoulder button presses.
-            else if (e.Button == GamePadActions.Up || e.Button == GamePadActions.PrevControl)
-            {
-                e.Handled = true;
-                ItemIndex -= 1;
-            }
-
-            // Wrap selected index in range.
-            if (ItemIndex > Items.Count - 1) ItemIndex = 0;
-            if (ItemIndex < 0) ItemIndex = Items.Count - 1;
-
-            // Open child menu, if there is one, when the Right button is pressed.
-            if (e.Button == GamePadActions.Right && Items[ItemIndex].Items.Count > 0)
-            {
-                e.Handled = true;
-                OnClick(new MouseEventArgs(new MouseState(), MouseButton.None, Point.Zero));
-            }
-
-            // Close child menu, if there is one, when the Left button is pressed.
-            if (e.Button == GamePadActions.Left)
-            {
-                e.Handled = true;
-                if (ParentMenu != null && ParentMenu is ContextMenu)
-                {
-                    (ParentMenu as ContextMenu).Focused = true;
-                    (ParentMenu as ContextMenu).HideMenu(false);
-                }
-            }
-
-            base.OnGamePadPress(e);
-        }
-        #endregion
 
         #region Hide Menu
-        /// </summary>
-        /// Hides the context menu or one of its child menus.
         /// <summary>
+        /// Hides the context menu or one of its child menus.
+        /// </summary>
         /// <param name="hideCurrent">Indicates if the context menu should be hidden (true) or if only the child menu should be hidden. </param>
         public virtual void HideMenu(bool hideCurrent)
         {
@@ -550,17 +490,17 @@ namespace MonoForce.Controls
         #endregion
 
         #region Show
-        /// </summary>
-        /// Displays the context menu.
         /// <summary>
+        /// Displays the context menu.
+        /// </summary>
         public override void Show()
         {
             Show(null, Left, Top);
         }
 
-        /// </summary>
-        /// Displays the menu at the specified position.
         /// <summary>
+        /// Displays the menu at the specified position.
+        /// </summary>
         /// <param name="sender">Control requesting the context menu is displayed.</param>
         /// <param name="x">X position to display the context menu.</param>
         /// <param name="y">Y position to display the context menu.</param>
@@ -638,9 +578,9 @@ namespace MonoForce.Controls
         #endregion
 
         #region Input Mouse Down Event Handler
-        /// </summary>
-        /// Handles mouse button down events for the context menu.
         /// <summary>
+        /// Handles mouse button down events for the context menu.
+        /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void Input_MouseDown(object sender, MouseEventArgs e)
@@ -662,9 +602,9 @@ namespace MonoForce.Controls
         #endregion
 
         #region Check Area
-        /// </summary>
-        /// Determines if the specified point lies within the context menu or one of its child menus.
         /// <summary>
+        /// Determines if the specified point lies within the context menu or one of its child menus.
+        /// </summary>
         /// <param name="x">X position to check.</param>
         /// <param name="y">Y position to check.</param>
         /// <returns>Returns true if the specified point is within the bounds of the context menu or one of its child menus.

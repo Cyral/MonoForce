@@ -36,13 +36,6 @@ namespace MonoForce.Controls
     /// <param name="e"></param>
     /// <param name="sender"></param>
     /// <summary>
-    /// Defines the signature for gamepad event handlers.
-    /// </summary>
-    public delegate void GamePadEventHandler(object sender, GamePadEventArgs e);
-
-    /// <param name="e"></param>
-    /// <param name="sender"></param>
-    /// <summary>
     /// Defines the signature for draw event handlers.
     /// </summary>
     public delegate void DrawEventHandler(object sender, DrawEventArgs e);

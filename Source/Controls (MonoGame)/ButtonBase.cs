@@ -13,8 +13,7 @@ namespace MonoForce.Controls
                 if (Suspended) return ControlState.Disabled;
                 if (!Enabled) return ControlState.Disabled;
 
-                if ((Pressed[(int)MouseButton.Left] && Inside) ||
-                    (Focused && (Pressed[(int)GamePadActions.Press] || Pressed[(int)MouseButton.None])))
+                if ((Pressed[(int)MouseButton.Left] && Inside) || Pressed[(int)MouseButton.None])
                     return ControlState.Pressed;
                 if (Hovered && Inside) return ControlState.Hovered;
                 if ((Focused && !Inside) || (Hovered && !Inside) || (Focused && !Hovered && Inside))

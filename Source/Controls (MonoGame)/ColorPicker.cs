@@ -183,7 +183,6 @@ namespace MonoForce.Controls
             btnSlider.Movable = true;
             btnSlider.Move += new MoveEventHandler(btnSlider_Move);
             btnSlider.KeyPress += new KeyEventHandler(btnSlider_KeyPress);
-            btnSlider.GamePadPress += new GamePadEventHandler(btnSlider_GamePadPress);
         }
         #endregion
 
@@ -343,20 +342,6 @@ namespace MonoForce.Controls
                     Hue += pageSize;
                 }
             }
-        }
-        #endregion
-
-        #region Slider Button Game Pad Press Event Handler
-        /// <summary>
-        /// Handles gamepad left/right button presses for the track bar control.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        void btnSlider_GamePadPress(object sender, GamePadEventArgs e)
-        {
-            // Step up/down the track bar's value as needed.
-            if (e.Button == GamePadActions.Left || e.Button == GamePadActions.Down) Hue -= stepSize;
-            if (e.Button == GamePadActions.Right || e.Button == GamePadActions.Up) Hue += stepSize;
         }
         #endregion
 

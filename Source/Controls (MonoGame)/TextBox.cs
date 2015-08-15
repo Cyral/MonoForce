@@ -249,22 +249,14 @@ namespace MonoForce.Controls
                 if (wordWrap)
                     value = WrapWords(value, ClientWidth);
 
-
-                if (mode != TextBoxMode.Multiline && value != null)
-                {
-                    value = value.Replace(Separator, "");
-                }
-
-
+                if (mode != TextBoxMode.Multiline)
+                    value = value?.Replace(Separator, "");
                 text = value;
-
 
                 if (!Suspended) OnTextChanged(new EventArgs());
 
-
-                lines = SplitLines(text);
-                if (ClientArea != null) ClientArea.Invalidate();
-
+                Lines = SplitLines(text);
+                ClientArea?.Invalidate();
 
                 SetupBars();
                 ProcessScrolling();
@@ -280,7 +272,7 @@ namespace MonoForce.Controls
             set
             {
                 wordWrap = value;
-                if (ClientArea != null) ClientArea.Invalidate();
+                ClientArea?.Invalidate();
                 SetupBars();
             }
         }
@@ -288,11 +280,7 @@ namespace MonoForce.Controls
         /// <summary>
         /// Returns the text content as a Separator delimited list of strings.
         /// </summary>
-        private List<string> Lines
-        {
-            get { return lines; }
-            set { lines = value; }
-        }
+        private List<string> Lines { get; set; } = new List<string>();
 
         public int Pos
         {
@@ -385,11 +373,6 @@ namespace MonoForce.Controls
         /// Font used to draw the control's text.
         /// </summary>
         private SpriteFont font;
-
-        /// <summary>
-        /// Text content broken into individual lines.
-        /// </summary>
-        private List<string> lines = new List<string>();
 
         /// <summary>
         /// Number of lines of text that can fit vertically in the client area.
@@ -1695,7 +1678,7 @@ renderer.Begin(BlendingMode.Premultiplied);
 
                 return list;
             }
-            return lines;
+            return Lines;
         }
 
         /// <returns>Returns the word wrapped string.</returns>

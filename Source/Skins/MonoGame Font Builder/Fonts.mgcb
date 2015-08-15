@@ -265,3 +265,8 @@
 /processorParam:TextureFormat=Compressed
 /build:../Content/Skins/Default/Fonts/Default32.spritefont
 
+#begin Content/Skins/Bricklayer/Fonts/Bold6.xnb
+/importer:
+/processor:
+/build:Content/Skins/Bricklayer/Fonts/Bold6.xnb
+

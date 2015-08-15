@@ -20,7 +20,7 @@ namespace MonoForce.Controls
         protected Disposable()
         {
             count += 1;
-//GC.SuppressFinalize(this);
+            //GC.SuppressFinalize(this);
         }
 
         #region IDisposable Members
@@ -32,7 +32,7 @@ namespace MonoForce.Controls
         {
             Dispose(true);
             GC.SuppressFinalize(this);
-//GC.SuppressFinalize(this);
+            //GC.SuppressFinalize(this);
         }
 
         #endregion
@@ -46,9 +46,9 @@ namespace MonoForce.Controls
             if (disposing)
             {
                 count -= 1;
-//GC.SuppressFinalize(this);
+                //GC.SuppressFinalize(this);
             }
-//GC.SuppressFinalize(this);
+            //GC.SuppressFinalize(this);
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace MonoForce.Controls
         ~Disposable()
         {
             Dispose(false);
-//GC.SuppressFinalize(this);
+            //GC.SuppressFinalize(this);
         }
     }
 

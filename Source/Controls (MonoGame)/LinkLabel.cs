@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
+﻿using System.Diagnostics;
 using Microsoft.Xna.Framework;
 
 namespace MonoForce.Controls

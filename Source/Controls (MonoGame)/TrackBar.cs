@@ -134,7 +134,6 @@ namespace MonoForce.Controls
             btnSlider.Movable = true;
             btnSlider.Move += btnSlider_Move;
             btnSlider.KeyPress += btnSlider_KeyPress;
-            btnSlider.GamePadPress += btnSlider_GamePadPress;
         }
 
         /// <summary>
@@ -270,18 +269,6 @@ namespace MonoForce.Controls
         protected virtual void OnValueChanged(EventArgs e)
         {
             if (ValueChanged != null) ValueChanged.Invoke(this, e);
-        }
-
-        /// <param name="e"></param>
-        /// <param name="sender"></param>
-        /// <summary>
-        /// Handles gamepad left/right button presses for the track bar control.
-        /// </summary>
-        private void btnSlider_GamePadPress(object sender, GamePadEventArgs e)
-        {
-// Step up/down the track bar's value as needed.
-            if (e.Button == GamePadActions.Left || e.Button == GamePadActions.Down) Value -= stepSize;
-            if (e.Button == GamePadActions.Right || e.Button == GamePadActions.Up) Value += stepSize;
         }
 
         /// <param name="e"></param>

@@ -5,19 +5,6 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MonoForce.Controls
 {
-    public class TabControlGamePadActions : GamePadActions
-    {
-        /// <summary>
-        /// Button used to switch to the next tab. (RightTrigger)
-        /// </summary>
-        public GamePadButton NextTab = GamePadButton.RightTrigger;
-
-        /// <summary>
-        /// Button used to switch to the previous tab. (LeftTrigger)
-        /// </summary>
-        public GamePadButton PrevTab = GamePadButton.LeftTrigger;
-    }
-
     public class TabPage : Control
     {
         /// <summary>
@@ -130,8 +117,6 @@ namespace MonoForce.Controls
 
         public TabControl(Manager manager) : base(manager)
         {
-            GamePadActions = new TabControlGamePadActions();
-            Manager.Input.GamePadDown += Input_GamePadDown;
             CanFocus = false;
         }
 
@@ -352,31 +337,6 @@ namespace MonoForce.Controls
         protected virtual void OnPageChanged(EventArgs e)
         {
             if (PageChanged != null) PageChanged.Invoke(this, e);
-        }
-
-        /// <param name="e"></param>
-        /// <param name="sender"></param>
-        /// <summary>
-        /// Handles gamepad input for the tab control.
-        /// </summary>
-        private void Input_GamePadDown(object sender, GamePadEventArgs e)
-        {
-// Tab control has focus?
-            if (Contains(Manager.FocusedControl, true))
-            {
-// Switch to the next tab page on RightTrigger presses.
-                if (e.Button == (GamePadActions as TabControlGamePadActions).NextTab)
-                {
-                    e.Handled = true;
-                    SelectedIndex += 1;
-                }
-// Switch to the previous tab page on LeftTrigger presses.
-                else if (e.Button == (GamePadActions as TabControlGamePadActions).PrevTab)
-                {
-                    e.Handled = true;
-                    SelectedIndex -= 1;
-                }
-            }
         }
     }
 }

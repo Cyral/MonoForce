@@ -20,9 +20,6 @@ namespace MonoForce.Controls
         {
             get { return autoScroll; }
             set { autoScroll = value; }
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
         }
 
         /// <summary>
@@ -32,9 +29,6 @@ namespace MonoForce.Controls
         {
             get { return defaultControl; }
             set { defaultControl = value; }
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
         }
 
         /// <summary>
@@ -49,9 +43,6 @@ namespace MonoForce.Controls
                 {
                     mainMenu.Resize -= Bars_Resize;
                     Remove(mainMenu);
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
                 }
                 mainMenu = value;
 
@@ -59,19 +50,10 @@ namespace MonoForce.Controls
                 {
                     Add(mainMenu, false);
                     mainMenu.Resize += Bars_Resize;
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
                 }
 // Update margins to account for the removal of the scroll bar.
                 AdjustMargins();
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
             }
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
         }
 
         /// <summary>
@@ -81,9 +63,6 @@ namespace MonoForce.Controls
         {
             get { return scrollAlot; }
             set { scrollAlot = value; }
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
         }
 
         /// <summary>
@@ -97,13 +76,7 @@ namespace MonoForce.Controls
                 scb.Vertical = (sbVert != null ? sbVert.Value : 0);
                 scb.Horizontal = (sbHorz != null ? sbHorz.Value : 0);
                 return scb;
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
             }
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
         }
 
         /// <summary>
@@ -111,22 +84,13 @@ namespace MonoForce.Controls
         /// </summary>
         public virtual StatusBar StatusBar
         {
-            get
-            {
-                return statusBar;
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
-            }
+            get { return statusBar; }
             set
             {
                 if (statusBar != null)
                 {
                     statusBar.Resize -= Bars_Resize;
                     Remove(statusBar);
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
                 }
                 statusBar = value;
 
@@ -134,19 +98,10 @@ namespace MonoForce.Controls
                 {
                     Add(statusBar, false);
                     statusBar.Resize += Bars_Resize;
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
                 }
 // Update margins to account for the removal of the scroll bar.
                 AdjustMargins();
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
             }
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
         }
 
         /// <summary>
@@ -154,22 +109,13 @@ namespace MonoForce.Controls
         /// </summary>
         public virtual ToolBarPanel ToolBarPanel
         {
-            get
-            {
-                return toolBarPanel;
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
-            }
+            get { return toolBarPanel; }
             set
             {
                 if (toolBarPanel != null)
                 {
                     toolBarPanel.Resize -= Bars_Resize;
                     Remove(toolBarPanel);
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
                 }
                 toolBarPanel = value;
 
@@ -177,19 +123,10 @@ namespace MonoForce.Controls
                 {
                     Add(toolBarPanel, false);
                     toolBarPanel.Resize += Bars_Resize;
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
                 }
 // Update margins to account for the removal of the scroll bar.
                 AdjustMargins();
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
             }
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
         }
 
         /// <summary>
@@ -197,13 +134,7 @@ namespace MonoForce.Controls
         /// </summary>
         public override bool Visible
         {
-            get
-            {
-                return base.Visible;
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
-            }
+            get { return base.Visible; }
             set
             {
                 if (value)
@@ -211,22 +142,10 @@ namespace MonoForce.Controls
                     if (DefaultControl != null)
                     {
                         DefaultControl.Focused = true;
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
                     }
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
                 }
                 base.Visible = value;
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
             }
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
         }
 
         /// <summary>
@@ -235,9 +154,6 @@ namespace MonoForce.Controls
         protected virtual ScrollBar HorizontalScrollBar
         {
             get { return sbHorz; }
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
         }
 
         /// <summary>
@@ -246,9 +162,6 @@ namespace MonoForce.Controls
         protected virtual ScrollBar VerticalScrollBar
         {
             get { return sbVert; }
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
         }
 
         /// <summary>
@@ -317,9 +230,6 @@ namespace MonoForce.Controls
 
             Add(sbVert, false);
             Add(sbHorz, false);
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
         }
 
         /// (true) or a direct descendant of the container. (false)
@@ -334,9 +244,6 @@ namespace MonoForce.Controls
         {
             base.Add(control, client);
             CalcScrolling();
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
         }
 
         /// <summary>
@@ -345,9 +252,6 @@ namespace MonoForce.Controls
         public override void Init()
         {
             base.Init();
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
         }
 
         /// <summary>
@@ -356,9 +260,6 @@ namespace MonoForce.Controls
         public override void Invalidate()
         {
             base.Invalidate();
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
         }
 
         /// <param name="y">New vertical scroll bar value.</param>
@@ -370,9 +271,6 @@ namespace MonoForce.Controls
         {
             sbVert.Value = y;
             sbHorz.Value = x;
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
         }
 
         /// <param name="control"></param>
@@ -389,42 +287,24 @@ namespace MonoForce.Controls
                 {
                     sbVert.Value = sbVert.Value + control.AbsoluteTop - ClientArea.AbsoluteTop - sbVert.PageSize +
                                    control.Height;
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
                 }
 // Scroll up?
                 else if (control.AbsoluteTop < ClientArea.AbsoluteTop)
                 {
                     sbVert.Value = sbVert.Value + control.AbsoluteTop - ClientArea.AbsoluteTop;
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
                 }
 // Scroll left?
                 if (control.AbsoluteLeft + control.Width > ClientArea.AbsoluteLeft + ClientArea.Width)
                 {
                     sbHorz.Value = sbHorz.Value + control.AbsoluteLeft - ClientArea.AbsoluteLeft - sbHorz.PageSize +
                                    control.Width;
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
                 }
 // Scroll right?
                 else if (control.AbsoluteLeft < ClientArea.AbsoluteLeft)
                 {
                     sbHorz.Value = sbHorz.Value + control.AbsoluteLeft - ClientArea.AbsoluteLeft;
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
                 }
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
             }
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
         }
 
         /// <summary>
@@ -433,9 +313,6 @@ namespace MonoForce.Controls
         protected internal override void InitSkin()
         {
             base.InitSkin();
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
         }
 
         /// <param name="e"></param>
@@ -450,13 +327,7 @@ namespace MonoForce.Controls
                 sbVert.Visible = false;
                 sbHorz.Visible = false;
                 CalcScrolling();
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
             }
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
         }
 
         /// <param name="gameTime"></param>
@@ -466,9 +337,6 @@ namespace MonoForce.Controls
         protected internal override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
         }
 
         /// <summary>
@@ -483,9 +351,6 @@ namespace MonoForce.Controls
             if (GetType() != typeof (Container))
             {
                 m = ClientMargins;
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
             }
 
 // Main menu displaying?
@@ -500,9 +365,6 @@ namespace MonoForce.Controls
 
 // Update the container's top margin to account for the space the main menu is occupying.
                 m.Top += mainMenu.Height;
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
             }
 // Tool bar panel displaying?
             if (toolBarPanel != null && toolBarPanel.Visible)
@@ -516,9 +378,6 @@ namespace MonoForce.Controls
 
 // Update the container's top margin to account for the space the tool bar panel is occupying.
                 m.Top += toolBarPanel.Height;
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
             }
 // Status bar displaying?
             if (statusBar != null && statusBar.Visible)
@@ -532,27 +391,18 @@ namespace MonoForce.Controls
 
 // Update the container's bottom margin to account for the space the status bar is occupying.
                 m.Bottom += statusBar.Height;
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
             }
 // Vertical scroll bar displayed?
             if (sbVert != null && sbVert.Visible)
             {
 // Update the container's right margin to account for the space the scroll bar is occupying.
                 m.Right += (sbVert.Width + 2);
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
             }
 // Horizontal scroll bar displayed?
             if (sbHorz != null && sbHorz.Visible)
             {
 // Update the container's right margin to account for the space the scroll bar is occupying.
                 m.Bottom += (sbHorz.Height + 2);
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
             }
 
 // Update the container's margins.
@@ -562,17 +412,11 @@ namespace MonoForce.Controls
             PositionScrollBars();
 
             base.AdjustMargins();
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
         }
 
         public override void DrawControl(Renderer renderer, Rectangle rect, GameTime gameTime)
         {
             base.DrawControl(renderer, rect, gameTime);
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
         }
 
         /// <param name="e"></param>
@@ -586,9 +430,6 @@ namespace MonoForce.Controls
             ex.Position = new Point(ex.Position.X + sbHorz.Value, ex.Position.Y + sbVert.Value);
 
             base.OnClick(e);
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
         }
 
         protected override void OnMouseScroll(MouseEventArgs e)
@@ -610,21 +451,12 @@ namespace MonoForce.Controls
                         p.OnMouseScroll(e);
 
                         break;
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
                     }
 
                     c = c.Parent;
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
                 }
 
                 return;
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
             }
 
             if (e.ScrollDirection == MouseScrollDirection.Down)
@@ -633,9 +465,6 @@ namespace MonoForce.Controls
                 sbVert.ScrollUp(ScrollAlot);
 
             base.OnMouseScroll(e);
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
         }
 
         /// <param name="e"></param>
@@ -646,10 +475,6 @@ namespace MonoForce.Controls
         {
             base.OnResize(e);
             CalcScrolling();
-
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
         }
 
         /// <param name="e"></param>
@@ -662,9 +487,6 @@ namespace MonoForce.Controls
         {
 // Update margins to account for the removal of the scroll bar.
             AdjustMargins();
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
         }
 
         /// <summary>
@@ -690,19 +512,10 @@ namespace MonoForce.Controls
                         {
                             c.TopModifier = 0;
                             c.Invalidate();
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
                         }
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
                     }
 // Update margins to account for the removal of the scroll bar.
                     AdjustMargins();
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
                 }
 
 // Adjust the position of the scroll bars.
@@ -712,13 +525,7 @@ namespace MonoForce.Controls
                 {
                     c.TopModifier = -sbVert.Value;
                     c.Invalidate();
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
                 }
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
             }
 
             if (sbHorz != null && autoScroll)
@@ -740,19 +547,10 @@ namespace MonoForce.Controls
                             c.LeftModifier = 0;
                             sbVert.Refresh();
                             c.Invalidate();
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
                         }
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
                     }
 // Update margins to account for the removal of the scroll bar.
                     AdjustMargins();
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
                 }
 
 // Adjust the position of the scroll bars.
@@ -763,17 +561,8 @@ namespace MonoForce.Controls
                     c.LeftModifier = -sbHorz.Value;
                     sbHorz.Refresh();
                     c.Invalidate();
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
                 }
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
             }
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
         }
 
         /// <summary>
@@ -792,9 +581,6 @@ namespace MonoForce.Controls
                 sbVert.Height = ClientArea.Height - m;
                 sbVert.Range = ClientArea.VirtualHeight;
                 sbVert.PageSize = ClientArea.ClientHeight;
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
             }
 
             if (sbHorz != null)
@@ -808,13 +594,7 @@ namespace MonoForce.Controls
                 sbHorz.Width = ClientArea.Width - m;
                 sbHorz.Range = ClientArea.VirtualWidth;
                 sbHorz.PageSize = ClientArea.ClientWidth;
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
             }
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
         }
 
         /// <param name="e"></param>
@@ -825,13 +605,6 @@ namespace MonoForce.Controls
         private void ScrollBarValueChanged(object sender, EventArgs e)
         {
             CalcScrolling();
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
         }
     }
-
-//if (sbHorz != null) sbHorz.Value -= 1;
-//if (sbVert != null) sbVert.Value -= 1;
-// Crappy fix to certain scrolling issue
 }

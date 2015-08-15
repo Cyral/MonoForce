@@ -280,33 +280,6 @@ namespace MonoForce.Controls
 
         /// <param name="e"></param>
         /// <summary>
-        /// Handles gamepad button presses for the list box. Specifically, the up and down buttons.
-        /// </summary>
-        protected override void OnGamePadPress(GamePadEventArgs e)
-        {
-// Move selection down?
-            if (e.Button == GamePadActions.Down)
-            {
-                e.Handled = true;
-                itemIndex += sbVert.StepSize / 10;
-            }
-// Move selection up?
-            else if (e.Button == GamePadActions.Up)
-            {
-                e.Handled = true;
-                itemIndex -= sbVert.StepSize / 10;
-            }
-
-// Wrap index in collection range.
-            if (itemIndex < 0) itemIndex = 0;
-            else if (itemIndex >= Items.Count) itemIndex = Items.Count - 1;
-
-            ItemIndex = itemIndex;
-            base.OnGamePadPress(e);
-        }
-
-        /// <param name="e"></param>
-        /// <summary>
         /// Raises the HideSelectionChanged event.
         /// </summary>
         protected virtual void OnHideSelectionChanged(EventArgs e)

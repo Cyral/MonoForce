@@ -195,38 +195,6 @@ namespace MonoForce.Controls
 
         /// <param name="e"></param>
         /// <summary>
-        /// Handles game pad button press events for the main menu.
-        /// </summary>
-        protected override void OnGamePadPress(GamePadEventArgs e)
-        {
-            base.OnGamePadPress(e);
-
-// Left and right DPad buttons navigate through menus.
-            if (e.Button == GamePadActions.Right)
-            {
-                ItemIndex += 1;
-                e.Handled = true;
-            }
-            if (e.Button == GamePadActions.Left)
-            {
-                ItemIndex -= 1;
-                e.Handled = true;
-            }
-
-// Wrap selected index in range.
-            if (ItemIndex > Items.Count - 1) ItemIndex = 0;
-            if (ItemIndex < 0) ItemIndex = Items.Count - 1;
-
-// Open the selected menu on DPad Down.
-            if (e.Button == GamePadActions.Down && Items[ItemIndex].Items.Count > 0)
-            {
-                e.Handled = true;
-                OnClick(new MouseEventArgs(new MouseState(), MouseButton.None, Point.Zero));
-            }
-        }
-
-        /// <param name="e"></param>
-        /// <summary>
         /// Handles arrow key press events for the main menu.
         /// </summary>
         protected override void OnKeyPress(KeyEventArgs e)

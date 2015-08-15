@@ -237,24 +237,6 @@ namespace MonoForce.Controls
 
         /// <param name="e"></param>
         /// <summary>
-        /// Handles gamepad button down events for the combo box control.
-        /// </summary>
-        protected override void OnGamePadDown(GamePadEventArgs e)
-        {
-            if (!e.Handled)
-            {
-                if (e.Button == GamePadActions.Click || e.Button == GamePadActions.Press ||
-                    e.Button == GamePadActions.Down)
-                {
-                    e.Handled = true;
-                    btnDown_Click(this, new MouseEventArgs());
-                }
-            }
-            base.OnGamePadDown(e);
-        }
-
-        /// <param name="e"></param>
-        /// <summary>
         /// Handles list item index changed events for the combo box control.
         /// </summary>
         protected virtual void OnItemIndexChanged(EventArgs e)

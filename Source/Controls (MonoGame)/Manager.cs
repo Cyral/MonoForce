@@ -752,11 +752,6 @@ game.Window.Title += " (XBOX_FAKE)";
             input.MouseMove += MouseMoveProcess;
             input.MouseScroll += MouseScrollProcess;
 
-// Hook up the input system gamepad events.
-            input.GamePadDown += GamePadDownProcess;
-            input.GamePadUp += GamePadUpProcess;
-            input.GamePadPress += GamePadPressProcess;
-
 // Hook up the input system key events.
             input.KeyDown += KeyDownProcess;
             input.KeyUp += KeyUpProcess;
@@ -1454,98 +1449,9 @@ game.Window.Title += " (XBOX_FAKE)";
         /// </summary>
         private bool CheckState(Control control)
         {
-            var modal = (ModalWindow == null) ? true : (ModalWindow == control.Root);
+            var modal = (ModalWindow == null) || (ModalWindow == control.Root);
 
             return (control != null && !control.Passive && control.Visible && control.Enabled && modal);
-        }
-
-        /// <param name="e"></param>
-        /// <param name="sender"></param>
-        /// <summary>
-        /// Handles gamepad button down events for the manager.
-        /// </summary>
-        private void GamePadDownProcess(object sender, GamePadEventArgs e)
-        {
-            var c = FocusedControl;
-
-// Is there a focused control?
-            if (c != null && CheckState(c))
-            {
-// Update the control's click state?
-                if (states.Click == -1)
-                {
-                    states.Click = (int)e.Button;
-                }
-// Send the gamepad down message to the control.
-                states.Buttons[(int)e.Button] = c;
-                c.SendMessage(Message.GamePadDown, e);
-
-// Need to send a click event message if the click button was pressed.
-                if (e.Button == c.GamePadActions.Click)
-                {
-                    c.SendMessage(Message.Click, new MouseEventArgs(new MouseState(), MouseButton.None, Point.Zero));
-                }
-            }
-        }
-
-        /// <param name="e"></param>
-        /// <param name="sender"></param>
-        /// <summary>
-        /// Handles gamepad button presses for the manager.
-        /// </summary>
-        private void GamePadPressProcess(object sender, GamePadEventArgs e)
-        {
-            var c = states.Buttons[(int)e.Button];
-            if (c != null)
-            {
-// Send the gamepad button press message to the control.
-                c.SendMessage(Message.GamePadPress, e);
-
-// Convert DPad buttons?
-                if ((e.Button == c.GamePadActions.Right ||
-                     e.Button == c.GamePadActions.Left ||
-                     e.Button == c.GamePadActions.Up ||
-                     e.Button == c.GamePadActions.Down) && !e.Handled && CheckButtons((int)e.Button))
-                {
-                    ProcessArrows(c, new KeyEventArgs(), e);
-                    GamePadDownProcess(sender, e);
-                }
-// Switch to next control if RightTrigger is pressed.
-                else if (e.Button == c.GamePadActions.NextControl && !e.Handled && CheckButtons((int)e.Button))
-                {
-                    TabNextControl(c);
-                    GamePadDownProcess(sender, e);
-                }
-// Switch to previous control if LeftTrigger is pressed.
-                else if (e.Button == c.GamePadActions.PrevControl && !e.Handled && CheckButtons((int)e.Button))
-                {
-                    TabPrevControl(c);
-                    GamePadDownProcess(sender, e);
-                }
-            }
-        }
-
-        /// <param name="e"></param>
-        /// <param name="sender"></param>
-        /// <summary>
-        /// Handles gamepad button up events for the manager.
-        /// </summary>
-        private void GamePadUpProcess(object sender, GamePadEventArgs e)
-        {
-            var c = states.Buttons[(int)e.Button];
-
-            if (c != null)
-            {
-// Send click event message to the control if the gamepad X button pressed?
-                if (e.Button == c.GamePadActions.Press)
-                {
-                    c.SendMessage(Message.Click, new MouseEventArgs(new MouseState(), MouseButton.None, Point.Zero));
-                }
-                states.Click = -1;
-                states.Buttons[(int)e.Button] = null;
-// Send gamepad button up message to the control.
-                c.SendMessage(Message.GamePadUp, e);
-            }
         }
 
         /// <param name="e"></param>
@@ -1657,7 +1563,7 @@ RenderTarget = CreateRenderTarget();
                      e.Key == Keys.Up ||
                      e.Key == Keys.Down) && !e.Handled && CheckButtons((int)MouseButton.None))
                 {
-                    ProcessArrows(c, e, new GamePadEventArgs(PlayerIndex.One));
+                    ProcessArrows(c, e);
                     KeyDownProcess(sender, e);
                 }
 // Tab key pressed? Switch to next control.
@@ -1900,50 +1806,48 @@ RenderTarget = CreateRenderTarget();
         /// <summary>
         /// Processes up/down/left/right inputs for the manager.
         /// </summary>
-        private void ProcessArrows(Control control, KeyEventArgs kbe, GamePadEventArgs gpe)
+        private void ProcessArrows(Control control, KeyEventArgs kbe)
         {
             var c = control;
-// Control has siblings?
+            // Control has siblings?
             if (c.Parent != null && c.Parent.Controls != null)
             {
                 var index = -1;
 
-// Unhandled left arrow key or DPad left button press received?
-                if ((kbe.Key == Keys.Left && !kbe.Handled) ||
-                    (gpe.Button == c.GamePadActions.Left && !gpe.Handled))
+                // Unhandled left arrow key or DPad left button press received?
+                if (kbe.Key == Keys.Left && !kbe.Handled)
                 {
                     var miny = int.MaxValue;
                     var minx = int.MinValue;
-// Check sibling controls to find the closest control to this one.
+                    // Check sibling controls to find the closest control to this one.
                     for (var i = 0; i < (c.Parent.Controls as ControlsList).Count; i++)
                     {
                         var cx = (c.Parent.Controls as ControlsList)[i];
-// Skip if this control is the same control, not visible, disabled, or cannot receive focus.
+                        // Skip if this control is the same control, not visible, disabled, or cannot receive focus.
                         if (cx == c || !cx.Visible || !cx.Enabled || cx.Passive || !cx.CanFocus) continue;
 
-// Control vertical center.
+                        // Control vertical center.
                         var cay = c.Top + (c.Height / 2);
-// Child control vertical center.
+                        // Child control vertical center.
                         var cby = cx.Top + (cx.Height / 2);
 
-// Difference between center points is the new minimum value and is the closest control to the left of the control?
+                        // Difference between center points is the new minimum value and is the closest control to the left of the control?
                         if (Math.Abs(cay - cby) <= miny && (cx.Left + cx.Width) >= minx &&
                             (cx.Left + cx.Width) <= c.Left)
                         {
-// Update minimum values and update index to the new closest control.
+                            // Update minimum values and update index to the new closest control.
                             miny = Math.Abs(cay - cby);
                             minx = cx.Left + cx.Width;
                             index = i;
                         }
                     }
                 }
-// Unhandled right arrow key or DPad right button press received?
-                else if ((kbe.Key == Keys.Right && !kbe.Handled) ||
-                         (gpe.Button == c.GamePadActions.Right && !gpe.Handled))
+                // Unhandled right arrow key or DPad right button press received?
+                else if (kbe.Key == Keys.Right && !kbe.Handled)
                 {
                     var miny = int.MaxValue;
                     var minx = int.MaxValue;
-// Check sibling controls to find the closest control to this one.
+                    // Check sibling controls to find the closest control to this one.
                     for (var i = 0; i < (c.Parent.Controls as ControlsList).Count; i++)
                     {
                         var cx = (c.Parent.Controls as ControlsList)[i];
@@ -1966,8 +1870,7 @@ RenderTarget = CreateRenderTarget();
                     }
                 }
 // Unhandled up arrow key or DPad up button press received?
-                else if ((kbe.Key == Keys.Up && !kbe.Handled) ||
-                         (gpe.Button == c.GamePadActions.Up && !gpe.Handled))
+                else if (kbe.Key == Keys.Up && !kbe.Handled)
                 {
                     var miny = int.MinValue;
                     var minx = int.MaxValue;
@@ -1990,8 +1893,7 @@ RenderTarget = CreateRenderTarget();
                     }
                 }
 // Unhandled down arrow key or DPad down button press received?
-                else if ((kbe.Key == Keys.Down && !kbe.Handled) ||
-                         (gpe.Button == c.GamePadActions.Down && !gpe.Handled))
+                else if (kbe.Key == Keys.Down && !kbe.Handled)
                 {
                     var miny = int.MaxValue;
                     var minx = int.MaxValue;
@@ -2020,7 +1922,6 @@ RenderTarget = CreateRenderTarget();
 // Focus the new control and handle the input events.
                     (c.Parent.Controls as ControlsList)[index].Focused = true;
                     kbe.Handled = true;
-                    gpe.Handled = true;
                 }
             }
         }

@@ -18,7 +18,7 @@ with.
     Size is a float value, measured in points. Modify this value to change
     the size of the font.
     -->
-    <Size>6</Size>
+    <Size>8</Size>
 
 
 

@@ -22,7 +22,7 @@ namespace MonoForce.Controls
             set
             {
                 base.ClientMargins = value;
-// Update client area dimensions.
+                // Update client area dimensions.
                 if (clientArea != null)
                 {
                     clientArea.Left = ClientLeft;
@@ -133,7 +133,7 @@ namespace MonoForce.Controls
         {
             base.OnResize(e);
 
-// Update client area dimensions.
+            // Update client area dimensions.
             if (clientArea != null)
             {
                 clientArea.Left = ClientLeft;

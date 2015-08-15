@@ -135,56 +135,6 @@ namespace MonoForce.Controls
         }
     }
 
-    /// <summary>
-    /// Event arguments for gamepad related events.
-    /// </summary>
-    public class GamePadEventArgs : EventArgs
-    {
-        /// <summary>
-        /// Gamepad button pressed for the event arguments.
-        /// </summary>
-        public GamePadButton Button = GamePadButton.None;
-
-        /// <summary>
-        /// Index of the player the gamepad is associated with.
-        /// </summary>
-        public PlayerIndex PlayerIndex = PlayerIndex.One;
-
-        /// <summary>
-        /// State of the gamepad at the time of the event.
-        /// </summary>
-        public GamePadState State = new GamePadState();
-
-        /// <summary>
-        /// Values of the gamepad sticks and trigs.
-        /// </summary>
-        public GamePadVectors Vectors;
-
-/*
-public GamePadEventArgs()
-{
-}*/
-
-        /// <param name="playerIndex">Player index of the gamepad.</param>
-        /// <summary>
-        /// Creates a new instance of the GamePadEventArgs class for the specified player.
-        /// </summary>
-        public GamePadEventArgs(PlayerIndex playerIndex)
-        {
-            PlayerIndex = playerIndex;
-        }
-
-        /// <param name="button">Button pressed for the event.</param>
-        /// <param name="playerIndex">Player index of the gamepad.</param>
-        /// <summary>
-        /// Creates a new instance of the GamePadEventArgs class for the specified player.
-        /// </summary>
-        public GamePadEventArgs(PlayerIndex playerIndex, GamePadButton button)
-        {
-            PlayerIndex = playerIndex;
-            Button = button;
-        }
-    }
 
     public class DrawEventArgs : EventArgs
     {
