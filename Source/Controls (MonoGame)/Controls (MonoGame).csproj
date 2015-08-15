@@ -67,7 +67,6 @@
     <Compile Include="Delegates.cs" />
     <Compile Include="Dialog.cs" />
     <Compile Include="Disposable.cs" />
-    <Compile Include="els.cs" />
     <Compile Include="EventArgs.cs" />
     <Compile Include="EventedList.cs" />
     <Compile Include="ExitDialog.cs" />

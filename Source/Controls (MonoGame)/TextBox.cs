@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -60,22 +61,25 @@ namespace MonoForce.Controls
         private const string skTextBox = "TextBox";
 
         /// <summary>
+        /// Maximum number of characters allowed. -1 for disabled.
+        /// </summary>
+        public virtual int MaxLength { get; set; } = -1;
+
+        /// <summary>
+        /// Maximum number of lines allowed. -1 for disabled.
+        /// </summary>
+        public virtual int MaxLines { get; set; } = -1;
+
+        /// <summary>
         /// Indicates if all text should be selected automatically when the text box receives focus.
         /// </summary>
         public virtual bool AutoSelection
-        {
-            get { return autoSelection; }
-            set { autoSelection = value; }
-        }
+        { get; set; } = true;
 
         /// <summary>
         /// Indicates if the text insertion position is visible or not.
         /// </summary>
-        public virtual bool CaretVisible
-        {
-            get { return caretVisible; }
-            set { caretVisible = value; }
-        }
+        public virtual bool CaretVisible { get; set; } = true;
 
         /// <summary>
         /// Gets or sets the current position of the caret in the text box.
@@ -112,7 +116,7 @@ namespace MonoForce.Controls
                     Text = Text.Replace(Separator, "");
                 }
                 mode = value;
-// Clear selection.
+                // Clear selection.
                 selection.Clear();
 
 
@@ -135,8 +139,7 @@ namespace MonoForce.Controls
         }
 
         public string Placeholder { get; set; } = "";
-
-        public Color PlaceholderColor { get; set; }= new Color(0, 0, 0, 90);
+        public Color PlaceholderColor { get; set; } = new Color(0, 0, 0, 90);
 
         /// <summary>
         /// Indicates if the text box allows user input or not.
@@ -167,12 +170,12 @@ namespace MonoForce.Controls
         {
             get
             {
-// Insert text?
+                // Insert text?
                 if (selection.IsEmpty)
                 {
                     return "";
                 }
-// Replace selection?
+                // Replace selection?
                 return Text.Substring(selection.Start, selection.Length);
             }
         }
@@ -200,7 +203,7 @@ namespace MonoForce.Controls
                 }
 
 
-// Delete all selected text?
+                // Delete all selected text?
                 if (!selection.IsEmpty)
                 {
                     if (selection.Start < 0) selection.Start = 0;
@@ -219,13 +222,8 @@ namespace MonoForce.Controls
         {
             get
             {
-// Insert text?
-                if (selection.IsEmpty)
-                {
-                    return Pos;
-                }
-// Replace selection?
-                return selection.Start;
+                // Insert text? Replace selection?
+                return selection.IsEmpty ? Pos : selection.Start;
             }
             set
             {
@@ -302,7 +300,6 @@ namespace MonoForce.Controls
             {
                 posx = value;
 
-
                 if (posx < 0) posx = 0;
                 if (posx > Lines[PosY].Length) posx = Lines[PosY].Length;
             }
@@ -318,10 +315,8 @@ namespace MonoForce.Controls
             {
                 posy = value;
 
-
                 if (posy < 0) posy = 0;
                 if (posy > Lines.Count - 1) posy = Lines.Count - 1;
-
 
                 PosX = PosX;
             }
@@ -343,19 +338,9 @@ namespace MonoForce.Controls
         private readonly ScrollBar vert;
 
         /// <summary>
-        /// Indicates if all text should be selected automatically when the control gains focus.
-        /// </summary>
-        private bool autoSelection = true;
-
-        /// <summary>
         /// Internal use during text splitting operations.
         /// </summary>
         private string buffer = "";
-
-        /// <summary>
-        /// Indicates if the caret is displayed or not.
-        /// </summary>
-        private bool caretVisible = true;
 
         /// <summary>
         /// Number of characters that can fit horizontally in the client area.
@@ -441,7 +426,7 @@ namespace MonoForce.Controls
         public TextBox(Manager manager)
             : base(manager)
         {
-// Cursor layer defined?
+            // Cursor layer defined?
             CheckLayer(Skin, lrCursor);
 
 
@@ -452,7 +437,7 @@ namespace MonoForce.Controls
             ClientArea.Draw += ClientArea_Draw;
 
 
-// Create the scroll bars for the text box.
+            // Create the scroll bars for the text box.
             vert = new ScrollBar(manager, Orientation.Vertical);
             horz = new ScrollBar(manager, Orientation.Horizontal);
         }
@@ -465,7 +450,7 @@ namespace MonoForce.Controls
             base.Init();
 
 
-// Set up the vertical scroll bar.
+            // Set up the vertical scroll bar.
             vert.Init();
             vert.Range = 1;
             vert.PageSize = 1;
@@ -474,7 +459,7 @@ namespace MonoForce.Controls
             vert.ValueChanged += sb_ValueChanged;
 
 
-// Set up the horizontal scroll bar.
+            // Set up the horizontal scroll bar.
             horz.Init();
             horz.Range = ClientArea.Width;
             horz.PageSize = ClientArea.Width;
@@ -514,7 +499,7 @@ namespace MonoForce.Controls
 #endif
 
 
-// Get the font used for drawing the text box contents.
+            // Get the font used for drawing the text box contents.
             font = (Skin.Layers[lrTextBox].Text != null) ? Skin.Layers[lrTextBox].Text.Font.Resource : null;
         }
 
@@ -530,18 +515,18 @@ namespace MonoForce.Controls
             var sc = showCursor;
 
 
-// Only show the cursor when the text box has focus.
+            // Only show the cursor when the text box has focus.
             showCursor = Focused;
 
 
             if (Focused)
             {
-// Update the cursor flash timer and display/hide the cursor every 0.5 seconds.
+                // Update the cursor flash timer and display/hide the cursor every 0.5 seconds.
                 flashTime += gameTime.ElapsedGameTime.TotalSeconds;
                 showCursor = flashTime < 0.5;
                 if (flashTime > 1) flashTime = 0;
             }
-// Visibility of the cursor has changed? Redraw.
+            // Visibility of the cursor has changed? Redraw.
             if (sc != showCursor) ClientArea.Invalidate();
         }
 
@@ -550,14 +535,14 @@ namespace MonoForce.Controls
         /// </summary>
         protected override void AdjustMargins()
         {
-// Horizontal scroll bar hidden?
+            // Horizontal scroll bar hidden?
             if (horz != null && !horz.Visible)
             {
                 vert.Height = Height - 4;
                 ClientMargins = new Margins(ClientMargins.Left, ClientMargins.Top, ClientMargins.Right,
                     Skin.ClientMargins.Bottom);
             }
-// Replace selection?
+            // Replace selection?
             else
             {
                 ClientMargins = new Margins(ClientMargins.Left, ClientMargins.Top, ClientMargins.Right,
@@ -565,14 +550,14 @@ namespace MonoForce.Controls
             }
 
 
-// Vertical scroll bar hidden?
+            // Vertical scroll bar hidden?
             if (vert != null && !vert.Visible)
             {
                 horz.Width = Width - 4;
                 ClientMargins = new Margins(ClientMargins.Left, ClientMargins.Top, Skin.ClientMargins.Right,
                     ClientMargins.Bottom);
             }
-// Replace selection?
+            // Replace selection?
             else
             {
                 ClientMargins = new Margins(ClientMargins.Left, ClientMargins.Top, 18 + Skin.ClientMargins.Right,
@@ -583,14 +568,14 @@ namespace MonoForce.Controls
 
         public override void DrawControl(Renderer renderer, Rectangle rect, GameTime gameTime)
         {
-// Need to draw borders?
+            // Need to draw borders?
             if (drawBorders)
             {
                 base.DrawControl(renderer, rect, gameTime);
             }
         }
 
-// Guide visible?
+        // Guide visible?
 
         /// <param name="e"></param>
         /// <summary>
@@ -598,19 +583,19 @@ namespace MonoForce.Controls
         /// </summary>
         protected override void OnFocusGained(EventArgs e)
         {
-// Auto-select all text?
-            if (!readOnly && autoSelection)
+            // Auto-select all text?
+            if (!readOnly && AutoSelection)
             {
                 SelectAll();
                 ClientArea.Invalidate();
             }
 
-// Guide visible?
+            // Guide visible?
 
             base.OnFocusGained(e);
         }
 
-// Guide visible?
+        // Guide visible?
 
         /// <param name="e"></param>
         /// <summary>
@@ -618,7 +603,7 @@ namespace MonoForce.Controls
         /// </summary>
         protected override void OnFocusLost(EventArgs e)
         {
-// Clear selection.
+            // Clear selection.
             selection.Clear();
             ClientArea.Invalidate();
             base.OnFocusLost(e);
@@ -630,231 +615,238 @@ namespace MonoForce.Controls
         /// </summary>
         protected override void OnKeyPress(KeyEventArgs e)
         {
-// Reset the timer used to flash the caret.
+            // Reset the timer used to flash the caret.
             flashTime = 0;
 
 
-// Key event handled already?
+            // Key event handled already?
             if (!e.Handled)
             {
-// Control + A = Select All Text.
-                if (e.Key == Keys.A && e.Control && mode != TextBoxMode.Password)
+                // Control + A = Select All Text.
+                if (e.Key == Keys.A && e.Control)
                 {
                     SelectAll();
                 }
-// Up arrow key press?
+                // Up arrow key press?
                 if (e.Key == Keys.Up)
                 {
-// Display the on-screen keyboard.
+                    // Display the on-screen keyboard.
                     e.Handled = true;
 
 
-// Begin selection on Shift + Up if a selection isn't already set.
+                    // Begin selection on Shift + Up if a selection isn't already set.
                     if (e.Shift && selection.IsEmpty && mode != TextBoxMode.Password)
                     {
                         selection.Start = Pos;
                     }
-// Move the caret up a line.
+                    // Move the caret up a line.
                     if (!e.Control)
                     {
                         PosY -= 1;
                     }
                 }
-// Down arrow key press?
+                // Down arrow key press?
                 else if (e.Key == Keys.Down)
                 {
-// Display the on-screen keyboard.
+                    // Display the on-screen keyboard.
                     e.Handled = true;
-// Begin selection on Shift + Up if a selection isn't already set.
+                    // Begin selection on Shift + Up if a selection isn't already set.
                     if (e.Shift && selection.IsEmpty && mode != TextBoxMode.Password)
                     {
                         selection.Start = Pos;
                     }
-// Move the caret up a line.
+                    // Move the caret up a line.
                     if (!e.Control)
                     {
                         PosY += 1;
                     }
                 }
-// Delete text if Backspace pressed?
+                // Delete text if Backspace pressed?
                 else if (e.Key == Keys.Back && !readOnly)
                 {
-// Display the on-screen keyboard.
+                    // Display the on-screen keyboard.
                     e.Handled = true;
-// Delete all selected text?
+                    // Delete all selected text?
                     if (!selection.IsEmpty)
                     {
                         Text = Text.Remove(selection.Start, selection.Length);
                         Pos = selection.Start;
                     }
-// Remove a single character?
+                    // Remove a single character?
                     else if (Text.Length > 0 && Pos > 0)
                     {
                         Pos -= 1;
                         Text = Text.Remove(Pos, 1);
                     }
-// Clear selection.
+                    // Clear selection.
                     selection.Clear();
                 }
-// Delete text if Delete is pressed?
+                // Delete text if Delete is pressed?
                 else if (e.Key == Keys.Delete && !readOnly)
                 {
-// Display the on-screen keyboard.
+                    // Display the on-screen keyboard.
                     e.Handled = true;
-// Delete all selected text?
+                    // Delete all selected text?
                     if (!selection.IsEmpty)
                     {
                         Text = Text.Remove(selection.Start, selection.Length);
                         Pos = selection.Start;
                     }
-// Remove the character after the caret?
+                    // Remove the character after the caret?
                     else if (Pos < Text.Length)
                     {
                         Text = Text.Remove(Pos, 1);
                     }
-// Clear selection.
+                    // Clear selection.
                     selection.Clear();
                 }
-// Left arrow key pressed?
+                // Left arrow key pressed?
                 else if (e.Key == Keys.Left)
                 {
-// Display the on-screen keyboard.
+                    // Display the on-screen keyboard.
                     e.Handled = true;
-// Begin selection on Shift + Up if a selection isn't already set.
+                    // Begin selection on Shift + Up if a selection isn't already set.
                     if (e.Shift && selection.IsEmpty && mode != TextBoxMode.Password)
                     {
                         selection.Start = Pos;
                     }
-// Move the caret up a line.
+                    // Move the caret up a line.
                     if (!e.Control)
                     {
                         Pos -= 1;
                     }
-// Move the caret to the start of the previous word on Control + Left.
+                    // Move the caret to the start of the previous word on Control + Left.
                     if (e.Control)
                     {
                         Pos = FindPrevWord(shownText);
                     }
                 }
-// Right arrow key pressed?
+                // Right arrow key pressed?
                 else if (e.Key == Keys.Right)
                 {
-// Display the on-screen keyboard.
+                    // Display the on-screen keyboard.
                     e.Handled = true;
-// Begin selection on Shift + Up if a selection isn't already set.
+                    // Begin selection on Shift + Up if a selection isn't already set.
                     if (e.Shift && selection.IsEmpty && mode != TextBoxMode.Password)
                     {
                         selection.Start = Pos;
                     }
-// Move the caret up a line.
+                    // Move the caret up a line.
                     if (!e.Control)
                     {
                         Pos += 1;
                     }
-// Move the caret to the start of the previous word on Control + Left.
+                    // Move the caret to the start of the previous word on Control + Left.
                     if (e.Control)
                     {
                         Pos = FindNextWord(shownText);
                     }
                 }
-// Home key pressed?
+                // Home key pressed?
                 else if (e.Key == Keys.Home)
                 {
-// Display the on-screen keyboard.
+                    // Display the on-screen keyboard.
                     e.Handled = true;
-// Begin selection on Shift + Up if a selection isn't already set.
+                    // Begin selection on Shift + Up if a selection isn't already set.
                     if (e.Shift && selection.IsEmpty && mode != TextBoxMode.Password)
                     {
                         selection.Start = Pos;
                     }
-// Move the caret up a line.
+                    // Move the caret up a line.
                     if (!e.Control)
                     {
                         PosX = 0;
                     }
-// Move the caret to the start of the previous word on Control + Left.
+                    // Move the caret to the start of the previous word on Control + Left.
                     if (e.Control)
                     {
                         Pos = 0;
                     }
                 }
-// End key pressed?
+                // End key pressed?
                 else if (e.Key == Keys.End)
                 {
-// Display the on-screen keyboard.
+                    // Display the on-screen keyboard.
                     e.Handled = true;
-// Begin selection on Shift + Up if a selection isn't already set.
+                    // Begin selection on Shift + Up if a selection isn't already set.
                     if (e.Shift && selection.IsEmpty && mode != TextBoxMode.Password)
                     {
                         selection.Start = Pos;
                     }
-// Move the caret up a line.
+                    // Move the caret up a line.
                     if (!e.Control)
                     {
                         PosX = Lines[PosY].Length;
                     }
-// Move the caret to the start of the previous word on Control + Left.
+                    // Move the caret to the start of the previous word on Control + Left.
                     if (e.Control)
                     {
                         Pos = Text.Length;
                     }
                 }
-// Page Up key pressed?
+                // Page Up key pressed?
                 else if (e.Key == Keys.PageUp)
                 {
-// Display the on-screen keyboard.
+                    // Display the on-screen keyboard.
                     e.Handled = true;
-// Begin selection on Shift + Up if a selection isn't already set.
+                    // Begin selection on Shift + Up if a selection isn't already set.
                     if (e.Shift && selection.IsEmpty && mode != TextBoxMode.Password)
                     {
                         selection.Start = Pos;
                     }
-// Move the caret up a line.
+                    // Move the caret up a line.
                     if (!e.Control)
                     {
                         PosY -= linesDrawn;
                     }
                 }
-// Page Down key pressed?
+                // Page Down key pressed?
                 else if (e.Key == Keys.PageDown)
                 {
-// Display the on-screen keyboard.
+                    // Display the on-screen keyboard.
                     e.Handled = true;
-// Begin selection on Shift + Up if a selection isn't already set.
+                    // Begin selection on Shift + Up if a selection isn't already set.
                     if (e.Shift && selection.IsEmpty && mode != TextBoxMode.Password)
                     {
                         selection.Start = Pos;
                     }
-// Move the caret up a line.
+                    // Move the caret up a line.
                     if (!e.Control)
                     {
                         PosY += linesDrawn;
                     }
                 }
-// Insert new line on Enter key press?
+                // Insert new line on Enter key press?
                 else if (e.Key == Keys.Enter && mode == TextBoxMode.Multiline && !readOnly)
                 {
-// Display the on-screen keyboard.
+                    if (MaxLength >= 0 && Text.Length >= MaxLength) return;
+                    if (MaxLines >= 0 && Text.Count(x => x.Equals('\n')) >= MaxLines - 1)
+                    {
+                        e.Handled = true;
+                        return;
+                    }
+                    // Display the on-screen keyboard.
                     e.Handled = true;
                     Text = Text.Insert(Pos, Separator);
                     PosX = 0;
                     PosY += 1;
                 }
-// Tab key pressed?
+                // Tab key pressed?
                 else if (e.Key == Keys.Tab)
                 {
                 }
-// Handle all other key press events.
+                // Handle all other key press events.
                 else if (!readOnly && !e.Control)
                 {
                     var c = Manager.KeyboardLayout.GetKey(e);
-// Insert text?
+                    if (selection.Length == 0 && MaxLength >= 0 && Text.Length >= MaxLength) return;
+                    // Insert text?
                     if (selection.IsEmpty)
                     {
                         Text = Text.Insert(Pos, c);
                         if (c != "") PosX += 1;
                     }
-// Replace selection?
+                    // Replace selection?
                     else
                     {
                         if (Text.Length > 0)
@@ -863,24 +855,24 @@ namespace MonoForce.Controls
                             Text = Text.Insert(selection.Start, c);
                             Pos = selection.Start + 1;
                         }
-// Clear selection.
+                        // Clear selection.
                         selection.Clear();
                     }
                 }
 
 
-// Update the end of selection?
+                // Update the end of selection?
                 if (e.Shift && !selection.IsEmpty)
                 {
                     selection.End = Pos;
                 }
 
 
-/*
-* TODO: Fix
-* MONOTODO: Fix
-*/
-// Copy selected text to clipboard on Control + C pressed and running on Windows.
+                /*
+                * TODO: Fix
+                * MONOTODO: Fix
+                */
+                // Copy selected text to clipboard on Control + C pressed and running on Windows.
                 if (e.Control && e.Key == Keys.C && mode != TextBoxMode.Password)
                 {
 #if (!XBOX && !XBOX_FAKE)
@@ -892,44 +884,44 @@ namespace MonoForce.Controls
                     }
 #endif
                 }
-// Paste from clipboard on Control + V if running on Windows.
+                // Paste from clipboard on Control + V if running on Windows.
                 else if (e.Control && e.Key == Keys.V && !readOnly && mode != TextBoxMode.Password)
                 {
 #if (!XBOX && !XBOX_FAKE)
                     var t = Clipboard.GetText().Replace(Environment.NewLine, "\n");
-// Insert text?
+                    // Insert text?
                     if (selection.IsEmpty)
                     {
                         Text = Text.Insert(Pos, t);
                         Pos = Pos + t.Length;
                     }
-// Replace selection?
+                    // Replace selection?
                     else if (!string.IsNullOrEmpty(Text))
                     {
                         Text = Text.Remove(selection.Start, selection.Length);
                         Text = Text.Insert(selection.Start, t);
                         PosX = selection.Start + t.Length;
-// Clear selection.
+                        // Clear selection.
                         selection.Clear();
                     }
 #endif
                 }
-/* END TODO */
-// Clear selection?
+                /* END TODO */
+                // Clear selection?
                 if ((!e.Shift && !e.Control) || Text.Length <= 0)
                 {
-// Clear selection.
+                    // Clear selection.
                     selection.Clear();
                 }
 
 
-// Show guide on Control + Down.
+                // Show guide on Control + Down.
                 if (e.Control && e.Key == Keys.Down)
                 {
-// Display the on-screen keyboard.
+                    // Display the on-screen keyboard.
                     e.Handled = true;
                 }
-// Reset the timer used to flash the caret.
+                // Reset the timer used to flash the caret.
                 flashTime = 0;
                 if (ClientArea != null) ClientArea.Invalidate();
 
@@ -949,18 +941,18 @@ namespace MonoForce.Controls
             base.OnMouseDown(e);
 
 
-// Reset the timer used to flash the caret.
+            // Reset the timer used to flash the caret.
             flashTime = 0;
 
 
-// Reposition caret.
+            // Reposition caret.
             Pos = CharAtPos(e.Position);
-// Clear selection.
+            // Clear selection.
             selection.Clear();
 
 
-// Update selection?
-            if (e.Button == MouseButton.Left && caretVisible && mode != TextBoxMode.Password)
+            // Update selection?
+            if (e.Button == MouseButton.Left && CaretVisible && mode != TextBoxMode.Password)
             {
                 selection.Start = Pos;
                 selection.End = Pos;
@@ -977,7 +969,7 @@ namespace MonoForce.Controls
             base.OnMouseMove(e);
 
 
-// Mouse move + Left button down = Update selection.
+            // Mouse move + Left button down = Update selection.
             if (e.Button == MouseButton.Left && !selection.IsEmpty && mode != TextBoxMode.Password &&
                 selection.Length < Text.Length)
             {
@@ -1004,7 +996,7 @@ namespace MonoForce.Controls
 
             if (e.ScrollDirection == MouseScrollDirection.Down)
                 vert.ScrollDown();
-// Replace selection?
+            // Replace selection?
             else
                 vert.ScrollUp();
 
@@ -1021,7 +1013,7 @@ namespace MonoForce.Controls
             base.OnMouseUp(e);
 
 
-// Clear selection if the text box receives a left button click.
+            // Clear selection if the text box receives a left button click.
             if (e.Button == MouseButton.Left && !selection.IsEmpty && mode != TextBoxMode.Password)
             {
                 if (selection.Length == 0) selection.Clear();
@@ -1034,9 +1026,9 @@ namespace MonoForce.Controls
         /// </summary>
         protected override void OnResize(ResizeEventArgs e)
         {
-// Clear text selection and update scroll bars.
+            // Clear text selection and update scroll bars.
             base.OnResize(e);
-// Clear selection.
+            // Clear selection.
             selection.Clear();
             SetupBars();
         }
@@ -1055,18 +1047,18 @@ namespace MonoForce.Controls
             var py = 0;
 
 
-// Is there more than one line of text to consider?
+            // Is there more than one line of text to consider?
             if (mode == TextBoxMode.Multiline)
             {
-// Get the line index under the specified point.
+                // Get the line index under the specified point.
                 py = vert.Value + (y - ClientTop) / font.LineSpacing;
                 if (py < 0) py = 0;
                 if (py >= Lines.Count) py = Lines.Count - 1;
             }
-// Replace selection?
+            // Replace selection?
             else
             {
-// Otherwise, line index is zero.
+                // Otherwise, line index is zero.
                 py = 0;
             }
 
@@ -1076,7 +1068,7 @@ namespace MonoForce.Controls
 
             if (str != null && str != "")
             {
-// Determine X position within the current line.
+                // Determine X position within the current line.
                 for (var i = 1; i <= Lines[py].Length; i++)
                 {
                     var v = font.MeasureString(str.Substring(0, i)) - (font.MeasureString(str[i - 1].ToString()) / 3);
@@ -1088,7 +1080,8 @@ namespace MonoForce.Controls
                 }
                 if (x >
                     ClientLeft + ((int)font.MeasureString(str).X) - horz.Value -
-                    (font.MeasureString(str[str.Length - 1].ToString()).X / 3)) px = str.Length;
+                    (font.MeasureString(str[str.Length - 1].ToString()).X / 3))
+                    px = str.Length;
             }
 
 
@@ -1102,30 +1095,30 @@ namespace MonoForce.Controls
         /// </summary>
         private void ClientArea_Draw(object sender, DrawEventArgs e)
         {
-// Grab the text box control's skin information.
+            // Grab the text box control's skin information.
             var layer = Skin.Layers[lrTextBox];
             var col = Skin.Layers[lrTextBox].Text.Colors.Enabled;
             var cursor = Skin.Layers[lrCursor];
-// Multi-line text boxes are aligned top-left; other types have their line centered vertically.
+            // Multi-line text boxes are aligned top-left; other types have their line centered vertically.
             var al = mode == TextBoxMode.Multiline ? Alignment.TopLeft : Alignment.MiddleLeft;
             var renderer = e.Renderer;
             var r = e.Rectangle;
-// Text box has a selected text to consider?
+            // Text box has a selected text to consider?
             var drawsel = !selection.IsEmpty;
             var tmpText = "";
 
 
-// Get the font used for drawing the text box contents.
+            // Get the font used for drawing the text box contents.
             font = (Skin.Layers[lrTextBox].Text != null) ? Skin.Layers[lrTextBox].Text.Font.Resource : null;
 
 
-// Control has text to draw and we have a font to draw it with?
+            // Control has text to draw and we have a font to draw it with?
             if (Text != null && font != null)
             {
                 DeterminePages();
 
 
-// Adjust rectangle to account for current vertical scroll bar value?
+                // Adjust rectangle to account for current vertical scroll bar value?
                 if (mode == TextBoxMode.Multiline)
                 {
                     shownText = Text;
@@ -1133,7 +1126,7 @@ namespace MonoForce.Controls
                 }
                 else if (mode == TextBoxMode.Password)
                 {
-// Mask the text using the password character.
+                    // Mask the text using the password character.
                     shownText = "";
                     for (var i = 0; i < Text.Length; i++)
                     {
@@ -1141,7 +1134,7 @@ namespace MonoForce.Controls
                     }
                     tmpText = shownText;
                 }
-// Replace selection?
+                // Replace selection?
                 else
                 {
                     shownText = Text;
@@ -1149,10 +1142,10 @@ namespace MonoForce.Controls
                 }
 
 
-// Text color defined and control not disabled.
+                // Text color defined and control not disabled.
                 if (TextColor != UndefinedColor && ControlState != ControlState.Disabled)
                 {
-// Use the control's text color value.
+                    // Use the control's text color value.
                     col = TextColor;
                 }
 
@@ -1171,30 +1164,64 @@ namespace MonoForce.Controls
                 }
 
 
-// Is there a selection to draw?
+                // Is there a selection to draw?
                 if (drawsel)
                 {
                     DrawSelection(e.Renderer, r);
-/*
-renderer.End();
-renderer.SpriteBatch.Begin(SpriteBlendMode.AlphaBlend, SpriteSortMode.Immediate, SaveStateMode.None);
-renderer.SpriteBatch.GraphicsDevice.RenderState.SeparateAlphaBlendEnabled = true;
-renderer.SpriteBatch.GraphicsDevice.RenderState.SourceBlend = Blend.DestinationColor;
-renderer.SpriteBatch.GraphicsDevice.RenderState.DestinationBlend = Blend.SourceColor;
-renderer.SpriteBatch.GraphicsDevice.RenderState.BlendFunction = BlendFunction.Subtract;
-//renderer.SpriteBatch.GraphicsDevice.RenderState.AlphaDestinationBlend = Blend.DestinationAlpha;
-//renderer.SpriteBatch.GraphicsDevice.RenderState.AlphaSourceBlend = Blend.One;
-//renderer.SpriteBatch.GraphicsDevice.RenderState.AlphaFunction = CompareFunction.Equal;
-*/
+                    /*
+                    renderer.End();
+                    renderer.SpriteBatch.Begin(SpriteBlendMode.AlphaBlend, SpriteSortMode.Immediate, SaveStateMode.None);
+                    renderer.SpriteBatch.GraphicsDevice.RenderState.SeparateAlphaBlendEnabled = true;
+                    renderer.SpriteBatch.GraphicsDevice.RenderState.SourceBlend = Blend.DestinationColor;
+                    renderer.SpriteBatch.GraphicsDevice.RenderState.DestinationBlend = Blend.SourceColor;
+                    renderer.SpriteBatch.GraphicsDevice.RenderState.BlendFunction = BlendFunction.Subtract;
+                    //renderer.SpriteBatch.GraphicsDevice.RenderState.AlphaDestinationBlend = Blend.DestinationAlpha;
+                    //renderer.SpriteBatch.GraphicsDevice.RenderState.AlphaSourceBlend = Blend.One;
+                    //renderer.SpriteBatch.GraphicsDevice.RenderState.AlphaFunction = CompareFunction.Equal;
+                    */
                 }
 
 
-// Get height of a single line of text.
+                // Get height of a single line of text.
                 var sizey = font.LineSpacing;
 
 
-// Need to draw the caret?
-                if (showCursor && caretVisible)
+               
+
+
+                // Draw all visible text.
+                for (var i = 0; i < linesDrawn + 1; i++)
+                {
+                    var ii = i + vert.Value;
+                    if (ii >= Lines.Count || ii < 0) break;
+
+
+                    if (Lines[ii] != "")
+                    {
+                        // Adjust rectangle to account for current vertical scroll bar value?
+                        if (mode == TextBoxMode.Multiline)
+                        {
+                            renderer.DrawString(font, Lines[ii], r.Left - horz.Value, r.Top + (i * sizey), col,
+                                DrawFormattedText);
+                        }
+                        // Replace selection?
+                        else
+                        {
+                            var rx = new Rectangle(r.Left - horz.Value, r.Top, r.Width, r.Height);
+                            renderer.DrawString(font, shownText, rx, col, al, false, DrawFormattedText);
+                        }
+                    }
+                }
+                /*  if (drawsel)
+                {
+                renderer.End();
+                renderer.Begin(BlendingMode.Premultiplied);
+                }*/
+            }
+            if (font != null)
+            {
+                // Need to draw the caret?
+                if (showCursor && CaretVisible)
                 {
                     var size = Vector2.Zero;
                     if (PosX > 0 && PosX <= tmpText.Length)
@@ -1211,51 +1238,22 @@ renderer.SpriteBatch.GraphicsDevice.RenderState.BlendFunction = BlendFunction.Su
                     var m = r.Height - font.LineSpacing;
 
 
-// Create the rectangle where the cursor should be drawn.
+                    // Create the rectangle where the cursor should be drawn.
                     var rc = new Rectangle(r.Left - horz.Value + (int)size.X, (r.Top + m / 2), cursor.Width,
                         font.LineSpacing - 2);
 
 
-// Adjust rectangle to account for current vertical scroll bar value?
+                    // Adjust rectangle to account for current vertical scroll bar value?
                     if (mode == TextBoxMode.Multiline)
                     {
                         rc = new Rectangle(r.Left + (int)size.X - horz.Value,
                             (r.Top + (PosY - vert.Value) * font.LineSpacing) - 1, cursor.Width, font.LineSpacing - 2);
                     }
-              
-// Draw the cursor in the text box.
+
+                    // Draw the cursor in the text box.
                     cursor.Alignment = al;
                     renderer.DrawLayer(cursor, rc, col, 0);
                 }
-
-
-// Draw all visible text.
-                for (var i = 0; i < linesDrawn + 1; i++)
-                {
-                    var ii = i + vert.Value;
-                    if (ii >= Lines.Count || ii < 0) break;
-
-
-                    if (Lines[ii] != "")
-                    {
-// Adjust rectangle to account for current vertical scroll bar value?
-                        if (mode == TextBoxMode.Multiline)
-                        {
-                            renderer.DrawString(font, Lines[ii], r.Left - horz.Value, r.Top + (i * sizey), col, DrawFormattedText);
-                        }
-// Replace selection?
-                        else
-                        {
-                            var rx = new Rectangle(r.Left - horz.Value, r.Top, r.Width, r.Height);
-                            renderer.DrawString(font, shownText, rx, col, al, false, DrawFormattedText);
-                        }
-                    }
-                }
-/*  if (drawsel)
-{
-renderer.End();
-renderer.Begin(BlendingMode.Premultiplied);
-}*/
             }
         }
 
@@ -1267,16 +1265,16 @@ renderer.Begin(BlendingMode.Premultiplied);
         {
             if (ClientArea != null)
             {
-// Get height of a single line of text.
+                // Get height of a single line of text.
                 var sizey = font.LineSpacing;
-// Update the number of lines that can fit within the current height of the text area.
+                // Update the number of lines that can fit within the current height of the text area.
                 linesDrawn = ClientArea.Height / sizey;
-// Can't draw more lines than there actually is.
+                // Can't draw more lines than there actually is.
                 if (linesDrawn > Lines.Count) linesDrawn = Lines.Count;
 
 
-// NOTE: How exactly does this work out?
-// Update the number of characters drawn.
+                // NOTE: How exactly does this work out?
+                // Update the number of characters drawn.
                 charsDrawn = ClientArea.Width - 1;
             }
         }
@@ -1288,21 +1286,21 @@ renderer.Begin(BlendingMode.Premultiplied);
         /// </summary>
         private void DrawSelection(Renderer renderer, Rectangle rect)
         {
-// Delete all selected text?
+            // Delete all selected text?
             if (!selection.IsEmpty)
             {
                 var s = selection.Start;
                 var e = selection.End;
 
 
-// Get selection's starting line index, ending line index, starting column index, and ending column index.
+                // Get selection's starting line index, ending line index, starting column index, and ending column index.
                 var sl = GetPosY(s);
                 var el = GetPosY(e);
                 var sc = GetPosX(s);
                 var ec = GetPosX(e);
 
 
-// Selection height is the height of a single line of text.
+                // Selection height is the height of a single line of text.
                 var hgt = font.LineSpacing;
 
 
@@ -1310,12 +1308,12 @@ renderer.Begin(BlendingMode.Premultiplied);
                 var end = el;
 
 
-// Adjust start and end positions to account for vertical scroll values.
+                // Adjust start and end positions to account for vertical scroll values.
                 if (start < vert.Value) start = vert.Value;
                 if (end > vert.Value + linesDrawn) end = vert.Value + linesDrawn;
 
 
-// Draw each line of the selection.
+                // Draw each line of the selection.
                 for (var i = start; i <= end; i++)
                 {
                     var r = Rectangle.Empty;
@@ -1326,13 +1324,34 @@ renderer.Begin(BlendingMode.Premultiplied);
                         var m = ClientArea.Height - font.LineSpacing;
                         r = new Rectangle(
                             rect.Left - horz.Value + (int)font.MeasureString(Lines[i].Substring(0, sc)).X,
-                            rect.Top + m / 2 -1,
+                            rect.Top + m / 2 - 1,
                             (int)font.MeasureString(Lines[i].Substring(0, ec + 0)).X -
                             (int)font.MeasureString(Lines[i].Substring(0, sc)).X, hgt - 1);
                     }
 
-                    renderer.Draw(Manager.Skin.Images["Control"].Resource, r,
-                        Color.FromNonPremultiplied(160, 160, 160, 128));
+                    else if (mode == TextBoxMode.Password)
+                    {
+                        var m = ClientArea.Height - font.LineSpacing;
+                        r = new Rectangle(
+                            rect.Left - horz.Value + (int)font.MeasureString(shownText.Substring(0, sc)).X,
+                            rect.Top + m / 2 - 1,
+                            ((int)font.MeasureString(shownText.Substring(0, ec + 0)).X -
+                            (int)font.MeasureString(shownText.Substring(0, sc)).X), hgt - 1);
+                    }
+
+                    else if (sl == el)
+                    {
+                        r = new Rectangle(rect.Left - horz.Value + (int)font.MeasureString(Lines[i].Substring(0, sc)).X, rect.Top + (i - vert.Value) * hgt - 1,
+                                          (int)font.MeasureString(Lines[i].Substring(0, ec + 0)).X - (int)font.MeasureString(Lines[i].Substring(0, sc)).X, hgt - 1);
+                    }
+                    else
+                    {
+                        if (i == sl) r = new Rectangle(rect.Left - horz.Value + (int)font.MeasureString(Lines[i].Substring(0, sc)).X, rect.Top + (i - vert.Value) * hgt - 1, (int)font.MeasureString(Lines[i]).X - (int)font.MeasureString(Lines[i].Substring(0, sc)).X, hgt);
+                        else if (i == el) r = new Rectangle(rect.Left - horz.Value, rect.Top + (i - vert.Value) * hgt, (int)font.MeasureString(Lines[i].Substring(0, ec + 0)).X, hgt);
+                        else r = new Rectangle(rect.Left - horz.Value, rect.Top + (i - vert.Value) * hgt, (int)font.MeasureString(Lines[i]).X, hgt - 1);
+                    }
+
+                    renderer.Draw(Manager.Skin.Images["Control"].Resource, r, Color.FromNonPremultiplied(160, 160, 160, 128));
                 }
             }
         }
@@ -1357,7 +1376,7 @@ renderer.Begin(BlendingMode.Premultiplied);
                     space = true;
                     continue;
                 }
-// First non-whitespace character after the first encountered space is the start of the next word.
+                // First non-whitespace character after the first encountered space is the start of the next word.
                 if (space && char.IsLetterOrDigit(text[i]))
                 {
                     return i;
@@ -1365,7 +1384,7 @@ renderer.Begin(BlendingMode.Premultiplied);
             }
 
 
-// Reached the end of the text.
+            // Reached the end of the text.
             return text.Length;
         }
 
@@ -1381,32 +1400,31 @@ renderer.Begin(BlendingMode.Premultiplied);
             var letter = false;
 
 
-// Get current position of the cursor.
+            // Get current position of the cursor.
             var p = Pos - 1;
             if (p < 0) p = 0;
             if (p >= text.Length) p = text.Length - 1;
 
 
-// Search backwards from the current position
+            // Search backwards from the current position
             for (var i = p; i >= 0; i--)
             {
-// of the word we want to find the start of.
-// First non whitespace character from current position indicates start
+                // of the word we want to find the start of.
+                // First non whitespace character from current position indicates start
                 if (char.IsLetterOrDigit(text[i]))
                 {
                     letter = true;
                     continue;
                 }
-// of the word behind the cursor's current position.
-// First white space character indicates that we are at the beginning
+                // of the word behind the cursor's current position.
+                // First white space character indicates that we are at the beginning
                 if (letter && !char.IsLetterOrDigit(text[i]))
                 {
                     return i + 1;
                 }
             }
 
-
-// Reached the beginning of the text string.
+            // Reached the beginning of the text string.
             return 0;
         }
 
@@ -1416,18 +1434,18 @@ renderer.Begin(BlendingMode.Premultiplied);
         /// <summary>
         /// Returns the number of characters of the specified text that will fit within the specified width.
         /// </summary>
-        private int GetFitChars(string text, int width)
+        public int GetFitChars(string text, int width)
         {
-// All characters will fit unless proven otherwise.
+            // All characters will fit unless proven otherwise.
             var ret = text.Length;
             var size = 0;
 
 
             for (var i = 0; i < text.Length; i++)
             {
-// Get the width of the current substring.
+                // Get the width of the current substring.
                 size = (int)font.MeasureString(text.Substring(0, i)).X;
-// Too large? Update character count and exit.
+                // Too large? Update character count and exit.
                 if (size > width)
                 {
                     ret = i;
@@ -1449,7 +1467,7 @@ renderer.Begin(BlendingMode.Premultiplied);
             var x = 0;
 
 
-// Determine which line the cursor is on.
+            // Determine which line the cursor is on.
             for (var i = 0; i < Lines.Count; i++)
             {
                 if (Lines[i].Length > max)
@@ -1490,16 +1508,16 @@ renderer.Begin(BlendingMode.Premultiplied);
         /// </summary>
         private int GetPosX(int pos)
         {
-// Cursor is at the end of the text content?
+            // Cursor is at the end of the text content?
             if (pos >= Text.Length) return Lines[Lines.Count - 1].Length;
 
 
             var p = pos;
-// Determine which line the cursor is on.
+            // Determine which line the cursor is on.
             for (var i = 0; i < Lines.Count; i++)
             {
-// in the current line. Return the current line index.
-// If p - line length is less than zero, the cursor is located somewhere
+                // in the current line. Return the current line index.
+                // If p - line length is less than zero, the cursor is located somewhere
                 p -= Lines[i].Length + Separator.Length;
                 if (p < 0)
                 {
@@ -1507,7 +1525,7 @@ renderer.Begin(BlendingMode.Premultiplied);
                     return p;
                 }
             }
-// Reached the beginning of the text string.
+            // Reached the beginning of the text string.
             return 0;
         }
 
@@ -1518,16 +1536,16 @@ renderer.Begin(BlendingMode.Premultiplied);
         /// </summary>
         private int GetPosY(int pos)
         {
-// Cursor is past the last line of text?
+            // Cursor is past the last line of text?
             if (pos >= Text.Length) return Lines.Count - 1;
 
 
             var p = pos;
-// Determine which line the cursor is on.
+            // Determine which line the cursor is on.
             for (var i = 0; i < Lines.Count; i++)
             {
-// in the current line. Return the current line index.
-// If p - line length is less than zero, the cursor is located somewhere
+                // in the current line. Return the current line index.
+                // If p - line length is less than zero, the cursor is located somewhere
                 p -= Lines[i].Length + Separator.Length;
                 if (p < 0)
                 {
@@ -1535,7 +1553,7 @@ renderer.Begin(BlendingMode.Premultiplied);
                     return i;
                 }
             }
-// Reached the beginning of the text string.
+            // Reached the beginning of the text string.
             return 0;
         }
 
@@ -1559,16 +1577,16 @@ renderer.Begin(BlendingMode.Premultiplied);
         {
             if (vert != null && horz != null)
             {
-// Update page size values based on dimensions of client area.
+                // Update page size values based on dimensions of client area.
                 vert.PageSize = linesDrawn;
                 horz.PageSize = charsDrawn;
 
 
-// Clamp horizontal page value in range.
+                // Clamp horizontal page value in range.
                 if (horz.PageSize > horz.Range) horz.PageSize = horz.Range;
 
 
-// Update vertical scroll bar value so the current insertion position is visible.
+                // Update vertical scroll bar value so the current insertion position is visible.
                 if (PosY >= vert.Value + vert.PageSize)
                 {
                     vert.Value = (PosY + 1) - vert.PageSize;
@@ -1578,8 +1596,7 @@ renderer.Begin(BlendingMode.Premultiplied);
                     vert.Value = PosY;
                 }
 
-
-// Update horizontal scroll bar value so the current insertion position is visible.
+                // Update horizontal scroll bar value so the current insertion position is visible.
                 if (GetStringWidth(Lines[PosY], PosX) >= horz.Value + horz.PageSize)
                 {
                     horz.Value = (GetStringWidth(Lines[PosY], PosX) + 1) - horz.PageSize;
@@ -1608,14 +1625,12 @@ renderer.Begin(BlendingMode.Premultiplied);
         {
             DeterminePages();
 
-
             if (vert != null) vert.Range = Lines.Count;
             if (horz != null)
             {
                 horz.Range = (int)font.MeasureString(GetMaxLine()).X;
                 if (horz.Range == 0) horz.Range = ClientArea.Width;
             }
-
 
             if (vert != null)
             {
@@ -1627,7 +1642,8 @@ renderer.Begin(BlendingMode.Premultiplied);
                 if (Height < 50 || (scrollBars != ScrollBars.Both && scrollBars != ScrollBars.Vertical))
                     vert.Visible = false;
                 else if ((scrollBars == ScrollBars.Vertical || scrollBars == ScrollBars.Both) &&
-                         mode == TextBoxMode.Multiline) vert.Visible = true;
+                         mode == TextBoxMode.Multiline)
+                    vert.Visible = true;
             }
             if (horz != null)
             {
@@ -1639,12 +1655,11 @@ renderer.Begin(BlendingMode.Premultiplied);
                 if (Width < 50 || wordWrap || (scrollBars != ScrollBars.Both && scrollBars != ScrollBars.Horizontal))
                     horz.Visible = false;
                 else if ((scrollBars == ScrollBars.Horizontal || scrollBars == ScrollBars.Both) &&
-                         mode == TextBoxMode.Multiline && !wordWrap) horz.Visible = true;
+                         mode == TextBoxMode.Multiline && !wordWrap)
+                    horz.Visible = true;
             }
 
-
             AdjustMargins();
-
 
             if (vert != null) vert.PageSize = linesDrawn;
             if (horz != null) horz.PageSize = charsDrawn;
@@ -1664,17 +1679,13 @@ renderer.Begin(BlendingMode.Premultiplied);
                 var s = text.Split(Separator[0]);
                 list.Clear();
 
-
                 list.AddRange(s);
-
 
                 if (posy < 0) posy = 0;
                 if (posy > list.Count - 1) posy = list.Count - 1;
 
-
                 if (posx < 0) posx = 0;
                 if (posx > list[PosY].Length) posx = list[PosY].Length;
-
 
                 return list;
             }
@@ -1693,12 +1704,12 @@ renderer.Begin(BlendingMode.Premultiplied);
             var line = "";
 
 
-// Split text at each space and break into a word array.
+            // Split text at each space and break into a word array.
             var words = text.Replace("\v", "").Split(" ".ToCharArray());
 
 
-// the width of the text box client area.
-// Concatenate words until it has been reformed into lines that fit
+            // The width of the text box client area.
+            // Concatenate words until it has been reformed into lines that fit
             for (var i = 0; i < words.Length; i++)
             {
                 if (font.MeasureString(line + words[i]).X > size)
@@ -1706,7 +1717,7 @@ renderer.Begin(BlendingMode.Premultiplied);
                     ret += line + "\n";
                     line = words[i] + " ";
                 }
-// Replace selection?
+                // Replace selection?
                 else
                 {
                     line += words[i] + " ";
@@ -1714,11 +1725,11 @@ renderer.Begin(BlendingMode.Premultiplied);
             }
 
 
-// Append last line.
+            // Append last line.
             ret += line;
 
 
-// Remove last space and return the new formatted string.
+            // Remove last space and return the new formatted string.
             return ret.Remove(ret.Length - 1, 1);
         }
 
@@ -1738,15 +1749,9 @@ renderer.Begin(BlendingMode.Premultiplied);
                 set { end = value; }
             }
 
-            public bool IsEmpty
-            {
-                get { return Start == -1 && End == -1; }
-            }
+            public bool IsEmpty => Start == -1 && End == -1;
 
-            public int Length
-            {
-                get { return IsEmpty ? 0 : (End - Start); }
-            }
+            public int Length => IsEmpty ? 0 : (End - Start);
 
             public int Start
             {
@@ -1776,10 +1781,4 @@ renderer.Begin(BlendingMode.Premultiplied);
 
         #endregion
     }
-
-
-// Guide visible?
-
-
-// Guide visible?
 }
