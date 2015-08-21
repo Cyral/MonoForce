@@ -1189,7 +1189,6 @@ namespace MonoForce.Controls
         private ToolTip toolTip;
 
         private bool toolTipFadingOut;
-        private bool toolTipisClosing;
 
         /// <summary>
         /// Tracks elapsed time for delaying the display of the control's tool tip.
@@ -1362,9 +1361,9 @@ namespace MonoForce.Controls
             return Height;
         }
 
-        /// </summary>
-        /// Gets the virtual width of the control. (Total scrollable width of the client area, not just the region being displayed.)
         /// <summary>
+        /// Gets the virtual width of the control. (Total scrollable width of the client area, not just the region being displayed.)
+        /// </summary>
         /// <returns></returns>
         private int GetVirtualWidth()
         {
@@ -1391,9 +1390,9 @@ namespace MonoForce.Controls
             return Width;
         }
 
-        /// </summary>
-        /// Gets the controls clipping region.
         /// <summary>
+        /// Gets the controls clipping region.
+        /// </summary>
         /// <param name="c">Control to get the clip rectangle of.</param>
         /// <returns>Returns the specified control's clip rectangle.</returns>
         private Rectangle GetClippingRect(Control c)
@@ -1449,9 +1448,9 @@ namespace MonoForce.Controls
             return ret;
         }
 
-        /// </summary>
-        /// Creates the render target for the control.
         /// <summary>
+        /// Creates the render target for the control.
+        /// </summary>
         /// <param name="width">Width of the render target.</param>
         /// <param name="height">Height of the render target.</param>
         /// <returns>Returns the render target of the specified dimensions.</returns>
@@ -1472,9 +1471,9 @@ namespace MonoForce.Controls
             return null;
         }
 
-        /// </summary>
-        /// Draws the control on the render target.
         /// <summary>
+        /// Draws the control on the render target.
+        /// </summary>
         /// <param name="renderer">Render management object.</param>
         /// <param name="gameTime">Snapshot of the application's timing values.</param>
         internal void PrepareTexture(Renderer renderer, GameTime gameTime)
@@ -1525,9 +1524,9 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
-        /// Determines if the control is detached.
         /// <summary>
+        /// Determines if the control is detached.
+        /// </summary>
         /// <param name="c">Control to check.</param>
         /// <returns>Returns true if the control or one of its parent controls are detached; false otherwise.</returns>
         private bool CheckDetached(Control c)
@@ -1548,13 +1547,13 @@ namespace MonoForce.Controls
             return c.Detached;
         }
 
-        /// </summary>
-        /// Draws the child controls on the render target.
         /// <summary>
+        /// Draws the child controls on the render target.
+        /// </summary>
         /// <param name="renderer">Render management object.</param>
         /// <param name="gameTime">Snapshot of the application's timing values.</param>
         /// <param name="firstDetachedLevel"></param>
-        public void DrawChildControls(Renderer renderer, GameTime gameTime, bool firstDetachedLevel)
+        public virtual void DrawChildControls(Renderer renderer, GameTime gameTime, bool firstDetachedLevel)
         {
             // Has child controls?
             if (controls != null)
@@ -1604,8 +1603,8 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
         /// <summary>
+        /// </summary>
         /// <param name="renderer"></param>
         /// <param name="rect"></param>
         /// <param name="gameTime"></param>
@@ -1628,8 +1627,8 @@ namespace MonoForce.Controls
             DrawChildControls(renderer, gameTime, firstDetach);
         }
 
-        /// </summary>
         /// <summary>
+        /// </summary>
         /// <param name="control"></param>
         /// <param name="renderer"></param>
         /// <param name="gameTime"></param>
@@ -1648,8 +1647,8 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
         /// <summary>
+        /// </summary>
         /// <param name="renderer"></param>
         /// <param name="gameTime"></param>
         internal virtual void Render(Renderer renderer, GameTime gameTime)
@@ -1672,8 +1671,8 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
         /// <summary>
+        /// </summary>
         /// <param name="renderer"></param>
         /// <param name="child"></param>
         private void DrawOutline(Renderer renderer, bool child)
@@ -1733,9 +1732,9 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
-        /// Sets the position of the control to the specified values.
         /// <summary>
+        /// Sets the position of the control to the specified values.
+        /// </summary>
         /// <param name="left">X position of the control.</param>
         /// <param name="top">Y position of the control.</param>
         public void SetPosition(int left, int top)
@@ -1744,9 +1743,9 @@ namespace MonoForce.Controls
             this.top = top;
         }
 
-        /// </summary>
-        /// Sets the size of the control to the specified dimensions.
         /// <summary>
+        /// Sets the size of the control to the specified dimensions.
+        /// </summary>
         /// <param name="width">Width of the control.</param>
         /// <param name="height">Height of the control.</param>
         public void SetSize(int width, int height)
@@ -1755,8 +1754,8 @@ namespace MonoForce.Controls
             Height = height;
         }
 
-        /// </summary>
         /// <summary>
+        /// </summary>
         internal void SetAnchorMargins()
         {
             if (Parent != null)
@@ -1773,8 +1772,8 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
         /// <summary>
+        /// </summary>
         /// <param name="e"></param>
         private void ProcessAnchor(ResizeEventArgs e)
         {
@@ -1819,9 +1818,9 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
-        /// Initializes the control.
         /// <summary>
+        /// Initializes the control.
+        /// </summary>
         public override void Init()
         {
             base.Init();
@@ -1830,9 +1829,9 @@ namespace MonoForce.Controls
             OnResize(new ResizeEventArgs());
         }
 
-        /// </summary>
-        /// Initializes the control's skin.
         /// <summary>
+        /// Initializes the control's skin.
+        /// </summary>
         protected internal virtual void InitSkin()
         {
             if (Manager != null && Manager.Skin != null && Manager.Skin.Controls != null)
@@ -1847,9 +1846,9 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
-        /// Sets the default size of the control.
         /// <summary>
+        /// Sets the default size of the control.
+        /// </summary>
         /// <param name="width">Default width of the control.</param>
         /// <param name="height">Default height of the control.</param>
         /// <remarks>
@@ -1879,9 +1878,9 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
-        /// Sets the minimum size of the control.
         /// <summary>
+        /// Sets the minimum size of the control.
+        /// </summary>
         /// <param name="minimumWidth">Minimum width of the control.</param>
         /// <param name="minimumHeight">Minimum height of the control.</param>
         /// <remarks>
@@ -1911,9 +1910,9 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
-        /// Handler for when the graphics device's settings change.
         /// <summary>
+        /// Handler for when the graphics device's settings change.
+        /// </summary>
         /// <param name="e"></param>
         internal void OnDeviceSettingsChanged(DeviceEventArgs e)
         {
@@ -1923,9 +1922,9 @@ namespace MonoForce.Controls
             }
         }
 
-        /// </summary>
-        /// Draws the control.
         /// <summary>
+        /// Draws the control.
+        /// </summary>
         /// <param name="renderer">Render management object.</param>
         /// <param name="rect">Destination rectangle where the control will be drawn.</param>
         /// <param name="gameTime">Snapshot of the application's timing values.</param>
@@ -1951,9 +1950,9 @@ namespace MonoForce.Controls
                     Manager.CheckParent(this, pos));
         }
 
-        /// </summary>
-        /// Gets a child control by name.
         /// <summary>
+        /// Gets a child control by name.
+        /// </summary>
         /// <param name="name">Name of the control to search for.</param>
         /// <returns>Returns the control with the specified name or null if not found.</returns>
         public Control GetControl(string name)
@@ -1983,9 +1982,9 @@ namespace MonoForce.Controls
             return ret;
         }
 
-        /// </summary>
-        /// Adds the specified control as a child to this control.
         /// <summary>
+        /// Adds the specified control as a child to this control.
+        /// </summary>
         /// <param name="control">Child control to add to the list.</param>
         public virtual void Add(Control control)
         {
@@ -2559,8 +2558,8 @@ namespace MonoForce.Controls
             return false;
         }
 
-        /// </summary>
         /// <summary>
+        /// </summary>
         /// <param name="pos"></param>
         /// <returns></returns>
         private bool CheckMovableArea(Point pos)

@@ -6,9 +6,9 @@ using MonoForce.External.Zip;
 
 namespace MonoForce.Controls
 {
-    /// </remarks>
-    /// This class is based on Nick Gravelyn's EasyZip library.
     /// <remarks>
+    /// This class is based on Nick Gravelyn's EasyZip library.
+    /// </remarks>
     /// <summary>
     /// Additionally it is capable of loading assets from a zip file.
     /// content pipeline the same way like <see cref="Microsoft.Xna.Framework.Content.ContentManager" /> does.

@@ -800,7 +800,8 @@ namespace MonoForce.Controls
                     {
                         col = control.TextColor;
                     }
-                    col = col * (control.Alpha / 255f);
+                    if (!(control is ToolTip))
+                        col = col*(control.Alpha/255f);
                     // Pass the updated arguments off to the real draw function.
                     DrawString(font.Font.Resource, text, rect, col, font.Alignment, font.OffsetX + ox, font.OffsetY + oy,
                         ellipsis, DrawFormattedText);
