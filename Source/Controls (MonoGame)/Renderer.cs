@@ -338,16 +338,12 @@ namespace MonoForce.Controls
             if (text.Contains("[color:"))
             {
                 // how far in x to offset from position
-                var currentOffsetX = 0;
-                var currentOffsetY = 0;
-
-
                 var newLines = text.Split(newLine, StringSplitOptions.RemoveEmptyEntries);
                 for (var i = 0; i < newLines.Length; i++)
                 {
-                    currentOffsetX = 0;
+                    var currentOffsetX = 0;
                     var line = newLines[i];
-                    currentOffsetY = i * font.LineSpacing;
+                    var currentOffsetY = i * font.LineSpacing;
                     splits = line.Split(Manager.StringColorStart, StringSplitOptions.RemoveEmptyEntries);
                     foreach (var str in splits)
                     {

@@ -36,7 +36,7 @@ namespace MonoForce.Demo
 
             TopPanel.Visible = true;
             Caption.Text = "Information";
-            Description.Text = "Demonstration of various controls available in Neoforce Controls library.";
+            Description.Text = "Demonstration of [color:red]various[/color] controls [color:#FC8B00]available[/color] in Neoforce Controls library.";
             Caption.TextColor = Description.TextColor = new Color(96, 96, 96);
 
             grpEdit = new GroupPanel(Manager);

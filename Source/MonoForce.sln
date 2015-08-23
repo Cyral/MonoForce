@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.22823.1
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controls (MonoGame)", "Controls (MonoGame)\Controls (MonoGame).csproj", "{E659D272-6A6E-4D25-8544-2CEF9DBBBB24}"
 EndProject
@@ -38,7 +38,6 @@ Global
 		{1D2A914E-FC91-4DEC-AE47-47D50A0423E4}.Debug|x86.Build.0 = Debug|x86
 		{1D2A914E-FC91-4DEC-AE47-47D50A0423E4}.Release|Any CPU.ActiveCfg = Release|x86
 		{1D2A914E-FC91-4DEC-AE47-47D50A0423E4}.Release|x86.ActiveCfg = Release|x86
-		{1D2A914E-FC91-4DEC-AE47-47D50A0423E4}.Release|x86.Build.0 = Release|x86
 		{D2A37FC9-60D9-4C25-9B78-BB36BABB5B18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D2A37FC9-60D9-4C25-9B78-BB36BABB5B18}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D2A37FC9-60D9-4C25-9B78-BB36BABB5B18}.Debug|x86.ActiveCfg = Debug|Any CPU
@@ -46,7 +45,6 @@ Global
 		{D2A37FC9-60D9-4C25-9B78-BB36BABB5B18}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D2A37FC9-60D9-4C25-9B78-BB36BABB5B18}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D2A37FC9-60D9-4C25-9B78-BB36BABB5B18}.Release|x86.ActiveCfg = Release|Any CPU
-		{D2A37FC9-60D9-4C25-9B78-BB36BABB5B18}.Release|x86.Build.0 = Release|Any CPU
 		{C00AA315-C10F-4C13-961D-295CAE7DE7E5}.Debug|Any CPU.ActiveCfg = Debug|x86
 		{C00AA315-C10F-4C13-961D-295CAE7DE7E5}.Debug|x86.ActiveCfg = Debug|x86
 		{C00AA315-C10F-4C13-961D-295CAE7DE7E5}.Debug|x86.Build.0 = Debug|x86
@@ -58,7 +56,6 @@ Global
 		{81052211-A89C-47B1-B599-A4861AD5B852}.Debug|x86.Build.0 = Debug|x86
 		{81052211-A89C-47B1-B599-A4861AD5B852}.Release|Any CPU.ActiveCfg = Release|x86
 		{81052211-A89C-47B1-B599-A4861AD5B852}.Release|x86.ActiveCfg = Release|x86
-		{81052211-A89C-47B1-B599-A4861AD5B852}.Release|x86.Build.0 = Release|x86
 		{4DA4E005-5621-4E2D-BFA0-FDB42DDABCEB}.Debug|Any CPU.ActiveCfg = Debug|x86
 		{4DA4E005-5621-4E2D-BFA0-FDB42DDABCEB}.Debug|x86.ActiveCfg = Debug|x86
 		{4DA4E005-5621-4E2D-BFA0-FDB42DDABCEB}.Release|Any CPU.ActiveCfg = Release|x86
@@ -68,7 +65,6 @@ Global
 		{08359DE3-F4BF-4298-859C-88A153495D35}.Debug|x86.Build.0 = Debug|x86
 		{08359DE3-F4BF-4298-859C-88A153495D35}.Release|Any CPU.ActiveCfg = Release|x86
 		{08359DE3-F4BF-4298-859C-88A153495D35}.Release|x86.ActiveCfg = Release|x86
-		{08359DE3-F4BF-4298-859C-88A153495D35}.Release|x86.Build.0 = Release|x86
 		{ACB15DB5-8FC1-410D-8A07-9C2EE20A42ED}.Debug|Any CPU.ActiveCfg = Debug|x86
 		{ACB15DB5-8FC1-410D-8A07-9C2EE20A42ED}.Debug|x86.ActiveCfg = Debug|x86
 		{ACB15DB5-8FC1-410D-8A07-9C2EE20A42ED}.Release|Any CPU.ActiveCfg = Release|x86

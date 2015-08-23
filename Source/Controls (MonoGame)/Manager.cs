@@ -1986,6 +1986,7 @@ RenderTarget = CreateRenderTarget();
             {
                 if (i < OrderList.Count - 1) i += 1;
                 else i = 0;
+
             } while ((OrderList[i].Root != control.Root || !OrderList[i].CanFocus || OrderList[i].IsRoot ||
                       !OrderList[i].Enabled) && i != start);
 
