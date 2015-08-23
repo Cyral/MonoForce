@@ -1083,6 +1083,14 @@ game.Window.Title += " (XBOX_FAKE)";
         {
         }
 
+        /// <summary>
+        /// Remove the modal status of the modal dialog.
+        /// </summary>
+        public virtual void UnsetModal()
+        {
+            ModalWindow = null;
+        }
+
         /// </param>
         /// The component or control being removed.
         /// <param name="component">
