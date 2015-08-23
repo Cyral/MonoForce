@@ -102,7 +102,7 @@ namespace MonoForce.Controls
                 textColor = Color.Black;
                 rect.X += 1;
                 rect.Y += 1;
-                renderer.DrawString(this, s, Text, rect, true, 0, 0, ellipsis, false);
+                renderer.DrawString(this, s, Renderer.StripFormattedText(Text), rect, true, 0, 0, ellipsis, false);
 
                 rect.X -= 1;
                 rect.Y -= 1;

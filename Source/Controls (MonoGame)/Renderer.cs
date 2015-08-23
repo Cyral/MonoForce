@@ -1,4 +1,5 @@
 using System;
+using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -107,7 +108,7 @@ namespace MonoForce.Controls
             get { return sb; }
         }
 
-        private readonly char[] newLine = Environment.NewLine.ToCharArray();
+        private static readonly char[] newLine = Environment.NewLine.ToCharArray();
 
         /// <summary>
         /// Various graphics device settings for the renderer.
@@ -327,6 +328,54 @@ namespace MonoForce.Controls
                 sb.Draw(texture, new Vector2(left, top), source, color, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None,
                     Manager.GlobalDepth);
             }
+        }
+
+        /// <summary>
+        /// Removes formatted (color) text from a string.
+        /// </summary>
+        public static string StripFormattedText(string text)
+        {
+            var sb = new StringBuilder();
+            // only bother if we have color commands involved
+            if (text.Contains("[color:"))
+            {
+                // how far in x to offset from position
+                var newLines = text.Split(newLine, StringSplitOptions.RemoveEmptyEntries);
+                for (var i = 0; i < newLines.Length; i++)
+                {
+                    var line = newLines[i];
+                    var splits = line.Split(Manager.StringColorStart, StringSplitOptions.RemoveEmptyEntries);
+                    foreach (var str in splits)
+                    {
+                        // if this section starts with a color
+                        if (str.StartsWith(":"))
+                        {
+                            var end = str.IndexOf("]");
+
+                            // any subsequent msgs after the [/color] tag are defaultColor
+                            var msgs = str.Substring(end + 1)
+                                .Split(Manager.StringColorEnd, StringSplitOptions.RemoveEmptyEntries);
+                            if (msgs.Length > 0)
+                            {
+                                sb.Append(msgs[0]);
+                                if (msgs.Length == 2)
+                                {
+                                    sb.Append(msgs[1]);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            sb.Append(str);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                sb.Append(text);
+            }
+            return sb.ToString();
         }
 
         public virtual void DrawColorFormattedText(SpriteFont font, Vector2 position, string text, Color defaultColor)
