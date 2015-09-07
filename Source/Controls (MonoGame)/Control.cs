@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -1636,13 +1637,10 @@ namespace MonoForce.Controls
         {
             if (control.Controls != null)
             {
-                foreach (var c in control.Controls)
+                foreach (var c in control.Controls.Where(c => c.Detached && c.Visible))
                 {
-                    if (c.Detached && c.Visible)
-                    {
-                        c.DrawControls(renderer, new Rectangle(c.OriginLeft, c.OriginTop, c.OriginWidth, c.OriginHeight),
-                            gameTime, true);
-                    }
+                    c.DrawControls(renderer, new Rectangle(c.OriginLeft, c.OriginTop, c.OriginWidth, c.OriginHeight),
+                        gameTime, true);
                 }
             }
         }
@@ -3375,9 +3373,10 @@ namespace MonoForce.Controls
             {
                 list.Clear();
                 list.AddRange(controls);
-                foreach (var c in list)
+                for (var i = 0; i < list.Count; i++)
                 {
-                    c.Update(gameTime);
+                    var c = list[i];
+                    c?.Update(gameTime);
                 }
             }
         }

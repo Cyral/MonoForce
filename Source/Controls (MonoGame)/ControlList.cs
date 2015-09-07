@@ -191,8 +191,10 @@ namespace MonoForce.Controls
 
         protected internal override void Update(GameTime gameTime)
         {
-            foreach (var control in Items)
+            for (int i = 0; i < Items.Count; i++)
             {
+                var control = Items[i];
+                if (control == null) continue;
                 var item = control as Control;
                 item?.Update(gameTime);
             }

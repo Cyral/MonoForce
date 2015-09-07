@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -1015,14 +1016,7 @@ game.Window.Title += " (XBOX_FAKE)";
         public virtual Control GetControl(string name)
         {
 // Make sure no control can be larger than the back buffer.
-            foreach (var c in Controls)
-            {
-                if (c.Name.ToLower() == name.ToLower())
-                {
-                    return c;
-                }
-            }
-            return null;
+            return Controls.FirstOrDefault(c => string.Equals(c.Name, name, StringComparison.CurrentCultureIgnoreCase));
         }
 
         /// <summary>
@@ -1257,9 +1251,10 @@ game.Window.Title += " (XBOX_FAKE)";
 // Disposing all components added to manager.
                 if (components != null)
                 {
-                    foreach (var c in components)
+                    for (var i = 0; i < components.Count; i++)
                     {
-                        c.Update(gameTime);
+                        var c = components[i];
+                        c?.Update(gameTime);
                     }
                 }
 
@@ -1268,9 +1263,10 @@ game.Window.Title += " (XBOX_FAKE)";
 // Controls to update?
                 if (list != null)
                 {
-                    foreach (var c in list)
+                    for (var i = 0; i < list.Count; i++)
                     {
-                        c.Update(gameTime);
+                        var c = list[i];
+                        c?.Update(gameTime);
                     }
                 }
 
@@ -1625,17 +1621,9 @@ RenderTarget = CreateRenderTarget();
 
             if (autoUnfocus && focusedControl != null && focusedControl.Root != modalWindow)
             {
-                var hit = false;
+                var hit = Controls.Any(cx => cx.AbsoluteRect.Contains(e.Position));
 
 // Check managed controls for a hit.
-                foreach (var cx in Controls)
-                {
-                    if (cx.AbsoluteRect.Contains(e.Position))
-                    {
-                        hit = true;
-                        break;
-                    }
-                }
 // No hit detected?
                 if (!hit)
                 {
@@ -1970,9 +1958,10 @@ RenderTarget = CreateRenderTarget();
         {
             if (cs != null)
             {
-                foreach (var c in cs)
+                for (int i = 0; i < cs.Count; i++)
                 {
-                    if (c.Visible)
+                    var c = cs[i];
+                    if (c != null && c.Visible)
                     {
                         OrderList.Add(c);
                         SortLevel(c.Controls as ControlsList);
